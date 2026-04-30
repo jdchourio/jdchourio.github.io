@@ -1,0 +1,3063 @@
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Jost', var(--font-sans);
+    --bar-h: 48px;
+    --gold: #8B6914;
+    --gold-light: #f5ede0;
+    --gold-mid: #c49a2a;
+    --gold-border: #d4a84b;
+    --col-left: 52px;
+    --text-dim: var(--color-text-secondary);
+    --text-main: var(--color-text-primary);
+    --bg: var(--color-background-primary);
+    --bg2: var(--color-background-secondary);
+  }
+
+  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
+
+  .context-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-background-primary, #fdfaf6);
+    border-bottom: 1px solid var(--color-border-secondary);
+    height: var(--bar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem 0 calc(var(--col-left) + 1.25rem);
+    gap: 1rem;
+  }
+
+  @media (max-width: 580px) {
+    .context-bar {
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: start;
+      padding: 0.5rem 1rem 0.5rem calc(var(--col-left) + 1rem);
+      gap: 0.35rem;
+    }
+
+    .context-left,
+    .context-right {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+      gap: 0.75rem;
+    }
+
+    #actLabel,
+    .recording-pill {
+      font-size: 11px !important;
+      line-height: 1.2;
+    }
+
+    .recording-pill {
+      display: contents;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: none;
+    }
+  }
+
+  .context-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .context-sep { opacity: 0.3; }
+
+  .context-track {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 3px;
+    padding: 2px 8px;
+    min-width: 76px;
+    text-align: center;
+  }
+
+  .context-track-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+
+  .context-right { display: flex; align-items: center; gap: 10px; }
+
+  .recording-pill {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  .index-btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .index-btn:hover { background: var(--bg2); }
+
+  .index-icon { width: 13px; height: 10px; display: flex; flex-direction: column; justify-content: space-between; }
+  .index-icon span { display: block; height: 1.5px; background: currentColor; border-radius: 1px; }
+  .index-icon span:nth-child(2) { width: 65%; }
+
+  .libretto-body {
+    display: grid;
+    grid-template-columns: var(--col-left) 1fr;
+    padding-bottom: 4rem;
+  }
+
+  .act-heading {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
+    border-bottom: 1px solid var(--color-border-secondary);
+    margin-bottom: 0;
+  }
+
+  .track-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 1.6rem;
+    padding-right: 0;
+    position: relative;
+  }
+
+  .track-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 3px;
+    padding: 4px 6px;
+    gap: 1px;
+    cursor: default;
+    width: 40px;
+  }
+
+  .track-tag-cd {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-mid);
+  }
+
+  .track-tag-num {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .text-col { padding: 0 1.25rem; scroll-margin-top: calc(var(--bar-h) + 0.5rem); }
+
+  .musical-number {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 1.25rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .musical-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-secondary);
+  }
+
+  .scene-heading {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin: 0.75rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+
+  .stage-direction {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dim);
+    margin: 0.6rem 0;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--color-border-secondary);
+    line-height: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+
+  .stage-direction .es { font-style: italic; }
+
+  .character-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    margin: 0.9rem 0 0.15rem;
+  }
+
+  .character-name {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .line-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    align-items: baseline;
+  }
+
+  .fr {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .es {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .spacer-row { grid-column: 1/-1; height: 2rem; }
+  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
+
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 200;
+  }
+
+  .drawer-overlay.open { display: block; }
+
+  .drawer {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-left: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .drawer-header-left { display: flex; flex-direction: column; gap: 1px; }
+
+  .drawer-header-opera {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  .drawer-header-sub {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .drawer-close {
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1;
+    padding: 4px 8px;
+    font-family: var(--sans);
+  }
+
+  .drawer-close:hover { background: var(--bg2); color: var(--text-main); }
+
+  .drawer-body { overflow-y: auto; flex: 1; }
+
+  .drawer-cd-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 1.25rem 1.25rem 0.5rem;
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-tertiary);
+    border-top: 1px solid var(--color-border-tertiary);
+  }
+
+  .drawer-track {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 1.25rem;
+    cursor: pointer;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .drawer-track:hover { background: var(--bg2); }
+  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
+
+  .drawer-track-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-dim);
+    width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .drawer-track.active .drawer-track-num { color: var(--gold); }
+
+  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
+
+  .drawer-track-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+    line-height: 1.3;
+  }
+
+  .drawer-track.active .drawer-track-title { color: var(--gold); }
+
+  .drawer-track-act {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+</style>
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left">
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-track-title" id="trackTitle">Le Vieil Hiver A Fait Place Au Printemps</span>
+    </div>
+    <div class="context-right">
+      <span class="recording-pill">La Damnation de Faust · Nelson / Di Donato</span>
+      <button class="index-btn" onclick="openDrawer()">
+        <span class="index-icon"><span></span><span></span><span></span></span>
+        Index
+      </button>
+    </div>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading">Premiere Partie · Primera Parte</div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="scene-heading">
+        <span>Scène Première</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Le vieil hiver a fait place au printemps;</span><span class="es">El viejo invierno ha dejado lugar a la primavera.</span></div>
+      <div class="line-row"><span class="fr">La nature s'est rajeunie;</span><span class="es">La naturaleza ha rejuvenecido.</span></div>
+      <div class="line-row"><span class="fr">Des cieux la coupole infinie</span><span class="es">De la infinita cúpula del cielo</span></div>
+      <div class="line-row"><span class="fr">Laisse pleuvoir mille feux éclatants.</span><span class="es">llueven mil fuegos resplandecientes.</span></div>
+      <div class="line-row"><span class="fr">Je sens glisser dans l'air la brise matinale;</span><span class="es">Siento la brisa matinal deslizándose en el aire.</span></div>
+      <div class="line-row"><span class="fr">De ma poitrine ardente un souffle pur s'exhale.</span><span class="es">De mi pecho ardiente brota una pura exhalación.</span></div>
+      <div class="line-row"><span class="fr">J'entends autour de moi le réveil des oiseaux,</span><span class="es">Oigo a mi alrededor el despertar de los pájaros.</span></div>
+      <div class="line-row"><span class="fr">Le long bruissement des plantes et des eaux ...</span><span class="es">El firme rumor de las plantas y las aguas...</span></div>
+      <div class="line-row"><span class="fr">Oh! qu'il est doux de vivre au fond des solitudes,</span><span class="es">¡Oh, qué dulce es vivir en absoluta soledad,</span></div>
+      <div class="line-row"><span class="fr">Loin de la lutte humaine et loin des multitudes!</span><span class="es">lejos de la lucha humana y de las multitudes!</span></div>
+      <div class="scene-heading">
+        <span>Scène Deuxième</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="character-row">
+        <span class="character-name">Choeur</span>
+        <span class="character-name">Choeur</span>
+      </div>
+      <div class="line-row"><span class="fr">Les bergers laissent leurs troupeaux;</span><span class="es">Los pastores dejan sus rebaños</span></div>
+      <div class="line-row"><span class="fr">Pour la fête ils se rendent beaux;</span><span class="es">y se engalanan para la fiesta.</span></div>
+      <div class="line-row"><span class="fr">Fleurs des champs et rubans sont leur parure;</span><span class="es">Flores campestres y cintas son sus adornos.</span></div>
+      <div class="line-row"><span class="fr">Sous les tilleuls, les voilà tous,</span><span class="es">Están todos bajo los tilos,</span></div>
+      <div class="line-row"><span class="fr">Dansant, sautant comme des fous.</span><span class="es">bailando y saltando como locos.</span></div>
+      <div class="line-row"><span class="fr">Ha! ha! ha! ha! ha! ha! Landerida!</span><span class="es">¡Ja, ja, ja, Landerida!</span></div>
+      <div class="line-row"><span class="fr">Suivez donc la mesure!</span><span class="es">¡Sigan el compás!</span></div>
+      <div class="line-row"><span class="fr">Ha! ha! ha! ha! ha! ha! Landerida!</span><span class="es">¡Ja, ja, ja, Landerida!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Quels sont ces cris?</span><span class="es">¿Qué son esos gritos?</span></div>
+      <div class="line-row"><span class="fr">Quel est ce bruit lointain?</span><span class="es">¿Qué es ese sonido lejano?</span></div>
+      <div class="character-row">
+        <span class="character-name">Choeur</span>
+        <span class="character-name">Choeur</span>
+      </div>
+      <div class="line-row"><span class="fr">Tra la la la la la! ha ha!</span><span class="es">Tra, la, la, ha ha!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Ce sont des villageois, au lever du matin,</span><span class="es">Son los aldeanos, en el despuntar del día,</span></div>
+      <div class="line-row"><span class="fr">Qui dansent en chantant sur la verte pelouse.</span><span class="es">que bailan y cantan sobre el verde césped.</span></div>
+      <div class="line-row"><span class="fr">De leurs plaisirs ma misère est jalouse.</span><span class="es">Mi mezquindad me hace sentir celos...</span></div>
+      <div class="character-row">
+        <span class="character-name">Choeur</span>
+        <span class="character-name">Choeur</span>
+      </div>
+      <div class="line-row"><span class="fr">Ils passent tous comme l'éclair,</span><span class="es">Saltan como rayos</span></div>
+      <div class="line-row"><span class="fr">Et les robes volaient en l'air;</span><span class="es">y los trajes vuelan al aire.</span></div>
+      <div class="line-row"><span class="fr">Mais bientôt on fut moins agile;</span><span class="es">Pronto el cansancio los invade</span></div>
+      <div class="line-row"><span class="fr">Le rouge leur montait au front;</span><span class="es">y los rostros se van tiñendo de rojo,</span></div>
+      <div class="line-row"><span class="fr">Et l'un sur l'autre dans le rond,</span><span class="es">uno tras de otro...</span></div>
+      <div class="line-row"><span class="fr">Ha! ha! ha! ha! ha! ha! Landerida!</span><span class="es">¡Ha, ha, ha, ha, ha, ha! ¡Landerida!</span></div>
+      <div class="line-row"><span class="fr">Tous tombaient à la file.</span><span class="es">Toda la fila se viene abajo.</span></div>
+      <div class="line-row"><span class="fr">Ha! ha! ha! ha! ha! ha! Landerida!</span><span class="es">¡Ha, ha, ha, ha, ha, ha! ¡Landerida!</span></div>
+      <div class="line-row"><span class="fr">Ne me touchez donc pas ainsi!</span><span class="es">"¡No me toques!"</span></div>
+      <div class="line-row"><span class="fr">Paix! ma femme n'est point ici!</span><span class="es">"¡Tranquila!... ¡Mi mujer no está aquí!</span></div>
+      <div class="line-row"><span class="fr">Profitons de la circonstance!</span><span class="es">¡Aprovechemos la oportunidad!"</span></div>
+      <div class="line-row"><span class="fr">Dehors il l'emmena soudain,</span><span class="es">Rápidamente se la lleva fuera.</span></div>
+      <div class="line-row"><span class="fr">Et tout pourtant allait son train,</span><span class="es">Y todo sigue su curso.</span></div>
+      <div class="line-row"><span class="fr">Ha! ha! ha! ha! ha! ha! Landerida!</span><span class="es">¡Ha, ha, ha, ha, ha, ha! ¡Landerida!</span></div>
+      <div class="line-row"><span class="fr">Tra la la la la la! ha ha!</span><span class="es">¡Tra la, la, la, la! ¡Ha, ha!</span></div>
+      <div class="scene-heading">
+        <span>Scène Troisième</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Une autre partie de la place une armée qui s'avance)</span>
+        <span class="es">(Por la plaza, un ejército avanza)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais d'un éclat guerrier les campagnes se parent.</span><span class="es">Pero un estallido guerrero invade la tierra.</span></div>
+      <div class="line-row"><span class="fr">Ah! les fils du Danube aux combats se préparent!</span><span class="es">¡Los hijos del Danubio se aprestan al combate!</span></div>
+      <div class="line-row"><span class="fr">Avec quel air fier et joyeux</span><span class="es">¡Qué orgullosos y alegres llevan su armadura!</span></div>
+      <div class="line-row"><span class="fr">Ils portent leur armure! et quel feu dans leurs yeux!</span><span class="es">¡Y qué fuego hay en sus ojos!</span></div>
+      <div class="line-row"><span class="fr">Tout cœur frémit à leur chant de victoire;</span><span class="es">Los corazones tiemblan ante el canto victorioso.</span></div>
+      <div class="line-row"><span class="fr">Le mien seul reste froid, insensible à la gloire.</span><span class="es">Sólo el mío permanece insensible a la gloria.</span></div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(Les troupes passent. Faust s'éloigne)</span>
+        <span class="es">(Pasan las tropas. Fausto se aleja)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Quatrième</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Nord de l'Allemagne. Faust seul dans son cabinet de travail)</span>
+        <span class="es">(Norte de Alemania. Fausto solo en su gabinete de trabajo)</span>
+      </div>
+    </div>
+
+    <div class="act-heading">Deuxieme Partie · Segunda Parte</div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Sans regrets j'ai quitté les riantes campagnes</span><span class="es">Sin pesar he abandonado las risueñas comarcas</span></div>
+      <div class="line-row"><span class="fr">Où m'a suivi l'ennui;</span><span class="es">donde el aburrimiento me perseguía.</span></div>
+      <div class="line-row"><span class="fr">Sans plaisirs je revois nos altières montagnes;</span><span class="es">Sin placer vuelvo a ver las altivas montañas.</span></div>
+      <div class="line-row"><span class="fr">Dans ma vielle cité je reviens avec lui.</span><span class="es">Vuelvo a mi antigua ciudad.</span></div>
+      <div class="line-row"><span class="fr">Oh! je souffre! et la nuit sans étoiles,</span><span class="es">¡Oh, cuánto sufro! La noche sin estrellas,</span></div>
+      <div class="line-row"><span class="fr">Qui vient d'étendre au loin son silence et ses voiles,</span><span class="es">que extiende a lo lejos su silencio y su velo,</span></div>
+      <div class="line-row"><span class="fr">Ajoute encore à mes sombres douleurs.</span><span class="es">añade más oscuridad a mi dolor.</span></div>
+      <div class="line-row"><span class="fr">Ô terre! pour moi seul tu n'as donc pas de fleurs!</span><span class="es">¡Oh, tierra! Sólo para mí no tienes flores!</span></div>
+      <div class="line-row"><span class="fr">Par le monde, où trouver ce qui manque à ma vie?</span><span class="es">¿Dónde encontrar aquello que falta a mi vida?</span></div>
+      <div class="line-row"><span class="fr">Je cherchais en vain, tout fuit mon âpre envie!</span><span class="es">¡Busqué en vano, pues todo huyó de mi vida!</span></div>
+      <div class="line-row"><span class="fr">Allons, il faut finir!...</span><span class="es">¡Vamos, hay que de terminar!...</span></div>
+      <div class="line-row"><span class="fr">Mais je tremble... Pourquoi</span><span class="es">¡Mas tiemblo!...</span></div>
+      <div class="line-row"><span class="fr">Trembler devant l'abîme entrouvert devant moi?</span><span class="es">¿Por qué estremecerse</span></div>
+      <div class="line-row"><span class="fr">Ô coupe trop longtemps à mes désirs ravie,</span><span class="es">ante el abismo que se abre ante a mí?</span></div>
+      <div class="line-row"><span class="fr">Viens, viens, noble cristal, verse le poison</span><span class="es">¡Oh, copa demasiado tiempo deseada,</span></div>
+      <div class="line-row"><span class="fr">Qui doit illuminer</span><span class="es">ven, ven, noble cristal, viérteme el veneno</span></div>
+      <div class="line-row"><span class="fr">Ou tuer ma raison.</span><span class="es">que debe iluminar o aniquilar mi razón!</span></div>
+      <div class="stage-direction">
+        <span>(Il porte la coupe à ses lèvres. Sons des cloches. Chants religieux dans l'église voisine. Chant de la Fête de Pâques)</span>
+        <span class="es">(Se lleva la copa a los labios. Suenan las campanas. Cantos religiosos en la iglesia vecina. Cantos de Pascua.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="character-row">
+        <span class="character-name">Choeur</span>
+        <span class="character-name">Choeur</span>
+      </div>
+      <div class="line-row"><span class="fr">Christ vient de ressusciter!</span><span class="es">¡Cristo ha resucitado!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'entends-je?</span><span class="es">¿Qué oigo?</span></div>
+      <div class="character-row">
+        <span class="character-name">Choeur</span>
+        <span class="character-name">Choeur</span>
+      </div>
+      <div class="line-row"><span class="fr">Quittant du tombeau</span><span class="es">Dejando la tumba,</span></div>
+      <div class="line-row"><span class="fr">Le séjour funeste,</span><span class="es">fatal morada,</span></div>
+      <div class="line-row"><span class="fr">Au parvis céleste</span><span class="es">sube aún más hermoso</span></div>
+      <div class="line-row"><span class="fr">Il monte plus beau.</span><span class="es">a las puertas celestiales.</span></div>
+      <div class="line-row"><span class="fr">Vers le gloires immortelles</span><span class="es">Mientras velozmente se desplaza</span></div>
+      <div class="line-row"><span class="fr">Tandis qu'il s'élance à grands pas.</span><span class="es">hacia la gloria inmortal,</span></div>
+      <div class="line-row"><span class="fr">Ses disciples fidèles</span><span class="es">sus fieles discípulos</span></div>
+      <div class="line-row"><span class="fr">Languissent ici-bas.</span><span class="es">languidecen aquí abajo.</span></div>
+      <div class="line-row"><span class="fr">Hélas! c'est ici qu'il nous laisse</span><span class="es">¡Ay! ¿Acaso Él nos abandona</span></div>
+      <div class="line-row"><span class="fr">Sous les traits brûlants du malheur.</span><span class="es">a las garras ardientes de la desdicha?</span></div>
+      <div class="line-row"><span class="fr">Ô divin maître! ton bonheur</span><span class="es">¡Oh, Divino Maestro!</span></div>
+      <div class="line-row"><span class="fr">Est cause de notre tristesse.</span><span class="es">Tu alegría es causa de nuestra tristeza.</span></div>
+      <div class="line-row"><span class="fr">Ô divin maître! tu nous laisses</span><span class="es">¡Oh, Divino Maestro! Nos abandonas</span></div>
+      <div class="line-row"><span class="fr">Sous les traits brûlants du malheur.</span><span class="es">a las garras ardientes de la desdicha.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Ô souvenirs!</span><span class="es">¡Oh recuerdos!</span></div>
+      <div class="line-row"><span class="fr">Ô mon âme tremblante!</span><span class="es">¡Oh, alma temblorosa!</span></div>
+      <div class="line-row"><span class="fr">Sur l'aile de ces chants vas-tu voler aux cieux!</span><span class="es">¿Volarás a los cielos</span></div>
+      <div class="line-row"><span class="fr">La foi chancelante</span><span class="es">sobre las alas de esos cantos?</span></div>
+      <div class="line-row"><span class="fr">Revient, me ramenant la paix des jours pieux,</span><span class="es">¡Mi fe titubeante regresa,</span></div>
+      <div class="line-row"><span class="fr">Mon heureuse enfance,</span><span class="es">trayendo consigo la paz de los días piadosos,</span></div>
+      <div class="line-row"><span class="fr">La douceur de prier,</span><span class="es">mi infancia feliz,</span></div>
+      <div class="line-row"><span class="fr">La pure jouissante</span><span class="es">la dulzura de la oración,</span></div>
+      <div class="line-row"><span class="fr">D'errer et de rêver</span><span class="es">el gozo puro de errar y soñar</span></div>
+      <div class="line-row"><span class="fr">Par les vertes prairies,</span><span class="es">por las verdes praderas</span></div>
+      <div class="line-row"><span class="fr">Aux clartés infinies</span><span class="es">hacia la claridad infinita</span></div>
+      <div class="line-row"><span class="fr">D'un soleil de printemps!</span><span class="es">de un sol primaveral!</span></div>
+      <div class="line-row"><span class="fr">Ô baiser de l'amour céleste</span><span class="es">¡Oh, beso de amor celestial</span></div>
+      <div class="line-row"><span class="fr">Qui remplissais mon cœur de doux pressentiments</span><span class="es">que colmas mi corazón de dulces esperanzas</span></div>
+      <div class="line-row"><span class="fr">Et chassais tout désir funeste!</span><span class="es">y destierras todo deseo funesto!</span></div>
+      <div class="character-row">
+        <span class="character-name">Choeur</span>
+        <span class="character-name">Choeur</span>
+      </div>
+      <div class="line-row"><span class="fr">Christ vient de ressusciter!...</span><span class="es">¡Cristo ha resucitado!</span></div>
+      <div class="line-row"><span class="fr">Mais croyons en sa parole éternelle,</span><span class="es">¡Nosotros creemos en su palabra eterna!</span></div>
+      <div class="line-row"><span class="fr">Nous le suivrons un jour</span><span class="es">Un día lo seguiremos</span></div>
+      <div class="line-row"><span class="fr">Au céleste séjour</span><span class="es">hasta la celestial morada</span></div>
+      <div class="line-row"><span class="fr">Où sa voix nous appelle.</span><span class="es">desde donde su voz nos llama.</span></div>
+      <div class="line-row"><span class="fr">Hosanna! Hosanna!</span><span class="es">¡Hosanna¡ ¡Hosanna!</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Hélas! doux chants du ciel,</span><span class="es">¡Ay, dulce cántico celestial!,</span></div>
+      <div class="line-row"><span class="fr">Pourquoi dans sa poussière</span><span class="es">¿por qué levantar al miserable del polvo?.</span></div>
+      <div class="line-row"><span class="fr">Réveiller le maudit!</span><span class="es">Himnos de plegaria,</span></div>
+      <div class="line-row"><span class="fr">Hymnes de la prière,</span><span class="es">¿por qué me hacéis dudar de mis propósitos?</span></div>
+      <div class="line-row"><span class="fr">Pourquoi soudain venir ébranler mon dessein?</span><span class="es">Los suaves acordes refrescan mi pecho,</span></div>
+      <div class="line-row"><span class="fr">Vos suaves accords rafraîchissent mon sein.</span><span class="es">suenan cantos</span></div>
+      <div class="line-row"><span class="fr">Chants plus doux que l'aurore</span><span class="es">más dulces que la aurora,</span></div>
+      <div class="line-row"><span class="fr">Retentissez encore,</span><span class="es">mis lágrimas se vierten,</span></div>
+      <div class="line-row"><span class="fr">Mes larmes ont coulé, le ciel m'a reconquis.</span><span class="es">el cielo me ha reconquistado.</span></div>
+      <div class="scene-heading">
+        <span>Scène Cinquième</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apparaissant brusquement)</span>
+        <span class="es">(apareciendo bruscamente)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Ô pure émotion!</span><span class="es">¡Oh pura emoción!</span></div>
+      <div class="line-row"><span class="fr">Enfant du saint parvis!</span><span class="es">¡Inocente niño de parvulario!</span></div>
+      <div class="line-row"><span class="fr">Je t'admire, docteur!</span><span class="es">¡Te admiro, doctor!</span></div>
+      <div class="line-row"><span class="fr">Les pieuses volées</span><span class="es">¡Los sonidos piadosos</span></div>
+      <div class="line-row"><span class="fr">Des ces cloches d'argent</span><span class="es">de esas campanas de plata</span></div>
+      <div class="line-row"><span class="fr">Ont charmé grandement</span><span class="es">han hechizado</span></div>
+      <div class="line-row"><span class="fr">Tes oreilles troublées!</span><span class="es">tus castos oídos!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Qui donc es-tu, toi dont l'ardent regard</span><span class="es">¿Quién eres tú cuya ardiente mirada</span></div>
+      <div class="line-row"><span class="fr">Pénètre ainsi que l'éclat d'un poignard,</span><span class="es">penetra como el filo de un puñal,</span></div>
+      <div class="line-row"><span class="fr">Et qui, comme la flamme,</span><span class="es">y que, como la llama</span></div>
+      <div class="line-row"><span class="fr">Brûle et dévore l'âme?</span><span class="es">quema y devora el alma?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Vraiment pour un docteur, la demande est frivole!</span><span class="es">¡Esa es una pregunta frívola para un erudito!</span></div>
+      <div class="line-row"><span class="fr">Je suis l'esprit de vie, et c'est moi qui console.</span><span class="es">Soy el espíritu de la vida y soy quien consuela.</span></div>
+      <div class="line-row"><span class="fr">Je te donnerai tout, le bonheur, le plaisir,</span><span class="es">Te daré todo: felicidad, placer...</span></div>
+      <div class="line-row"><span class="fr">Tout ce que peut rêver le plus ardent désir!</span><span class="es">¡El deseo más ardiente que puedas imaginar!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Eh bien! pauvre démon, fais-moi voir tes merveilles.</span><span class="es">¡Pobre demonio, muéstrame tus maravillas!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Certes! j'enchanterai tes yeux et tes oreilles.</span><span class="es">¡Desde luego! Deleitaré tus ojos y tus oídos.</span></div>
+      <div class="line-row"><span class="fr">Au lieu de t'enfermer, triste comme le ver</span><span class="es">Pero en lugar de permanecer aquí encerrado,</span></div>
+      <div class="line-row"><span class="fr">Qui ronge tes bouquins,</span><span class="es">tan triste como los gusanos que roen tus libros...</span></div>
+      <div class="line-row"><span class="fr">Viens, suis-moi, change d'air.</span><span class="es">¡Ven, sígueme, cambiemos de aire!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">J'y consens.</span><span class="es">¡Vamos!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Partons donc pour connaître la vie.</span><span class="es">¡Salgamos a conocer la vida!</span></div>
+      <div class="line-row"><span class="fr">Et laisse le fatras de la philosophie.</span><span class="es">¡Abandona la farragosa filosofía!</span></div>
+      <div class="stage-direction">
+        <span>(Ils partent.)</span>
+        <span class="es">(Salen)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Sixième</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(La cave d'Auerbach à Leipzig)</span>
+        <span class="es">(La taberna de Auerbach en Leipzig)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">À boire encore!</span><span class="es">¡Bebamos!</span></div>
+      <div class="line-row"><span class="fr">Du vin</span><span class="es">¡Vino!</span></div>
+      <div class="line-row"><span class="fr">Du Rhin</span><span class="es">¡Vino del Rin!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Voici, Faust,</span><span class="es">Aquí puedes ver, Fausto,</span></div>
+      <div class="line-row"><span class="fr">Un séjour de la folle compagnie.</span><span class="es">un tugurio de gente despreocupada.</span></div>
+      <div class="line-row"><span class="fr">Ici vins et chansons réjouissent la vie.</span><span class="es">¡Aquí el vino y las canciones alegran la vida!</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh! qu'il fait bon quand le ciel tonne</span><span class="es">¡Oh, qué bien se está cuando el cielo retumba</span></div>
+      <div class="line-row"><span class="fr">Rester près d'un bol enflammé,</span><span class="es">y nosotros, en una taberna llena de humo,</span></div>
+      <div class="line-row"><span class="fr">Et se remplir comme une tonne</span><span class="es">bebemos de una botella ardiente</span></div>
+      <div class="line-row"><span class="fr">Dans un cabaret enfumé!</span><span class="es">hasta quedar llenos como cubas!</span></div>
+      <div class="line-row"><span class="fr">J'aime le vin et cette eau blonde</span><span class="es">Me gusta el vino y esta agua rubia</span></div>
+      <div class="line-row"><span class="fr">Qui fait oublier le chagrin.</span><span class="es">que hace olvidar las penas.</span></div>
+      <div class="line-row"><span class="fr">Quand ma mère me mit au monde,</span><span class="es">Cuando mi madre me trajo al mundo</span></div>
+      <div class="line-row"><span class="fr">J'eus un ivrogne pour parrain.</span><span class="es">tuve por padrino a un borracho.</span></div>
+      <div class="line-row"><span class="fr">Oh! qu'il fait bon quand le ciel tonne...</span><span class="es">¡Oh, qué bien se está cuando el cielo retumba!...</span></div>
+      <div class="line-row"><span class="fr">Qui sait quelque plaisante histoire?</span><span class="es">¿Quién sabe una historia alegre?</span></div>
+      <div class="line-row"><span class="fr">En riant le vin est meilleur.</span><span class="es">El vino sabe mejor cuando se ríe.</span></div>
+      <div class="line-row"><span class="fr">À toi, Brander!</span><span class="es">¡Te toca a ti, Brander!</span></div>
+      <div class="line-row"><span class="fr">Il n'a plus de mémoire!</span><span class="es">¿O ya no tienes memoria?</span></div>
+      <div class="stage-direction">
+        <span>(ivre)</span>
+        <span class="es">(borracho)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Brander</span>
+        <span class="character-name">Brander</span>
+      </div>
+      <div class="line-row"><span class="fr">J'en sais une, et j'en suis l'auteur.</span><span class="es">Yo sé una... ¡y soy el autor!</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Eh bien donc! vite!</span><span class="es">¡Vamos, adelante!</span></div>
+      <div class="character-row">
+        <span class="character-name">Brander</span>
+        <span class="character-name">Brander</span>
+      </div>
+      <div class="line-row"><span class="fr">Puis qu'on m'invite,</span><span class="es">Ya que insistís...</span></div>
+      <div class="line-row"><span class="fr">Je vais vous chanter de nouveau.</span><span class="es">¡Os cantaré una nueva!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Bravo! bravo!</span><span class="es">¡Bravo! ¡Bravo!</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="character-row">
+        <span class="character-name">Brander</span>
+        <span class="character-name">Brander</span>
+      </div>
+      <div class="line-row"><span class="fr">Certain rate, dans une cuisine</span><span class="es">Había una rata que vivía una cocina</span></div>
+      <div class="line-row"><span class="fr">Établi, comme un vrai frater,</span><span class="es">como un verdadero monje.</span></div>
+      <div class="line-row"><span class="fr">S'y traiter si bien que sa mine</span><span class="es">Tanto comía,</span></div>
+      <div class="line-row"><span class="fr">Eût fait envie au gros Luther.</span><span class="es">que su aspecto le hubiera dado envidia</span></div>
+      <div class="line-row"><span class="fr">Mais un beau jour le pauvre diable,</span><span class="es">hasta al mismísimo gordinflón de Luther.</span></div>
+      <div class="line-row"><span class="fr">Empoisonné, sauta dehors</span><span class="es">Pero un buen día, el pobre diablo se envenenó</span></div>
+      <div class="line-row"><span class="fr">Aussi triste, aussi misérable</span><span class="es">y pegó un salto tan desesperado, tan miserable,</span></div>
+      <div class="line-row"><span class="fr">Que s'il eût eu l'amour au corps.</span><span class="es">como si en su cuerpo hubiera anidado el amor.</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Que s'il eût eu l'amour au corps.</span><span class="es">¡Como si en su cuerpo hubiera anidado el amor!</span></div>
+      <div class="character-row">
+        <span class="character-name">Brander</span>
+        <span class="character-name">Brander</span>
+      </div>
+      <div class="line-row"><span class="fr">Il courait devant et derrière;</span><span class="es">Corría hacia adelante y hacia atrás,</span></div>
+      <div class="line-row"><span class="fr">Il grattait, reniflait, mordait,</span><span class="es">arañaba, olfateaba, mordía,</span></div>
+      <div class="line-row"><span class="fr">Parcourait la maison entière;</span><span class="es">recorría la casa entera...</span></div>
+      <div class="line-row"><span class="fr">La rage à ses maux ajoutait,</span><span class="es">A sus dolores, añadió la ira,</span></div>
+      <div class="line-row"><span class="fr">Au point qu'a l'aspect du délire</span><span class="es">y hasta tal punto llegó su delirio</span></div>
+      <div class="line-row"><span class="fr">Qui consumait ses vains efforts,</span><span class="es">que consumió todas sus energías...</span></div>
+      <div class="line-row"><span class="fr">Les mauvais plaisants pouvaient dire:</span><span class="es">Seguro que los pícaros podrían pensar que</span></div>
+      <div class="line-row"><span class="fr">Ce rat a bien l'amour au corps</span><span class="es">"Esa rata tiene el amor en su cuerpo"</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Ce rat a bien l'amour au corps</span><span class="es">¡Esa rata tiene el amor en su cuerpo!</span></div>
+      <div class="character-row">
+        <span class="character-name">Brander</span>
+        <span class="character-name">Brander</span>
+      </div>
+      <div class="line-row"><span class="fr">Dans le fourneau le pauvre sire</span><span class="es">El pobre diablo, creyendo encontrar</span></div>
+      <div class="line-row"><span class="fr">Crut pourtant ses cacher très bien;</span><span class="es">un refugio seguro, se metió en el horno.</span></div>
+      <div class="line-row"><span class="fr">Mais il se trompait, et le pire,</span><span class="es">Pero se equivocó y lo peor fue</span></div>
+      <div class="line-row"><span class="fr">C'est qu'on l'y fut rôtir enfin.</span><span class="es">que al final terminó asado.</span></div>
+      <div class="line-row"><span class="fr">La servante, méchante fille,</span><span class="es">¡La sirvienta, muchacha malvada,</span></div>
+      <div class="line-row"><span class="fr">De son malheur rit bien alors!</span><span class="es">se reía de su desgracia!</span></div>
+      <div class="line-row"><span class="fr">Ah! disait-elle, comme il grille!</span><span class="es">¡Ah, decía, cómo se chamusca!</span></div>
+      <div class="line-row"><span class="fr">Il a vraiment l'amour au corps.</span><span class="es">Verdaderamente tiene el amor en su cuerpo.</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Il a vraiment l'amour au corps.</span><span class="es">¡Verdaderamente tiene el amor en su cuerpo!</span></div>
+      <div class="line-row"><span class="fr">Requiescat in pace. Amen.</span><span class="es">¡Requiescat in pace! ¡Amén!</span></div>
+      <div class="character-row">
+        <span class="character-name">Brander</span>
+        <span class="character-name">Brander</span>
+      </div>
+      <div class="line-row"><span class="fr">Pour l'Amen une fugue! une fugue, un choral!</span><span class="es">¡Para el "Amén" hagamos una fuga, un coro!</span></div>
+      <div class="line-row"><span class="fr">Improvisons un morceau magistral!</span><span class="es">¡Improvisemos una obra maestra!</span></div>
+      <div class="stage-direction">
+        <span>(bas à Faust)</span>
+        <span class="es">(En voz baja a Fausto)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Écoute bien ceci! nous allons voir, Docteur,</span><span class="es">¡Escucha bien esto! Vamos a ver, doctor,</span></div>
+      <div class="line-row"><span class="fr">La bestialité dans toute sa candeur.</span><span class="es">la bestialidad en todo su candor.</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="character-row">
+        <span class="character-name">Brander, Buveurs</span>
+        <span class="character-name">Brander, Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Amen.</span><span class="es">¡Amén!</span></div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Vrai dieu! messieurs, votre fugue est fort belle,</span><span class="es">¡En verdad, señores, la fuga ha sido muy bella!</span></div>
+      <div class="line-row"><span class="fr">Et telle</span><span class="es">Al oírla uno se siente como transportado</span></div>
+      <div class="line-row"><span class="fr">Qu'à l'entendre on se croit aux saints lieux.</span><span class="es">a un lugar sagrado.</span></div>
+      <div class="line-row"><span class="fr">Souffrez qu'on vous le dise:</span><span class="es">Permítanme que les diga</span></div>
+      <div class="line-row"><span class="fr">Le style en est savant, vraiment religieux;</span><span class="es">que su estilo es profundo,</span></div>
+      <div class="line-row"><span class="fr">On ne saurait exprimer mieux</span><span class="es">verdaderamente religioso.</span></div>
+      <div class="line-row"><span class="fr">Les sentiments pieux</span><span class="es">Mejor no se podrían explicar los sentimientos</span></div>
+      <div class="line-row"><span class="fr">Qu'en terminant ses prières l'Église</span><span class="es">devotos que embargan a los padres de la iglesia</span></div>
+      <div class="line-row"><span class="fr">En un seul mot résume.</span><span class="es">cuando finalizan su oración con esa palabra.</span></div>
+      <div class="line-row"><span class="fr">Maintenant,</span><span class="es">Y ahora...</span></div>
+      <div class="line-row"><span class="fr">Puis-je à mon tour riposter par un chant</span><span class="es">¿Podría responderles con una canción</span></div>
+      <div class="line-row"><span class="fr">Sur un sujet non moins touchant</span><span class="es">sobre un tema no menos conmovedor</span></div>
+      <div class="line-row"><span class="fr">Que le vôtre?</span><span class="es">que el de ustedes?</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah ça! mais se moque-t-il de nous?</span><span class="es">¡Ah! ¿Pero se burla de nosotros?</span></div>
+      <div class="line-row"><span class="fr">Quel est cet homme?</span><span class="es">¿Quién es este hombre?</span></div>
+      <div class="line-row"><span class="fr">Oh! qu'il est pâle et comme</span><span class="es">¡Oh, es tan pálido como rojo es su cabello!</span></div>
+      <div class="line-row"><span class="fr">Son poil est roux.</span><span class="es">¡No importa! ¡Adelante!</span></div>
+      <div class="line-row"><span class="fr">N'importe! Volontiers! Autre chanson! À vous!</span><span class="es">¡Otra canción! ¡Es su turno!</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Une puce gentille</span><span class="es">Una simpática pulga</span></div>
+      <div class="line-row"><span class="fr">Chez un prince logeait.</span><span class="es">vivía en casa de un príncipe.</span></div>
+      <div class="line-row"><span class="fr">Comme sa propre fille,</span><span class="es">El buen hombre la amaba</span></div>
+      <div class="line-row"><span class="fr">Le brave homme l'aimait,</span><span class="es">como a su propia hija</span></div>
+      <div class="line-row"><span class="fr">Et, l'histoire assure,</span><span class="es">y la historia asegura</span></div>
+      <div class="line-row"><span class="fr">À son tailleur un jour</span><span class="es">que un día hizo que su sastre</span></div>
+      <div class="line-row"><span class="fr">Lui fit prendre mesure</span><span class="es">le tomara las medidas</span></div>
+      <div class="line-row"><span class="fr">Pour un habit de cour.</span><span class="es">para hacerle un traje de gala.</span></div>
+      <div class="line-row"><span class="fr">L'insecte, plein de joie</span><span class="es">El insecto, colmado de felicidad,</span></div>
+      <div class="line-row"><span class="fr">Dès qu'il se vit paré</span><span class="es">tan pronto se vio engalanado</span></div>
+      <div class="line-row"><span class="fr">D'or, de velours, de soie,</span><span class="es">de oro, de terciopelo, de seda,</span></div>
+      <div class="line-row"><span class="fr">Et de crois décoré.</span><span class="es">y condecorado con una cruz,</span></div>
+      <div class="line-row"><span class="fr">Fit venir de province</span><span class="es">hizo venir de provincias</span></div>
+      <div class="line-row"><span class="fr">Ses frères et ses sœurs</span><span class="es">a sus hermanos y hermanas</span></div>
+      <div class="line-row"><span class="fr">Qui, par ordre du prince,</span><span class="es">quienes, por orden del príncipe,</span></div>
+      <div class="line-row"><span class="fr">Devinrent grands seigneurs.</span><span class="es">se convirtieron en grandes señores.</span></div>
+      <div class="line-row"><span class="fr">Mais ce qui fut bien pire,</span><span class="es">Pero lo peor fue</span></div>
+      <div class="line-row"><span class="fr">C'est que les gens de cour,</span><span class="es">que la gente de la corte,</span></div>
+      <div class="line-row"><span class="fr">Sans en oser rien dire,</span><span class="es">sin atreverse a decir nada,</span></div>
+      <div class="line-row"><span class="fr">Se grattaient tout le jour.</span><span class="es">se rascaba todo el día.</span></div>
+      <div class="line-row"><span class="fr">Cruelle politique!</span><span class="es">¡Cruel política!</span></div>
+      <div class="line-row"><span class="fr">Ah! plaignons leur destin,</span><span class="es">¡Ah, compadezcamos su destino</span></div>
+      <div class="line-row"><span class="fr">Et, dès qu'une nous pique,</span><span class="es">y en cuanto una de ellas nos pique</span></div>
+      <div class="line-row"><span class="fr">Ecrasons-la soudain!</span><span class="es">aplastémosla sin piedad!</span></div>
+      <div class="character-row">
+        <span class="character-name">Buveurs</span>
+        <span class="character-name">Buveurs</span>
+      </div>
+      <div class="line-row"><span class="fr">Bravo! bravo! bravo! ha! ha!</span><span class="es">¡Bravo! ¡Bravo! ¡Ja, ja!</span></div>
+      <div class="line-row"><span class="fr">Oui, écrasons-la soudain!</span><span class="es">¡Sí, aplastémosla sin piedad!</span></div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Assez!</span><span class="es">¡Ya basta!</span></div>
+      <div class="line-row"><span class="fr">Fuyons ces lieux, où la parole est vile,</span><span class="es">¡Salgamos de este lugar, donde la palabra es vil,</span></div>
+      <div class="line-row"><span class="fr">La joie ignoble et le geste brutal!</span><span class="es">la alegría innoble y el gesto brutal!</span></div>
+      <div class="line-row"><span class="fr">N'as-tu d'autres plaisirs, un séjour plus tranquille</span><span class="es">¿No tienes otros placeres más sosegados,</span></div>
+      <div class="line-row"><span class="fr">À me donner, toi, mon guide infernal?</span><span class="es">guía infernal?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! ceci te déplaît? suis-moi!</span><span class="es">¡Ah! Si esto te disgusta... ¡Sígueme!</span></div>
+      <div class="stage-direction">
+        <span>(Ils partent.)</span>
+        <span class="es">(Se van)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Septième</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Bosquets et prairies du bord de l'Elbe)</span>
+        <span class="es">(Bosques y praderas en la orilla del Elba)</span>
+      </div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Voici des roses,</span><span class="es">¡Esas rosas</span></div>
+      <div class="line-row"><span class="fr">De cette nuit écloses.</span><span class="es">han nacido esta misma noche!</span></div>
+      <div class="line-row"><span class="fr">Sur ce lit embaumé,</span><span class="es">¡Sobre este lecho perfumado,</span></div>
+      <div class="line-row"><span class="fr">Ô mon Faust bien-aimée,</span><span class="es">mi amado Fausto, descansa!</span></div>
+      <div class="line-row"><span class="fr">Repose!</span><span class="es">Tendrás un sueño voluptuoso,</span></div>
+      <div class="line-row"><span class="fr">Dans un voluptueux sommeil</span><span class="es">mientras sobre ti resbalarán besos carmesí,</span></div>
+      <div class="line-row"><span class="fr">Où glissera sur toi plus d'un baiser vermeil,</span><span class="es">las flores abrirán</span></div>
+      <div class="line-row"><span class="fr">Où des fleurs pour ta couche ouvriront leurs corolles,</span><span class="es">sus corolas en tu lecho</span></div>
+      <div class="line-row"><span class="fr">Ton oreille entendra de divines paroles.</span><span class="es">y tus oídos oirán palabras divinas.</span></div>
+      <div class="line-row"><span class="fr">Écoute! écoute!</span><span class="es">¡Escucha! ¡Escucha!</span></div>
+      <div class="line-row"><span class="fr">Les esprits de la terre et de l'air</span><span class="es">Los espíritus de la tierra y el aire</span></div>
+      <div class="line-row"><span class="fr">Commencent pour ton rêve un suave concert.</span><span class="es">entonan un suave canto sólo para ti.</span></div>
+      <div class="musical-number"></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="character-row">
+        <span class="character-name">Gnomes, Sylphes</span>
+        <span class="character-name">Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Dors, dors, heureux Faust;</span><span class="es">Duerme, duerme, feliz Fausto.</span></div>
+      <div class="line-row"><span class="fr">Bientôt, oui, bientôt, sous un voile</span><span class="es">Pronto, sí, pronto, bajo un velo</span></div>
+      <div class="line-row"><span class="fr">D'or et d'azur, heureux Faust,</span><span class="es">de oro y azul, feliz Fausto,</span></div>
+      <div class="line-row"><span class="fr">Test yeux vont se fermer,</span><span class="es">tus ojos se cerrarán,</span></div>
+      <div class="line-row"><span class="fr">Au front des cieux va briller ton étoile,</span><span class="es">tu estrella brillará en el firmamento</span></div>
+      <div class="line-row"><span class="fr">Songes d'amour vont enfin te charmer.</span><span class="es">y te hechizarán sueños amorosos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Heureux Faust,</span><span class="es">Feliz Fausto, pronto,</span></div>
+      <div class="line-row"><span class="fr">Bientôt, sous un voile</span><span class="es">bajo un velo</span></div>
+      <div class="line-row"><span class="fr">D'or et d'azur,</span><span class="es">de oro y azul,</span></div>
+      <div class="line-row"><span class="fr">Tes yeux vont se fermer.</span><span class="es">tus ojos se cerrarán.</span></div>
+      <div class="character-row">
+        <span class="character-name">Gnomes, Sylphes</span>
+        <span class="character-name">Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">De sites ravissants</span><span class="es">La campiña se cubre</span></div>
+      <div class="line-row"><span class="fr">La campagne se couvre,</span><span class="es">de paisajes encantadores</span></div>
+      <div class="line-row"><span class="fr">Et notre œil y découvre</span><span class="es">y nuestros ojos descubren</span></div>
+      <div class="line-row"><span class="fr">Des fleurs, des bois, des champs,</span><span class="es">flores, bosques, campos</span></div>
+      <div class="line-row"><span class="fr">Et d'épaisses feuillées,</span><span class="es">y un espeso follaje</span></div>
+      <div class="line-row"><span class="fr">Où de tendres amants</span><span class="es">donde los tiernos amantes</span></div>
+      <div class="line-row"><span class="fr">Promènent leurs pensées.</span><span class="es">descubren sus pensamientos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! sur mes yeux déjà s'étend un voile.</span><span class="es">¡Ah, sobre mis ojos ya se extiende un velo!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Au front des cieux va briller ton étoile.</span><span class="es">Tu estrella brillará en el cielo.</span></div>
+      <div class="character-row">
+        <span class="character-name">Gnomes, Sylphes</span>
+        <span class="character-name">Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais plus loin sont couverts</span><span class="es">A lo lejos,</span></div>
+      <div class="line-row"><span class="fr">Les longs rameaux des treilles</span><span class="es">las largas ramas de la parra</span></div>
+      <div class="line-row"><span class="fr">De bourgeons, pampres verts,</span><span class="es">están cubiertas de brotes,</span></div>
+      <div class="line-row"><span class="fr">Et de grappes vermeilles.</span><span class="es">pámpanos verdes</span></div>
+      <div class="line-row"><span class="fr">Voici ces jeunes amants,</span><span class="es">y racimos bermejos.</span></div>
+      <div class="line-row"><span class="fr">Le long de la vallée,</span><span class="es">Aquí, los jóvenes amantes</span></div>
+      <div class="line-row"><span class="fr">Voici ces jeunes amants</span><span class="es">a lo largo del valle</span></div>
+      <div class="line-row"><span class="fr">Oublier les instants</span><span class="es">se olvidan del tiempo</span></div>
+      <div class="line-row"><span class="fr">Sous la fraîche feuillée!</span><span class="es">bajo el frescor del follaje.</span></div>
+      <div class="line-row"><span class="fr">Une beauté les suit</span><span class="es">Una beldad los sigue,</span></div>
+      <div class="line-row"><span class="fr">Ingénue et pensive;</span><span class="es">ingenua y melancólica,</span></div>
+      <div class="line-row"><span class="fr">À sa paupière luit</span><span class="es">mientras en sus párpados brilla</span></div>
+      <div class="line-row"><span class="fr">Une larme furtive.</span><span class="es">una lágrima furtiva.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Une beauté les suit.</span><span class="es">Una beldad los sigue...</span></div>
+      <div class="line-row"><span class="fr">Faust, elle t'aimera.</span><span class="es">¡Fausto, ella te amará!</span></div>
+      <div class="stage-direction">
+        <span>(endormi)</span>
+        <span class="es">(Dormido) )</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite!</span><span class="es">¡Margarita!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès, Gnomes, Sylphes</span>
+        <span class="character-name">Méphistophélès, Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Le lac étend ses flots à l'entoure des montagnes;</span><span class="es">El lago abraza con sus aguas a las montañas,</span></div>
+      <div class="line-row"><span class="fr">Dans les vertes campagnes</span><span class="es">mientras que por las verdes campiñas</span></div>
+      <div class="line-row"><span class="fr">Il serpente en ruisseaux.</span><span class="es">serpentean los arroyos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Gnomes, Sylphes</span>
+        <span class="character-name">Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Là, de chants d'allégresse</span><span class="es">¡Allá, en las orillas resuenan</span></div>
+      <div class="line-row"><span class="fr">La rive retentit.</span><span class="es">cantos alegres!</span></div>
+      <div class="line-row"><span class="fr">Ha!</span><span class="es">¡Ah!</span></div>
+      <div class="line-row"><span class="fr">D'autres chœurs là sans cesse</span><span class="es">La danza de otros grupos</span></div>
+      <div class="line-row"><span class="fr">La danse nous ravit.</span><span class="es">nos deleita sin cesar.</span></div>
+      <div class="line-row"><span class="fr">Les uns gaiement s'avancent</span><span class="es">¡Otros avanzan alegremente</span></div>
+      <div class="line-row"><span class="fr">Autour des coteaux verts!</span><span class="es">alrededor de las laderas verdes!</span></div>
+      <div class="line-row"><span class="fr">Ha!</span><span class="es">¡Ah!</span></div>
+      <div class="line-row"><span class="fr">De plus hardis s'élancent</span><span class="es">Los más atrevidos se lanzan</span></div>
+      <div class="line-row"><span class="fr">Au sein des flots amers.</span><span class="es">al seno de la corriente helada.</span></div>
+      <div class="stage-direction">
+        <span>(rêvant)</span>
+        <span class="es">(Soñando) )</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite! ô Marguerite!</span><span class="es">¡Margarita! ¡Oh, Margarita!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès, Gnomes, Sylphes</span>
+        <span class="character-name">Méphistophélès, Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Le lac étend ses flots à l'entoure des montagnes;</span><span class="es">El lago abraza con sus aguas a las montañas,</span></div>
+      <div class="line-row"><span class="fr">Dans les vertes campagnes</span><span class="es">mientras que por las verdes campiñas</span></div>
+      <div class="line-row"><span class="fr">Il serpente en ruisseaux.</span><span class="es">serpentean los arroyos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Gnomes, Sylphes</span>
+        <span class="character-name">Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Partout l'oiseau timide,</span><span class="es">Los tímidos pájaros buscan por doquier</span></div>
+      <div class="line-row"><span class="fr">Cherchant l'ombre et le frais,</span><span class="es">la sombra y el frescor,</span></div>
+      <div class="line-row"><span class="fr">S'enfuit d'un vol rapide</span><span class="es">huyendo en un rápido vuelo</span></div>
+      <div class="line-row"><span class="fr">Au milieu des marais.</span><span class="es">hacia los pantanos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Le charme opère; il est à nous!</span><span class="es">¡El encanto se realiza, él es nuestro!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite!</span><span class="es">¡Margarita!</span></div>
+      <div class="character-row">
+        <span class="character-name">Gnomes, Sylphes</span>
+        <span class="character-name">Gnomes, Sylphes</span>
+      </div>
+      <div class="line-row"><span class="fr">Tous, pour goûter la vie,</span><span class="es">Para gozar de la vida,</span></div>
+      <div class="line-row"><span class="fr">Cherchant dans les cieux</span><span class="es">todos buscan en el cielo</span></div>
+      <div class="line-row"><span class="fr">Une étoile chérie</span><span class="es">una estrella amada</span></div>
+      <div class="line-row"><span class="fr">Qui s'alluma pour eux.</span><span class="es">que se encienda sólo para ellos.</span></div>
+      <div class="line-row"><span class="fr">Dors, dors, heureux Faust, dors, dors!</span><span class="es">¡Duerme, duerme, duerme feliz Fausto, duerme!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est bien, c'est bien, jeunes Esprits,</span><span class="es">Bien, muy bien, jóvenes espíritus,</span></div>
+      <div class="line-row"><span class="fr">Je suis content de vous.</span><span class="es">estoy satisfecho de vosotros.</span></div>
+      <div class="line-row"><span class="fr">Bercez, bercez son sommeil enchanté.</span><span class="es">Arrullad su sueño...</span></div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(Les esprits de l'air se balancent quelque temps en silence autour de Faust endormi et disparaissent peu à peu.)</span>
+        <span class="es">(Los espíritus del aire se balancean en silencio alrededor de Fausto y desaparecen poco a poco.)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(s'éveillant en sursaut)</span>
+        <span class="es">(Se despierta sobresaltado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite!</span><span class="es">¡Margarita!</span></div>
+      <div class="line-row"><span class="fr">Qu'ai-je vu! qu'ai-je vu!</span><span class="es">¿Qué he visto? ¿Qué he visto?...</span></div>
+      <div class="line-row"><span class="fr">Quelle céleste image! quel ange</span><span class="es">¿Una imagen celestial?</span></div>
+      <div class="line-row"><span class="fr">Au front mortel!</span><span class="es">¿Un ángel de semblante mortal?</span></div>
+      <div class="line-row"><span class="fr">Où le trouver? Vers quel autel</span><span class="es">¿Dónde encontrarlo?</span></div>
+      <div class="line-row"><span class="fr">Traîner à ses pieds ma louange!</span><span class="es">¿En qué altar ofreceré a sus pies mi alabanza?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Eh bien! il faut me suivre encore</span><span class="es">¡Y bien! Aun debes seguirme</span></div>
+      <div class="line-row"><span class="fr">Jusqu'à cette alcôve embaumée</span><span class="es">hasta la alcoba perfumada</span></div>
+      <div class="line-row"><span class="fr">Où repose ta bien-aimée.</span><span class="es">donde descansa tu amada.</span></div>
+      <div class="line-row"><span class="fr">À toi seul ce divin trésor!</span><span class="es">¡Será sólo para ti ese divino tesoro!</span></div>
+      <div class="line-row"><span class="fr">Des étudiants voici la joyeuse cohorte</span><span class="es">Por aquí llegan los alegres estudiantes</span></div>
+      <div class="line-row"><span class="fr">Qui va passer devant sa porte;</span><span class="es">que pasarán ante su puerta.</span></div>
+      <div class="line-row"><span class="fr">Parmi ces jeunes fous, au bruit de leurs chansons,</span><span class="es">Mezclados con estos locos jóvenes,</span></div>
+      <div class="line-row"><span class="fr">Vers ta beauté nous parviendrons.</span><span class="es">en medio de sus cantos, llegaremos a tu amada.</span></div>
+      <div class="line-row"><span class="fr">Mais contiens les transports et suis bien mes leçons.</span><span class="es">Pero contén tus ansias y sigue mis enseñanzas.</span></div>
+      <div class="scene-heading">
+        <span>Scène Huitième</span>
+        <span>Escena Octava</span>
+      </div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="character-row">
+        <span class="character-name">Étudiants, Soldats</span>
+        <span class="character-name">Étudiants, Soldats</span>
+      </div>
+      <div class="line-row"><span class="fr">Villes entourées</span><span class="es">Ciudades rodeadas</span></div>
+      <div class="line-row"><span class="fr">De murs et remparts,</span><span class="es">de fosos y murallas,</span></div>
+      <div class="line-row"><span class="fr">Fillettes sucrées,</span><span class="es">muchachas melosas</span></div>
+      <div class="line-row"><span class="fr">Aux malins regards,</span><span class="es">de miradas maliciosas,</span></div>
+      <div class="line-row"><span class="fr">Victoire certaine</span><span class="es">la victoria certera</span></div>
+      <div class="line-row"><span class="fr">Près de vous m'attend;</span><span class="es">me espera cerca de ti.</span></div>
+      <div class="line-row"><span class="fr">Si grande est la peine,</span><span class="es">Si grande es el sacrificio</span></div>
+      <div class="line-row"><span class="fr">Le prix est plus grand.</span><span class="es">más grande es el premio.</span></div>
+      <div class="line-row"><span class="fr">Au son des trompettes,</span><span class="es">Al son de las trompetas</span></div>
+      <div class="line-row"><span class="fr">Les braves soldats</span><span class="es">los bravos soldados</span></div>
+      <div class="line-row"><span class="fr">S'élancent aux fêtes</span><span class="es">se lanzan a las fiestas</span></div>
+      <div class="line-row"><span class="fr">Ou bien aux combats;</span><span class="es">o a los combates.</span></div>
+      <div class="line-row"><span class="fr">Fillettes et villes</span><span class="es">Muchachas y ciudades</span></div>
+      <div class="line-row"><span class="fr">Font les difficiles;</span><span class="es">que parecen inexpugnables</span></div>
+      <div class="line-row"><span class="fr">Bientôt tout se rend.</span><span class="es">pronto se rinden.</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="character-row">
+        <span class="character-name">Étudiants</span>
+        <span class="character-name">Étudiants</span>
+      </div>
+      <div class="line-row"><span class="fr">Jam nox stella velamina</span><span class="es">Jam nox stella velamina</span></div>
+      <div class="line-row"><span class="fr">pandit;</span><span class="es">pandit;</span></div>
+      <div class="line-row"><span class="fr">Nunc, nunc bibendum et</span><span class="es">Nunc, nunc bibendum et</span></div>
+      <div class="line-row"><span class="fr">amandum est!</span><span class="es">amandum est!</span></div>
+      <div class="line-row"><span class="fr">Vita brevis fugaxque voluptas.</span><span class="es">Vita brevis fugaxque voluptas.</span></div>
+      <div class="line-row"><span class="fr">Gaudeamus igitur, gaudeamus!</span><span class="es">Gaudeamus igitur, gaudeamus!</span></div>
+      <div class="line-row"><span class="fr">Nobis subridente lunâ, per urbem</span><span class="es">Nobis subridente lunâ, per urbem</span></div>
+      <div class="line-row"><span class="fr">quærentes puellas eamus!</span><span class="es">quærentes puellas eamus!</span></div>
+      <div class="line-row"><span class="fr">Ut cras, fortunati Cæsares,</span><span class="es">Ut cras, fortunati Cæsares,</span></div>
+      <div class="line-row"><span class="fr">dicamus:</span><span class="es">dicamus:</span></div>
+      <div class="line-row"><span class="fr">Veni, vidi, vici!</span><span class="es">Veni, vidi, vici!</span></div>
+      <div class="line-row"><span class="fr">Gaudeamus igitur!</span><span class="es">Gaudeamus igitur!</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="character-row">
+        <span class="character-name">Étudiants, Soldats</span>
+        <span class="character-name">Étudiants, Soldats</span>
+      </div>
+      <div class="line-row"><span class="fr">Villes entourées...</span><span class="es">Ciudades rodeadas...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust, Méphistophélès</span>
+        <span class="character-name">Faust, Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Jam nox stella...</span><span class="es">Jam nox stella...</span></div>
+      <div class="scene-heading">
+        <span>Scène Neuvième</span>
+        <span>Escena Novena</span>
+      </div>
+    </div>
+
+    <div class="act-heading">Troisieme Partie · Tercera Parte</div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="stage-direction">
+        <span>(Tambours et trompettes sonnant la retraite)</span>
+        <span class="es">(Tambores y trompetas tocando retreta)</span>
+      </div>
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(le soir dans la chambre de Marguerite)</span>
+        <span class="es">(De noche en la alcoba de Margarita)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Merci, doux crépuscule!</span><span class="es">¡Gracias, dulce crepúsculo!</span></div>
+      <div class="line-row"><span class="fr">Oh! sois le bienvenu!</span><span class="es">¡Oh, bienvenido seas!</span></div>
+      <div class="line-row"><span class="fr">Éclaire enfin ces lieux, sanctuaire inconnu,</span><span class="es">Ilumina por fin este lugar,</span></div>
+      <div class="line-row"><span class="fr">Où je sens à mon front glisser comme un beau rêve,</span><span class="es">santuario desconocido,</span></div>
+      <div class="line-row"><span class="fr">Comme le frais baiser d'un matin qui se lève.</span><span class="es">donde siento un bello sueño deslizarse sobre mí</span></div>
+      <div class="line-row"><span class="fr">C'est de l'amour, j'espère.</span><span class="es">como un fresco beso matinal.</span></div>
+      <div class="line-row"><span class="fr">Oh! comme on sent ici</span><span class="es">¡Es el amor, espero!</span></div>
+      <div class="line-row"><span class="fr">S'envoler le souci!</span><span class="es">¡Oh, aquí se siente desaparecer la preocupación!</span></div>
+      <div class="line-row"><span class="fr">Que j'aime ce silence, et comme je respire</span><span class="es">¡Cuánto amo este silencio</span></div>
+      <div class="line-row"><span class="fr">Un air pur!...</span><span class="es">y poder respirar el aire puro!...</span></div>
+      <div class="line-row"><span class="fr">Ô jeune fille!</span><span class="es">¡Oh, jovencita!</span></div>
+      <div class="line-row"><span class="fr">Ô ma charmante!</span><span class="es">¡Oh, mi hechicera!</span></div>
+      <div class="line-row"><span class="fr">Ô ma trop idéale amante!</span><span class="es">¡Oh, mi amante ideal!</span></div>
+      <div class="line-row"><span class="fr">Quel sentiment j'éprouve en ce moment fatal!</span><span class="es">¡Qué profunda sensación me invade</span></div>
+      <div class="line-row"><span class="fr">Que j'aime à contempler ton chevet virginal!</span><span class="es">en este decisivo momento!</span></div>
+      <div class="line-row"><span class="fr">Quel air pur je respire!</span><span class="es">¡Cuánto me gusta contemplar tu lecho virginal!</span></div>
+      <div class="line-row"><span class="fr">Seigneur! Seigneur!</span><span class="es">¡Qué aire puro respiro!</span></div>
+      <div class="line-row"><span class="fr">Après ce long martyre,</span><span class="es">¡Señor! ¡Señor!</span></div>
+      <div class="line-row"><span class="fr">Que de bonheur!</span><span class="es">¡Cuánta felicidad después del largo martirio!</span></div>
+      <div class="stage-direction">
+        <span>(Faust, marchant lentement, examine avec une curiosité passionnée l'intérieur de la chambre de Marguerite.)</span>
+        <span class="es">(Fausto, lentamente, examina el interior de la alcoba de Margarita con apasionada curiosidad)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Dixième</span>
+        <span>Escena Décima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(accourant)</span>
+        <span class="es">(Acudiendo)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Je l'entends!</span><span class="es">¡La oigo!</span></div>
+      <div class="line-row"><span class="fr">Sous ces rideaux de soie</span><span class="es">¡Ocúltate detrás de estas cortinas de seda!</span></div>
+      <div class="line-row"><span class="fr">Cache-toi.</span><span class="es">¡Escóndete!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Dieu! mon cœur se brise dans la joie!</span><span class="es">¡Dios! ¡Mi corazón se quiebra de alegría!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Profite des instants.</span><span class="es">¡Aprovecha estos instantes!</span></div>
+      <div class="line-row"><span class="fr">Adieu, modère-toi,</span><span class="es">¡Adiós!</span></div>
+      <div class="line-row"><span class="fr">Ou tu la perds.</span><span class="es">Modérate o la perderás...</span></div>
+      <div class="stage-direction">
+        <span>(Il cache Faust sous les rideaux.)</span>
+        <span class="es">(Fausto se oculta tras las cortinas)</span>
+      </div>
+      <div class="line-row"><span class="fr">Bien. Mes follets et moi</span><span class="es">Bien. Mis duendes y yo vamos a cantar</span></div>
+      <div class="line-row"><span class="fr">Nous allons vous chanter un bel épithalame.</span><span class="es">una bella canción nupcial...</span></div>
+      <div class="stage-direction">
+        <span>(Il sort.)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh! calme-toi, mon âme.</span><span class="es">¡Oh, cálmate, alma mía!</span></div>
+      <div class="scene-heading">
+        <span>Scène Onzième</span>
+        <span>Escena Undécima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entre Marguerite une lampe à la main. Faust caché.)</span>
+        <span class="es">(Entra Margarita con una lámpara en la mano)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Que l'air est étouffant!</span><span class="es">¡El aire está sofocante!</span></div>
+      <div class="line-row"><span class="fr">J'ai peur comme une enfant.</span><span class="es">Tengo miedo... como si fuera una chiquilla...</span></div>
+      <div class="line-row"><span class="fr">C'est mon rêve d'hier qui m'a toute troublée...</span><span class="es">Ha sido el sueño que tuve de ayer</span></div>
+      <div class="line-row"><span class="fr">En songe je l'ai vu... lui... mon futur amant.</span><span class="es">el que me ha perturbado así...</span></div>
+      <div class="line-row"><span class="fr">Qu'il était beau!</span><span class="es">En sueños lo vi a él... ¡a él!... mi futuro amor...</span></div>
+      <div class="line-row"><span class="fr">Dieu! j'étais tant aimée!</span><span class="es">¡Qué hermoso era!</span></div>
+      <div class="line-row"><span class="fr">Et combien je l'aimais!</span><span class="es">¡Dios! ¡Cuánto me amaba!</span></div>
+      <div class="line-row"><span class="fr">Nous verrons-nous jamais</span><span class="es">¡Y cuánto lo amaba yo!...</span></div>
+      <div class="line-row"><span class="fr">Dans cette vie?...</span><span class="es">¿Nunca nos veremos en esta vida?...</span></div>
+      <div class="line-row"><span class="fr">Folie!</span><span class="es">¡Qué locura!</span></div>
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(elle chante en tressant ses cheveux)</span>
+        <span class="es">(Canta mientas se peina)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Autrefois un roi de Thulé,</span><span class="es">Hubo una vez un rey de Thule</span></div>
+      <div class="line-row"><span class="fr">Qui jusqu'au tombeau fut fidèle,</span><span class="es">que fue fiel hasta la tumba</span></div>
+      <div class="line-row"><span class="fr">Reçut, à la mort de sa belle,</span><span class="es">y al morir su amada</span></div>
+      <div class="line-row"><span class="fr">Une coupe d'or ciselé.</span><span class="es">recibió una copa de oro cincelada.</span></div>
+      <div class="line-row"><span class="fr">Comme elle ne la quittant guère,</span><span class="es">Aun en las fiestas más alegres</span></div>
+      <div class="line-row"><span class="fr">Dans les festins les plus joyeux,</span><span class="es">nunca abandonó la copa</span></div>
+      <div class="line-row"><span class="fr">Toujours une larme légère</span><span class="es">y siempre, ante su vista,</span></div>
+      <div class="line-row"><span class="fr">À sa vue humectait ses yeux.</span><span class="es">una lágrima humedecía sus ojos.</span></div>
+      <div class="line-row"><span class="fr">Ce prince, à la fin de sa vie,</span><span class="es">Este príncipe, al final de su vida,</span></div>
+      <div class="line-row"><span class="fr">Lège ses villes et son or.</span><span class="es">legó sus villas y su oro,</span></div>
+      <div class="line-row"><span class="fr">Excepté la coupe chérie</span><span class="es">excepto la querida copa</span></div>
+      <div class="line-row"><span class="fr">Qu'à la main il conserve encore.</span><span class="es">que todavía conservaba en la mano.</span></div>
+      <div class="line-row"><span class="fr">Il fait, à sa table royale,</span><span class="es">En la mesa real,</span></div>
+      <div class="line-row"><span class="fr">Asseoir ses barons et ses pairs,</span><span class="es">en el centro de la antigua sala</span></div>
+      <div class="line-row"><span class="fr">Au milieu de l'antique salle</span><span class="es">de un castillo bañado por el mar,</span></div>
+      <div class="line-row"><span class="fr">D'un château que baignaient les mers.</span><span class="es">hizo sentar a los barones y a sus pares.</span></div>
+      <div class="line-row"><span class="fr">Le buveur se lève et s'avance</span><span class="es">Un bebedor se levantó y avanzó,</span></div>
+      <div class="line-row"><span class="fr">Auprès d'un vieux balcon doré;</span><span class="es">junto a un viejo balcón dorado.</span></div>
+      <div class="line-row"><span class="fr">Il boit, et soudain sa main lance</span><span class="es">Bebió y, repentinamente,</span></div>
+      <div class="line-row"><span class="fr">Dans le flots le vase sacré.</span><span class="es">su mano lanzó al agua el vaso sagrado.</span></div>
+      <div class="line-row"><span class="fr">Le vase tombe: l'eau bouillonne,</span><span class="es">El vaso cayó, el agua burbujeó,</span></div>
+      <div class="line-row"><span class="fr">Puis se calme aussitôt après.</span><span class="es">y luego se calmó muy pronto.</span></div>
+      <div class="line-row"><span class="fr">Le vieillard pâlit et frissonne:</span><span class="es">El viejo palideció y tembló.</span></div>
+      <div class="line-row"><span class="fr">Il ne boira plus désormais.</span><span class="es">Desde entonces nunca más bebió.</span></div>
+      <div class="scene-heading">
+        <span>Scène Douzième</span>
+        <span>Escena Duodécima</span>
+      </div>
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(Une rue devant la maison de Marguerite)</span>
+        <span class="es">(En la calle, frente a la casa de Margarita)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Esprits des flammes inconstantes,</span><span class="es">¡Espíritus flamígeros!...¡Venid, os necesito!</span></div>
+      <div class="line-row"><span class="fr">Accourez! j'ai besoin de vous.</span><span class="es">¡Acudid!... ¡Acudid!...</span></div>
+      <div class="line-row"><span class="fr">Accourez! accourez!</span><span class="es">¡Duendes caprichosos, que vuestros falsos brillos</span></div>
+      <div class="line-row"><span class="fr">Follets capricieux, vos lueurs malfaisantes</span><span class="es">deslumbren a la niña y la atraigan hacia vosotros!</span></div>
+      <div class="line-row"><span class="fr">Vont charmer une enfant et l'amener à nous.</span><span class="es">En nombre del Diablo: ¡bailad!</span></div>
+      <div class="line-row"><span class="fr">Au nom du Diable, en danse!</span><span class="es">¡Y vosotros, ministros infernales,</span></div>
+      <div class="line-row"><span class="fr">Et vous, marquez bien la cadence,</span><span class="es">marcad bien la cadencia!</span></div>
+      <div class="line-row"><span class="fr">Ménétriers d'enfer, ou je vous éteins tous.</span><span class="es">¡Yo os conjuro a todos!</span></div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(Les follets exécutent des évolutions et des danses bizarres autour de la maison de Marguerite.)</span>
+        <span class="es">(Los duendes ejecutan evoluciones y extrañas danzas frente a la casa de Margarita)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(il fait les mouvements d'un homme qui joue de la vielle)</span>
+        <span class="es">(Hace los movimientos de un hombre que finge ser viejo)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Maintenant,</span><span class="es">Y ahora</span></div>
+      <div class="line-row"><span class="fr">Chantons à cette belle une chanson morale,</span><span class="es">cantemos una linda canción,</span></div>
+      <div class="line-row"><span class="fr">Pour la perdre plus sûrement.</span><span class="es">para atraerla con mayor seguridad.</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Devant la maison</span><span class="es">Pequeña Luisa,</span></div>
+      <div class="line-row"><span class="fr">De celui qui t'adore,</span><span class="es">¿qué haces desde el amanecer</span></div>
+      <div class="line-row"><span class="fr">Petite Louison,</span><span class="es">frente a la casa</span></div>
+      <div class="line-row"><span class="fr">Que fais-tu dès l'aurore?</span><span class="es">de quien te ama?</span></div>
+      <div class="line-row"><span class="fr">Au signal du plaisir,</span><span class="es">En la alcoba del muchacho,</span></div>
+      <div class="line-row"><span class="fr">Dans la chambre du drille,</span><span class="es">ante la perspectiva del placer,</span></div>
+      <div class="line-row"><span class="fr">Tu peux bien entrer fille,</span><span class="es">bien puedes entrar,</span></div>
+      <div class="line-row"><span class="fr">Mais non fille en sortir.</span><span class="es">muchacha,</span></div>
+      <div class="line-row"><span class="fr">Devant la maison...</span><span class="es">pero no has de salir...</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès, Follets</span>
+        <span class="character-name">Méphistophélès, Follets</span>
+      </div>
+      <div class="line-row"><span class="fr">Que fais-tu? Ha!</span><span class="es">¿Qué haces? ¡Ja!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Il te tend les bras:</span><span class="es">Él te tiende sus brazos</span></div>
+      <div class="line-row"><span class="fr">Près de lui</span><span class="es">y tú corres veloz</span></div>
+      <div class="line-row"><span class="fr">Tu cours vite.</span><span class="es">hacia él.</span></div>
+      <div class="line-row"><span class="fr">Bonne nuit, hélas!</span><span class="es">¡Buenas noches!... ¡Ah!</span></div>
+      <div class="line-row"><span class="fr">Ma petite, bonne nuit.</span><span class="es">Cuando se acerca</span></div>
+      <div class="line-row"><span class="fr">Près du moment fatal</span><span class="es">el momento fatal,</span></div>
+      <div class="line-row"><span class="fr">Fais grande résistance,</span><span class="es">opones resistencia...</span></div>
+      <div class="line-row"><span class="fr">S'il ne t'offre d'avance</span><span class="es">siempre que antes</span></div>
+      <div class="line-row"><span class="fr">Un anneau conjugale.</span><span class="es">no te ofrezca un anillo de matrimonio.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès, Follets</span>
+        <span class="character-name">Méphistophélès, Follets</span>
+      </div>
+      <div class="line-row"><span class="fr">Il te tend les bras...</span><span class="es">Él te tiende sus brazos…</span></div>
+      <div class="line-row"><span class="fr">Ha!</span><span class="es">¡Ah!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Chut! disparaissez!</span><span class="es">¡Rápido! ¡Desapareced!</span></div>
+      <div class="stage-direction">
+        <span>(Les follets s'abîment.)</span>
+        <span class="es">(los duendes desaparecen)</span>
+      </div>
+      <div class="line-row"><span class="fr">Silence!</span><span class="es">¡Silencio!</span></div>
+      <div class="line-row"><span class="fr">Allons voir roucouler nos tourtereaux.</span><span class="es">Vayamos a ver a nuestros tortolitos...</span></div>
+      <div class="scene-heading">
+        <span>Scène Treizième</span>
+        <span>Escena Decimotercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Chambre de Marguerite)</span>
+        <span class="es">(alcoba de Margarita)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apercevant Faust)</span>
+        <span class="es">(descubriendo a Fausto)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc31">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t31">
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Grand Dieu!</span><span class="es">¡Gran Dios!</span></div>
+      <div class="line-row"><span class="fr">Que vois-je!... est-ce bien lui?</span><span class="es">¿Qué veo?... ¿Es él?...</span></div>
+      <div class="line-row"><span class="fr">Dois-je croire mes yeux?...</span><span class="es">¿Puedo creer lo que ven mis ojos?...</span></div>
+    </div>
+
+    <div class="track-col" id="tc32">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t32">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Ange adoré dont la céleste image</span><span class="es">Angel adorado, cuya imagen celestial</span></div>
+      <div class="line-row"><span class="fr">Avant de te connaître illuminait mon cœur,</span><span class="es">iluminaba mi corazón aún antes de conocerte.</span></div>
+      <div class="line-row"><span class="fr">Enfin je t'aperçois, et du jaloux nuage</span><span class="es">Por fin te veo y mi amor ha de vencer</span></div>
+      <div class="line-row"><span class="fr">Qui te cachait encore mon amour est vainqueur.</span><span class="es">los recelos que aun te separan de mí.</span></div>
+      <div class="line-row"><span class="fr">Marguerite, je t'aime!</span><span class="es">¡Margarita, te amo!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Tu sais mon nom?</span><span class="es">¿Sabes mi nombre?...</span></div>
+      <div class="line-row"><span class="fr">Moi-même</span><span class="es">Yo también he pronunciado</span></div>
+      <div class="line-row"><span class="fr">J'ai souvent dit le tien:</span><span class="es">muchas veces el tuyo...</span></div>
+      <div class="stage-direction">
+        <span>(timidement)</span>
+        <span class="es">(con timidez)</span>
+      </div>
+      <div class="line-row"><span class="fr">Faust!...</span><span class="es">¡Fausto!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Ce nom est le mien;</span><span class="es">Ese es mi nombre...</span></div>
+      <div class="line-row"><span class="fr">Un autre le sera, s'il te plaît davantage.</span><span class="es">De aquí en adelante será otro, si lo prefieres.</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">En songe, je t'ai vu tel que je revois.</span><span class="es">En sueños te vi tal y como te veo ahora.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">En songe!... tu m'as vu?</span><span class="es">¡En sueños!...¿Me viste?</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Je reconnais ta voix</span><span class="es">Reconocí tu voz,</span></div>
+      <div class="line-row"><span class="fr">Tes traits, ton doux langage...</span><span class="es">tus rasgos, tus dulces palabras…</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Et tu m'aimais?</span><span class="es">¿Y me amabas?</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Je t'attendais.</span><span class="es">Te esperaba.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite adorée!</span><span class="es">¡Margarita adorada!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Ma tendresse inspirée</span><span class="es">Mi amor te presagiaba</span></div>
+      <div class="line-row"><span class="fr">Était d'avance à toi.</span><span class="es">y ya era tuyo.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite est à moi.</span><span class="es">¡Margarita eres mía!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon bien-aimé, ta noble et douce image,</span><span class="es">¡Amado, tu imagen, dulce y noble,</span></div>
+      <div class="line-row"><span class="fr">Avant de te connaître, illuminait mon cœur!</span><span class="es">iluminaba mi corazón aún antes de conocerte!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! Ange adoré, dont la céleste image,</span><span class="es">¡Ah! ¡Angel adorado, cuya imagen celestial,</span></div>
+      <div class="line-row"><span class="fr">Avant de te connaître, illuminait mon cœur!</span><span class="es">iluminó mi corazón aún antes de conocerte!</span></div>
+      <div class="character-row">
+        <span class="character-name">Deux</span>
+        <span class="character-name">Deux</span>
+      </div>
+      <div class="line-row"><span class="fr">Enfin je t'aperçois, et du jaloux nuage…</span><span class="es">Por fin te veo y mi amor ha de vencer...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Marguerite, ô tendresse!</span><span class="es">¡Margarita, oh, ternura!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Je ne sais quelle ivresse</span><span class="es">No sé qué embriaguez</span></div>
+      <div class="line-row"><span class="fr">Dans ses bras me conduit.</span><span class="es">me lleva hasta tus brazos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Cède à l'ardente ivresse</span><span class="es">Entrégate a la ardiente embriaguez</span></div>
+      <div class="line-row"><span class="fr">Qui vers toi m'a conduit.</span><span class="es">que me condujo hasta ti.</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Brûlante enchanteresse</span><span class="es">Una pasión ardiente</span></div>
+      <div class="line-row"><span class="fr">Dans tes bras me conduit.</span><span class="es">me conduce a tus brazos...</span></div>
+      <div class="line-row"><span class="fr">Quelle langueur s'empare de mon être!</span><span class="es">¡El ansia invade todo mi ser!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Au vrai bonheur dans mes bras tu vas naître,</span><span class="es">¡En mis brazos nacerás a la verdadera felicidad!</span></div>
+      <div class="line-row"><span class="fr">Viens, viens, viens, viens...</span><span class="es">¡Ven, ven, ven, ven!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Dans mes yeux des pleurs...</span><span class="es">En mis ojos hay lágrimas...</span></div>
+      <div class="line-row"><span class="fr">Tout s'efface...</span><span class="es">Todo se desvanece...</span></div>
+      <div class="line-row"><span class="fr">Je meurs...</span><span class="es">Muero...</span></div>
+      <div class="line-row"><span class="fr">Tout s'efface... ah!</span><span class="es">¡Todo se desvanece!...¡ah!</span></div>
+      <div class="line-row"><span class="fr">Je meurs...</span><span class="es">Muero...</span></div>
+      <div class="scene-heading">
+        <span>Scène Quatorzième</span>
+        <span>Escena Decimocuarta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(entrant brusquement)</span>
+        <span class="es">(entrando bruscamente)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc33">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t33">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Allons, il est trop tard!</span><span class="es">¡Vamos, es demasiado tarde!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Quel est cet homme?</span><span class="es">¿Quién es ese hombre?</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Un sot.</span><span class="es">Un tonto.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Un ami.</span><span class="es">Un amigo.</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Son regard me déchire le cœur.</span><span class="es">Su mirada destroza mi corazón.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Sans doute je dérange...</span><span class="es">Seguramente interrumpo...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Qui t'a permis d'entrer?</span><span class="es">¿Por qué has venido?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Il faut sauver cet ange!</span><span class="es">¡Hay que salvar a este ángel!</span></div>
+      <div class="line-row"><span class="fr">Déjà tous les voisins, éveillés par nos chants,</span><span class="es">Vuestros cantos han despertado a los vecinos</span></div>
+      <div class="line-row"><span class="fr">Accourent, désignant la maison aux passants;</span><span class="es">que acuden alborotados hacia esta casa...</span></div>
+      <div class="line-row"><span class="fr">En raillant Marguerite, ils appellent sa mère.</span><span class="es">Han ido a llamar a la madre de Margarita...</span></div>
+      <div class="line-row"><span class="fr">La vieille va venir...</span><span class="es">La vieja ya está en camino...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Que faire?</span><span class="es">¿Qué podemos hacer?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Il faut partir!</span><span class="es">¡Tenemos que irnos!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Damnation!</span><span class="es">¡Maldición!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous vous verrez demain; la consolation</span><span class="es">Mañana os volveréis a ver...</span></div>
+      <div class="line-row"><span class="fr">Est bien près de la peine.</span><span class="es">La espera bien vale la pena.</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, demain, bien-aimé.</span><span class="es">Sí, mañana, mi amor...</span></div>
+      <div class="line-row"><span class="fr">Dans le chambre prochaine déjà j'entends du bruit.</span><span class="es">¡Oigo ruidos en la alcoba vecina!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Adieu donc, belle nuit</span><span class="es">¡Entonces adiós, bella noche</span></div>
+      <div class="line-row"><span class="fr">À peine commencée!</span><span class="es">apenas comenzada!</span></div>
+      <div class="line-row"><span class="fr">Adieu, festin d'amour</span><span class="es">¡Adiós al festín de amor</span></div>
+      <div class="line-row"><span class="fr">Que j'étais promis!</span><span class="es">que me había prometido!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Partons, voilà le jour!</span><span class="es">¡Vámonos, ya amanece!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Te reverrai-je encore,</span><span class="es">¿Te volveré a ver,</span></div>
+      <div class="line-row"><span class="fr">Heure trop fugitive,</span><span class="es">hora fugitiva,</span></div>
+      <div class="line-row"><span class="fr">Où mon âme au bonheur allait enfin s'ouvrir!</span><span class="es">en la que mi alma por fin se abría a la felicidad?</span></div>
+      <div class="character-row">
+        <span class="character-name">Voisins</span>
+        <span class="character-name">Voisins</span>
+      </div>
+      <div class="line-row"><span class="fr">Holà! mère Oppenheim, vois ce que fait ta fille!</span><span class="es">¡Ey, madre Oppenheim, mira lo que hace tu hija!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">La foule arrive,</span><span class="es">Llega la gente...</span></div>
+      <div class="line-row"><span class="fr">Hâtons nous de partir!</span><span class="es">¡Démonos prisa en salir!</span></div>
+      <div class="character-row">
+        <span class="character-name">Voisins</span>
+        <span class="character-name">Voisins</span>
+      </div>
+      <div class="line-row"><span class="fr">L'avis n'est pas hors de saison;</span><span class="es">No te engañamos...</span></div>
+      <div class="line-row"><span class="fr">Un galant est dans ta maison,</span><span class="es">¡Hay un galán en tu casa</span></div>
+      <div class="line-row"><span class="fr">Et tu verras dans peu s'accroître ta famille.</span><span class="es">y pronto verás cómo tu familia se agranda!</span></div>
+      <div class="line-row"><span class="fr">Holà! holà!</span><span class="es">¡Ey! ¡Ey!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Ciel! Ciel! entends-tu ces cris?</span><span class="es">¡Cielos! ¿Oyes esos gritos?</span></div>
+      <div class="line-row"><span class="fr">Devant Dieu, je suis morte</span><span class="es">¡Ay Dios mío!</span></div>
+      <div class="line-row"><span class="fr">Si l'on te trouve ici!</span><span class="es">¿Si te encuentran aquí, estoy perdida!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Viens, on frappe à la porte!</span><span class="es">¡Vamos! ¡Ya están golpeando la puerta!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">O fureur!</span><span class="es">¡Oh furor!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">O sottise!</span><span class="es">¡Oh, tontería!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Adieu, adieu, par le jardin</span><span class="es">¡Adiós, adiós!</span></div>
+      <div class="line-row"><span class="fr">Vous pouvez échapper.</span><span class="es">¡Escapad por el jardín.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">O mon ange! à demain!</span><span class="es">¡Oh, ángel mío! ¡Hasta mañana!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">À demain! à demain!</span><span class="es">¡Hasta mañana! ¡Hasta mañana!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Ô mon Faust!</span><span class="es">¡Oh, mi Fausto! ¡Te doy mi vida!</span></div>
+      <div class="line-row"><span class="fr">Je te donne me vie.</span><span class="es">El amor ha tomado posesión</span></div>
+      <div class="line-row"><span class="fr">L'amour s'est emparé de mon âme ravie,</span><span class="es">de mi alma extasiada y me arrastra</span></div>
+      <div class="line-row"><span class="fr">Il m'entraîne, te perdre, c'est mourir.</span><span class="es">¡Perderte sería morir!</span></div>
+      <div class="line-row"><span class="fr">Ô mon Faust bien aimé, je te donne ma vie,</span><span class="es">¡Oh, mi Fausto! ¡Te doy mi vida!</span></div>
+      <div class="line-row"><span class="fr">Ô mon Faust!</span><span class="es">¡Oh, mi Fausto!</span></div>
+    </div>
+
+    <div class="track-col" id="tc34">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t34">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Je connais donc enfin le prix de la vie,</span><span class="es">¡Al fin conozco el precio de la vida!</span></div>
+      <div class="line-row"><span class="fr">Le bonheur m'apparaît, il m'appelle et je vais le saisir.</span><span class="es">¡La felicidad ha aparecido ante mí y me llama!</span></div>
+      <div class="line-row"><span class="fr">L'amour s'est emparé de mon âme ravie,</span><span class="es">El amor tomó posesión de mi alma extasiada</span></div>
+      <div class="line-row"><span class="fr">Il comblera bientôt mon dévorant désir.</span><span class="es">y pronto colmará mi deseo devorador.</span></div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Je puis donc te traîner dans la vie,</span><span class="es">¡Ya puedo arrastrarte</span></div>
+      <div class="line-row"><span class="fr">Fier esprit!</span><span class="es">espíritu orgulloso!</span></div>
+      <div class="line-row"><span class="fr">Le moment approche où je vais te saisir.</span><span class="es">¡Se acerca el momento en el que te capturaré!</span></div>
+      <div class="line-row"><span class="fr">Sans comble ton dévorant désir,</span><span class="es">Sin colmar tu deseo devorador</span></div>
+      <div class="line-row"><span class="fr">L'amour en t'enivrant doublera ta folie.</span><span class="es">el amor te embriagará y duplicará tu locura.</span></div>
+      <div class="line-row"><span class="fr">Je puis donc à mon gré te traîner dans la vie,</span><span class="es">¡Entonces podré arrastrarte a mi gusto,</span></div>
+      <div class="line-row"><span class="fr">Fier esprit!</span><span class="es">espíritu orgulloso!</span></div>
+      <div class="line-row"><span class="fr">Le moment approche où je vais te saisir.</span><span class="es">¡Se acerca el momento en que te capturaré!</span></div>
+      <div class="character-row">
+        <span class="character-name">Voisins</span>
+        <span class="character-name">Voisins</span>
+      </div>
+      <div class="line-row"><span class="fr">Un galant est dans ta maison...</span><span class="es">¡Un galán en tu casa!...</span></div>
+      <div class="scene-heading">
+        <span>Scène Quinzième</span>
+        <span>Escena Decimoquinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Chambre de Marguerite)</span>
+        <span class="es">(Alcoba de Margarita)</span>
+      </div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="act-heading">Quatrieme Partie · Cuarta Parte</div>
+
+    <div class="track-col" id="tc35">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t35">
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">D'amour l'ardente flamme,</span><span class="es">La ardiente llama del amor</span></div>
+      <div class="line-row"><span class="fr">Consume mes beaux jours.</span><span class="es">consume mis días.</span></div>
+      <div class="line-row"><span class="fr">Ah! la paix de mon âme</span><span class="es">¡Ah! ¡La paz de mi alma</span></div>
+      <div class="line-row"><span class="fr">A donc fui pour toujours!</span><span class="es">ha huido para siempre!</span></div>
+      <div class="line-row"><span class="fr">Son départ, son absence</span><span class="es">Su partida, su ausencia,</span></div>
+      <div class="line-row"><span class="fr">Sont pour moi le cercueil,</span><span class="es">para mí son como la tumba.</span></div>
+      <div class="line-row"><span class="fr">Et loin de sa présence,</span><span class="es">Lejos de su presencia</span></div>
+      <div class="line-row"><span class="fr">Tout me paraît en deuil.</span><span class="es">todo me parece triste.</span></div>
+      <div class="line-row"><span class="fr">Alors ma pauvre tête</span><span class="es">Mi mente se debilita</span></div>
+      <div class="line-row"><span class="fr">Se dérange bientôt,</span><span class="es">y pierdo la razón,</span></div>
+      <div class="line-row"><span class="fr">Mon faible cœur s'arrête,</span><span class="es">mi frágil corazón de detiene</span></div>
+      <div class="line-row"><span class="fr">Puis se glace aussitôt.</span><span class="es">y me invade un frío glacial.</span></div>
+      <div class="line-row"><span class="fr">Sa marche que j'admire,</span><span class="es">Su arrogante caminar,</span></div>
+      <div class="line-row"><span class="fr">Son port si gracieux,</span><span class="es">su porte gracioso,</span></div>
+      <div class="line-row"><span class="fr">Sa bouche au doux sourire,</span><span class="es">su boca de dulce sonrisa,</span></div>
+      <div class="line-row"><span class="fr">Le charme de ses yeux,</span><span class="es">el encanto de sus ojos,</span></div>
+      <div class="line-row"><span class="fr">Sa voix enchanteresse,</span><span class="es">su voz hechicera</span></div>
+      <div class="line-row"><span class="fr">Dont il sait m'embraser,</span><span class="es">que me hace arder,</span></div>
+      <div class="line-row"><span class="fr">De sa main, la caresse,</span><span class="es">sus manos, sus caricias,</span></div>
+      <div class="line-row"><span class="fr">Hélas! et son baiser,</span><span class="es">¡ay! y sus besos,</span></div>
+      <div class="line-row"><span class="fr">D'une amoureuse flamme,</span><span class="es">consumen mis días</span></div>
+      <div class="line-row"><span class="fr">Consument mes beaux jours!</span><span class="es">en una llama de amor.</span></div>
+      <div class="line-row"><span class="fr">Ah! le paix de mon âme</span><span class="es">¡Ah! ¡La paz de mi alma</span></div>
+      <div class="line-row"><span class="fr">A donc fui pour toujours!</span><span class="es">ha huido para siempre!</span></div>
+      <div class="line-row"><span class="fr">Je suis à ma fenêtre,</span><span class="es">Si estoy ante mi ventana,</span></div>
+      <div class="line-row"><span class="fr">Ou dehors, tout le jour -</span><span class="es">o afuera, todo el día,</span></div>
+      <div class="line-row"><span class="fr">C'est pour le voir paraître,</span><span class="es">es para verlo aparecer,</span></div>
+      <div class="line-row"><span class="fr">Ou hâter son retour.</span><span class="es">o apresurar su regreso.</span></div>
+      <div class="line-row"><span class="fr">Mon cœur bat et se presse</span><span class="es">Mi corazón palpita y se acelera</span></div>
+      <div class="line-row"><span class="fr">Dès qu'il le sent venir,</span><span class="es">cuando presiente que él viene.</span></div>
+      <div class="line-row"><span class="fr">Au gré de ma tendresse,</span><span class="es">¡Si pudiera retenerlo</span></div>
+      <div class="line-row"><span class="fr">Puis-je le retenir!</span><span class="es">al amparo de mi ternura!</span></div>
+      <div class="line-row"><span class="fr">O caresses de flamme!</span><span class="es">¡Oh caricias de fuego!</span></div>
+      <div class="line-row"><span class="fr">Que je voudrais un jour</span><span class="es">¡Cuánto me gustaría un día</span></div>
+      <div class="line-row"><span class="fr">Voir s'exhaler mon âme</span><span class="es">darle mi alma</span></div>
+      <div class="line-row"><span class="fr">Dans ses baisers d'amour!</span><span class="es">entre besos de amor!</span></div>
+    </div>
+
+    <div class="track-col" id="tc36">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t36">
+      <div class="character-row">
+        <span class="character-name">Soldats</span>
+        <span class="character-name">Soldats</span>
+      </div>
+      <div class="line-row"><span class="fr">Au son des trompettes,</span><span class="es">Al sonido de las trompetas</span></div>
+      <div class="line-row"><span class="fr">Les braves soldats,</span><span class="es">los valientes soldados</span></div>
+      <div class="line-row"><span class="fr">S'élancent aux fêtes</span><span class="es">se lanzan a las fiestas</span></div>
+      <div class="line-row"><span class="fr">Ou bien aux combats.</span><span class="es">o al combate.</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Bientôt la ville entière au repos va se rendre.</span><span class="es">Pronto la aldea se rendirá al reposo.</span></div>
+      <div class="line-row"><span class="fr">Si grande est la peine,</span><span class="es">Si grande es la pena, más grande es el premio.</span></div>
+      <div class="line-row"><span class="fr">Le prix est plus grand.</span><span class="es">Clarines, tambores nocturnos ya se dejan oír,</span></div>
+      <div class="line-row"><span class="fr">Clairons, tambours du soir déjà se font entendre</span><span class="es">junto a los alegres cantos,</span></div>
+      <div class="line-row"><span class="fr">Avec des chants joyeux,</span><span class="es">como en la noche en que el amor</span></div>
+      <div class="line-row"><span class="fr">Comme au soir où l'amour offrit Faust à mes yeux.</span><span class="es">ofreció a Fausto ante mis ojos.</span></div>
+      <div class="character-row">
+        <span class="character-name">Étudiants</span>
+        <span class="character-name">Étudiants</span>
+      </div>
+      <div class="line-row"><span class="fr">Jam nox stellata velancina pandit;</span><span class="es">Jam nox stellata velancina pandit;</span></div>
+      <div class="line-row"><span class="fr">Per urbem quærentes puellas eamus!</span><span class="es">Per urbem quærentes puellas eamus!</span></div>
+      <div class="character-row">
+        <span class="character-name">Marguerite</span>
+        <span class="character-name">Marguerite</span>
+      </div>
+      <div class="line-row"><span class="fr">Il ne vient pas,</span><span class="es">No viene...</span></div>
+      <div class="line-row"><span class="fr">Hélas!</span><span class="es">¡Ay!</span></div>
+      <div class="scene-heading">
+        <span>Scène Seizième</span>
+        <span>Escena Decimosexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Forêts et cavernes)</span>
+        <span class="es">(Bosques y cavernas)</span>
+      </div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc37">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t37">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Nature immense, impénétrable et fière,</span><span class="es">Inmensa naturaleza, impenetrable y orgullosa,</span></div>
+      <div class="line-row"><span class="fr">Toi seule donne trêve à mon ennui sans fin.</span><span class="es">sólo tú le das tregua a mi tedio sin fin.</span></div>
+      <div class="line-row"><span class="fr">Sur ton sein tout puissant je sens moins ma misère,</span><span class="es">En tu seno todopoderoso noto menos mi miseria,</span></div>
+      <div class="line-row"><span class="fr">Je retrouve ma force, et crois vivre enfin.</span><span class="es">recobro mis fuerzas y por fin creo vivir.</span></div>
+      <div class="line-row"><span class="fr">Oui, soufflez, ouragans! Criez, forêts profondes!</span><span class="es">¡Sí, rugid huracanes! ¡Gritad, bosques oscuros!</span></div>
+      <div class="line-row"><span class="fr">Croulez, rochers! Torrents, précipitez vos ondes!</span><span class="es">¡Desplomaros rocas! ¡Precipitaros, torrentes!</span></div>
+      <div class="line-row"><span class="fr">À vos bruits souverains ma voix aime à s'unir.</span><span class="es">Mi voz se quiere unir a vuestros sonidos.</span></div>
+      <div class="line-row"><span class="fr">Forêts, rochers, torrents, je vous adore!</span><span class="es">¡Bosques, rocas, torrentes... os amo!</span></div>
+      <div class="line-row"><span class="fr">Mondes, qui scintillez,</span><span class="es">Mundos centelleantes</span></div>
+      <div class="line-row"><span class="fr">Vers vous s'élance le désir</span><span class="es">lanzad hacia nosotros el deseo</span></div>
+      <div class="line-row"><span class="fr">D'un cœur trop vaste et d'une âme altérée</span><span class="es">de un corazón demasiado grande</span></div>
+      <div class="line-row"><span class="fr">D'un bonheur qui la fuit.</span><span class="es">y de un alma alterada por una felicidad que huyó.</span></div>
+      <div class="scene-heading">
+        <span>Scène Dix-septième</span>
+        <span>Escena Decimoséptima</span>
+      </div>
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(gravissant les rochers)</span>
+        <span class="es">(Escalando las rocas)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc38">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t38">
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">À la voûter azurée</span><span class="es">Dime, ¿puedes ver al astro del amor</span></div>
+      <div class="line-row"><span class="fr">Aperçois-tu, dis-moi, l'astre de l'amour constant?</span><span class="es">en la cúpula azul del cielo?</span></div>
+      <div class="line-row"><span class="fr">Son influence, ami, serait fort nécessaire,</span><span class="es">Su influencia, amigo, será muy necesaria,</span></div>
+      <div class="line-row"><span class="fr">Car tu rêves ici, quand cette pauvre enfant,</span><span class="es">pues tu aquí sueñas, mientras esa pobre chiquilla,</span></div>
+      <div class="line-row"><span class="fr">Marguerite...</span><span class="es">Margarita...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Tais-toi!</span><span class="es">¡Cállate!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Sans doute il faut me taire,</span><span class="es">Seguro que debo callarme.</span></div>
+      <div class="line-row"><span class="fr">Tu n'aimes plus!</span><span class="es">¡Tú ya no la amas!</span></div>
+      <div class="line-row"><span class="fr">Pourtant en un cachot traînée,</span><span class="es">Sin embargo ella ha sido arrastrada a un calabozo</span></div>
+      <div class="line-row"><span class="fr">Et pour un parricide à la mort condamnée...</span><span class="es">y condenada a muerte por parricida...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Quoi!</span><span class="es">¿Cómo?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">J'entends des chasseurs qui parcourent les bois.</span><span class="es">Oigo a los cazadores que vienen por el bosque...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Achève, qu'as-tu dit?</span><span class="es">¡Continúa! ¿Qué has dicho?</span></div>
+      <div class="line-row"><span class="fr">Marguerite en prison?</span><span class="es">¿Margarita en prisión?...</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Certaine liqueur brune, un innocent poison,</span><span class="es">Cierto licor oscuro, un inocente veneno,</span></div>
+      <div class="line-row"><span class="fr">Qu'elle tenait de toi, pour endormir sa mère</span><span class="es">que obtuvo de ti, para adormecer a su madre</span></div>
+      <div class="line-row"><span class="fr">Pendants vos nocturnes amours,</span><span class="es">durante las noches de amor, causó todo el mal.</span></div>
+      <div class="line-row"><span class="fr">A causé tout le mal.</span><span class="es">Acariciando su quimera</span></div>
+      <div class="line-row"><span class="fr">Caressant sa chimère,</span><span class="es">te esperaba todas las noches</span></div>
+      <div class="line-row"><span class="fr">T'attendant chaque soir, elle en usait toujours.</span><span class="es">y siempre lo usaba.</span></div>
+      <div class="line-row"><span class="fr">Elle en a tant usé que la vieille en est morte.</span><span class="es">Lo usó tanto que la vieja murió.</span></div>
+      <div class="line-row"><span class="fr">Tu comprends maintenant.</span><span class="es">¿Comprendes?...</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Feux et tonnerre!</span><span class="es">¡Rayos y truenos!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">En sorte que son amour pour toi la conduit...</span><span class="es">De modo que su amor por ti la condujo...</span></div>
+      <div class="stage-direction">
+        <span>(avec fureur)</span>
+        <span class="es">(Con furor)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Sauve-la.</span><span class="es">¡Sálvala!</span></div>
+      <div class="line-row"><span class="fr">Sauve-la, misérable!</span><span class="es">¡Sálvala, miserable!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! je suis le coupable!</span><span class="es">¡Ah! ¡Ahora yo soy el culpable!</span></div>
+      <div class="line-row"><span class="fr">On vous reconnaît là,</span><span class="es">¡Qué ridículos son los humanos!</span></div>
+      <div class="line-row"><span class="fr">Ridicules humains!</span><span class="es">¡Pero no importa!</span></div>
+      <div class="line-row"><span class="fr">N'importe!</span><span class="es">Todavía tengo poder para</span></div>
+      <div class="line-row"><span class="fr">Je suis le maître encore de t'ouvrir cette porte;</span><span class="es">abrirle la puerta, pero...</span></div>
+      <div class="line-row"><span class="fr">Mais qu'as-tu fais pour moi</span><span class="es">¿Qué harás por mí</span></div>
+      <div class="line-row"><span class="fr">Depuis que je te sers?</span><span class="es">después que te haya servido?</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'exiges-tu?</span><span class="es">¿Qué exiges?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">De toi?</span><span class="es">¿De ti?</span></div>
+      <div class="line-row"><span class="fr">Rien qu'un signature</span><span class="es">Nada más que una firma</span></div>
+      <div class="line-row"><span class="fr">Sur ce vieux parchemin.</span><span class="es">sobre este viejo pergamino.</span></div>
+      <div class="line-row"><span class="fr">Je sauve Marguerite à l'instant, si tu jures</span><span class="es">Salvaré a Margarita al instante</span></div>
+      <div class="line-row"><span class="fr">Et signes ton serment de me servir demain.</span><span class="es">si firmas tu juramento de servirme mañana.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Eh! que me fait</span><span class="es">¡Eh! ¿Y qué me importa el mañana</span></div>
+      <div class="line-row"><span class="fr">Demain, quand je souffre à cette heure?</span><span class="es">cuando ahora estoy sufriendo?</span></div>
+      <div class="line-row"><span class="fr">Donne.</span><span class="es">¡Dame!</span></div>
+      <div class="stage-direction">
+        <span>(Il signe.)</span>
+        <span class="es">(Firma)</span>
+      </div>
+      <div class="line-row"><span class="fr">Voilà mon nom.</span><span class="es">Aquí está mi nombre...</span></div>
+      <div class="line-row"><span class="fr">Vers sa sombre demeure</span><span class="es">Volemos hacia</span></div>
+      <div class="line-row"><span class="fr">Volons donc maintenant.</span><span class="es">su sombría morada.</span></div>
+      <div class="line-row"><span class="fr">Ô douleur insensée!</span><span class="es">¡Oh, dolor insensato!</span></div>
+      <div class="line-row"><span class="fr">Marguerite, j'accours!</span><span class="es">¡Margarita, voy a ti!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">À moi, Vortex! Giaour!</span><span class="es">¡A mí, Vortex, Giaour!</span></div>
+      <div class="line-row"><span class="fr">Sur ces deux noirs chevaux,</span><span class="es">Con estos negros caballos,</span></div>
+      <div class="line-row"><span class="fr">prompts comme la pensée,</span><span class="es">rápidos como el pensamiento,</span></div>
+      <div class="line-row"><span class="fr">La justice est pressée.</span><span class="es">paralizaremos a la justicia.</span></div>
+      <div class="stage-direction">
+        <span>(Ils partent.)</span>
+        <span class="es">(Salen)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Dix-huitième</span>
+        <span>Escena Decimoctava</span>
+      </div>
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(Plaines, montagnes et vallées. Faust et Méphistophélès galopant sur deux chevaux noirs)</span>
+        <span class="es">(Planicies, montañas y valles. Fausto y Mefistófeles galopan sobre dos caballos negros.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc39">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t39">
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Dans mon cœur retentit sa voix désespérée...</span><span class="es">En mi corazón resuena su voz desesperada...</span></div>
+      <div class="line-row"><span class="fr">Ô pauvre abandonnée!</span><span class="es">¡Oh, pobre abandonada!</span></div>
+      <div class="stage-direction">
+        <span>(agenouillés devant une croix champêtre)</span>
+        <span class="es">(De rodillas ante una cruz campestre)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Paysans</span>
+        <span class="character-name">Paysans</span>
+      </div>
+      <div class="line-row"><span class="fr">Sancta Maria, ora pro nobis.</span><span class="es">Sancta Maria, ora pro nobis.</span></div>
+      <div class="line-row"><span class="fr">Sancta Magdalena, ora pro nobis.</span><span class="es">Sancta Magdalena, ora pro nobis.</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Prends garde à ces enfants, à ces femmes priant</span><span class="es">Ten cuidado con esos niños,</span></div>
+      <div class="line-row"><span class="fr">Au pied de cette croix.</span><span class="es">son de las mujeres que rezan al pie de la cuna.</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Eh! qu'importe! en avant!</span><span class="es">¡Y qué me importa! ¡Vamos!</span></div>
+      <div class="character-row">
+        <span class="character-name">Paysans</span>
+        <span class="character-name">Paysans</span>
+      </div>
+      <div class="line-row"><span class="fr">Sancta Marguerite...</span><span class="es">Santa Margarita...</span></div>
+      <div class="stage-direction">
+        <span>(cri d'effroi)</span>
+        <span class="es">(Grito de terror)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah!!!</span><span class="es">¡Ay!</span></div>
+      <div class="stage-direction">
+        <span>(Les femmes et les enfants se dispersent épouvantés.)</span>
+        <span class="es">(Las mujeres y los niños se dispersan espantados)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Dieux! un monstre hideux en hurlant nous poursuit!</span><span class="es">¡Dios! ¡Un monstruo nos persigue aullando!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Tu rêves!</span><span class="es">¡Estás soñando!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Quel essaim de grands oiseaux de nuit!</span><span class="es">¡Qué enjambre de pájaros nocturnos!...</span></div>
+      <div class="line-row"><span class="fr">Quels cris affreux!... il me frappent de l'aile!</span><span class="es">¡Qué gritos terribles!... Me golpean con sus alas.</span></div>
+      <div class="stage-direction">
+        <span>(retenant son cheval)</span>
+        <span class="es">(Reteniendo el caballo)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Le glas des trépassés sonne déjà pour elle.</span><span class="es">La campana de difuntos está sonando para ella.</span></div>
+      <div class="line-row"><span class="fr">As-tu peur? retournons!</span><span class="es">¿Tienes miedo?... ¡Volvamos!</span></div>
+      <div class="stage-direction">
+        <span>(Ils s'arrêtent.)</span>
+        <span class="es">(Se detienen)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Non, je l'entends, courons!</span><span class="es">¡No, corramos!</span></div>
+      <div class="stage-direction">
+        <span>(Les chevaux redoublent de vitesse.)</span>
+        <span class="es">(Los caballos redoblan la velocidad)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(excitant son cheval)</span>
+        <span class="es">(Incitando al caballo) )</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Hop! hop! hop!</span><span class="es">¡Hop, hop, hop!</span></div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Regarde, autour de nous, cette ligne infinie</span><span class="es">¡Mira a nuestro alrededor esta fila infinita</span></div>
+      <div class="line-row"><span class="fr">De squelettes dansant!</span><span class="es">de esqueletos que bailan!</span></div>
+      <div class="line-row"><span class="fr">Avec quel rire horrible ils saluent en passant!</span><span class="es">¡Nos saludan al pasar con risa horrible!</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Hop! pense à sauver sa vie,</span><span class="es">¡Hop!</span></div>
+      <div class="line-row"><span class="fr">Et ris-toi des morts!</span><span class="es">¡Piensa en salvar su vida y ríete de los muertos!</span></div>
+      <div class="line-row"><span class="fr">Hop! hop!</span><span class="es">¡Hop!</span></div>
+      <div class="stage-direction">
+        <span>(de plus en plus épouvanté et haletant)</span>
+        <span class="es">(Cada vez más espantado)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Nos chevaux frémissent,</span><span class="es">¡Nuestros caballos se estremecen,</span></div>
+      <div class="line-row"><span class="fr">Leurs crins se hérissent,</span><span class="es">sus crines se erizan</span></div>
+      <div class="line-row"><span class="fr">Ils brisent leurs mors!</span><span class="es">y las riendas se rompen!</span></div>
+      <div class="line-row"><span class="fr">Je vois onduler</span><span class="es">¡Veo ante nosotros</span></div>
+      <div class="line-row"><span class="fr">Devant nous la terre;</span><span class="es">cómo se abre la tierra!</span></div>
+      <div class="line-row"><span class="fr">J'entends le tonnerre</span><span class="es">¡Oigo bajo nuestros pies</span></div>
+      <div class="line-row"><span class="fr">Sous nos pieds rouler!</span><span class="es">rodar los truenos!</span></div>
+      <div class="line-row"><span class="fr">Il pleut du sang!!</span><span class="es">¡Llueve sangre!</span></div>
+      <div class="stage-direction">
+        <span>(d'une voix tonnante)</span>
+        <span class="es">(Con voz que retumba)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Cohortes infernales!</span><span class="es">¡Escuadras infernales!</span></div>
+      <div class="line-row"><span class="fr">Sonnez, sonnez vos trompettes triomphales,</span><span class="es">¡Tocad, tocad las trompetas triunfales!</span></div>
+      <div class="line-row"><span class="fr">Il est à nous!</span><span class="es">¡Él ya es nuestro!</span></div>
+      <div class="stage-direction">
+        <span>(Ils tombent dans un gouffre.)</span>
+        <span class="es">(Caen por un precipicio)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Faust</span>
+        <span class="character-name">Faust</span>
+      </div>
+      <div class="line-row"><span class="fr">Horreur! Ah!</span><span class="es">¡Horror!... ¡Ah!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Je suis vainqueur!</span><span class="es">¡He vencido!</span></div>
+      <div class="scene-heading">
+        <span>Scène Dix-neuvième</span>
+        <span>Escena Decimonovena</span>
+      </div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc40">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t40">
+      <div class="character-row">
+        <span class="character-name">Damnés, Démons</span>
+        <span class="character-name">Damnés, Démons</span>
+      </div>
+      <div class="line-row"><span class="fr">Ha! Irimiru Karabrao!</span><span class="es">Ha! Irimiru Karabrao!</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Has!</span><span class="es">Has! Has! Has!</span></div>
+      <div class="character-row">
+        <span class="character-name">Princes Des Ténèbres</span>
+        <span class="character-name">Princes Des Ténèbres</span>
+      </div>
+      <div class="line-row"><span class="fr">De cette âme si fière</span><span class="es">Mefistófeles:</span></div>
+      <div class="line-row"><span class="fr">À jamais es-tu maître et vainqueur, Méphisto?</span><span class="es">¿eres por siempre el amo de este alma?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">J'en suis maître à jamais.</span><span class="es">¡Sí, soy su amo para siempre!</span></div>
+      <div class="character-row">
+        <span class="character-name">Princes Des Ténèbres</span>
+        <span class="character-name">Princes Des Ténèbres</span>
+      </div>
+      <div class="line-row"><span class="fr">Faust a donc librement</span><span class="es">¿Firmó Fausto libremente el acta fatal</span></div>
+      <div class="line-row"><span class="fr">Signé l'acte fatale qui le livre à nos flammes?</span><span class="es">que lo entrega a nuestras llamas?</span></div>
+      <div class="character-row">
+        <span class="character-name">Méphistophélès</span>
+        <span class="character-name">Méphistophélès</span>
+      </div>
+      <div class="line-row"><span class="fr">Il signa librement.</span><span class="es">¡La firmó libremente!</span></div>
+      <div class="character-row">
+        <span class="character-name">Damnés, Démons</span>
+        <span class="character-name">Damnés, Démons</span>
+      </div>
+      <div class="line-row"><span class="fr">Has! Has!</span><span class="es">¡Ja, ja!</span></div>
+      <div class="stage-direction">
+        <span>(Les démons portent Méphistophélès en triomphe.)</span>
+        <span class="es">(Los demonios llevan a Mefistófeles en triunfo)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc41">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t41">
+      <div class="character-row">
+        <span class="character-name">Damnés, Démons</span>
+        <span class="character-name">Damnés, Démons</span>
+      </div>
+      <div class="line-row"><span class="fr">Tradioun Marexil fir Trudinxé burudixé!</span><span class="es">Tradioun Marexil fir Trudinxé burudixé!</span></div>
+      <div class="line-row"><span class="fr">Fory my Dinkorlitz.</span><span class="es">Fory my Dinkorlitz.</span></div>
+      <div class="line-row"><span class="fr">O merikariu Omévixé merikariba.</span><span class="es">O merikariu Omévixé merikariba.</span></div>
+      <div class="line-row"><span class="fr">O merikariu O midara</span><span class="es">O merikariu O midara</span></div>
+      <div class="line-row"><span class="fr">Caraibo lakinda, merondor Dinkorlitz,</span><span class="es">Caraibo lakinda, merondor Dinkorlitz,</span></div>
+      <div class="line-row"><span class="fr">merondor Dinkorlitz merondor.</span><span class="es">merondor Dinkorlitz merondor.</span></div>
+      <div class="line-row"><span class="fr">Tradioun marexil,</span><span class="es">Tradioun marexil,</span></div>
+      <div class="line-row"><span class="fr">Tradioun burudixé</span><span class="es">Tradioun burudixé</span></div>
+      <div class="line-row"><span class="fr">Trudinxé Caraibo.</span><span class="es">Trudinxé Caraibo.</span></div>
+      <div class="line-row"><span class="fr">Fir omévixé merondor.</span><span class="es">Fir omévixé merondor.</span></div>
+      <div class="line-row"><span class="fr">Mit aysko, merondor, mit aysko! Oh!</span><span class="es">Mit aysko, merondor, mit aysko! Oh!</span></div>
+      <div class="stage-direction">
+        <span>(Les démons dansent autour de Méphistophélès.)</span>
+        <span class="es">(Los demonios bailan alrededor de Mefistófeles)</span>
+      </div>
+      <div class="line-row"><span class="fr">Diff! Diff! me rondor, me rondor aysko!</span><span class="es">Diff! Diff! me rondor, me rondor aysko!</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Satan.</span><span class="es">Has! Has! Satan.</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Belphégor,</span><span class="es">Has! Has! Belphégor,</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Méphisto,</span><span class="es">Has! Has! Méphisto,</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Kroïx</span><span class="es">Has! Has! Kroïx</span></div>
+      <div class="line-row"><span class="fr">Diff! Diff! Astaroth,</span><span class="es">Diff! Diff! Astaroth,</span></div>
+      <div class="line-row"><span class="fr">Diff! Diff! Belzébuth, Belphéger, Astaroth, Méphisto!</span><span class="es">Diff! Diff! Belzébuth, Belphéger, Astaroth, Méphisto!</span></div>
+      <div class="line-row"><span class="fr">Sat, sat ra yk Irkimour.</span><span class="es">Sat, sat ra yk Irkimour.</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Méphisto!</span><span class="es">Has! Has! Méphisto!</span></div>
+      <div class="line-row"><span class="fr">Has! Has! Irimiru Karabrao!</span><span class="es">Has! Has! Irimiru Karabrao!</span></div>
+      <div class="musical-number"></div>
+      <div class="stage-direction">
+        <span>(Sur la terre)</span>
+        <span class="es">(En la tierra)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc42">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t42">
+      <div class="character-row">
+        <span class="character-name">Damnés, Démons</span>
+        <span class="character-name">Damnés, Démons</span>
+      </div>
+      <div class="line-row"><span class="fr">Alors l'enfer se tut.</span><span class="es">Entonces en el infierno se hizo el silencio.</span></div>
+      <div class="line-row"><span class="fr">L'affreux bouillonnement de ces grands lacs de flammes,</span><span class="es">Sólo se oye el horrible burbujeo</span></div>
+      <div class="line-row"><span class="fr">Les grincements de dents et ses tourmentées d'âmes,</span><span class="es">de los enormes lagos de fuego,</span></div>
+      <div class="line-row"><span class="fr">Se firent seuls entendre; et, dans ses profondeurs,</span><span class="es">el rechinar de dientes de los torturados,</span></div>
+      <div class="line-row"><span class="fr">Un mystère d'horreur s'accomplit.</span><span class="es">y en lo más profundo se celebra un rito de horror.</span></div>
+      <div class="line-row"><span class="fr">Ô terreurs!</span><span class="es">¡Oh terror!</span></div>
+      <div class="stage-direction">
+        <span>(Dans le ciel)</span>
+        <span class="es">(en el cielo)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc43">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t43">
+      <div class="character-row">
+        <span class="character-name">Esprits Célestes</span>
+        <span class="character-name">Esprits Célestes</span>
+      </div>
+      <div class="line-row"><span class="fr">Laus! Laus! Laus! Hosanna! Hosanna!</span><span class="es">¡Oremos! ¡Oremos! ¡Hosanna!</span></div>
+      <div class="line-row"><span class="fr">Elle a beaucoup aimé, Seigneur!</span><span class="es">¡Ella amó mucho, Señor!</span></div>
+      <div class="line-row"><span class="fr">Marguerite!!</span><span class="es">¡Margarita!</span></div>
+      <div class="musical-number"></div>
+    </div>
+
+    <div class="track-col" id="tc44">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t44">
+      <div class="character-row">
+        <span class="character-name">Esprits Célestes</span>
+        <span class="character-name">Esprits Célestes</span>
+      </div>
+      <div class="line-row"><span class="fr">Remonte au ciel, âme naïve</span><span class="es">¡Sube al cielo,</span></div>
+      <div class="line-row"><span class="fr">Que l'amour égara;</span><span class="es">alma inocente</span></div>
+      <div class="line-row"><span class="fr">Viens revêtir ta beauté primitive</span><span class="es">que el amor extravió!</span></div>
+      <div class="line-row"><span class="fr">Qu'une erreur altéra.</span><span class="es">¡Ven a reverdecer tu infantil belleza</span></div>
+    </div>
+
+    <div class="track-col" id="tc45">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">24</span>
+      </div>
+    </div>
+    <div class="text-col" id="t45">
+      <div class="character-row">
+        <span class="character-name">Esprits Célestes</span>
+        <span class="character-name">Esprits Célestes</span>
+      </div>
+      <div class="line-row"><span class="fr">Viens, les vierges divines,</span><span class="es">que un error corrompió!</span></div>
+      <div class="line-row"><span class="fr">Tes sœurs les Séraphins,</span><span class="es">¡Que vengan las vírgenes divinas, tus hermanas!</span></div>
+      <div class="line-row"><span class="fr">Sauront tarir les pleurs</span><span class="es">¡Que los serafines</span></div>
+      <div class="line-row"><span class="fr">Que t'arrachent encore les terrestres douleurs</span><span class="es">sequen las lágrimas que los dolores terrestres</span></div>
+      <div class="line-row"><span class="fr">Conservent l'espérance</span><span class="es">aún te arrancan!</span></div>
+      <div class="line-row"><span class="fr">Et souris au bonheur.</span><span class="es">Mantén la esperanza y sonríe al dolor.</span></div>
+      <div class="line-row"><span class="fr">Viens, Marguerite, viens!</span><span class="es">¡Ven, Margarita, ven!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <span class="drawer-header-opera">La Damnation de Faust — Hector Berlioz</span>
+        <span class="drawer-header-sub">Nelson / Di Donato</span>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">Close</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-cd-label">Disc 1 — Act I</div>
+      <div class="drawer-track" id="idx-t1" onclick="jumpTo('t1')">
+        <span class="drawer-track-num">1</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Le Vieil Hiver A Fait Place Au Printemps</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t2" onclick="jumpTo('t2')">
+        <span class="drawer-track-num">2</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Les Bergers Laissent Leurs Troupeaux</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t3" onclick="jumpTo('t3')">
+        <span class="drawer-track-num">3</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Mais D'un Éclat Guerrier</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t4" onclick="jumpTo('t4')">
+        <span class="drawer-track-num">4</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Marche Hongroise</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t5" onclick="jumpTo('t5')">
+        <span class="drawer-track-num">5</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Sans Regrets J'ai Quitté Les Riantes Campagnes</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t6" onclick="jumpTo('t6')">
+        <span class="drawer-track-num">6</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Christ Vient De Ressuciter!</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t7" onclick="jumpTo('t7')">
+        <span class="drawer-track-num">7</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Hélas! Doux Chant Du Ciel</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t8" onclick="jumpTo('t8')">
+        <span class="drawer-track-num">8</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ô Pure Émotion!</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t9" onclick="jumpTo('t9')">
+        <span class="drawer-track-num">9</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">À Boire Encor!</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t10" onclick="jumpTo('t10')">
+        <span class="drawer-track-num">10</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Certain Rat, Dans Une Cuisine</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t11" onclick="jumpTo('t11')">
+        <span class="drawer-track-num">11</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Amen</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t12" onclick="jumpTo('t12')">
+        <span class="drawer-track-num">12</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Vrai Dieu, Messieurs</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t13" onclick="jumpTo('t13')">
+        <span class="drawer-track-num">13</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Une Puce Gentille</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t14" onclick="jumpTo('t14')">
+        <span class="drawer-track-num">14</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Assez! Fuyons Ces Lieux</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t15" onclick="jumpTo('t15')">
+        <span class="drawer-track-num">15</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Voici Des Rose</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t16" onclick="jumpTo('t16')">
+        <span class="drawer-track-num">16</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Dors, Dors, Heureux Faust</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t17" onclick="jumpTo('t17')">
+        <span class="drawer-track-num">17</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ballet Des Sylphes</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t18" onclick="jumpTo('t18')">
+        <span class="drawer-track-num">18</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Margarita!</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t19" onclick="jumpTo('t19')">
+        <span class="drawer-track-num">19</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Villes Entourées</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t20" onclick="jumpTo('t20')">
+        <span class="drawer-track-num">20</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Jam Nox Stellata Velamina Pandit</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t21" onclick="jumpTo('t21')">
+        <span class="drawer-track-num">21</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Villes Entourées… Jam Nox Stellata…</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-cd-label">Disc 2 — Act III</div>
+      <div class="drawer-track" id="idx-t22" onclick="jumpTo('t22')">
+        <span class="drawer-track-num">1</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Tambours Et Trompettes Sonnant La Retraite</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t23" onclick="jumpTo('t23')">
+        <span class="drawer-track-num">2</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Merci, Doux Crépuscule!</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t24" onclick="jumpTo('t24')">
+        <span class="drawer-track-num">3</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Je L'entends!</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t25" onclick="jumpTo('t25')">
+        <span class="drawer-track-num">4</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Que L'air Est Étouffant!</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t26" onclick="jumpTo('t26')">
+        <span class="drawer-track-num">5</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Autrefois Un Roi De Thulé</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t27" onclick="jumpTo('t27')">
+        <span class="drawer-track-num">6</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Esprits Des Flammes Inconstantes</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t28" onclick="jumpTo('t28')">
+        <span class="drawer-track-num">7</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Menuet Des Follets</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t29" onclick="jumpTo('t29')">
+        <span class="drawer-track-num">8</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Mainteant, Chantons À Cette Bell</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t30" onclick="jumpTo('t30')">
+        <span class="drawer-track-num">9</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Devant La Maison</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t31" onclick="jumpTo('t31')">
+        <span class="drawer-track-num">10</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Grand Dieu!</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t32" onclick="jumpTo('t32')">
+        <span class="drawer-track-num">11</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ange Adoré</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t33" onclick="jumpTo('t33')">
+        <span class="drawer-track-num">12</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Allons, Il Est Trop Tard!</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t34" onclick="jumpTo('t34')">
+        <span class="drawer-track-num">13</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Je Connais Donc Enfin</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t35" onclick="jumpTo('t35')">
+        <span class="drawer-track-num">14</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">D'amour L'ardente Flamme</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t36" onclick="jumpTo('t36')">
+        <span class="drawer-track-num">15</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Au Son Des Trompettes</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t37" onclick="jumpTo('t37')">
+        <span class="drawer-track-num">16</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Nature Immense</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t38" onclick="jumpTo('t38')">
+        <span class="drawer-track-num">17</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">À La Voûte Azurée</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t39" onclick="jumpTo('t39')">
+        <span class="drawer-track-num">18</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Dans Mon Cœur Retentit Sa Voix Désespérée</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t40" onclick="jumpTo('t40')">
+        <span class="drawer-track-num">19</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ha! Irimirukarabrao!</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t41" onclick="jumpTo('t41')">
+        <span class="drawer-track-num">20</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Tradioun Marexil Fir Trudinxé Burrudixé!</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t42" onclick="jumpTo('t42')">
+        <span class="drawer-track-num">21</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Alors L'enfer Se Tut</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t43" onclick="jumpTo('t43')">
+        <span class="drawer-track-num">22</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Laus! Laus! Hosanna! Hosanna!</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t44" onclick="jumpTo('t44')">
+        <span class="drawer-track-num">23</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Remonte Au Ciel, Âme Naïve</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t45" onclick="jumpTo('t45')">
+        <span class="drawer-track-num">24</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Viens, Les Vierges Divines</span>
+          <span class="drawer-track-act">Act IV</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openDrawer() {
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function jumpTo(id) {
+    closeDrawer();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  const trackMap = [
+    { id: 't1', cd: 1, track: 1, title: "Le Vieil Hiver A Fait Place Au Printemps" },
+    { id: 't2', cd: 1, track: 2, title: "Les Bergers Laissent Leurs Troupeaux" },
+    { id: 't3', cd: 1, track: 3, title: "Mais D'un \u00c9clat Guerrier" },
+    { id: 't4', cd: 1, track: 4, title: "Marche Hongroise" },
+    { id: 't5', cd: 1, track: 5, title: "Sans Regrets J'ai Quitt\u00e9 Les Riantes Campagnes" },
+    { id: 't6', cd: 1, track: 6, title: "Christ Vient De Ressuciter!" },
+    { id: 't7', cd: 1, track: 7, title: "H\u00e9las! Doux Chant Du Ciel" },
+    { id: 't8', cd: 1, track: 8, title: "\u00d4 Pure \u00c9motion!" },
+    { id: 't9', cd: 1, track: 9, title: "\u00c0 Boire Encor!" },
+    { id: 't10', cd: 1, track: 10, title: "Certain Rat, Dans Une Cuisine" },
+    { id: 't11', cd: 1, track: 11, title: "Amen" },
+    { id: 't12', cd: 1, track: 12, title: "Vrai Dieu, Messieurs" },
+    { id: 't13', cd: 1, track: 13, title: "Une Puce Gentille" },
+    { id: 't14', cd: 1, track: 14, title: "Assez! Fuyons Ces Lieux" },
+    { id: 't15', cd: 1, track: 15, title: "Voici Des Rose" },
+    { id: 't16', cd: 1, track: 16, title: "Dors, Dors, Heureux Faust" },
+    { id: 't17', cd: 1, track: 17, title: "Ballet Des Sylphes" },
+    { id: 't18', cd: 1, track: 18, title: "Margarita!" },
+    { id: 't19', cd: 1, track: 19, title: "Villes Entour\u00e9es" },
+    { id: 't20', cd: 1, track: 20, title: "Jam Nox Stellata Velamina Pandit" },
+    { id: 't21', cd: 1, track: 21, title: "Villes Entour\u00e9es\u2026 Jam Nox Stellata\u2026" },
+    { id: 't22', cd: 2, track: 1, title: "Tambours Et Trompettes Sonnant La Retraite" },
+    { id: 't23', cd: 2, track: 2, title: "Merci, Doux Cr\u00e9puscule!" },
+    { id: 't24', cd: 2, track: 3, title: "Je L'entends!" },
+    { id: 't25', cd: 2, track: 4, title: "Que L'air Est \u00c9touffant!" },
+    { id: 't26', cd: 2, track: 5, title: "Autrefois Un Roi De Thul\u00e9" },
+    { id: 't27', cd: 2, track: 6, title: "Esprits Des Flammes Inconstantes" },
+    { id: 't28', cd: 2, track: 7, title: "Menuet Des Follets" },
+    { id: 't29', cd: 2, track: 8, title: "Mainteant, Chantons \u00c0 Cette Bell" },
+    { id: 't30', cd: 2, track: 9, title: "Devant La Maison" },
+    { id: 't31', cd: 2, track: 10, title: "Grand Dieu!" },
+    { id: 't32', cd: 2, track: 11, title: "Ange Ador\u00e9" },
+    { id: 't33', cd: 2, track: 12, title: "Allons, Il Est Trop Tard!" },
+    { id: 't34', cd: 2, track: 13, title: "Je Connais Donc Enfin" },
+    { id: 't35', cd: 2, track: 14, title: "D'amour L'ardente Flamme" },
+    { id: 't36', cd: 2, track: 15, title: "Au Son Des Trompettes" },
+    { id: 't37', cd: 2, track: 16, title: "Nature Immense" },
+    { id: 't38', cd: 2, track: 17, title: "\u00c0 La Vo\u00fbte Azur\u00e9e" },
+    { id: 't39', cd: 2, track: 18, title: "Dans Mon C\u0153ur Retentit Sa Voix D\u00e9sesp\u00e9r\u00e9e" },
+    { id: 't40', cd: 2, track: 19, title: "Ha! Irimirukarabrao!" },
+    { id: 't41', cd: 2, track: 20, title: "Tradioun Marexil Fir Trudinx\u00e9 Burrudix\u00e9!" },
+    { id: 't42', cd: 2, track: 21, title: "Alors L'enfer Se Tut" },
+    { id: 't43', cd: 2, track: 22, title: "Laus! Laus! Hosanna! Hosanna!" },
+    { id: 't44', cd: 2, track: 23, title: "Remonte Au Ciel, \u00c2me Na\u00efve" },
+    { id: 't45', cd: 2, track: 24, title: "Viens, Les Vierges Divines" },
+  ];
+
+  function updateActive(activeId) {
+    const t = trackMap.find(t => t.id === activeId) || trackMap[1];
+    document.getElementById('trackLabel').textContent = 'CD ' + t.cd + ' · T' + t.track;
+    document.getElementById('trackTitle').textContent = t.title;
+    document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
+    const idx = document.getElementById('idx-' + activeId);
+    if (idx) idx.classList.add('active');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+  }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+
+  trackMap.forEach(t => {
+    const el = document.getElementById(t.id);
+    if (el) observer.observe(el);
+  });
+
+  updateActive('t1');
+</script>
