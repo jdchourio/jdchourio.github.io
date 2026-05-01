@@ -1,0 +1,3120 @@
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Jost', var(--font-sans);
+    --bar-h: 48px;
+    --gold: #8B6914;
+    --gold-light: #f5ede0;
+    --gold-mid: #c49a2a;
+    --gold-border: #d4a84b;
+    --col-left: 52px;
+    --text-dim: var(--color-text-secondary);
+    --text-main: var(--color-text-primary);
+    --bg: var(--color-background-primary);
+    --bg2: var(--color-background-secondary);
+  }
+
+  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
+
+  .context-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-background-primary, #fdfaf6);
+    border-bottom: 1px solid var(--color-border-secondary);
+    height: var(--bar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem 0 calc(var(--col-left) + 1.25rem);
+    gap: 1rem;
+  }
+
+  @media (max-width: 580px) {
+    .context-bar {
+      height: auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: start;
+      padding: 0.5rem 1rem 0.5rem calc(var(--col-left) + 1rem);
+      gap: 0.35rem;
+    }
+
+    .context-left,
+    .context-right {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 0;
+      margin: 0;
+      gap: 0.75rem;
+    }
+
+    #actLabel,
+    .recording-pill {
+      font-size: 11px !important;
+      line-height: 1.2;
+    }
+
+    .recording-pill {
+      display: contents;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: none;
+    }
+  }
+
+  .context-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  .context-sep { opacity: 0.3; }
+
+  .context-track {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 3px;
+    padding: 2px 8px;
+    min-width: 76px;
+    text-align: center;
+  }
+
+  .context-track-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+
+  .context-right { display: flex; align-items: center; gap: 10px; }
+
+  .recording-pill {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 3px 8px;
+  }
+
+  .index-btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .index-btn:hover { background: var(--bg2); }
+
+  .index-icon { width: 13px; height: 10px; display: flex; flex-direction: column; justify-content: space-between; }
+  .index-icon span { display: block; height: 1.5px; background: currentColor; border-radius: 1px; }
+  .index-icon span:nth-child(2) { width: 65%; }
+
+  .libretto-body {
+    display: grid;
+    grid-template-columns: var(--col-left) 1fr;
+    padding-bottom: 4rem;
+  }
+
+  .act-heading {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
+    border-bottom: 1px solid var(--color-border-secondary);
+    margin-bottom: 0;
+  }
+
+  .track-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 1.6rem;
+    padding-right: 0;
+    position: relative;
+  }
+
+  .track-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 3px;
+    padding: 4px 6px;
+    gap: 1px;
+    cursor: default;
+    width: 40px;
+  }
+
+  .track-tag-cd {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-mid);
+  }
+
+  .track-tag-num {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .text-col { padding: 0 1.25rem; scroll-margin-top: calc(var(--bar-h) + 0.5rem); }
+
+  .musical-number {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 1.25rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .musical-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-secondary);
+  }
+
+  .scene-heading {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin: 0.75rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+
+  .stage-direction {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dim);
+    margin: 0.6rem 0;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--color-border-secondary);
+    line-height: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+  }
+
+  .stage-direction .es { font-style: italic; }
+
+  .character-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    margin: 0.9rem 0 0.15rem;
+  }
+
+  .character-name {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .line-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 2rem;
+    align-items: baseline;
+  }
+
+  .fr {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .es {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .spacer-row { grid-column: 1/-1; height: 2rem; }
+  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
+
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 200;
+  }
+
+  .drawer-overlay.open { display: block; }
+
+  .drawer {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-left: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .drawer-header-left { display: flex; flex-direction: column; gap: 1px; }
+
+  .drawer-header-opera {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  .drawer-header-sub {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .drawer-close {
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--text-dim);
+    line-height: 1;
+    padding: 4px 8px;
+    font-family: var(--sans);
+  }
+
+  .drawer-close:hover { background: var(--bg2); color: var(--text-main); }
+
+  .drawer-body { overflow-y: auto; flex: 1; }
+
+  .drawer-cd-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 1.25rem 1.25rem 0.5rem;
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-tertiary);
+    border-top: 1px solid var(--color-border-tertiary);
+  }
+
+  .drawer-track {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 1.25rem;
+    cursor: pointer;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .drawer-track:hover { background: var(--bg2); }
+  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
+
+  .drawer-track-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-dim);
+    width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .drawer-track.active .drawer-track-num { color: var(--gold); }
+
+  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
+
+  .drawer-track-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+    line-height: 1.3;
+  }
+
+  .drawer-track.active .drawer-track-title { color: var(--gold); }
+
+  .drawer-track-act {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+</style>
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left">
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte Prologo</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track" id="trackLabel">CD 1 · T2</span>
+      <span class="context-track-title" id="trackTitle">Urli, Rapine</span>
+    </div>
+    <div class="context-right">
+      <span class="recording-pill">Attila · Gardelli / Raimondi</span>
+      <button class="index-btn" onclick="openDrawer()">
+        <span class="index-icon"><span></span><span></span><span></span></span>
+        Index
+      </button>
+    </div>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Piazza di Aquileia. La notte, vicina al termine, è rischiarata da una grande quantità di torce. Tutto all'intorno è un miserando cumulo di rovine. Qua e là vedesi ancora tratto sollevarsi qualche fiamma, residuo di un orribile incendio di quattro giorni. La scena è ingombra di Unni, Eruli, Ostrogoti, ecc.)</span>
+        <span class="es">(Plaza de Aquilea. La noche está iluminada por una gran cantidad de antorchas. Todo es un miserable cúmulo de ruinas. Por aquí y por allá se ven elevarse algunas llamas, restos de un horrible incendio de cuatro días. La escena está poblada de hunos, érulos, ostrogodos, etc.)</span>
+      </div>
+    </div>
+
+    <div class="act-heading">Prologo · Prólogo</div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Urli, rapine,</span><span class="es">Gritos, rapiña,</span></div>
+      <div class="line-row"><span class="it">Gemiti, sangue, stupri, rovine,</span><span class="es">gemidos, sangre, estupro, ruinas,</span></div>
+      <div class="line-row"><span class="it">E stragi e fuoco</span><span class="es">y estragos y fuego</span></div>
+      <div class="line-row"><span class="it">D'Attila è gioco.</span><span class="es">son de Atila el juego.</span></div>
+      <div class="line-row"><span class="it">O lauta mensa,</span><span class="es">¡Oh, espléndida mesa,</span></div>
+      <div class="line-row"><span class="it">Che a noi sì ricco suol dispensa!</span><span class="es">que este rico suelo nos dispensa!</span></div>
+      <div class="line-row"><span class="it">Wodan non falla,</span><span class="es">¡Wotan no nos abandona,</span></div>
+      <div class="line-row"><span class="it">Ecco il Valhalla!...</span><span class="es">aquí está el Walhalla!...</span></div>
+      <div class="line-row"><span class="it">T'apri agli eroi...</span><span class="es">¡Ábrete a los héroes!...</span></div>
+      <div class="line-row"><span class="it">Terra beata, tu se' per noi.</span><span class="es">Tierra bendita, eres para nosotros.</span></div>
+      <div class="line-row"><span class="it">Attila viva;</span><span class="es">¡Viva Atila;</span></div>
+      <div class="line-row"><span class="it">Ei la scopriva!</span><span class="es">pues él la descubrió!</span></div>
+      <div class="line-row"><span class="it">Il re s'avanza,</span><span class="es">El rey se acerca,</span></div>
+      <div class="line-row"><span class="it">Wodan lo cinge di sua possanza.</span><span class="es">Wotan lo ciñe con su poderío.</span></div>
+      <div class="stage-direction">
+        <span>(Tutti si prostrano.)</span>
+        <span class="es">(Todos se postran.)</span>
+      </div>
+      <div class="line-row"><span class="it">Eccoci a terra,</span><span class="es">¡Aquí estamos sobre el suelo,</span></div>
+      <div class="line-row"><span class="it">Dio della guerra!</span><span class="es">dios de la guerra!</span></div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Attila viene condotto sopra un carro tirato dagli schiavi, duci, re, ecc.)</span>
+        <span class="es">(Atila viene conducido sobre un carro del que tiran esclavos, jefes, reyes...)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(scende dal carro)</span>
+        <span class="es">(descendiendo del carro)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Eroi, levatevi!</span><span class="es">¡Héroes, levantaos!</span></div>
+      <div class="line-row"><span class="it">Stia nella polvere</span><span class="es">Sólo está sobre el polvo</span></div>
+      <div class="line-row"><span class="it">Chi vinto muor.</span><span class="es">quien vencido murió.</span></div>
+      <div class="line-row"><span class="it">Qui!... circondatemi; l'inno diffondasi</span><span class="es">¡Venid aquí, rodeadme!...</span></div>
+      <div class="line-row"><span class="it">Del vincitor.</span><span class="es">La gloria del vencedor sea difundida.</span></div>
+      <div class="line-row"><span class="it">I figli d'Attila vengono e vincono</span><span class="es">Con un solo golpe los hijos de Atila</span></div>
+      <div class="line-row"><span class="it">A un colpo sol.</span><span class="es">vinieron y vencieron.</span></div>
+      <div class="line-row"><span class="it">Non è sì rapido solco di fulmine,</span><span class="es">No es tan rápido el surco del rayo</span></div>
+      <div class="line-row"><span class="it">D'aquila il vol.</span><span class="es">ni el vuelo del águila.</span></div>
+      <div class="stage-direction">
+        <span>(Va a sedersi sopra un trono di lance e scudi)</span>
+        <span class="es">(Se sienta sobre un trono de lanzas y escudos.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Viva il re delle mille foreste,</span><span class="es">¡Viva el rey de los mil bosques,</span></div>
+      <div class="line-row"><span class="it">Di Wodano ministro e profeta;</span><span class="es">de Wotan ministro y profeta!</span></div>
+      <div class="line-row"><span class="it">La sua spada è sanguigna cometa,</span><span class="es">Su espada es un sangrante cometa,</span></div>
+      <div class="line-row"><span class="it">La sua voce è di cielo tuonar.</span><span class="es">su voz el tronar del cielo.</span></div>
+      <div class="line-row"><span class="it">Nel fragore di cento tempeste</span><span class="es">En el fragor de cien batallas</span></div>
+      <div class="line-row"><span class="it">Vien lanciando dagl'occhi battaglia;</span><span class="es">contra los clavos de su armadura,</span></div>
+      <div class="line-row"><span class="it">Contro i chiovi dell'aspra sua maglia</span><span class="es">al igual que contra las piedras,</span></div>
+      <div class="line-row"><span class="it">Come in rupe si frangon gli acciar.</span><span class="es">se rompen los aceros.</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Udino, Odabella, e Vergini d'Aquileia)</span>
+        <span class="es">(Entran Uldino, Odabella y vírgenes de Aquilea)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(scendendo dal trono)</span>
+        <span class="es">(descendiendo del trono)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Di vergini straniere,</span><span class="es">Qué gran cantidad</span></div>
+      <div class="line-row"><span class="it">Oh, quale stuol vegg'io?</span><span class="es">de vírgenes extranjeras veo.</span></div>
+      <div class="line-row"><span class="it">Contro il diveto mio</span><span class="es">Contra mi orden:</span></div>
+      <div class="line-row"><span class="it">Che di salvarle osò?</span><span class="es">¿quién osó salvarlas?</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Al re degno tributo ei mi sembrò.</span><span class="es">Para el rey digno tributo son.</span></div>
+      <div class="line-row"><span class="it">Mirabili guerriere</span><span class="es">Como admirables guerreros</span></div>
+      <div class="line-row"><span class="it">Difesero i fratelli...</span><span class="es">ellas defendieron a sus hermanos...</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Che sento? A donne imbelli</span><span class="es">¿Cómo dices? ¿A las bellas mujeres</span></div>
+      <div class="line-row"><span class="it">Chi mai spirò valor?</span><span class="es">qué fue lo que le inspiró valor?</span></div>
+      <div class="stage-direction">
+        <span>(con energia)</span>
+        <span class="es">(con energía)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Santo di patria indefinito amor!</span><span class="es">¡El santo e infinito amor a la patria!</span></div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Allor che i forti corrono</span><span class="es">Mientras que los guerreros</span></div>
+      <div class="line-row"><span class="it">Come leoni al brando</span><span class="es">luchaban como leones,</span></div>
+      <div class="line-row"><span class="it">Stan le tue donne, o barbaro,</span><span class="es">permanecían tus mujeres ¡oh, bárbaro!</span></div>
+      <div class="line-row"><span class="it">Sui carri lacrimando.</span><span class="es">sobre los carros llorando.</span></div>
+      <div class="line-row"><span class="it">Ma noi, donne italiche,</span><span class="es">Pero nosotras, mujeres itálicas,</span></div>
+      <div class="line-row"><span class="it">Cinte di ferro il seno,</span><span class="es">ceñido el seno con la espada,</span></div>
+      <div class="line-row"><span class="it">Sul fumido terreno</span><span class="es">sobre el humeante terreno</span></div>
+      <div class="line-row"><span class="it">Sempre vedrai pugnar.</span><span class="es">siempre nos verás luchar.</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Bella è quell'ira, o vergine,</span><span class="es">Bella es esa ira,</span></div>
+      <div class="line-row"><span class="it">Nel scintillante sguardo;</span><span class="es">virgen de mirada centelleante.</span></div>
+      <div class="line-row"><span class="it">Attila i prodi venera,</span><span class="es">Atila a los luchadores venera,</span></div>
+      <div class="line-row"><span class="it">Abomina il codardo...</span><span class="es">abomina al cobarde...</span></div>
+      <div class="line-row"><span class="it">O valorosa, chiedimi</span><span class="es">¡Oh valerosa,</span></div>
+      <div class="line-row"><span class="it">Grazia che più ti aggrada.</span><span class="es">pídeme la gracia que más te agrade!</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Fammi ridar la spada!</span><span class="es">¡Hazme devolver mi espada!</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">La mia ti cingi!...</span><span class="es">¡La mía te ceñirás!...</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Oh acciar!</span><span class="es">¡Su espada!</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Da te questo or m'è concesso,</span><span class="es">¡Gracias a la justicia divina,</span></div>
+      <div class="line-row"><span class="it">O giustizia alta, divina!</span><span class="es">este premio me es concedido!</span></div>
+      <div class="line-row"><span class="it">L'odio armasti dell'oppresso</span><span class="es">Armaste el odio del oprimido</span></div>
+      <div class="line-row"><span class="it">Coll'acciar dell'oppressor.</span><span class="es">con el acero del opresor...</span></div>
+      <div class="line-row"><span class="it">Empia lama, l'indovina</span><span class="es">Impía hoja: ¿adivinas para</span></div>
+      <div class="line-row"><span class="it">Per qual petto è tua punta?</span><span class="es">quién está destinada tu punta?</span></div>
+      <div class="line-row"><span class="it">Di vendetta l'ora è giunta...</span><span class="es">La hora de la venganza está próxima.</span></div>
+      <div class="line-row"><span class="it">Fu segnata dal Signor.</span><span class="es">La señalará el Señor.</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Qual nell'alma, che struggere anela,</span><span class="es">¿Qué es este nuevo sentimiento</span></div>
+      <div class="line-row"><span class="it">Nuovo senso discende improvviso?...</span><span class="es">que a mi alma hace consumirse?</span></div>
+      <div class="line-row"><span class="it">Quell'ardire, quel nobile viso</span><span class="es">¡Ese ardor, ese noble rostro</span></div>
+      <div class="line-row"><span class="it">Dolcemente mi fiedono il cor!</span><span class="es">dulcemente me hirió el corazón!</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Viva il re che alle terra rivela</span><span class="es">¡Viva el rey que a todos muestra</span></div>
+      <div class="line-row"><span class="it">Di quai raggi Wodano il circonda!</span><span class="es">cómo los rayos de Wotan lo protegen!</span></div>
+      <div class="line-row"><span class="it">Se flagella è torrente che inonda;</span><span class="es">Si castiga, es un torrente que arrasa;</span></div>
+      <div class="line-row"><span class="it">È rugiada se premia il valor.</span><span class="es">si premia, es como el fértil rocío.</span></div>
+      <div class="stage-direction">
+        <span>(Odabella e donne partono)</span>
+        <span class="es">(Odabella y las mujeres salen.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Uldino, a me dinanzi</span><span class="es">¡Uldino, que se traiga ante mí</span></div>
+      <div class="line-row"><span class="it">L'inviato di Roma ora si guidi . . .</span><span class="es">al enviado de Roma!</span></div>
+      <div class="stage-direction">
+        <span>(Uldino parte)</span>
+        <span class="es">(Uldino sale.)</span>
+      </div>
+      <div class="line-row"><span class="it">Frenatevi, miei fidi,</span><span class="es">Calmaos, amigos míos,</span></div>
+      <div class="line-row"><span class="it">Udir si dee,</span><span class="es">debemos ahora escuchar,</span></div>
+      <div class="line-row"><span class="it">ma in Campidoglio poi</span><span class="es">pero más tarde, en Campidoglio,</span></div>
+      <div class="line-row"><span class="it">Riposta avrà da noi.</span><span class="es">tendrá nuestra respuesta.</span></div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Ezio ed ufficiali romani)</span>
+        <span class="es">(Entran Aecio y oficiales romanos)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Attila!</span><span class="es">¡Atila!</span></div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, il nobil messo!</span><span class="es">¡Oh, el noble mensajero!</span></div>
+      <div class="line-row"><span class="it">Ezio! Tu qui? Fia vero!</span><span class="es">¡Aecio! ¿Tú aquí? ¡Es verdad!</span></div>
+      <div class="line-row"><span class="it">Ravvisi ognuno in esso</span><span class="es">Que vean todos en ti</span></div>
+      <div class="line-row"><span class="it">L'altissimo guerriero</span><span class="es">al grandísimo guerrero</span></div>
+      <div class="line-row"><span class="it">Degno nemico d'Attila,</span><span class="es">digno enemigo de Atila,</span></div>
+      <div class="line-row"><span class="it">Scudo di Roma e vanto...</span><span class="es">escudo y gloria de Roma...</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Attila, a te soltanto</span><span class="es">Atila, a ti a solas,</span></div>
+      <div class="line-row"><span class="it">Ora chied'io parlar.</span><span class="es">quiero hablar ahora.</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Ite!</span><span class="es">¡Salid!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Il coro parte)</span>
+        <span class="es">(salen todos)</span>
+      </div>
+      <div class="line-row"><span class="it">La destra porgimi...</span><span class="es">Dame la mano...</span></div>
+      <div class="line-row"><span class="it">Non già di pace spero</span><span class="es">Pues espero de paz</span></div>
+      <div class="line-row"><span class="it">Tuoi detti...</span><span class="es">tus palabras...</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">L'orbe intero</span><span class="es">El mundo entero Aecio</span></div>
+      <div class="line-row"><span class="it">Ezio in tua man vuol dar.</span><span class="es">quiere poner en tus manos.</span></div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Tardo per gli anni, e tremulo,</span><span class="es">Lento por los años, e indeciso,</span></div>
+      <div class="line-row"><span class="it">È il regnator d'Oriente;</span><span class="es">es el emperador de Oriente;</span></div>
+      <div class="line-row"><span class="it">Siede un imbelle giovine</span><span class="es">y se sienta un jovencito</span></div>
+      <div class="line-row"><span class="it">Sul trono d'Occidente;</span><span class="es">en el trono de Occidente.</span></div>
+      <div class="line-row"><span class="it">Tutto sarà disperso</span><span class="es">Todo será dispersado</span></div>
+      <div class="line-row"><span class="it">Quand'io mi unisca a te...</span><span class="es">cuando yo me una a ti...</span></div>
+      <div class="line-row"><span class="it">Avrai tu l'universo,</span><span class="es">Tú tendrás el universo,</span></div>
+      <div class="line-row"><span class="it">Resti l'Italia a me.</span><span class="es">deja Italia para mí.</span></div>
+      <div class="stage-direction">
+        <span>(severo)</span>
+        <span class="es">(severo)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Dove l'eroe più valido</span><span class="es">Donde el héroe más valioso</span></div>
+      <div class="line-row"><span class="it">È traditor, spergiuro,</span><span class="es">es traidor y perjuro,</span></div>
+      <div class="line-row"><span class="it">Ivi perduto è il popolo,</span><span class="es">allí está perdido el pueblo,</span></div>
+      <div class="line-row"><span class="it">E l'aer stesso impuro;</span><span class="es">y el mismo aire es impuro;</span></div>
+      <div class="line-row"><span class="it">Ivi impotente è Dio,</span><span class="es">allí impotente es Dios,</span></div>
+      <div class="line-row"><span class="it">Ivi è codardo il re...</span><span class="es">allí es cobarde el rey...</span></div>
+      <div class="line-row"><span class="it">Là col flagello mio</span><span class="es">¡Allí con mi látigo</span></div>
+      <div class="line-row"><span class="it">Rechi Wodan la fè!</span><span class="es">reinará la fe de Wotan!</span></div>
+      <div class="stage-direction">
+        <span>(rimettendosi)</span>
+        <span class="es">(reprimiéndose)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Ma se fraterno vincolo</span><span class="es">Pues si un vínculo fraterno</span></div>
+      <div class="line-row"><span class="it">Stringer non vuoi tu meco,</span><span class="es">no quieres hacer conmigo,</span></div>
+      <div class="line-row"><span class="it">Ezio ritorna ad essere</span><span class="es">Aecio vuelve a ser</span></div>
+      <div class="line-row"><span class="it">Di Roma ambasciator.</span><span class="es">embajador de Roma...</span></div>
+      <div class="line-row"><span class="it">Dell'imperante Cesare</span><span class="es">Del reinante César</span></div>
+      <div class="line-row"><span class="it">Ora il voler ti reco...</span><span class="es">ahora la voluntad te comunico...</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">È van!</span><span class="es">¡Es inútil!</span></div>
+      <div class="line-row"><span class="it">Chi frena or l'impeto</span><span class="es">¿Quién puede frenar ahora</span></div>
+      <div class="line-row"><span class="it">Del nembo struggitor?</span><span class="es">el ímpetu de la nube destructora?</span></div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Vanitosi! Che abbietti e dormenti</span><span class="es">¡Vanidosos y abyectos!</span></div>
+      <div class="line-row"><span class="it">Pur del mondo tenete la possa,</span><span class="es">Sobre montes de polvo y huesos</span></div>
+      <div class="line-row"><span class="it">Sovra monti di polvere e d'ossa</span><span class="es">mi valor cabalgará.</span></div>
+      <div class="line-row"><span class="it">Il mio baldo corsier volerà.</span><span class="es">¡Arrojaré al viento</span></div>
+      <div class="line-row"><span class="it">Spanderò la rea cenere ai venti</span><span class="es">las cenizas de vuestras</span></div>
+      <div class="line-row"><span class="it">Delle vostre superbe città.</span><span class="es">orgullosas ciudades!</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Fin che d'Ezio rimane la spada,</span><span class="es">Mientras que Aecio tenga la espada,</span></div>
+      <div class="line-row"><span class="it">Starà saldo il gran nome romano:</span><span class="es">estará seguro el gran nombre romano.</span></div>
+      <div class="line-row"><span class="it">Di Châlons lo provasti sul piano</span><span class="es">En la llanura de Châlons lo probaste</span></div>
+      <div class="line-row"><span class="it">Quando a fuga t'aperse il sentier.</span><span class="es">cuando la prudencia te obligó a huir.</span></div>
+      <div class="line-row"><span class="it">Tu conduci l'eguale masnada,</span><span class="es">Tú conduces las mismas hordas,</span></div>
+      <div class="line-row"><span class="it">Io comando gli stessi guerrier.</span><span class="es">y yo los mismos guerreros.</span></div>
+      <div class="stage-direction">
+        <span>(Partono entrambi da opposte parti)</span>
+        <span class="es">(Salen cada uno por un lado)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Rio-Alto nelle Lagune Adriatiche. Qua e là sopra palafitte sorgono alcune capanne, comunicanti fra loro per le lunghe asse sorrette da barche. Sul davanti sorge in simile guisa un altare di sassi dedicato a San Giacomo. Più in là scorgessi una capanna appesa ad un casotto do legno, che fu poi il campanile di San Giacomo. Le tenebre vanno diradandosi fra le nubi tempestose: quindi a poco a poco una rosea luce, sino a che (sul finir della scena) subito raggio del sole inondando per tutto, riabbella il firmamento del più sereno e limpido azzurro. Il tocco lento della campana saluta il mattino. Alcuni Eremiti escono dalle capanne e s'avviano all'altare)</span>
+        <span class="es">(Río-Alto en las Lagunas Adriáticas. Aquí y allá sobre palafitos surgen algunas chozas, comunicadas entre ellas por largas tablas sostenidas por barcas. En primer término hay una especie de altar de piedra dedicado a San Giacomo. Más allá se ve una cabaña pegada a una casita de madera, que fue en tiempos el campanario de San Giacomo. Las tinieblas van aclarándose, poco a poco, una luz rosácea se extiende, hasta que - al finalizar la escena - un súbito rayo de sol inunda todo. El son de las campanas saluda a la mañana. Algunos ermitaños salen de las cabañas y se acercan al altar)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="character-row">
+        <span class="character-name">Eremiti</span>
+        <span class="character-name">Eremiti</span>
+      </div>
+      <div class="line-row"><span class="it">Qual notte!</span><span class="es">¡Qué noche!</span></div>
+      <div class="line-row"><span class="it">Ancor fremono l'onde al fiero</span><span class="es">Todavía tiemblan las aguas</span></div>
+      <div class="line-row"><span class="it">Turbo, che Dio d'un soffio suscitò.</span><span class="es">por la tremenda tormenta que Dios,</span></div>
+      <div class="line-row"><span class="it">Lode al Signor! Lode al Signor! L'altero</span><span class="es">con su aliento, nos envió.</span></div>
+      <div class="line-row"><span class="it">Elemento Ei sconvolse ed acquietò.</span><span class="es">¡Loado sea el Señor</span></div>
+      <div class="line-row"><span class="it">Sia torbida o tranquilla la natura,</span><span class="es">que aquietó a las aguas!</span></div>
+      <div class="line-row"><span class="it">D'eterna pace Ei nutre i nostri cor.</span><span class="es">Esté agitada o tranquila la naturaleza,</span></div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="character-row">
+        <span class="character-name">Eremiti</span>
+        <span class="character-name">Eremiti</span>
+      </div>
+      <div class="line-row"><span class="it">L'alito del mattin già l'aure appura.</span><span class="es">Él da la paz a nuestros corazones.</span></div>
+      <div class="line-row"><span class="it">Preghiam! Preghiam!</span><span class="es">La luz matinal ya anuncia la aurora.</span></div>
+      <div class="line-row"><span class="it">Lode al Creator!</span><span class="es">¡Recemos! ¡Loado sea el Creador!</span></div>
+      <div class="character-row">
+        <span class="character-name">Voci Interne</span>
+        <span class="character-name">Voci Interne</span>
+      </div>
+      <div class="line-row"><span class="it">Lode al Creatore!</span><span class="es">¡Loado sea el Creador!</span></div>
+      <div class="scene-heading">
+        <span>Scena Settima</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Dalle navicelle, che approdano a poco a poco, escono Foresto, donne, uomini e fanciulli d'Aquieliea)</span>
+        <span class="es">(De las barcas, que llegan poco a poco, salen Foresto, mujeres, hombres y muchachos de Aquilea)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="character-row">
+        <span class="character-name">Eremiti</span>
+        <span class="character-name">Eremiti</span>
+      </div>
+      <div class="line-row"><span class="it">Quai voci! Oh, tutto</span><span class="es">¡Qué voces! ¡Oh, todo el río</span></div>
+      <div class="line-row"><span class="it">Di navicelle coperto è il flutto!...</span><span class="es">está cubierto de barcas!...</span></div>
+      <div class="line-row"><span class="it">Son d'Aquileia. Certo al furor</span><span class="es">Son de Aquilea. Seguramente del furor</span></div>
+      <div class="line-row"><span class="it">Scampan dell'Unno.</span><span class="es">del huno escapan.</span></div>
+      <div class="character-row">
+        <span class="character-name">Popolo D'Aquileia</span>
+        <span class="character-name">Popolo D'Aquileia</span>
+      </div>
+      <div class="line-row"><span class="it">Lode al Creator!</span><span class="es">¡Loado sea el Creador!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Qui, qui sostiamo! Propizio augurio</span><span class="es">¡Aquí, aquí desembarcaremos!</span></div>
+      <div class="line-row"><span class="it">N'è questa croce, n'è quest'altar.</span><span class="es">Augurio feliz es esta cruz, ese altar.</span></div>
+      <div class="line-row"><span class="it">Ognun d'intorno levi un tugurio</span><span class="es">Levantemos un refugio</span></div>
+      <div class="line-row"><span class="it">Fra quest'incanto di cielo e mar.</span><span class="es">bajo este encantador cielo y mar.</span></div>
+      <div class="character-row">
+        <span class="character-name">Popolo D'Aquileia</span>
+        <span class="character-name">Popolo D'Aquileia</span>
+      </div>
+      <div class="line-row"><span class="it">Lode a Foresto! Tu duce nostro,</span><span class="es">¡Loado sea Foresto! ¡Tú, jefe nuestro,</span></div>
+      <div class="line-row"><span class="it">Scudo e salvezza n'eri tu sol...</span><span class="es">eres nuestro escudo y salvación!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Ma Odabella!...</span><span class="es">¡Oh, Odabella!...</span></div>
+      <div class="line-row"><span class="it">Preda è del mostro,</span><span class="es">Presa está del monstruo,</span></div>
+      <div class="line-row"><span class="it">Serbata al pianto,</span><span class="es">entregada al llanto,</span></div>
+      <div class="line-row"><span class="it">Serbata al duol.</span><span class="es">entregada al dolor.</span></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ella in poter del barbaro!</span><span class="es">¡Ella en poder del bárbaro!</span></div>
+      <div class="line-row"><span class="it">Fra le sue schiave avvinta!</span><span class="es">¡Cautiva entre sus esclavas!</span></div>
+      <div class="line-row"><span class="it">Ahi, che men crudo all'anima</span><span class="es">¡Ay, que menos cruel para mi alma</span></div>
+      <div class="line-row"><span class="it">Fora il saperti estinta!</span><span class="es">sería saberte muerta!</span></div>
+      <div class="line-row"><span class="it">Io ti vedrei fra gli angeli</span><span class="es">Estarías, al menos,</span></div>
+      <div class="line-row"><span class="it">Almen ne' sogni allora,</span><span class="es">entre los ángeles</span></div>
+      <div class="line-row"><span class="it">E invocherei l'aurora</span><span class="es">y te invocaría</span></div>
+      <div class="line-row"><span class="it">Dell'immortal mio dì.</span><span class="es">en mis sueños...</span></div>
+      <div class="character-row">
+        <span class="character-name">Popolo D'Aquileia</span>
+        <span class="character-name">Popolo D'Aquileia</span>
+      </div>
+      <div class="line-row"><span class="it">Spera! L'ardita vergine</span><span class="es">¡Espera! La valerosa virgen</span></div>
+      <div class="line-row"><span class="it">Forse al crudel sfuggì.</span><span class="es">tal vez del cruel pudo escapar.</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Cessato alfine il turbine,</span><span class="es">Terminada al fin la tormenta,</span></div>
+      <div class="line-row"><span class="it">Più il sole brillerà.</span><span class="es">el sol brilla aún más potente.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì, ma il sospir dell'esule</span><span class="es">La patria siempre tendrá</span></div>
+      <div class="line-row"><span class="it">Sempre la patria avrà.</span><span class="es">el suspiro de los exiliados.</span></div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Cara patria, già madre e reina</span><span class="es">Querida patria, madre y reina</span></div>
+      <div class="line-row"><span class="it">Di possenti magnanimi figli,</span><span class="es">de tus magnánimos y poderosos hijos,</span></div>
+      <div class="line-row"><span class="it">Or macerie, deserto, ruina,</span><span class="es">ahora eres escombro, desierto, ruina,</span></div>
+      <div class="line-row"><span class="it">Su cui regna silenzio e squallor;</span><span class="es">sobre los que reina silencio y terror;</span></div>
+      <div class="line-row"><span class="it">Ma dall'alghe di questi marosi,</span><span class="es">pero de las algas de estos mares</span></div>
+      <div class="line-row"><span class="it">Qual risorta fenice novella,</span><span class="es">como resurgida nueva Fénix,</span></div>
+      <div class="line-row"><span class="it">Rivivrai più superba, più bella</span><span class="es">revivirás más soberbia y más bella...</span></div>
+      <div class="line-row"><span class="it">Della terra, dell'onde stupor!</span><span class="es">¡de la tierra y mar serás la maravilla!</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Dall'alghe di questi marosi,</span><span class="es">De las algas de estos mares,</span></div>
+      <div class="line-row"><span class="it">Qual risorta fenice novella,</span><span class="es">como resurgida ave Fénix,</span></div>
+      <div class="line-row"><span class="it">Rivivrai più superba, più bella</span><span class="es">revivirás más soberbia y más bella,</span></div>
+      <div class="line-row"><span class="it">Della terra, dell'onde stupor!</span><span class="es">¡de la tierra y mar serás la maravilla!</span></div>
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Bosco presso il campo d'Attila. È notte; nel vicino ruscello brillano i raggi della luna. Odabella sola)</span>
+        <span class="es">(Bosque cercano al campamento de Atila. Es de noche; en un arroyo brilla la luna. Odabella sola)</span>
+      </div>
+    </div>
+
+    <div class="act-heading">Atto Primo · Acto Primero</div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Liberamente or piangi...</span><span class="es">Libremente ahora lloro...</span></div>
+      <div class="line-row"><span class="it">Sfrenati, o cor. La queta ora, in che posa</span><span class="es">¡Libérate, oh corazón!</span></div>
+      <div class="line-row"><span class="it">Han pur le tigri, io sola</span><span class="es">En la tranquila hora en que reposan</span></div>
+      <div class="line-row"><span class="it">Scorro di loco in loco.</span><span class="es">todos los tigres, corro angustiada.</span></div>
+      <div class="line-row"><span class="it">Eppur sempre quest'ora attendo, invoco.</span><span class="es">Siempre este momento ansío e invoco.</span></div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Nel fuggente nuvolo</span><span class="es">¡Oh! En esas brillantes nubes...</span></div>
+      <div class="line-row"><span class="it">Non sei tu, padre, impresso?...</span><span class="es">¿no estás tú, padre mío, esculpido?...</span></div>
+      <div class="line-row"><span class="it">Cielo! Ha mutato immagine!</span><span class="es">¡Cielos! ¡ha cambiado la imagen!</span></div>
+      <div class="line-row"><span class="it">Il mio Foresto è desso.</span><span class="es">¡Ahora es mi Foresto!</span></div>
+      <div class="line-row"><span class="it">Sospendi, o rivo, il murmure,</span><span class="es">Suspende, arroyo, el murmullo,</span></div>
+      <div class="line-row"><span class="it">Aura, non più fremir,</span><span class="es">aire, no hagas ruido,</span></div>
+      <div class="line-row"><span class="it">Ch'io degli amati spiriti</span><span class="es">para que yo pueda escuchar</span></div>
+      <div class="line-row"><span class="it">Possa la voce udir.</span><span class="es">la voz de los espíritus amados.</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Qual suon di passi!</span><span class="es">Mas... ¡Oigo pasos!</span></div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Viene Foresto, in costume barbaro)</span>
+        <span class="es">(Aparece Foresto vestido de huno.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Donna!</span><span class="es">¡Esposa!</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Gran Dio!</span><span class="es">¡Gran Dios!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ti colgo alfine!</span><span class="es">¡Al fin te encuentro!</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Sì... la sua voce!</span><span class="es">¡Sí... es su voz!</span></div>
+      <div class="line-row"><span class="it">Tu... tu! Foresto? Tu, l'amor mio?</span><span class="es">¡Tú... tú! ¿Foresto? ¿Tú, amor mío?</span></div>
+      <div class="line-row"><span class="it">Foresto, io manco! M'affoga il cor!</span><span class="es">¡Foresto, me desmayo, me ahogo!</span></div>
+      <div class="line-row"><span class="it">Tu mi respingi? Tu! Sì feroce?</span><span class="es">Pero... ¿Me rechazas? ¿Tú?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Né a me dinanzi provi terror?</span><span class="es">¿No sientes vergüenza ante mí?</span></div>
+      <div class="stage-direction">
+        <span>(riscuotendosi)</span>
+        <span class="es">(sorprendida)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Ciel! Che dicesti?</span><span class="es">¡Cielos! ¿Qué dices?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">T'infingi invano:</span><span class="es">En vano finges:</span></div>
+      <div class="line-row"><span class="it">Tutto conosco, tutto spiai!</span><span class="es">¡Lo sé todo, todo lo he visto!</span></div>
+      <div class="line-row"><span class="it">Per te d'amore, furente, insano,</span><span class="es">Loco por ti, furioso, sin razón,</span></div>
+      <div class="line-row"><span class="it">Sprezzai perigli, giunto son qui.</span><span class="es">despreciando peligros, junto a ti estoy.</span></div>
+      <div class="line-row"><span class="it">Qual io ti trovi, barbara, il sai...</span><span class="es">Cómo te he encontrado, ya sabes...</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Tu!... tu, Foresto, parli così?</span><span class="es">¡Tú, tú, Foresto, me hablas así?</span></div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì, quell'io son, ravvisami,</span><span class="es">Sí mírame, soy el mismo</span></div>
+      <div class="line-row"><span class="it">Che tu tradisti, infida;</span><span class="es">al que traicionaste, infiel;</span></div>
+      <div class="line-row"><span class="it">Qui fra le tazze e i cantici</span><span class="es">que entre orgías y cantos</span></div>
+      <div class="line-row"><span class="it">Sorridi all'omicida...</span><span class="es">sonríes al homicida...</span></div>
+      <div class="line-row"><span class="it">E la tua patria in cenere</span><span class="es">¿No recuerdas</span></div>
+      <div class="line-row"><span class="it">Pur non ti cade in mente</span><span class="es">a tu patria en cenizas,</span></div>
+      <div class="line-row"><span class="it">Del padre tuo morente</span><span class="es">ni la angustia y desesperación</span></div>
+      <div class="line-row"><span class="it">L'angoscia, lo squallor...</span><span class="es">de tu padre moribundo?...</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Col tuo pugnal feriscimi...</span><span class="es">Con tu puñal hiéreme...</span></div>
+      <div class="line-row"><span class="it">Non col tuo dir, Foresto;</span><span class="es">pero no con tus palabras, Foresto.</span></div>
+      <div class="line-row"><span class="it">Non maledir la misera...</span><span class="es">No hables así a la desgraciada...</span></div>
+      <div class="line-row"><span class="it">Crudele inganno è questo!</span><span class="es">¡Cruel engaño es éste!</span></div>
+      <div class="line-row"><span class="it">Padre, puoi tu ben leggere</span><span class="es">Padre, tú que puedes leer en mi alma</span></div>
+      <div class="line-row"><span class="it">Dentro il mio sen dal cielo...</span><span class="es">desde el cielo...</span></div>
+      <div class="line-row"><span class="it">Oh! Digli tu, se anelo</span><span class="es">¡Oh! dile tú, si mi corazón</span></div>
+      <div class="line-row"><span class="it">D'alta vendetta in cor.</span><span class="es">no anhela venganza.</span></div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Va! Racconta al sacrilego infame,</span><span class="es">¡Vete! Cuéntaselo al infame sacrílego,</span></div>
+      <div class="line-row"><span class="it">Ch'io sol resto a sbramar la sua fame.</span><span class="es">yo me quedaré para matar su apetito.</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Deh! Pel cielo, pei nostri parenti,</span><span class="es">¡Por el cielo, por los seres queridos,</span></div>
+      <div class="line-row"><span class="it">Deh! M'ascolta o m'uccidi, crudele!</span><span class="es">o me escuchas o me matas, cruel!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Che vuoi dirmi?</span><span class="es">¿Qué quieres decirme?</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Foresto, rammenti</span><span class="es">Foresto, ¿recuerdas a Judith</span></div>
+      <div class="line-row"><span class="it">Di Giuditta che salva Israele?</span><span class="es">la que salvó a Israel?</span></div>
+      <div class="line-row"><span class="it">Da quel dì che ti pianse caduto</span><span class="es">Desde aquel día en que te creí caído</span></div>
+      <div class="line-row"><span class="it">Con suo padre sul campo di gloria,</span><span class="es">junto a mi padre en la batalla,</span></div>
+      <div class="line-row"><span class="it">Rinnovar di Giuditta l'istoria</span><span class="es">renovar la historia de Judith</span></div>
+      <div class="line-row"><span class="it">Odabella giurava al Signor.</span><span class="es">Odabella juró al Señor.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Dio! Che intendo!</span><span class="es">¡Dios! ¡Qué escucho!</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">La spada del mostro,</span><span class="es">¡Mira, ésta es la espada del monstruo!</span></div>
+      <div class="line-row"><span class="it">Vedi, è questa! Il Signor l'ha voluto!</span><span class="es">¡El Señor así lo ha querido!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Odabella, a' tuoi piedi mi prostro...</span><span class="es">Odabella, a tus pies me postro...</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Al mio sen!</span><span class="es">¡A mis brazos!</span></div>
+      <div class="line-row"><span class="it">S'addoppia il valor!</span><span class="es">¡Mi valor se acrecienta!</span></div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="character-row">
+        <span class="character-name">Foresto, Odabella</span>
+        <span class="character-name">Foresto, Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, t'inebria nell'amplesso,</span><span class="es">¡Oh, el abrazo me llena</span></div>
+      <div class="line-row"><span class="it">Gioia immensa, indefinita!</span><span class="es">de alegría inmensa, infinita!</span></div>
+      <div class="line-row"><span class="it">Nell'istante a noi concesso</span><span class="es">¡En este gozoso instante</span></div>
+      <div class="line-row"><span class="it">Si disperde il corso duol!</span><span class="es">se pierde el curso del dolor!</span></div>
+      <div class="line-row"><span class="it">Ah! Qui si effonde in una sola</span><span class="es">¡Ah! Aquí se funden en una sola</span></div>
+      <div class="line-row"><span class="it">Di due miseri la vita...</span><span class="es">la vida de dos míseros...</span></div>
+      <div class="line-row"><span class="it">Noi ravviva, noi consola</span><span class="es">Nos revive, nos consuela,</span></div>
+      <div class="line-row"><span class="it">Una speme, un voto sol.</span><span class="es">una esperanza, un único voto.</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Tenda d'Attila. Sopra il suolo, coperto da una pelle di tigre, è disteso Uldino che dorme. In fondo, alla sinistra, per mezo di una cortina sollevata a mezzo, la quale forma come una stanza appartata, scorgessi Attila in preda al sonno sopra il letto orientale assai basso, e coperto egualmente da pelli di tigre)</span>
+        <span class="es">(Tienda de Atila. Sobre el suelo, cubierto por una piel de tigre duerme Uldino. Al fondo, a través de una cortina medio elevada, podemos ver a Atila presa del sueño sobre un lecho oriental bastante bajo, y cubierto igualmente por una piel de tigre)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(balzando esterrefatto)</span>
+        <span class="es">(se despierta aterrorizado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Uldino! Uldin!</span><span class="es">¡Uldino! ¡Uldino!</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Mio re!</span><span class="es">¡Rey mío!</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Non hai veduto?</span><span class="es">¿No lo has visto?</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Che mai?</span><span class="es">¿El qué?</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Tu non udisti?</span><span class="es">¿No lo has escuchado?</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Io? Nulla.</span><span class="es">¿Yo?... Nada.</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Eppur feroce</span><span class="es">Era un ser feroz.</span></div>
+      <div class="line-row"><span class="it">Qui s'aggirava.</span><span class="es">Hasta aquí llegó, me habló...</span></div>
+      <div class="line-row"><span class="it">Ei mi parlò... sua voce</span><span class="es">¡su voz parecía</span></div>
+      <div class="line-row"><span class="it">Parea vento in caverna!</span><span class="es">el viento en una caverna!</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Oh re, d'intorno</span><span class="es">¡Oh, rey, todo está silencioso!...</span></div>
+      <div class="line-row"><span class="it">Tutto è silenzio... della vigil scolta</span><span class="es">Sólo se escuchan los pasos</span></div>
+      <div class="line-row"><span class="it">Batte soltanto il pie'.</span><span class="es">de la guardia vigilante.</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Mio fido, ascolta!</span><span class="es">¡Fiel mío, escucha!</span></div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Mentre gonfiarsi l'anima</span><span class="es">Mientras mi alma se extasiaba</span></div>
+      <div class="line-row"><span class="it">Parea dinanzi a Roma,</span><span class="es">ante la contemplación de Roma...</span></div>
+      <div class="line-row"><span class="it">Imman m'apparve un veglio</span><span class="es">se me apareció un viejo inmenso</span></div>
+      <div class="line-row"><span class="it">Che m'afferro la chioma...</span><span class="es">que me cogió por los cabellos...</span></div>
+      <div class="line-row"><span class="it">Il senso ebb'io travolto,</span><span class="es">Mis sentidos se nublaron,</span></div>
+      <div class="line-row"><span class="it">La man gelò sul brando;</span><span class="es">mi mano quedó petrificada</span></div>
+      <div class="line-row"><span class="it">Ei mi sorrise in volto,</span><span class="es">sobre la empuñadura de mi espada...</span></div>
+      <div class="line-row"><span class="it">E tal mi fe' commando:</span><span class="es">Él me sonrió y me dijo:</span></div>
+      <div class="line-row"><span class="it">"Di flagellar l'incarco</span><span class="es">"Sólo puedes hacer sufrir</span></div>
+      <div class="line-row"><span class="it">Contro i mortali hai sol.</span><span class="es">a los mortales. Así pues ¡detente!</span></div>
+      <div class="line-row"><span class="it">T'arretra! Or chiuso è il varco;</span><span class="es">¡Aquí te está cerrado el paso,</span></div>
+      <div class="line-row"><span class="it">Questo de' numi è il suol!"</span><span class="es">pues este es suelo de dioses!"</span></div>
+      <div class="line-row"><span class="it">In me tai detti suonano</span><span class="es">Aún resuenan en mí tales palabras</span></div>
+      <div class="line-row"><span class="it">Cupi, fatali ancor,</span><span class="es">sombrías, fatales,</span></div>
+      <div class="line-row"><span class="it">E l'alma in petto ad Attila</span><span class="es">y el alma en el pecho de Atila</span></div>
+      <div class="line-row"><span class="it">S'agghiaccia pel terror.</span><span class="es">se hiela de terror.</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Raccapriccio! E che far pensi?</span><span class="es">¡Qué horror! ¿Y qué piensas hacer?</span></div>
+      <div class="stage-direction">
+        <span>(riaccendendosi)</span>
+        <span class="es">(rehaciéndose)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Or son liberi i miei sensi!</span><span class="es">¡Ahora ya están libres mis sentidos!</span></div>
+      <div class="line-row"><span class="it">Ho rossor del mio spavento.</span><span class="es">Siento vergüenza de mi miedo.</span></div>
+      <div class="line-row"><span class="it">Chiama i druidi, i duci, i re.</span><span class="es">Llama a los druidas... a los jefes.</span></div>
+      <div class="line-row"><span class="it">Già più rapido del vento,</span><span class="es">¡Más rápido que el viento,</span></div>
+      <div class="line-row"><span class="it">Roma iniqua, volo a te.</span><span class="es">maldita Roma, volaré hacia ti!</span></div>
+      <div class="stage-direction">
+        <span>(Uldino esce)</span>
+        <span class="es">(Uldino sale.)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="stage-direction">
+        <span>Oltre a quel limite
+T'attendo, o spettro!
+Vietarlo ad Attila
+Chi mai potrà?
+Vedrai se pavido
+Io là m'arretro,
+Se alfin me vindice
+Il mondo avrà.</span>
+        <span class="es">¡En aquellos lugares 
+te estaré esperando, espectro!
+¿Quién podrá nunca 
+prohibírselo a Atila?
+¡Verás si allí 
+puedes aterrorizarme,
+si al fin el mundo 
+tendrá un vengador!</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano in scene Uldino, druidi, duci e re)</span>
+        <span class="es">(Entran en escena Uldino, druidas, jefes y reyes.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Parla, imponi.</span><span class="es">¡Habla, ordena!</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">L'ardite mie schiere</span><span class="es">¡Que mis audaces tropas salgan</span></div>
+      <div class="line-row"><span class="it">Sorgan tutte alle trombe guerriere:</span><span class="es">al sonido de la trompa guerrera!</span></div>
+      <div class="line-row"><span class="it">È Wodan che a gloria rappella;</span><span class="es">¡Wotan les llama a la gloria!</span></div>
+      <div class="line-row"><span class="it">Moviam tosto.</span><span class="es">¡Marchemos ya!</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Sia gloria a Wodan.</span><span class="es">¡Gloria a Wotan!</span></div>
+      <div class="line-row"><span class="it">Allo squillo, che al sangue ne invita,</span><span class="es">A la llamada de la sangre,</span></div>
+      <div class="line-row"><span class="it">Pronti ognora i tuoi fidi saran.</span><span class="es">pronto sus fieles acudirán.</span></div>
+      <div class="stage-direction">
+        <span>(Le trombe squillano tutto d'intorno; succede subito ed esce la seguente religiosa armonia di)</span>
+        <span class="es">(Las trompas suenan alrededor; pero se oye de improviso la siguiente melodía religiosa)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Voci In Lontananza</span>
+        <span class="character-name">Voci In Lontananza</span>
+      </div>
+      <div class="line-row"><span class="it">Vieni. Le menti visita,</span><span class="es">¡Ven, acoge nuestros pensamientos</span></div>
+      <div class="line-row"><span class="it">O spirito creator;</span><span class="es">oh, espíritu creador!</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Che fia!</span><span class="es">¿Qué sucede?</span></div>
+      <div class="character-row">
+        <span class="character-name">Voci In Lontananza</span>
+        <span class="character-name">Voci In Lontananza</span>
+      </div>
+      <div class="line-row"><span class="it">Dalla tua fronte piovere</span><span class="es">Desde tu frente</span></div>
+      <div class="line-row"><span class="it">Fanne il vital tesor.</span><span class="es">haz llover el tesoro de vida.</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Non questo è l'eco</span><span class="es">¡Ése no es el sonido</span></div>
+      <div class="line-row"><span class="it">Delle mie trombe! Aprite, olà!</span><span class="es">de mis trompas! ¡Abrid ahí!</span></div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Il campo d'Attila. Dalla collina in fondo vedesi avanzare, preceduta da Leone e da sei Anziani, processionalmente una schiera di vergini e fanciulli in bianche vesti recanti palme. La scena è ingombra dalle schiere d'Attila in armi. Fra la moltitudine appare Foresto con visiera calata e Odabella)</span>
+        <span class="es">(El campamento de Atila. Desde la ) precedida por el papa León y seis ancianos, una fila de vírgenes y muchachos con vestidos blancos. La escena se llena de tropas de Atila. Entre la multitud aparecen Foresto, con la visera calada, y Odabella.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila, Coro</span>
+        <span class="character-name">Attila, Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Chi viene?</span><span class="es">¿Quién viene?</span></div>
+      <div class="stage-direction">
+        <span>(sempre avanzandosi)</span>
+        <span class="es">(siempre acercándose)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Vergini, Fanciulli</span>
+        <span class="character-name">Vergini, Fanciulli</span>
+      </div>
+      <div class="line-row"><span class="it">I guasti sensi illumina,</span><span class="es">Ilumina a los que sufren,</span></div>
+      <div class="line-row"><span class="it">Spirane amor in sen.</span><span class="es">inspíranos amor en el corazón.</span></div>
+      <div class="line-row"><span class="it">L'oste debella e spandasi</span><span class="es">Despierta a la horda</span></div>
+      <div class="line-row"><span class="it">Di pace il bel seren.</span><span class="es">y dale el bien sereno de la paz.</span></div>
+      <div class="stage-direction">
+        <span>(commovendosi a poco a poco)</span>
+        <span class="es">(conmoviéndose un poco)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Uldino! è quello il bieco</span><span class="es">¡Uldino!</span></div>
+      <div class="line-row"><span class="it">Fantasma!...</span><span class="es">¡Aquel es el malvado fantasma!...</span></div>
+      <div class="line-row"><span class="it">Il vo' sfidar...</span><span class="es">Voy a desafiarle...</span></div>
+      <div class="line-row"><span class="it">Chi mi trattiene?</span><span class="es">¿Cómo te atreves, audaz?</span></div>
+      <div class="character-row">
+        <span class="character-name">Leone</span>
+        <span class="character-name">Leone</span>
+      </div>
+      <div class="line-row"><span class="it">Di flagellar l'incarco</span><span class="es">"Sólo puedes hacer sufrir</span></div>
+      <div class="line-row"><span class="it">Contro i mortal'hai sol.</span><span class="es">a los mortales. Así pues ¡detente!</span></div>
+      <div class="line-row"><span class="it">T'arretra!... Or chiuso è il varco;</span><span class="es">¡Aquí te está cerrado el paso,</span></div>
+      <div class="line-row"><span class="it">Questo de' numi è il suol!</span><span class="es">pues este es suelo de dioses!"</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Gran Dio! Le note stesse</span><span class="es">¡Gran Dios, las mismas palabras</span></div>
+      <div class="line-row"><span class="it">Che la tremenda vision m'impresse.</span><span class="es">que la visión me dijo!</span></div>
+      <div class="stage-direction">
+        <span>(Egli leva la testa al cielo sopraffatto da subito terrore. Tutti restano sorpresi e smarriti) (fra sè)</span>
+        <span class="es">(mira al cielo sobrecogido de súbito terror. Todos quedan sorprendidos y atemorizados) (para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">No!... non è sogno ch'or l'alma invade!</span><span class="es">¡No!... ¡nos es un sueño</span></div>
+      <div class="line-row"><span class="it">Son due giganti che investon l'etra...</span><span class="es">lo que ahora invade mi alma!</span></div>
+      <div class="line-row"><span class="it">Fiamme son gli occhi, fiamme le spade...</span><span class="es">Son dos gigantes que el cielo protege.</span></div>
+      <div class="line-row"><span class="it">Le ardenti punte giungono a me.</span><span class="es">Llamas en sus ojos, en sus espadas...</span></div>
+      <div class="line-row"><span class="it">Spiriti, fermate.</span><span class="es">Las ardientes puntas llegan hasta mí.</span></div>
+      <div class="line-row"><span class="it">Qui l'uom s'arretra;</span><span class="es">Espíritus, ¡deteneos!.</span></div>
+      <div class="line-row"><span class="it">Dinanzi ai numi prostrasi il re!</span><span class="es">¡Ante los dioses se postra el rey!</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Uldino, Coro</span>
+        <span class="character-name">Uldino, Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Sordo ai lamenti pur de' fratelli,</span><span class="es">Sordo a los lamentos de los guerreros,</span></div>
+      <div class="line-row"><span class="it">Vago di sangue, di pugne solo,</span><span class="es">ávidos de sangre, de combates...</span></div>
+      <div class="line-row"><span class="it">La flebil voce di pochi imbelli</span><span class="es">¿Qué está ocurriendo?</span></div>
+      <div class="line-row"><span class="it">Qual nuovo senso suscita in me?</span><span class="es">¿Qué poder es éste?</span></div>
+      <div class="line-row"><span class="it">Qual possa è questa! Prostrato al suolo</span><span class="es">¡Por primera vez el rey de los hunos</span></div>
+      <div class="line-row"><span class="it">La prima volta degli Unni il re!</span><span class="es">postrado en el suelo!</span></div>
+      <div class="character-row">
+        <span class="character-name">Leone, Odabella, Foresto, Vergini</span>
+        <span class="character-name">Leone, Odabella, Foresto, Vergini</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, dell'Eterno mira virtute!</span><span class="es">¡Mirad los milagros del Eterno!</span></div>
+      <div class="line-row"><span class="it">Da un pastorello vinto è Golía,</span><span class="es">Por un pastorcillo fue vencido Goliat.</span></div>
+      <div class="line-row"><span class="it">Da umil fanciulla l'uomo ha salute.</span><span class="es">Una muchacha salvó a la humanidad.</span></div>
+      <div class="line-row"><span class="it">Da gente ignota sparsa è la fè...</span><span class="es">Hombres humildes esparcen la fe...</span></div>
+      <div class="line-row"><span class="it">Dinanzi a turba devota e pia</span><span class="es">¡Y ahora ante los devotos</span></div>
+      <div class="line-row"><span class="it">Ora degli empi s'arretra il re!</span><span class="es">se detiene el rey de los impíos!</span></div>
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Campo d'Ezio. Scorgessi in lontananza la grande città dei sette colli. Ezio solo. Egli esce tenendo in mano un papiro spiegato e mostrando dispetto.)</span>
+        <span class="es">(Campamento de Aecio. En la lejanía se ve Roma. Aecio solo. Sale llevando en la mano un pergamino desplegado y mostrando desprecio)</span>
+      </div>
+    </div>
+
+    <div class="act-heading">Atto Secondo · Acto Segundo</div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">"Tregua è cogl'Unni. A Roma,</span><span class="es">"Hay tregua con los hunos,</span></div>
+      <div class="line-row"><span class="it">Ezio, tosto ritorna... a te l'impone</span><span class="es">Aecio, regresa rápido a Roma...</span></div>
+      <div class="line-row"><span class="it">Valentinian."</span><span class="es">te lo ordena Valentiniano."</span></div>
+      <div class="line-row"><span class="it">L'impone!... e in cotal modo,</span><span class="es">¡Lo ordena!... ¿y de esa forma,</span></div>
+      <div class="line-row"><span class="it">Coronato fanciul, me tu richiami?...</span><span class="es">muchacho coronado, me reclamas?</span></div>
+      <div class="line-row"><span class="it">Ovver, più che del barbaro le mie</span><span class="es">¡A pesar de que el bárbaro</span></div>
+      <div class="line-row"><span class="it">Schiere paventi!... Un prode</span><span class="es">tiene miedo de mis legiones!...</span></div>
+      <div class="line-row"><span class="it">Guerrier canuto piegherà mai sempre</span><span class="es">¿Un canoso y valiente guerrero</span></div>
+      <div class="line-row"><span class="it">Dinanzi a imbelle, a concubino servo?</span><span class="es">doblegarse ante un cobarde bastardo?</span></div>
+      <div class="line-row"><span class="it">Ben io verrò...</span><span class="es">Bien, acudiré...</span></div>
+      <div class="line-row"><span class="it">Ma qual s'addice al forte,</span><span class="es">¡Es lo que me conviene</span></div>
+      <div class="line-row"><span class="it">Il cui poter supremo</span><span class="es">para así poder salvar a la patria</span></div>
+      <div class="line-row"><span class="it">La patria leverà da tanto estremo!</span><span class="es">de tanto exceso!</span></div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Dagli immortali vertici</span><span class="es">¡Ojalá un día, las sombras</span></div>
+      <div class="line-row"><span class="it">Belli di gloria, un giorno,</span><span class="es">de los inmortales antepasados</span></div>
+      <div class="line-row"><span class="it">L'ombre degli avi, ah, sorgano</span><span class="es">surjan de sus tumbas gloriosas</span></div>
+      <div class="line-row"><span class="it">Solo un istante intorno!</span><span class="es">y me rodeen al menos un instante!</span></div>
+      <div class="line-row"><span class="it">Di là vittrice l'aquila</span><span class="es">La victoriosa águila volará, de nuevo,</span></div>
+      <div class="line-row"><span class="it">Per l'orbe il vol spiegò...</span><span class="es">por todo el orbe.</span></div>
+      <div class="line-row"><span class="it">Roma nel vil cadavere</span><span class="es">Mas ¿quién puede reconocer a Roma,</span></div>
+      <div class="line-row"><span class="it">Chi ravvisare or può?</span><span class="es">en ese vil cadáver?</span></div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Chi vien?</span><span class="es">¡Alguien viene!...</span></div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Preceduto da alcuni soldati romani presentasi uno stuolo di schiavi di Attila)</span>
+        <span class="es">(Precedido de soldados romanos se presenta un grupo de esclavos de Atila.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Salute ad Ezio</span><span class="es">¡Aecio, Atila te envía,</span></div>
+      <div class="line-row"><span class="it">Attila invia per noi.</span><span class="es">mediante nosotros, saludos!</span></div>
+      <div class="line-row"><span class="it">Brama che a lui convengano</span><span class="es">Desea que con él se reúnan</span></div>
+      <div class="line-row"><span class="it">Ezio, ed i primi suoi.</span><span class="es">Aecio y sus capitanes.</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Ite!</span><span class="es">¡Volved!</span></div>
+      <div class="line-row"><span class="it">Noi tosto al campo verrem.</span><span class="es">Hoy mismo iremos al campamento.</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Tra gli schiavi che partono uno è rimasto. Egli è Foresto)</span>
+        <span class="es">(Tras los esclavos que salen, uno se retrasa. Se trata de Foresto.)</span>
+      </div>
+      <div class="line-row"><span class="it">Che brami tu?</span><span class="es">¿Qué quieres tú?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ezio, al comune scampo</span><span class="es">Aecio, para la causa común</span></div>
+      <div class="line-row"><span class="it">Manca la tua virtù.</span><span class="es">es necesario tu valor.</span></div>
+      <div class="stage-direction">
+        <span>(sorpreso)</span>
+        <span class="es">(sorprendido)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Che intendi? Oh, chi tu sei?</span><span class="es">¿Qué oigo? ¿quién eres?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ora saperlo è vano;</span><span class="es">Aún no es necesario que lo sepas;</span></div>
+      <div class="line-row"><span class="it">Il barbaro profano</span><span class="es">el bárbaro profanador</span></div>
+      <div class="line-row"><span class="it">Oggi vedrai morir.</span><span class="es">hoy verás morir.</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Che narri?</span><span class="es">¿Qué dices?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Allor tu dei</span><span class="es">Para ello tú debes</span></div>
+      <div class="line-row"><span class="it">L'opera mia compir.</span><span class="es">la obra completar.</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Come?</span><span class="es">¿Cómo?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ad un cenno pronte</span><span class="es">Que estén preparadas</span></div>
+      <div class="line-row"><span class="it">Stian le romane schiere;</span><span class="es">las escuadras romanas</span></div>
+      <div class="line-row"><span class="it">Quando vedrai dal monte</span><span class="es">y cuando veas en el monte</span></div>
+      <div class="line-row"><span class="it">Un fuoco lampeggiar,</span><span class="es">un fuego brillar,</span></div>
+      <div class="line-row"><span class="it">Prorompano, qual fiere,</span><span class="es">¡irrumpid como fieras,</span></div>
+      <div class="line-row"><span class="it">Sullo smarrito branco!</span><span class="es">sobre la confusa manada!</span></div>
+      <div class="line-row"><span class="it">Or va...</span><span class="es">Debo irme...</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Di te non manco;</span><span class="es">No fallaré;</span></div>
+      <div class="line-row"><span class="it">Saprò vedere, e oprar.</span><span class="es">sabré ver y actuar.</span></div>
+      <div class="stage-direction">
+        <span>(Foresto parte rapidamente)</span>
+        <span class="es">(Foresto sale rápidamente.)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc31">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t31">
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">È gettata la mia sorte,</span><span class="es">Mi suerte está echada,</span></div>
+      <div class="line-row"><span class="it">Pronto sono ad ogni guerra;</span><span class="es">estoy preparado para la guerra.</span></div>
+      <div class="line-row"><span class="it">S'io cadrò da forte,</span><span class="es">Y si caigo, caeré como un héroe,</span></div>
+      <div class="line-row"><span class="it">E il mio nome resterà.</span><span class="es">mi nombre no se olvidará</span></div>
+      <div class="line-row"><span class="it">Non vedrò l'amata terra</span><span class="es">y no veré a la amada tierra</span></div>
+      <div class="line-row"><span class="it">Svenir lenta e farsi a brano.</span><span class="es">languidecer lentamente.</span></div>
+      <div class="line-row"><span class="it">Sopra l'ultimo romano</span><span class="es">¡Por el último romano</span></div>
+      <div class="line-row"><span class="it">Tutta Italia piangerà.</span><span class="es">toda Italia llorará!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Campo d'Attila come nell'atto primo,
+apprestato a solenne convito. La notte è
+vivamente rischiarata da cento fiamme 
+che irrompono da grossi tronchi di quercia
+preparati all'uopo. Unni, Ostrogoti, Eruli,
+ecc. Mentre i guerrieri cantano, Attila,
+seguito dai Druidi, dalle sacerdotesse, 
+dai duci e re, va ad assidersi al suo
+d'Amazzone)</span>
+        <span class="es">(Campamento de Atila como en el acto primero, preparado para un festín. La noche está iluminada por cien llamas que salen de gruesos troncos de encina. Hunos, érulos, ostrogodos, cantan. Atila, seguido de los druidas, va a sentarse en su lugar. Odabella está cerca de él vestida de amazona.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc32">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t32">
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Del ciel l'immensa volta,</span><span class="es">La inmensa bóveda celeste,</span></div>
+      <div class="line-row"><span class="it">Terra, ai nemici tolta,</span><span class="es">la tierra arrasada del enemigo</span></div>
+      <div class="line-row"><span class="it">Ed aer che fiammeggia</span><span class="es">y el fuego purificador,</span></div>
+      <div class="line-row"><span class="it">Son d'Attila la reggia.</span><span class="es">son de Atila el palacio.</span></div>
+      <div class="line-row"><span class="it">La gioia delle conche</span><span class="es">La alegría de la conquista</span></div>
+      <div class="line-row"><span class="it">Or si diffonda intorno;</span><span class="es">se difunda por todas partes;</span></div>
+      <div class="line-row"><span class="it">Di membra e teste tronche</span><span class="es">¡De miembros y cabezas cortados</span></div>
+      <div class="line-row"><span class="it">Godremo al nuovo giorno!</span><span class="es">gozaremos en el nuevo día!</span></div>
+      <div class="stage-direction">
+        <span>(Uno squillo di tromba annuncia l'arrivo degli ufficiali romani preceduti da Uldino. Entrano Ezio col seguito. Uldino, Foresto, che nuovamente in abito guerriero si frammischia alla moltitudine)</span>
+        <span class="es">(Una llamada de trompa anuncia la llegada de los oficiales romanos precedidos por Uldino. Entran Aecio Uldino y Foresto, que nuevamente se confunde entre la multitud)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(alzandosi)</span>
+        <span class="es">(levantándose)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc33">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t33">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Ezio, ben vieni!</span><span class="es">¡Aecio, bienvenido!</span></div>
+      <div class="line-row"><span class="it">Della tregua nostra</span><span class="es">De nuestra tregua</span></div>
+      <div class="line-row"><span class="it">Fia suggello il convito.</span><span class="es">sea sello este convite.</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Attila, grande</span><span class="es">Atila, grande eres en la guerra</span></div>
+      <div class="line-row"><span class="it">In guerra sei, più generoso ancora</span><span class="es">y más generoso todavía</span></div>
+      <div class="line-row"><span class="it">Con ospite nemico.</span><span class="es">con los huéspedes enemigos.</span></div>
+      <div class="stage-direction">
+        <span>(Alcuni Druidi, avvicinandosi ad Attila, gli dicono sottovoce)</span>
+        <span class="es">(Algunos druidas, acercándose a Atila, le hablan en voz baja.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Druidi</span>
+        <span class="character-name">Druidi</span>
+      </div>
+      <div class="line-row"><span class="it">O re, fatale</span><span class="es">¡Oh rey,</span></div>
+      <div class="line-row"><span class="it">È seder collo stranio.</span><span class="es">funesto es sentarse con el extranjero!</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">E che?</span><span class="es">¿Y qué?</span></div>
+      <div class="character-row">
+        <span class="character-name">Druidi</span>
+        <span class="character-name">Druidi</span>
+      </div>
+      <div class="line-row"><span class="it">Nel cielo</span><span class="es">Mira cómo se forman en el cielo</span></div>
+      <div class="line-row"><span class="it">Vedi adunarsi i nembi</span><span class="es">nubes tintadas de sangre...</span></div>
+      <div class="line-row"><span class="it">Di sangue tinti... Di sinistri augelli</span><span class="es">¡El infiel espíritu habla confundido</span></div>
+      <div class="line-row"><span class="it">Misto all'infausto grido</span><span class="es">entre el infausto grito de las montañas</span></div>
+      <div class="line-row"><span class="it">Dalle montagne urlò lo spirito infido!</span><span class="es">y el vuelo de siniestras aves!</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Via, profeti del mal!</span><span class="es">¡Fuera, profetas de mal agüero!</span></div>
+      <div class="character-row">
+        <span class="character-name">Druidi</span>
+        <span class="character-name">Druidi</span>
+      </div>
+      <div class="line-row"><span class="it">Wodan ti guardi.</span><span class="es">Wotan te guarde.</span></div>
+      <div class="stage-direction">
+        <span>(alle sacerdotesse)</span>
+        <span class="es">(a las sacerdotisas)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Sacre figlie degli Unni,</span><span class="es">Sagradas hijas de los hunos,</span></div>
+      <div class="line-row"><span class="it">Percuotete le cetre, e si diffonda</span><span class="es">tañed la cítara y que se expanda</span></div>
+      <div class="line-row"><span class="it">Delle mie feste la canzon gioconda.</span><span class="es">por la fiesta alegres canciones.</span></div>
+      <div class="stage-direction">
+        <span>(Tutti si assidono. Le sacerdotesse, schieratesi nel mezzo, alzano il seguente canto:)</span>
+        <span class="es">(Todos se sientan. Las sacerdotisas, situadas en el medio, ejecutan el siguiente canto:)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc34">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t34">
+      <div class="character-row">
+        <span class="character-name">Sacerdotesse</span>
+        <span class="character-name">Sacerdotesse</span>
+      </div>
+      <div class="line-row"><span class="it">Chi dona luce al cor?... Di stella alcuna</span><span class="es">¿Qué da luz al corazón?...</span></div>
+      <div class="line-row"><span class="it">Dal cielo il vago tremolar non pende;</span><span class="es">Ni el temblor de las estrellas del cielo,</span></div>
+      <div class="line-row"><span class="it">Non raggio amico di ridente luna</span><span class="es">ni los dulces rayos de la feliz luna</span></div>
+      <div class="line-row"><span class="it">Alla percossa fantasia risplende...</span><span class="es">empañan a la luminosa fantasía...</span></div>
+      <div class="line-row"><span class="it">Ma fischia il vento, rumoreggia il tuono,</span><span class="es">Pero silba el viento, suena el trueno,</span></div>
+      <div class="line-row"><span class="it">Sol dan le corde della tromba il suono.</span><span class="es">y sólo se oye el sonido de la trompa.</span></div>
+      <div class="stage-direction">
+        <span>(In quel mentre un improvviso e rapido soffio procelloso spegne gran parte delle fiamme. Tutti si alzano per natural moto di terrore. Silenzio e tristezza generale. Foresto è corso ad Odabella. Ezio s'è avvicinato ad Attila.)</span>
+        <span class="es">(En este momento un imprevisto y rápido soplo tormentoso apaga gran parte de las llamas. Todos se levantan con terror. Silencio general. Foresto está junto a Odabella. Aecio se ha acercado a Atila.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc35">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t35">
+      <div class="character-row">
+        <span class="character-name">Tutti</span>
+        <span class="character-name">Tutti</span>
+      </div>
+      <div class="line-row"><span class="it">Ah!</span><span class="es">¡Ah!</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Lo spirto de' monti</span><span class="es">El espíritu de los montes</span></div>
+      <div class="line-row"><span class="it">Ne rugge alle fronti,</span><span class="es">nos ruge en las frentes,</span></div>
+      <div class="line-row"><span class="it">Le quercie fumanti</span><span class="es">y su mano cubrió</span></div>
+      <div class="line-row"><span class="it">Sua mano coprì...</span><span class="es">las encinas encendidas...</span></div>
+      <div class="line-row"><span class="it">Terrore, mistero</span><span class="es">Terror y misterio,</span></div>
+      <div class="line-row"><span class="it">Sull'anima ha impero...</span><span class="es">sobre el alma imperan...</span></div>
+      <div class="line-row"><span class="it">Stuol d'ombre vaganti</span><span class="es">Multitud de sombras errantes</span></div>
+      <div class="line-row"><span class="it">Nel buio apparì.</span><span class="es">aparecen en la obscuridad.</span></div>
+      <div class="stage-direction">
+        <span>(ad Attila)</span>
+        <span class="es">(a Atila)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Rammenta i miei patti:</span><span class="es">Recuerda mis pactos:</span></div>
+      <div class="line-row"><span class="it">Con Ezio combatti;</span><span class="es">combate junto a Aecio.</span></div>
+      <div class="line-row"><span class="it">Del vecchio guerriero</span><span class="es">No desprecies la mano</span></div>
+      <div class="line-row"><span class="it">La mano non sprezzar.</span><span class="es">del viejo guerrero.</span></div>
+      <div class="line-row"><span class="it">Dedici. Fra poco</span><span class="es">¡Decide!</span></div>
+      <div class="line-row"><span class="it">Non fora più loco.</span><span class="es">Dentro de poco ya será tarde.</span></div>
+      <div class="line-row"><span class="it">Del barbaro altiero</span><span class="es">Desaparece el astro</span></div>
+      <div class="line-row"><span class="it">Già l'astro dispar.</span><span class="es">del orgulloso bárbaro.</span></div>
+      <div class="stage-direction">
+        <span>(ad Odabella)</span>
+        <span class="es">(a Odabella)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">O sposa, t'allieta,</span><span class="es">¡Oh esposa, alégrate,</span></div>
+      <div class="line-row"><span class="it">È giunta la meta;</span><span class="es">próxima está la meta!</span></div>
+      <div class="line-row"><span class="it">Dei padri lo scempio</span><span class="es">La matanza de tus padres</span></div>
+      <div class="line-row"><span class="it">Vendetta otterrà.</span><span class="es">pronto obtendrá venganza.</span></div>
+      <div class="line-row"><span class="it">La tazza là mira</span><span class="es">La copa que Uldino le ofrecerá...</span></div>
+      <div class="line-row"><span class="it">Ministra dell'ira,</span><span class="es">¡Mírala!</span></div>
+      <div class="line-row"><span class="it">Al labbro dell'empio,</span><span class="es">En los labios del impío,</span></div>
+      <div class="line-row"><span class="it">Uldin l'offrirà.</span><span class="es">será ministra de nuestra ira,</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Vendetta avrem noi</span><span class="es">¿Obtendré venganza</span></div>
+      <div class="line-row"><span class="it">Per mano de' suoi?...</span><span class="es">por mano ajena?...</span></div>
+      <div class="line-row"><span class="it">Non fia ch'egli cada</span><span class="es">No permitiré que él caiga</span></div>
+      <div class="line-row"><span class="it">Pel lor tradir.</span><span class="es">por sus propios traidores.</span></div>
+      <div class="line-row"><span class="it">Nel giorno segnato,</span><span class="es">En el día señalado,</span></div>
+      <div class="line-row"><span class="it">A Dio l'ho giurato,</span><span class="es">a Dios lo he jurado,</span></div>
+      <div class="line-row"><span class="it">È questa la spada.</span><span class="es">y ésta es la espada</span></div>
+      <div class="line-row"><span class="it">Che il deve colpir.</span><span class="es">que le matará.</span></div>
+      <div class="stage-direction">
+        <span>(ad Ezio)</span>
+        <span class="es">(a Aecio)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">M'irriti, o Romano...</span><span class="es">Me irritas, Romano...</span></div>
+      <div class="line-row"><span class="it">Sorprendermi è vano:</span><span class="es">intentas sorprenderme en vano.</span></div>
+      <div class="line-row"><span class="it">O credi che il vento</span><span class="es">¿Crees acaso que el viento</span></div>
+      <div class="line-row"><span class="it">M'infonda terror?</span><span class="es">me infunde terror?</span></div>
+      <div class="line-row"><span class="it">Nei nembi e tempeste</span><span class="es">Entre nubes y tormentas</span></div>
+      <div class="line-row"><span class="it">S'allietan mie feste . . .</span><span class="es">se alegran mis fiestas...</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh rabbia; non sento</span><span class="es">¡Oh, el corazón de Atila</span></div>
+      <div class="line-row"><span class="it">Più d'Attila il cor!</span><span class="es">ya no siente odio!</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Dell'ora funesta</span><span class="es">De la funesta hora</span></div>
+      <div class="line-row"><span class="it">L'istante s'appresta...</span><span class="es">el momento se prepara...</span></div>
+      <div class="line-row"><span class="it">Uldin, paventi?</span><span class="es">Uldino ¿temes?</span></div>
+      <div class="line-row"><span class="it">Breton non sei tu?</span><span class="es">¿No eres bretón?</span></div>
+      <div class="line-row"><span class="it">O il cor più non t'ange</span><span class="es">¿O es que no te rompe el corazón</span></div>
+      <div class="line-row"><span class="it">La patria che piange?</span><span class="es">la patria que llora</span></div>
+      <div class="line-row"><span class="it">La rea servitù?</span><span class="es">y la humillante esclavitud?</span></div>
+      <div class="stage-direction">
+        <span>(Il cielo si rasserena.)</span>
+        <span class="es">(El cielo se serena.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc36">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t36">
+      <div class="character-row">
+        <span class="character-name">Tutti</span>
+        <span class="character-name">Tutti</span>
+      </div>
+      <div class="line-row"><span class="it">L'orrenda procella</span><span class="es">La horrenda tormenta</span></div>
+      <div class="line-row"><span class="it">Qual lampo sparì.</span><span class="es">como un relámpago desapareció.</span></div>
+      <div class="line-row"><span class="it">Di calma novella</span><span class="es">Con nueva calma</span></div>
+      <div class="line-row"><span class="it">Il ciel si vestì.</span><span class="es">el cielo se vistió.</span></div>
+      <div class="stage-direction">
+        <span>(riscuotendosi)</span>
+        <span class="es">(dominándose)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc37">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t37">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Si riaccendan le quercie d'intorno,</span><span class="es">¡Volved a encender las encinas!</span></div>
+      <div class="stage-direction">
+        <span>(Gli schiavi eseguiscono il cenno)</span>
+        <span class="es">(Los esclavos ejecutan su orden.)</span>
+      </div>
+      <div class="line-row"><span class="it">Si rannodi la danza ed il giuoco...</span><span class="es">¡Reanudad las danzas y juegos!...</span></div>
+      <div class="line-row"><span class="it">Sia per tutti festivo tal giorno,</span><span class="es">Hoy sea para todos un día de fiesta.</span></div>
+      <div class="line-row"><span class="it">Porgi, Uldino,</span><span class="es">¡Tráeme, Uldino,</span></div>
+      <div class="line-row"><span class="it">la conca ospital.</span><span class="es">la copa de la hospitalidad!</span></div>
+      <div class="stage-direction">
+        <span>(piano ad Odabella)</span>
+        <span class="es">(por lo bajo a Odabella)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Perchè tremi?</span><span class="es">¿Por qué tiemblas?...</span></div>
+      <div class="line-row"><span class="it">S'imbianca il tuo volto.</span><span class="es">Tu rostro palidece.</span></div>
+      <div class="stage-direction">
+        <span>(ricevendo la tazza da Uldino)</span>
+        <span class="es">(recibiendo la copa de Uldino)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Libo a te, gran Wodano, che invoco!</span><span class="es">¡Yo te invoco gran Wotan!</span></div>
+      <div class="stage-direction">
+        <span>(trattenendolo)</span>
+        <span class="es">(impidiéndole beber)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Re, ti ferma!... è veleno!...</span><span class="es">¡Rey, no lo bebas!... ¡es un veneno!</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Che ascolto!</span><span class="es">¡Qué escucho!</span></div>
+      <div class="stage-direction">
+        <span>(furibondo)</span>
+        <span class="es">(furioso)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Chi 'l temprava?</span><span class="es">¿Quién se ha atrevido?</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Oh momento fatal!</span><span class="es">¡Oh, momento fatal!</span></div>
+      <div class="stage-direction">
+        <span>(avanzandosi con fermezza)</span>
+        <span class="es">(adelantándose con firmeza)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Io.</span><span class="es">¡Yo!</span></div>
+      <div class="stage-direction">
+        <span>(avanzandosi con fermezza)</span>
+        <span class="es">(reconociéndolo)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Foresto.</span><span class="es">¡Foresto!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì, quel che un giorno</span><span class="es">Sí, el mismo que un día</span></div>
+      <div class="line-row"><span class="it">La corona strappò dal tuo crine...</span><span class="es">la corona te arrancó de la cabeza...</span></div>
+      <div class="stage-direction">
+        <span>(traendo la spada)</span>
+        <span class="es">(desenvainando la espada)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! In mia mano caduto se' alfine,</span><span class="es">¡Ah, en mis manos has caído al fin,</span></div>
+      <div class="line-row"><span class="it">Ben io l'alma dal sen ti trarrò.</span><span class="es">te sacaré el alma del cuerpo!</span></div>
+      <div class="stage-direction">
+        <span>(con scherno)</span>
+        <span class="es">(arrogante)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Or t'è lieve...</span><span class="es">¡Eso es fácil para ti!...</span></div>
+      <div class="stage-direction">
+        <span>(fermandosi a tali parole)</span>
+        <span class="es">(reprimiéndose)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, mia rabbia! Oh, mio scorno!</span><span class="es">¡Oh, rabia! ¡Oh, vergüenza!</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Re, la preda niun toglier mi può.</span><span class="es">Rey, nadie puede quitarme al reo.</span></div>
+      <div class="line-row"><span class="it">Io t'ho salvo...</span><span class="es">Yo te he salvado...</span></div>
+      <div class="line-row"><span class="it">il delitto svelai...</span><span class="es">El delito he desvelado...</span></div>
+      <div class="line-row"><span class="it">Da me sol fia punito l'indegno.</span><span class="es">Sólo por mí sea castigado el indigno.</span></div>
+      <div class="stage-direction">
+        <span>(compiacendosi del fiero atto)</span>
+        <span class="es">(complaciente) )</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Io tel dono! Ma premio più degno,</span><span class="es">¡Te lo doy!</span></div>
+      <div class="line-row"><span class="it">Mia fedele, riserbasi a te:</span><span class="es">Pero un premio más digno te reservo:</span></div>
+      <div class="line-row"><span class="it">Tu doman salutata verrai</span><span class="es">mañana serás saludada</span></div>
+      <div class="line-row"><span class="it">Dalle genti qual sposa del re.</span><span class="es">como la gentil esposa del rey.</span></div>
+    </div>
+
+    <div class="track-col" id="tc38">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t38">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, miei prodi! Un solo giorno</span><span class="es">¡Valerosos guerreros!</span></div>
+      <div class="line-row"><span class="it">Chiedo a voi di gioia e canto;</span><span class="es">Sólo os pido un día de alegría.</span></div>
+      <div class="line-row"><span class="it">Tuonerà di nuovo intorno</span><span class="es">Pronto tronará de nuevo,</span></div>
+      <div class="line-row"><span class="it">Poscia il vindice flagel.</span><span class="es">por todas partes, el látigo vengador.</span></div>
+      <div class="line-row"><span class="it">Ezio, in Roma annuncia intanto</span><span class="es">¡Aecio, anuncia en Roma que yo</span></div>
+      <div class="line-row"><span class="it">Ch'io de' sogni ho rotto il vel.</span><span class="es">he roto el hechizo de los sueños!</span></div>
+      <div class="stage-direction">
+        <span>(a Foresto)</span>
+        <span class="es">(a Foresto)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Frena l'ira che t'inganna;</span><span class="es">¡Frena la ira que te ofusca;</span></div>
+      <div class="line-row"><span class="it">Fuggi, salvati, o fratello.</span><span class="es">huye, sálvate, querido!</span></div>
+      <div class="line-row"><span class="it">Me disprezza, me condanna,</span><span class="es">Despréciame, condéname,</span></div>
+      <div class="line-row"><span class="it">Di' che vile, infame io son...</span><span class="es">di que soy vil, que soy infame...</span></div>
+      <div class="line-row"><span class="it">Ma deh, fuggi... Al dì novello</span><span class="es">Pero, ¡ay! huye... Mañana mismo</span></div>
+      <div class="line-row"><span class="it">Avrò tutto il tuo perdon.</span><span class="es">obtendré todo tu perdón.</span></div>
+      <div class="stage-direction">
+        <span>(ad Odabella)</span>
+        <span class="es">(a Odabella)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Parto, sì per viver solo</span><span class="es">Me marcho, sí, para vivir sólo</span></div>
+      <div class="line-row"><span class="it">Fino al dì della vendetta;</span><span class="es">hasta el día de la venganza.</span></div>
+      <div class="line-row"><span class="it">Ma qual pena, ma qual duolo</span><span class="es">Mas ¿con qué penas y sufrimientos,</span></div>
+      <div class="line-row"><span class="it">A tua colpa si può dar?...</span><span class="es">podrás expiar tu culpa?...</span></div>
+      <div class="line-row"><span class="it">Del rimorso che t'aspetta</span><span class="es">¡Sea tu eterno castigo</span></div>
+      <div class="line-row"><span class="it">Duri eterno il flagellar.</span><span class="es">el remordimiento que te espera!</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Chi l'arcan svelar potea?</span><span class="es">¿Podría desvelar el secreto?</span></div>
+      <div class="line-row"><span class="it">Chi fidarlo a core amante?</span><span class="es">¿Cómo confiar en un corazón amante?</span></div>
+      <div class="line-row"><span class="it">Va, ti pasci, va, ti bea,</span><span class="es">Anda, complácete, deléitate,</span></div>
+      <div class="line-row"><span class="it">Fatal uom, di voluttà.</span><span class="es">hombre malvado y lujurioso.</span></div>
+      <div class="line-row"><span class="it">Ma doman su te festante</span><span class="es">Pero mañana sobre ti,</span></div>
+      <div class="line-row"><span class="it">Ezio in armi piomberà.</span><span class="es">Aecio en armas irrumpirá.</span></div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Io gelar m'intesi il sangue...</span><span class="es">Helarse siento mi sangre...</span></div>
+      <div class="line-row"><span class="it">Chi tradir poteane omai?</span><span class="es">¿Quién pudo traicionarte?</span></div>
+      <div class="line-row"><span class="it">Me dal fulmine, dall'angue,</span><span class="es">A mí del relámpago y de la angustia,</span></div>
+      <div class="line-row"><span class="it">Tu salvasti, o pro' guerrier...</span><span class="es">me salvaste, poderoso guerrero...</span></div>
+      <div class="line-row"><span class="it">Ah generoso! E tu m'avrai</span><span class="es">¡Ah, generoso!</span></div>
+      <div class="line-row"><span class="it">Sempre fido al tuo voler.</span><span class="es">Siempre me tendrás a tu lado.</span></div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Oh re possente, il cor riscuoti...</span><span class="es">¡Oh, rey poderoso,</span></div>
+      <div class="line-row"><span class="it">Torna al sangue, torna al fuoco!</span><span class="es">el corazón recobra!...</span></div>
+      <div class="line-row"><span class="it">Su, punisci, su, percuoti</span><span class="es">¡Vuelve a la sangre, vuelve al fuego!</span></div>
+      <div class="line-row"><span class="it">Questo stuolo di traditor!</span><span class="es">¡Vamos, castiga, golpea</span></div>
+      <div class="line-row"><span class="it">Non più scherno, non più giuoco</span><span class="es">a esta muchedumbre de traidores!</span></div>
+      <div class="line-row"><span class="it">Noi sarem de' numi lor.</span><span class="es">No dejes que sus dioses se burlen.</span></div>
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Bosco come nell'atto primo, il quale divide il campo di Attila da quello di Ezio. È mattino. Foresto solo. Indi Uldino)</span>
+        <span class="es">(Bosque como en el acto primero, que separa el campamento de Atila está solo, luego entra Uldino)</span>
+      </div>
+    </div>
+
+    <div class="act-heading">Atto Terzo · Acto Tercero</div>
+
+    <div class="track-col" id="tc39">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t39">
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Qui del convegno è il loco...</span><span class="es">Éste es el lugar convenido...</span></div>
+      <div class="line-row"><span class="it">Qui dell'orrende nozze</span><span class="es">Aquí durante la horrible boda</span></div>
+      <div class="line-row"><span class="it">L'ora da Uldino apprenderò... Nel petto</span><span class="es">espero la hora de llegada de Uldino...</span></div>
+      <div class="line-row"><span class="it">Frenati, o sdegno... A tempo,</span><span class="es">¡Contente en mi pecho, oh desdén!...</span></div>
+      <div class="line-row"><span class="it">Come scoppiar di tuono,</span><span class="es">A su tiempo, como fragor del trueno,</span></div>
+      <div class="line-row"><span class="it">Proromperò.</span><span class="es">ya estallarás.</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Foresto!</span><span class="es">¡Foresto!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ebben!</span><span class="es">¡Y bien!</span></div>
+      <div class="character-row">
+        <span class="character-name">Uldino</span>
+        <span class="character-name">Uldino</span>
+      </div>
+      <div class="line-row"><span class="it">Si move ora il corteo giulivo</span><span class="es">Se acerca el cortejo alegre</span></div>
+      <div class="line-row"><span class="it">Che d'Attila alla tenda</span><span class="es">que acompaña a Atila</span></div>
+      <div class="line-row"><span class="it">Accompagna la sposa.</span><span class="es">y a la novia a la tienda.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, mio furore!</span><span class="es">¡Oh, furor!</span></div>
+      <div class="line-row"><span class="it">Uldino, va!... Ben sai</span><span class="es">¡Vete, Uldino!...</span></div>
+      <div class="line-row"><span class="it">Di là della foresta</span><span class="es">Bien sabes que ocultas en el bosque</span></div>
+      <div class="line-row"><span class="it">In armi stanno le romane schiere...</span><span class="es">están listas las legiones romanas...</span></div>
+      <div class="line-row"><span class="it">Ezio a te attende sol, perchè sull'empio</span><span class="es">Aecio solo espera la señal</span></div>
+      <div class="line-row"><span class="it">Piombino tutte.</span><span class="es">para que sobre el impío caigamos todos.</span></div>
+      <div class="stage-direction">
+        <span>(Uldino parte.)</span>
+        <span class="es">(Uldino sale.)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="line-row"><span class="it">Infida!</span><span class="es">¡Infiel!</span></div>
+      <div class="line-row"><span class="it">Il dì che brami è questo:</span><span class="es">¡El día que esperaba ha llegado!</span></div>
+      <div class="line-row"><span class="it">Vedrai come ritorni a te Foresto!</span><span class="es">¡Volverás a ver ante ti a Foresto!</span></div>
+    </div>
+
+    <div class="track-col" id="tc40">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t40">
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Che non avrebbe il misero</span><span class="es">¿Qué no habrá el miserable</span></div>
+      <div class="line-row"><span class="it">Per Odabella offerto?</span><span class="es">ofrecido por Odabella?</span></div>
+      <div class="line-row"><span class="it">Fino, deh, ciel perdonami,</span><span class="es">Hasta ¡ay, perdóneme el cielo!</span></div>
+      <div class="line-row"><span class="it">Fin l'immortal tuo serto.</span><span class="es">hasta su inmortal corona.</span></div>
+      <div class="line-row"><span class="it">Perchè sul viso ai perfidi</span><span class="es">¿Por qué te muestras</span></div>
+      <div class="line-row"><span class="it">Diffondi il tuo seren? . . .</span><span class="es">a la mirada de los pérfidos?...</span></div>
+      <div class="line-row"><span class="it">Perchè fai pari agli angeli</span><span class="es">¿Por qué hacer semejante a los ángeles</span></div>
+      <div class="line-row"><span class="it">Chi sì malvagio ha il sen?</span><span class="es">a quien tan malvado tiene el corazón?</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Ezio viene frettoloso dalla parte del campo romano)</span>
+        <span class="es">(Aecio aparece agitado desde la parte del campamento romano)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc41">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t41">
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Che più s'indugia... attendono</span><span class="es">¡No nos demoremos más!...</span></div>
+      <div class="line-row"><span class="it">I miei guerrieri il segno...</span><span class="es">¡Mis guerreros esperan la señal!...</span></div>
+      <div class="line-row"><span class="it">Proromperan, quai folgori,</span><span class="es">Irrumpirán, como rayos,</span></div>
+      <div class="line-row"><span class="it">Tutti sul mostro indegno.</span><span class="es">sobre el monstruo indigno.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto, Ezio</span>
+        <span class="character-name">Foresto, Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Non un, non un de' barbari</span><span class="es">¡Ni uno, ni uno de los bárbaros</span></div>
+      <div class="line-row"><span class="it">Ai lari tornerà.</span><span class="es">a sus tierras regresará!</span></div>
+      <div class="stage-direction">
+        <span>(interno)</span>
+        <span class="es">(interno)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Entra fra i plausi, o vergine,</span><span class="es">Entra entre ovaciones ¡oh, virgen!</span></div>
+      <div class="line-row"><span class="it">Schiusa è la tenda a te;</span><span class="es">abierta tienes la tienda;</span></div>
+      <div class="line-row"><span class="it">Entra, ed il raggio avvolgati</span><span class="es">entra, y sumérgete en los rayos</span></div>
+      <div class="line-row"><span class="it">Dell'esultante re.</span><span class="es">del magnífico rey.</span></div>
+      <div class="line-row"><span class="it">Bello è il tuo volto, candido</span><span class="es">Bello es tu rostro,</span></div>
+      <div class="line-row"><span class="it">Qual mattutino albor,</span><span class="es">blanco como el matutino albor,</span></div>
+      <div class="line-row"><span class="it">A dolce spirto è simile</span><span class="es">es similar al dulce espíritu</span></div>
+      <div class="line-row"><span class="it">Ora di sol che muor.</span><span class="es">de la hora en que muere el sol.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Tu l'odi?... è il canto pronubo...</span><span class="es">¿Escuchas?... Es el canto nupcial...</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Funereo diverrà.</span><span class="es">Fúnebre se volverá.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah, scellerata!</span><span class="es">¡Ah, malvada!</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Frenati.</span><span class="es">¡Contente!</span></div>
+      <div class="line-row"><span class="it">Lo esige l'alta impresa.</span><span class="es">Lo exige la gran empresa.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Sposa è Odabella al barbaro!...</span><span class="es">¡Esposa es Odabella del bárbaro!</span></div>
+      <div class="line-row"><span class="it">A' suoi voler s'è resa!...</span><span class="es">¡Ella sucumbe a sus deseos!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">La tua gelosa smania</span><span class="es">Tu celosa locura,</span></div>
+      <div class="line-row"><span class="it">Frena per poco ancor.</span><span class="es">frena un poco todavía.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Tutti d'averno i demoni</span><span class="es">¡Todos los demonios del Averno</span></div>
+      <div class="line-row"><span class="it">M'agitan mente e cor.</span><span class="es">me agitan la mente y el corazón!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Odabella sempre in arnese da Amazzone con manto reale e corona, viene spaventata e fuggente dal campo barbaro)</span>
+        <span class="es">(Odabella siempre con atributos reales aparece asustada huyendo del campamento bárbaro)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc42">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t42">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Cessa, deh, cessa... ah lasciami,</span><span class="es">¡Cesa, ¡ay!, cesa... ¡ah!</span></div>
+      <div class="line-row"><span class="it">Ombra del padre irata...</span><span class="es">¡Déjame sombra airada de mi padre!...</span></div>
+      <div class="line-row"><span class="it">Lo vedi?... Io fuggo il talamo...</span><span class="es">¿Lo ves?... ¡Huyo del tálamo!...</span></div>
+      <div class="line-row"><span class="it">Sarai... sì... vendicata...</span><span class="es">¡Serás... sí... vengada!...</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">È tardo, o sposa d'Attila,</span><span class="es">Llega tarde ¡oh, esposa de Atila!</span></div>
+      <div class="line-row"><span class="it">È tardo il tuo pentir.</span><span class="es">llega tarde tu arrepentimiento.</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Il segno... il segno... affrettati,</span><span class="es">¡La señal!... ¡la señal!...</span></div>
+      <div class="line-row"><span class="it">O ci farem scoprir.</span><span class="es">¡Date prisa, o nos descubrirán!</span></div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Tu qui, Foresto?... Ascoltami,</span><span class="es">¿Tú aquí, Foresto?... Escúchame,</span></div>
+      <div class="line-row"><span class="it">Pietà del mio martir.</span><span class="es">ten piedad de mi martirio.</span></div>
+    </div>
+
+    <div class="track-col" id="tc43">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t43">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Te sol, te sol quest'anima</span><span class="es">A ti sólo, a ti sólo este alma</span></div>
+      <div class="line-row"><span class="it">Ama d'immenso amore;</span><span class="es">ama con inmenso amor;</span></div>
+      <div class="line-row"><span class="it">Credimi, è puro il core,</span><span class="es">créeme, mi corazón es puro,</span></div>
+      <div class="line-row"><span class="it">Sempre ti fui fedel.</span><span class="es">siempre te fui fiel.</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Troppo mi seppe illudere</span><span class="es">¡Demasiado me ilusionaron</span></div>
+      <div class="line-row"><span class="it">Il tuo mendace detto!</span><span class="es">tus palabras mentirosas!</span></div>
+      <div class="line-row"><span class="it">Ed osi ancor d'affetto</span><span class="es">¿Y osas todavía</span></div>
+      <div class="line-row"><span class="it">Parlare a me, crudel?</span><span class="es">hablarme de afecto, cruel?</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Tempo non è di lagrime,</span><span class="es">¡No es tiempo de lágrimas,</span></div>
+      <div class="line-row"><span class="it">Non di geloso accento;</span><span class="es">ni de celosos reproches!</span></div>
+      <div class="line-row"><span class="it">S'affretti l'alto evento,</span><span class="es">Se acerca la gran obra,</span></div>
+      <div class="line-row"><span class="it">Finchè ne arride il ciel.</span><span class="es">el cielo nos sonríe.</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Attila che va dritto ad Odabella)</span>
+        <span class="es">(Entra Atila)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ad Odabella)</span>
+        <span class="es">(a Odabella)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc44">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t44">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Non involarti, seguimi;</span><span class="es">¡No te vayas, sígueme!</span></div>
+      <div class="line-row"><span class="it">Perchè fuggir chi t'ama?...</span><span class="es">¿Por qué huyes de quien te ama?...</span></div>
+      <div class="line-row"><span class="it">Che mai vegg'io?... Qui, perfidi,</span><span class="es">¿Pero qué veo?... ¿Aquí, pérfidos,</span></div>
+      <div class="line-row"><span class="it">Veniste a nuova trama?</span><span class="es">vinisteis de nuevo a conjurar?</span></div>
+      <div class="stage-direction">
+        <span>(ad Odabella)</span>
+        <span class="es">(a Odabella)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc45">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t45">
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Tu, rea donna, già schiava,</span><span class="es">¡Tú, mujer, antes esclava,</span></div>
+      <div class="line-row"><span class="it">or mia sposa;</span><span class="es">ahora mi esposa!</span></div>
+      <div class="stage-direction">
+        <span>(a Foresto)</span>
+        <span class="es">(a Foresto)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu, fellon, cui la vita ho donata;</span><span class="es">¡Tú, felón, a quien la vida regalé!</span></div>
+      <div class="stage-direction">
+        <span>(ad Ezio)</span>
+        <span class="es">(a Aecio)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu, Romano, per Roma salvata,</span><span class="es">¡Tú, romano, salvado por Roma!</span></div>
+      <div class="line-row"><span class="it">Congiurate tuttor contro me?...</span><span class="es">¿Conjuráis todos contra mí?...</span></div>
+      <div class="line-row"><span class="it">Scellerati... su voi sanguinosa</span><span class="es">Villanos... sobre todos vosotros caerá</span></div>
+      <div class="line-row"><span class="it">Piomberà la vendetta del re.</span><span class="es">la venganza sangrante del rey.</span></div>
+    </div>
+
+    <div class="track-col" id="tc46">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">24</span>
+      </div>
+    </div>
+    <div class="text-col" id="t46">
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Nella tenda, al tuo letto d'appresso,</span><span class="es">En la tienda, junto a tu lecho,</span></div>
+      <div class="line-row"><span class="it">Minacciosa e tuttor sanguinante</span><span class="es">amenazadora y también sangrante</span></div>
+      <div class="line-row"><span class="it">Dio mio padre sta l'ombra gigante...</span><span class="es">está la sombra gigante de mi padre.</span></div>
+      <div class="line-row"><span class="it">Trucidato ei cadeva per te!</span><span class="es">¡El cayó asesinado, por ti!</span></div>
+      <div class="stage-direction">
+        <span>(Scaglia lungi da sè la corona)</span>
+        <span class="es">(Lanza lejos de sí la corona.)</span>
+      </div>
+      <div class="line-row"><span class="it">Maledetto sarebbe l'amplesso</span><span class="es">¡Maldito sería el abrazo</span></div>
+      <div class="line-row"><span class="it">Che me sposa rendesse del re.</span><span class="es">que me hiciera esposa del rey!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Di qual dono beffardo fai vanto?</span><span class="es">¿De qué don grotesco haces alarde?</span></div>
+      <div class="line-row"><span class="it">Tu m'hai patria ed amante rapita;</span><span class="es">Tú ultrajaste a la patria y al amante.</span></div>
+      <div class="line-row"><span class="it">In abisso d'affanni la vita</span><span class="es">¡Cruel, con tus oscuras pasiones</span></div>
+      <div class="line-row"><span class="it">Hai, crudele, cangiato per me!</span><span class="es">la vida has cambiado para mí!</span></div>
+      <div class="line-row"><span class="it">O tiranno... con morte soltanto</span><span class="es">¡Oh tirano... sólo con la muerte</span></div>
+      <div class="line-row"><span class="it">Può frenarsi quest'odio per te.</span><span class="es">puede frenarse este odio hacia ti!</span></div>
+      <div class="character-row">
+        <span class="character-name">Ezio</span>
+        <span class="character-name">Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Roma hai salva!... e del mondo lo sdegno,</span><span class="es">¡Roma está a salvo!...</span></div>
+      <div class="line-row"><span class="it">Che t'impreca superna vendetta?</span><span class="es">¡El mundo entero te desprecia!</span></div>
+      <div class="line-row"><span class="it">Ed il sangue che inulto l'aspetta</span><span class="es">¿Recuerdas la sangre que derramaste?</span></div>
+      <div class="line-row"><span class="it">Non rammenti?... Paventane, o re.</span><span class="es">¡Tiembla, oh rey, pues tus crímenes</span></div>
+      <div class="line-row"><span class="it">De' delitti varcasti già il segno;</span><span class="es">han superado ya todo límite!</span></div>
+      <div class="line-row"><span class="it">L'ira pende del cielo su te.</span><span class="es">¡La ira del cielo pende sobre ti!</span></div>
+      <div class="stage-direction">
+        <span>(S'ode internamente il rumore dell'improvviso assalto al campo d'Attila)</span>
+        <span class="es">(Se escucha fuera de escena el sonido del asalto al campamento de Atila.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Morte... morte... vendetta!</span><span class="es">¡Muerte... muerte... venganza!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto</span>
+        <span class="character-name">Foresto</span>
+      </div>
+      <div class="line-row"><span class="it">Qual suono?</span><span class="es">¿Qué se oye?</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto, Ezio</span>
+        <span class="character-name">Foresto, Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Suono è questo che segna tua morte.</span><span class="es">Lo que se oye señala tu muerte.</span></div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">Traditori!</span><span class="es">¡Traidores!</span></div>
+      <div class="character-row">
+        <span class="character-name">Foresto, Ezio</span>
+        <span class="character-name">Foresto, Ezio</span>
+      </div>
+      <div class="line-row"><span class="it">Decisa è la sorte...</span><span class="es">Tu muerte está decidida...</span></div>
+      <div class="stage-direction">
+        <span>(Foresto va per trafiggere Attila, ma è prevenuto da Odabella, che lo ferisce esclamando:)</span>
+        <span class="es">(Foresto va a herir a Atila, pero se le adelanta Odabella que lo hiere exclamando:)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Odabella</span>
+        <span class="character-name">Odabella</span>
+      </div>
+      <div class="line-row"><span class="it">Padre!... ah padre, il sacrifico a te.</span><span class="es">¡Padre!... ¡Padre, lo sacrifico por ti!</span></div>
+      <div class="stage-direction">
+        <span>(Abbraccia Foresto)</span>
+        <span class="es">(Abraza a Foresto.)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(morente)</span>
+        <span class="es">(moribundo)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Attila</span>
+        <span class="character-name">Attila</span>
+      </div>
+      <div class="line-row"><span class="it">E tu pure, Odabella?...</span><span class="es">¿Tú también... Odabella?</span></div>
+      <div class="scene-heading">
+        <span>Scena Ultima</span>
+        <span>Escena Última</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Guerrieri romani irrompono da ogni parte)</span>
+        <span class="es">(Soldados romanos irrumpen por todas partes)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Tutti</span>
+        <span class="character-name">Tutti</span>
+      </div>
+      <div class="line-row"><span class="it">Appien sono</span><span class="es">¡Definitivamente están vengados</span></div>
+      <div class="line-row"><span class="it">Vendicati, Dio, popoli e re!</span><span class="es">Dios, el pueblo y el rey!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <div class="drawer-header-left">
+        <span class="drawer-header-opera">Attila — Giuseppe Verdi</span>
+        <span class="drawer-header-sub">Gardelli / Raimondi</span>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()">Close</button>
+    </div>
+    <div class="drawer-body">
+      <div class="drawer-cd-label">Disc 1 — Act Prologo</div>
+      <div class="drawer-track" onclick="jumpTo('t1')">
+        <span class="drawer-track-num">1</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Preludio</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t2" onclick="jumpTo('t2')">
+        <span class="drawer-track-num">2</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Urli, Rapine</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t3" onclick="jumpTo('t3')">
+        <span class="drawer-track-num">3</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Eroi, Levatevi</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t4" onclick="jumpTo('t4')">
+        <span class="drawer-track-num">4</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Di Vergini Straniere</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t5" onclick="jumpTo('t5')">
+        <span class="drawer-track-num">5</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Santo Di Patria Indefinito Amor!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t6" onclick="jumpTo('t6')">
+        <span class="drawer-track-num">6</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Allor Che I Forti Corrono</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t7" onclick="jumpTo('t7')">
+        <span class="drawer-track-num">7</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Da Te Questo Or M'È Concesso</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t8" onclick="jumpTo('t8')">
+        <span class="drawer-track-num">8</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Uldino, A Me Dinanzi L'Inviato</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t9" onclick="jumpTo('t9')">
+        <span class="drawer-track-num">9</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Attila!.. Oh, Il Nobil Messo!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t10" onclick="jumpTo('t10')">
+        <span class="drawer-track-num">10</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Tardo Per Gli Anni, E Tremulo</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t11" onclick="jumpTo('t11')">
+        <span class="drawer-track-num">11</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Vanitosi!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t12" onclick="jumpTo('t12')">
+        <span class="drawer-track-num">12</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Qual Notte!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t13" onclick="jumpTo('t13')">
+        <span class="drawer-track-num">13</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">L'Alito Del Mattin.. Prehiam!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t14" onclick="jumpTo('t14')">
+        <span class="drawer-track-num">14</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Quai Voci!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t15" onclick="jumpTo('t15')">
+        <span class="drawer-track-num">15</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ella In Poter Del Barbaro!</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t16" onclick="jumpTo('t16')">
+        <span class="drawer-track-num">16</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Cara Patria</span>
+          <span class="drawer-track-act">Act Prologo</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t17" onclick="jumpTo('t17')">
+        <span class="drawer-track-num">17</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Liberamente Or Piangi (Odabella)</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t18" onclick="jumpTo('t18')">
+        <span class="drawer-track-num">18</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Oh! Nel Fuggente Nuvolo (Odabella)</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t19" onclick="jumpTo('t19')">
+        <span class="drawer-track-num">19</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Qual Suon Di Passi!</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t20" onclick="jumpTo('t20')">
+        <span class="drawer-track-num">20</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Si Quell'Io Son</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t21" onclick="jumpTo('t21')">
+        <span class="drawer-track-num">21</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Va! Racconta Al Sacrilego</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t22" onclick="jumpTo('t22')">
+        <span class="drawer-track-num">22</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Oh, T'Inebria Nell'Amplesso</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-cd-label">Disc 2 — Act I</div>
+      <div class="drawer-track" id="idx-t23" onclick="jumpTo('t23')">
+        <span class="drawer-track-num">1</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Uldino! Uldin!</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t24" onclick="jumpTo('t24')">
+        <span class="drawer-track-num">2</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Mentre Gonfiarsi L'Anima</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t25" onclick="jumpTo('t25')">
+        <span class="drawer-track-num">3</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Oltre A Quel Limite T'Attendo</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t26" onclick="jumpTo('t26')">
+        <span class="drawer-track-num">4</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Parla, Imponi</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t27" onclick="jumpTo('t27')">
+        <span class="drawer-track-num">5</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">No!...Non È Sogno</span>
+          <span class="drawer-track-act">Act I</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t28" onclick="jumpTo('t28')">
+        <span class="drawer-track-num">6</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Tregua È Cogi'Unni</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t29" onclick="jumpTo('t29')">
+        <span class="drawer-track-num">7</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Dagli Immortali Vertici</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t30" onclick="jumpTo('t30')">
+        <span class="drawer-track-num">8</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Chi Vien?</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t31" onclick="jumpTo('t31')">
+        <span class="drawer-track-num">9</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">E Gettata La Mia Sorte</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t32" onclick="jumpTo('t32')">
+        <span class="drawer-track-num">10</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Del Ciel L'Immensa Volta</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t33" onclick="jumpTo('t33')">
+        <span class="drawer-track-num">11</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ezio, Ben Vieni!</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t34" onclick="jumpTo('t34')">
+        <span class="drawer-track-num">12</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Chi Dona Luce Al Cor?</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t35" onclick="jumpTo('t35')">
+        <span class="drawer-track-num">13</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Ah! Lo Spirto De' Monti</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t36" onclick="jumpTo('t36')">
+        <span class="drawer-track-num">14</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">L'Orrenda Procella</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t37" onclick="jumpTo('t37')">
+        <span class="drawer-track-num">15</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Si Riaccendan Le Quercie</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t38" onclick="jumpTo('t38')">
+        <span class="drawer-track-num">16</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Oh, Miei Prodi!</span>
+          <span class="drawer-track-act">Act II</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t39" onclick="jumpTo('t39')">
+        <span class="drawer-track-num">17</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Qui Del Convegno È Il Loco</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t40" onclick="jumpTo('t40')">
+        <span class="drawer-track-num">18</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Che Non Avrebbe Il Misero</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t41" onclick="jumpTo('t41')">
+        <span class="drawer-track-num">19</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Che Più S'Indugia</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t42" onclick="jumpTo('t42')">
+        <span class="drawer-track-num">20</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Cessa, Deh, Cessa</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t43" onclick="jumpTo('t43')">
+        <span class="drawer-track-num">21</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Te Sol, Te Sol Quest'Anima</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t44" onclick="jumpTo('t44')">
+        <span class="drawer-track-num">22</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Non Involarti, Seguimi</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t45" onclick="jumpTo('t45')">
+        <span class="drawer-track-num">23</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Tu, Rea Donna</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+      <div class="drawer-track" id="idx-t46" onclick="jumpTo('t46')">
+        <span class="drawer-track-num">24</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">Nella Tenda</span>
+          <span class="drawer-track-act">Act III</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openDrawer() {
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function jumpTo(id) {
+    closeDrawer();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  const trackMap = [
+    { id: 't1', cd: 1, track: 1, title: "Preludio" },
+    { id: 't2', cd: 1, track: 2, title: "Urli, Rapine" },
+    { id: 't3', cd: 1, track: 3, title: "Eroi, Levatevi" },
+    { id: 't4', cd: 1, track: 4, title: "Di Vergini Straniere" },
+    { id: 't5', cd: 1, track: 5, title: "Santo Di Patria Indefinito Amor!" },
+    { id: 't6', cd: 1, track: 6, title: "Allor Che I Forti Corrono" },
+    { id: 't7', cd: 1, track: 7, title: "Da Te Questo Or M'\u00c8 Concesso" },
+    { id: 't8', cd: 1, track: 8, title: "Uldino, A Me Dinanzi L'Inviato" },
+    { id: 't9', cd: 1, track: 9, title: "Attila!.. Oh, Il Nobil Messo!" },
+    { id: 't10', cd: 1, track: 10, title: "Tardo Per Gli Anni, E Tremulo" },
+    { id: 't11', cd: 1, track: 11, title: "Vanitosi!" },
+    { id: 't12', cd: 1, track: 12, title: "Qual Notte!" },
+    { id: 't13', cd: 1, track: 13, title: "L'Alito Del Mattin.. Prehiam!" },
+    { id: 't14', cd: 1, track: 14, title: "Quai Voci!" },
+    { id: 't15', cd: 1, track: 15, title: "Ella In Poter Del Barbaro!" },
+    { id: 't16', cd: 1, track: 16, title: "Cara Patria" },
+    { id: 't17', cd: 1, track: 17, title: "Liberamente Or Piangi (Odabella)" },
+    { id: 't18', cd: 1, track: 18, title: "Oh! Nel Fuggente Nuvolo (Odabella)" },
+    { id: 't19', cd: 1, track: 19, title: "Qual Suon Di Passi!" },
+    { id: 't20', cd: 1, track: 20, title: "Si Quell'Io Son" },
+    { id: 't21', cd: 1, track: 21, title: "Va! Racconta Al Sacrilego" },
+    { id: 't22', cd: 1, track: 22, title: "Oh, T'Inebria Nell'Amplesso" },
+    { id: 't23', cd: 2, track: 1, title: "Uldino! Uldin!" },
+    { id: 't24', cd: 2, track: 2, title: "Mentre Gonfiarsi L'Anima" },
+    { id: 't25', cd: 2, track: 3, title: "Oltre A Quel Limite T'Attendo" },
+    { id: 't26', cd: 2, track: 4, title: "Parla, Imponi" },
+    { id: 't27', cd: 2, track: 5, title: "No!...Non \u00c8 Sogno" },
+    { id: 't28', cd: 2, track: 6, title: "Tregua \u00c8 Cogi'Unni" },
+    { id: 't29', cd: 2, track: 7, title: "Dagli Immortali Vertici" },
+    { id: 't30', cd: 2, track: 8, title: "Chi Vien?" },
+    { id: 't31', cd: 2, track: 9, title: "E Gettata La Mia Sorte" },
+    { id: 't32', cd: 2, track: 10, title: "Del Ciel L'Immensa Volta" },
+    { id: 't33', cd: 2, track: 11, title: "Ezio, Ben Vieni!" },
+    { id: 't34', cd: 2, track: 12, title: "Chi Dona Luce Al Cor?" },
+    { id: 't35', cd: 2, track: 13, title: "Ah! Lo Spirto De' Monti" },
+    { id: 't36', cd: 2, track: 14, title: "L'Orrenda Procella" },
+    { id: 't37', cd: 2, track: 15, title: "Si Riaccendan Le Quercie" },
+    { id: 't38', cd: 2, track: 16, title: "Oh, Miei Prodi!" },
+    { id: 't39', cd: 2, track: 17, title: "Qui Del Convegno \u00c8 Il Loco" },
+    { id: 't40', cd: 2, track: 18, title: "Che Non Avrebbe Il Misero" },
+    { id: 't41', cd: 2, track: 19, title: "Che Pi\u00f9 S'Indugia" },
+    { id: 't42', cd: 2, track: 20, title: "Cessa, Deh, Cessa" },
+    { id: 't43', cd: 2, track: 21, title: "Te Sol, Te Sol Quest'Anima" },
+    { id: 't44', cd: 2, track: 22, title: "Non Involarti, Seguimi" },
+    { id: 't45', cd: 2, track: 23, title: "Tu, Rea Donna" },
+    { id: 't46', cd: 2, track: 24, title: "Nella Tenda" },
+  ];
+
+  function updateActive(activeId) {
+    const t = trackMap.find(t => t.id === activeId) || trackMap[1];
+    document.getElementById('trackLabel').textContent = 'CD ' + t.cd + ' · T' + t.track;
+    document.getElementById('trackTitle').textContent = t.title;
+    document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
+    const idx = document.getElementById('idx-' + activeId);
+    if (idx) idx.classList.add('active');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+  }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+
+  trackMap.forEach(t => {
+    const el = document.getElementById(t.id);
+    if (el) observer.observe(el);
+  });
+
+  updateActive('t2');
+</script>
