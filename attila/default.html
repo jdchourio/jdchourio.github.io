@@ -55,17 +55,12 @@
       gap: 0.75rem;
     }
 
-    #actLabel,
-    .recording-pill {
-      font-size: 11px !important;
-      line-height: 1.2;
-    }
+    #actLabel { font-size: 11px !important; line-height: 1.2; }
 
-    .recording-pill {
-      display: contents;
+    .recording-switcher {
+      font-size: 11px !important;
       border: none;
       padding: 0;
-      margin: 0;
       background: none;
     }
   }
@@ -108,7 +103,10 @@
 
   .context-right { display: flex; align-items: center; gap: 10px; }
 
-  .recording-pill {
+  /* Recording switcher */
+  .recording-switcher-wrap { position: relative; }
+
+  .recording-switcher {
     font-family: var(--sans);
     font-size: 11px;
     color: var(--text-dim);
@@ -116,6 +114,44 @@
     border: 1px solid var(--color-border-secondary);
     border-radius: 3px;
     padding: 3px 8px;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .recording-switcher:hover { background: var(--bg2); }
+
+  .switcher-chevron { font-size: 8px; opacity: 0.5; }
+
+  .recording-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--color-background-primary, #fdfaf6);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    min-width: 220px;
+    z-index: 300;
+  }
+  .recording-dropdown.open { display: block; }
+
+  .recording-option {
+    font-family: var(--sans);
+    font-size: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--text-main);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .recording-option:last-child { border-bottom: none; }
+  .recording-option:hover { background: var(--bg2); }
+  .recording-option.active {
+    background: var(--gold-light);
+    color: var(--gold);
+    font-weight: 500;
   }
 
   .index-btn {
@@ -420,7 +456,13 @@
       <span class="context-track-title" id="trackTitle">Urli, Rapine</span>
     </div>
     <div class="context-right">
-      <span class="recording-pill">Attila · Gardelli / Raimondi</span>
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Attila · Gardelli / Raimondi</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
       <button class="index-btn" onclick="openDrawer()">
         <span class="index-icon"><span></span><span></span><span></span></span>
         Index
@@ -430,32 +472,15 @@
 
   <div class="libretto-body">
 
-    <div class="track-col" id="tc1">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD1</span>
-        <span class="track-tag-num">1</span>
-      </div>
-    </div>
-    <div class="text-col" id="t1">
-      <div class="scene-heading">
-        <span>Scena Prima</span>
-        <span>Escena Primera</span>
-      </div>
-      <div class="stage-direction">
-        <span>(Piazza di Aquileia. La notte, vicina al termine, è rischiarata da una grande quantità di torce. Tutto all'intorno è un miserando cumulo di rovine. Qua e là vedesi ancora tratto sollevarsi qualche fiamma, residuo di un orribile incendio di quattro giorni. La scena è ingombra di Unni, Eruli, Ostrogoti, ecc.)</span>
-        <span class="es">(Plaza de Aquilea. La noche está iluminada por una gran cantidad de antorchas. Todo es un miserable cúmulo de ruinas. Por aquí y por allá se ven elevarse algunas llamas, restos de un horrible incendio de cuatro días. La escena está poblada de hunos, érulos, ostrogodos, etc.)</span>
-      </div>
-    </div>
-
     <div class="act-heading">Prologo · Prólogo</div>
 
-    <div class="track-col" id="tc2">
+    <div class="track-col" id="tc1">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">2</span>
       </div>
     </div>
-    <div class="text-col" id="t2">
+    <div class="text-col" id="t1">
       <div class="character-row">
         <span class="character-name">Coro</span>
         <span class="character-name">Coro</span>
@@ -494,13 +519,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc3">
+    <div class="track-col" id="tc2">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">3</span>
       </div>
     </div>
-    <div class="text-col" id="t3">
+    <div class="text-col" id="t2">
       <div class="character-row">
         <span class="character-name">Attila</span>
         <span class="character-name">Attila</span>
@@ -544,13 +569,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc4">
+    <div class="track-col" id="tc3">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">4</span>
       </div>
     </div>
-    <div class="text-col" id="t4">
+    <div class="text-col" id="t3">
       <div class="character-row">
         <span class="character-name">Attila</span>
         <span class="character-name">Attila</span>
@@ -578,13 +603,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc5">
+    <div class="track-col" id="tc4">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">5</span>
       </div>
     </div>
-    <div class="text-col" id="t5">
+    <div class="text-col" id="t4">
       <div class="character-row">
         <span class="character-name">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -592,13 +617,13 @@
       <div class="line-row"><span class="it">Santo di patria indefinito amor!</span><span class="es">¡El santo e infinito amor a la patria!</span></div>
     </div>
 
-    <div class="track-col" id="tc6">
+    <div class="track-col" id="tc5">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">6</span>
       </div>
     </div>
-    <div class="text-col" id="t6">
+    <div class="text-col" id="t5">
       <div class="character-row">
         <span class="character-name">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -642,13 +667,13 @@
       <div class="line-row"><span class="it">Oh acciar!</span><span class="es">¡Su espada!</span></div>
     </div>
 
-    <div class="track-col" id="tc7">
+    <div class="track-col" id="tc6">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">7</span>
       </div>
     </div>
-    <div class="text-col" id="t7">
+    <div class="text-col" id="t6">
       <div class="character-row">
         <span class="character-name">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -687,13 +712,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc8">
+    <div class="track-col" id="tc7">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">8</span>
       </div>
     </div>
-    <div class="text-col" id="t8">
+    <div class="text-col" id="t7">
       <div class="character-row">
         <span class="character-name">Attila</span>
         <span class="character-name">Attila</span>
@@ -716,6 +741,15 @@
         <span>(Entrano Ezio ed ufficiali romani)</span>
         <span class="es">(Entran Aecio y oficiales romanos)</span>
       </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
       <div class="character-row">
         <span class="character-name">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -724,9 +758,9 @@
     </div>
 
     <div class="track-col" id="tc9">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD1</span>
-        <span class="track-tag-num">9</span>
+      <div class="track-tag" style="visibility:hidden">
+        <span class="track-tag-cd"></span>
+        <span class="track-tag-num"></span>
       </div>
     </div>
     <div class="text-col" id="t9">
@@ -1406,13 +1440,13 @@ Vedrai se pavido
 Io là m'arretro,
 Se alfin me vindice
 Il mondo avrà.</span>
-        <span class="es">¡En aquellos lugares 
+        <span class="es">¡En aquellos lugares
 te estaré esperando, espectro!
-¿Quién podrá nunca 
+¿Quién podrá nunca
 prohibírselo a Atila?
-¡Verás si allí 
+¡Verás si allí
 puedes aterrorizarme,
-si al fin el mundo 
+si al fin el mundo
 tendrá un vengador!</span>
       </div>
       <div class="scene-heading">
@@ -1771,11 +1805,11 @@ tendrá un vengador!</span>
       <div class="stage-direction">
         <span>(Campo d'Attila come nell'atto primo,
 apprestato a solenne convito. La notte è
-vivamente rischiarata da cento fiamme 
+vivamente rischiarata da cento fiamme
 che irrompono da grossi tronchi di quercia
 preparati all'uopo. Unni, Ostrogoti, Eruli,
 ecc. Mentre i guerrieri cantano, Attila,
-seguito dai Druidi, dalle sacerdotesse, 
+seguito dai Druidi, dalle sacerdotesse,
 dai duci e re, va ad assidersi al suo
 d'Amazzone)</span>
         <span class="es">(Campamento de Atila como en el acto primero, preparado para un festín. La noche está iluminada por cien llamas que salen de gruesos troncos de encina. Hunos, érulos, ostrogodos, cantan. Atila, seguido de los druidas, va a sentarse en su lugar. Odabella está cerca de él vestida de amazona.)</span>
@@ -2701,339 +2735,88 @@ d'Amazzone)</span>
     <div class="drawer-header">
       <div class="drawer-header-left">
         <span class="drawer-header-opera">Attila — Giuseppe Verdi</span>
-        <span class="drawer-header-sub">Gardelli / Raimondi</span>
+        <span class="drawer-header-sub" id="drawerRecordingLabel">Gardelli / Raimondi</span>
       </div>
       <button class="drawer-close" onclick="closeDrawer()">Close</button>
     </div>
-    <div class="drawer-body">
-      <div class="drawer-cd-label">Disc 1 — Act Prologo</div>
-      <div class="drawer-track" onclick="jumpTo('t1')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Preludio</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t2" onclick="jumpTo('t2')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Urli, Rapine</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t3" onclick="jumpTo('t3')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Eroi, Levatevi</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t4" onclick="jumpTo('t4')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Di Vergini Straniere</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t5" onclick="jumpTo('t5')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Santo Di Patria Indefinito Amor!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t6" onclick="jumpTo('t6')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Allor Che I Forti Corrono</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t7" onclick="jumpTo('t7')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Da Te Questo Or M'È Concesso</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t8" onclick="jumpTo('t8')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Uldino, A Me Dinanzi L'Inviato</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t9" onclick="jumpTo('t9')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Attila!.. Oh, Il Nobil Messo!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t10" onclick="jumpTo('t10')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Tardo Per Gli Anni, E Tremulo</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t11" onclick="jumpTo('t11')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Vanitosi!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t12" onclick="jumpTo('t12')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Qual Notte!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t13" onclick="jumpTo('t13')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">L'Alito Del Mattin.. Prehiam!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t14" onclick="jumpTo('t14')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Quai Voci!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t15" onclick="jumpTo('t15')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ella In Poter Del Barbaro!</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t16" onclick="jumpTo('t16')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Cara Patria</span>
-          <span class="drawer-track-act">Act Prologo</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t17" onclick="jumpTo('t17')">
-        <span class="drawer-track-num">17</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Liberamente Or Piangi (Odabella)</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t18" onclick="jumpTo('t18')">
-        <span class="drawer-track-num">18</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Oh! Nel Fuggente Nuvolo (Odabella)</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t19" onclick="jumpTo('t19')">
-        <span class="drawer-track-num">19</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Qual Suon Di Passi!</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t20" onclick="jumpTo('t20')">
-        <span class="drawer-track-num">20</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Si Quell'Io Son</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t21" onclick="jumpTo('t21')">
-        <span class="drawer-track-num">21</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Va! Racconta Al Sacrilego</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t22" onclick="jumpTo('t22')">
-        <span class="drawer-track-num">22</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Oh, T'Inebria Nell'Amplesso</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-cd-label">Disc 2 — Act I</div>
-      <div class="drawer-track" id="idx-t23" onclick="jumpTo('t23')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Uldino! Uldin!</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t24" onclick="jumpTo('t24')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Mentre Gonfiarsi L'Anima</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t25" onclick="jumpTo('t25')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Oltre A Quel Limite T'Attendo</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t26" onclick="jumpTo('t26')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Parla, Imponi</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t27" onclick="jumpTo('t27')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">No!...Non È Sogno</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t28" onclick="jumpTo('t28')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Tregua È Cogi'Unni</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t29" onclick="jumpTo('t29')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Dagli Immortali Vertici</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t30" onclick="jumpTo('t30')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Chi Vien?</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t31" onclick="jumpTo('t31')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">E Gettata La Mia Sorte</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t32" onclick="jumpTo('t32')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Del Ciel L'Immensa Volta</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t33" onclick="jumpTo('t33')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ezio, Ben Vieni!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t34" onclick="jumpTo('t34')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Chi Dona Luce Al Cor?</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t35" onclick="jumpTo('t35')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ah! Lo Spirto De' Monti</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t36" onclick="jumpTo('t36')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">L'Orrenda Procella</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t37" onclick="jumpTo('t37')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Si Riaccendan Le Quercie</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t38" onclick="jumpTo('t38')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Oh, Miei Prodi!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t39" onclick="jumpTo('t39')">
-        <span class="drawer-track-num">17</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Qui Del Convegno È Il Loco</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t40" onclick="jumpTo('t40')">
-        <span class="drawer-track-num">18</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Che Non Avrebbe Il Misero</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t41" onclick="jumpTo('t41')">
-        <span class="drawer-track-num">19</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Che Più S'Indugia</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t42" onclick="jumpTo('t42')">
-        <span class="drawer-track-num">20</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Cessa, Deh, Cessa</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t43" onclick="jumpTo('t43')">
-        <span class="drawer-track-num">21</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Te Sol, Te Sol Quest'Anima</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t44" onclick="jumpTo('t44')">
-        <span class="drawer-track-num">22</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Non Involarti, Seguimi</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t45" onclick="jumpTo('t45')">
-        <span class="drawer-track-num">23</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Tu, Rea Donna</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t46" onclick="jumpTo('t46')">
-        <span class="drawer-track-num">24</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Nella Tenda</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-    </div>
+    <div class="drawer-body" id="drawerBody"></div>
   </div>
 </div>
 
 <script>
+  const RECORDINGS = {
+  gardelli_raimondi: {
+    label: "Attila \u00b7 Gardelli / Raimondi",
+    short: "Gardelli / Raimondi",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Preludio", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Urli, Rapine", act: "Act Prologo", has_block: true },
+      { id: "t2", cd: 1, track: 3, title: "Eroi, Levatevi", act: "Act Prologo", has_block: true },
+      { id: "t3", cd: 1, track: 4, title: "Di Vergini Straniere", act: "Act Prologo", has_block: true },
+      { id: "t4", cd: 1, track: 5, title: "Santo Di Patria Indefinito Amor!", act: "Act Prologo", has_block: true },
+      { id: "t5", cd: 1, track: 6, title: "Allor Che I Forti Corrono", act: "Act Prologo", has_block: true },
+      { id: "t6", cd: 1, track: 7, title: "Da Te Questo Or M'\u00c8 Concesso", act: "Act Prologo", has_block: true },
+      { id: "t7", cd: 1, track: 8, title: "Uldino, A Me Dinanzi L'Inviato", act: "Act Prologo", has_block: true },
+      { id: "t8", cd: 1, track: 9, title: "Attila!.. Oh, Il Nobil Messo!", act: "Act Prologo", has_block: true },
+      { id: "t10", cd: 1, track: 10, title: "Tardo Per Gli Anni, E Tremulo", act: "Act Prologo", has_block: true },
+      { id: "t11", cd: 1, track: 11, title: "Vanitosi!", act: "Act Prologo", has_block: true },
+      { id: "t12", cd: 1, track: 12, title: "Qual Notte!", act: "Act Prologo", has_block: true },
+      { id: "t13", cd: 1, track: 13, title: "L'Alito Del Mattin.. Prehiam!", act: "Act Prologo", has_block: true },
+      { id: "t14", cd: 1, track: 14, title: "Quai Voci!", act: "Act Prologo", has_block: true },
+      { id: "t15", cd: 1, track: 15, title: "Ella In Poter Del Barbaro!", act: "Act Prologo", has_block: true },
+      { id: "t16", cd: 1, track: 16, title: "Cara Patria", act: "Act Prologo", has_block: true },
+      { id: "t17", cd: 1, track: 17, title: "Liberamente Or Piangi (Odabella)", act: "Act I", has_block: true },
+      { id: "t18", cd: 1, track: 18, title: "Oh! Nel Fuggente Nuvolo (Odabella)", act: "Act I", has_block: true },
+      { id: "t19", cd: 1, track: 19, title: "Qual Suon Di Passi!", act: "Act I", has_block: true },
+      { id: "t20", cd: 1, track: 20, title: "Si Quell'Io Son", act: "Act I", has_block: true },
+      { id: "t21", cd: 1, track: 21, title: "Va! Racconta Al Sacrilego", act: "Act I", has_block: true },
+      { id: "t22", cd: 1, track: 22, title: "Oh, T'Inebria Nell'Amplesso", act: "Act I", has_block: true },
+      { id: "t23", cd: 2, track: 1, title: "Uldino! Uldin!", act: "Act I", has_block: true },
+      { id: "t24", cd: 2, track: 2, title: "Mentre Gonfiarsi L'Anima", act: "Act I", has_block: true },
+      { id: "t25", cd: 2, track: 3, title: "Oltre A Quel Limite T'Attendo", act: "Act I", has_block: true },
+      { id: "t26", cd: 2, track: 4, title: "Parla, Imponi", act: "Act I", has_block: true },
+      { id: "t27", cd: 2, track: 5, title: "No!...Non \u00c8 Sogno", act: "Act I", has_block: true },
+      { id: "t28", cd: 2, track: 6, title: "Tregua \u00c8 Cogi'Unni", act: "Act II", has_block: true },
+      { id: "t29", cd: 2, track: 7, title: "Dagli Immortali Vertici", act: "Act II", has_block: true },
+      { id: "t30", cd: 2, track: 8, title: "Chi Vien?", act: "Act II", has_block: true },
+      { id: "t31", cd: 2, track: 9, title: "E Gettata La Mia Sorte", act: "Act II", has_block: true },
+      { id: "t32", cd: 2, track: 10, title: "Del Ciel L'Immensa Volta", act: "Act II", has_block: true },
+      { id: "t33", cd: 2, track: 11, title: "Ezio, Ben Vieni!", act: "Act II", has_block: true },
+      { id: "t34", cd: 2, track: 12, title: "Chi Dona Luce Al Cor?", act: "Act II", has_block: true },
+      { id: "t35", cd: 2, track: 13, title: "Ah! Lo Spirto De' Monti", act: "Act II", has_block: true },
+      { id: "t36", cd: 2, track: 14, title: "L'Orrenda Procella", act: "Act II", has_block: true },
+      { id: "t37", cd: 2, track: 15, title: "Si Riaccendan Le Quercie", act: "Act II", has_block: true },
+      { id: "t38", cd: 2, track: 16, title: "Oh, Miei Prodi!", act: "Act II", has_block: true },
+      { id: "t39", cd: 2, track: 17, title: "Qui Del Convegno \u00c8 Il Loco", act: "Act III", has_block: true },
+      { id: "t40", cd: 2, track: 18, title: "Che Non Avrebbe Il Misero", act: "Act III", has_block: true },
+      { id: "t41", cd: 2, track: 19, title: "Che Pi\u00f9 S'Indugia", act: "Act III", has_block: true },
+      { id: "t42", cd: 2, track: 20, title: "Cessa, Deh, Cessa", act: "Act III", has_block: true },
+      { id: "t43", cd: 2, track: 21, title: "Te Sol, Te Sol Quest'Anima", act: "Act III", has_block: true },
+      { id: "t44", cd: 2, track: 22, title: "Non Involarti, Seguimi", act: "Act III", has_block: true },
+      { id: "t45", cd: 2, track: 23, title: "Tu, Rea Donna", act: "Act III", has_block: true },
+      { id: "t46", cd: 2, track: 24, title: "Nella Tenda", act: "Act III", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act Prologo": "Prologo Prologo",
+    "Act I": "Atto I",
+    "Act II": "Atto II",
+    "Act III": "Atto III"
+  };
+
+  const ACT_STARTS = {
+    "Act Prologo": "t1",
+    "Act I": "t17",
+    "Act II": "t28",
+    "Act III": "t39"
+  };
+
+  let activeRecording = "gardelli_raimondi";
+  let currentActiveId = "t1";
+  let observer = null;
+
   function openDrawer() {
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -3049,72 +2832,129 @@ d'Amazzone)</span>
     updateActive(id);
   }
 
-  const trackMap = [
-    { id: 't1', cd: 1, track: 1, title: "Preludio" },
-    { id: 't2', cd: 1, track: 2, title: "Urli, Rapine" },
-    { id: 't3', cd: 1, track: 3, title: "Eroi, Levatevi" },
-    { id: 't4', cd: 1, track: 4, title: "Di Vergini Straniere" },
-    { id: 't5', cd: 1, track: 5, title: "Santo Di Patria Indefinito Amor!" },
-    { id: 't6', cd: 1, track: 6, title: "Allor Che I Forti Corrono" },
-    { id: 't7', cd: 1, track: 7, title: "Da Te Questo Or M'\u00c8 Concesso" },
-    { id: 't8', cd: 1, track: 8, title: "Uldino, A Me Dinanzi L'Inviato" },
-    { id: 't9', cd: 1, track: 9, title: "Attila!.. Oh, Il Nobil Messo!" },
-    { id: 't10', cd: 1, track: 10, title: "Tardo Per Gli Anni, E Tremulo" },
-    { id: 't11', cd: 1, track: 11, title: "Vanitosi!" },
-    { id: 't12', cd: 1, track: 12, title: "Qual Notte!" },
-    { id: 't13', cd: 1, track: 13, title: "L'Alito Del Mattin.. Prehiam!" },
-    { id: 't14', cd: 1, track: 14, title: "Quai Voci!" },
-    { id: 't15', cd: 1, track: 15, title: "Ella In Poter Del Barbaro!" },
-    { id: 't16', cd: 1, track: 16, title: "Cara Patria" },
-    { id: 't17', cd: 1, track: 17, title: "Liberamente Or Piangi (Odabella)" },
-    { id: 't18', cd: 1, track: 18, title: "Oh! Nel Fuggente Nuvolo (Odabella)" },
-    { id: 't19', cd: 1, track: 19, title: "Qual Suon Di Passi!" },
-    { id: 't20', cd: 1, track: 20, title: "Si Quell'Io Son" },
-    { id: 't21', cd: 1, track: 21, title: "Va! Racconta Al Sacrilego" },
-    { id: 't22', cd: 1, track: 22, title: "Oh, T'Inebria Nell'Amplesso" },
-    { id: 't23', cd: 2, track: 1, title: "Uldino! Uldin!" },
-    { id: 't24', cd: 2, track: 2, title: "Mentre Gonfiarsi L'Anima" },
-    { id: 't25', cd: 2, track: 3, title: "Oltre A Quel Limite T'Attendo" },
-    { id: 't26', cd: 2, track: 4, title: "Parla, Imponi" },
-    { id: 't27', cd: 2, track: 5, title: "No!...Non \u00c8 Sogno" },
-    { id: 't28', cd: 2, track: 6, title: "Tregua \u00c8 Cogi'Unni" },
-    { id: 't29', cd: 2, track: 7, title: "Dagli Immortali Vertici" },
-    { id: 't30', cd: 2, track: 8, title: "Chi Vien?" },
-    { id: 't31', cd: 2, track: 9, title: "E Gettata La Mia Sorte" },
-    { id: 't32', cd: 2, track: 10, title: "Del Ciel L'Immensa Volta" },
-    { id: 't33', cd: 2, track: 11, title: "Ezio, Ben Vieni!" },
-    { id: 't34', cd: 2, track: 12, title: "Chi Dona Luce Al Cor?" },
-    { id: 't35', cd: 2, track: 13, title: "Ah! Lo Spirto De' Monti" },
-    { id: 't36', cd: 2, track: 14, title: "L'Orrenda Procella" },
-    { id: 't37', cd: 2, track: 15, title: "Si Riaccendan Le Quercie" },
-    { id: 't38', cd: 2, track: 16, title: "Oh, Miei Prodi!" },
-    { id: 't39', cd: 2, track: 17, title: "Qui Del Convegno \u00c8 Il Loco" },
-    { id: 't40', cd: 2, track: 18, title: "Che Non Avrebbe Il Misero" },
-    { id: 't41', cd: 2, track: 19, title: "Che Pi\u00f9 S'Indugia" },
-    { id: 't42', cd: 2, track: 20, title: "Cessa, Deh, Cessa" },
-    { id: 't43', cd: 2, track: 21, title: "Te Sol, Te Sol Quest'Anima" },
-    { id: 't44', cd: 2, track: 22, title: "Non Involarti, Seguimi" },
-    { id: 't45', cd: 2, track: 23, title: "Tu, Rea Donna" },
-    { id: 't46', cd: 2, track: 24, title: "Nella Tenda" },
-  ];
+  function toggleSwitcher(event) {
+    event.stopPropagation();
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    if (dd.classList.contains('open')) {
+      dd.classList.remove('open');
+    } else {
+      dd.classList.add('open');
+      setTimeout(() => document.addEventListener('click', closeSwitcherOnOutside, { once: true }), 0);
+    }
+  }
+  function closeSwitcherOnOutside() {
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function buildSwitcherDropdown() {
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    dd.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<div class="recording-option${key === activeRecording ? ' active' : ''}" onclick="switchRecording('${key}')">${rec.label}</div>`
+    ).join('');
+  }
+
+  function buildDrawer() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('drawerBody');
+    let html = '';
+    let lastGroup = null;
+
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+
+    body.innerHTML = html;
+    const lbl = document.getElementById('drawerRecordingLabel');
+    if (lbl) lbl.textContent = rec.short;
+  }
+
+  function updateTrackTags() {
+    document.querySelectorAll('.track-tag').forEach(tag => { tag.style.visibility = 'hidden'; });
+    const rec = RECORDINGS[activeRecording];
+    const seen = new Set();
+    for (const t of rec.tracks) {
+      if (!t.has_block) continue;
+      const suffix = t.id.slice(1);
+      if (seen.has(suffix)) continue;
+      seen.add(suffix);
+      const tc = document.getElementById('tc' + suffix);
+      if (!tc) continue;
+      const tag = tc.querySelector('.track-tag');
+      if (!tag) continue;
+      tag.style.visibility = 'visible';
+      tag.innerHTML = `<span class="track-tag-cd">CD${t.cd}</span><span class="track-tag-num">${t.track}</span>`;
+    }
+  }
+
+  function scrollToCurrentAct() {
+    const rec = RECORDINGS[activeRecording];
+    const track = rec.tracks.find(t => t.id === currentActiveId);
+    if (!track) return;
+    const startId = ACT_STARTS[track.act];
+    if (!startId) return;
+    const el = document.getElementById(startId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function switchRecording(key) {
+    activeRecording = key;
+    const lbl = document.getElementById('recordingLabel');
+    if (lbl) lbl.textContent = RECORDINGS[key].label;
+    updateTrackTags();
+    buildDrawer();
+    buildSwitcherDropdown();
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+    scrollToCurrentAct();
+    updateActive(currentActiveId);
+  }
 
   function updateActive(activeId) {
-    const t = trackMap.find(t => t.id === activeId) || trackMap[1];
-    document.getElementById('trackLabel').textContent = 'CD ' + t.cd + ' · T' + t.track;
-    document.getElementById('trackTitle').textContent = t.title;
+    currentActiveId = activeId;
+    const rec = RECORDINGS[activeRecording];
+    const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
+    if (!t) return;
+    const trackLabel = document.getElementById('trackLabel');
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    const trackTitle = document.getElementById('trackTitle');
+    if (trackTitle) trackTitle.textContent = t.title;
+    const actLabel = document.getElementById('actLabel');
+    if (actLabel) actLabel.textContent = ACT_DISPLAY[t.act] || t.act;
     document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
     const idx = document.getElementById('idx-' + activeId);
     if (idx) idx.classList.add('active');
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
-  }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+  function rewireObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+    }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
 
-  trackMap.forEach(t => {
-    const el = document.getElementById(t.id);
-    if (el) observer.observe(el);
-  });
+    const rec = RECORDINGS[activeRecording];
+    rec.tracks.forEach(t => {
+      const el = document.getElementById(t.id);
+      if (el) observer.observe(el);
+    });
+  }
 
-  updateActive('t2');
+  buildSwitcherDropdown();
+  buildDrawer();
+  rewireObserver();
+  updateActive("t1");
 </script>

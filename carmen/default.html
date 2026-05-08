@@ -55,17 +55,12 @@
       gap: 0.75rem;
     }
 
-    #actLabel,
-    .recording-pill {
-      font-size: 11px !important;
-      line-height: 1.2;
-    }
+    #actLabel { font-size: 11px !important; line-height: 1.2; }
 
-    .recording-pill {
-      display: contents;
+    .recording-switcher {
+      font-size: 11px !important;
       border: none;
       padding: 0;
-      margin: 0;
       background: none;
     }
   }
@@ -108,7 +103,10 @@
 
   .context-right { display: flex; align-items: center; gap: 10px; }
 
-  .recording-pill {
+  /* Recording switcher */
+  .recording-switcher-wrap { position: relative; }
+
+  .recording-switcher {
     font-family: var(--sans);
     font-size: 11px;
     color: var(--text-dim);
@@ -116,6 +114,44 @@
     border: 1px solid var(--color-border-secondary);
     border-radius: 3px;
     padding: 3px 8px;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .recording-switcher:hover { background: var(--bg2); }
+
+  .switcher-chevron { font-size: 8px; opacity: 0.5; }
+
+  .recording-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--color-background-primary, #fdfaf6);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    min-width: 220px;
+    z-index: 300;
+  }
+  .recording-dropdown.open { display: block; }
+
+  .recording-option {
+    font-family: var(--sans);
+    font-size: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--text-main);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .recording-option:last-child { border-bottom: none; }
+  .recording-option:hover { background: var(--bg2); }
+  .recording-option.active {
+    background: var(--gold-light);
+    color: var(--gold);
+    font-weight: 500;
   }
 
   .index-btn {
@@ -420,7 +456,13 @@
       <span class="context-track-title" id="trackTitle">Sur La Place Chacun Passe</span>
     </div>
     <div class="context-right">
-      <span class="recording-pill">Carmen · Karajan / Price</span>
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Carmen · Karajan / Price</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
       <button class="index-btn" onclick="openDrawer()">
         <span class="index-icon"><span></span><span></span><span></span></span>
         Index
@@ -430,38 +472,15 @@
 
   <div class="libretto-body">
 
-    <div class="track-col" id="tc1">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD1</span>
-        <span class="track-tag-num">1</span>
-      </div>
-    </div>
-    <div class="text-col" id="t1">
-      <div class="musical-number">Prelude</div>
-      <div class="stage-direction">
-        <span>(Une place, à Séville. A droite, la porte de la manufacture de tabac. A gauche, au premier plan, le corps de garde. Devant le corps de garde, exhaussée de deux ou trois marches; près du corps de garde, dans un râtelier, les lances des dragons avec leurs banderoles jaunes et rouges.)</span>
-        <span class="es">(Una plaza pública de la ciudad de Sevilla. A la derecha, la puerta de la Fábrica de Tabaco. A la izquierda, el cuerpo de guardia donde, Morales y el resto de los soldados, descansan. Las lanzas de los dragones, están apoyadas en el muro.)</span>
-      </div>
-      <div class="scene-heading">
-        <span>Scène Première</span>
-        <span>Escena Primera</span>
-      </div>
-      <div class="musical-number">1. Introduction</div>
-      <div class="stage-direction">
-        <span>(Au lever du rideau, une quinzaine de soldats, Dragons du régiment d'Alcala, sont groupés devant le corps de garde. Les uns assis et fumant, les autres accoudés sur le balustrade de la galerie. Mouvement de passants sur la place. Des gens pressés, affairés, vont, viennent, se rencontrent, se saluent, se bousculent, etc.)</span>
-        <span class="es">(junto al telón, una quincena de soldados, dragones del regimiento de Alcalá, están en grupos frente al cuerpo de guardia; unos sentados fumando, otros acodados en la barandilla de la galería viendo pasear a la gente que va y viene animadamente.)</span>
-      </div>
-    </div>
-
     <div class="act-heading">Acte Premier · Acto Primero</div>
 
-    <div class="track-col" id="tc2">
+    <div class="track-col" id="tc1">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">2</span>
       </div>
     </div>
-    <div class="text-col" id="t2">
+    <div class="text-col" id="t1">
       <div class="character-row">
         <span class="character-name">Soldats</span>
         <span class="character-name">Soldats</span>
@@ -492,22 +511,22 @@
       </div>
       <div class="line-row"><span class="fr">Drôles de gens!</span><span class="es">¡Qué gente tan extraña!</span></div>
       <div class="stage-direction">
-        <span>(Micaëla est entrée, hésitante, embarrassée, elle regarde les soldats avance, recule, etc. )</span>
+        <span>(Micaëla est entrée, hésitante, embarrassée, elle regarde les soldats avance, recule, etc.)</span>
         <span class="es">(Aparece Micaela; temerosa mira a los soldados y se aproxima a ellos, pero arrepentida, da un paso atrás)</span>
       </div>
       <div class="stage-direction">
-        <span>aux soldats)</span>
+        <span>(aux soldats)</span>
         <span class="es">(a los soldados)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc3">
+    <div class="track-col" id="tc2">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">3</span>
       </div>
     </div>
-    <div class="text-col" id="t3">
+    <div class="text-col" id="t2">
       <div class="character-row">
         <span class="character-name">Moralès</span>
         <span class="character-name">Moralès</span>
@@ -521,7 +540,7 @@
       </div>
       <div class="line-row"><span class="fr">A son secours il faut aller!</span><span class="es">¡Debemos ayudarla!</span></div>
       <div class="stage-direction">
-        <span>à Micaëla, galamment)</span>
+        <span>(à Micaëla, galamment)</span>
         <span class="es">(a Micaela con galantería)</span>
       </div>
       <div class="character-row">
@@ -658,7 +677,7 @@
       </div>
       <div class="line-row"><span class="fr">Vous resterez!</span><span class="es">¡Tienes que quedarte!</span></div>
       <div class="stage-direction">
-        <span>cherchant à se dégager)</span>
+        <span>(cherchant à se dégager)</span>
         <span class="es">(tratando de escapar)</span>
       </div>
       <div class="character-row">
@@ -713,13 +732,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc4">
+    <div class="track-col" id="tc3">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">4</span>
       </div>
     </div>
-    <div class="text-col" id="t4">
+    <div class="text-col" id="t3">
       <div class="character-row">
         <span class="character-name">Gamins</span>
         <span class="character-name">Gamins</span>
@@ -755,13 +774,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc5">
+    <div class="track-col" id="tc4">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">5</span>
       </div>
     </div>
-    <div class="text-col" id="t5">
+    <div class="text-col" id="t4">
       <div class="character-row">
         <span class="character-name">Moralès</span>
         <span class="character-name">Moralès</span>
@@ -905,8 +924,8 @@
       <div class="line-row"><span class="fr">Je le comprends maintenant...</span><span class="es">¡Ahora lo comprendo!...</span></div>
       <div class="musical-number">3. Choeur Et Scène</div>
       <div class="stage-direction">
-        <span>(La cloche de la manufacture se fait entendre. )</span>
-        <span class="es">(La campana de la Fábrica comienza a sonar )</span>
+        <span>(La cloche de la manufacture se fait entendre.)</span>
+        <span class="es">(La campana de la Fábrica comienza a sonar)</span>
       </div>
       <div class="scene-heading">
         <span>Scène Quatrième</span>
@@ -925,13 +944,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc6">
+    <div class="track-col" id="tc5">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">6</span>
       </div>
     </div>
-    <div class="text-col" id="t6">
+    <div class="text-col" id="t5">
       <div class="character-row">
         <span class="character-name">Jeunes Gens</span>
         <span class="character-name">Jeunes Gens</span>
@@ -1025,13 +1044,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc7">
+    <div class="track-col" id="tc6">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">7</span>
       </div>
     </div>
-    <div class="text-col" id="t7">
+    <div class="text-col" id="t6">
       <div class="character-row">
         <span class="character-name">Jeunes Gens</span>
         <span class="character-name">Jeunes Gens</span>
@@ -1080,13 +1099,13 @@
       <div class="musical-number">4. Havanaise</div>
     </div>
 
-    <div class="track-col" id="tc8">
+    <div class="track-col" id="tc7">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">8</span>
       </div>
     </div>
-    <div class="text-col" id="t8">
+    <div class="text-col" id="t7">
       <div class="character-row">
         <span class="character-name">Carmen, Choeur</span>
         <span class="character-name">Carmen, Choeur</span>
@@ -1121,13 +1140,13 @@
       <div class="musical-number">5. Scène</div>
     </div>
 
-    <div class="track-col" id="tc9">
+    <div class="track-col" id="tc8">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">9</span>
       </div>
     </div>
-    <div class="text-col" id="t9">
+    <div class="text-col" id="t8">
       <div class="character-row">
         <span class="character-name">Jeunes Gens</span>
         <span class="character-name">Jeunes Gens</span>
@@ -1137,8 +1156,7 @@
       <div class="line-row"><span class="fr">Carmen! sois gentille,</span><span class="es">¡Carmen, sé gentil,</span></div>
       <div class="line-row"><span class="fr">au moins réponds-nous!</span><span class="es">al menos contéstanos!</span></div>
       <div class="stage-direction">
-        <span>(Moment de silence. Les jeunes gens entourent Carmen, celle-ci les regarde l'un après l'autre, sort du cercle qu'ils 
-forment autour d'elle et s'en va droit à don José, qui est toujours occupé de son épinglette. Elle arrache de son corsage la fleur de cassie et la lance à don José. Il se lève brusquement.)</span>
+        <span>(Moment de silence. Les jeunes gens entourent Carmen, celle-ci les regarde l'un après l'autre, sort du cercle qu'ils forment autour d'elle et s'en va droit à don José, qui est toujours occupé de son épinglette. Elle arrache de son corsage la fleur de cassie et la lance à don José. Il se lève brusquement.)</span>
         <span class="es">(Los jóvenes rodean a Carmen, mientras ella mira a uno a uno, luego sale del círculo que forman los muchachos y se dirige hacia don José, que está ocupado en limpiar su arma. Carmen saca de su corpiño una flor que arroja a don José: este, se levanta bruscamente)</span>
       </div>
       <div class="stage-direction">
@@ -1160,13 +1178,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
     </div>
 
-    <div class="track-col" id="tc10">
+    <div class="track-col" id="tc9">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">10</span>
       </div>
     </div>
-    <div class="text-col" id="t10">
+    <div class="text-col" id="t9">
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -1181,7 +1199,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">certainement s'il y a des sorcières,</span><span class="es">Si las brujas existen,</span></div>
       <div class="line-row"><span class="fr">cette fille-là en est une.</span><span class="es">ella es una, sin duda.</span></div>
       <div class="stage-direction">
-        <span>(Entre Micaëla. )</span>
+        <span>(Entre Micaëla.)</span>
         <span class="es">(Entra Micaela)</span>
       </div>
       <div class="scene-heading">
@@ -1215,13 +1233,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
     </div>
 
-    <div class="track-col" id="tc11">
+    <div class="track-col" id="tc10">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">11</span>
       </div>
     </div>
-    <div class="text-col" id="t11">
+    <div class="text-col" id="t10">
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -1301,7 +1319,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">et ce baiser que je te donne,</span><span class="es">y este beso que te entrego</span></div>
       <div class="line-row"><span class="fr">de ma part tu le lui rendras."</span><span class="es">de mi parte le darás."</span></div>
       <div class="stage-direction">
-        <span>très ému)</span>
+        <span>(très ému)</span>
         <span class="es">(muy emocionado)</span>
       </div>
       <div class="character-row">
@@ -1318,7 +1336,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">comme je l'ai promis!</span><span class="es">tal como he prometido.</span></div>
       <div class="stage-direction">
         <span>(elle donne à José un baiser bien franc)</span>
-        <span class="es">(le da a Don José un beso casto)</span>
+        <span class="es">(le da a Don José un beso casto) )</span>
       </div>
       <div class="character-row">
         <span class="character-name">Don José</span>
@@ -1434,13 +1452,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">Ô souvenirs du pays!</span><span class="es">¡Oh, recuerdos del hogar!</span></div>
     </div>
 
-    <div class="track-col" id="tc12">
+    <div class="track-col" id="tc11">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">12</span>
       </div>
     </div>
-    <div class="text-col" id="t12">
+    <div class="text-col" id="t11">
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -1478,7 +1496,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
       <div class="musical-number">7. Choeur</div>
       <div class="stage-direction">
-        <span>(Au moment où il va arracher les fleurs de sa veste, grande rumeur dans l'intérieur de la manufacture. Le lieutenant entre suivi des soldats )</span>
+        <span>(Au moment où il va arracher les fleurs de sa veste, grande rumeur dans l'intérieur de la manufacture. Le lieutenant entre suivi des soldats)</span>
         <span class="es">(cuando va a arrancarse las flores se oye un gran alboroto en el interior d la Fábrica. Entra Zúñiga, seguido por los soldados)</span>
       </div>
       <div class="stage-direction">
@@ -1492,13 +1510,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">Au secours!</span><span class="es">¡Ayuda!</span></div>
     </div>
 
-    <div class="track-col" id="tc13">
+    <div class="track-col" id="tc12">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">13</span>
       </div>
     </div>
-    <div class="text-col" id="t13">
+    <div class="text-col" id="t12">
       <div class="character-row">
         <span class="character-name">Zuniga</span>
         <span class="character-name">Zuniga</span>
@@ -1664,13 +1682,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">Monsieur!</span><span class="es">¡Señor!</span></div>
     </div>
 
-    <div class="track-col" id="tc14">
+    <div class="track-col" id="tc13">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">14</span>
       </div>
     </div>
-    <div class="text-col" id="t14">
+    <div class="text-col" id="t13">
       <div class="character-row">
         <span class="character-name">Zuniga</span>
         <span class="character-name">Zuniga</span>
@@ -1696,7 +1714,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">deux coups de couteau...</span><span class="es">con dos cortes de cuchillo en la frente,</span></div>
       <div class="line-row"><span class="fr">en face de la blessée j'ai vu...</span><span class="es">y junto a ella, vi a...</span></div>
       <div class="stage-direction">
-        <span>(il s'arrête sur un regard de Carmen )</span>
+        <span>(il s'arrête sur un regard de Carmen)</span>
         <span class="es">(se detiene al mirar a Carmen)</span>
       </div>
       <div class="character-row">
@@ -1732,13 +1750,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
     </div>
 
-    <div class="track-col" id="tc15">
+    <div class="track-col" id="tc14">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">15</span>
       </div>
     </div>
-    <div class="text-col" id="t15">
+    <div class="text-col" id="t14">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -1788,7 +1806,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
       <div class="line-row"><span class="fr">Eh! eh! Vous avez la main leste décidément.</span><span class="es">¡Verdaderamente tienes manos ágiles!</span></div>
       <div class="stage-direction">
-        <span>aux soldats)</span>
+        <span>(aux soldats)</span>
         <span class="es">(a los soldados)</span>
       </div>
       <div class="line-row"><span class="fr">Trouvez-moi une corde.</span><span class="es">Tráiganme una cuerda.</span></div>
@@ -1851,7 +1869,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
         <span>Escena Décima</span>
       </div>
       <div class="stage-direction">
-        <span>(Un petit moment de silence. Carmen lève les yeux et regarde don José. Celui-ci se détourne, s'éloigne de quelques pas, puis revient à Carmen, qui le regarde toujours. )</span>
+        <span>(Un petit moment de silence. Carmen lève les yeux et regarde don José. Celui-ci se détourne, s'éloigne de quelques pas, puis revient à Carmen, qui le regarde toujours.)</span>
         <span class="es">(Momento de silencio. Carmen mira a don José. Él camina unos pasos hacia afuera, luego, vuelve junto a Carmen, quién aún continúa mirándolo.)</span>
       </div>
       <div class="character-row">
@@ -1910,7 +1928,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">Oh! tu peux la jeter maintenant...</span><span class="es">ya la puedes tirar...</span></div>
       <div class="line-row"><span class="fr">le charme a opéré...</span><span class="es">la magia ya ha surtido efecto...</span></div>
       <div class="stage-direction">
-        <span>(avec colère</span>
+        <span>(avec colère)</span>
         <span class="es">(con cólera)</span>
       </div>
       <div class="character-row">
@@ -1931,13 +1949,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
     </div>
 
-    <div class="track-col" id="tc16">
+    <div class="track-col" id="tc15">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">16</span>
       </div>
     </div>
-    <div class="text-col" id="t16">
+    <div class="text-col" id="t15">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -2089,7 +2107,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
       <div class="line-row"><span class="fr">Le lieutenant!.. Prenez garde!</span><span class="es">¡El teniente! ¡Cuidado!</span></div>
       <div class="stage-direction">
-        <span>(Carmen va se replacer sur son escabeau, les mains derrière le dos. Rentre le lieutenant. )</span>
+        <span>(Carmen va se replacer sur son escabeau, les mains derrière le dos. Rentre le lieutenant.)</span>
         <span class="es">(Carmen se sienta en un banco, y pone sus manos detrás de su espalda, como si aún estuviera maniatada.)</span>
       </div>
       <div class="musical-number">10. Final</div>
@@ -2103,13 +2121,13 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       </div>
     </div>
 
-    <div class="track-col" id="tc17">
+    <div class="track-col" id="tc16">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">17</span>
       </div>
     </div>
-    <div class="text-col" id="t17">
+    <div class="text-col" id="t16">
       <div class="character-row">
         <span class="character-name">Zuniga</span>
         <span class="character-name">Zuniga</span>
@@ -2117,7 +2135,7 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
       <div class="line-row"><span class="fr">Voici l'ordre;</span><span class="es">¡Aquí esta la orden,</span></div>
       <div class="line-row"><span class="fr">partez, et faites bonne garde.</span><span class="es">parte y vigílala bien!</span></div>
       <div class="stage-direction">
-        <span>bas à José)</span>
+        <span>(bas à José)</span>
         <span class="es">(en voz baja a don José)</span>
       </div>
       <div class="character-row">
@@ -2148,35 +2166,22 @@ forment autour d'elle et s'en va droit à don José, qui est toujours occupé de
         <span>Scène Première</span>
         <span>Escena Primera</span>
       </div>
-    </div>
-
-    <div class="track-col" id="tc18">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD2</span>
-        <span class="track-tag-num">1</span>
-      </div>
-    </div>
-    <div class="text-col" id="t18">
       <div class="stage-direction">
         <span>(La taverne de Lillas Pastia. Carmen, Mercédès, Frasquita, le lieutenant Zuniga, Moralès et un lieutenant. Deux bohémiennes, au milieu de la scène, dansent)</span>
-        <span class="es">(Taberna de Lillas Pastia. Mercedes, 
-Frasquita y Carmen, están sentadas a la 
-mesa, acompañadas de Zúñiga, Andrés y 
-otros oficiales. Algunas jóvenes gitanas 
-están bailando.)</span>
+        <span class="es">(Taberna de Lillas Pastia. Mercedes, Frasquita y Carmen, están sentadas a la mesa, acompañadas de Zúñiga, Andrés y otros oficiales. Algunas jóvenes gitanas están bailando.)</span>
       </div>
       <div class="musical-number">11. Chanson</div>
     </div>
 
     <div class="act-heading">Acte Deuxième · Acto Segundo</div>
 
-    <div class="track-col" id="tc19">
+    <div class="track-col" id="tc17">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">2</span>
       </div>
     </div>
-    <div class="text-col" id="t19">
+    <div class="text-col" id="t17">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -2232,11 +2237,8 @@ están bailando.)</span>
       </div>
       <div class="line-row"><span class="fr">Tra la la la, tra la la la...</span><span class="es">Tra la la la la la...</span></div>
       <div class="stage-direction">
-        <span>(Carmen, Frasuita et Mercèdés dansent. Après la danse, Lillas Pastia se met à tourner 
-autour des officiers d'un air embarrassé)</span>
-        <span class="es">(Mercedes, Frasquita y Carmen se unen al 
-baile de las gitanas. Lillas Pastia mira 
-alrededor de los oficiales, desconcertado )</span>
+        <span>(Carmen, Frasuita et Mercèdés dansent. Après la danse, Lillas Pastia se met à tourner autour des officiers d'un air embarrassé)</span>
+        <span class="es">(Mercedes, Frasquita y Carmen se unen al baile de las gitanas. Lillas Pastia mira alrededor de los oficiales, desconcertado )</span>
       </div>
       <div class="stage-direction">
         <span>(à Lillas Pastia)</span>
@@ -2244,13 +2246,13 @@ alrededor de los oficiales, desconcertado )</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc20">
+    <div class="track-col" id="tc18">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">3</span>
       </div>
     </div>
-    <div class="text-col" id="t20">
+    <div class="text-col" id="t18">
       <div class="character-row">
         <span class="character-name">Zuniga</span>
         <span class="character-name">Zuniga</span>
@@ -2315,7 +2317,7 @@ alrededor de los oficiales, desconcertado )</span>
       <div class="line-row"><span class="fr">Parce qu'il y a un mois</span><span class="es">¿Porque hace un mes</span></div>
       <div class="line-row"><span class="fr">j'ai eu la cruauté de t'envoyer à la prison...</span><span class="es">te envié a prisión?...</span></div>
       <div class="stage-direction">
-        <span>comme si elle ne se rappelait pas)</span>
+        <span>(comme si elle ne se rappelait pas)</span>
         <span class="es">(como si no recordara)</span>
       </div>
       <div class="character-row">
@@ -2333,7 +2335,7 @@ alrededor de los oficiales, desconcertado )</span>
       <div class="line-row"><span class="fr">et emprisonner pour cela...</span><span class="es">fue degradado y encarcelado...</span></div>
       <div class="line-row"><span class="fr">Aujourd'hui il a sorti de la prison</span><span class="es">Hoy ha salido de la prisión.</span></div>
       <div class="stage-direction">
-        <span>faisant claquer ses castagnettes)</span>
+        <span>(faisant claquer ses castagnettes)</span>
         <span class="es">(haciendo sonar las castañuelas)</span>
       </div>
       <div class="character-row">
@@ -2349,13 +2351,13 @@ alrededor de los oficiales, desconcertado )</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc21">
+    <div class="track-col" id="tc19">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">4</span>
       </div>
     </div>
-    <div class="text-col" id="t21">
+    <div class="text-col" id="t19">
       <div class="character-row">
         <span class="character-name">Choeur</span>
         <span class="character-name">Choeur</span>
@@ -2448,13 +2450,13 @@ alrededor de los oficiales, desconcertado )</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc22">
+    <div class="track-col" id="tc20">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">5</span>
       </div>
     </div>
-    <div class="text-col" id="t22">
+    <div class="text-col" id="t20">
       <div class="character-row">
         <span class="character-name">Escamillo</span>
         <span class="character-name">Escamillo</span>
@@ -2530,13 +2532,13 @@ alrededor de los oficiales, desconcertado )</span>
       <div class="line-row"><span class="fr">Toréador, l'amour, l'amour t'attend!</span><span class="es">¡y que el amor te espera, toreador!</span></div>
     </div>
 
-    <div class="track-col" id="tc23">
+    <div class="track-col" id="tc21">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">6</span>
       </div>
     </div>
-    <div class="text-col" id="t23">
+    <div class="text-col" id="t21">
       <div class="character-row">
         <span class="character-name">Lillas Pastia</span>
         <span class="character-name">Lillas Pastia</span>
@@ -2641,7 +2643,7 @@ alrededor de los oficiales, desconcertado )</span>
         <span>Escena Tercera</span>
       </div>
       <div class="stage-direction">
-        <span>à Pastia)</span>
+        <span>(à Pastia)</span>
         <span class="es">(a Pastia)</span>
       </div>
       <div class="character-row">
@@ -2665,13 +2667,13 @@ alrededor de los oficiales, desconcertado )</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc24">
+    <div class="track-col" id="tc22">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">7</span>
       </div>
     </div>
-    <div class="text-col" id="t24">
+    <div class="text-col" id="t22">
       <div class="character-row">
         <span class="character-name">Frasquita</span>
         <span class="character-name">Frasquita</span>
@@ -2733,13 +2735,13 @@ alrededor de los oficiales, desconcertado )</span>
       <div class="musical-number">14. Quintette</div>
     </div>
 
-    <div class="track-col" id="tc25">
+    <div class="track-col" id="tc23">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">8</span>
       </div>
     </div>
-    <div class="text-col" id="t25">
+    <div class="text-col" id="t23">
       <div class="stage-direction">
         <span>DANCAIRE
 Nous avons en tête une affaire!</span>
@@ -2870,207 +2872,240 @@ Nous avons en tête une affaire!</span>
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">La raison!</span><span class="es">¡La razón!</span></div>
+      <div class="line-row"><span class="fr">La raison!</span><span class="es"></span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Je la dirai certainement...</span><span class="es">Ciertamente les diré...</span></div>
+      <div class="line-row"><span class="fr">Je la dirai certainement...</span><span class="es"></span></div>
       <div class="character-row">
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Voyons!</span><span class="es">¡Vamos!</span></div>
+      <div class="line-row"><span class="fr">Voyons!</span><span class="es">¡La razón!</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">La raison, c'est qu'en ce moment...</span><span class="es">La razón es que en este momento...</span></div>
+      <div class="line-row"><span class="fr">La raison, c'est qu'en ce moment...</span><span class="es">Ciertamente les diré...</span></div>
       <div class="character-row">
         <span class="character-name">Remendado, Dancaire</span>
         <span class="character-name">Remendado, Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Eh bien?</span><span class="es">¿Y bien?</span></div>
+      <div class="line-row"><span class="fr">Eh bien?</span><span class="es">¡Vamos!</span></div>
       <div class="character-row">
         <span class="character-name">Frasquita, Mercédès</span>
         <span class="character-name">Frasquita, Mercédès</span>
       </div>
-      <div class="line-row"><span class="fr">Eh bien?</span><span class="es">¿Y bien?</span></div>
+      <div class="line-row"><span class="fr">Eh bien?</span><span class="es">La razón es que en este momento...</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Je suis amoureuse!</span><span class="es">... ¡estoy enamorada!</span></div>
+      <div class="line-row"><span class="fr">Je suis amoureuse!</span><span class="es">¿Y bien?</span></div>
       <div class="stage-direction">
         <span>(stupéfaits)</span>
+        <span class="es"></span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Remendado, Dancaire</span>
+        <span class="character-name">Remendado, Dancaire</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'a-t-elle dit?</span><span class="es">¿Y bien?</span></div>
+      <div class="character-row">
+        <span class="character-name">Frasquita, Mercédès</span>
+        <span class="character-name">Frasquita, Mercédès</span>
+      </div>
+      <div class="line-row"><span class="fr">Elle dit qu'elle est amoureuse!</span><span class="es">... ¡estoy enamorada!</span></div>
+      <div class="stage-direction">
+        <span></span>
         <span class="es">(estupefactos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Remendado, Dancaire</span>
-        <span class="character-name">Remendado, Dancaire</span>
-      </div>
-      <div class="line-row"><span class="fr">Qu'a-t-elle dit?</span><span class="es">¿Qué has dicho?</span></div>
-      <div class="character-row">
-        <span class="character-name">Frasquita, Mercédès</span>
-        <span class="character-name">Frasquita, Mercédès</span>
-      </div>
-      <div class="line-row"><span class="fr">Elle dit qu'elle est amoureuse!</span><span class="es">¡Dijo que esta enamorada!</span></div>
-      <div class="character-row">
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Amoureuse!</span><span class="es">¡Enamorada!</span></div>
+      <div class="line-row"><span class="fr">Amoureuse!</span><span class="es">¿Qué has dicho?</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Oui, amoureuse!</span><span class="es">Sí, ¡enamorada!</span></div>
+      <div class="line-row"><span class="fr">Oui, amoureuse!</span><span class="es">¡Dijo que esta enamorada!</span></div>
       <div class="character-row">
         <span class="character-name">Dancaire</span>
         <span class="character-name">Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Voyons, Carmen, sois sérieuse</span><span class="es">¡Vamos, Carmen, habla en serio!</span></div>
+      <div class="line-row"><span class="fr">Voyons, Carmen, sois sérieuse</span><span class="es">¡Enamorada!</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Amoureuse à perdre l'esprit!</span><span class="es">¡Locamente enamorada!</span></div>
+      <div class="line-row"><span class="fr">Amoureuse à perdre l'esprit!</span><span class="es">Sí, ¡enamorada!</span></div>
       <div class="stage-direction">
         <span>(un peu ironique)</span>
+        <span class="es"></span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Remendado, Dancaire</span>
+        <span class="character-name">Remendado, Dancaire</span>
+      </div>
+      <div class="line-row"><span class="fr">La chose, certes, nous étonne,</span><span class="es">¡Vamos, Carmen, habla en serio!</span></div>
+      <div class="line-row"><span class="fr">mais ce n'est pas le premier jour</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">où vous aurez su, ma mignonne,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">faire marcher de front</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">le devoir et l'amour...</span><span class="es"></span></div>
+      <div class="stage-direction">
+        <span>(franchement)</span>
+        <span class="es"></span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Carmen</span>
+        <span class="character-name">Carmen</span>
+      </div>
+      <div class="line-row"><span class="fr">Mes amis, je serais fort aise</span><span class="es">¡Locamente enamorada!</span></div>
+      <div class="line-row"><span class="fr">de partir avec vous ce soir;</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">mais cette fois, ne vous déplaise,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">il faudra que l'amour passe</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">avant le devoir...</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">Ce soir l'amour passe</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">avant le devoir!</span><span class="es"></span></div>
+      <div class="stage-direction">
+        <span></span>
         <span class="es">(irónicos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Remendado, Dancaire</span>
-        <span class="character-name">Remendado, Dancaire</span>
+        <span class="character-name">Dancaire</span>
+        <span class="character-name">Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">La chose, certes, nous étonne,</span><span class="es">Por supuesto que nos sorprendes,</span></div>
-      <div class="line-row"><span class="fr">mais ce n'est pas le premier jour</span><span class="es">pero no es la primera vez</span></div>
-      <div class="line-row"><span class="fr">où vous aurez su, ma mignonne,</span><span class="es">que confundes, querida,</span></div>
-      <div class="line-row"><span class="fr">faire marcher de front</span><span class="es">el deber...</span></div>
-      <div class="line-row"><span class="fr">le devoir et l'amour...</span><span class="es">con el amor.</span></div>
+      <div class="line-row"><span class="fr">Ce n'est pas là ton dernier mot?</span><span class="es">Por supuesto que nos sorprendes,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">pero no es la primera vez</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">que confundes, querida,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">el deber...</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">con el amor.</span></div>
       <div class="stage-direction">
-        <span>(franchement)</span>
+        <span></span>
         <span class="es">(con franqueza)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Mes amis, je serais fort aise</span><span class="es">Amigos míos, me complacería</span></div>
-      <div class="line-row"><span class="fr">de partir avec vous ce soir;</span><span class="es">ir con vosotros esta noche,</span></div>
-      <div class="line-row"><span class="fr">mais cette fois, ne vous déplaise,</span><span class="es">pero ahora, si no os importa,</span></div>
-      <div class="line-row"><span class="fr">il faudra que l'amour passe</span><span class="es">antes del deber...</span></div>
-      <div class="line-row"><span class="fr">avant le devoir...</span><span class="es">vendrá el amor.</span></div>
-      <div class="line-row"><span class="fr">Ce soir l'amour passe</span><span class="es">¡Esta noche vencerá</span></div>
-      <div class="line-row"><span class="fr">avant le devoir!</span><span class="es">el amor al deber!</span></div>
-      <div class="character-row">
-        <span class="character-name">Dancaire</span>
-        <span class="character-name">Dancaire</span>
-      </div>
-      <div class="line-row"><span class="fr">Ce n'est pas là ton dernier mot?</span><span class="es">¿Es tu última palabra?</span></div>
-      <div class="character-row">
-        <span class="character-name">Carmen</span>
-        <span class="character-name">Carmen</span>
-      </div>
-      <div class="line-row"><span class="fr">Absolument!</span><span class="es">¡Totalmente!</span></div>
+      <div class="line-row"><span class="fr">Absolument!</span><span class="es">Amigos míos, me complacería</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">ir con vosotros esta noche,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">pero ahora, si no os importa,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">antes del deber...</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">vendrá el amor.</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">¡Esta noche vencerá</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">el amor al deber!</span></div>
       <div class="character-row">
         <span class="character-name">Remendado</span>
         <span class="character-name">Remendado</span>
       </div>
-      <div class="line-row"><span class="fr">Il faut que tu te laisses attendrir!</span><span class="es">¡Debes ceder!</span></div>
+      <div class="line-row"><span class="fr">Il faut que tu te laisses attendrir!</span><span class="es">¿Es tu última palabra?</span></div>
       <div class="character-row">
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
         <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Il faut venir, Carmen, il faut venir!</span><span class="es">¡Debes venir, debes venir!</span></div>
-      <div class="line-row"><span class="fr">Pour notre affaire,</span><span class="es">Para nuestro trabajo,</span></div>
-      <div class="line-row"><span class="fr">c'est nécessaire; car entre nous...</span><span class="es">eres esencial, y nosotros mismos...</span></div>
+      <div class="line-row"><span class="fr">Il faut venir, Carmen, il faut venir!</span><span class="es">¡Totalmente!</span></div>
+      <div class="line-row"><span class="fr">Pour notre affaire,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">c'est nécessaire; car entre nous...</span><span class="es"></span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Quant à cela, j'admets bien avec vous:</span><span class="es">En cuanto a eso, estoy de acuerdo:</span></div>
+      <div class="line-row"><span class="fr">Quant à cela, j'admets bien avec vous:</span><span class="es">¡Debes ceder!</span></div>
       <div class="character-row">
         <span class="character-name">Tous</span>
         <span class="character-name">Tous</span>
       </div>
-      <div class="line-row"><span class="fr">Quand il s'agit de tromperie,</span><span class="es">Cuando el triunfo peligra,</span></div>
-      <div class="line-row"><span class="fr">de duperie, de volerie,</span><span class="es">trampeando o robando,</span></div>
-      <div class="line-row"><span class="fr">il est toujours bon, sur ma foi,</span><span class="es">siempre es bueno</span></div>
-      <div class="line-row"><span class="fr">d'avoir les femmes avec soi.</span><span class="es">contar con mujeres,</span></div>
-      <div class="line-row"><span class="fr">Et sans elles, les toutes belles,</span><span class="es">y sin ellas, mis bellas,</span></div>
-      <div class="line-row"><span class="fr">on ne fait jamais rien de bien!</span><span class="es">¡nada podría salir bien!</span></div>
+      <div class="line-row"><span class="fr">Quand il s'agit de tromperie,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">de duperie, de volerie,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">il est toujours bon, sur ma foi,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">d'avoir les femmes avec soi.</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">Et sans elles, les toutes belles,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">on ne fait jamais rien de bien!</span><span class="es"></span></div>
       <div class="character-row">
         <span class="character-name">Dancaire</span>
         <span class="character-name">Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">En voilà assez; je t'ai dit qu'il fallait venir,</span><span class="es">¡Terminemos con esto:</span></div>
-      <div class="line-row"><span class="fr">et tu viendras... je suis le chef...</span><span class="es">tu vendrás,... yo soy el jefe!</span></div>
+      <div class="line-row"><span class="fr">En voilà assez; je t'ai dit qu'il fallait venir,</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">et tu viendras... je suis le chef...</span><span class="es"></span></div>
     </div>
 
-    <div class="track-col" id="tc26">
+    <div class="track-col" id="tc24">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">9</span>
       </div>
     </div>
-    <div class="text-col" id="t26">
+    <div class="text-col" id="t24">
       <div class="character-row">
         <span class="character-name">Dancaire</span>
         <span class="character-name">Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Amoureuse...</span><span class="es">¡Oh, enamorada!</span></div>
-      <div class="line-row"><span class="fr">ce n'est pas une raison, cela.</span><span class="es">¡Vamos Carmen, esa no es una razón!</span></div>
+      <div class="line-row"><span class="fr">Amoureuse...</span><span class="es"></span></div>
+      <div class="line-row"><span class="fr">ce n'est pas une raison, cela.</span><span class="es"></span></div>
       <div class="character-row">
         <span class="character-name">Remendado</span>
         <span class="character-name">Remendado</span>
       </div>
-      <div class="line-row"><span class="fr">Je suis amoureux et utile.</span><span class="es">¡Yo aún enamorado, soy muy útil!</span></div>
+      <div class="line-row"><span class="fr">Je suis amoureux et utile.</span><span class="es">¡Debes venir, debes venir!</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">Para nuestro trabajo,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">eres esencial, y nosotros mismos...</span></div>
       <div class="character-row">
         <span class="character-name">Dancaire</span>
         <span class="character-name">Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Remendado!</span><span class="es">¡Remendado!</span></div>
+      <div class="line-row"><span class="fr">Remendado!</span><span class="es">En cuanto a eso, estoy de acuerdo:</span></div>
       <div class="character-row">
         <span class="character-name">Remendado</span>
         <span class="character-name">Remendado</span>
       </div>
-      <div class="line-row"><span class="fr">Oui, patron!</span><span class="es">¡Sí, jefe!</span></div>
+      <div class="line-row"><span class="fr">Oui, patron!</span><span class="es">Cuando el triunfo peligra,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">trampeando o robando,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">siempre es bueno</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">contar con mujeres,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">y sin ellas, mis bellas,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">¡nada podría salir bien!</span></div>
       <div class="character-row">
         <span class="character-name">Frasquita</span>
         <span class="character-name">Frasquita</span>
       </div>
-      <div class="line-row"><span class="fr">Je ne t'ai jamais vue comme cela;</span><span class="es">Nunca te había visto antes así:</span></div>
-      <div class="line-row"><span class="fr">qui attends-tu, donc?..</span><span class="es">¿a quién esperas?...</span></div>
+      <div class="line-row"><span class="fr">Je ne t'ai jamais vue comme cela;</span><span class="es">¡Terminemos con esto:</span></div>
+      <div class="line-row"><span class="fr">qui attends-tu, donc?..</span><span class="es">tu vendrás,... yo soy el jefe!</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">¡Oh, enamorada!</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">¡Vamos Carmen, esa no es una razón!</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Un pauvre diable de soldat</span><span class="es">A un pobre diablo,</span></div>
-      <div class="line-row"><span class="fr">qui m'a rendu service...</span><span class="es">a un  soldado que me hizo un favor.</span></div>
+      <div class="line-row"><span class="fr">Un pauvre diable de soldat</span><span class="es">¡Yo aún enamorado, soy muy útil!</span></div>
+      <div class="line-row"><span class="fr">qui m'a rendu service...</span><span class="es"></span></div>
       <div class="character-row">
         <span class="character-name">Mercédès</span>
         <span class="character-name">Mercédès</span>
       </div>
-      <div class="line-row"><span class="fr">Ce soldat qui était en prison?</span><span class="es">¿El soldado que estuvo en prisión?</span></div>
+      <div class="line-row"><span class="fr">Ce soldat qui était en prison?</span><span class="es">¡Remendado!</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Oui!..</span><span class="es">Sí...</span></div>
+      <div class="line-row"><span class="fr">Oui!..</span><span class="es">¡Sí, jefe!</span></div>
       <div class="character-row">
         <span class="character-name">Dancaire</span>
         <span class="character-name">Dancaire</span>
       </div>
-      <div class="line-row"><span class="fr">Je parierais qu'il ne viendra pas.</span><span class="es">Apuesto a que tu soldado no vendrá.</span></div>
+      <div class="line-row"><span class="fr">Je parierais qu'il ne viendra pas.</span><span class="es">Nunca te había visto antes así:</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">¿a quién esperas?...</span></div>
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
       </div>
-      <div class="line-row"><span class="fr">Ne parie pas, tu perdrais...</span><span class="es">No apuestes, porque perderás.</span></div>
+      <div class="line-row"><span class="fr">Ne parie pas, tu perdrais...</span><span class="es">A un pobre diablo,</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">a un  soldado que me hizo un favor.</span></div>
       <div class="stage-direction">
         <span>(On entend dans le lointain la voix de don José)</span>
-        <span class="es">(se oye a lo lejos la voz de don José)</span>
+        <span class="es">¿El soldado que estuvo en prisión?</span>
       </div>
       <div class="scene-heading">
         <span>Scène Quatrième</span>
@@ -3078,18 +3113,18 @@ Nous avons en tête une affaire!</span>
       </div>
       <div class="musical-number">15. Chanson</div>
       <div class="stage-direction">
-        <span>la voix très éloigné)</span>
+        <span>(la voix très éloigné)</span>
         <span class="es">(desde lejos)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc27">
+    <div class="track-col" id="tc25">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">10</span>
       </div>
     </div>
-    <div class="text-col" id="t27">
+    <div class="text-col" id="t25">
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -3124,7 +3159,7 @@ Nous avons en tête une affaire!</span>
       </div>
       <div class="line-row"><span class="fr">Et un beau dragon.</span><span class="es">¡Un hermoso dragón!</span></div>
       <div class="stage-direction">
-        <span>à Carmen)</span>
+        <span>(à Carmen)</span>
         <span class="es">(a Carmen)</span>
       </div>
       <div class="character-row">
@@ -3154,6 +3189,7 @@ Nous avons en tête une affaire!</span>
         <span>(Remendado, Frasquita Mercédès et Dancaire sortent)</span>
         <span class="es">(a una señal de Dancaire, salen todos menos Carmen)</span>
       </div>
+      <div class="musical-number"></div>
       <div class="stage-direction">
         <span>(la voix se rapproche peu à peu)</span>
         <span class="es">(acercándose)</span>
@@ -3178,7 +3214,7 @@ Nous avons en tête une affaire!</span>
       <div class="line-row"><span class="fr">tout est là,</span><span class="es">para nosotros,</span></div>
       <div class="line-row"><span class="fr">dragons d'Alcalá!</span><span class="es">¡Dragones de Alcalá!</span></div>
       <div class="stage-direction">
-        <span>(Entre don José. )</span>
+        <span>(Entre don José.)</span>
         <span class="es">(don José, entra)</span>
       </div>
       <div class="scene-heading">
@@ -3187,13 +3223,13 @@ Nous avons en tête une affaire!</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc28">
+    <div class="track-col" id="tc26">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">11</span>
       </div>
     </div>
-    <div class="text-col" id="t28">
+    <div class="text-col" id="t26">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -3288,13 +3324,13 @@ Nous avons en tête une affaire!</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc29">
+    <div class="track-col" id="tc27">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">12</span>
       </div>
     </div>
-    <div class="text-col" id="t29">
+    <div class="text-col" id="t27">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -3346,7 +3382,7 @@ Nous avons en tête une affaire!</span>
       <div class="line-row"><span class="fr">qui nous tombe du ciel!</span><span class="es">que viene del cielo!</span></div>
       <div class="line-row"><span class="fr">La, la, la...</span><span class="es">La la la la...</span></div>
       <div class="stage-direction">
-        <span>(Elle reprend sa chanson qui se rythme sur la retraite sonnée au dehors par les clairons. Carmen se remet à danser et Don José se remet à regarder Carmen. La retraite approche... approche... approche... passe sous les fenêtres de l'auberge... puis s'éloigne... )</span>
+        <span>(Elle reprend sa chanson qui se rythme sur la retraite sonnée au dehors par les clairons. Carmen se remet à danser et Don José se remet à regarder Carmen. La retraite approche... approche... approche... passe sous les fenêtres de l'auberge... puis s'éloigne...)</span>
         <span class="es">(Ella baila y toca las castañuelas. Don José se sienta y sigue mirando a Carmen. Las trompetas se oyen pasar por delante de la taberna y se alejan, haciendo que don José interrumpa su contemplación, obligando a Carmen a detenerse.)</span>
       </div>
       <div class="character-row">
@@ -3409,12 +3445,12 @@ Nous avons en tête une affaire!</span>
       <div class="line-row"><span class="fr">avant moi, aussi avant moi</span><span class="es">jamás una mujer, jamás,</span></div>
       <div class="line-row"><span class="fr">aussi profondément</span><span class="es">antes de mí,</span></div>
       <div class="line-row"><span class="fr">n'avait troublé son âme!</span><span class="es">atormento su alma</span></div>
-      <div class="line-row"><span class="fr"></span><span class="es">tan profundamente!</span></div>
-      <div class="line-row"><span class="fr">Ta ra ta ta... mon Dieu!</span><span class="es">Ta ra ta ta... ¡Dios mío!</span></div>
-      <div class="line-row"><span class="fr">c'est la retraite!</span><span class="es">¡Es la retreta!</span></div>
-      <div class="line-row"><span class="fr">Ta ra ta ta... je vais être en retard.</span><span class="es">Ta ra ta ta... ¡Llegaré tarde!</span></div>
-      <div class="line-row"><span class="fr">Il perd la tête! il court!</span><span class="es">¡Pierde la cabeza, corre!</span></div>
-      <div class="line-row"><span class="fr">Et voilà son amour!</span><span class="es">¡Así es su amor!</span></div>
+      <div class="line-row"><span class="fr">Ta ra ta ta... mon Dieu!</span><span class="es">tan profundamente!</span></div>
+      <div class="line-row"><span class="fr">c'est la retraite!</span><span class="es">Ta ra ta ta... ¡Dios mío!</span></div>
+      <div class="line-row"><span class="fr">Ta ra ta ta... je vais être en retard.</span><span class="es">¡Es la retreta!</span></div>
+      <div class="line-row"><span class="fr">Il perd la tête! il court!</span><span class="es">Ta ra ta ta... ¡Llegaré tarde!</span></div>
+      <div class="line-row"><span class="fr">Et voilà son amour!</span><span class="es">¡Pierde la cabeza, corre!</span></div>
+      <div class="line-row"><span class="fr"></span><span class="es">¡Así es su amor!</span></div>
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -3452,13 +3488,13 @@ Nous avons en tête une affaire!</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc30">
+    <div class="track-col" id="tc28">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">13</span>
       </div>
     </div>
-    <div class="text-col" id="t30">
+    <div class="text-col" id="t28">
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -3490,13 +3526,13 @@ Nous avons en tête une affaire!</span>
       <div class="line-row"><span class="fr">Carmen, je t'aime!</span><span class="es">¡Carmen, te amo!</span></div>
     </div>
 
-    <div class="track-col" id="tc31">
+    <div class="track-col" id="tc29">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">14</span>
       </div>
     </div>
-    <div class="text-col" id="t31">
+    <div class="text-col" id="t29">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -3606,7 +3642,7 @@ Nous avons en tête une affaire!</span>
       <div class="line-row"><span class="fr">à travers la campagne,</span><span class="es">a través de la campiña,</span></div>
       <div class="line-row"><span class="fr">oui, tu m'emporterais, si tu m'aimais!</span><span class="es">¡Sí, me llevarías si me amaras!</span></div>
       <div class="stage-direction">
-        <span>s'arrachant brusquement des bras de Carmen)</span>
+        <span>(s'arrachant brusquement des bras de Carmen)</span>
         <span class="es">(librándose bruscamente del abrazo de Carmen)</span>
       </div>
       <div class="character-row">
@@ -3676,10 +3712,8 @@ Nous avons en tête une affaire!</span>
       </div>
       <div class="line-row"><span class="fr">Adieu!</span><span class="es">¡Adiós!</span></div>
       <div class="stage-direction">
-        <span>(Il va en courant vers la porte. Au moment il y arrive, on frappe. Don José s'arrête, silence. On frappe encore. )</span>
-        <span class="es">(Don José corre hacia la puerta. 
-De repente, llaman a la puerta y 
-se detiene. Silencio. Otro golpe)</span>
+        <span>(Il va en courant vers la porte. Au moment il y arrive, on frappe. Don José s'arrête, silence. On frappe encore.)</span>
+        <span class="es">(Don José corre hacia la puerta. De repente, llaman a la puerta y se detiene. Silencio. Otro golpe)</span>
       </div>
       <div class="scene-heading">
         <span>Scène Sixième</span>
@@ -3687,18 +3721,18 @@ se detiene. Silencio. Otro golpe)</span>
       </div>
       <div class="musical-number">17. Final</div>
       <div class="stage-direction">
-        <span>au dehors)</span>
+        <span>(au dehors)</span>
         <span class="es">(desee fuera)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc32">
+    <div class="track-col" id="tc30">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">15</span>
       </div>
     </div>
-    <div class="text-col" id="t32">
+    <div class="text-col" id="t30">
       <div class="character-row">
         <span class="character-name">Zuniga</span>
         <span class="character-name">Zuniga</span>
@@ -3756,7 +3790,7 @@ se detiene. Silencio. Otro golpe)</span>
       </div>
       <div class="line-row"><span class="fr">Je ne partirai pas.</span><span class="es">No me iré.</span></div>
       <div class="stage-direction">
-        <span>le frappant)</span>
+        <span>(le frappant)</span>
         <span class="es">(golpeando a don José)</span>
       </div>
       <div class="character-row">
@@ -3779,7 +3813,7 @@ se detiene. Silencio. Otro golpe)</span>
         <span class="es">(Zúñiga saca su espada también)</span>
       </div>
       <div class="stage-direction">
-        <span>se jetant entre eux deux)</span>
+        <span>(se jetant entre eux deux)</span>
         <span class="es">(interponiéndose entre ambos)</span>
       </div>
       <div class="character-row">
@@ -3802,13 +3836,13 @@ se detiene. Silencio. Otro golpe)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc33">
+    <div class="track-col" id="tc31">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">16</span>
       </div>
     </div>
-    <div class="text-col" id="t33">
+    <div class="text-col" id="t31">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -3883,7 +3917,7 @@ se detiene. Silencio. Otro golpe)</span>
         <span class="es">(Zúñiga sale escoltado por gitanos)</span>
       </div>
       <div class="stage-direction">
-        <span>à don José)</span>
+        <span>(à don José)</span>
         <span class="es">(a Don José)</span>
       </div>
       <div class="character-row">
@@ -3911,10 +3945,7 @@ se detiene. Silencio. Otro golpe)</span>
       <div class="line-row"><span class="fr">Et surtout,</span><span class="es">Y sobre todo</span></div>
       <div class="line-row"><span class="fr">la chose enivrante:</span><span class="es">el deleite mas embriagador:</span></div>
       <div class="line-row"><span class="fr">la liberté! la liberté!</span><span class="es">¡la libertad, la libertad!</span></div>
-      <div class="character-row">
-        <span class="character-name">Tous (Excepté Don José)</span>
-        <span class="character-name">Tous (Excepté Don José)</span>
-      </div>
+      <div class="musical-number"></div>
       <div class="line-row"><span class="fr">Suis-nous à travers la campagne,</span><span class="es">Síguenos a través de la campiña,</span></div>
       <div class="line-row"><span class="fr">viens avec nous dans la montagne,</span><span class="es">ven con nosotros a la montaña,</span></div>
       <div class="line-row"><span class="fr">suis-nous et tu t'y feras, tu t'y feras</span><span class="es">disfrutarás cuando veas,</span></div>
@@ -3955,30 +3986,21 @@ se detiene. Silencio. Otro golpe)</span>
         <span>Escena Primera</span>
       </div>
       <div class="musical-number">18. Introduction</div>
-    </div>
-
-    <div class="track-col" id="tc34">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD3</span>
-        <span class="track-tag-num">1</span>
-      </div>
-    </div>
-    <div class="text-col" id="t34">
       <div class="stage-direction">
-        <span>(Le rideau se lève sur des rochers. Site pittoresque et sauvage. Solitude complète et nuit noire. Un contrebandier paraît au haut des rochers, et sonne de la trompe, puis un autre, puis deux autres, puis vingt autres ça et là, descendant et escaladant des rochers. Des hommes portent de gros ballots sur les épaules. )</span>
+        <span>(Le rideau se lève sur des rochers. Site pittoresque et sauvage. Solitude complète et nuit noire. Un contrebandier paraît au haut des rochers, et sonne de la trompe, puis un autre, puis deux autres, puis vingt autres ça et là, descendant et escaladant des rochers. Des hommes portent de gros ballots sur les épaules.)</span>
         <span class="es">(Gran roquedal, sitio pintoresco y salvaje. Completa soledad. Es de noche cerrada. En la cima del risco un contrabandista aparece y haciendo una señal, avanza. Acto seguido, numerosos contrabandistas bajan de la cima con enormes cargas sobre sus hombros.)</span>
       </div>
     </div>
 
     <div class="act-heading">Acte Troisième · Acto Tercero</div>
 
-    <div class="track-col" id="tc35">
+    <div class="track-col" id="tc32">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">2</span>
       </div>
     </div>
-    <div class="text-col" id="t35">
+    <div class="text-col" id="t32">
       <div class="character-row">
         <span class="character-name">Choeur</span>
         <span class="character-name">Choeur</span>
@@ -3988,10 +4010,8 @@ se detiene. Silencio. Otro golpe)</span>
       <div class="line-row"><span class="fr">mais prends garde, pendant la route,</span><span class="es">Pero, ten cuidado con el camino</span></div>
       <div class="line-row"><span class="fr">prends garde de faire un faux pas!</span><span class="es">un paso en falso no vayas a dar.</span></div>
       <div class="character-row">
-        <span class="character-name">Frasquita, Mercédès, Carmen, 
-Don José, Remendado, Dancaire</span>
-        <span class="character-name">Frasquita, Mercédès, Carmen, 
-Don José, Remendado, Dancaire</span>
+        <span class="character-name">Frasquita, Mercédès, Carmen, Don José, Remendado, Dancaire</span>
+        <span class="character-name">Frasquita, Mercédès, Carmen, Don José, Remendado, Dancaire</span>
       </div>
       <div class="line-row"><span class="fr">Notre métier est bon,</span><span class="es">¡Nuestra profesión es buena,</span></div>
       <div class="line-row"><span class="fr">mais pour le faire il faut</span><span class="es">pero para practicarla</span></div>
@@ -4017,13 +4037,13 @@ Don José, Remendado, Dancaire</span>
       <div class="line-row"><span class="fr">prends garde de faire un faux pas!</span><span class="es">¡un paso en falso no vayas a dar!</span></div>
     </div>
 
-    <div class="track-col" id="tc36">
+    <div class="track-col" id="tc33">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">3</span>
       </div>
     </div>
-    <div class="text-col" id="t36">
+    <div class="text-col" id="t33">
       <div class="character-row">
         <span class="character-name">Dancaire</span>
         <span class="character-name">Dancaire</span>
@@ -4107,24 +4127,19 @@ Don José, Remendado, Dancaire</span>
       </div>
       <div class="line-row"><span class="fr">Mais oui, je te l'ai déjà dit...</span><span class="es">Si...ya te lo he dicho antes.</span></div>
       <div class="stage-direction">
-        <span>(Elle tourne le dos à José et va s'asseoir près 
-de Mercédès et de Frasquita. Après un instant
-d'indécision, José s'éloigne à son tour et va 
-s'étendre sur les rochers. Pendant les dernières 
-répliques de la scène, Mercédès et Frasquita ont 
-étalé des cartes devant elles)</span>
+        <span>(Elle tourne le dos à José et va s'asseoir près de Mercédès et de Frasquita. Après un instant d'indécision, José s'éloigne à son tour et va s'étendre sur les rochers. Pendant les dernières répliques de la scène, Mercédès et Frasquita ont étalé des cartes devant elles)</span>
         <span class="es">(Carmen da la espalda a don José y se sienta en una fogata, mientras mira a Mercedes y Frasquita que, sentadas en el suelo, se agachan y sacan un mazo de cartas, lo ponen a la luz. Don José se aleja entre el roquedal)</span>
       </div>
       <div class="musical-number">19. Trio</div>
     </div>
 
-    <div class="track-col" id="tc37">
+    <div class="track-col" id="tc34">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">4</span>
       </div>
     </div>
-    <div class="text-col" id="t37">
+    <div class="text-col" id="t34">
       <div class="character-row">
         <span class="character-name">Frasquita, Mercédès</span>
         <span class="character-name">Frasquita, Mercédès</span>
@@ -4308,13 +4323,13 @@ répliques de la scène, Mercédès et Frasquita ont
       </div>
     </div>
 
-    <div class="track-col" id="tc38">
+    <div class="track-col" id="tc35">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">5</span>
       </div>
     </div>
-    <div class="text-col" id="t38">
+    <div class="text-col" id="t35">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -4359,7 +4374,7 @@ répliques de la scène, Mercédès et Frasquita ont
       <div class="line-row"><span class="fr">Nous vous en répondons</span><span class="es">Nosotros responderemos</span></div>
       <div class="line-row"><span class="fr">de vos trois douaniers...</span><span class="es">por los tres aduaneros.</span></div>
       <div class="stage-direction">
-        <span>furieux)</span>
+        <span>(furieux)</span>
         <span class="es">(furioso)</span>
       </div>
       <div class="character-row">
@@ -4384,13 +4399,13 @@ répliques de la scène, Mercédès et Frasquita ont
       <div class="musical-number">20. Morceau D'Ensemble</div>
     </div>
 
-    <div class="track-col" id="tc39">
+    <div class="track-col" id="tc36">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">6</span>
       </div>
     </div>
-    <div class="text-col" id="t39">
+    <div class="text-col" id="t36">
       <div class="character-row">
         <span class="character-name">Frasquita, Mercédès, Carmen, Bohémiennes</span>
         <span class="character-name">Frasquita, Mercédès, Carmen, Bohémiennes</span>
@@ -4402,10 +4417,8 @@ répliques de la scène, Mercédès et Frasquita ont
       <div class="line-row"><span class="fr">il aime à faire le galant;</span><span class="es">le gusta parecer galante:</span></div>
       <div class="line-row"><span class="fr">ah! Laissez-nous passer en avant!</span><span class="es">¡Déjenos pasar!</span></div>
       <div class="character-row">
-        <span class="character-name">Frasquita, Mercédès, Carmen, 
-Remendado, Dancaire, Choeur</span>
-        <span class="character-name">Frasquita, Mercédès, Carmen, 
-Remendado, Dancaire, Choeur</span>
+        <span class="character-name">Frasquita, Mercédès, Carmen, Remendado, Dancaire, Choeur</span>
+        <span class="character-name">Frasquita, Mercédès, Carmen, Remendado, Dancaire, Choeur</span>
       </div>
       <div class="line-row"><span class="fr">Il aime à plaire!</span><span class="es">¡Él será agradable!</span></div>
       <div class="character-row">
@@ -4484,7 +4497,7 @@ Remendado, Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Il aime à faire le galant!</span><span class="es">le gusta ser galante:</span></div>
       <div class="line-row"><span class="fr">Laissez-vous passer en avant!</span><span class="es">¡Déjenlas pasar primero!</span></div>
       <div class="stage-direction">
-        <span>(Tout le monde sort. On voit un homme passer sa tête au-dessus du rocher. C'est un guide. )</span>
+        <span>(Tout le monde sort. On voit un homme passer sa tête au-dessus du rocher. C'est un guide.)</span>
         <span class="es">(Todos salen de escena. Se ve un hombre salir de detrás de la roca, es un guía)</span>
       </div>
       <div class="scene-heading">
@@ -4497,13 +4510,13 @@ Remendado, Dancaire, Choeur</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc40">
+    <div class="track-col" id="tc37">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">7</span>
       </div>
     </div>
-    <div class="text-col" id="t40">
+    <div class="text-col" id="t37">
       <div class="character-row">
         <span class="character-name">Guide</span>
         <span class="character-name">Guide</span>
@@ -4551,13 +4564,13 @@ Remendado, Dancaire, Choeur</span>
       <div class="musical-number">21. Air</div>
     </div>
 
-    <div class="track-col" id="tc41">
+    <div class="track-col" id="tc38">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">8</span>
       </div>
     </div>
-    <div class="text-col" id="t41">
+    <div class="text-col" id="t38">
       <div class="character-row">
         <span class="character-name">Micaëla</span>
         <span class="character-name">Micaëla</span>
@@ -4601,15 +4614,15 @@ Remendado, Dancaire, Choeur</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc42">
+    <div class="track-col" id="tc39">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">9</span>
       </div>
     </div>
-    <div class="text-col" id="t42">
+    <div class="text-col" id="t39">
       <div class="stage-direction">
-        <span>son couteau à la main</span>
+        <span>(son couteau à la main)</span>
         <span class="es">(con el cuchillo en la mano, grita)</span>
       </div>
       <div class="character-row">
@@ -4618,7 +4631,7 @@ Remendado, Dancaire, Choeur</span>
       </div>
       <div class="line-row"><span class="fr">Qui êtes-vous? répondez.</span><span class="es">¡Alto! ¿Quién va? ¡Responda!</span></div>
       <div class="stage-direction">
-        <span>très calm)</span>
+        <span>(très calm)</span>
         <span class="es">(con calma)</span>
       </div>
       <div class="character-row">
@@ -4629,13 +4642,13 @@ Remendado, Dancaire, Choeur</span>
       <div class="musical-number">22. Duo</div>
     </div>
 
-    <div class="track-col" id="tc43">
+    <div class="track-col" id="tc40">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">10</span>
       </div>
     </div>
-    <div class="text-col" id="t43">
+    <div class="text-col" id="t40">
       <div class="character-row">
         <span class="character-name">Escamillo</span>
         <span class="character-name">Escamillo</span>
@@ -4819,8 +4832,7 @@ Remendado, Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">veillez sur vous!</span><span class="es">no te defiendes!</span></div>
       <div class="stage-direction">
         <span>(Ils se mettent en garde à une certaine distance)</span>
-        <span class="es">(Se ponen en guardia a una cierta 
-distancia uno del otro.)</span>
+        <span class="es">(Se ponen en guardia a una cierta distancia uno del otro.)</span>
       </div>
       <div class="line-row"><span class="fr">Je la connais, ta garde navarraise,</span><span class="es">Conozco como pelean en Navarra,</span></div>
       <div class="line-row"><span class="fr">et je te préviens en ami</span><span class="es">y te advierto, como amigo,</span></div>
@@ -4852,10 +4864,8 @@ distancia uno del otro.)</span>
       </div>
       <div class="line-row"><span class="fr">Voyons cela!</span><span class="es">¡Veámoslo!</span></div>
       <div class="stage-direction">
-        <span>(Rapide et très-vif engagement corps à corps. José se trouve à la merci du torero qui ne le frappe pas. )</span>
-        <span class="es">(Combate cuerpo a cuerpo. Don José se
-encuentra a merced del torero, pero 
-este no quiere herirlo.)</span>
+        <span>(Rapide et très-vif engagement corps à corps. José se trouve à la merci du torero qui ne le frappe pas.)</span>
+        <span class="es">(Combate cuerpo a cuerpo. Don José se encuentra a merced del torero, pero este no quiere herirlo.)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Escamillo</span>
@@ -4898,13 +4908,13 @@ este no quiere herirlo.)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc44">
+    <div class="track-col" id="tc41">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">11</span>
       </div>
     </div>
-    <div class="text-col" id="t44">
+    <div class="text-col" id="t41">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -4931,7 +4941,7 @@ este no quiere herirlo.)</span>
       </div>
       <div class="line-row"><span class="fr">Escamillo!</span><span class="es">¡Escamillo!</span></div>
       <div class="stage-direction">
-        <span>(à don José</span>
+        <span>(à don José)</span>
         <span class="es">(a Don José)</span>
       </div>
       <div class="character-row">
@@ -4997,8 +5007,7 @@ este no quiere herirlo.)</span>
       <div class="line-row"><span class="fr">Prends garde à toi... Carmen,</span><span class="es">¡Te lo advierto... Carmen,</span></div>
       <div class="line-row"><span class="fr">je suis las de souffrir!</span><span class="es">estoy cansado de sufrir!</span></div>
       <div class="stage-direction">
-        <span>(Carmen lui répond par un léger mouvement 
-d'épaules et s'éloigne de lui)</span>
+        <span>(Carmen lui répond par un léger mouvement d'épaules et s'éloigne de lui)</span>
         <span class="es">(Carmen le responde con ligero movimiento de hombros y se aleja)</span>
       </div>
       <div class="character-row">
@@ -5033,7 +5042,7 @@ d'épaules et s'éloigne de lui)</span>
       </div>
       <div class="line-row"><span class="fr">Pardieu! la surprise est heureuse!</span><span class="es">¡Por Dios, que agradable sorpresa!</span></div>
       <div class="stage-direction">
-        <span>reconnaissant Micaëla)</span>
+        <span>(reconnaissant Micaëla)</span>
         <span class="es">(reconociendo a Micaela)</span>
       </div>
       <div class="character-row">
@@ -5054,13 +5063,13 @@ d'épaules et s'éloigne de lui)</span>
       <div class="line-row"><span class="fr">Que viens-tu faire ici?</span><span class="es">¿Qué vienes a hacer aquí?</span></div>
     </div>
 
-    <div class="track-col" id="tc45">
+    <div class="track-col" id="tc42">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">12</span>
       </div>
     </div>
-    <div class="text-col" id="t45">
+    <div class="text-col" id="t42">
       <div class="character-row">
         <span class="character-name">Micaëla</span>
         <span class="character-name">Micaëla</span>
@@ -5123,10 +5132,8 @@ d'épaules et s'éloigne de lui)</span>
       <div class="line-row"><span class="fr">Cette chaîne qui te lie,</span><span class="es">Esa cadena que os une,</span></div>
       <div class="line-row"><span class="fr">José, tu la briseras!</span><span class="es">José, ¡debes romperla!</span></div>
       <div class="character-row">
-        <span class="character-name">Frasquita, Mercédès, Remendado
-Dancaire, Choeur</span>
-        <span class="character-name">Frasquita, Mercédès, Remendado
-Dancaire, Choeur</span>
+        <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire, Choeur</span>
+        <span class="character-name">Frasquita, Mercédès, Remendado, Dancaire, Choeur</span>
       </div>
       <div class="line-row"><span class="fr">Il t'en coûtera la vie,</span><span class="es">Te costará la vida,</span></div>
       <div class="line-row"><span class="fr">José, si tu ne pars pas,</span><span class="es">José, si no te marchas,</span></div>
@@ -5143,13 +5150,13 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Laisse-moi!</span><span class="es">¡Déjame!</span></div>
     </div>
 
-    <div class="track-col" id="tc46">
+    <div class="track-col" id="tc43">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">13</span>
       </div>
     </div>
-    <div class="text-col" id="t46">
+    <div class="text-col" id="t43">
       <div class="character-row">
         <span class="character-name">Micaëla</span>
         <span class="character-name">Micaëla</span>
@@ -5252,15 +5259,7 @@ Dancaire, Choeur</span>
         <span>(Les Bohémiens ont pris leurs ballots et se mettent en marche)</span>
         <span class="es">(Los gitanos recogen los cargamentos deprisa y reanudan su marcha.)</span>
       </div>
-    </div>
-
-    <div class="track-col" id="tc47">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD3</span>
-        <span class="track-tag-num">14</span>
-      </div>
-    </div>
-    <div class="text-col" id="t47">
+      <div class="musical-number"></div>
       <div class="stage-direction">
         <span>(Une place à Séville. L'entrée du cirque est fermée par un long velum. C'est le jour d'un combat de taureaux. Grand mouvement sur la place)</span>
         <span class="es">(plaza de toros de  Sevilla, la entrada al ruedo está cerrada por un amplio velo. Es el día de la corrida. Mucha actividad.)</span>
@@ -5274,13 +5273,13 @@ Dancaire, Choeur</span>
 
     <div class="act-heading">Acte Quatrième · Acto Cuarto</div>
 
-    <div class="track-col" id="tc48">
+    <div class="track-col" id="tc44">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">15</span>
       </div>
     </div>
-    <div class="text-col" id="t48">
+    <div class="text-col" id="t44">
       <div class="character-row">
         <span class="character-name">Marchands</span>
         <span class="character-name">Marchands</span>
@@ -5311,7 +5310,7 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">En voici...</span><span class="es">¡Aquí están,</span></div>
       <div class="line-row"><span class="fr">Prenez, prenez, mesdemoiselles.</span><span class="es">tomen, tomen, señoritas!</span></div>
       <div class="stage-direction">
-        <span>(à l'officier qui paie</span>
+        <span>(à l'officier qui paie)</span>
         <span class="es">(al oficial, que paga)</span>
       </div>
       <div class="character-row">
@@ -5414,24 +5413,20 @@ Dancaire, Choeur</span>
         <span class="character-name">Enfants</span>
       </div>
       <div class="line-row"><span class="fr">Les voici, les voici,</span><span class="es">¡Aquí están! ¡Aquí están!</span></div>
-    </div>
-
-    <div class="track-col" id="tc49">
-      <div class="track-tag">
-        <span class="track-tag-cd">CD3</span>
-        <span class="track-tag-num">16</span>
-      </div>
-    </div>
-    <div class="text-col" id="t49">
-      <div class="character-row">
-        <span class="character-name">Enfants</span>
-        <span class="character-name">Enfants</span>
-      </div>
       <div class="line-row"><span class="fr">voici la quadrille!</span><span class="es">¡Aquí está la cuadrilla!</span></div>
       <div class="stage-direction">
         <span>(Entrée des enfants)</span>
         <span class="es">(Los niños entran a escena.)</span>
       </div>
+    </div>
+
+    <div class="track-col" id="tc45">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t45">
       <div class="character-row">
         <span class="character-name">Enfants, Choeur</span>
         <span class="character-name">Enfants, Choeur</span>
@@ -5459,7 +5454,7 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Bravo! viva! gloire au courage!</span><span class="es">¡Bravo! ¡Viva! ¡Gloria al coraje!</span></div>
       <div class="line-row"><span class="fr">Voici les hardis chulos!</span><span class="es">¡Aquí están los valientes peones!</span></div>
       <div class="stage-direction">
-        <span>(entrée des banderillos</span>
+        <span>(entrée des banderillos)</span>
         <span class="es">(Entrada de los banderilleros.)</span>
       </div>
       <div class="line-row"><span class="fr">Voyez les banderilleros,</span><span class="es">¡Miren a los banderilleros!</span></div>
@@ -5469,7 +5464,7 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">de leur costume de combat!</span><span class="es">de sus trajes de luces!</span></div>
       <div class="line-row"><span class="fr">Voici les Banderilleros!</span><span class="es">¡Aquí están los banderilleros!</span></div>
       <div class="stage-direction">
-        <span>(Entrée des picadors</span>
+        <span>(Entrée des picadors)</span>
         <span class="es">(Entrada de los picadores.)</span>
       </div>
       <div class="line-row"><span class="fr">Une autre quadrille s'avance!</span><span class="es">¡Otra cuadrilla avanza!</span></div>
@@ -5498,18 +5493,18 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Vive Escamillo! Ah!</span><span class="es">¡Viva Escamillo! ¡Ah!</span></div>
       <div class="line-row"><span class="fr">Bravo! Vive! Bravo!</span><span class="es">¡Bravo! ¡Viva! ¡Bravo!</span></div>
       <div class="stage-direction">
-        <span>à Carmen)</span>
+        <span>(à Carmen)</span>
         <span class="es">(a Carmen)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc50">
+    <div class="track-col" id="tc46">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">17</span>
       </div>
     </div>
-    <div class="text-col" id="t50">
+    <div class="text-col" id="t46">
       <div class="character-row">
         <span class="character-name">Escamillo</span>
         <span class="character-name">Escamillo</span>
@@ -5626,13 +5621,13 @@ Dancaire, Choeur</span>
       <div class="musical-number">26. Duo Final</div>
     </div>
 
-    <div class="track-col" id="tc51">
+    <div class="track-col" id="tc47">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">18</span>
       </div>
     </div>
-    <div class="text-col" id="t51">
+    <div class="text-col" id="t47">
       <div class="character-row">
         <span class="character-name">Carmen</span>
         <span class="character-name">Carmen</span>
@@ -5783,18 +5778,18 @@ Dancaire, Choeur</span>
         <span class="es">(Al oír los gritos de victoria, Carmen lanza una exclamación de alegría. Don José no quita su vista de ella que da un paso en dirección a la plaza.)</span>
       </div>
       <div class="stage-direction">
-        <span>se plaçant devant elle)</span>
+        <span>(se plaçant devant elle)</span>
         <span class="es">(obstruyendo su paso)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc52">
+    <div class="track-col" id="tc48">
       <div class="track-tag">
         <span class="track-tag-cd">CD3</span>
         <span class="track-tag-num">19</span>
       </div>
     </div>
-    <div class="text-col" id="t52">
+    <div class="text-col" id="t48">
       <div class="character-row">
         <span class="character-name">Don José</span>
         <span class="character-name">Don José</span>
@@ -5812,7 +5807,7 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Cet homme qu'on acclame,</span><span class="es">¡Ese hombre a quien aclaman,</span></div>
       <div class="line-row"><span class="fr">c'est ton nouvel amant!</span><span class="es">es tu nuevo amante!</span></div>
       <div class="stage-direction">
-        <span>voulant passer)</span>
+        <span>(voulant passer)</span>
         <span class="es">(queriendo pasar)</span>
       </div>
       <div class="character-row">
@@ -5914,7 +5909,7 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Cette bague, autrefois,</span><span class="es">Este anillo,</span></div>
       <div class="line-row"><span class="fr">tu me l'avais donnée...</span><span class="es">que una vez me diste...</span></div>
       <div class="stage-direction">
-        <span>(elle la jette à la volée</span>
+        <span>(elle la jette à la volée)</span>
         <span class="es">(se lo tira)</span>
       </div>
       <div class="line-row"><span class="fr">Tiens!</span><span class="es">¡Tómalo!...</span></div>
@@ -5942,8 +5937,7 @@ Dancaire, Choeur</span>
       <div class="line-row"><span class="fr">Victoire! Bravo! Ah!</span><span class="es">¡Victoria! ¡Bravo! ¡Ah!</span></div>
       <div class="stage-direction">
         <span>(don José, éperdu, s'agenouille auprès d'elle)</span>
-        <span class="es">(Don José se arroja hacia ella, 
-arrodillándose  en el suelo.)</span>
+        <span class="es">(Don José se arroja hacia ella, arrodillándose  en el suelo.)</span>
       </div>
       <div class="line-row"><span class="fr">Toréador, en garde!</span><span class="es">¡Toreador, en guardia!</span></div>
       <div class="line-row"><span class="fr">Toréador! Toréador!</span><span class="es">¡Toreador, toreador!</span></div>
@@ -5967,6 +5961,7 @@ arrodillándose  en el suelo.)</span>
       <div class="line-row"><span class="fr">Vous pouvez m'arréter...</span><span class="es">Podéis arrestarme...</span></div>
       <div class="line-row"><span class="fr">c'est moi qui l'ai tuée!</span><span class="es">¡He sido yo quien la ha matado!</span></div>
       <div class="line-row"><span class="fr">Ma Carmen adorée!</span><span class="es">¡Mi adorada Carmen!</span></div>
+      <div class="musical-number"></div>
     </div>
 
   </div>
@@ -5977,379 +5972,93 @@ arrodillándose  en el suelo.)</span>
     <div class="drawer-header">
       <div class="drawer-header-left">
         <span class="drawer-header-opera">Carmen — Georges Bizet</span>
-        <span class="drawer-header-sub">Karajan / Price</span>
+        <span class="drawer-header-sub" id="drawerRecordingLabel">Karajan / Price</span>
       </div>
       <button class="drawer-close" onclick="closeDrawer()">Close</button>
     </div>
-    <div class="drawer-body">
-      <div class="drawer-cd-label">Disc 1 — Act I</div>
-      <div class="drawer-track" onclick="jumpTo('t1')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Prélude</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t2" onclick="jumpTo('t2')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Sur La Place Chacun Passe</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t3" onclick="jumpTo('t3')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Regardez Donc Cette Petite</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t4" onclick="jumpTo('t4')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Avec La Garde Montante</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t5" onclick="jumpTo('t5')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Une Jeune Fille Charmante</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t6" onclick="jumpTo('t6')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">La Cloche A Sonné</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t7" onclick="jumpTo('t7')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">La Voilà!</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t8" onclick="jumpTo('t8')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">L'Amour Est Un Oiseau Rebelle</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t9" onclick="jumpTo('t9')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Carmen! Sur Tes Pas</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t10" onclick="jumpTo('t10')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Quels Regards! Quelle Effronterie!</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t11" onclick="jumpTo('t11')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Parle-Moi De Ma Mère!</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t12" onclick="jumpTo('t12')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Reste La Maintenant, Pendant Que Je Lirai</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t13" onclick="jumpTo('t13')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Que Se Passe-T-Il Donc Là-Bas?</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t14" onclick="jumpTo('t14')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Mon Officier, C'Etait Une Querelle</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t15" onclick="jumpTo('t15')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Tra La La, Coupe-Moi, Brule-Moi</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t16" onclick="jumpTo('t16')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Près Des Remparts De Séville</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t17" onclick="jumpTo('t17')">
-        <span class="drawer-track-num">17</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Voici L'Ordre; Partez</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-cd-label">Disc 2 — Act II</div>
-      <div class="drawer-track" id="idx-t18" onclick="jumpTo('t18')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Entr'Acte #1</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t19" onclick="jumpTo('t19')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Les Tringles Des Sistres Tintaient</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t20" onclick="jumpTo('t20')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Messieurs, Pastia Me Dit</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t21" onclick="jumpTo('t21')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Vivat! Vivat Le Toréro</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t22" onclick="jumpTo('t22')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Votre Toast, Je Peux Vous Le Rendre</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t23" onclick="jumpTo('t23')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">La Belle, Un Mot</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t24" onclick="jumpTo('t24')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Eh Bien, Vite, Quelles Nouvelles</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t25" onclick="jumpTo('t25')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Nous avons en tête une affaire (Quintet)</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t26" onclick="jumpTo('t26')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Mais Qui Donc Attends-Tu?</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t27" onclick="jumpTo('t27')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Halte Là! Qui Va Là?</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t28" onclick="jumpTo('t28')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Enfin C'Est Toi!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t29" onclick="jumpTo('t29')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">La La La La - Attends Un Peu, Carmen</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t30" onclick="jumpTo('t30')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">La Fleur Que Tu M'Avais Jetée</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t31" onclick="jumpTo('t31')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Non! Tu Ne M'Aimes Pas</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t32" onclick="jumpTo('t32')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Holà! Carmen! Holà! Holà!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t33" onclick="jumpTo('t33')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Bel Officier, L'Amour Vous Joue En Ce Moment</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-cd-label">Disc 3 — Act III</div>
-      <div class="drawer-track" id="idx-t34" onclick="jumpTo('t34')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Entr'Acte #2</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t35" onclick="jumpTo('t35')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ecoute, Compagnon, Ecoute!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t36" onclick="jumpTo('t36')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Reposons-Nous Une Heure Ici</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t37" onclick="jumpTo('t37')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Mêlons! Coupons!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t38" onclick="jumpTo('t38')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Eh Bien? - Eh Bien</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t39" onclick="jumpTo('t39')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Quant Au Douanier, C'Est Notre Affaire</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t40" onclick="jumpTo('t40')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">C'Est Des Contrebandiers</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t41" onclick="jumpTo('t41')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Je Dis Que Rien Ne M'Épouvante</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t42" onclick="jumpTo('t42')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Je Ne Me Trompe Pas</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t43" onclick="jumpTo('t43')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Je Suis Escamillo, Torero De Grénade!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t44" onclick="jumpTo('t44')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Holà, Holà José!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t45" onclick="jumpTo('t45')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Moi, Je Viens Te Chercher!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t46" onclick="jumpTo('t46')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Helas, José!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t47" onclick="jumpTo('t47')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Entr'Acte #3</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t48" onclick="jumpTo('t48')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">A Deux Cuartos!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t49" onclick="jumpTo('t49')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Les Voici! Voici La Quadrille!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t50" onclick="jumpTo('t50')">
-        <span class="drawer-track-num">17</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Si Tu M'Aimes, Carmen</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t51" onclick="jumpTo('t51')">
-        <span class="drawer-track-num">18</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">C'Est Toi! - C'Est Moi!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t52" onclick="jumpTo('t52')">
-        <span class="drawer-track-num">19</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ou-Vas-Tu? - Laisse-Moi!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-    </div>
+    <div class="drawer-body" id="drawerBody"></div>
   </div>
 </div>
 
 <script>
+  const RECORDINGS = {
+  karajan_price: {
+    label: "Carmen \u00b7 Karajan / Price",
+    short: "Karajan / Price",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Pr\u00e9lude", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Sur La Place Chacun Passe", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 3, title: "Regardez Donc Cette Petite", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 4, title: "Avec La Garde Montante", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 5, title: "Une Jeune Fille Charmante", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 6, title: "La Cloche A Sonn\u00e9", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 7, title: "La Voil\u00e0!", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 8, title: "L'Amour Est Un Oiseau Rebelle", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 9, title: "Carmen! Sur Tes Pas", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 10, title: "Quels Regards! Quelle Effronterie!", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 11, title: "Parle-Moi De Ma M\u00e8re!", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 12, title: "Reste La Maintenant, Pendant Que Je Lirai", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 13, title: "Que Se Passe-T-Il Donc L\u00e0-Bas?", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 14, title: "Mon Officier, C'Etait Une Querelle", act: "Act I", has_block: true },
+      { id: "t14", cd: 1, track: 15, title: "Tra La La, Coupe-Moi, Brule-Moi", act: "Act I", has_block: true },
+      { id: "t15", cd: 1, track: 16, title: "Pr\u00e8s Des Remparts De S\u00e9ville", act: "Act I", has_block: true },
+      { id: "t16", cd: 1, track: 17, title: "Voici L'Ordre; Partez", act: "Act I", has_block: true },
+      { id: "t27", cd: 2, track: 1, title: "Entr'Acte #1", act: "Act I", has_block: true },
+      { id: "t17", cd: 2, track: 2, title: "Les Tringles Des Sistres Tintaient", act: "Act II", has_block: true },
+      { id: "t18", cd: 2, track: 3, title: "Messieurs, Pastia Me Dit", act: "Act II", has_block: true },
+      { id: "t19", cd: 2, track: 4, title: "Vivat! Vivat Le Tor\u00e9ro", act: "Act II", has_block: true },
+      { id: "t20", cd: 2, track: 5, title: "Votre Toast, Je Peux Vous Le Rendre", act: "Act II", has_block: true },
+      { id: "t21", cd: 2, track: 6, title: "La Belle, Un Mot", act: "Act II", has_block: true },
+      { id: "t22", cd: 2, track: 7, title: "Eh Bien, Vite, Quelles Nouvelles", act: "Act II", has_block: true },
+      { id: "t23", cd: 2, track: 8, title: "Nous avons en t\u00eate une affaire (Quintet)", act: "Act II", has_block: true },
+      { id: "t24", cd: 2, track: 9, title: "Mais Qui Donc Attends-Tu?", act: "Act II", has_block: true },
+      { id: "t25", cd: 2, track: 10, title: "Halte L\u00e0! Qui Va L\u00e0?", act: "Act II", has_block: true },
+      { id: "t26", cd: 2, track: 11, title: "Enfin C'Est Toi!", act: "Act II", has_block: true },
+      { id: "t27", cd: 2, track: 12, title: "La La La La - Attends Un Peu, Carmen", act: "Act II", has_block: true },
+      { id: "t28", cd: 2, track: 13, title: "La Fleur Que Tu M'Avais Jet\u00e9e", act: "Act II", has_block: true },
+      { id: "t29", cd: 2, track: 14, title: "Non! Tu Ne M'Aimes Pas", act: "Act II", has_block: true },
+      { id: "t30", cd: 2, track: 15, title: "Hol\u00e0! Carmen! Hol\u00e0! Hol\u00e0!", act: "Act II", has_block: true },
+      { id: "t31", cd: 2, track: 16, title: "Bel Officier, L'Amour Vous Joue En Ce Moment", act: "Act II", has_block: true },
+      { id: "t47", cd: 3, track: 1, title: "Entr'Acte #2", act: "Act I", has_block: true },
+      { id: "t32", cd: 3, track: 2, title: "Ecoute, Compagnon, Ecoute!", act: "Act III", has_block: true },
+      { id: "t33", cd: 3, track: 3, title: "Reposons-Nous Une Heure Ici", act: "Act III", has_block: true },
+      { id: "t34", cd: 3, track: 4, title: "M\u00ealons! Coupons!", act: "Act III", has_block: true },
+      { id: "t35", cd: 3, track: 5, title: "Eh Bien? - Eh Bien", act: "Act III", has_block: true },
+      { id: "t36", cd: 3, track: 6, title: "Quant Au Douanier, C'Est Notre Affaire", act: "Act III", has_block: true },
+      { id: "t37", cd: 3, track: 7, title: "C'Est Des Contrebandiers", act: "Act III", has_block: true },
+      { id: "t38", cd: 3, track: 8, title: "Je Dis Que Rien Ne M'\u00c9pouvante", act: "Act III", has_block: true },
+      { id: "t39", cd: 3, track: 9, title: "Je Ne Me Trompe Pas", act: "Act III", has_block: true },
+      { id: "t40", cd: 3, track: 10, title: "Je Suis Escamillo, Torero De Gr\u00e9nade!", act: "Act III", has_block: true },
+      { id: "t41", cd: 3, track: 11, title: "Hol\u00e0, Hol\u00e0 Jos\u00e9!", act: "Act III", has_block: true },
+      { id: "t42", cd: 3, track: 12, title: "Moi, Je Viens Te Chercher!", act: "Act III", has_block: true },
+      { id: "t43", cd: 3, track: 13, title: "Helas, Jos\u00e9!", act: "Act III", has_block: true },
+      { id: "t44", cd: 3, track: 15, title: "A Deux Cuartos!", act: "Act IV", has_block: true },
+      { id: "t45", cd: 3, track: 16, title: "Les Voici! Voici La Quadrille!", act: "Act IV", has_block: true },
+      { id: "t46", cd: 3, track: 17, title: "Si Tu M'Aimes, Carmen", act: "Act IV", has_block: true },
+      { id: "t47", cd: 3, track: 18, title: "C'Est Toi! - C'Est Moi!", act: "Act IV", has_block: true },
+      { id: "t48", cd: 3, track: 19, title: "Ou-Vas-Tu? - Laisse-Moi!", act: "Act IV", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Acte I",
+    "Act II": "Acte II",
+    "Act III": "Acte III",
+    "Act IV": "Acte IV"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t17",
+    "Act III": "t32",
+    "Act IV": "t44"
+  };
+
+  let activeRecording = "karajan_price";
+  let currentActiveId = "t1";
+  let observer = null;
+
   function openDrawer() {
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -6365,78 +6074,129 @@ arrodillándose  en el suelo.)</span>
     updateActive(id);
   }
 
-  const trackMap = [
-    { id: 't1', cd: 1, track: 1, title: "Pr\u00e9lude" },
-    { id: 't2', cd: 1, track: 2, title: "Sur La Place Chacun Passe" },
-    { id: 't3', cd: 1, track: 3, title: "Regardez Donc Cette Petite" },
-    { id: 't4', cd: 1, track: 4, title: "Avec La Garde Montante" },
-    { id: 't5', cd: 1, track: 5, title: "Une Jeune Fille Charmante" },
-    { id: 't6', cd: 1, track: 6, title: "La Cloche A Sonn\u00e9" },
-    { id: 't7', cd: 1, track: 7, title: "La Voil\u00e0!" },
-    { id: 't8', cd: 1, track: 8, title: "L'Amour Est Un Oiseau Rebelle" },
-    { id: 't9', cd: 1, track: 9, title: "Carmen! Sur Tes Pas" },
-    { id: 't10', cd: 1, track: 10, title: "Quels Regards! Quelle Effronterie!" },
-    { id: 't11', cd: 1, track: 11, title: "Parle-Moi De Ma M\u00e8re!" },
-    { id: 't12', cd: 1, track: 12, title: "Reste La Maintenant, Pendant Que Je Lirai" },
-    { id: 't13', cd: 1, track: 13, title: "Que Se Passe-T-Il Donc L\u00e0-Bas?" },
-    { id: 't14', cd: 1, track: 14, title: "Mon Officier, C'Etait Une Querelle" },
-    { id: 't15', cd: 1, track: 15, title: "Tra La La, Coupe-Moi, Brule-Moi" },
-    { id: 't16', cd: 1, track: 16, title: "Pr\u00e8s Des Remparts De S\u00e9ville" },
-    { id: 't17', cd: 1, track: 17, title: "Voici L'Ordre; Partez" },
-    { id: 't18', cd: 2, track: 1, title: "Entr'Acte #1" },
-    { id: 't19', cd: 2, track: 2, title: "Les Tringles Des Sistres Tintaient" },
-    { id: 't20', cd: 2, track: 3, title: "Messieurs, Pastia Me Dit" },
-    { id: 't21', cd: 2, track: 4, title: "Vivat! Vivat Le Tor\u00e9ro" },
-    { id: 't22', cd: 2, track: 5, title: "Votre Toast, Je Peux Vous Le Rendre" },
-    { id: 't23', cd: 2, track: 6, title: "La Belle, Un Mot" },
-    { id: 't24', cd: 2, track: 7, title: "Eh Bien, Vite, Quelles Nouvelles" },
-    { id: 't25', cd: 2, track: 8, title: "Nous avons en t\u00eate une affaire (Quintet)" },
-    { id: 't26', cd: 2, track: 9, title: "Mais Qui Donc Attends-Tu?" },
-    { id: 't27', cd: 2, track: 10, title: "Halte L\u00e0! Qui Va L\u00e0?" },
-    { id: 't28', cd: 2, track: 11, title: "Enfin C'Est Toi!" },
-    { id: 't29', cd: 2, track: 12, title: "La La La La - Attends Un Peu, Carmen" },
-    { id: 't30', cd: 2, track: 13, title: "La Fleur Que Tu M'Avais Jet\u00e9e" },
-    { id: 't31', cd: 2, track: 14, title: "Non! Tu Ne M'Aimes Pas" },
-    { id: 't32', cd: 2, track: 15, title: "Hol\u00e0! Carmen! Hol\u00e0! Hol\u00e0!" },
-    { id: 't33', cd: 2, track: 16, title: "Bel Officier, L'Amour Vous Joue En Ce Moment" },
-    { id: 't34', cd: 3, track: 1, title: "Entr'Acte #2" },
-    { id: 't35', cd: 3, track: 2, title: "Ecoute, Compagnon, Ecoute!" },
-    { id: 't36', cd: 3, track: 3, title: "Reposons-Nous Une Heure Ici" },
-    { id: 't37', cd: 3, track: 4, title: "M\u00ealons! Coupons!" },
-    { id: 't38', cd: 3, track: 5, title: "Eh Bien? - Eh Bien" },
-    { id: 't39', cd: 3, track: 6, title: "Quant Au Douanier, C'Est Notre Affaire" },
-    { id: 't40', cd: 3, track: 7, title: "C'Est Des Contrebandiers" },
-    { id: 't41', cd: 3, track: 8, title: "Je Dis Que Rien Ne M'\u00c9pouvante" },
-    { id: 't42', cd: 3, track: 9, title: "Je Ne Me Trompe Pas" },
-    { id: 't43', cd: 3, track: 10, title: "Je Suis Escamillo, Torero De Gr\u00e9nade!" },
-    { id: 't44', cd: 3, track: 11, title: "Hol\u00e0, Hol\u00e0 Jos\u00e9!" },
-    { id: 't45', cd: 3, track: 12, title: "Moi, Je Viens Te Chercher!" },
-    { id: 't46', cd: 3, track: 13, title: "Helas, Jos\u00e9!" },
-    { id: 't47', cd: 3, track: 14, title: "Entr'Acte #3" },
-    { id: 't48', cd: 3, track: 15, title: "A Deux Cuartos!" },
-    { id: 't49', cd: 3, track: 16, title: "Les Voici! Voici La Quadrille!" },
-    { id: 't50', cd: 3, track: 17, title: "Si Tu M'Aimes, Carmen" },
-    { id: 't51', cd: 3, track: 18, title: "C'Est Toi! - C'Est Moi!" },
-    { id: 't52', cd: 3, track: 19, title: "Ou-Vas-Tu? - Laisse-Moi!" },
-  ];
+  function toggleSwitcher(event) {
+    event.stopPropagation();
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    if (dd.classList.contains('open')) {
+      dd.classList.remove('open');
+    } else {
+      dd.classList.add('open');
+      setTimeout(() => document.addEventListener('click', closeSwitcherOnOutside, { once: true }), 0);
+    }
+  }
+  function closeSwitcherOnOutside() {
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function buildSwitcherDropdown() {
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    dd.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<div class="recording-option${key === activeRecording ? ' active' : ''}" onclick="switchRecording('${key}')">${rec.label}</div>`
+    ).join('');
+  }
+
+  function buildDrawer() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('drawerBody');
+    let html = '';
+    let lastGroup = null;
+
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+
+    body.innerHTML = html;
+    const lbl = document.getElementById('drawerRecordingLabel');
+    if (lbl) lbl.textContent = rec.short;
+  }
+
+  function updateTrackTags() {
+    document.querySelectorAll('.track-tag').forEach(tag => { tag.style.visibility = 'hidden'; });
+    const rec = RECORDINGS[activeRecording];
+    const seen = new Set();
+    for (const t of rec.tracks) {
+      if (!t.has_block) continue;
+      const suffix = t.id.slice(1);
+      if (seen.has(suffix)) continue;
+      seen.add(suffix);
+      const tc = document.getElementById('tc' + suffix);
+      if (!tc) continue;
+      const tag = tc.querySelector('.track-tag');
+      if (!tag) continue;
+      tag.style.visibility = 'visible';
+      tag.innerHTML = `<span class="track-tag-cd">CD${t.cd}</span><span class="track-tag-num">${t.track}</span>`;
+    }
+  }
+
+  function scrollToCurrentAct() {
+    const rec = RECORDINGS[activeRecording];
+    const track = rec.tracks.find(t => t.id === currentActiveId);
+    if (!track) return;
+    const startId = ACT_STARTS[track.act];
+    if (!startId) return;
+    const el = document.getElementById(startId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function switchRecording(key) {
+    activeRecording = key;
+    const lbl = document.getElementById('recordingLabel');
+    if (lbl) lbl.textContent = RECORDINGS[key].label;
+    updateTrackTags();
+    buildDrawer();
+    buildSwitcherDropdown();
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+    scrollToCurrentAct();
+    updateActive(currentActiveId);
+  }
 
   function updateActive(activeId) {
-    const t = trackMap.find(t => t.id === activeId) || trackMap[1];
-    document.getElementById('trackLabel').textContent = 'CD ' + t.cd + ' · T' + t.track;
-    document.getElementById('trackTitle').textContent = t.title;
+    currentActiveId = activeId;
+    const rec = RECORDINGS[activeRecording];
+    const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
+    if (!t) return;
+    const trackLabel = document.getElementById('trackLabel');
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    const trackTitle = document.getElementById('trackTitle');
+    if (trackTitle) trackTitle.textContent = t.title;
+    const actLabel = document.getElementById('actLabel');
+    if (actLabel) actLabel.textContent = ACT_DISPLAY[t.act] || t.act;
     document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
     const idx = document.getElementById('idx-' + activeId);
     if (idx) idx.classList.add('active');
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
-  }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+  function rewireObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+    }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
 
-  trackMap.forEach(t => {
-    const el = document.getElementById(t.id);
-    if (el) observer.observe(el);
-  });
+    const rec = RECORDINGS[activeRecording];
+    rec.tracks.forEach(t => {
+      const el = document.getElementById(t.id);
+      if (el) observer.observe(el);
+    });
+  }
 
-  updateActive('t2');
+  buildSwitcherDropdown();
+  buildDrawer();
+  rewireObserver();
+  updateActive("t1");
 </script>

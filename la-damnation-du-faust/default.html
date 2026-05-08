@@ -55,17 +55,12 @@
       gap: 0.75rem;
     }
 
-    #actLabel,
-    .recording-pill {
-      font-size: 11px !important;
-      line-height: 1.2;
-    }
+    #actLabel { font-size: 11px !important; line-height: 1.2; }
 
-    .recording-pill {
-      display: contents;
+    .recording-switcher {
+      font-size: 11px !important;
       border: none;
       padding: 0;
-      margin: 0;
       background: none;
     }
   }
@@ -108,7 +103,10 @@
 
   .context-right { display: flex; align-items: center; gap: 10px; }
 
-  .recording-pill {
+  /* Recording switcher */
+  .recording-switcher-wrap { position: relative; }
+
+  .recording-switcher {
     font-family: var(--sans);
     font-size: 11px;
     color: var(--text-dim);
@@ -116,6 +114,44 @@
     border: 1px solid var(--color-border-secondary);
     border-radius: 3px;
     padding: 3px 8px;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .recording-switcher:hover { background: var(--bg2); }
+
+  .switcher-chevron { font-size: 8px; opacity: 0.5; }
+
+  .recording-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--color-background-primary, #fdfaf6);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    min-width: 220px;
+    z-index: 300;
+  }
+  .recording-dropdown.open { display: block; }
+
+  .recording-option {
+    font-family: var(--sans);
+    font-size: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--text-main);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .recording-option:last-child { border-bottom: none; }
+  .recording-option:hover { background: var(--bg2); }
+  .recording-option.active {
+    background: var(--gold-light);
+    color: var(--gold);
+    font-weight: 500;
   }
 
   .index-btn {
@@ -420,7 +456,13 @@
       <span class="context-track-title" id="trackTitle">Le Vieil Hiver A Fait Place Au Printemps</span>
     </div>
     <div class="context-right">
-      <span class="recording-pill">La Damnation de Faust · Nelson / Di Donato</span>
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">La Damnation de Faust · Nelson / Di Donato</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
       <button class="index-btn" onclick="openDrawer()">
         <span class="index-icon"><span></span><span></span><span></span></span>
         Index
@@ -439,10 +481,6 @@
       </div>
     </div>
     <div class="text-col" id="t1">
-      <div class="scene-heading">
-        <span>Scène Première</span>
-        <span>Escena Primera</span>
-      </div>
       <div class="character-row">
         <span class="character-name">Faust</span>
         <span class="character-name">Faust</span>
@@ -2651,333 +2689,87 @@
     <div class="drawer-header">
       <div class="drawer-header-left">
         <span class="drawer-header-opera">La Damnation de Faust — Hector Berlioz</span>
-        <span class="drawer-header-sub">Nelson / Di Donato</span>
+        <span class="drawer-header-sub" id="drawerRecordingLabel">Nelson / Di Donato</span>
       </div>
       <button class="drawer-close" onclick="closeDrawer()">Close</button>
     </div>
-    <div class="drawer-body">
-      <div class="drawer-cd-label">Disc 1 — Act I</div>
-      <div class="drawer-track" id="idx-t1" onclick="jumpTo('t1')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Le Vieil Hiver A Fait Place Au Printemps</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t2" onclick="jumpTo('t2')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Les Bergers Laissent Leurs Troupeaux</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t3" onclick="jumpTo('t3')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Mais D'un Éclat Guerrier</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t4" onclick="jumpTo('t4')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Marche Hongroise</span>
-          <span class="drawer-track-act">Act I</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t5" onclick="jumpTo('t5')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Sans Regrets J'ai Quitté Les Riantes Campagnes</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t6" onclick="jumpTo('t6')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Christ Vient De Ressuciter!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t7" onclick="jumpTo('t7')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Hélas! Doux Chant Du Ciel</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t8" onclick="jumpTo('t8')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ô Pure Émotion!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t9" onclick="jumpTo('t9')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">À Boire Encor!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t10" onclick="jumpTo('t10')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Certain Rat, Dans Une Cuisine</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t11" onclick="jumpTo('t11')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Amen</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t12" onclick="jumpTo('t12')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Vrai Dieu, Messieurs</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t13" onclick="jumpTo('t13')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Une Puce Gentille</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t14" onclick="jumpTo('t14')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Assez! Fuyons Ces Lieux</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t15" onclick="jumpTo('t15')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Voici Des Rose</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t16" onclick="jumpTo('t16')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Dors, Dors, Heureux Faust</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t17" onclick="jumpTo('t17')">
-        <span class="drawer-track-num">17</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ballet Des Sylphes</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t18" onclick="jumpTo('t18')">
-        <span class="drawer-track-num">18</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Margarita!</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t19" onclick="jumpTo('t19')">
-        <span class="drawer-track-num">19</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Villes Entourées</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t20" onclick="jumpTo('t20')">
-        <span class="drawer-track-num">20</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Jam Nox Stellata Velamina Pandit</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t21" onclick="jumpTo('t21')">
-        <span class="drawer-track-num">21</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Villes Entourées… Jam Nox Stellata…</span>
-          <span class="drawer-track-act">Act II</span>
-        </div>
-      </div>
-      <div class="drawer-cd-label">Disc 2 — Act III</div>
-      <div class="drawer-track" id="idx-t22" onclick="jumpTo('t22')">
-        <span class="drawer-track-num">1</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Tambours Et Trompettes Sonnant La Retraite</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t23" onclick="jumpTo('t23')">
-        <span class="drawer-track-num">2</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Merci, Doux Crépuscule!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t24" onclick="jumpTo('t24')">
-        <span class="drawer-track-num">3</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Je L'entends!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t25" onclick="jumpTo('t25')">
-        <span class="drawer-track-num">4</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Que L'air Est Étouffant!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t26" onclick="jumpTo('t26')">
-        <span class="drawer-track-num">5</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Autrefois Un Roi De Thulé</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t27" onclick="jumpTo('t27')">
-        <span class="drawer-track-num">6</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Esprits Des Flammes Inconstantes</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t28" onclick="jumpTo('t28')">
-        <span class="drawer-track-num">7</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Menuet Des Follets</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t29" onclick="jumpTo('t29')">
-        <span class="drawer-track-num">8</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Mainteant, Chantons À Cette Bell</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t30" onclick="jumpTo('t30')">
-        <span class="drawer-track-num">9</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Devant La Maison</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t31" onclick="jumpTo('t31')">
-        <span class="drawer-track-num">10</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Grand Dieu!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t32" onclick="jumpTo('t32')">
-        <span class="drawer-track-num">11</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ange Adoré</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t33" onclick="jumpTo('t33')">
-        <span class="drawer-track-num">12</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Allons, Il Est Trop Tard!</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t34" onclick="jumpTo('t34')">
-        <span class="drawer-track-num">13</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Je Connais Donc Enfin</span>
-          <span class="drawer-track-act">Act III</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t35" onclick="jumpTo('t35')">
-        <span class="drawer-track-num">14</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">D'amour L'ardente Flamme</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t36" onclick="jumpTo('t36')">
-        <span class="drawer-track-num">15</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Au Son Des Trompettes</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t37" onclick="jumpTo('t37')">
-        <span class="drawer-track-num">16</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Nature Immense</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t38" onclick="jumpTo('t38')">
-        <span class="drawer-track-num">17</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">À La Voûte Azurée</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t39" onclick="jumpTo('t39')">
-        <span class="drawer-track-num">18</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Dans Mon Cœur Retentit Sa Voix Désespérée</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t40" onclick="jumpTo('t40')">
-        <span class="drawer-track-num">19</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Ha! Irimirukarabrao!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t41" onclick="jumpTo('t41')">
-        <span class="drawer-track-num">20</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Tradioun Marexil Fir Trudinxé Burrudixé!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t42" onclick="jumpTo('t42')">
-        <span class="drawer-track-num">21</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Alors L'enfer Se Tut</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t43" onclick="jumpTo('t43')">
-        <span class="drawer-track-num">22</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Laus! Laus! Hosanna! Hosanna!</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t44" onclick="jumpTo('t44')">
-        <span class="drawer-track-num">23</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Remonte Au Ciel, Âme Naïve</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-      <div class="drawer-track" id="idx-t45" onclick="jumpTo('t45')">
-        <span class="drawer-track-num">24</span>
-        <div class="drawer-track-info">
-          <span class="drawer-track-title">Viens, Les Vierges Divines</span>
-          <span class="drawer-track-act">Act IV</span>
-        </div>
-      </div>
-    </div>
+    <div class="drawer-body" id="drawerBody"></div>
   </div>
 </div>
 
 <script>
+  const RECORDINGS = {
+  nelson_didonato: {
+    label: "La Damnation de Faust \u00b7 Nelson / Di Donato",
+    short: "Nelson / Di Donato",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Le Vieil Hiver A Fait Place Au Printemps", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 2, title: "Les Bergers Laissent Leurs Troupeaux", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 3, title: "Mais D'un \u00c9clat Guerrier", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 4, title: "Marche Hongroise", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 5, title: "Sans Regrets J'ai Quitt\u00e9 Les Riantes Campagnes", act: "Act II", has_block: true },
+      { id: "t6", cd: 1, track: 6, title: "Christ Vient De Ressuciter!", act: "Act II", has_block: true },
+      { id: "t7", cd: 1, track: 7, title: "H\u00e9las! Doux Chant Du Ciel", act: "Act II", has_block: true },
+      { id: "t8", cd: 1, track: 8, title: "\u00d4 Pure \u00c9motion!", act: "Act II", has_block: true },
+      { id: "t9", cd: 1, track: 9, title: "\u00c0 Boire Encor!", act: "Act II", has_block: true },
+      { id: "t10", cd: 1, track: 10, title: "Certain Rat, Dans Une Cuisine", act: "Act II", has_block: true },
+      { id: "t11", cd: 1, track: 11, title: "Amen", act: "Act II", has_block: true },
+      { id: "t12", cd: 1, track: 12, title: "Vrai Dieu, Messieurs", act: "Act II", has_block: true },
+      { id: "t13", cd: 1, track: 13, title: "Une Puce Gentille", act: "Act II", has_block: true },
+      { id: "t14", cd: 1, track: 14, title: "Assez! Fuyons Ces Lieux", act: "Act II", has_block: true },
+      { id: "t15", cd: 1, track: 15, title: "Voici Des Rose", act: "Act II", has_block: true },
+      { id: "t16", cd: 1, track: 16, title: "Dors, Dors, Heureux Faust", act: "Act II", has_block: true },
+      { id: "t17", cd: 1, track: 17, title: "Ballet Des Sylphes", act: "Act II", has_block: true },
+      { id: "t18", cd: 1, track: 18, title: "Margarita!", act: "Act II", has_block: true },
+      { id: "t19", cd: 1, track: 19, title: "Villes Entour\u00e9es", act: "Act II", has_block: true },
+      { id: "t20", cd: 1, track: 20, title: "Jam Nox Stellata Velamina Pandit", act: "Act II", has_block: true },
+      { id: "t21", cd: 1, track: 21, title: "Villes Entour\u00e9es\u2026 Jam Nox Stellata\u2026", act: "Act II", has_block: true },
+      { id: "t22", cd: 2, track: 1, title: "Tambours Et Trompettes Sonnant La Retraite", act: "Act III", has_block: true },
+      { id: "t23", cd: 2, track: 2, title: "Merci, Doux Cr\u00e9puscule!", act: "Act III", has_block: true },
+      { id: "t24", cd: 2, track: 3, title: "Je L'entends!", act: "Act III", has_block: true },
+      { id: "t25", cd: 2, track: 4, title: "Que L'air Est \u00c9touffant!", act: "Act III", has_block: true },
+      { id: "t26", cd: 2, track: 5, title: "Autrefois Un Roi De Thul\u00e9", act: "Act III", has_block: true },
+      { id: "t27", cd: 2, track: 6, title: "Esprits Des Flammes Inconstantes", act: "Act III", has_block: true },
+      { id: "t28", cd: 2, track: 7, title: "Menuet Des Follets", act: "Act III", has_block: true },
+      { id: "t29", cd: 2, track: 8, title: "Mainteant, Chantons \u00c0 Cette Bell", act: "Act III", has_block: true },
+      { id: "t30", cd: 2, track: 9, title: "Devant La Maison", act: "Act III", has_block: true },
+      { id: "t31", cd: 2, track: 10, title: "Grand Dieu!", act: "Act III", has_block: true },
+      { id: "t32", cd: 2, track: 11, title: "Ange Ador\u00e9", act: "Act III", has_block: true },
+      { id: "t33", cd: 2, track: 12, title: "Allons, Il Est Trop Tard!", act: "Act III", has_block: true },
+      { id: "t34", cd: 2, track: 13, title: "Je Connais Donc Enfin", act: "Act III", has_block: true },
+      { id: "t35", cd: 2, track: 14, title: "D'amour L'ardente Flamme", act: "Act IV", has_block: true },
+      { id: "t36", cd: 2, track: 15, title: "Au Son Des Trompettes", act: "Act IV", has_block: true },
+      { id: "t37", cd: 2, track: 16, title: "Nature Immense", act: "Act IV", has_block: true },
+      { id: "t38", cd: 2, track: 17, title: "\u00c0 La Vo\u00fbte Azur\u00e9e", act: "Act IV", has_block: true },
+      { id: "t39", cd: 2, track: 18, title: "Dans Mon C\u0153ur Retentit Sa Voix D\u00e9sesp\u00e9r\u00e9e", act: "Act IV", has_block: true },
+      { id: "t40", cd: 2, track: 19, title: "Ha! Irimirukarabrao!", act: "Act IV", has_block: true },
+      { id: "t41", cd: 2, track: 20, title: "Tradioun Marexil Fir Trudinx\u00e9 Burrudix\u00e9!", act: "Act IV", has_block: true },
+      { id: "t42", cd: 2, track: 21, title: "Alors L'enfer Se Tut", act: "Act IV", has_block: true },
+      { id: "t43", cd: 2, track: 22, title: "Laus! Laus! Hosanna! Hosanna!", act: "Act IV", has_block: true },
+      { id: "t44", cd: 2, track: 23, title: "Remonte Au Ciel, \u00c2me Na\u00efve", act: "Act IV", has_block: true },
+      { id: "t45", cd: 2, track: 24, title: "Viens, Les Vierges Divines", act: "Act IV", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Premiere I",
+    "Act II": "Deuxieme II",
+    "Act III": "Troisieme III",
+    "Act IV": "Quatrieme IV"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t5",
+    "Act III": "t22",
+    "Act IV": "t35"
+  };
+
+  let activeRecording = "nelson_didonato";
+  let currentActiveId = "t1";
+  let observer = null;
+
   function openDrawer() {
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -2993,71 +2785,129 @@
     updateActive(id);
   }
 
-  const trackMap = [
-    { id: 't1', cd: 1, track: 1, title: "Le Vieil Hiver A Fait Place Au Printemps" },
-    { id: 't2', cd: 1, track: 2, title: "Les Bergers Laissent Leurs Troupeaux" },
-    { id: 't3', cd: 1, track: 3, title: "Mais D'un \u00c9clat Guerrier" },
-    { id: 't4', cd: 1, track: 4, title: "Marche Hongroise" },
-    { id: 't5', cd: 1, track: 5, title: "Sans Regrets J'ai Quitt\u00e9 Les Riantes Campagnes" },
-    { id: 't6', cd: 1, track: 6, title: "Christ Vient De Ressuciter!" },
-    { id: 't7', cd: 1, track: 7, title: "H\u00e9las! Doux Chant Du Ciel" },
-    { id: 't8', cd: 1, track: 8, title: "\u00d4 Pure \u00c9motion!" },
-    { id: 't9', cd: 1, track: 9, title: "\u00c0 Boire Encor!" },
-    { id: 't10', cd: 1, track: 10, title: "Certain Rat, Dans Une Cuisine" },
-    { id: 't11', cd: 1, track: 11, title: "Amen" },
-    { id: 't12', cd: 1, track: 12, title: "Vrai Dieu, Messieurs" },
-    { id: 't13', cd: 1, track: 13, title: "Une Puce Gentille" },
-    { id: 't14', cd: 1, track: 14, title: "Assez! Fuyons Ces Lieux" },
-    { id: 't15', cd: 1, track: 15, title: "Voici Des Rose" },
-    { id: 't16', cd: 1, track: 16, title: "Dors, Dors, Heureux Faust" },
-    { id: 't17', cd: 1, track: 17, title: "Ballet Des Sylphes" },
-    { id: 't18', cd: 1, track: 18, title: "Margarita!" },
-    { id: 't19', cd: 1, track: 19, title: "Villes Entour\u00e9es" },
-    { id: 't20', cd: 1, track: 20, title: "Jam Nox Stellata Velamina Pandit" },
-    { id: 't21', cd: 1, track: 21, title: "Villes Entour\u00e9es\u2026 Jam Nox Stellata\u2026" },
-    { id: 't22', cd: 2, track: 1, title: "Tambours Et Trompettes Sonnant La Retraite" },
-    { id: 't23', cd: 2, track: 2, title: "Merci, Doux Cr\u00e9puscule!" },
-    { id: 't24', cd: 2, track: 3, title: "Je L'entends!" },
-    { id: 't25', cd: 2, track: 4, title: "Que L'air Est \u00c9touffant!" },
-    { id: 't26', cd: 2, track: 5, title: "Autrefois Un Roi De Thul\u00e9" },
-    { id: 't27', cd: 2, track: 6, title: "Esprits Des Flammes Inconstantes" },
-    { id: 't28', cd: 2, track: 7, title: "Menuet Des Follets" },
-    { id: 't29', cd: 2, track: 8, title: "Mainteant, Chantons \u00c0 Cette Bell" },
-    { id: 't30', cd: 2, track: 9, title: "Devant La Maison" },
-    { id: 't31', cd: 2, track: 10, title: "Grand Dieu!" },
-    { id: 't32', cd: 2, track: 11, title: "Ange Ador\u00e9" },
-    { id: 't33', cd: 2, track: 12, title: "Allons, Il Est Trop Tard!" },
-    { id: 't34', cd: 2, track: 13, title: "Je Connais Donc Enfin" },
-    { id: 't35', cd: 2, track: 14, title: "D'amour L'ardente Flamme" },
-    { id: 't36', cd: 2, track: 15, title: "Au Son Des Trompettes" },
-    { id: 't37', cd: 2, track: 16, title: "Nature Immense" },
-    { id: 't38', cd: 2, track: 17, title: "\u00c0 La Vo\u00fbte Azur\u00e9e" },
-    { id: 't39', cd: 2, track: 18, title: "Dans Mon C\u0153ur Retentit Sa Voix D\u00e9sesp\u00e9r\u00e9e" },
-    { id: 't40', cd: 2, track: 19, title: "Ha! Irimirukarabrao!" },
-    { id: 't41', cd: 2, track: 20, title: "Tradioun Marexil Fir Trudinx\u00e9 Burrudix\u00e9!" },
-    { id: 't42', cd: 2, track: 21, title: "Alors L'enfer Se Tut" },
-    { id: 't43', cd: 2, track: 22, title: "Laus! Laus! Hosanna! Hosanna!" },
-    { id: 't44', cd: 2, track: 23, title: "Remonte Au Ciel, \u00c2me Na\u00efve" },
-    { id: 't45', cd: 2, track: 24, title: "Viens, Les Vierges Divines" },
-  ];
+  function toggleSwitcher(event) {
+    event.stopPropagation();
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    if (dd.classList.contains('open')) {
+      dd.classList.remove('open');
+    } else {
+      dd.classList.add('open');
+      setTimeout(() => document.addEventListener('click', closeSwitcherOnOutside, { once: true }), 0);
+    }
+  }
+  function closeSwitcherOnOutside() {
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function buildSwitcherDropdown() {
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    dd.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<div class="recording-option${key === activeRecording ? ' active' : ''}" onclick="switchRecording('${key}')">${rec.label}</div>`
+    ).join('');
+  }
+
+  function buildDrawer() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('drawerBody');
+    let html = '';
+    let lastGroup = null;
+
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+
+    body.innerHTML = html;
+    const lbl = document.getElementById('drawerRecordingLabel');
+    if (lbl) lbl.textContent = rec.short;
+  }
+
+  function updateTrackTags() {
+    document.querySelectorAll('.track-tag').forEach(tag => { tag.style.visibility = 'hidden'; });
+    const rec = RECORDINGS[activeRecording];
+    const seen = new Set();
+    for (const t of rec.tracks) {
+      if (!t.has_block) continue;
+      const suffix = t.id.slice(1);
+      if (seen.has(suffix)) continue;
+      seen.add(suffix);
+      const tc = document.getElementById('tc' + suffix);
+      if (!tc) continue;
+      const tag = tc.querySelector('.track-tag');
+      if (!tag) continue;
+      tag.style.visibility = 'visible';
+      tag.innerHTML = `<span class="track-tag-cd">CD${t.cd}</span><span class="track-tag-num">${t.track}</span>`;
+    }
+  }
+
+  function scrollToCurrentAct() {
+    const rec = RECORDINGS[activeRecording];
+    const track = rec.tracks.find(t => t.id === currentActiveId);
+    if (!track) return;
+    const startId = ACT_STARTS[track.act];
+    if (!startId) return;
+    const el = document.getElementById(startId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function switchRecording(key) {
+    activeRecording = key;
+    const lbl = document.getElementById('recordingLabel');
+    if (lbl) lbl.textContent = RECORDINGS[key].label;
+    updateTrackTags();
+    buildDrawer();
+    buildSwitcherDropdown();
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+    scrollToCurrentAct();
+    updateActive(currentActiveId);
+  }
 
   function updateActive(activeId) {
-    const t = trackMap.find(t => t.id === activeId) || trackMap[1];
-    document.getElementById('trackLabel').textContent = 'CD ' + t.cd + ' · T' + t.track;
-    document.getElementById('trackTitle').textContent = t.title;
+    currentActiveId = activeId;
+    const rec = RECORDINGS[activeRecording];
+    const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
+    if (!t) return;
+    const trackLabel = document.getElementById('trackLabel');
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    const trackTitle = document.getElementById('trackTitle');
+    if (trackTitle) trackTitle.textContent = t.title;
+    const actLabel = document.getElementById('actLabel');
+    if (actLabel) actLabel.textContent = ACT_DISPLAY[t.act] || t.act;
     document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
     const idx = document.getElementById('idx-' + activeId);
     if (idx) idx.classList.add('active');
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
-  }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+  function rewireObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+    }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
 
-  trackMap.forEach(t => {
-    const el = document.getElementById(t.id);
-    if (el) observer.observe(el);
-  });
+    const rec = RECORDINGS[activeRecording];
+    rec.tracks.forEach(t => {
+      const el = document.getElementById(t.id);
+      if (el) observer.observe(el);
+    });
+  }
 
-  updateActive('t1');
+  buildSwitcherDropdown();
+  buildDrawer();
+  rewireObserver();
+  updateActive("t1");
 </script>
