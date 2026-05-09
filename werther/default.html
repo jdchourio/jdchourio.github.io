@@ -38,24 +38,22 @@
   @media (max-width: 580px) {
     .context-bar {
       height: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: start;
-      padding: 0.5rem 1rem 0.5rem calc(var(--col-left) + 1rem);
-      gap: 0.35rem;
+      min-height: var(--bar-h);
+      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
-    .context-left,
-    .context-right {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 0;
-      margin: 0;
-      gap: 0.75rem;
+    .context-left {
+      flex: 1 1 100%;
+      gap: 0.5rem;
     }
 
-    #actLabel { font-size: 11px !important; line-height: 1.2; }
+    .context-track-title {
+      width: auto !important;
+      flex: 1;
+      min-width: 0;
+    }
 
     .recording-switcher {
       font-size: 11px !important;
@@ -63,19 +61,29 @@
       padding: 0;
       background: none;
     }
+
+    #actLabel { font-size: 11px !important; }
   }
 
   .context-left {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     font-family: var(--sans);
     font-size: 12px;
     color: var(--text-dim);
     letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 4px 6px;
+    margin: -4px -6px;
+    transition: background 0.15s;
   }
+  .context-left:hover { background: var(--bg2); }
+  .context-left:active { background: var(--gold-light); }
 
   .context-sep { opacity: 0.3; }
+  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
 
   .context-track {
     font-family: var(--sans);
@@ -87,14 +95,14 @@
     border: 1px solid var(--gold-border);
     border-radius: 3px;
     padding: 2px 8px;
-    min-width: 76px;
-    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .context-track-title {
     font-size: 11px;
     color: var(--text-dim);
-    width: 200px;
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -102,8 +110,6 @@
   }
 
   .context-right { display: flex; align-items: center; gap: 10px; }
-
-  /* Recording switcher */
   .recording-switcher-wrap { position: relative; }
 
   .recording-switcher {
@@ -154,28 +160,6 @@
     font-weight: 500;
   }
 
-  .index-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .index-btn:hover { background: var(--bg2); }
-
-  .index-icon { width: 13px; height: 10px; display: flex; flex-direction: column; justify-content: space-between; }
-  .index-icon span { display: block; height: 1.5px; background: currentColor; border-radius: 1px; }
-  .index-icon span:nth-child(2) { width: 65%; }
 
   .libretto-body {
     display: grid;
@@ -336,10 +320,10 @@
 
   .drawer {
     position: absolute;
-    top: 0; right: 0; bottom: 0;
+    top: 0; left: 0; bottom: 0;
     width: 340px;
     background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
+    border-right: 1.5px solid var(--color-border-primary);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -356,9 +340,7 @@
     background: var(--color-background-secondary, #f5ede0);
   }
 
-  .drawer-header-left { display: flex; flex-direction: column; gap: 1px; }
-
-  .drawer-header-opera {
+  .drawer-header-title {
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 500;
@@ -366,27 +348,22 @@
     letter-spacing: 0.04em;
   }
 
-  .drawer-header-sub {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
+  /* ── Shared close button (used in both drawers) ── */
   .drawer-close {
     background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 300;
     color: var(--text-dim);
     line-height: 1;
-    padding: 4px 8px;
-    font-family: var(--sans);
+    padding: 4px 6px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    transition: color 0.15s;
   }
-
-  .drawer-close:hover { background: var(--bg2); color: var(--text-main); }
+  .drawer-close:hover { color: #c0392b; background: none; }
 
   .drawer-body { overflow-y: auto; flex: 1; }
 
@@ -444,16 +421,166 @@
     color: var(--text-dim);
     letter-spacing: 0.04em;
   }
+
+  /* ── Cast button ── */
+  .cast-btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+  .cast-btn:hover { background: var(--bg2); }
+
+  /* ── Cast drawer (mirrors index drawer) ── */
+  .cast-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 250;
+  }
+  .cast-overlay.open { display: block; }
+
+  .cast-drawer {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-left: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .cast-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .cast-drawer-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  .cast-drawer-body { overflow-y: auto; flex: 1; }
+
+  .cast-table { width: 100%; border-collapse: collapse; }
+
+  .cast-table thead tr {
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-secondary);
+  }
+
+  .cast-table th {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 8px 1.25rem;
+    text-align: left;
+  }
+
+  .cast-table td {
+    padding: 9px 1.25rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    vertical-align: middle;
+  }
+
+  .cast-table tr:last-child td { border-bottom: none; }
+
+  .cast-char-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+  }
+
+  .cast-voice {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+  }
+
+  .cast-description {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 1px;
+    letter-spacing: 0.02em;
+  }
+
+  .cast-singer {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--text-main);
+    font-style: italic;
+  }
+
+  .cast-singer.empty {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
+  @media (hover: hover) {
+    .character-name[data-tooltip] {
+      position: relative;
+      cursor: default;
+    }
+    .character-name[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: var(--color-background-primary, #fdfaf6);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 3px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      font-family: var(--sans);
+      font-size: 10.5px;
+      color: var(--text-main);
+      white-space: nowrap;
+      padding: 5px 9px;
+      pointer-events: none;
+      z-index: 150;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+  }
 </style>
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left">
+    <div class="context-left" onclick="openDrawer()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
       <span class="context-sep">&middot;</span>
-      <span class="context-track" id="trackLabel">CD 1 · T1</span>
       <span class="context-track-title" id="trackTitle">Prélude... Assez! Assez!</span>
+      <span class="context-chevron">&#9662;</span>
     </div>
     <div class="context-right">
       <div class="recording-switcher-wrap" id="recSwitcher">
@@ -463,10 +590,7 @@
         </button>
         <div class="recording-dropdown" id="recDropdown"></div>
       </div>
-      <button class="index-btn" onclick="openDrawer()">
-        <span class="index-icon"><span></span><span></span><span></span></span>
-        Index
-      </button>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
   </div>
 
@@ -581,12 +705,12 @@
     </div>
     <div class="text-col" id="t3">
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Bravo pour les enfants!</span><span class="es">¡Bravo por los niños!</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Bravo pour le couplet!</span><span class="es">¡Bravo por la canción!</span></div>
@@ -609,7 +733,7 @@
         <span class="es">(al magistrado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Eh! mais, j'y pense</span><span class="es">¡Bueno! Ahora que lo pienso....</span></div>
@@ -638,7 +762,7 @@
         <span class="es">(a Sofía que acaba de entrar)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Bonjour, Sophie! Eh! Eh! Charlotte</span><span class="es">¡Buenos días, Sofía! ¡Eh! ¡Eh!</span></div>
@@ -659,7 +783,7 @@
         <span class="es">(al magistrado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Hein, le superbe temps!</span><span class="es">¡Ah! ¡Qué tiempo tan bueno!</span></div>
@@ -695,7 +819,7 @@
       <div class="line-row"><span class="fr">Que l'on donne à Wetzlar.</span><span class="es">que se celebra en Wetzlar.</span></div>
       <div class="line-row"><span class="fr">On vient prendre Charlotte.</span><span class="es">Vienen a buscar a Charlotte.</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">C'est donc cela!</span><span class="es">¡Así que era eso!</span></div>
@@ -716,7 +840,7 @@
       </div>
       <div class="line-row"><span class="fr">Fort bien, ce jeune homme.</span><span class="es">¡Bien preparado es ese joven!</span></div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Oui; mais pas fort en cuisine...</span><span class="es">Sí, pero nada fuerte en cocina...</span></div>
@@ -734,12 +858,12 @@
         <span class="es">(Vivamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Un peu mélancolique...</span><span class="es">Un poco melancólico...</span></div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Ah! certes! jamais gai!</span><span class="es">Sí; es cierto, nunca esta contento.</span></div>
@@ -759,7 +883,7 @@
         <span class="es">(Con menosprecio)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Un diplomate!</span><span class="es">¡Un diplomático! ¡Bah!</span></div>
@@ -769,7 +893,7 @@
         <span class="es">(Igualmente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Ça ne sait pas boire une rasade!</span><span class="es">¡No bebe ni una sola copa de vino!</span></div>
@@ -778,7 +902,7 @@
         <span class="es">(al magistrado, tendiéndole la mano)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">A Tout à l'heure au Raisin d'or.</span><span class="es">Hasta pronto... en la Uva de Oro</span></div>
@@ -787,7 +911,7 @@
         <span class="es">(Igualmente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Oui, tu nous dois une revanche.</span><span class="es">Sí; nos debes la revancha.</span></div>
@@ -805,7 +929,7 @@
         <span class="es">(Volviendo sobre sus pasos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Dame! Et puis,</span><span class="es">Además es el día</span></div>
@@ -828,7 +952,7 @@
         <span class="es">(A Johann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Nous la verrons ce soir. Nous voulons faire</span><span class="es">La veremos esta noche.</span></div>
@@ -847,7 +971,7 @@
         <span class="es">(Un poco gruñón, a Schmidt)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Toujours il exagère...</span><span class="es">Siempre exagera...</span></div>
@@ -857,7 +981,7 @@
         <span class="es">(Volviéndose al magistrado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">A propos! Quand Albert revient-il?</span><span class="es">A propósito, ¿cuándo regresa Alberto?</span></div>
@@ -870,7 +994,7 @@
       <div class="line-row"><span class="fr">mais il m'écrit que ses affaires</span><span class="es">me ha escrito que sus negocios</span></div>
       <div class="line-row"><span class="fr">vont au mieux.</span><span class="es">van mejorando.</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Parfait!</span><span class="es">¡Perfecto!</span></div>
@@ -886,7 +1010,7 @@
         <span class="es">(Alegremente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Bonsoir, les enfants!</span><span class="es">¡Buenas tardes, niños!</span></div>
@@ -895,7 +1019,7 @@
         <span class="es">(Al magistrado, mas bajo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">A tantôt!</span><span class="es">¡Hasta luego!</span></div>
@@ -904,7 +1028,7 @@
         <span class="es">(Igualmente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">A tantôt!</span><span class="es">¡Hasta más tarde!</span></div>
@@ -966,7 +1090,7 @@
     </div>
     <div class="text-col" id="t4">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Alors, c'est bien ici</span><span class="es">Entonces, ¿es ésa de ahí,</span></div>
@@ -990,7 +1114,7 @@
     </div>
     <div class="text-col" id="t5">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Je ne sais si je veille ou si je rêve encore!</span><span class="es">Ya no sé si estoy</span></div>
@@ -1040,7 +1164,7 @@
         <span class="es">(escuchando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Chers enfants!</span><span class="es">¡Dulces niños...!</span></div>
@@ -1058,7 +1182,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ici-bas rien ne vaut les enfants!</span><span class="es">¡Nada hay mejor que los niños!</span></div>
@@ -1081,7 +1205,7 @@
         <span class="es">(Al Magistrado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Eh! bien père,</span><span class="es">Y bien, padre,</span></div>
@@ -1132,7 +1256,7 @@
         <span class="es">(Sonriente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Nos amis ne sont pas exacts</span><span class="es">Nuestros amigos</span></div>
@@ -1183,7 +1307,7 @@
         <span class="es">(con sencillez)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pardonnez-moi, monsieur,</span><span class="es">Perdóneme, señor,</span></div>
@@ -1212,7 +1336,7 @@
         <span class="es">(Con un suspiro de éxtasis)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Brühlmann</span>
+        <span class="character-name has-tooltip" data-character-id="bruhlmann">Brühlmann</span>
         <span class="character-name">Brühlmann</span>
       </div>
       <div class="line-row"><span class="fr">Klopstock!</span><span class="es">¡Klopstock!</span></div>
@@ -1246,7 +1370,7 @@
         <span class="es">(Al niño que Werther a abrazado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Embrasse ton cousin!</span><span class="es">¡Abraza a tu primo!</span></div>
@@ -1255,7 +1379,7 @@
         <span class="es">(Se inclina hacia atrás, sorprendido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Cousin? Suis-je bien digne</span><span class="es">¿Primo?</span></div>
@@ -1265,7 +1389,7 @@
         <span class="es">(Bromeando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">En effet, cousin!</span><span class="es">En efecto, primo:</span></div>
@@ -1304,7 +1428,7 @@
     </div>
     <div class="text-col" id="t7">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">O spectacle idéal d'amour et d'innocence.</span><span class="es">¡Oh espectáculo de amor e inocencia,</span></div>
@@ -1327,7 +1451,7 @@
       </div>
       <div class="line-row"><span class="fr">Monsieur Werther!</span><span class="es">¡Señor Werther!...</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Adieu... père!</span><span class="es">¡Adiós, padre!</span></div>
@@ -1610,7 +1734,7 @@
     </div>
     <div class="text-col" id="t11">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Il faut nous séparer.</span><span class="es">Debemos separarnos.</span></div>
@@ -1621,7 +1745,7 @@
         <span class="es">(Con énfasis)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ah! pourvu que je voie ces</span><span class="es">¡Ah! Siempre que vea</span></div>
@@ -1649,7 +1773,7 @@
     </div>
     <div class="text-col" id="t12">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Mais, vous ne savez rien de moi.</span><span class="es">Pero, vos nada sabéis de mí.</span></div>
@@ -1667,7 +1791,7 @@
     </div>
     <div class="text-col" id="t13">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Mon âme a reconnu votre âme, Charlotte,</span><span class="es">Mi alma ha reconocido a vuestra alma,</span></div>
@@ -1678,7 +1802,7 @@
         <span class="es">(Sonriendo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Vous me connaissez?</span><span class="es">¿Me conocéis?</span></div>
@@ -1687,7 +1811,7 @@
         <span class="es">(grave y tierno)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Vous êtes la meilleure ainsi que la plus</span><span class="es">¡Sois la mejor y la más</span></div>
@@ -1697,12 +1821,12 @@
         <span class="es">(confusa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Faut-il que j'en appelle</span><span class="es">¿Es necesario que pregunte a aquellos</span></div>
@@ -1712,7 +1836,7 @@
         <span class="es">(pensativa y acercándose a Werther)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Hélas! oui,</span><span class="es">¡Eso es!</span></div>
@@ -1726,7 +1850,7 @@
     </div>
     <div class="text-col" id="t14">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">mes enfants... Vous avez dit vrai!</span><span class="es">¡Sí, mis niños! ¡Decís bien!</span></div>
@@ -1747,13 +1871,13 @@
       <div class="line-row"><span class="fr">Chère, chère maman,</span><span class="es">Querida, querida mamá,</span></div>
       <div class="line-row"><span class="fr">que ne peux-tu nous voir?</span><span class="es">¿es que no puedes vernos?</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">O Charlotte! ange du devoir,</span><span class="es">¡Oh, Charlotte! ¡Ángel Guardián!</span></div>
       <div class="line-row"><span class="fr">La bénédiction du ciel sur toi repose!</span><span class="es">¡La bendición del cielo sea contigo!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Si vous l'aviez connue!</span><span class="es">¡Si la hubierais conocido!</span></div>
@@ -1777,7 +1901,7 @@
     </div>
     <div class="text-col" id="t15">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Rêve! Extase! Bonheur! Je donnerais ma vie</span><span class="es">¡Sueño! ¡Éxtasis! ¡Felicidad!</span></div>
@@ -1793,7 +1917,7 @@
         <span class="es">(Volviendo en sí; sube rápidamente la escalinata)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Nous somme fous! rentrons...</span><span class="es">¡Estamos locos! ¡Entremos en casa!</span></div>
@@ -1802,7 +1926,7 @@
         <span class="es">(con voz alterada y reteniéndola)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Mais... nous nous reverrons?</span><span class="es">Pero, ¿volveremos a vernos...?</span></div>
@@ -1825,7 +1949,7 @@
         <span class="es">(débilmente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Albert!</span><span class="es">¡Alberto!</span></div>
@@ -1834,7 +1958,7 @@
         <span class="es">(Preguntando a Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Albert?</span><span class="es">¿Alberto?</span></div>
@@ -1843,7 +1967,7 @@
         <span class="es">(a media voz y con tristeza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Oui, celui que ma mère</span><span class="es">Sí; él es a quien mi madre me hizo</span></div>
@@ -1860,7 +1984,7 @@
         <span class="es">(Werther se cubre la cara con las manos como si sollozase)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">A ce serment... restez fidèle!</span><span class="es">¡A ese juramento, permaneced fiel!</span></div>
@@ -1911,26 +2035,26 @@
         <span class="es">(Un camarero sale de la taberna y sirve de nuevo bebida a los amigos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Ah! l'admirable journée!</span><span class="es">¡Ah! ¡Qué precioso día!</span></div>
       <div class="line-row"><span class="fr">De ce joyeux soleil</span><span class="es">¡Este maravilloso sol</span></div>
       <div class="line-row"><span class="fr">j'ai l'âme illuminée!</span><span class="es">que al alma ilumina!</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Qu'il est doux vivre quand l'air</span><span class="es">¡Qué bien se vive...</span></div>
       <div class="line-row"><span class="fr">est si léger, le ciel si bleu...</span><span class="es">cuando el aire es tan ligero,</span></div>
       <div class="line-row"><span class="fr">le vin si clair!</span><span class="es">el cielo tan azul y el vino tan claro!</span></div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">C'est dimanche!</span><span class="es">¡Es domingo!</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">C'est dimanche!</span><span class="es">¡Es domingo!</span></div>
@@ -1948,14 +2072,14 @@
         <span class="es">(Igual)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">De bénir le Seigneur</span><span class="es">Hay muchos modos</span></div>
       <div class="line-row"><span class="fr">il est bien des façons,</span><span class="es">de bendecir al Señor;</span></div>
       <div class="line-row"><span class="fr">moi, je le glorifie en exaltant ses dons!</span><span class="es">yo lo glorifico exaltando sus dones.</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Gloire à celui qui nous donne</span><span class="es">¡Gloria a aquél que nos da</span></div>
@@ -1971,7 +2095,7 @@
         <span class="es">(mirando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Du monde! encor du monde!</span><span class="es">¡Gente! ¡Cuánta gente!</span></div>
@@ -1979,7 +2103,7 @@
       <div class="line-row"><span class="fr">Le Pasteur verra bien fêtés</span><span class="es">¡El pastor va a ver bien celebrados</span></div>
       <div class="line-row"><span class="fr">ses cinquante ans de mariage!</span><span class="es">sus cincuenta años de matrimonio!</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">C'est bon pour un Pasteur</span><span class="es">Es bueno para un pastor</span></div>
@@ -1992,7 +2116,7 @@
         <span class="es">(Aparecen Charlotte y Alberto. Johann se levanta cuando les ve y se inclina hacia Schmidt)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Et cependant, j'en sais</span><span class="es">Sin embargo, yo sé</span></div>
@@ -2008,7 +2132,7 @@
         <span class="es">(Se levanta)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Et bien! à leur santé</span><span class="es">¡Bien! ¡A su salud</span></div>
@@ -2044,7 +2168,7 @@
         <span class="es">(dulcemente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Albert!</span><span class="es">¡Alberto!</span></div>
@@ -2065,7 +2189,7 @@
         <span class="es">(se levanta y con simpleza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Quand une femme</span><span class="es">Cuando una mujer</span></div>
@@ -2100,7 +2224,7 @@
     </div>
     <div class="text-col" id="t19">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Un autre est son époux!</span><span class="es">¡Otro es su esposo!</span></div>
@@ -2145,7 +2269,7 @@
         <span class="es">(Entrando, a Brülhmann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Si! Käthchen reviendra, je vous dis!</span><span class="es">¡Sí! Käthchen volverá, te lo digo yo.</span></div>
@@ -2154,7 +2278,7 @@
         <span class="es">(Llevándose a Brühlmann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">A quelle heure</span><span class="es">A qué hora,</span></div>
@@ -2163,12 +2287,12 @@
       <div class="line-row"><span class="fr">qu'importe!</span><span class="es">¡qué importa</span></div>
       <div class="line-row"><span class="fr">puis qu'elle reviendra!</span><span class="es">si ella va a volver!</span></div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Puisqu'elle reviendra!</span><span class="es">¡Ella volverá!...</span></div>
       <div class="character-row">
-        <span class="character-name">Johann</span>
+        <span class="character-name has-tooltip" data-character-id="johann">Johann</span>
         <span class="character-name">Johann</span>
       </div>
       <div class="line-row"><span class="fr">Sept ans de fiançailles, ça</span><span class="es">¡Siete años de noviazgo,</span></div>
@@ -2178,7 +2302,7 @@
         <span class="es">(llevándose a Brülhmann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Schmidt</span>
+        <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span>
         <span class="character-name">Schmidt</span>
       </div>
       <div class="line-row"><span class="fr">Dépêchons-nous! car j'entends le signal,</span><span class="es">Apresurémonos, que ya oigo la señal...</span></div>
@@ -2203,7 +2327,7 @@
         <span class="es">(sorprendido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Un remords?</span><span class="es">¿Un remordimiento?</span></div>
@@ -2247,7 +2371,7 @@
       <div class="line-row"><span class="fr">Comprendre ce tourment,</span><span class="es">Comprender ese tormento,</span></div>
       <div class="line-row"><span class="fr">c'est l'avoir pardonné.</span><span class="es">significa haber perdonado...</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Vous l'avez dit:</span><span class="es">Vos lo habéis dicho:</span></div>
@@ -2339,7 +2463,7 @@
     </div>
     <div class="text-col" id="t22">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Heureux! pourrai-je l'être encore?</span><span class="es">¡Dichoso! ¿podré serlo yo alguna vez?</span></div>
@@ -2404,7 +2528,7 @@
         <span class="es">(Solo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ai-je dit vrai?</span><span class="es">¿He sido sincero?</span></div>
@@ -2436,7 +2560,7 @@
         <span class="es">(que no ha visto a Werther)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Comme on trouve en priant</span><span class="es">¡Qué nueva energía</span></div>
@@ -2446,7 +2570,7 @@
         <span class="es">(desde lejos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Charlotte</span><span class="es">¡Charlotte!</span></div>
@@ -2455,7 +2579,7 @@
         <span class="es">(se vuelve)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Vous venez aussi chez le Pasteur?</span><span class="es">¿Venís también vos a casa del Pastor?</span></div>
@@ -2464,7 +2588,7 @@
         <span class="es">(se acerca, tristemente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">A quoi bon? pour vous voir toujours</span><span class="es">¿Para qué?</span></div>
@@ -2483,7 +2607,7 @@
     </div>
     <div class="text-col" id="t23">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ah! qu'il est loin ce jour plein</span><span class="es">¡Ah! ¡Qué lejos ha quedado ese día,</span></div>
@@ -2501,7 +2625,7 @@
         <span class="es">(con frialdad)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Albert m'aime, et je suis sa femme!</span><span class="es">¡Alberto me ama y yo soy su esposa!...</span></div>
@@ -2510,7 +2634,7 @@
         <span class="es">(apasionado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Albert vous aime!</span><span class="es">¡Alberto os ama!</span></div>
@@ -2520,7 +2644,7 @@
         <span class="es">(con mas dulzura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Werther! N'est il donc pas</span><span class="es">¡Werther...!</span></div>
@@ -2530,7 +2654,7 @@
       <div class="line-row"><span class="fr">Je ne m'appartiens plus...</span><span class="es">Yo ya no me pertenezco,</span></div>
       <div class="line-row"><span class="fr">pourquoi donc m'aimez-vous?</span><span class="es">¿por qué me amáis, pues?</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Eh! demandez aux fous</span><span class="es">¡Eh! ¡Preguntad a un loco</span></div>
@@ -2540,14 +2664,14 @@
         <span class="es">(resuelta)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Eh bien! puisqu'à jamais</span><span class="es">¡Bien! Puesto que el destino,</span></div>
       <div class="line-row"><span class="fr">le destin nous sépare...</span><span class="es">para siempre, nos ha separado...</span></div>
       <div class="line-row"><span class="fr">éloignez-vous! partez! partez!</span><span class="es">¡Iros! ¡Partid! ¡Partid!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ah! quel mot ai-je entendu?</span><span class="es">¡Ah! ¿Qué es lo que estoy oyendo?</span></div>
@@ -2556,7 +2680,7 @@
         <span class="es">(muy seria)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Celui qu'il faut de moi que l'on entende!</span><span class="es">¡Lo que debéis oír de mí!</span></div>
@@ -2565,12 +2689,12 @@
         <span class="es">(violentamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Et qui donc le commande?</span><span class="es">Y, ¿quién lo manda, pues?</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Le devoir!</span><span class="es">¡El deber!</span></div>
@@ -2585,7 +2709,7 @@
         <span class="es">(Dolorosamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ah! me donner l'oubli</span><span class="es">¡Ah! Pero...</span></div>
@@ -2595,7 +2719,7 @@
         <span class="es">(con mayor dulzura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pourquoi l'oubli? Pensez à Charlotte</span><span class="es">¿Por qué el olvido? Al contrario,</span></div>
@@ -2607,7 +2731,7 @@
         <span class="es">(calmándose, poco a poco)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Oui! j'ai pour seul désir que vous</span><span class="es">¡Sí...! ¡Mi único deseo</span></div>
@@ -2623,7 +2747,7 @@
         <span class="es">(Con una gran dulzura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ami, je ne suis pas à ce point rigoureuse...</span><span class="es">Amigo, yo no soy tan rigurosa...</span></div>
@@ -2639,7 +2763,7 @@
         <span class="es">(Suplicante)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Charlotte!</span><span class="es">¡Charlotte!</span></div>
@@ -2648,7 +2772,7 @@
         <span class="es">(Se va)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">A la Noël!</span><span class="es">¡Hasta la Navidad!</span></div>
@@ -2661,7 +2785,7 @@
         <span class="es">(Resuelto, después de un momento de profunda desesperación)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Oui! ce qu'elle m'ordonne...</span><span class="es">Sí; esto que me ordena...</span></div>
@@ -2698,7 +2822,7 @@
     </div>
     <div class="text-col" id="t24">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Lorsque l'enfant revient d'un voyage,</span><span class="es">Cuando el niño</span></div>
@@ -2744,7 +2868,7 @@
         <span class="es">(Bruscamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Pardonnez-moi, je pars!</span><span class="es">¡Perdonadme! ¡Me voy!</span></div>
@@ -2762,7 +2886,7 @@
         <span class="es">(Molesto)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">A l'instant...</span><span class="es">¡En este mismo momento!...</span></div>
@@ -2782,7 +2906,7 @@
         <span class="es">(Violentamente y con gran emoción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Non! jamais! adieu!</span><span class="es">¡Nunca! ¡Adiós!</span></div>
@@ -2816,7 +2940,7 @@
         <span class="es">(Viendo a Sofía, se aproxima corriendo a ella)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! qu'est-ce donc? Elle pleure!</span><span class="es">¡Ah! ¡Qué te sucde! ¡Estás llorando!</span></div>
@@ -2852,7 +2976,7 @@
         <span class="es">(Aparte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pour toujours!</span><span class="es">¡Para siempre!</span></div>
@@ -2898,7 +3022,7 @@
     </div>
     <div class="text-col" id="t26">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Werther... Werther...</span><span class="es">¡Werther! ¡Werther...!</span></div>
@@ -2924,7 +3048,7 @@
     </div>
     <div class="text-col" id="t27">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ces lettres!</span><span class="es">¡Esas cartas!</span></div>
@@ -3038,7 +3162,7 @@
         <span class="es">(Aún preocupada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Enfant!</span><span class="es">¡Niña...!</span></div>
@@ -3056,7 +3180,7 @@
         <span class="es">(Soltándose de los brazos de Sofía)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pourquoi cette pensée?</span><span class="es">¿Por qué ese pensamiento?</span></div>
@@ -3079,7 +3203,7 @@
         <span class="es">(Apartándose, sonrojada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Non, ce n'est rien...</span><span class="es">¡No! ¡No es nada!</span></div>
@@ -3109,7 +3233,7 @@
         <span class="es">(Para sí, con intención)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Autrefois!</span><span class="es">¡En otro tiempo!</span></div>
@@ -3165,7 +3289,7 @@
         <span class="es">(Se libera de los brazos de Sofía, se levanta. Para sí</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Tout... jusqu'à cette enfant,</span><span class="es">Todo... hasta esta niña,</span></div>
@@ -3194,7 +3318,7 @@
     </div>
     <div class="text-col" id="t30">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Va! laisse couler mes larmes</span><span class="es">¡Vete! ¡Deja correr mis lágrimas!</span></div>
@@ -3213,7 +3337,7 @@
     </div>
     <div class="text-col" id="t31">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Les larmes qu'on ne pleure pas,</span><span class="es">Las lágrimas que no desahogamos</span></div>
@@ -3255,7 +3379,7 @@
         <span class="es">(Aparte, consternada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Noël! Ah! cette lettre!</span><span class="es">¡Navidad! ¡Ah! ¡Esa carta!</span></div>
@@ -3281,7 +3405,7 @@
         <span class="es">(Sin convicción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Oui, peut-être...</span><span class="es">Sí; quizá...</span></div>
@@ -3299,7 +3423,7 @@
         <span class="es">(Ensayando una sonrisa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Certainement!</span><span class="es">De verdad...</span></div>
@@ -3317,7 +3441,7 @@
         <span class="es">(Tranquilizándola)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Oui, j'irai! je te le promets, Mignonne!</span><span class="es">Sí, ¡iré! Te lo prometo, pequeña...</span></div>
@@ -3331,7 +3455,7 @@
       </div>
       <div class="line-row"><span class="fr">Tu viendras?</span><span class="es">¿Vendrás?</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Oui, j'irai...</span><span class="es">Sí, iré...</span></div>
@@ -3349,7 +3473,7 @@
         <span class="es">(impulsivamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! reviens!</span><span class="es">¡Ah! ¡Ven!</span></div>
@@ -3368,7 +3492,7 @@
     </div>
     <div class="text-col" id="t32">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! mon courage m'abandonne!</span><span class="es">¡Ah! ¡Mi valor me abandona!</span></div>
@@ -3415,7 +3539,7 @@
     </div>
     <div class="text-col" id="t33">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Oui! c'est moi! je reviens! et pourtant...</span><span class="es">Sí; soy yo ¡he vuelto!</span></div>
@@ -3433,7 +3557,7 @@
         <span class="es">(Conmovida, intentando contenerse y parecer indiferente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pourquoi cette parole amère?</span><span class="es">¿Por qué esas amargar palabras?</span></div>
@@ -3445,7 +3569,7 @@
         <span class="es">(Acercándose, con curiosidad)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Et vous? Vous aussi?</span><span class="es">¿Y vos? ¿También vos?</span></div>
@@ -3454,7 +3578,7 @@
         <span class="es">(Evitando las palabras que siente venir a los labios de Werther)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Voyez! la maison est</span><span class="es">¡Ved! ¡La casa está</span></div>
@@ -3471,7 +3595,7 @@
         <span class="es">(Echando una mirada a su alrededor)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Oui, je vois... ici rien n'a changé...</span><span class="es">¡Sí! Aquí, nada ha cambiado...</span></div>
@@ -3486,7 +3610,7 @@
         <span class="es">(Tierna y simplemente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Toute chose est encore à la place connue!</span><span class="es">Todo está todavía en su sitio</span></div>
@@ -3495,7 +3619,7 @@
         <span class="es">(caminando por la habitación)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Voici le clavecin</span><span class="es">Ahí está el clavecín</span></div>
@@ -3508,7 +3632,7 @@
         <span class="es">(Acercándose a la mesa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Alors que votre voix accompagnait la mienne...</span><span class="es">Mientras vuestra voz acompañaba a la mía...</span></div>
@@ -3517,7 +3641,7 @@
         <span class="es">(yendo hacia la mesa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ces livres! sur qui tant de fois</span><span class="es">Esos libros sobre los que, a menudo,</span></div>
@@ -3539,7 +3663,7 @@
         <span class="es">(sin haber visto ese último movimiento, ha vuelto hacia el clavicordio sobre el que ha cogido un manuscrito. Volviendo a Werther)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Et voici ces vers d'Ossian</span><span class="es">Y aquí los versos de Ossian</span></div>
@@ -3549,7 +3673,7 @@
         <span class="es">(coge el manuscrito)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Traduire! Ah!</span><span class="es">¡Traducir! ¡Ah!</span></div>
@@ -3571,7 +3695,7 @@
     </div>
     <div class="text-col" id="t34">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Toute mon âme est là!</span><span class="es">¡Toda mi alma está ahí!</span></div>
@@ -3589,7 +3713,7 @@
     </div>
     <div class="text-col" id="t35">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">"Pourquoi me réveiller,</span><span class="es">"¿Por qué me despiertas,</span></div>
@@ -3626,7 +3750,7 @@
     </div>
     <div class="text-col" id="t36">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">N'achevez pas!</span><span class="es">¡No sigáis!</span></div>
@@ -3642,7 +3766,7 @@
     </div>
     <div class="text-col" id="t37">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ciel! Ai-je compris? Ai-je compris?</span><span class="es">¡Cielos! ¿Lo he entendido?</span></div>
@@ -3654,7 +3778,7 @@
         <span class="es">(Estremecida)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! taisez-vous!</span><span class="es">¡Ah! ¡Callad!</span></div>
@@ -3663,7 +3787,7 @@
         <span class="es">(Acercándose a Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">A quoi bon essayer de nous tromper encore...</span><span class="es">De qué sirve seguir engañándonos...</span></div>
@@ -3672,7 +3796,7 @@
         <span class="es">(Suplicante)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Je vous implore!</span><span class="es">¡Os lo imploro!</span></div>
@@ -3681,7 +3805,7 @@
         <span class="es">(Ardientemente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Va! nous mentions tous deux</span><span class="es">¡Ambos mentimos</span></div>
@@ -3689,7 +3813,7 @@
       <div class="line-row"><span class="fr">de l'immortel amour qui tressaille</span><span class="es">al inmortal amor que palpita</span></div>
       <div class="line-row"><span class="fr">en nos coeurs!</span><span class="es">en nuestros corazones!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Werther!</span><span class="es">¡Werther!</span></div>
@@ -3698,7 +3822,7 @@
         <span class="es">(Exaltado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ah! ce premier baiser,</span><span class="es">¡Ah! Ese primer beso,</span></div>
@@ -3714,7 +3838,7 @@
         <span class="es">(cae desfallecida, sobre el canapé)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! Ma raison s'égare...</span><span class="es">¡Ah! ¡Mi razón se extravía!...</span></div>
@@ -3723,7 +3847,7 @@
         <span class="es">(Arrojándose a sus pies)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Tu m'aimes! tu m'aimes! tu m'aimes!</span><span class="es">¡Tú me amas! ¡Me amas!</span></div>
@@ -3732,7 +3856,7 @@
         <span class="es">(Rechazándolo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">...non! tout ce qui nous sépare</span><span class="es">¡No!...Todo lo que nos separa,</span></div>
@@ -3742,7 +3866,7 @@
         <span class="es">(insistiendo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Tu m'aimes!</span><span class="es">¡Tú me amas!</span></div>
@@ -3751,43 +3875,43 @@
         <span class="es">(Defendiéndose)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pitié!</span><span class="es">¡Piedad!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Il n'est plus de remords!</span><span class="es">¡Ya no hay remordimientos!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Il n'est plus de tourments!</span><span class="es">¡No más tormentos!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! pitié!</span><span class="es">¡Ah! ¡Piedad!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Hors de nous rien n'existe</span><span class="es">Más allá de nosotros, nada existe</span></div>
       <div class="line-row"><span class="fr">et tout le reste est vain!</span><span class="es">y todo lo demás nada vale.</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! Seigneur! défendez-moi!</span><span class="es">¡Señor! ¡Protégeme!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Mais l'amour seul est vrai,</span><span class="es">Pero, sólo el amor es verdadero;</span></div>
@@ -3797,12 +3921,12 @@
         <span class="es">(Loca de amor)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Défendez-moi, Seigneur,</span><span class="es">¡Protégeme, Señor!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Viens! je t'aime!</span><span class="es">Ven, ¡yo te amo!</span></div>
@@ -3810,23 +3934,23 @@
       <div class="line-row"><span class="fr">Car l'amour seul est vrai,</span><span class="es">sólo el amor es verdadero,</span></div>
       <div class="line-row"><span class="fr">c'est le mot, le mot divin!</span><span class="es">¡es la palabra, palabra divina!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">défendez-moi contre moi-même!</span><span class="es">¡Defendedme de mí misma!</span></div>
       <div class="line-row"><span class="fr">Défendez-moi, Seigneur, contre lui... défendez-moi!</span><span class="es">¡Protégeme, Señor! ¡De él, de mí!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Je t'aime!</span><span class="es">¡Te amo!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pitié!</span><span class="es">¡Piedad!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Je t'aime!</span><span class="es">¡Te amo!</span></div>
@@ -3853,7 +3977,7 @@
     </div>
     <div class="text-col" id="t39">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah!</span><span class="es">¡Ah!</span></div>
@@ -3867,7 +3991,7 @@
         <span class="es">(Vuelto en sí, suplicando a Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Pardon!</span><span class="es">¡Perdón!</span></div>
@@ -3876,13 +4000,13 @@
         <span class="es">(decidida)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
       <div class="line-row"><span class="fr">Vous ne me verrez plus!</span><span class="es">¡No me veréis más...!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Charlotte!</span><span class="es">¡Charlotte!</span></div>
@@ -3891,7 +4015,7 @@
         <span class="es">(con un tono de amargo reproche)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">C'est vous, vous! que je fuis</span><span class="es">¡Es de vos de quien huyo,</span></div>
@@ -3906,7 +4030,7 @@
         <span class="es">(aterrado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Mais non... c'est impossible!</span><span class="es">¡No, es imposible!</span></div>
@@ -3924,7 +4048,7 @@
     </div>
     <div class="text-col" id="t40">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Soit! Adieu donc! Charlotte a dicté</span><span class="es">¡Sea! ¡Adiós, pues!</span></div>
@@ -3987,7 +4111,7 @@
         <span class="es">(ve a su marido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah!</span><span class="es">¡Ah!</span></div>
@@ -4005,7 +4129,7 @@
         <span class="es">(cada vez mas turbada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Mais... rien...</span><span class="es">¡Nada!</span></div>
@@ -4023,7 +4147,7 @@
         <span class="es">(Buscando en vano reponerse)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Oui... la surprise...</span><span class="es">¡Sí! La sorpresa...</span></div>
@@ -4041,7 +4165,7 @@
         <span class="es">(balbuceando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Là?</span><span class="es">¿Aquí...?</span></div>
@@ -4069,7 +4193,7 @@
         <span class="es">(No pudiendo evitar dar un grito)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Dieu!</span><span class="es">¡Dios mío!</span></div>
@@ -4088,7 +4212,7 @@
         <span class="es">(para sí, sintiéndose desfallecer)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Il part!</span><span class="es">¡Se marcha!</span></div>
@@ -4106,7 +4230,7 @@
         <span class="es">(aparte, aterrorizada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! l'horrible présage!</span><span class="es">¡Ah! ¡El horrible presagio!</span></div>
@@ -4124,7 +4248,7 @@
         <span class="es">(retrocediendo, espantada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Qui? moi?</span><span class="es">¿Quién? ¿Yo?</span></div>
@@ -4142,7 +4266,7 @@
         <span class="es">(como fascinada por la mirada de su marido, va maquinalmente hacia el escritorio donde está la caja con las pistolas Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Quel regard!</span><span class="es">¡Qué mirada!</span></div>
@@ -4203,7 +4327,7 @@
     </div>
     <div class="text-col" id="t44">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Werther! Werther!</span><span class="es">¡Werther...! ¡Werther...!</span></div>
@@ -4244,7 +4368,7 @@
     </div>
     <div class="text-col" id="t45">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Qui parle?</span><span class="es">¿Quién habla?</span></div>
@@ -4259,7 +4383,7 @@
       </div>
       <div class="line-row"><span class="fr">pardonne-moi!</span><span class="es">¡Perdóname!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Te pardonner! Quand c'est moi</span><span class="es">Que te perdone cuando</span></div>
@@ -4272,7 +4396,7 @@
         <span class="es">(incorporándose un poco)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
@@ -4290,7 +4414,7 @@
         <span class="es">(enloquecida va hacia la puerta)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Mais il faut du secours! du secours! Ah!</span><span class="es">¡Necesitas ayuda! ¡Auxilio! ¡Ah!</span></div>
@@ -4303,7 +4427,7 @@
         <span class="es">(se incorpora sobre una rodilla)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Non! n'appelle personne!</span><span class="es">¡No! ¡No llames a nadie...!</span></div>
@@ -4343,7 +4467,7 @@
     </div>
     <div class="text-col" id="t46">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Et moi, Werther, et moi</span><span class="es">Y yo, Werther, y yo,</span></div>
@@ -4366,7 +4490,7 @@
     </div>
     <div class="text-col" id="t47">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Oui... du jour même</span><span class="es">Sí... desde el mismo día</span></div>
@@ -4383,7 +4507,7 @@
       </div>
       <div class="line-row"><span class="fr">je t'ai perdu!</span><span class="es">¡te he perdido a ti!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Parle encore! parle je t'en conjure!</span><span class="es">¡Sigue hablando! ¡Te lo suplico!</span></div>
@@ -4392,7 +4516,7 @@
         <span class="es">(Con profunda emoción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Mais si la mort s'approche...</span><span class="es">Mas si la muerte se acerca,</span></div>
@@ -4423,7 +4547,7 @@
       </div>
       <div class="line-row"><span class="fr">Tout oublions tout!</span><span class="es">¡Olvidémoslo todo!</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Tout... oublions tout!</span><span class="es">¡Todo... olvidémoslo todo!</span></div>
@@ -4460,7 +4584,7 @@
         <span class="es">(dolorosamente escuchando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Dieu! ces cris joyeux! ce rire</span><span class="es">¡Dios mío! ¡Esas risas,</span></div>
@@ -4481,7 +4605,7 @@
         <span class="es">(se incorpora un poco, en una suerte de alucinación)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Ah! les enfants... les anges!</span><span class="es">¡Los niños!... ¡Los ángeles!...</span></div>
@@ -4491,7 +4615,7 @@
       </div>
       <div class="line-row"><span class="fr">Noël! Noël! Noël!</span><span class="es">¡Navidad! ¡Navidad! ¡Navidad!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Oui Noël!</span><span class="es">¡Sí! ¡Navidad!</span></div>
@@ -4502,7 +4626,7 @@
       </div>
       <div class="line-row"><span class="fr">Noël! Noël! Noël!</span><span class="es">¡Navidad! ¡Navidad! ¡Navidad!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">C'est l'hymne du pardon</span><span class="es">¡Es el himno del perdón</span></div>
@@ -4517,7 +4641,7 @@
         <span class="es">(se acerca, asustada por el delirio que comienza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Werther!</span><span class="es">¡Werther!</span></div>
@@ -4526,7 +4650,7 @@
         <span class="es">(cada vez, más alucinado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Pourquoi ces larmes? Crois-tu donc</span><span class="es">¡Por qué esas lágrimas...?</span></div>
@@ -4591,7 +4715,7 @@
     </div>
     <div class="text-col" id="t49">
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah! ses yeux se fermant!</span><span class="es">¡Ah! ¡Sus ojos se cierran...!</span></div>
@@ -4626,7 +4750,7 @@
         <span class="es">(En el sillón, con voz entrecortada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Non... Charlotte! je meurs...</span><span class="es">¡No... Charlotte! ¡Muero...</span></div>
@@ -4644,7 +4768,7 @@
     </div>
     <div class="text-col" id="t50">
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">oui... mais écoute bien:</span><span class="es">sí... pero, escucha bien...!</span></div>
@@ -4656,12 +4780,12 @@
         <span class="es">(con voz entrecortada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Tais-toi! pitié!</span><span class="es">¡Cállate! ¡Ten piedad!</span></div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Si cela</span><span class="es">Si ahí se me rechazara...</span></div>
@@ -4674,7 +4798,7 @@
       <div class="line-row"><span class="fr">En détournant les yeux</span><span class="es">y volviendo los ojos</span></div>
       <div class="line-row"><span class="fr">le prêtre passera...</span><span class="es">el sacerdote pasará ...</span></div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Pitié! Werther!</span><span class="es">¡Piedad! ¡Werther!</span></div>
@@ -4683,7 +4807,7 @@
         <span class="es">(Continuando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Werther</span>
+        <span class="character-name has-tooltip" data-character-id="werther">Werther</span>
         <span class="character-name">Werther</span>
       </div>
       <div class="line-row"><span class="fr">Mais, à la dérobée,</span><span class="es">Si por casualidad una mujer</span></div>
@@ -4695,7 +4819,7 @@
         <span class="es">(Su voz se detiene; se esfuerza por respirar; sus brazos se desploman, su cabeza se inclina... Muere. Charlotte, que no puede creer lo que ha visto, toma la cabeza de Werther entre sus manos y lanza un grito de espanto .)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Ah!</span><span class="es">¡Ah!</span></div>
@@ -4724,7 +4848,7 @@
         <span class="es">(llamando, desesperadamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Charlotte</span>
+        <span class="character-name has-tooltip" data-character-id="charlotte">Charlotte</span>
         <span class="character-name">Charlotte</span>
       </div>
       <div class="line-row"><span class="fr">Werther!</span><span class="es">¡Werther!</span></div>
@@ -4755,13 +4879,30 @@
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
-      <div class="drawer-header-left">
-        <span class="drawer-header-opera">Werther — Jules Massenet</span>
-        <span class="drawer-header-sub" id="drawerRecordingLabel">Prêtre / Gedda</span>
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()">Close</button>
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
     </div>
     <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -4910,11 +5051,31 @@
     "Act IV": "t42"
   };
 
+  const CHARACTERS = [
+    { id: "werther", name: "Werther", voice: "Tenor", description: "Joven Burgu\u00e9s" },
+    { id: "magistrado", name: "Magistrado", voice: "Bass", description: "Magistrado" },
+    { id: "charlotte", name: "Charlotte", voice: "Mezzo-soprano", description: "Hija del Magistrado" },
+    { id: "sofia", name: "Sofia", voice: "Soprano", description: "Hija del Magistrado" },
+    { id: "alberto", name: "Alberto", voice: "Baritone", description: "Esposo de Charlotte" },
+    { id: "schmidt", name: "Schmidt", voice: "Tenor", description: "Amigo del Magistrado" },
+    { id: "johann", name: "Johann", voice: "Bass", description: "Amigo del Magistrado" },
+    { id: "bruhlmann", name: "Br\u00fchlmann", voice: "Tenor", description: "Joven del entorno de Werther" },
+    { id: "katchen", name: "K\u00e4tchen", voice: "Soprano", description: "Prometida de Br\u00fchlmann" }
+  ];
+
+  const CAST = {
+    pretre_gedda: { "werther": "Nicolai Gedda", "charlotte": "Victoria de los \u00c1ngeles", "sofia": "Mady Mespl\u00e9", "alberto": "Roger Soyer", "magistrado": "Jean-Christophe Benoit", "johann": "Christos Grigoriou", "schmidt": "Andr\u00e9 Mallabrera" },
+    plasson_kraus: { "werther": "Alfredo Kraus", "charlotte": "Tatiana Troyanos", "sofia": "Christine Barbaux", "alberto": "Matteo Manuguerra", "magistrado": "Jules Bastin", "johann": "Jean-Philippe Lafont", "schmidt": "Philip Langridge", "bruhlmann": "Michael Lewis", "katchen": "Lynda Richardson" },
+    davis_carreras: { "werther": "Jos\u00e9 Carreras", "charlotte": "Frederica Von Stade", "sofia": "Isobel Buchanan", "alberto": "Thomas Allen", "magistrado": "Robert Lloyd", "johann": "Malcolm King", "schmidt": "Paul Crook", "bruhlmann": "Donaldson Bell", "katchen": "Linda Humphries" }
+  };
+
   let activeRecording = "pretre_gedda";
   let currentActiveId = "t1";
   let observer = null;
 
   function openDrawer() {
+    closeCast();
+    buildDrawer();
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -4928,6 +5089,23 @@
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     updateActive(id);
   }
+
+  function openCast() {
+    closeDrawer();
+    buildCast();
+    document.getElementById('castOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCast() {
+    document.getElementById('castOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeDrawer();
+    closeCast();
+  });
 
   function toggleSwitcher(event) {
     event.stopPropagation();
@@ -4976,8 +5154,39 @@
     }
 
     body.innerHTML = html;
-    const lbl = document.getElementById('drawerRecordingLabel');
-    if (lbl) lbl.textContent = rec.short;
+  }
+
+  function buildCast() {
+    const cast = CAST[activeRecording];
+    const tbody = document.getElementById('castTableBody');
+    tbody.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      return `<tr>
+        <td>
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+          <div class="cast-description">${ch.description}</div>
+        </td>
+        <td>
+          ${singer
+            ? `<div class="cast-singer">${singer}</div>`
+            : `<div class="cast-singer empty">—</div>`}
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function applyTooltips() {
+    const cast = CAST[activeRecording];
+    document.querySelectorAll('.character-name.has-tooltip').forEach(el => {
+      const id = el.dataset.characterId;
+      const ch = CHARACTERS.find(c => c.id === id);
+      if (!ch) return;
+      const singer = cast[id];
+      el.setAttribute('data-tooltip',
+        singer ? `${ch.voice}\u2002·\u2002${singer}` : ch.voice
+      );
+    });
   }
 
   function updateTrackTags() {
@@ -5019,6 +5228,10 @@
     if (dd) dd.classList.remove('open');
     scrollToCurrentAct();
     updateActive(currentActiveId);
+    applyTooltips();
+    if (document.getElementById('castOverlay').classList.contains('open')) {
+      buildCast();
+    }
   }
 
   function updateActive(activeId) {
@@ -5027,7 +5240,7 @@
     const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
     if (!t) return;
     const trackLabel = document.getElementById('trackLabel');
-    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
     const trackTitle = document.getElementById('trackTitle');
     if (trackTitle) trackTitle.textContent = t.title;
     const actLabel = document.getElementById('actLabel');
@@ -5054,4 +5267,5 @@
   buildDrawer();
   rewireObserver();
   updateActive("t1");
+  applyTooltips();
 </script>

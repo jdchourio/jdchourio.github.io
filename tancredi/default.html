@@ -38,24 +38,22 @@
   @media (max-width: 580px) {
     .context-bar {
       height: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: start;
-      padding: 0.5rem 1rem 0.5rem calc(var(--col-left) + 1rem);
-      gap: 0.35rem;
+      min-height: var(--bar-h);
+      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
-    .context-left,
-    .context-right {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 0;
-      margin: 0;
-      gap: 0.75rem;
+    .context-left {
+      flex: 1 1 100%;
+      gap: 0.5rem;
     }
 
-    #actLabel { font-size: 11px !important; line-height: 1.2; }
+    .context-track-title {
+      width: auto !important;
+      flex: 1;
+      min-width: 0;
+    }
 
     .recording-switcher {
       font-size: 11px !important;
@@ -63,19 +61,29 @@
       padding: 0;
       background: none;
     }
+
+    #actLabel { font-size: 11px !important; }
   }
 
   .context-left {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     font-family: var(--sans);
     font-size: 12px;
     color: var(--text-dim);
     letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 4px 6px;
+    margin: -4px -6px;
+    transition: background 0.15s;
   }
+  .context-left:hover { background: var(--bg2); }
+  .context-left:active { background: var(--gold-light); }
 
   .context-sep { opacity: 0.3; }
+  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
 
   .context-track {
     font-family: var(--sans);
@@ -87,14 +95,14 @@
     border: 1px solid var(--gold-border);
     border-radius: 3px;
     padding: 2px 8px;
-    min-width: 76px;
-    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .context-track-title {
     font-size: 11px;
     color: var(--text-dim);
-    width: 200px;
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -102,8 +110,6 @@
   }
 
   .context-right { display: flex; align-items: center; gap: 10px; }
-
-  /* Recording switcher */
   .recording-switcher-wrap { position: relative; }
 
   .recording-switcher {
@@ -154,28 +160,6 @@
     font-weight: 500;
   }
 
-  .index-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .index-btn:hover { background: var(--bg2); }
-
-  .index-icon { width: 13px; height: 10px; display: flex; flex-direction: column; justify-content: space-between; }
-  .index-icon span { display: block; height: 1.5px; background: currentColor; border-radius: 1px; }
-  .index-icon span:nth-child(2) { width: 65%; }
 
   .libretto-body {
     display: grid;
@@ -336,10 +320,10 @@
 
   .drawer {
     position: absolute;
-    top: 0; right: 0; bottom: 0;
+    top: 0; left: 0; bottom: 0;
     width: 340px;
     background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
+    border-right: 1.5px solid var(--color-border-primary);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -356,9 +340,7 @@
     background: var(--color-background-secondary, #f5ede0);
   }
 
-  .drawer-header-left { display: flex; flex-direction: column; gap: 1px; }
-
-  .drawer-header-opera {
+  .drawer-header-title {
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 500;
@@ -366,27 +348,22 @@
     letter-spacing: 0.04em;
   }
 
-  .drawer-header-sub {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
+  /* ── Shared close button (used in both drawers) ── */
   .drawer-close {
     background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 300;
     color: var(--text-dim);
     line-height: 1;
-    padding: 4px 8px;
-    font-family: var(--sans);
+    padding: 4px 6px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    transition: color 0.15s;
   }
-
-  .drawer-close:hover { background: var(--bg2); color: var(--text-main); }
+  .drawer-close:hover { color: #c0392b; background: none; }
 
   .drawer-body { overflow-y: auto; flex: 1; }
 
@@ -444,16 +421,166 @@
     color: var(--text-dim);
     letter-spacing: 0.04em;
   }
+
+  /* ── Cast button ── */
+  .cast-btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+  .cast-btn:hover { background: var(--bg2); }
+
+  /* ── Cast drawer (mirrors index drawer) ── */
+  .cast-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 250;
+  }
+  .cast-overlay.open { display: block; }
+
+  .cast-drawer {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-left: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .cast-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .cast-drawer-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  .cast-drawer-body { overflow-y: auto; flex: 1; }
+
+  .cast-table { width: 100%; border-collapse: collapse; }
+
+  .cast-table thead tr {
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-secondary);
+  }
+
+  .cast-table th {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 8px 1.25rem;
+    text-align: left;
+  }
+
+  .cast-table td {
+    padding: 9px 1.25rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    vertical-align: middle;
+  }
+
+  .cast-table tr:last-child td { border-bottom: none; }
+
+  .cast-char-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+  }
+
+  .cast-voice {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+  }
+
+  .cast-description {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 1px;
+    letter-spacing: 0.02em;
+  }
+
+  .cast-singer {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--text-main);
+    font-style: italic;
+  }
+
+  .cast-singer.empty {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
+  @media (hover: hover) {
+    .character-name[data-tooltip] {
+      position: relative;
+      cursor: default;
+    }
+    .character-name[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: var(--color-background-primary, #fdfaf6);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 3px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      font-family: var(--sans);
+      font-size: 10.5px;
+      color: var(--text-main);
+      white-space: nowrap;
+      padding: 5px 9px;
+      pointer-events: none;
+      z-index: 150;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+  }
 </style>
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left">
+    <div class="context-left" onclick="openDrawer()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T2</span>
+      <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
       <span class="context-sep">&middot;</span>
-      <span class="context-track" id="trackLabel">CD 1 · T2</span>
       <span class="context-track-title" id="trackTitle">Pace, Onore, Fede, Amore</span>
+      <span class="context-chevron">&#9662;</span>
     </div>
     <div class="context-right">
       <div class="recording-switcher-wrap" id="recSwitcher">
@@ -463,10 +590,7 @@
         </button>
         <div class="recording-dropdown" id="recDropdown"></div>
       </div>
-      <button class="index-btn" onclick="openDrawer()">
-        <span class="index-icon"><span></span><span></span><span></span></span>
-        Index
-      </button>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
   </div>
 
@@ -494,7 +618,7 @@
         <span class="es">(Poniéndole a un caballero la escarapela blanca)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Sia tra voi concordia eguale</span><span class="es">Que la más tierna amistad</span></div>
@@ -525,7 +649,7 @@
     </div>
     <div class="text-col" id="t2">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Se amistà verace e pura</span><span class="es">Si la amistad, constante y pura,</span></div>
@@ -535,7 +659,7 @@
       <div class="line-row"><span class="it">Sì: felice, vincitrice</span><span class="es">entonces Siracusa</span></div>
       <div class="line-row"><span class="it">Siracusa ognor sarà.</span><span class="es">feliz y vencedora reinará.</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Rea discordia invan fra noi</span><span class="es">La discordia en vano</span></div>
@@ -548,7 +672,7 @@
       </div>
       <div class="line-row"><span class="it">Sì, giuriam.</span><span class="es">¡Sí, lo juramos!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Respiro omai.</span><span class="es">¡Por fin!</span></div>
@@ -558,7 +682,7 @@
       </div>
       <div class="line-row"><span class="it">Fede, o morte.</span><span class="es">¡Fidelidad o muerte!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Or vissi assai:</span><span class="es">¡Histórico momento!</span></div>
@@ -578,7 +702,7 @@
       <div class="line-row"><span class="it">Vinto alfin da noi/voi cadrà.</span><span class="es">pues caerá vencido ante nosotros.</span></div>
       <div class="musical-number"></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ed ecco, o prodi cavalier, l'eroe</span><span class="es">¡Caballeros! Aquí os presento al héroe que,</span></div>
@@ -591,7 +715,7 @@
       <div class="line-row"><span class="it">Da gloria mosso, nel comun periglio,</span><span class="es">Hoy une nuestros corazones</span></div>
       <div class="line-row"><span class="it">Un sol voto, un sol cor, ogni suo figlio...</span><span class="es">el peligro común y los mismos deseos...</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Sì: per la patria, per la fede il sangue</span><span class="es">Sí, derramaremos nuestra sangre por defender</span></div>
@@ -599,7 +723,7 @@
       <div class="line-row"><span class="it">Ma contro vile, occulto tradimento</span><span class="es">contra la artera traición</span></div>
       <div class="line-row"><span class="it">Noi chi difenderà?</span><span class="es">¿quién nos defenderá?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">L'antica legge</span><span class="es">Está escrito en la ley que aquel que,</span></div>
@@ -612,7 +736,7 @@
         <span class="es">(Con firmeza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E con altro nemico,</span><span class="es">Existen entre nosotros</span></div>
@@ -624,14 +748,14 @@
         <span class="es">(Turbándose)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Oh cielo! e come?</span><span class="es">¡Oh, cielos!</span></div>
       <div class="line-row"><span class="it">E che può mai la patria</span><span class="es">¡Cómo!</span></div>
       <div class="line-row"><span class="it">Da lui temer?</span><span class="es">¿Qué puede temer la patria de él?</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Qui nato</span><span class="es">Nacido en e seno de una noble familia,</span></div>
@@ -639,7 +763,7 @@
       <div class="line-row"><span class="it">Fin da' prim'anni suoi,</span><span class="es">debe de albergar contra nosotros</span></div>
       <div class="line-row"><span class="it">Odio e vendetta ei de' nudrir ver noi.</span><span class="es">gran odio y venganza.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ver te primier, quando saprà che giusto</span><span class="es">Y tú concitarás sus mayores iras</span></div>
@@ -652,12 +776,12 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Che intendo!</span><span class="es">¡Qué escucho!</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Ei frema entro Bisanzio, e sia</span><span class="es">¡Que muera de odio, allá, en Bizancio!</span></div>
@@ -669,7 +793,7 @@
         <span class="es">(a dos de sus escuderos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Qui Amenaide.</span><span class="es">¡Lamad a Amenaida!</span></div>
@@ -680,12 +804,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Misera amica!</span><span class="es">¡Desdichada amiga!</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Sarò alfin contento!</span><span class="es">¡Gozoso momento!</span></div>
@@ -729,7 +853,7 @@
       <div class="line-row"><span class="it">Compi la speme del genitor.</span><span class="es">el triste dolor de un padre.</span></div>
       <div class="musical-number"></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Come dolce all'alma mia</span><span class="es">Con cuanta dulzura se llena mi alma</span></div>
@@ -749,7 +873,7 @@
       <div class="line-row"><span class="it">In tal dì, respira omai,</span><span class="es">A partir de hoy,</span></div>
       <div class="line-row"><span class="it">Sì, godrai felicità.</span><span class="es">serás completamente feliz.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Voglia il ciel che brilli omai</span><span class="es">Quiera el cielo que brille para mí</span></div>
@@ -762,7 +886,7 @@
       <div class="line-row"><span class="it">Pace il cor sperar non sa.</span><span class="es">mi corazón no alcanzará la paz.</span></div>
       <div class="musical-number"></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">È già decisa, o figlia:</span><span class="es">¡Está decidido, hija mía!</span></div>
@@ -776,12 +900,12 @@
         <span class="es">(Mostrando sorpresa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Che dici?</span><span class="es">¿Qué dices?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">La tua fé, la tua mano</span><span class="es">He concedido tu mano</span></div>
@@ -791,7 +915,7 @@
         <span class="es">(Incrédula)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ad Orbazzano!</span><span class="es">¿A Orbazzano?</span></div>
@@ -805,7 +929,7 @@
         <span class="es">(En voz baja)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Non tradirti!</span><span class="es">¡No te descubras!</span></div>
@@ -814,7 +938,7 @@
         <span class="es">(En voz baja a Isaura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">E il foglio!...</span><span class="es">¿Y la carta?...</span></div>
@@ -823,13 +947,13 @@
         <span class="es">(En voz baja a Amenaida)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Ver Tancredi</span><span class="es">He mandado un esclavo</span></div>
       <div class="line-row"><span class="it">Già partito è lo schiavo.</span><span class="es">para que se la entregue a Tancredo.</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Amenaide,</span><span class="es">Amenaide.</span></div>
@@ -845,12 +969,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Che far? Oh me perduta!</span><span class="es">¿Qué hacer?... ¡Oh, estoy perdida!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Il suo valore.</span><span class="es">Su valor, su sangre,</span></div>
@@ -863,12 +987,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">O Dio!</span><span class="es">¡Oh, Dios!</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Tu non rispondi?</span><span class="es">¿No dices nada?</span></div>
@@ -877,17 +1001,17 @@
         <span class="es">(Dudando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Signor... io... non credevo... e...</span><span class="es">Señor... yo... no creía que...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ti confondi?</span><span class="es">¿Dudas?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ed a ragion.</span><span class="es">¿Acaso no debería? Entristecida</span></div>
@@ -905,18 +1029,18 @@
         <span class="es">(Serio)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">So che mia figlia</span><span class="es">Sólo sé que el corazón de mi hija</span></div>
       <div class="line-row"><span class="it">Gli affetti suoi col suo dover consiglia.</span><span class="es">debe inclinarse hacia lo que es su deber.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ma...</span><span class="es">Pero...</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E dunque?...</span><span class="es">¿Así pues?...</span></div>
@@ -925,18 +1049,18 @@
         <span class="es">(Decidido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Amenaide</span><span class="es">Amenaida</span></div>
       <div class="line-row"><span class="it">A te la destra porgerà.</span><span class="es">te dará su mano.</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">S'affretti la sacra pompa...</span><span class="es">¡Celebremos la solemne ceremonia!...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Al giorno nuovo almeno</span><span class="es">Aplacémosla al menos</span></div>
@@ -946,22 +1070,22 @@
         <span class="es">(Severo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Figlia?...</span><span class="es">¡Hija!...</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E tu vuoi!...</span><span class="es">Si ése es tu deseo...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">L'alma acchetar, parlarti, o padre!...</span><span class="es">¡Padre! Deseo sosegar mi alma.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">E poi?</span><span class="es">¿Y luego?</span></div>
@@ -970,7 +1094,7 @@
         <span class="es">(Con un poco de dureza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Temer forse degg'io?...</span><span class="es">¿Acaso te arrepentirás?...</span></div>
@@ -979,7 +1103,7 @@
         <span class="es">(Con decisión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Compirò, non temete, il dover mio.</span><span class="es">No temas, cumpliré con mi deber.</span></div>
@@ -1002,7 +1126,7 @@
     </div>
     <div class="text-col" id="t4">
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Amenaide sventurata! oh quale</span><span class="es">¡Desgraciada Amenaida!</span></div>
@@ -1036,7 +1160,7 @@
     </div>
     <div class="text-col" id="t5">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Oh patria! Dolce e ingrata patria!</span><span class="es">¡Oh, patria, dulce e ingrata patria!</span></div>
@@ -1066,7 +1190,7 @@
     </div>
     <div class="text-col" id="t6">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Di tanti palpiti,</span><span class="es">De tantos sufrimientos,</span></div>
@@ -1093,12 +1217,12 @@
       <div class="line-row"><span class="it">I moti suoi!... se mai speranza in lei</span><span class="es">¡Fíjate en sus palabras!... Si me añora,</span></div>
       <div class="line-row"><span class="it">Del mio venir... se mai di me ti chiede...</span><span class="es">si tiene esperanza de verme, si pregunta por mí...</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Deggio svelar!...</span><span class="es">¿Debo decirle que estás aquí?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">No, no. Tutto voglio</span><span class="es">¡No, no! Deseo gozar viendo</span></div>
@@ -1107,7 +1231,7 @@
       <div class="line-row"><span class="it">T'attenderò. Va', t'affretta, ritorna,</span><span class="es">¡Ve! ¡Corre! Y regresa con un bálsamo</span></div>
       <div class="line-row"><span class="it">E consola quest'anima ansiosa.</span><span class="es">para mi alma ansiosa.</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Lo possa io pur! Sulla mia fé riposa.</span><span class="es">¡Ojalá sea así! ¡Confía en mí!</span></div>
@@ -1134,7 +1258,7 @@
     </div>
     <div class="text-col" id="t7">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">E voi, nella gran piazza</span><span class="es">Id hasta la plaza de la ciudad</span></div>
@@ -1177,7 +1301,7 @@
     </div>
     <div class="text-col" id="t8">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Andate: al gran tempio invitate</span><span class="es">Id a dar la noticia que, hoy a mediodía,</span></div>
@@ -1188,7 +1312,7 @@
         <span class="es">(Los soldados salen)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Amenaide!... è dessa.</span><span class="es">¡Amenaida!... ¡Es ella!</span></div>
@@ -1197,24 +1321,24 @@
         <span class="es">(Continúa oculto)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh padre!</span><span class="es">¡Oh, padre!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Taci:</span><span class="es">¡Calla!</span></div>
       <div class="line-row"><span class="it">Vano è il dire, il pregar.</span><span class="es">Tus ruegos son en vano...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Al nuovo giorno</span><span class="es">Me habías prometido</span></div>
       <div class="line-row"><span class="it">Promesso avevi pur!...</span><span class="es">esperar hasta mañana...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Nuovi perigli</span><span class="es">Las circunstancias aconsejan</span></div>
@@ -1229,7 +1353,7 @@
         <span class="es">(Para sí, con emoción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh Dio! Come lo sa.</span><span class="es">¡Oh, Dios mío! ¿Cómo se habrá enterado?</span></div>
@@ -1243,7 +1367,7 @@
         <span class="es">(En voz baja)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Il nome mio!</span><span class="es">¡Me está nombrando!</span></div>
@@ -1256,22 +1380,22 @@
         <span class="es">(Con agitación)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">E forse ch'egli viene...</span><span class="es">¿Y crees posible que venga a Siracusa?...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Da vendetta guidato a queste arene.</span><span class="es">¡Seguro que la venganza lo guía hasta acá!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Tancredi!...</span><span class="es">Tancredo...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ma non osi,</span><span class="es">Pero si ese rebelde,</span></div>
@@ -1282,12 +1406,12 @@
         <span class="es">(Con asombro)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">La morte!</span><span class="es">¡La muerte!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Della patria ogni nemico</span><span class="es">Sí, al enemigo de la patria</span></div>
@@ -1314,7 +1438,7 @@
     </div>
     <div class="text-col" id="t9">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Pensa che sei mia figlia,</span><span class="es">Piensa que eres mi hija</span></div>
@@ -1348,7 +1472,7 @@
     </div>
     <div class="text-col" id="t10">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Che feci! Incauta! ed or che far? se mai</span><span class="es">¿Qué es lo que he hecho? ¡Infeliz!</span></div>
@@ -1360,12 +1484,12 @@
         <span class="es">(Saliendo de entre la maleza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">É sola.</span><span class="es">Está sola...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh cielo! tu lo salva, tu l'invola</span><span class="es">¡Oh, cielo, sálvalo!</span></div>
@@ -1378,7 +1502,7 @@
         <span class="es">(Acercándose)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Amenaide!</span><span class="es">¡Amenaida!</span></div>
@@ -1387,12 +1511,12 @@
         <span class="es">(Sobresaltada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! che veggo? Tancre...</span><span class="es">¡Ah! ¿Qué veo?.... ¡Tancredo!</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Sì: il tuo Tancredi...</span><span class="es">¡Sí, tu Tancredo!</span></div>
@@ -1401,7 +1525,7 @@
         <span class="es">(Aterrorizada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Taci, deh, taci: misero! a che vieni?</span><span class="es">¡Calla infeliz! ¿A qué vienes?</span></div>
@@ -1411,25 +1535,25 @@
         <span class="es">(Sorprendido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Che voglio! e a me tu domandar lo puoi!</span><span class="es">¿Qué busco? ¿Y tú me lo preguntas?</span></div>
       <div class="line-row"><span class="it">Amenaide, o morte.</span><span class="es">¡A Amenaida o la muerte!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh qual scegliesti</span><span class="es">¡Desventurado!</span></div>
       <div class="line-row"><span class="it">Terribil ora? sventurato! e dove</span><span class="es">¿Sabes el fatal momento que has elegido?</span></div>
       <div class="line-row"><span class="it">Fier destino ti guida?</span><span class="es">¿Sabes a dónde te conducirá tu destino?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Qual terrore?</span><span class="es">¿Qué debo temer?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">È troppo giusto: i vili tuoi nemici...</span><span class="es">Tus enemigos acechan...</span></div>
@@ -1438,22 +1562,22 @@
         <span class="es">(Con decisión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Li sfido...</span><span class="es">¡Los desafío!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Fuggi... salvati.</span><span class="es">¡Huye!... ¡Sálvate!</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Che dici?...</span><span class="es">¿Qué dices?...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Trema...</span><span class="es">Tiembla...</span></div>
@@ -1462,17 +1586,17 @@
         <span class="es">(Con decisión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Tremar Tancredi?</span><span class="es">¡Temblar!... ¿Tancredo?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh Dio!... che questo nome!...</span><span class="es">¡Oh, Dios mío! Tu nombre...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Un dì t'era pur caro!</span><span class="es">En otro tiempo tan querido por ti.</span></div>
@@ -1481,7 +1605,7 @@
         <span class="es">(Con tristeza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! que' tempi cangiaro!</span><span class="es">¡Ah! Las circunstancias cambian...</span></div>
@@ -1490,18 +1614,18 @@
         <span class="es">(Con brusquedad)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Anche il tuo core!...</span><span class="es">¡Y también tu corazón!...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Compiangilo: non sai!...</span><span class="es">¡Ten compasión de mí!</span></div>
       <div class="line-row"><span class="it">Giorno è questo d'onor...</span><span class="es">¿Acaso no sabes que hoy mi padre me entrega...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fremer mi fai.</span><span class="es">¿Qué estás insinuando?</span></div>
@@ -1520,7 +1644,7 @@
     </div>
     <div class="text-col" id="t11">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">L'aura che intorno spiri,</span><span class="es">El aire que respiras</span></div>
@@ -1532,7 +1656,7 @@
         <span class="es">(Con decisión y ternura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Dimmi che a te son caro,</span><span class="es">Dime que me amas</span></div>
@@ -1544,7 +1668,7 @@
         <span class="es">(Nerviosa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ma il padre... e il dover mio!...</span><span class="es">Pero mi padre... mi deber...</span></div>
@@ -1553,12 +1677,12 @@
         <span class="es">(Turbándose)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">E che! ti spiega.</span><span class="es">Pero ¿qué estás diciendo?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh Dio!</span><span class="es">¡Oh, Dios mío!</span></div>
@@ -1567,7 +1691,7 @@
         <span class="es">(Con ternura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Pel nostro dolce affetto...</span><span class="es">Por nuestro dulce amor dime...</span></div>
@@ -1576,7 +1700,7 @@
         <span class="es">(Interrumpiéndolo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! ti trafiggo il cor...</span><span class="es">¡Ah, te partiría el corazón!...</span></div>
@@ -1593,7 +1717,7 @@
         <span class="es">(Con decisión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Parla omai.</span><span class="es">Habla...</span></div>
@@ -1602,12 +1726,12 @@
         <span class="es">(Con esfuerzo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Mi lascia, e parti.</span><span class="es">Déjame... vete.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">E dovrei così lasciarti!</span><span class="es">¿Debo dejarte?...</span></div>
@@ -1633,7 +1757,7 @@
         <span class="es">(Roggiero regresa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Che intesi! oh tradimento!</span><span class="es">¡Qué es lo que he oído! ¡Oh, traición!</span></div>
@@ -1715,7 +1839,7 @@
         <span class="es">(Tancredo, seguido de Roggiero, sale de entre la multitud)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Oh canti! Oh voti! O festa</span><span class="es">¡Oh, cantos! ¡Oh, deseos!</span></div>
@@ -1727,14 +1851,14 @@
       </div>
       <div class="line-row"><span class="it">Iniqui! no, non compirassi, e pria...</span><span class="es">¡Inicuos! No se cumplirán vuestros...</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Che fai, signor? ti frena</span><span class="es">¡Conténte, señor!</span></div>
       <div class="line-row"><span class="it">Fra' nemici qui sei: pensa che pena</span><span class="es">Estamos entre enemigos y si te descubres,</span></div>
       <div class="line-row"><span class="it">Corri di morte, se scoperto.</span><span class="es">tu vida correrá un gran peligro.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ancora</span><span class="es">Mi padre</span></div>
@@ -1743,7 +1867,7 @@
       <div class="line-row"><span class="it">Da questa infame terra; il quinto or volge;</span><span class="es">Desde entonces han pasado cinco lustros,</span></div>
       <div class="line-row"><span class="it">Chi scoprir. mi potrebbe?</span><span class="es">¿quién podría reconocerme?</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Il tuo gran core</span><span class="es">Podrían traicionarte</span></div>
@@ -1753,7 +1877,7 @@
         <span class="es">(enérgico)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Del suo terrore,</span><span class="es">Ya comprendo la causa</span></div>
@@ -1761,13 +1885,13 @@
       <div class="line-row"><span class="it">L'opprimeva l'aspetto</span><span class="es">¡no podía soportar la presencia</span></div>
       <div class="line-row"><span class="it">Dell'amante tradito.</span><span class="es">del amante traicionado!</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Ebbene, oblia,</span><span class="es">Pues entonces,</span></div>
       <div class="line-row"><span class="it">Fuggi, sprezza l'infida.</span><span class="es">¡desprecia a la infiel!</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Invendicato!</span><span class="es">¿Sin venganza?</span></div>
@@ -1779,7 +1903,7 @@
         <span class="es">(intentando llevárselo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Vieni: appressa</span><span class="es">¡Vamos!</span></div>
@@ -1789,7 +1913,7 @@
         <span class="es">(Observando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ed ella, ed ella istessa?</span><span class="es">¡Es ella!...</span></div>
@@ -1817,7 +1941,7 @@
     </div>
     <div class="text-col" id="t14">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Amici, cavalieri, al tempio;</span><span class="es">¡Amigos, caballeros! En el templo</span></div>
@@ -1831,7 +1955,7 @@
         <span class="es">(Intentando calmar a Tancredo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Ti perdi...</span><span class="es">Que te pierdes...</span></div>
@@ -1840,7 +1964,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Eh! lasciami.</span><span class="es">¡Déjame!</span></div>
@@ -1857,7 +1981,7 @@
         <span class="es">(En voz baja, reconociéndolo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oddio! Eccolo, Isaura!</span><span class="es">¡Dios mío!... ¡Es él, Isaura!</span></div>
@@ -1866,7 +1990,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Incauto!</span><span class="es">¡Incauto!</span></div>
@@ -1875,12 +1999,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ora è deciso il mio destin.</span><span class="es">Mi destino está decidido.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">La generosa offerta</span><span class="es">Tu generosa oferta acepto,</span></div>
@@ -1888,7 +2012,7 @@
       <div class="line-row"><span class="it">Dammi la destra: e questo amplesso è il pegno</span><span class="es">Y como prueba de mi confianza en ti</span></div>
       <div class="line-row"><span class="it">Di mia fiducia in te.</span><span class="es">estrechémonos la mano.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fede ed onore</span><span class="es">Mi divisa, Fidelidad y Honor,</span></div>
@@ -1903,7 +2027,7 @@
         <span class="es">(En voz baja)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh accenti!</span><span class="es">¡Qué palabras!</span></div>
@@ -1913,12 +2037,12 @@
         <span class="es">(En voz baja)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Non ti riman più tempo omai.</span><span class="es">¡Estás acorralada!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Né riede</span><span class="es">Parece que Orbazzano</span></div>
@@ -1929,14 +2053,14 @@
         <span class="es">(Bruscamente, en voz baja, a Amenaida)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">E vai tu dunque ad Orbazzano</span><span class="es">¡Pérfida!</span></div>
       <div class="line-row"><span class="it">A giurar fede e amor!</span><span class="es">¿Vas a jurarle</span></div>
       <div class="line-row"><span class="it">Perfida!</span><span class="es">eterno amor a Orbazzano?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">È questa</span><span class="es">Ya es la hora.</span></div>
@@ -1946,7 +2070,7 @@
         <span class="es">(Toma a Amenaida de la mano)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">(Ardir.) T'arresta.</span><span class="es">¡Detente, Padre!</span></div>
@@ -1959,7 +2083,7 @@
         <span class="es">(Con sorpresa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">E Che? oseresti?...</span><span class="es">¿Qué?... ¿Cómo te atreves?</span></div>
@@ -1968,12 +2092,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Sperare ancor potrei!</span><span class="es">¡Aún tengo esperanzas!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Tu a me scegliesti</span><span class="es">No puedo amar</span></div>
@@ -1989,7 +2113,7 @@
         <span class="es">(Con alegría, para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fia ver!</span><span class="es">¡Es cierto!</span></div>
@@ -1998,13 +2122,13 @@
         <span class="es">(enojado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Quale trasporto!</span><span class="es">¿Estás loca?</span></div>
       <div class="line-row"><span class="it">Deliri tu? Vieni: resisti invano.</span><span class="es">¡Vamos, no te resistas!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh padre! cavalieri, d'Orbazzano,</span><span class="es">¡Padre, caballeros! Aunque me cueste la vida,</span></div>
@@ -2028,7 +2152,7 @@
     </div>
     <div class="text-col" id="t15">
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E morte infame, o traditrice, avrai.</span><span class="es">¡Traidora! ¡Tendrás una muerte infame!</span></div>
@@ -2037,22 +2161,22 @@
         <span class="es">(Sorpresa general)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Da chi? perché...</span><span class="es">¿Quién se atreverá?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Orbazzan!...</span><span class="es">¡Orbazzano!...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Gran Dio!</span><span class="es">¡Dios mío!</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Che avvenne?</span><span class="es">¡Qué sucederá?</span></div>
@@ -2061,7 +2185,7 @@
         <span class="es">(Mostrando una carta)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Il suo infernal delitto,</span><span class="es">¡Aquí está escrito,</span></div>
@@ -2078,7 +2202,7 @@
       <div class="line-row"><span class="it">E reggi</span><span class="es">y si puedes,</span></div>
       <div class="line-row"><span class="it">A tanto orror, se puoi.</span><span class="es">lee tanto horror...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Mia figlia! Io tremo.</span><span class="es">¡Hija mía!... Tiemblo.</span></div>
@@ -2087,7 +2211,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! son perduta!</span><span class="es">¡Ah, estoy perdida!</span></div>
@@ -2096,7 +2220,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">A Solamiro! Io fremo.</span><span class="es">¿A Solimán?... ¡Me estremezco!</span></div>
@@ -2105,7 +2229,7 @@
         <span class="es">(Leyendo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">"T'affretta: in Siracusa atteso sei:</span><span class="es">"Siracusa te aguarda, date prisa.</span></div>
@@ -2139,7 +2263,7 @@
     </div>
     <div class="text-col" id="t16">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ciel! che feci! fier cimento!</span><span class="es">¡Cielos!... ¿Qué he hecho?... ¡Oh, tormento!</span></div>
@@ -2152,7 +2276,7 @@
       </div>
       <div class="line-row"><span class="it">Padre amato...</span><span class="es">Padre amado...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ed osi ancora</span><span class="es">¿Y aún osas mirarme?</span></div>
@@ -2164,12 +2288,12 @@
         <span class="es">(A Tancredo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Deh! tu almen...</span><span class="es">Al menos tú...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">La fé, l'onore</span><span class="es">¿Cómo has podido traicionar</span></div>
@@ -2181,12 +2305,12 @@
         <span class="es">(a Orbazzano)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Empio! esulta...</span><span class="es">¡Alégrate, cruel!</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E tanto altera</span><span class="es">¿Cómo es posible que una traidora</span></div>
@@ -2194,7 +2318,7 @@
       <div class="line-row"><span class="it">Ma tremar alfin dovrai</span><span class="es">Pero muy pronto temblarás</span></div>
       <div class="line-row"><span class="it">Là di morte fra l'orror.</span><span class="es">ante los horrores de la muerte.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Quanto fiero è il mio destino!</span><span class="es">¡Oh, qué fatal destino!</span></div>
@@ -2223,7 +2347,7 @@
     </div>
     <div class="text-col" id="t17">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah, se giusto, o ciel, tu sei,</span><span class="es">¡Ah, justo cielo,</span></div>
@@ -2241,7 +2365,7 @@
         <span class="es">(Con emoción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Tutti m'odiate?</span><span class="es">¡Todos me odian</span></div>
@@ -2254,12 +2378,12 @@
       </div>
       <div class="line-row"><span class="it">No.</span><span class="es">¡No!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah, padre.</span><span class="es">¡Ah, padre!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">T'invola.</span><span class="es">¡Apártate!</span></div>
@@ -2268,12 +2392,12 @@
         <span class="es">(A Tancredo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Saprai...</span><span class="es">Sabes que...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Seppi assai!</span><span class="es">¡De sobra lo sé!</span></div>
@@ -2282,12 +2406,12 @@
         <span class="es">(A Orbazzano)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Tiranno!...</span><span class="es">¡Canalla!...</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Morrai.</span><span class="es">¡Morirás!</span></div>
@@ -2296,12 +2420,12 @@
         <span class="es">(A Isaura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Amica!...</span><span class="es">¡Amiga!...</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Fedele</span><span class="es">¡Te sigo siendo fiel!</span></div>
@@ -2318,7 +2442,7 @@
       </div>
       <div class="line-row"><span class="it">S'arresti.</span><span class="es">¡Apresadla!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Venite.</span><span class="es">¡Venid!</span></div>
@@ -2328,7 +2452,7 @@
       </div>
       <div class="line-row"><span class="it">Punirla.</span><span class="es">¡Castigadla!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ferite.</span><span class="es">¡Heridme!</span></div>
@@ -2398,27 +2522,27 @@
     </div>
     <div class="text-col" id="t18">
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Vedesti?</span><span class="es">¿Pudiste verla?</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Vidi.</span><span class="es">Sí, la vi.</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Udisti?</span><span class="es">¿Oíste lo que decía?</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Udii.</span><span class="es">Sí.</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">L'indegna!</span><span class="es">La muy indigna.</span></div>
@@ -2431,7 +2555,7 @@
       <div class="line-row"><span class="it">Sol un tremendo accusatore, il forte</span><span class="es">sólo escucha la tremenda acusación</span></div>
       <div class="line-row"><span class="it">Sostenitor dell'aspra legge.</span><span class="es">que impone la rigurosa ley.</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">E a morte</span><span class="es">¿Serás capaz de</span></div>
@@ -2439,14 +2563,14 @@
       <div class="line-row"><span class="it">È già fissato</span><span class="es">al cadalso?</span></div>
       <div class="line-row"><span class="it">Il suo destin?</span><span class="es">¿Se ha dictado ya sentencia?</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">La condannò il Senato;</span><span class="es">El Senado la ha condenado.</span></div>
       <div class="line-row"><span class="it">Ecco il decreto: il nome</span><span class="es">He aquí el decreto.</span></div>
       <div class="line-row"><span class="it">Sol d'Argirio vi manca.</span><span class="es">Sólo falta la firma de Argirio.</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">E Argirio istesso,</span><span class="es">¡De su padre!...</span></div>
@@ -2470,18 +2594,18 @@
     </div>
     <div class="text-col" id="t19">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Io padre più non sono:</span><span class="es">¡Yo soy su padre!</span></div>
       <div class="line-row"><span class="it">Al suo giusto supplizio io l'abbandono.</span><span class="es">La entregaré a manos del verdugo.</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Tua figlia?... e lo potresti!</span><span class="es">¡A tu hija!... ¿Tendrás valor?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Al colmo è giunta</span><span class="es">Su perfidia</span></div>
@@ -2490,7 +2614,7 @@
       <div class="line-row"><span class="it">Il brando d'Orbazzano.</span><span class="es">la espada protectora de Orbazzano.</span></div>
       <div class="line-row"><span class="it">E perché mai?... Per chi?</span><span class="es">Pero ¿por quién?... ¿por quién?</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Taci: arrossir,</span><span class="es">¡Calla!</span></div>
@@ -2507,7 +2631,7 @@
         <span class="es">(Toma el folio y va a la mesa a firmarlo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Sì: mora.</span><span class="es">¡Sí, que muera!</span></div>
@@ -2521,7 +2645,7 @@
         <span class="es">(Con pasión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">È tua figlia</span><span class="es">¡Es tu hija!</span></div>
@@ -2539,7 +2663,7 @@
     </div>
     <div class="text-col" id="t20">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Oh Dio! Crudel! Qual nome</span><span class="es">¡Oh, Dios mío!...</span></div>
@@ -2565,7 +2689,7 @@
     </div>
     <div class="text-col" id="t21">
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ah! segnar invano io tento</span><span class="es">¡Ah, no puedo firmar su cruel suerte!</span></div>
@@ -2593,7 +2717,7 @@
         <span class="es">(Con resolución)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Sì, virtù trionfi omai:</span><span class="es">¡Sí! ¡Cumpliré con mi deber!</span></div>
@@ -2611,7 +2735,7 @@
       <div class="line-row"><span class="it">Trova ognora in te la patria</span><span class="es">La patria reconocerá en ti</span></div>
       <div class="line-row"><span class="it">Il suo padre, il suo splendor.</span><span class="es">a su verdadero valedor.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ma, la figlia!... Oh Dio!... frattanto...</span><span class="es">Mi hija... ¡oh, Dios!</span></div>
@@ -2643,7 +2767,7 @@
     </div>
     <div class="text-col" id="t22">
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Trionfa, esulta, barbaro!</span><span class="es">¡Goza y disfruta, bárbaro!</span></div>
@@ -2652,7 +2776,7 @@
       <div class="line-row"><span class="it">D'odiarla tu, volesti il tuo furore</span><span class="es">a la inocente víctima.</span></div>
       <div class="line-row"><span class="it">Fin nel padre versar. Va', desti orrore.</span><span class="es">¿Aún tu depravada alma no se ha saciado?</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Orror destino i perfidi suoi pari,</span><span class="es">¡Que el odio eterno recaiga sobre los pérfidos</span></div>
@@ -2668,7 +2792,7 @@
         <span class="es">(Sale)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Esser lo possa per te sol, che a tutti</span><span class="es">¡Ojalá seas tú el que caiga!</span></div>
@@ -2685,7 +2809,7 @@
     </div>
     <div class="text-col" id="t23">
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Tu che i miseri conforti,</span><span class="es">Tú que proteges a los débiles,</span></div>
@@ -2720,7 +2844,7 @@
     </div>
     <div class="text-col" id="t24">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Di mia vita infelice</span><span class="es">Mi desdichada vida llega ya a su fin...</span></div>
@@ -2746,7 +2870,7 @@
     </div>
     <div class="text-col" id="t25">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">No, che il morir non è</span><span class="es">No me importa morir</span></div>
@@ -2781,19 +2905,19 @@
     </div>
     <div class="text-col" id="t26">
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Di già l'ora è trascorsa: il popol freme,</span><span class="es">¡Ya es la hora!</span></div>
       <div class="line-row"><span class="it">La sua vita chiede ad alte grida.</span><span class="es">El pueblo irritado, a gritos pide su víctima...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Eccola: a te, la guida. Andiam... che veggo!...</span><span class="es">¡Aquí estoy!... Adelante.</span></div>
       <div class="line-row"><span class="it">Tu qui, o padre? a che vieni?</span><span class="es">Pero ¡qué veo?... ¿Tú aquí, padre?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ad abbracciarti,</span><span class="es">Desdichada, vengo a darte mi último abrazo</span></div>
@@ -2803,12 +2927,12 @@
       <div class="line-row"><span class="it">Pe' figli rei perdono</span><span class="es">y el cumplimiento de mi deber sagrado.</span></div>
       <div class="line-row"><span class="it">Essa ci strappa.</span><span class="es">Como juez te abandono, como padre te perdono.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ma innocente io sono.</span><span class="es">¡Soy inocente!</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Scellerata! e innocente ancor ti vanti?</span><span class="es">¡Pérfida! ¿Aún osas proclamarte inocente?</span></div>
@@ -2816,7 +2940,7 @@
       <div class="line-row"><span class="it">Che volevi tradir? L'iniquo amore</span><span class="es">¿Y la traición a la patria?</span></div>
       <div class="line-row"><span class="it">Per un vil traditor!</span><span class="es">¿Y ese amor por un traidor?...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Rispetta, indegno,</span><span class="es">Respeta, indigno,</span></div>
@@ -2829,18 +2953,18 @@
         <span class="es">(a los caballeros)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">L'udiste?</span><span class="es">¿La oís?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Oh ddio!</span><span class="es">¡Dios mío!</span></div>
       <div class="line-row"><span class="it">Non v'è più speme?</span><span class="es">¿No habrá esperanza?</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Della rea non avvi</span><span class="es">¡Algún caballero desea</span></div>
@@ -2856,7 +2980,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Nol vedrò più!</span><span class="es">¡Nunca más lo volveré a ver!</span></div>
@@ -2879,7 +3003,7 @@
     </div>
     <div class="text-col" id="t27">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fermate.</span><span class="es">¡Deteneos!...</span></div>
@@ -2903,28 +3027,28 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">È desso! o sogno è il mio!</span><span class="es">¿Qué es esto?... ¿Estoy soñando?</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Quale soccorso!</span><span class="es">¡La defiende!</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E chi sei tu?</span><span class="es">¿Y tú, quién eres?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">L'emulo tuo son io,</span><span class="es">¡Tu rival!</span></div>
       <div class="line-row"><span class="it">Il difensor di questa donna.</span><span class="es">El defensor de esta doncella.</span></div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">E quale</span><span class="es">¿Y cómo te llamas?</span></div>
@@ -2936,7 +3060,7 @@
       <div class="line-row"><span class="it">Il liscio scudo</span><span class="es">¿Qué hazañas llevas</span></div>
       <div class="line-row"><span class="it">Le tue glorie nasconde.</span><span class="es">en tu escudo?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Le saprai,</span><span class="es">Lo sabrás...</span></div>
@@ -2946,7 +3070,7 @@
         <span class="es">(Recogiendo el guante)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Audace! io domerò l'orgoglio insano.</span><span class="es">¡Audaz, domeñaré tu orgullo!...</span></div>
@@ -2966,7 +3090,7 @@
         <span class="es">(A Tancredo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Va': trionfa,</span><span class="es">¡Adelante, triunfa!</span></div>
@@ -2977,7 +3101,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ah! non è vero.</span><span class="es">¡Ah, no es cierto!...</span></div>
@@ -2986,7 +3110,7 @@
         <span class="es">(A los guardias)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Orbazzano</span>
+        <span class="character-name has-tooltip" data-character-id="orbazzano">Orbazzano</span>
         <span class="character-name">Orbazzano</span>
       </div>
       <div class="line-row"><span class="it">Da voi sia custodita. Breve istante</span><span class="es">No la perdáis de vista.</span></div>
@@ -3020,7 +3144,7 @@
     </div>
     <div class="text-col" id="t28">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">M'abbraccia, Argirio.</span><span class="es">¡Abrázame, Argirio!</span></div>
@@ -3029,7 +3153,7 @@
         <span class="es">(Con emoción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Oh! sì! pace, contento</span><span class="es">¡Oh, sí! La paz y la alegría han desaparecido</span></div>
@@ -3044,12 +3168,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Se tu sapessi chi ti stringi al seno!</span><span class="es">Si supieras quien te abraza...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ah, se de' mali miei</span><span class="es">¡Ah! Puesto que mis desdichas</span></div>
@@ -3057,7 +3181,7 @@
       <div class="line-row"><span class="it">Palesa almen chi sei,</span><span class="es">para agradecértelo eternamente</span></div>
       <div class="line-row"><span class="it">Conforta il mio dolor.</span><span class="es">dime, al menos, quien eres.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Nemico il ciel provai</span><span class="es">Desde mi más tierna infancia,</span></div>
@@ -3065,7 +3189,7 @@
       <div class="line-row"><span class="it">Chi sono un dì saprai...</span><span class="es">En su momento sabrás quien soy,</span></div>
       <div class="line-row"><span class="it">Ma non odiarmi allor.</span><span class="es">sólo te pido que no me odies al saberlo.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Odiarti!...</span><span class="es">¿Odiarte?</span></div>
@@ -3074,12 +3198,12 @@
         <span class="es">(Con tristeza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ah! son sì misero!</span><span class="es">¡Ah, soy tan desgraciado!...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">E la mia figlia?...</span><span class="es">¿Por mi hija?...</span></div>
@@ -3088,7 +3212,7 @@
         <span class="es">(Impetuoso)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Oh! perfida!</span><span class="es">¡Oh, la pérfida!</span></div>
@@ -3097,7 +3221,7 @@
         <span class="es">(Con viveza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ma pugnerai per lei?...</span><span class="es">¿Combatirás a su favor?</span></div>
@@ -3106,7 +3230,7 @@
         <span class="es">(Con expresión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Sì. Morte affronterò.</span><span class="es">Sí, por ella afrontaré a la muerte.</span></div>
@@ -3171,7 +3295,7 @@
     </div>
     <div class="text-col" id="t30">
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Ov'è?... dov'è? lasciatemi. L'amica,</span><span class="es">¿Dónde?... ¿Dónde está?... ¡Dejadme!...</span></div>
@@ -3189,31 +3313,31 @@
         <span class="es">(entrando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Isaura! ah! lo vedesti?</span><span class="es">¡Isaura! ¿Te has enterado?</span></div>
       <div class="line-row"><span class="it">Ei, mio campione...</span><span class="es">Él es mi defensor...</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Ei che infedel ti crede?</span><span class="es">¿Aún te cree infiel?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ingrato! ei conosca</span><span class="es">¡El muy ingrato!</span></div>
       <div class="line-row"><span class="it">D'Amenaide il cor, ei non dovea</span><span class="es">Conociendo el corazón de Amenaida,</span></div>
       <div class="line-row"><span class="it">Di me temer, no, mai.</span><span class="es">no debería dudar.</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Foglio fatale!</span><span class="es">¡La carta te ha condenado!</span></div>
       <div class="line-row"><span class="it">Ma tuo guerrier ei pugna intanto!</span><span class="es">Pero él peleará para defenderte...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">E quale fia il destin di tal pugna!</span><span class="es">¿Cuál será el resultado del combate?</span></div>
@@ -3232,7 +3356,7 @@
         <span class="es">(Entra Argirio, luego el coro)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Il tuo campion guidai</span><span class="es">Conduje a tu campeón hasta la liza donde</span></div>
@@ -3257,7 +3381,7 @@
     </div>
     <div class="text-col" id="t31">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Gran Dio!</span><span class="es">¡Dios mío!</span></div>
@@ -3279,7 +3403,7 @@
     </div>
     <div class="text-col" id="t32">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Giusto Dio che umile adoro,</span><span class="es">Justo Dios a quien fervientemente adoro.</span></div>
@@ -3308,7 +3432,7 @@
         <span class="es">(Muy agitada)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! chi è l'ucciso?...</span><span class="es">¡Ah! ¿Quién ha muerto?...</span></div>
@@ -3322,7 +3446,7 @@
       </div>
       <div class="line-row"><span class="it">Viva il prode vincitore!...</span><span class="es">¡Viva el valiente vencedor!...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Che sperar, temer degg'io?...</span><span class="es">¿Debo tener esperanza?</span></div>
@@ -3341,7 +3465,7 @@
         <span class="es">(Con ansiedad)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Il mio campione!...</span><span class="es">¿Ha vencido mi campeón?</span></div>
@@ -3351,7 +3475,7 @@
       </div>
       <div class="line-row"><span class="it">Trionfò.</span><span class="es">¡Sí, triunfó!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Orbazzano?...</span><span class="es">¿Y Orbazzano?</span></div>
@@ -3363,7 +3487,7 @@
       <div class="line-row"><span class="it">Dell'eroe che per te ha vinto</span><span class="es">Ven a coronar la gloria del valeroso</span></div>
       <div class="line-row"><span class="it">Vien la gloria a coronar.</span><span class="es">que ha luchado a tu favor.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Egli?... oh padre!... amici!... Oh Dio!...</span><span class="es">¿Él?... ¡Oh, padre!... ¡Amigos!... ¡Oh, Dios mío!</span></div>
@@ -3381,7 +3505,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! d'amore in tal momento</span><span class="es">Sus latidos son únicamente</span></div>
@@ -3395,7 +3519,7 @@
         <span>Escena Undécima</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Quante vicende omai</span><span class="es">La Fortuna es tan caprichosa,</span></div>
@@ -3429,7 +3553,7 @@
       <div class="line-row"><span class="it">L'eroe si celebri</span><span class="es">¡Viva el héroe</span></div>
       <div class="line-row"><span class="it">Di nostra età.</span><span class="es">de nuestra edad!</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Dolce è di gloria</span><span class="es">El valor es recompensado</span></div>
@@ -3447,7 +3571,7 @@
       <div class="line-row"><span class="it">Al cor ti scenda</span><span class="es">Que tu corazón rebose</span></div>
       <div class="line-row"><span class="it">Felicità.</span><span class="es">de felicidad.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Le insegne mie roccogli,</span><span class="es">Roggiero, toma mis insignias</span></div>
@@ -3464,18 +3588,18 @@
       <div class="line-row"><span class="it">Implacabile ognor mi guida altrove,</span><span class="es">destino me obliga a alejarme de estos lares.</span></div>
       <div class="line-row"><span class="it">Di qua mi scaccia... andiam, Roggier.</span><span class="es">Vamos, Roggiero.</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Ma dove?...</span><span class="es">¿A dónde?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Lunge a perir da questa</span><span class="es">A morir lejos</span></div>
       <div class="line-row"><span class="it">Infausta terra.</span><span class="es">de esta infausta tierra.</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Almen...</span><span class="es">Por lo menos...</span></div>
@@ -3484,7 +3608,7 @@
         <span class="es">(Marchando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Vieni.</span><span class="es">Vamos.</span></div>
@@ -3507,7 +3631,7 @@
     </div>
     <div class="text-col" id="t34">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">T'arresta.</span><span class="es">¡Detente!</span></div>
@@ -3516,7 +3640,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fier incontro!</span><span class="es">¡Funesto encuentro!</span></div>
@@ -3526,7 +3650,7 @@
       </div>
       <div class="line-row"><span class="it">E che vuoi?</span><span class="es">¿Qué deseas?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Tu a me la vita</span><span class="es">Generosamente</span></div>
@@ -3537,20 +3661,20 @@
         <span class="es">(Con seriedad)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Salva ora sei. Ti basti.</span><span class="es">Estás viva... que eso te sea suficiente.</span></div>
       <div class="line-row"><span class="it">Vivi dunque felice... se lo puoi,</span><span class="es">Vive fieliz, si puedes, con tus remordimientos.</span></div>
       <div class="line-row"><span class="it">Infra i rimorsi tuoi. Vanne.</span><span class="es">Vete.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Crudele,</span><span class="es">¡Cruel!</span></div>
       <div class="line-row"><span class="it">Tu mi credi infedele?...</span><span class="es">¿Aún me crees infiel?...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Io?... ti difesi.</span><span class="es">¿Yo?... Te defendí.</span></div>
@@ -3559,7 +3683,7 @@
         <span class="es">(Con arrebato)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah no: credi, o mio Tanc...</span><span class="es">¡Ah, no me crees, Tancr...!</span></div>
@@ -3568,7 +3692,7 @@
         <span class="es">(La mira fijamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fermati. In campo</span><span class="es">¡Cállate!</span></div>
@@ -3585,7 +3709,7 @@
     </div>
     <div class="text-col" id="t35">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Lasciami: non t'ascolto.</span><span class="es">Déjame, no quiero oírte.</span></div>
@@ -3593,7 +3717,7 @@
       <div class="line-row"><span class="it">Que' sguardi lusinghieri</span><span class="es">con tu lánguida mirada.</span></div>
       <div class="line-row"><span class="it">Serba al novello amor.</span><span class="es">¡Resérvala para tu otro amor!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Odimi e poi m'uccidi.</span><span class="es">Escúchame y después que yo muera.</span></div>
@@ -3610,7 +3734,7 @@
     </div>
     <div class="text-col" id="t36">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ah! come mai quell'anima</span><span class="es">¡Ah! ¿Por qué su alma</span></div>
@@ -3618,7 +3742,7 @@
       <div class="line-row"><span class="it">Per chi sospiri in petto,</span><span class="es">¿Por qué en mi pecho</span></div>
       <div class="line-row"><span class="it">O debole mio cor?</span><span class="es">vuelve a penar el corazón?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! che fedel quest'anima!</span><span class="es">¡Ah! Mi alma te ha sido fiel</span></div>
@@ -3639,7 +3763,7 @@
     </div>
     <div class="text-col" id="t37">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Dunque?</span><span class="es">¿Y entonces?</span></div>
@@ -3648,7 +3772,7 @@
         <span class="es">(Con resolución)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Addio.</span><span class="es">Adiós.</span></div>
@@ -3657,7 +3781,7 @@
         <span class="es">(Como antes)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Lasciar mi puoi?</span><span class="es">¿Me abandonas?</span></div>
@@ -3666,7 +3790,7 @@
         <span class="es">(Con amargura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Che più vuoi?...</span><span class="es">¿Qué otra cosa deseas?...</span></div>
@@ -3675,7 +3799,7 @@
         <span class="es">(Como pasión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Seguirti.</span><span class="es">¡Seguirte!</span></div>
@@ -3684,7 +3808,7 @@
         <span class="es">(Con pasión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Trema.</span><span class="es">Tiembla.</span></div>
@@ -3693,7 +3817,7 @@
         <span class="es">(Le ofrece el pecho)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">E qui sfoga il tuo furor.</span><span class="es">¡Aplaca tu furor!</span></div>
@@ -3728,7 +3852,7 @@
     </div>
     <div class="text-col" id="t38">
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Infelice Tancredi! ah no! non fia</span><span class="es">¡Pobre Tancredo!</span></div>
@@ -3736,12 +3860,12 @@
       <div class="line-row"><span class="it">Sì desolato, in preda del suo fiero</span><span class="es">no lo abandonaré.</span></div>
       <div class="line-row"><span class="it">Troppo giusto dolor.</span><span class="es">Su dolor es demasiado grande.</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Dove, Roggiero?</span><span class="es">¿A dónde te diriges, Roggiero?</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Dove il dovere e l'amistà mi guida.</span><span class="es">Donde me guía el deber y la amistad.</span></div>
@@ -3750,7 +3874,7 @@
       <div class="line-row"><span class="it">Morrà per lei, per lei che generoso</span><span class="es">¡él, que arriesgó su vida</span></div>
       <div class="line-row"><span class="it">Pur tolse a morte.</span><span class="es">por salvarla!</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Non lasciarlo in questi</span><span class="es">Haces bien en acompañarle</span></div>
@@ -3760,12 +3884,12 @@
       <div class="line-row"><span class="it">A parte sono del tremendo arcano</span><span class="es">que a todos os hizo dudar</span></div>
       <div class="line-row"><span class="it">Che tutti avvolse nel fatal sospetto.</span><span class="es">de su honestidad.</span></div>
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Cielo, sarebbe ver?</span><span class="es">¡Cielos!... ¿Es eso cierto?</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">A me nel petto</span><span class="es">Un juramento</span></div>
@@ -3793,7 +3917,7 @@
     </div>
     <div class="text-col" id="t39">
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">S'avverassero pure i detti suoi!</span><span class="es">¡Ojalá y sus palabras sean ciertas!</span></div>
@@ -3811,7 +3935,7 @@
     </div>
     <div class="text-col" id="t40">
       <div class="character-row">
-        <span class="character-name">Roggiero</span>
+        <span class="character-name has-tooltip" data-character-id="roggiero">Roggiero</span>
         <span class="character-name">Roggiero</span>
       </div>
       <div class="line-row"><span class="it">Torni alfin ridente e bella</span><span class="es">Que la sonrisa regrese</span></div>
@@ -3840,7 +3964,7 @@
     </div>
     <div class="text-col" id="t41">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Dove son io! Fra quali orror mi guida</span><span class="es"></span></div>
@@ -3861,7 +3985,7 @@
     </div>
     <div class="text-col" id="t42">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ah! che scordar non so</span><span class="es"></span></div>
@@ -3905,7 +4029,7 @@
         <span class="es">¿Y estos sarracenos? Aquella es la tienda de Solimán... ¡Mi rival! Mi patria está en gran peligro ¡y yo la abandono! Puesto que elegí la muerte, que mi sacrificio sea útil a mi patria.</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Fra Saraceni io dunque son? Le tende</span><span class="es"></span></div>
@@ -3928,7 +4052,7 @@
         <span class="es">¡Ah, allí está!</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! eccolo.</span><span class="es"></span></div>
@@ -3942,7 +4066,7 @@
         <span class="es">(Con asombro)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Tancredi!...</span><span class="es">¿Quién me llama?...</span></div>
@@ -3952,7 +4076,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Il nome mio!</span><span class="es"></span></div>
@@ -3972,7 +4096,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ingiusto!</span><span class="es">Ya es hora, Tancredo,</span></div>
@@ -3983,7 +4107,7 @@
         <span class="es">(Emocionado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Omai,</span><span class="es">¡Ah, no!</span></div>
@@ -3994,28 +4118,28 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ah! no: quel foglio</span><span class="es">Aquella carta, ingrato, iba dirigida a ti.</span></div>
       <div class="line-row"><span class="it">Troppo avvera la colpa.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">A te, ingrato, quel foglio a te fu scritto.</span><span class="es">¿A mí?... ¿Por qué no lo dijiste?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">A me? Né pria 'l dicesti!</span><span class="es">No quería delatarte, eras un proscrito.</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Eri proscritto.</span><span class="es">¿Acaso no amas a Solimán?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">E tu non ami Solamir?</span><span class="es">¡Lo aborrezco!</span></div>
@@ -4024,7 +4148,7 @@
         <span class="es">(Para sí, emocionado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">L'aborro.</span><span class="es">¡Cielos!... ¿Qué pensar?</span></div>
@@ -4033,7 +4157,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ciel! che pensar?...</span><span class="es"></span></div>
@@ -4043,7 +4167,7 @@
       </div>
       <div class="line-row"><span class="it">E tu, padre!...</span><span class="es">Yo la creo.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">A lei credi.</span><span class="es">Pero si...</span></div>
@@ -4052,7 +4176,7 @@
         <span class="es">(Con pasión)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ma poi... se...</span><span class="es">Tancredo mío:</span></div>
@@ -4063,7 +4187,7 @@
         <span class="es">(Muy agitado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Mio Tancredi;</span><span class="es">¡Oh, Dios mío!</span></div>
@@ -4074,7 +4198,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Oddio!...</span><span class="es">Cede...</span></div>
@@ -4083,7 +4207,7 @@
         <span class="es">(Arrojándose a los pies de Tancredo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Cedi...</span><span class="es">A tus pies...</span></div>
@@ -4092,7 +4216,7 @@
         <span class="es">(Conmovido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">A' tuoi piè...</span><span class="es">¿Qué haces?...</span></div>
@@ -4101,7 +4225,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Che fai!...</span><span class="es"></span></div>
@@ -4166,7 +4290,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Or che dici?</span><span class="es"></span></div>
@@ -4185,7 +4309,7 @@
       <div class="line-row"><span class="it">Vieni al soglio.</span><span class="es">¡Qué pesar!</span></div>
       <div class="line-row"><span class="it"></span><span class="es">Padre, ¿qué decides?...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Quale orgoglio!</span><span class="es">No le hagáis esperar... ¡Decidiros!</span></div>
@@ -4205,7 +4329,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">No: capaci non sarete,</span><span class="es">Si no aceptáis, temblad,</span></div>
@@ -4233,7 +4357,7 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">È questa la fede</span><span class="es">¡A la lucha!</span></div>
@@ -4255,7 +4379,7 @@
       <div class="line-row"><span class="it"></span><span class="es">pero si cae el audaz rival</span></div>
       <div class="line-row"><span class="it"></span><span class="es">gloria eterna alcanzaremos.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Poi dell'ombre nella pace,</span><span class="es"></span></div>
@@ -4275,13 +4399,13 @@
         <span class="es">¡Ah, padre, Isaura! ¡Lleno de furor va en busca de la muerte!</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! ch'ei si perde! padre, Isaura, ei corre</span><span class="es">¡Día nefasto!</span></div>
       <div class="line-row"><span class="it">Nel suo furor a ricercar la morte.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Infausto dì!</span><span class="es"></span></div>
@@ -4304,14 +4428,14 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Anch'io...</span><span class="es">¡Tú, permanece aquí!</span></div>
       <div class="line-row"><span class="it"></span><span class="es">Quiera el cielo dar a mi brazo</span></div>
       <div class="line-row"><span class="it"></span><span class="es">la fuerza y el empuje de mi juventud.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Rimanti: al braccio mio</span><span class="es"></span></div>
@@ -4326,14 +4450,14 @@
         <span>¡Cuánto sufrir en un solo día! ¿Oyes?... Gritos... Estrépito de armas... ¿Escuchas el tremendo fragor de la batalla?</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Quai tormenti in un sol giorno! ah! senti.</span><span class="es">¡Oh, cuántos sufrimientos!</span></div>
       <div class="line-row"><span class="it">Ferve la pugna: darmi, di guerrieri</span><span class="es">¡Qué horror todo lo que nos rodea!</span></div>
       <div class="line-row"><span class="it">Odi il fragor, le grida...</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Oh! quale orrore</span><span class="es">¡Cómo sufre mi corazón!</span></div>
@@ -4342,7 +4466,7 @@
       <div class="line-row"><span class="it"></span><span class="es">El padre... el amado... sangrantes... agonizantes...</span></div>
       <div class="line-row"><span class="it"></span><span class="es">¡Oh Isaura, no resisto más!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Come trema il core!</span><span class="es">Escucha...</span></div>
@@ -4351,25 +4475,25 @@
       <div class="line-row"><span class="it">Il genitor... l'amante... esangue... oppresso...</span><span class="es"></span></div>
       <div class="line-row"><span class="it">Oh Isaura! Io più, no, non resisto.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Ascolta.</span><span class="es">¡Ah, si Dios quisiera!....</span></div>
       <div class="line-row"><span class="it">Cessò il tumulto.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! forse!</span><span class="es">Por este lado parece que</span></div>
       <div class="line-row"><span class="it"></span><span class="es">llegan unos guerreros...</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">A questa volta</span><span class="es">¡Dios mío!</span></div>
       <div class="line-row"><span class="it">Stuol d'armati</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Gran Dio!...</span><span class="es"></span></div>
@@ -4383,32 +4507,32 @@
         <span class="es">¡Hija!...</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Figlia...</span><span class="es">¡Oh, padre!...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh padre!...</span><span class="es">¡Ídolo mío!...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Idol mio!...</span><span class="es">¡Tú!... ¿Eres tú mi Tancredo?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Tu! mio Tancredi?</span><span class="es">Llego arrepentido, amante y vencedor.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Pentito, amante e vincitor mi vedi.</span><span class="es">¡Ah, así pues!...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah, dunque!...</span><span class="es">Cuando Solimán cayó abatido por mi mano,</span></div>
@@ -4420,7 +4544,7 @@
         <span class="es">(Muy tierna)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Solamiro</span><span class="es">¿Me crees ahora fiel?</span></div>
@@ -4432,7 +4556,7 @@
         <span class="es">(Afectuoso)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Fedel mi credi?</span><span class="es">¿Me perdonarás?</span></div>
@@ -4441,14 +4565,14 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Mi perdoni!</span><span class="es">¡Oh, hijos míos,</span></div>
       <div class="line-row"><span class="it"></span><span class="es">la patria está libre de peligro!</span></div>
       <div class="line-row"><span class="it"></span><span class="es">¡Vayamos a Siracusa!</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Oh figli!</span><span class="es"></span></div>
@@ -4469,13 +4593,13 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Sul tuo cor regnar voglio!</span><span class="es">¡El amor y la felicidad triunfan!</span></div>
       <div class="line-row"><span class="it">Questa da te desio sola mercede.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Trionfano così l'amor, la fede!...</span><span class="es"></span></div>
@@ -4487,7 +4611,7 @@
       <div class="line-row"><span class="it">No, non vi posso esprimere</span><span class="es">No, que no tenga fin,</span></div>
       <div class="line-row"><span class="it">La mia felicità.</span><span class="es">mi dulce felicidad.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Ah, del piacer quest'anima</span><span class="es">Mi corazón no puede creer</span></div>
@@ -4497,7 +4621,7 @@
       <div class="line-row"><span class="it">No, non vi posso esprimere</span><span class="es">No, que no tenga fin,</span></div>
       <div class="line-row"><span class="it">La mia felicità.</span><span class="es">mi dulce felicidad.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Sì grande è il mio contento,</span><span class="es">Sí, que todo respire</span></div>
@@ -4521,7 +4645,7 @@
         <span class="es">¿Dónde estoy? ¿Hacia qué horror me ha traído el amor? Los violentos torrentes, el furor del viento y la naturaleza salvaje, acrecientan mi pesar, acrecientan mi aflicción, por su amor perdido.</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Dove son! Fra quali orror mi guida</span><span class="es"></span></div>
@@ -4578,32 +4702,32 @@
     </div>
     <div class="text-col" id="t44">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ecco amici Tancredi.</span><span class="es">¡Tancredo!...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Tancredi!...</span><span class="es">¿Quién me llama?...</span></div>
       <div class="line-row"><span class="it"></span><span class="es">¿Eres tú?... ¡Pérfida!</span></div>
       <div class="line-row"><span class="it"></span><span class="es">¿Acaso vas a la tienda de Solimán?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Il nome mio...</span><span class="es">¡Oh, Tancredo mío!</span></div>
       <div class="line-row"><span class="it">Tu qui? Perfida! E vai</span><span class="es">Ya es hora que salgas de tu error...</span></div>
       <div class="line-row"><span class="it">Di Solamiro al campo?</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh! mio Tancredi</span><span class="es">¡Calla! Tus lágrimas sólo me inspiran horror.</span></div>
       <div class="line-row"><span class="it">Esci d'errore omai...</span><span class="es">¡Sí, lucharé por la patria!</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Taci! è vano quel pianto, orror mi fai.</span><span class="es"></span></div>
@@ -4632,7 +4756,7 @@
     </div>
     <div class="text-col" id="t45">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Perché turbar la calma</span><span class="es">¡Vamos al combate!</span></div>
@@ -4649,7 +4773,7 @@
     </div>
     <div class="text-col" id="t46">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Traditrice io t'abbandono</span><span class="es"></span></div>
@@ -4664,7 +4788,7 @@
       </div>
       <div class="line-row"><span class="it">Vieni al campo.</span><span class="es">¿Dónde estoy?</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ove son io!</span><span class="es">Que el amor a la gloria te inflame el corazón.</span></div>
@@ -4678,7 +4802,7 @@
       <div class="line-row"><span class="it"></span><span class="es">no puede comprender</span></div>
       <div class="line-row"><span class="it"></span><span class="es">el dolor que me embarga.</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Non sa comprendere</span><span class="es">Que el amor a la gloria te inflame el corazón.</span></div>
@@ -4692,7 +4816,7 @@
       <div class="line-row"><span class="it">Gloria, amore il cor t'accenda.</span><span class="es">¡Sí, defendamos a la patria!</span></div>
       <div class="line-row"><span class="it">Solamir vinto alfin cadrà.</span><span class="es">¡Yo os conduciré a la victoria!</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Sì la patria si difenda,</span><span class="es">¡Triunfaremos en el combate!</span></div>
@@ -4712,13 +4836,13 @@
       </div>
       <div class="musical-number"></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! ch'ei si perde! Padre, Isaura, ei corre</span><span class="es">¡Infausto día!</span></div>
       <div class="line-row"><span class="it">Nel suo furor a ricercar la morte.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Infausto dì.</span><span class="es"></span></div>
@@ -4741,14 +4865,14 @@
         <span class="es"></span>
       </div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Anch'io...</span><span class="es">¡Quédate!</span></div>
       <div class="line-row"><span class="it"></span><span class="es">Que el cielo infunda a mi brazo</span></div>
       <div class="line-row"><span class="it"></span><span class="es">la fuerza juvenil de otro tiempo.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Rimanti: al braccio</span><span class="es"></span></div>
@@ -4773,14 +4897,14 @@
     </div>
     <div class="text-col" id="t47">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Quanti tormenti in un sol giorno! ah! senti.</span><span class="es">¡Oh, cuántos sufrimientos!</span></div>
       <div class="line-row"><span class="it">Ferve la pugna: darmi, di guerrieri</span><span class="es">¡Qué horror todo lo que nos rodea!</span></div>
       <div class="line-row"><span class="it">Odi il fragor, le grida...</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Oh! quale orrore</span><span class="es">¡Cómo sufre mi corazón!</span></div>
@@ -4789,7 +4913,7 @@
       <div class="line-row"><span class="it"></span><span class="es">El padre... el amado... sangrantes... agonizantes...</span></div>
       <div class="line-row"><span class="it"></span><span class="es">¡Oh Isaura, no resisto más!</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Come trema il core!</span><span class="es">Escucha...</span></div>
@@ -4798,19 +4922,19 @@
       <div class="line-row"><span class="it">Il genitor... l'amante... esangue... oppresso...</span><span class="es"></span></div>
       <div class="line-row"><span class="it">Oh Isaura! Io più, no, non resisto.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">Ascolta.</span><span class="es">¡Ah, si Dios quisiera!...</span></div>
       <div class="line-row"><span class="it">Cessò il tumulto.</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Ah! forse!</span><span class="es">Por este lado parece que</span></div>
       <div class="line-row"><span class="it"></span><span class="es">llegan unos guerreros...</span></div>
       <div class="character-row">
-        <span class="character-name">Isaura</span>
+        <span class="character-name has-tooltip" data-character-id="isaura">Isaura</span>
         <span class="character-name">Isaura</span>
       </div>
       <div class="line-row"><span class="it">A questa volta</span><span class="es"></span></div>
@@ -4833,18 +4957,18 @@
     </div>
     <div class="text-col" id="t48">
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Gran Dio!...</span><span class="es">¡Hija!...</span></div>
       <div class="line-row"><span class="it">Qual son, quai grida!</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Figlia...</span><span class="es">¿Y Tancredo?... ¿Dónde está mi Tancredo?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">E Tancredi? Il mio Tancredi?...</span><span class="es">¡Ha vencido!</span></div>
@@ -4852,7 +4976,7 @@
       <div class="line-row"><span class="it"></span><span class="es">Pero la victoria la alcanzó</span></div>
       <div class="line-row"><span class="it"></span><span class="es">a costa de su propia sangre.</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Piena</span><span class="es">¿Ha muerto?</span></div>
@@ -4860,7 +4984,7 @@
       <div class="line-row"><span class="it">Ma funesta vittoria... ei la sua patria</span><span class="es"></span></div>
       <div class="line-row"><span class="it">Salvò... col proprio sangue...</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">È morto?</span><span class="es">Apenas podía mantenerse en pie</span></div>
@@ -4868,7 +4992,7 @@
       <div class="line-row"><span class="it"></span><span class="es">En los estertores de la muerte</span></div>
       <div class="line-row"><span class="it"></span><span class="es">no cesaba de repetir tu nombre...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Appena</span><span class="es">¡Oh, Tancredo mío!</span></div>
@@ -4876,7 +5000,7 @@
       <div class="line-row"><span class="it">Nell'angoscie di morte il nome tuo</span><span class="es"></span></div>
       <div class="line-row"><span class="it">Sospirando ripete...</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Oh! mio Tancredi!</span><span class="es">El vencedor,</span></div>
@@ -4905,7 +5029,7 @@
       <div class="line-row"><span class="it"></span><span class="es">¿Me niegas una última mirada?</span></div>
       <div class="line-row"><span class="it"></span><span class="es">¿Me crees aún culpable?</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Barbari! È vano ogni rimorso... oh Dio,</span><span class="es">¡Me has traicionado!...</span></div>
@@ -4917,12 +5041,12 @@
       <div class="line-row"><span class="it">Dunque l'ultimo sguardo or su me volgi?</span><span class="es"></span></div>
       <div class="line-row"><span class="it">M'odi ancor? Ra mi credi?</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Ah! M'hai tradito!</span><span class="es">¿Yo?...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Io!...</span><span class="es">¡Desventurados!</span></div>
@@ -4930,7 +5054,7 @@
       <div class="line-row"><span class="it"></span><span class="es">El Senado votó una pena injusta...</span></div>
       <div class="line-row"><span class="it"></span><span class="es">La carta que ella escribió iba dirigida a ti...</span></div>
       <div class="character-row">
-        <span class="character-name">Argirio</span>
+        <span class="character-name has-tooltip" data-character-id="argirio">Argirio</span>
         <span class="character-name">Argirio</span>
       </div>
       <div class="line-row"><span class="it">Sventurata figlia! essa t'amava,</span><span class="es">¿Es cierto eso?</span></div>
@@ -4938,27 +5062,27 @@
       <div class="line-row"><span class="it">Fur le leggi, il Senato... a te fu scritto</span><span class="es"></span></div>
       <div class="line-row"><span class="it">Quel foglio, a te...</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">M'inganno! Amenaide...</span><span class="es">¡Que muera mil veces</span></div>
       <div class="line-row"><span class="it">Ed ami il tuo Tancredi?</span><span class="es">si no te amo!</span></div>
       <div class="line-row"><span class="it"></span><span class="es">Piensa que si fuera culpable...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Io mille morti</span><span class="es">¡Me amas!</span></div>
       <div class="line-row"><span class="it">Avrei meritato in non amarti; pensa</span><span class="es">Ahora la muerte me es más penosa...</span></div>
       <div class="line-row"><span class="it">Se rea...</span><span class="es"></span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Tu m'ami? A questi detti io sento</span><span class="es">¡Dios mío!</span></div>
       <div class="line-row"><span class="it">Che m'è grave il morir.</span><span class="es">Mi fidelidad...</span></div>
       <div class="character-row">
-        <span class="character-name">Amenaide</span>
+        <span class="character-name has-tooltip" data-character-id="amenaide">Amenaide</span>
         <span class="character-name">Amenaide</span>
       </div>
       <div class="line-row"><span class="it">Dunque, gran Dio,</span><span class="es">Tus lágrimas</span></div>
@@ -4975,7 +5099,7 @@
       <div class="line-row"><span class="it"></span><span class="es">Todo lo que más anhelaba...</span></div>
       <div class="line-row"><span class="it"></span><span class="es">se ha cumplido...</span></div>
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Quel pianto</span><span class="es"></span></div>
@@ -4990,7 +5114,7 @@
     </div>
     <div class="text-col" id="t50">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Oh Dio... lasciarti io deggio,</span><span class="es"></span></div>
@@ -5015,7 +5139,7 @@
     </div>
     <div class="text-col" id="t51">
       <div class="character-row">
-        <span class="character-name">Tancredi</span>
+        <span class="character-name has-tooltip" data-character-id="tancredi">Tancredi</span>
         <span class="character-name">Tancredi</span>
       </div>
       <div class="line-row"><span class="it">Amenaide... serbami...</span><span class="es"></span></div>
@@ -5030,13 +5154,30 @@
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
-      <div class="drawer-header-left">
-        <span class="drawer-header-opera">Tancredi — Gioachino Rossini</span>
-        <span class="drawer-header-sub" id="drawerRecordingLabel">Weikert / Horne</span>
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()">Close</button>
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
     </div>
     <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -5112,11 +5253,26 @@
     "Act II": "t18"
   };
 
+  const CHARACTERS = [
+    { id: "tancredi", name: "Tancredi", voice: "Mezzo-soprano", description: "Noble Siracusano" },
+    { id: "amenaide", name: "Amenaide", voice: "Soprano", description: "Enamorada de Tancredo" },
+    { id: "argirio", name: "Argirio", voice: "Tenor", description: "Padre de Amenaida" },
+    { id: "orbazzano", name: "Orbazzano", voice: "Baritone", description: "Noble siracusano" },
+    { id: "isaura", name: "Isaura", voice: "Mezzo-soprano", description: "Dama de Amenaida" },
+    { id: "roggiero", name: "Roggiero", voice: "Mezzo-soprano", description: "Amigo de Tancredo" }
+  ];
+
+  const CAST = {
+    weikert_horne: { "tancredi": "Marilyn Horne", "amenaide": "Lella Cuberli", "argirio": "Ernesto Palacio", "orbazzano": "Nicola Zaccaria", "isaura": "Bernadette Manca Di Nissa", "roggiero": "Patricia Schuman" }
+  };
+
   let activeRecording = "weikert_horne";
   let currentActiveId = "t1";
   let observer = null;
 
   function openDrawer() {
+    closeCast();
+    buildDrawer();
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -5130,6 +5286,23 @@
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     updateActive(id);
   }
+
+  function openCast() {
+    closeDrawer();
+    buildCast();
+    document.getElementById('castOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCast() {
+    document.getElementById('castOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeDrawer();
+    closeCast();
+  });
 
   function toggleSwitcher(event) {
     event.stopPropagation();
@@ -5178,8 +5351,39 @@
     }
 
     body.innerHTML = html;
-    const lbl = document.getElementById('drawerRecordingLabel');
-    if (lbl) lbl.textContent = rec.short;
+  }
+
+  function buildCast() {
+    const cast = CAST[activeRecording];
+    const tbody = document.getElementById('castTableBody');
+    tbody.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      return `<tr>
+        <td>
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+          <div class="cast-description">${ch.description}</div>
+        </td>
+        <td>
+          ${singer
+            ? `<div class="cast-singer">${singer}</div>`
+            : `<div class="cast-singer empty">—</div>`}
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function applyTooltips() {
+    const cast = CAST[activeRecording];
+    document.querySelectorAll('.character-name.has-tooltip').forEach(el => {
+      const id = el.dataset.characterId;
+      const ch = CHARACTERS.find(c => c.id === id);
+      if (!ch) return;
+      const singer = cast[id];
+      el.setAttribute('data-tooltip',
+        singer ? `${ch.voice}\u2002·\u2002${singer}` : ch.voice
+      );
+    });
   }
 
   function updateTrackTags() {
@@ -5221,6 +5425,10 @@
     if (dd) dd.classList.remove('open');
     scrollToCurrentAct();
     updateActive(currentActiveId);
+    applyTooltips();
+    if (document.getElementById('castOverlay').classList.contains('open')) {
+      buildCast();
+    }
   }
 
   function updateActive(activeId) {
@@ -5229,7 +5437,7 @@
     const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
     if (!t) return;
     const trackLabel = document.getElementById('trackLabel');
-    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
     const trackTitle = document.getElementById('trackTitle');
     if (trackTitle) trackTitle.textContent = t.title;
     const actLabel = document.getElementById('actLabel');
@@ -5256,4 +5464,5 @@
   buildDrawer();
   rewireObserver();
   updateActive("t1");
+  applyTooltips();
 </script>

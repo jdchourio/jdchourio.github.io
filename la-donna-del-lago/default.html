@@ -38,24 +38,22 @@
   @media (max-width: 580px) {
     .context-bar {
       height: auto;
-      display: grid;
-      grid-template-columns: 1fr;
-      align-items: start;
-      padding: 0.5rem 1rem 0.5rem calc(var(--col-left) + 1rem);
-      gap: 0.35rem;
+      min-height: var(--bar-h);
+      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
-    .context-left,
-    .context-right {
-      display: flex;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding: 0;
-      margin: 0;
-      gap: 0.75rem;
+    .context-left {
+      flex: 1 1 100%;
+      gap: 0.5rem;
     }
 
-    #actLabel { font-size: 11px !important; line-height: 1.2; }
+    .context-track-title {
+      width: auto !important;
+      flex: 1;
+      min-width: 0;
+    }
 
     .recording-switcher {
       font-size: 11px !important;
@@ -63,19 +61,29 @@
       padding: 0;
       background: none;
     }
+
+    #actLabel { font-size: 11px !important; }
   }
 
   .context-left {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
     font-family: var(--sans);
     font-size: 12px;
     color: var(--text-dim);
     letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 4px 6px;
+    margin: -4px -6px;
+    transition: background 0.15s;
   }
+  .context-left:hover { background: var(--bg2); }
+  .context-left:active { background: var(--gold-light); }
 
   .context-sep { opacity: 0.3; }
+  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
 
   .context-track {
     font-family: var(--sans);
@@ -87,14 +95,14 @@
     border: 1px solid var(--gold-border);
     border-radius: 3px;
     padding: 2px 8px;
-    min-width: 76px;
-    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .context-track-title {
     font-size: 11px;
     color: var(--text-dim);
-    width: 200px;
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -102,8 +110,6 @@
   }
 
   .context-right { display: flex; align-items: center; gap: 10px; }
-
-  /* Recording switcher */
   .recording-switcher-wrap { position: relative; }
 
   .recording-switcher {
@@ -154,28 +160,6 @@
     font-weight: 500;
   }
 
-  .index-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .index-btn:hover { background: var(--bg2); }
-
-  .index-icon { width: 13px; height: 10px; display: flex; flex-direction: column; justify-content: space-between; }
-  .index-icon span { display: block; height: 1.5px; background: currentColor; border-radius: 1px; }
-  .index-icon span:nth-child(2) { width: 65%; }
 
   .libretto-body {
     display: grid;
@@ -336,10 +320,10 @@
 
   .drawer {
     position: absolute;
-    top: 0; right: 0; bottom: 0;
+    top: 0; left: 0; bottom: 0;
     width: 340px;
     background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
+    border-right: 1.5px solid var(--color-border-primary);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -356,9 +340,7 @@
     background: var(--color-background-secondary, #f5ede0);
   }
 
-  .drawer-header-left { display: flex; flex-direction: column; gap: 1px; }
-
-  .drawer-header-opera {
+  .drawer-header-title {
     font-family: var(--sans);
     font-size: 12px;
     font-weight: 500;
@@ -366,27 +348,22 @@
     letter-spacing: 0.04em;
   }
 
-  .drawer-header-sub {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
+  /* ── Shared close button (used in both drawers) ── */
   .drawer-close {
     background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
+    border: none;
     cursor: pointer;
-    font-size: 16px;
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 300;
     color: var(--text-dim);
     line-height: 1;
-    padding: 4px 8px;
-    font-family: var(--sans);
+    padding: 4px 6px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    transition: color 0.15s;
   }
-
-  .drawer-close:hover { background: var(--bg2); color: var(--text-main); }
+  .drawer-close:hover { color: #c0392b; background: none; }
 
   .drawer-body { overflow-y: auto; flex: 1; }
 
@@ -444,16 +421,166 @@
     color: var(--text-dim);
     letter-spacing: 0.04em;
   }
+
+  /* ── Cast button ── */
+  .cast-btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+  .cast-btn:hover { background: var(--bg2); }
+
+  /* ── Cast drawer (mirrors index drawer) ── */
+  .cast-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 250;
+  }
+  .cast-overlay.open { display: block; }
+
+  .cast-drawer {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-left: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .cast-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .cast-drawer-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  .cast-drawer-body { overflow-y: auto; flex: 1; }
+
+  .cast-table { width: 100%; border-collapse: collapse; }
+
+  .cast-table thead tr {
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-secondary);
+  }
+
+  .cast-table th {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 8px 1.25rem;
+    text-align: left;
+  }
+
+  .cast-table td {
+    padding: 9px 1.25rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    vertical-align: middle;
+  }
+
+  .cast-table tr:last-child td { border-bottom: none; }
+
+  .cast-char-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+  }
+
+  .cast-voice {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+  }
+
+  .cast-description {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 1px;
+    letter-spacing: 0.02em;
+  }
+
+  .cast-singer {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--text-main);
+    font-style: italic;
+  }
+
+  .cast-singer.empty {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
+  @media (hover: hover) {
+    .character-name[data-tooltip] {
+      position: relative;
+      cursor: default;
+    }
+    .character-name[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: var(--color-background-primary, #fdfaf6);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 3px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      font-family: var(--sans);
+      font-size: 10.5px;
+      color: var(--text-main);
+      white-space: nowrap;
+      padding: 5px 9px;
+      pointer-events: none;
+      z-index: 150;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+  }
 </style>
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left">
+    <div class="context-left" onclick="openDrawer()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
       <span class="context-sep">&middot;</span>
-      <span class="context-track" id="trackLabel">CD 1 · T1</span>
       <span class="context-track-title" id="trackTitle">Sinfonia E Introduzione: Del Di` La Messaggiera</span>
+      <span class="context-chevron">&#9662;</span>
     </div>
     <div class="context-right">
       <div class="recording-switcher-wrap" id="recSwitcher">
@@ -463,10 +590,7 @@
         </button>
         <div class="recording-dropdown" id="recDropdown"></div>
       </div>
-      <button class="index-btn" onclick="openDrawer()">
-        <span class="index-icon"><span></span><span></span><span></span></span>
-        Index
-      </button>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
   </div>
 
@@ -550,7 +674,7 @@
     </div>
     <div class="text-col" id="t2">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Oh mattutini albori!</span><span class="es">¡Oh, resplandores de la mañana!</span></div>
@@ -579,7 +703,7 @@
     </div>
     <div class="text-col" id="t3">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Qual suon! Sull’alta rocca</span><span class="es">¿Ese toque?</span></div>
@@ -606,7 +730,7 @@
       <div class="line-row"><span class="it">No, non mentì la fama,</span><span class="es">¡Ah, no es mentira lo que dicen</span></div>
       <div class="line-row"><span class="it">anzi è minor di sua beltade il grido.</span><span class="es">y aún es inferior a su belleza!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Di questo lago al solitario lido</span><span class="es">¿Quién te ha guiado hacia</span></div>
@@ -629,7 +753,7 @@
       </div>
       <div class="line-row"><span class="it">Fingasi.</span><span class="es">¡Debo fingir!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Amico asilo</span><span class="es">Que mi cabaña sea</span></div>
@@ -641,7 +765,7 @@
       </div>
       <div class="line-row"><span class="it">Ah sì, del mio destin l’arbitra sei.</span><span class="es">¡Ah, sí, eres tú quien decide mi destino!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Scendi nel piccol legno,</span><span class="es">Sube al bote</span></div>
@@ -653,7 +777,7 @@
       <div class="line-row"><span class="it">Oh del tuo cor ben degno</span><span class="es">¡Es un exceso de piedad</span></div>
       <div class="line-row"><span class="it">eccesso di bontà!</span><span class="es">digno de tu noble corazón!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Sei nella Scozia, e ancora</span><span class="es">¿Estás en Escocia y aún no sabes</span></div>
@@ -669,7 +793,7 @@
       </div>
       <div class="line-row"><span class="it">oh Dio! confuso appien son io!</span><span class="es">¡Oh, Dios, estoy confundido!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah sgombra omai l’affanno,</span><span class="es">¡Ah, olvida ya tus angustias</span></div>
@@ -740,12 +864,12 @@
         <span class="es">(Albergue de Douglas. Se ven colgando de las paredes las armas de sus antepasados)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">E in questo dì?</span><span class="es">¿Y qué va a suceder hoy?</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Tel dissi atteso giunge Rodrigo.</span><span class="es">Ya te lo dije, llega el esperado Rodrigo.</span></div>
@@ -754,12 +878,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Elena! oh quanto ti fia grave un tal dì!</span><span class="es">¡Elena! ¡Oh, qué día difícil será para ti!</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Quei fidi amici,</span><span class="es">Esos fieles amigos,</span></div>
@@ -775,12 +899,12 @@
       <div class="line-row"><span class="it">Ah! regga il cielo</span><span class="es">¡Ay! ¡Que el cielo guíe</span></div>
       <div class="line-row"><span class="it">così nobil desio, sì puro zelo!</span><span class="es">tan nobles y voluntariosos deseos!</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">E di Elena la destra?</span><span class="es">¿Y la mano de Elena?</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">In dolce pegno</span><span class="es">Como prenda del pacto de inquebrantable amistad,</span></div>
@@ -791,12 +915,12 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Tutte prevedo le pene di quel cor!</span><span class="es">¡Preveo la inmensa pena de su corazón!</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Tu vieni intanto</span><span class="es">Vayamos, mientras tanto,</span></div>
@@ -809,7 +933,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Quanto m’affanna, o amica, il tuo martoro!</span><span class="es">¡Cuánto me angustia, oh amiga, tu martirio!</span></div>
@@ -835,7 +959,7 @@
     </div>
     <div class="text-col" id="t5">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Sei già nel tetto mio dorata stanza,</span><span class="es">Ya estás bajo mi techo.</span></div>
@@ -857,7 +981,7 @@
       <div class="line-row"><span class="it">Felice albergo! oh quanta</span><span class="es">¡Feliz morada!</span></div>
       <div class="line-row"><span class="it">beltà, virtù racchiudi!</span><span class="es">¡Oh virtud, cuanta belleza encierras!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Il lasso fianco posar ti piaccia.</span><span class="es">Que te sea agradable reposar de la fatiga.</span></div>
@@ -876,7 +1000,7 @@
       <div class="line-row"><span class="it">che gli avi miei seguì, veggo l’arnese!</span><span class="es">contra los que mis antepasados combatieron!</span></div>
       <div class="line-row"><span class="it">Ove son io? e in qual periglio!</span><span class="es">¿Dónde estoy? ¿En qué peligro?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E donde il tuo cupo silenzio? a che dubbioso</span><span class="es">¿De dónde viene tu profundo silencio?</span></div>
@@ -890,7 +1014,7 @@
       <div class="line-row"><span class="it">ch’io conosca a chi debba</span><span class="es">permite que yo sepa</span></div>
       <div class="line-row"><span class="it">tratto così gentil?</span><span class="es">¿a quién debo tratar con tanta gentileza?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Vanto nel padre il famoso Douglas.</span><span class="es">Me vanaglorio de ser la hija del célebre Douglas.</span></div>
@@ -904,7 +1028,7 @@
       </div>
       <div class="line-row"><span class="it">Ah!</span><span class="es">¡Ah!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Lo conosci?</span><span class="es">¿Lo conoces?</span></div>
@@ -914,7 +1038,7 @@
       </div>
       <div class="line-row"><span class="it">Per fama... e chi nol sa?</span><span class="es">Por su fama... ¿quién no lo conoce?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Civil discordia lo rapì dalla corte!</span><span class="es">¡Una guerra civil lo alejó de la corte!</span></div>
@@ -924,7 +1048,7 @@
       </div>
       <div class="line-row"><span class="it">Oh quanto ancora n’è Giacomo dolente!</span><span class="es">¡Y qué afligido aún está el Rey!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E chi tel disse?</span><span class="es">¿Quién te lo ha dicho?</span></div>
@@ -941,7 +1065,7 @@
       <div class="line-row"><span class="it">non mi svelar che mai di me sarebbe</span><span class="es">no me descubras...</span></div>
       <div class="line-row"><span class="it">se giungesse Douglas?</span><span class="es">¿Qué sería de mí si apareciese Douglas?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ma pensieroso chi ti rende così?</span><span class="es">Pero... ¿por qué estás tan pensativo?</span></div>
@@ -953,7 +1077,7 @@
       <div class="line-row"><span class="it">il soave balen... di quegli accenti</span><span class="es">los dulces sonidos de tus palabras...</span></div>
       <div class="line-row"><span class="it">il dolce suon... ma... chi a noi vien?</span><span class="es">Pero... ¡Alguien llega!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Le care compagne mie son quelle,</span><span class="es">Son mis queridas compañeras,</span></div>
@@ -1000,7 +1124,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Funesta rimembranza!</span><span class="es">¡Qué recuerdo funesto!</span></div>
@@ -1019,7 +1143,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Affetti miei! speranza</span><span class="es">¡Oh, a mis deseos el cielo</span></div>
@@ -1050,7 +1174,7 @@
       <div class="line-row"><span class="it">Sei già sposa? ed è Rodrigo,</span><span class="es">¿Estás prometida?</span></div>
       <div class="line-row"><span class="it">che dal ciel tal sorte attende?</span><span class="es">¿ Y es Rodrigo quien espera tal suerte del cielo?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Le mie barbare vicende</span><span class="es">¿De qué te serviría conocer</span></div>
@@ -1063,7 +1187,7 @@
       <div class="line-row"><span class="it">che tu adori? un altro amante</span><span class="es">¿Otro amor te hace</span></div>
       <div class="line-row"><span class="it">sospirar, languir ti fa?</span><span class="es">suspirar y languidecer?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! mi tolse un solo istante</span><span class="es">¡Ah, en un solo instante</span></div>
@@ -1094,7 +1218,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Quai tormenti! e come in seno</span><span class="es">¡Qué tormentos!</span></div>
@@ -1125,7 +1249,7 @@
         <span class="es">(Las compañeras de Elena vierten cerveza en un cuenco y se lo entregan a Elena; ésta a su vez se lo ofrece a Uberto, que bebe mientras ellas cantan.)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">L’ospital conca - da me ricevi,</span><span class="es">Recibe de mí la copa de la hospitalidad.</span></div>
@@ -1143,7 +1267,7 @@
       <div class="line-row"><span class="it">Il tuo bel core - deh a me conceda,</span><span class="es">Que tu generoso corazón me conceda</span></div>
       <div class="line-row"><span class="it">che a’ miei compagni - ben tosto io rieda.</span><span class="es">regresar pronto con mis compañeros.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">L’amica Albina,- che all’uopo arriva,</span><span class="es">Mi amiga Albina, que está llegando,</span></div>
@@ -1158,7 +1282,7 @@
         <span class="es">(con imponente actitud)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Hai tu obbliato - che ospite sei?</span><span class="es">¿Has olvidado que eres mi huésped?</span></div>
@@ -1168,7 +1292,7 @@
       </div>
       <div class="line-row"><span class="it">Lascia che imprima - su quella mano...</span><span class="es">Déjame besar tu mano.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Costume in Morve - non v’ha si strano.</span><span class="es">En Morven no existe una costumbre tan extraña.</span></div>
@@ -1186,7 +1310,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Qual dolce immagine - in me destò!</span><span class="es">¡Qué dulces imágenes despierta en mí!</span></div>
@@ -1207,7 +1331,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Cielo! in qual estasi - rapir mi sento,</span><span class="es">¡Cielos, qué éxtasis! Me siento embriagada...</span></div>
@@ -1226,7 +1350,7 @@
       <div class="line-row"><span class="it">Deh placati - fato crudel!</span><span class="es">¡Destino cruel, ten piedad!</span></div>
       <div class="line-row"><span class="it">Da lei dividermi - come potrò?</span><span class="es">¿Cómo podré separarme de ella?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Addio! Propizio - ti assista il ciel!</span><span class="es">Que el cielo te sea propicio. ¡Adiós!</span></div>
@@ -1252,7 +1376,7 @@
     </div>
     <div class="text-col" id="t10">
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Mura felici, ove il mio ben si aggira!</span><span class="es">¡Felices muros que circundan a mi amada!</span></div>
@@ -1278,7 +1402,7 @@
     </div>
     <div class="text-col" id="t11">
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Elena! oh tu, ch’io chiamo!</span><span class="es">¡Elena, yo te llamo!...</span></div>
@@ -1300,7 +1424,7 @@
     </div>
     <div class="text-col" id="t12">
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Oh quante lacrime - finor versai</span><span class="es">¡Oh, cuántas lágrimas he derramado</span></div>
@@ -1316,7 +1440,7 @@
         <span>Escena Octava</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Signor, giungi opportuno al vallo intorno</span><span class="es">Señor llegas oportuno.</span></div>
@@ -1330,18 +1454,18 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Qual fiero stato è il mio!</span><span class="es">¡Qué terrible!</span></div>
       <div class="line-row"><span class="it">Straziata ho l’alma, e simular degg’io!</span><span class="es">¡Mi alma está desgarrada!... Debo fingir</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Tu non rispondi? il ciglio grave hai di pianto?</span><span class="es">¿No respondes? ¿En tus hay lágrimas?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Amico, lasciami al mio destin!</span><span class="es">¡Amigo, déjame, déjame con mi destino!</span></div>
@@ -1350,7 +1474,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Ah! lo compiango!</span><span class="es">¡Ah, lo compadezco,</span></div>
@@ -1360,7 +1484,7 @@
         <span class="es">(Serano sale. Llegan Douglas y Elena)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Eccola! e con Douglas!</span><span class="es">Aquí llaga... ¡Y con Douglas!</span></div>
@@ -1401,12 +1525,12 @@
         <span class="es">(oculto y para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">E resisto? e non moro!</span><span class="es">¿Y puedo resistir? ¿Y no muero?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Oh padre! e quando</span><span class="es">¡Oh padre! Ahora que arde</span></div>
@@ -1421,7 +1545,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah! mi è fedel!</span><span class="es">¡Ah, ella me es fiel!</span></div>
@@ -1482,7 +1606,7 @@
     </div>
     <div class="text-col" id="t15">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E nel fatal conflitto</span><span class="es">En medio de este fatal conflicto,</span></div>
@@ -1493,55 +1617,55 @@
         <span class="es">(Malcolm sale de su escondite)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Mio caro bene!</span><span class="es">¡Querida mía!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Malcolm! stelle! tu qui?</span><span class="es">¡Malcolm! ¡Dioses! ¿Tú, aquí?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Mi chiama in campo quella ragione istessa,</span><span class="es">Me llama al campo de batalla la misma razón</span></div>
       <div class="line-row"><span class="it">che arma i prodi di Scozia.</span><span class="es">que arma a los valientes escoceses.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E in quale istante giungesti!</span><span class="es">¡Ah, en qué momento has llegado!</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">E che? dell’amor tuo poss’io, Elena, dubitar?</span><span class="es">¿Por qué? ¿Puedo dudar de tu amor, Elena?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Crudele! e puoi oltraggiarmi così?</span><span class="es">¡Cruel! ¿Cómo puedes ultrajarme así?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Se fida è dunque</span><span class="es">Entonces, si tu alma me es fiel,</span></div>
       <div class="line-row"><span class="it">a me quell’alma, io sfiderò le stelle</span><span class="es">yo desafiaré a las estrellas.</span></div>
       <div class="line-row"><span class="it">sì, de’ nostri tiranni resisterò al poter.</span><span class="es">¡Si, combatiré al poder de los tiranos!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Saprò morire esempio di costanza.</span><span class="es">Sabré morir siendo ejemplo de constancia.</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">A me la mano di giuramento in pegno.</span><span class="es">Dame la mano como prueba de tu juramento.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Eccola.</span><span class="es">¡Aquí está!</span></div>
@@ -1809,7 +1933,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Come celar le smanie</span><span class="es">¿Cómo disimular la angustia</span></div>
@@ -1869,7 +1993,7 @@
     </div>
     <div class="text-col" id="t24">
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">La mia spada, e la più fida</span><span class="es">Te ofrezco mi espada</span></div>
@@ -1883,7 +2007,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! lo veggo, e di consiglio</span><span class="es">¡Ah, lo leo en su corazón,</span></div>
@@ -1918,7 +2042,7 @@
       <div class="line-row"><span class="it">Oh quai vincoli soavi</span><span class="es">¡Oh, que gratos vínculos</span></div>
       <div class="line-row"><span class="it">di amistade e pura fé!</span><span class="es">de amistad y fidelidad!</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">La consorte! e chi?</span><span class="es">¿La esposa? ¿Y quién?</span></div>
@@ -1942,7 +2066,7 @@
         <span class="es">(con un arranque desconsiderado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah! non fia!</span><span class="es">¡No es posible!</span></div>
@@ -1952,7 +2076,7 @@
       </div>
       <div class="line-row"><span class="it">Che?</span><span class="es">¿Cómo?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">No!</span><span class="es">¡No!</span></div>
@@ -1966,19 +2090,19 @@
         <span class="es">(tratando de evitar el conflicto)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! non fia che a te contrasti</span><span class="es">¡Ah! Si mi felicidad le parece a tus ojos</span></div>
       <div class="line-row"><span class="it">sorte avversa il bel contento...</span><span class="es">un destino adverso...</span></div>
       <div class="line-row"><span class="it">volea dir...</span><span class="es">querría decir...</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ma...</span><span class="es">Pero...</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Tal momento</span><span class="es">Un momento como éste</span></div>
@@ -2080,7 +2204,7 @@
     </div>
     <div class="text-col" id="t27">
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Sul colle a Morve opposto</span><span class="es">¡Sobre las colinas opuestas a Morven,</span></div>
@@ -2173,7 +2297,7 @@
       <div class="line-row"><span class="it">su, su! fate scempio –</span><span class="es">¡Vamos! ¡Vamos!</span></div>
       <div class="line-row"><span class="it">del vostro oppressor!</span><span class="es">¡Destruid al opresor!</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">E vinto il nemico,</span><span class="es">Una vez vencido el enemigo</span></div>
@@ -2321,7 +2445,7 @@
     </div>
     <div class="text-col" id="t31">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Va’, non temer è meco Albina.</span><span class="es">¡Ve, no temas,</span></div>
@@ -2333,7 +2457,7 @@
       <div class="line-row"><span class="it">tanta tardanza,</span><span class="es">despierta en mi pecho</span></div>
       <div class="line-row"><span class="it">al mio timor funesta!</span><span class="es">esta funesta espera!</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Calma l’affanno ad appagarti or vado;</span><span class="es">¡Calma tu ansiedad! ¡Haré lo que me pides!</span></div>
@@ -2343,7 +2467,7 @@
         <span class="es">(se marcha)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Da quanti affanni è straziato il mio cor!</span><span class="es">¡Oh, cuantas angustias anidan en mi corazón!</span></div>
@@ -2358,7 +2482,7 @@
       <div class="line-row"><span class="it">Nume possente!</span><span class="es">¡Dios todopoderoso!</span></div>
       <div class="line-row"><span class="it">Tu arridi a’ voti miei!</span><span class="es">¡Al fin has escuchado mis súplicas!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Un uom! Si fugga...</span><span class="es">¡Un hombre! ¡Huyamos!</span></div>
@@ -2368,7 +2492,7 @@
       </div>
       <div class="line-row"><span class="it">Ah ferma!</span><span class="es">¡Detente!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E tu chi sei?</span><span class="es">¿Quién eres?</span></div>
@@ -2378,7 +2502,7 @@
       </div>
       <div class="line-row"><span class="it">Non mi ravvisi?</span><span class="es">¿No me reconoces?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E chi?</span><span class="es">¿Quién?</span></div>
@@ -2388,7 +2512,7 @@
       </div>
       <div class="line-row"><span class="it">Cure ospitali mi prodigò la tua bell’alma.</span><span class="es">Tu bella alma me prodigó hospitalidad.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! è vero!</span><span class="es">¡Ah, es cierto, ahora te reconozco!</span></div>
@@ -2401,7 +2525,7 @@
       <div class="line-row"><span class="it">Dirti ch’iol t’amo,</span><span class="es">¡Decirte que te amo</span></div>
       <div class="line-row"><span class="it">e di tua man morire.</span><span class="es">y que sólo deseo morir estrechando tu mano!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Intempestivo ardor!</span><span class="es">¡Intempestivo ardor!</span></div>
@@ -2419,7 +2543,7 @@
       <div class="line-row"><span class="it">io fui, non m’ingannò, non puoi, non dei</span><span class="es">Cuando te conocí, no me equivoqué,</span></div>
       <div class="line-row"><span class="it">esser crudele a chi t’adora.</span><span class="es">no debes ser cruel con quien te adora.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Oh quanto mi fai pietà!</span><span class="es">¡Oh, cómo te compadezco!</span></div>
@@ -2431,7 +2555,7 @@
       <div class="line-row"><span class="it">ah dunque spera mercede</span><span class="es">¿ Entonces puede esperar</span></div>
       <div class="line-row"><span class="it">il mio cocente ardore?</span><span class="es">una recompensa mi apasionado amor?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! nol poss’io!</span><span class="es">¡Ah, no, no puede ser!</span></div>
@@ -2442,7 +2566,7 @@
       </div>
       <div class="line-row"><span class="it">Come?</span><span class="es">¿Cómo?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Giova a te dirlo, onde fia spenta</span><span class="es">Es necesario que sepas,</span></div>
@@ -2463,7 +2587,7 @@
       <div class="line-row"><span class="it">Oh me dolente!</span><span class="es">¡Oh, qué desdichado!</span></div>
       <div class="line-row"><span class="it">Oh sventurato amore!</span><span class="es">¡Oh, qué amor desventurado!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Mi fai pietà...</span><span class="es">¡Me inspiras piedad...</span></div>
@@ -2478,7 +2602,7 @@
     </div>
     <div class="text-col" id="t32">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Alla ragion deh rieda</span><span class="es">¡Ah! Que el alma agitada y oprimida</span></div>
@@ -2494,7 +2618,7 @@
       <div class="line-row"><span class="it">Allor che mi rendesti</span><span class="es">ahora que me hiciste</span></div>
       <div class="line-row"><span class="it">preda di tua beltà?</span><span class="es">prisionero de tu belleza?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Che amavi io non sapea...</span><span class="es">No sabía que me amabas.</span></div>
@@ -2504,7 +2628,7 @@
       </div>
       <div class="line-row"><span class="it">Non tel diss’io?</span><span class="es">¿No te lo dije?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Credea, che gentilezza...</span><span class="es">Creí que sólo era una gentileza...</span></div>
@@ -2530,7 +2654,7 @@
     </div>
     <div class="text-col" id="t33">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Nume! se a’ miei sospiri</span><span class="es">Dios, si no permites</span></div>
@@ -2581,7 +2705,7 @@
       <div class="line-row"><span class="it">Al meno calma la crudeltà</span><span class="es">al menos calma</span></div>
       <div class="line-row"><span class="it">dei suoi martirii</span><span class="es">la crueldad de su martirio!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ten vai?</span><span class="es">¿Te vas?</span></div>
@@ -2592,7 +2716,7 @@
       <div class="line-row"><span class="it">A che mirar quei rai</span><span class="es">¿Y para qué mirar esos ojos</span></div>
       <div class="line-row"><span class="it">severi ognor per me?</span><span class="es">siempre tan severos para mí?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Se de’ tuoi giusti lai</span><span class="es">Si yo soy la cruel causa</span></div>
@@ -2608,7 +2732,7 @@
       <div class="line-row"><span class="it">lasciarti in rimembranza,</span><span class="es">una prenda de mi constancia</span></div>
       <div class="line-row"><span class="it">che sacro io sono a te.</span><span class="es">que siempre será sagrada para ti.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E qual?</span><span class="es">¿ Y cual es?</span></div>
@@ -2641,7 +2765,7 @@
         <span class="es">(dudando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">E il mio rigor contento</span><span class="es">¡Y mi rigor, oh Dios,</span></div>
@@ -2700,7 +2824,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Rodrigo!</span><span class="es">¡Rodrigo!</span></div>
@@ -2723,7 +2847,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Destino crudel!</span><span class="es">¡Destino cruel!</span></div>
@@ -2754,7 +2878,7 @@
       </div>
       <div class="line-row"><span class="it">Che ascolto?</span><span class="es">¿Qué escucho?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Incauto!</span><span class="es">¡Incauto!</span></div>
@@ -2771,7 +2895,7 @@
       </div>
       <div class="line-row"><span class="it">Perversi?</span><span class="es">¿Perversos?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Oh ciel! che dici!</span><span class="es">¡Oh, cielos! ¿Qué dices?</span></div>
@@ -2787,7 +2911,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Mi sento... oh Dio! morire!</span><span class="es">Me siento... ¡oh, Dios!... morir!</span></div>
@@ -2835,7 +2959,7 @@
       </div>
       <div class="line-row"><span class="it">Ostenta orgoglio, or più, se il puoi...</span><span class="es">¡Y ahora, si puedes, demuestra tu coraje!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Che miro! oh Dio!</span><span class="es">¡Dios mío! ¿Qué estoy viendo?</span></div>
@@ -2851,7 +2975,7 @@
         <span class="es">(los guerreros que están por atacar, se detienen ante los gritos de Elena)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Fermate!</span><span class="es">¡Deteneos!</span></div>
@@ -2861,7 +2985,7 @@
       </div>
       <div class="line-row"><span class="it">E tu guerriero?</span><span class="es">¿Defiendes a este guerrero?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Cedete a’ pianti miei...</span><span class="es">¡Cede ante mis lágrimas!</span></div>
@@ -2887,7 +3011,7 @@
         <span class="es">(toma la espada de un guerrero)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Scenda in voi pace...</span><span class="es">¡Haya paz!</span></div>
@@ -2899,7 +3023,7 @@
       <div class="line-row"><span class="it">No... più non so frenarmi!</span><span class="es">¡No, ya no puedo detenerme!</span></div>
       <div class="line-row"><span class="it">Mi guida il mio furor!</span><span class="es">¡Me guía la furia!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">No!</span><span class="es">¡No!</span></div>
@@ -2917,7 +3041,7 @@
     </div>
     <div class="text-col" id="t37">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Io son la misera,</span><span class="es">¡Yo soy la desdichada</span></div>
@@ -2976,7 +3100,7 @@
     </div>
     <div class="text-col" id="t38">
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Quante sciagure</span><span class="es">¡Cuántas desgracias reúne el cielo</span></div>
@@ -2992,28 +3116,28 @@
         <span class="es">(entra Malcolm)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Elena... ah dimmi dov’è?</span><span class="es">¡Ah! Dime... ¿Dónde está Elena?</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Di questo speco all’ingresso non era?</span><span class="es">¿No estaba en la entrada de esta caverna?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah! no...</span><span class="es">¡Ah! No...</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Del padre serve al cenno così?</span><span class="es">¿Así cumple la orden de su padre?</span></div>
       <div class="line-row"><span class="it">qui preservarla credea dall’ira ostil.</span><span class="es">Creí que aquí la protegería de la ira enemiga.</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah! ferve intanto</span><span class="es">¡Ah! Se está librando una terrible lucha...</span></div>
@@ -3025,7 +3149,7 @@
       <div class="line-row"><span class="it">Elena mia. Salvarla, o in sua difesa</span><span class="es">que aquí encontraré a mi Elena,</span></div>
       <div class="line-row"><span class="it">perir volea.</span><span class="es">quiero salvarla o morir en su defensa.</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Mosse le piante al fianco</span><span class="es">Está oculta en el bosque</span></div>
@@ -3038,7 +3162,7 @@
       <div class="line-row"><span class="it">Dimmi, e teco non riede</span><span class="es">¿La hija de Douglas</span></div>
       <div class="line-row"><span class="it">la figlia di Douglas?</span><span class="es">no viene contigo?</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Del padre in traccia</span><span class="es">Ella me ordenó ir en busca de su padre.</span></div>
@@ -3051,40 +3175,40 @@
       <div class="line-row"><span class="it">pace alla patria mia donar mi è dato,</span><span class="es">me es concedido devolver la paz a mi patria</span></div>
       <div class="line-row"><span class="it">dille che il mio morir troppo è a me grato!»</span><span class="es">¡la muerte me será grata en exceso!”</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Come!</span><span class="es">¿Cómo?</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">E ad Elena tu?</span><span class="es">¿Y qué le has dicho a Elena?</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Tutto narrai, e già fuor di se stessa</span><span class="es">Le conté todo y, fuera de sí,</span></div>
       <div class="line-row"><span class="it">corre alla reggia.</span><span class="es">corre hacia el palacio.</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Oh sciagurata! oh pena!</span><span class="es">¡Oh, desdichada! ¡Qué desgracia!</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah tu il sentier mi addita,</span><span class="es">¡Muéstrame el camino</span></div>
       <div class="line-row"><span class="it">che segnò l’infelice...</span><span class="es">que tomó la desdichada!</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Al par del lampo</span><span class="es">¡Desapareció de mi vista</span></div>
       <div class="line-row"><span class="it">dal guardo mio sparì.</span><span class="es">como un relámpago!</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Stelle spietate!</span><span class="es">¡Cielo despiadado!</span></div>
@@ -3103,7 +3227,7 @@
     </div>
     <div class="text-col" id="t39">
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah si pera ormai la morte</span><span class="es">¡Ah que muera, sí, que muera!</span></div>
@@ -3136,7 +3260,7 @@
       </div>
       <div class="line-row"><span class="it">Quai voci!</span><span class="es">¿Qué son esas voces?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">E chi si avanza?</span><span class="es">¿Quién viene?</span></div>
@@ -3146,7 +3270,7 @@
       </div>
       <div class="line-row"><span class="it">Douglas dov’è?</span><span class="es">¿Dónde está Douglas?</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Che avvenne?</span><span class="es">¿Qué ocurre?</span></div>
@@ -3176,7 +3300,7 @@
     </div>
     <div class="text-col" id="t41">
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Che sento!</span><span class="es">¿Qué escucho?</span></div>
@@ -3187,7 +3311,7 @@
       <div class="line-row"><span class="it">Ne insegue, e dà spavento</span><span class="es">Sus huestes nos persiguen</span></div>
       <div class="line-row"><span class="it">già l’oste vincitrice...</span><span class="es">causando gran mortandad.</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Che tento!</span><span class="es">¿Qué escucho?</span></div>
@@ -3208,17 +3332,17 @@
         <span class="es">(Malcolm se marcha junto con los guerreros)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">E dove avrem noi scampo?</span><span class="es">¿Y dónde podremos escapar?</span></div>
       <div class="character-row">
-        <span class="character-name">Serano</span>
+        <span class="character-name has-tooltip" data-character-id="serano">Serano</span>
         <span class="character-name">Serano</span>
       </div>
       <div class="line-row"><span class="it">Il mio destino io qui tranquillo attendo.</span><span class="es">Tranquilo, esperaré aquí mi destino.</span></div>
       <div class="character-row">
-        <span class="character-name">Albina</span>
+        <span class="character-name has-tooltip" data-character-id="albina">Albina</span>
         <span class="character-name">Albina</span>
       </div>
       <div class="line-row"><span class="it">Oh qual sorse per noi giorno tremendo!</span><span class="es">¡Oh, qué día tan nefasto para nosotros!</span></div>
@@ -3306,7 +3430,7 @@
         <span class="es">(Entrando)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bertram</span>
+        <span class="character-name has-tooltip" data-character-id="bertram">Bertram</span>
         <span class="character-name">Bertram</span>
       </div>
       <div class="line-row"><span class="it">Signor, parlarti brama</span><span class="es">Señor, una mujer te pide audiencia.</span></div>
@@ -3330,7 +3454,7 @@
       <div class="line-row"><span class="it">Ti attendo alle mie stanze</span><span class="es">Luego te espero en mis habitaciones...</span></div>
       <div class="line-row"><span class="it">Quanto voglio, saprai.</span><span class="es">Ya sabrás lo que quiero.</span></div>
       <div class="character-row">
-        <span class="character-name">Bertram</span>
+        <span class="character-name has-tooltip" data-character-id="bertram">Bertram</span>
         <span class="character-name">Bertram</span>
       </div>
       <div class="line-row"><span class="it">Vado.</span><span class="es">Voy.</span></div>
@@ -3362,7 +3486,7 @@
     </div>
     <div class="text-col" id="t42">
       <div class="character-row">
-        <span class="character-name">Bertram</span>
+        <span class="character-name has-tooltip" data-character-id="bertram">Bertram</span>
         <span class="character-name">Bertram</span>
       </div>
       <div class="line-row"><span class="it">Attendi il Re fra poco ti ascolterà.</span><span class="es">Espera aquí, en breve el Rey te escuchará.</span></div>
@@ -3371,7 +3495,7 @@
         <span class="es">(entra en los aposentos reales)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Reggia, ove nacqui, oh quanto</span><span class="es">Palacio donde nací...</span></div>
@@ -3397,7 +3521,7 @@
     </div>
     <div class="text-col" id="t43">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">spero salvar... che sento!</span><span class="es">¿Qué escucho?</span></div>
@@ -3426,7 +3550,7 @@
     </div>
     <div class="text-col" id="t44">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Stelle! sembra! egli stesso! ah qual sorpresa!</span><span class="es">¡Cielos! ¡Parece el mismo!</span></div>
@@ -3450,7 +3574,7 @@
     </div>
     <div class="text-col" id="t45">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Eccolo! amica sorte</span><span class="es">¡Aquí está!</span></div>
@@ -3462,7 +3586,7 @@
       </div>
       <div class="line-row"><span class="it">Da me che chiedi?</span><span class="es">¿Qué quieres de mí?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Il tuo don non rammenti? ah sì, tu stesso</span><span class="es">¿No recuerdas tu regalo? ¡Ah, sí!</span></div>
@@ -3473,7 +3597,7 @@
       </div>
       <div class="line-row"><span class="it">Tu lo vedrai.</span><span class="es">Lo verás.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Perdona alla impazienza mia</span><span class="es">Perdona mi impaciencia,</span></div>
@@ -3524,7 +3648,7 @@
     </div>
     <div class="text-col" id="t47">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! che vedo! qual fasto!</span><span class="es">¿Qué veo? ¡Qué esplendor!</span></div>
@@ -3538,7 +3662,7 @@
       </div>
       <div class="line-row"><span class="it">Eppure è qui.</span><span class="es">Y sin embargo, está aquí.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ma qual?... Stelle! ogni sguardo</span><span class="es">¿Pero cuál?... ¡Cielos! ¡Todos te miran a ti!</span></div>
@@ -3560,7 +3684,7 @@
         <span class="es">(se coloca el manto real)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Tu stesso? ah! qual sorpresa! a’ piedi tuoi...</span><span class="es">¿Tú? ¡Ah, qué sorpresa!... ¡A tus pies!</span></div>
@@ -3571,7 +3695,7 @@
       <div class="line-row"><span class="it">Sorgi, l’amico io son di mie promesse</span><span class="es">¡Levántate!... Soy el amigo... el fiel ejecutor</span></div>
       <div class="line-row"><span class="it">il fido esecutor; parla, che brami?</span><span class="es">de mis promesas ¡Habla! ¿Qué quieres?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah! non lo ignori... il genitor...</span><span class="es">¡Ah! Tú no lo ignoras... mi padre...</span></div>
@@ -3592,7 +3716,7 @@
       </div>
       <div class="line-row"><span class="it">Ah figlia!</span><span class="es">¡Ah, hija!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah padre mio!</span><span class="es">¡Ay padre mío!</span></div>
@@ -3619,7 +3743,7 @@
       <div class="line-row"><span class="it">Appien contenta, il veggo,</span><span class="es">Pero veo que Elena aún no es</span></div>
       <div class="line-row"><span class="it">Elena ancor non è favella.</span><span class="es">plenamente feliz. Habla.</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ah Sire! I giorni di Rodrigo...</span><span class="es">¡Ah, señor! La vida de Rodrigo...</span></div>
@@ -3629,7 +3753,7 @@
       </div>
       <div class="line-row"><span class="it">Egli? infelice! Ah! non è più!</span><span class="es">¿Él? ¡ Infeliz! ¡Él murió en combate!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Che ascolto! oh sventurato!</span><span class="es">¡Qué escucho! ¡Oh, desventurado!</span></div>
@@ -3647,7 +3771,7 @@
       <div class="line-row"><span class="it">dar rigoroso esempio.</span><span class="es">un riguroso ejemplo de justicia.</span></div>
       <div class="line-row"><span class="it">Venga Malcolm.</span><span class="es">¡Que venga Malcolm!</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Ascolta...</span><span class="es">¡Oh, señor, escucha!</span></div>
@@ -3662,7 +3786,7 @@
         <span class="es">(Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Come salvarlo?</span><span class="es">¿Cómo podré salvarlo?</span></div>
@@ -3671,7 +3795,7 @@
         <span class="es">(entra escoltado por guardias. Para sí)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Elena! oh rio destin!</span><span class="es">¡Elena! ¡Oh, cruel destino!</span></div>
@@ -3683,7 +3807,7 @@
       <div class="line-row"><span class="it">A me ti appressa un mancator degg’io</span><span class="es">Acércate.</span></div>
       <div class="line-row"><span class="it">punire in te...</span><span class="es">En ti debo castigar a un traidor...</span></div>
       <div class="character-row">
-        <span class="character-name">Malcolm</span>
+        <span class="character-name has-tooltip" data-character-id="malcolm">Malcolm</span>
         <span class="character-name">Malcolm</span>
       </div>
       <div class="line-row"><span class="it">Ah Prence! il fallo mio...</span><span class="es">¡Ah! Príncipe, mi falta...</span></div>
@@ -3722,7 +3846,7 @@
       </div>
       <div class="line-row"><span class="it">Altro a bramar ti resta?</span><span class="es">¿Deseas algo más?</span></div>
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Io... Sire... qual piacer! qual gioia è questa!</span><span class="es">¿Yo?... Señor... ¡Qué placer! ¡Qué alegría!</span></div>
@@ -3740,7 +3864,7 @@
     </div>
     <div class="text-col" id="t48">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Tanti affetti in un momento</span><span class="es">Son tantas las emociones</span></div>
@@ -3775,7 +3899,7 @@
     </div>
     <div class="text-col" id="t49">
       <div class="character-row">
-        <span class="character-name">Elena</span>
+        <span class="character-name has-tooltip" data-character-id="elena">Elena</span>
         <span class="character-name">Elena</span>
       </div>
       <div class="line-row"><span class="it">Fra il padre e fra l’amante</span><span class="es">¡Oh, qué momento afortunado</span></div>
@@ -3797,13 +3921,30 @@
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
-      <div class="drawer-header-left">
-        <span class="drawer-header-opera">La donna del lago — Gioachino Rossini</span>
-        <span class="drawer-header-sub" id="drawerRecordingLabel">Pollini / Ricciarelli</span>
-      </div>
-      <button class="drawer-close" onclick="closeDrawer()">Close</button>
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
     </div>
     <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -3876,11 +4017,28 @@
     "Act II": "t30"
   };
 
+  const CHARACTERS = [
+    { id: "elena", name: "Elena", voice: "Soprano", description: "Hija de Douglas" },
+    { id: "giacomo", name: "Giacomo (Uberto)", voice: "Tenor", description: "Rey de Escocia, disfrazado de Uberto" },
+    { id: "malcolm", name: "Malcolm", voice: "Mezzo-soprano", description: "Prometido de Elena" },
+    { id: "rodrigo", name: "Rodrigo di Dhu", voice: "Tenor", description: "Aliado de Douglas" },
+    { id: "douglas", name: "Douglas d'Angus", voice: "Bass", description: "Rival del rey" },
+    { id: "albina", name: "Albina", voice: "Soprano", description: "Dama de Elena" },
+    { id: "serano", name: "Serano", voice: "Baritone", description: "Consejero de Douglas" },
+    { id: "bertram", name: "Bertram", voice: "Bass", description: "" }
+  ];
+
+  const CAST = {
+    pollini_ricciarelli: { "elena": "Katia Ricciarelli", "malcolm": "Lucia Valentini-Terrani", "giacomo": "Dalmacio Gonz\u00e1lez", "rodrigo": "Dano Raffanti", "douglas": "Samuel Ramey", "albina": "Cecilia Valdenassi", "serano": "Oslavio Di Credico", "bertram": "Antonio D'Uva" }
+  };
+
   let activeRecording = "pollini_ricciarelli";
   let currentActiveId = "t1";
   let observer = null;
 
   function openDrawer() {
+    closeCast();
+    buildDrawer();
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -3894,6 +4052,23 @@
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     updateActive(id);
   }
+
+  function openCast() {
+    closeDrawer();
+    buildCast();
+    document.getElementById('castOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCast() {
+    document.getElementById('castOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeDrawer();
+    closeCast();
+  });
 
   function toggleSwitcher(event) {
     event.stopPropagation();
@@ -3942,8 +4117,39 @@
     }
 
     body.innerHTML = html;
-    const lbl = document.getElementById('drawerRecordingLabel');
-    if (lbl) lbl.textContent = rec.short;
+  }
+
+  function buildCast() {
+    const cast = CAST[activeRecording];
+    const tbody = document.getElementById('castTableBody');
+    tbody.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      return `<tr>
+        <td>
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+          <div class="cast-description">${ch.description}</div>
+        </td>
+        <td>
+          ${singer
+            ? `<div class="cast-singer">${singer}</div>`
+            : `<div class="cast-singer empty">—</div>`}
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function applyTooltips() {
+    const cast = CAST[activeRecording];
+    document.querySelectorAll('.character-name.has-tooltip').forEach(el => {
+      const id = el.dataset.characterId;
+      const ch = CHARACTERS.find(c => c.id === id);
+      if (!ch) return;
+      const singer = cast[id];
+      el.setAttribute('data-tooltip',
+        singer ? `${ch.voice}\u2002·\u2002${singer}` : ch.voice
+      );
+    });
   }
 
   function updateTrackTags() {
@@ -3985,6 +4191,10 @@
     if (dd) dd.classList.remove('open');
     scrollToCurrentAct();
     updateActive(currentActiveId);
+    applyTooltips();
+    if (document.getElementById('castOverlay').classList.contains('open')) {
+      buildCast();
+    }
   }
 
   function updateActive(activeId) {
@@ -3993,7 +4203,7 @@
     const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
     if (!t) return;
     const trackLabel = document.getElementById('trackLabel');
-    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
     const trackTitle = document.getElementById('trackTitle');
     if (trackTitle) trackTitle.textContent = t.title;
     const actLabel = document.getElementById('actLabel');
@@ -4020,4 +4230,5 @@
   buildDrawer();
   rewireObserver();
   updateActive("t1");
+  applyTooltips();
 </script>
