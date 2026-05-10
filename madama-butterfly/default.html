@@ -12,9 +12,11 @@
     --gold-light: #f5ede0;
     --gold-mid: #c49a2a;
     --gold-border: #d4a84b;
+    --col-gap: 1rem;
     --col-left: 52px;
     --text-dim: var(--color-text-secondary);
     --text-main: var(--color-text-primary);
+    --text-max-width: 900px;
     --bg: var(--color-background-primary);
     --bg2: var(--color-background-secondary);
   }
@@ -31,8 +33,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.25rem 0 calc(var(--col-left) + 1.25rem);
+    padding: 0 1.25rem;
     gap: 1rem;
+
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   @media (max-width: 580px) {
@@ -165,12 +171,14 @@
     display: grid;
     grid-template-columns: var(--col-left) 1fr;
     padding-bottom: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .act-heading {
     grid-column: 1 / -1;
     font-family: var(--sans);
-    font-size: 10px;
+    font-size: 25px;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -178,6 +186,9 @@
     padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
     border-bottom: 1px solid var(--color-border-secondary);
     margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
   }
 
   .track-col {
@@ -219,7 +230,11 @@
     line-height: 1;
   }
 
-  .text-col { padding: 0 1.25rem; scroll-margin-top: calc(var(--bar-h) + 0.5rem); }
+  .text-col { 
+    padding: 0 1.25rem; 
+    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
+    max-width: var(--text-max-width);
+  }
 
   .musical-number {
     font-family: var(--sans);
@@ -249,21 +264,20 @@
     margin: 0.75rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
   }
 
   .stage-direction {
     font-family: var(--serif);
-    font-size: 13px;
+    font-size: 15.5px;
     font-style: italic;
     color: var(--text-dim);
     margin: 0.6rem 0;
-    padding-left: 0.75rem;
     border-left: 2px solid var(--color-border-secondary);
     line-height: 1.5;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
   }
 
   .stage-direction .es { font-style: italic; }
@@ -271,14 +285,14 @@
   .character-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
     margin: 0.9rem 0 0.15rem;
   }
 
   .character-name {
     font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 550;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -287,7 +301,7 @@
   .line-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
     align-items: baseline;
   }
 
@@ -596,7 +610,10 @@
 
   <div class="libretto-body">
 
-    <div class="act-heading">Atto Primo · Acto Primero</div>
+    <div class="act-heading" data-act="I">
+      <span>Atto Primo</span>
+      <span>Acto Primero</span>
+    </div>
 
     <div class="track-col" id="tc1">
       <div class="track-tag">
@@ -3367,7 +3384,10 @@ essera infastidito dalla loquela di Suzuki, batte tre volte le mani. I tre si al
       </div>
     </div>
 
-    <div class="act-heading">Atto Secondo · Acto Segundo</div>
+    <div class="act-heading" data-act="II">
+      <span>Atto Secondo</span>
+      <span>Acto Segundo</span>
+    </div>
 
     <div class="track-col" id="tc15">
       <div class="track-tag">
@@ -5406,7 +5426,10 @@ essera infastidito dalla loquela di Suzuki, batte tre volte le mani. I tre si al
       </div>
     </div>
 
-    <div class="act-heading">Atto Terzo · Acto Tercero</div>
+    <div class="act-heading" data-act="III">
+      <span>Atto Terzo</span>
+      <span>Acto Tercero</span>
+    </div>
 
     <div class="track-col" id="tc27">
       <div class="track-tag">

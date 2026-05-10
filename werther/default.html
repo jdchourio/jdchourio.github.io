@@ -12,9 +12,11 @@
     --gold-light: #f5ede0;
     --gold-mid: #c49a2a;
     --gold-border: #d4a84b;
+    --col-gap: 1rem;
     --col-left: 52px;
     --text-dim: var(--color-text-secondary);
     --text-main: var(--color-text-primary);
+    --text-max-width: 900px;
     --bg: var(--color-background-primary);
     --bg2: var(--color-background-secondary);
   }
@@ -31,8 +33,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 1.25rem 0 calc(var(--col-left) + 1.25rem);
+    padding: 0 1.25rem;
     gap: 1rem;
+
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   @media (max-width: 580px) {
@@ -165,12 +171,14 @@
     display: grid;
     grid-template-columns: var(--col-left) 1fr;
     padding-bottom: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .act-heading {
     grid-column: 1 / -1;
     font-family: var(--sans);
-    font-size: 10px;
+    font-size: 25px;
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -178,6 +186,9 @@
     padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
     border-bottom: 1px solid var(--color-border-secondary);
     margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
   }
 
   .track-col {
@@ -219,7 +230,11 @@
     line-height: 1;
   }
 
-  .text-col { padding: 0 1.25rem; scroll-margin-top: calc(var(--bar-h) + 0.5rem); }
+  .text-col { 
+    padding: 0 1.25rem; 
+    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
+    max-width: var(--text-max-width);
+  }
 
   .musical-number {
     font-family: var(--sans);
@@ -249,21 +264,20 @@
     margin: 0.75rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
   }
 
   .stage-direction {
     font-family: var(--serif);
-    font-size: 13px;
+    font-size: 15.5px;
     font-style: italic;
     color: var(--text-dim);
     margin: 0.6rem 0;
-    padding-left: 0.75rem;
     border-left: 2px solid var(--color-border-secondary);
     line-height: 1.5;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
   }
 
   .stage-direction .es { font-style: italic; }
@@ -271,14 +285,14 @@
   .character-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
     margin: 0.9rem 0 0.15rem;
   }
 
   .character-name {
     font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 550;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--text-dim);
@@ -287,7 +301,7 @@
   .line-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2rem;
+    gap: 0 var(--col-gap);
     align-items: baseline;
   }
 
@@ -596,7 +610,10 @@
 
   <div class="libretto-body">
 
-    <div class="act-heading">Premier Acte · Acto Primero</div>
+    <div class="act-heading" data-act="I">
+      <span>Premier Acte</span>
+      <span>Acto Primero</span>
+    </div>
 
     <div class="track-col" id="tc1">
       <div class="track-tag">
@@ -606,7 +623,7 @@
     </div>
     <div class="text-col" id="t1">
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Assez! Assez!</span><span class="es">¡Basta! ¡Basta!</span></div>
@@ -629,7 +646,7 @@
         <span class="es">(enfadándose)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Mais non! ce n'est pas ça!</span><span class="es">¡No! ¡No es así!</span></div>
@@ -664,7 +681,7 @@
         <span class="es">(con satisfacción)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">C'est bien! C'est bien!</span><span class="es">¡Bien! ¡Bien!</span></div>
@@ -686,7 +703,7 @@
       <div class="line-row"><span class="fr">Rois et bergers d'Israël!</span><span class="es">Rey y Señor de Israel!</span></div>
       <div class="line-row"><span class="fr">Noël! Noël! Noël!</span><span class="es">¡Navidad! ¡Navidad! ¡Navidad!</span></div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">C'est bien cela!</span><span class="es">¡Bien!</span></div>
@@ -745,7 +762,7 @@
         <span class="es">(que ha bajado, da la mano a sus amigos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Cela te fait rire, Johann! Mais quoi?</span><span class="es">¡Eso es! ¡Te hace reír, Johann!</span></div>
@@ -793,7 +810,7 @@
         <span class="es">(A Johann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Dans un instant.</span><span class="es">Dentro de un momento.</span></div>
@@ -812,7 +829,7 @@
         <span class="es">(Volviéndose, a Schmidt)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Oui, ce bal d'amis et de parents</span><span class="es">Para el baile de amigos y familiares</span></div>
@@ -835,7 +852,7 @@
         <span class="es">(A sus dos amigos)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Fort bien, ce jeune homme.</span><span class="es">¡Bien preparado es ese joven!</span></div>
@@ -849,7 +866,7 @@
         <span class="es">(Insistente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Il est instruit... très distingué...</span><span class="es">Es instruido... muy distinguido...</span></div>
@@ -872,7 +889,7 @@
         <span class="es">(Perseverante)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Le Prince lui promet, dit-on,</span><span class="es">El príncipe le ha prometido, se dice,</span></div>
@@ -920,7 +937,7 @@
         <span class="es">(Exclamativo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Encor!</span><span class="es">¿Todavía?</span></div>
@@ -937,7 +954,7 @@
       <div class="line-row"><span class="fr">Grosses comme le bras</span><span class="es">grandes como antebrazos...</span></div>
       <div class="line-row"><span class="fr">Gretchen nous l'a promis...</span><span class="es">Gretchen nos lo ha prometido</span></div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">O les gourmands! les deux complices!</span><span class="es">¡Oh, vaya par de glotones!</span></div>
@@ -962,7 +979,7 @@
         <span class="es">(Sonriente, a Johann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Pour t'ouvrir l'appétit?</span><span class="es">¿Para abrirte el apetito?</span></div>
@@ -986,7 +1003,7 @@
       </div>
       <div class="line-row"><span class="fr">A propos! Quand Albert revient-il?</span><span class="es">A propósito, ¿cuándo regresa Alberto?</span></div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Je l'ignore,</span><span class="es">Lo ignoro.</span></div>
@@ -1033,7 +1050,7 @@
       </div>
       <div class="line-row"><span class="fr">A tantôt!</span><span class="es">¡Hasta más tarde!</span></div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Oui! Bonsoir! Bonsoir</span><span class="es">¡Sí, buenas tardes! ¡Buenas tardes!</span></div>
@@ -1060,7 +1077,7 @@
         <span class="es">(A los niños)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Rentrez! nous redirons notre Noël</span><span class="es">Entrad y recitaremos nuestra canción.</span></div>
@@ -1211,7 +1228,7 @@
       <div class="line-row"><span class="fr">Eh! bien père,</span><span class="es">Y bien, padre,</span></div>
       <div class="line-row"><span class="fr">es-tu content d'eux?</span><span class="es">¿estas contento de ellos?</span></div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Content, content!</span><span class="es">Contento, sí...</span></div>
@@ -1231,7 +1248,7 @@
         <span class="es">(Abrazando a su hija y admirando su compostura)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Comme te voilà belle, Mignonne!</span><span class="es">¡Qué guapa estás, pequeña!</span></div>
@@ -1245,7 +1262,7 @@
         <span class="es">(Tomando las manos de Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Venez, mademoiselle,</span><span class="es">¡Ven señorita!</span></div>
@@ -1269,7 +1286,7 @@
         <span class="es">(Va a la cocina y coge un enorme pan que va partiendo en rebanadas y lo da a los niños. Se oyen, a lo lejos, el tintineo de un arnés de caballo y el</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Hâte-toi,</span><span class="es">¡Espera!</span></div>
@@ -1288,7 +1305,7 @@
         <span class="es">(Viendo a Werther y yendo a su encuentro)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Ah! monsieur Werther!</span><span class="es">¡Ah! ¡Señor Werther!</span></div>
@@ -1321,7 +1338,7 @@
         <span class="es">(Los invitados van llegando. Entran por el jardín. El magistrado y Sofía salen a su encuentro)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Arrivez donc, Brühlmann!</span><span class="es">¡Adelante, pues, Brülhmann!</span></div>
@@ -1354,7 +1371,7 @@
         <span class="es">(Riendo, a Brühlmann)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Bavards!</span><span class="es">¡Charlatanes!</span></div>
@@ -1446,7 +1463,7 @@
         <span class="es">(Saludando a Werther)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Monsieur Werther!</span><span class="es">¡Señor Werther!...</span></div>
@@ -1460,7 +1477,7 @@
         <span class="es">(a Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Adieu, ma chérie...</span><span class="es">¡Adiós, querida!...</span></div>
@@ -1495,7 +1512,7 @@
         <span class="es">(Con un tono embarazoso)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Qui? Moi? te laisser seule?</span><span class="es">¿Quién? ¿Yo? ¿Y dejarte sola...?</span></div>
@@ -1509,7 +1526,7 @@
         <span class="es">(Canturreando entre dientes)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">La la la .....</span><span class="es">La, la, la ...</span></div>
@@ -1529,7 +1546,7 @@
         <span class="es">(Dejándose convencer y cogiendo el sombrero y el bastón de las manos de Sofía)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Rien qu'un moment... alors...</span><span class="es">Bueno, será sólo un momento...</span></div>
@@ -1552,7 +1569,7 @@
     </div>
     <div class="text-col" id="t8">
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Sophie!</span><span class="es">¡Sofía!</span></div>
@@ -1566,7 +1583,7 @@
       </div>
       <div class="line-row"><span class="fr">Albert! Toi de retour?</span><span class="es">¡Alberto! ¿Tú de vuelta?</span></div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Oui, moi, petite soeur, bonjour!</span><span class="es">Sí, sí, hermanita... ¡Hola!</span></div>
@@ -1581,7 +1598,7 @@
       <div class="line-row"><span class="fr">Que Charlotte sera contente</span><span class="es">¡Qué contenta se pondrá</span></div>
       <div class="line-row"><span class="fr">de te revoir!</span><span class="es">Charlotte de verte otra vez!</span></div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Elle est ici?</span><span class="es">¿Está aquí?</span></div>
@@ -1601,7 +1618,7 @@
         <span class="es">(Con simpleza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">J'ai voulu vous surprendre...</span><span class="es">He querido sorprenderos...</span></div>
@@ -1623,7 +1640,7 @@
         <span class="es">(Alegre)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">A chère enfant!</span><span class="es">¡Oh, querida niña!</span></div>
@@ -1635,7 +1652,7 @@
       <div class="line-row"><span class="fr">Rien...</span><span class="es">¡Nada!</span></div>
       <div class="line-row"><span class="fr">on s'est occupé de votre mariage...</span><span class="es">Nos ocupamos de vuestra boda...</span></div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">De notre mariage!</span><span class="es">¡De nuestra boda!</span></div>
@@ -1645,7 +1662,7 @@
       </div>
       <div class="line-row"><span class="fr">On y dansera... dis?</span><span class="es">Habrá baile, ¿verdad?</span></div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Beaucoup... et davantage!</span><span class="es">¡Mucho! ¡Y mucho más!</span></div>
@@ -1692,7 +1709,7 @@
     </div>
     <div class="text-col" id="t9">
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Elle m'aime! Elle pense à moi!</span><span class="es">¡Me ama!</span></div>
@@ -1935,7 +1952,7 @@
         <span class="es">(Voz del magistrado)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Bailli</span>
+        <span class="character-name has-tooltip" data-character-id="bailli">Bailli</span>
         <span class="character-name">Bailli</span>
       </div>
       <div class="line-row"><span class="fr">Charlotte! Charlotte!</span><span class="es">¡Charlotte! ¡Charlotte!</span></div>
@@ -1998,7 +2015,10 @@
       <div class="musical-number"></div>
     </div>
 
-    <div class="act-heading">Acte Deuxième · Acto Segundo</div>
+    <div class="act-heading" data-act="II">
+      <span>Acte Deuxième</span>
+      <span>Acto Segundo</span>
+    </div>
 
     <div class="track-col" id="tc16">
       <div class="track-tag">
@@ -2155,7 +2175,7 @@
     </div>
     <div class="text-col" id="t18">
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Trois mois! Voici trois mois que</span><span class="es">¡Tres meses!</span></div>
@@ -2173,7 +2193,7 @@
       </div>
       <div class="line-row"><span class="fr">Albert!</span><span class="es">¡Alberto!</span></div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Si vous saviez comme je vous bénis!</span><span class="es">¡Si supieras cómo te bendigo!</span></div>
@@ -2201,7 +2221,7 @@
         <span class="es">(conmovido)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Oh! la douce parole... et comme à l'écouter</span><span class="es">¡Qué dulces palabras! Al escucharlas</span></div>
@@ -2317,7 +2337,7 @@
         <span class="es">(A Werther)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Au bonheur dont mon âme est pleine,</span><span class="es">Aunque mi alma esta llena de felicidad,</span></div>
@@ -2336,7 +2356,7 @@
         <span class="es">(Con franqueza)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Je vous sais un coeur loyal et fort;</span><span class="es">Tenéis un corazón fuerte y noble,</span></div>
@@ -2350,7 +2370,7 @@
     </div>
     <div class="text-col" id="t20">
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Mais celle qui devint ma femme</span><span class="es">pero aquélla que hoy es mi esposa,</span></div>
@@ -2472,7 +2492,7 @@
         <span class="es">(a Sofía)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Va porter ton bouquet, chère petite soeur,</span><span class="es">Ve a llevar tu ramo, querida;</span></div>
@@ -2960,7 +2980,7 @@
         <span class="es">(Nervioso)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Lui!</span><span class="es">¡Él!</span></div>
@@ -2985,7 +3005,7 @@
         <span class="es">(Sombrío, observando a Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Il l'aime!</span><span class="es">¡Él la ama!</span></div>
@@ -2999,7 +3019,10 @@
       </div>
     </div>
 
-    <div class="act-heading">Acte Troisième · Acto Tercero</div>
+    <div class="act-heading" data-act="III">
+      <span>Acte Troisième</span>
+      <span>Acto Tercero</span>
+    </div>
 
     <div class="track-col" id="tc25">
       <div class="track-tag">
@@ -4080,7 +4103,7 @@
     </div>
     <div class="text-col" id="t41">
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Werther, est de retour...</span><span class="es">Werther ha vuelto...</span></div>
@@ -4120,7 +4143,7 @@
         <span class="es">(En un tono brusco)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Qu'avez-vous?</span><span class="es">¿Qué tienes?</span></div>
@@ -4138,7 +4161,7 @@
         <span class="es">(Insistiendo)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Vous semblez émue troublée...</span><span class="es">Pareces aturdida... turbada...</span></div>
@@ -4156,7 +4179,7 @@
         <span class="es">(casi violento)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Et qui donc était là?</span><span class="es">¿Quién ha estado aquí?</span></div>
@@ -4174,7 +4197,7 @@
         <span class="es">(Sombrío)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Répondez!</span><span class="es">¡Responded!</span></div>
@@ -4202,7 +4225,7 @@
         <span class="es">(Con gravedad, lee sin perder de vista a Charlotte)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">"Je pars pour un lointain voyage...</span><span class="es">"Salgo para un largo viaje...</span></div>
@@ -4221,7 +4244,7 @@
         <span class="es">(continúa)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">"Dieu vous garde tous deux!"</span><span class="es">"Dios os guarde a ambos."</span></div>
@@ -4239,7 +4262,7 @@
         <span class="es">(a Charlotte, con frialdad)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Donnez-les-lui!</span><span class="es">¡Dáselas!</span></div>
@@ -4257,7 +4280,7 @@
         <span class="es">(Indiferente y mirándola fijamente)</span>
       </div>
       <div class="character-row">
-        <span class="character-name">Albert</span>
+        <span class="character-name has-tooltip" data-character-id="albert">Albert</span>
         <span class="character-name">Albert</span>
       </div>
       <div class="line-row"><span class="fr">Sans doute...</span><span class="es">¡Sí, tú!...</span></div>
@@ -4285,7 +4308,10 @@
       </div>
     </div>
 
-    <div class="act-heading">Acte Quatrième · Acto Cuarto</div>
+    <div class="act-heading" data-act="IV">
+      <span>Acte Quatrième</span>
+      <span>Acto Cuarto</span>
+    </div>
 
     <div class="track-col" id="tc42">
       <div class="track-tag">
@@ -5053,10 +5079,10 @@
 
   const CHARACTERS = [
     { id: "werther", name: "Werther", voice: "Tenor", description: "Joven Burgu\u00e9s" },
-    { id: "magistrado", name: "Magistrado", voice: "Bass", description: "Magistrado" },
+    { id: "bailli", name: "Bailli", voice: "Bass", description: "Magistrado" },
     { id: "charlotte", name: "Charlotte", voice: "Mezzo-soprano", description: "Hija del Magistrado" },
-    { id: "sofia", name: "Sofia", voice: "Soprano", description: "Hija del Magistrado" },
-    { id: "alberto", name: "Alberto", voice: "Baritone", description: "Esposo de Charlotte" },
+    { id: "shophie", name: "Shophie", voice: "Soprano", description: "Hija del Magistrado" },
+    { id: "albert", name: "Albert", voice: "Baritone", description: "Esposo de Charlotte" },
     { id: "schmidt", name: "Schmidt", voice: "Tenor", description: "Amigo del Magistrado" },
     { id: "johann", name: "Johann", voice: "Bass", description: "Amigo del Magistrado" },
     { id: "bruhlmann", name: "Br\u00fchlmann", voice: "Tenor", description: "Joven del entorno de Werther" },
@@ -5064,9 +5090,9 @@
   ];
 
   const CAST = {
-    pretre_gedda: { "werther": "Nicolai Gedda", "charlotte": "Victoria de los \u00c1ngeles", "sofia": "Mady Mespl\u00e9", "alberto": "Roger Soyer", "magistrado": "Jean-Christophe Benoit", "johann": "Christos Grigoriou", "schmidt": "Andr\u00e9 Mallabrera" },
-    plasson_kraus: { "werther": "Alfredo Kraus", "charlotte": "Tatiana Troyanos", "sofia": "Christine Barbaux", "alberto": "Matteo Manuguerra", "magistrado": "Jules Bastin", "johann": "Jean-Philippe Lafont", "schmidt": "Philip Langridge", "bruhlmann": "Michael Lewis", "katchen": "Lynda Richardson" },
-    davis_carreras: { "werther": "Jos\u00e9 Carreras", "charlotte": "Frederica Von Stade", "sofia": "Isobel Buchanan", "alberto": "Thomas Allen", "magistrado": "Robert Lloyd", "johann": "Malcolm King", "schmidt": "Paul Crook", "bruhlmann": "Donaldson Bell", "katchen": "Linda Humphries" }
+    pretre_gedda: { "werther": "Nicolai Gedda", "charlotte": "Victoria de los \u00c1ngeles", "shophie": "Mady Mespl\u00e9", "albert": "Roger Soyer", "bailli": "Jean-Christophe Benoit", "johann": "Christos Grigoriou", "schmidt": "Andr\u00e9 Mallabrera" },
+    plasson_kraus: { "werther": "Alfredo Kraus", "charlotte": "Tatiana Troyanos", "shophie": "Christine Barbaux", "albert": "Matteo Manuguerra", "bailli": "Jules Bastin", "johann": "Jean-Philippe Lafont", "schmidt": "Philip Langridge", "bruhlmann": "Michael Lewis", "katchen": "Lynda Richardson" },
+    davis_carreras: { "werther": "Jos\u00e9 Carreras", "charlotte": "Frederica Von Stade", "shophie": "Isobel Buchanan", "albert": "Thomas Allen", "bailli": "Robert Lloyd", "johann": "Malcolm King", "schmidt": "Paul Crook", "bruhlmann": "Donaldson Bell", "katchen": "Linda Humphries" }
   };
 
   let activeRecording = "pretre_gedda";
