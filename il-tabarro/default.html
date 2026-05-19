@@ -305,6 +305,22 @@
     align-items: baseline;
   }
 
+  /* Inline stage direction — sits between character name and first sung line */
+  .inline-direction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+    margin: 0.2rem 0 0.25rem;
+  }
+
+  .inline-direction span {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
   .fr {
     font-family: var(--serif);
     font-size: 15.5px;
@@ -622,14 +638,10 @@
       </div>
     </div>
     <div class="text-col" id="t1">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">O Michele?...</span><span class="es">¡Oh, Michele!</span></div>
       <div class="line-row"><span class="it">Michele?...</span><span class="es">Michele...</span></div>
       <div class="line-row"><span class="it">Non sei stanco</span><span class="es">¿No estás cansado</span></div>
-      <div class="line-row"><span class="it">d’abbacinarti al</span><span class="es">de encandilarte</span></div>
+      <div class="line-row"><span class="it">d'abbacinarti al</span><span class="es">de encandilarte</span></div>
       <div class="line-row"><span class="it">sole che tramonta?</span><span class="es">mirando el crepúsculo?</span></div>
       <div class="line-row"><span class="it">Ti sembra un gran</span><span class="es">¿Te parece un gran</span></div>
       <div class="line-row"><span class="it">spettacolo?</span><span class="es">espectáculo?</span></div>
@@ -649,10 +661,18 @@
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(accennando agli scaricatori)</span>
+        <span class="es">(Señalando a los estibadores.)</span>
+      </div>
       <div class="line-row"><span class="it">Han finito laggiù?</span><span class="es">¿Ya han terminado allá abajo?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(premurosamente)</span>
+        <span class="es">(Ansiosamente.)</span>
       </div>
       <div class="line-row"><span class="it">Vuoi che discenda?</span><span class="es">¿Quieres que baje?</span></div>
       <div class="character-row">
@@ -675,7 +695,7 @@
       <div class="line-row"><span class="it">un buon bicchiere.</span><span class="es">con un buen vaso.</span></div>
       <div class="character-row">
         <span class="character-name">Scaricatori</span>
-        <span class="character-name">Scaricatori</span>
+        <span class="character-name">Estibadores</span>
       </div>
       <div class="line-row"><span class="it">Oh! Issa! oh! ¡</span><span class="es">¡Oh! ¡Issa! ¡Oh!</span></div>
       <div class="character-row">
@@ -684,13 +704,21 @@
       </div>
       <div class="line-row"><span class="it">Ma certo.</span><span class="es">Por supuesto.</span></div>
       <div class="line-row"><span class="it">Pensi a tutto, cuore</span><span class="es">¡Piensas en todo,</span></div>
-      <div class="line-row"><span class="it">d’oro!</span><span class="es">corazón de oro!</span></div>
+      <div class="line-row"><span class="it">d'oro!</span><span class="es">corazón de oro!</span></div>
       <div class="character-row">
         <span class="character-name">Scaricatori</span>
-        <span class="character-name">Scaricatori</span>
+        <span class="character-name">Estibadores</span>
+      </div>
+      <div class="stage-direction">
+        <span>(interno)</span>
+        <span class="es">(Hablando, desde el interior de la bodega.)</span>
       </div>
       <div class="line-row"><span class="it">Oh! Issa!</span><span class="es">¡Oh! ¡Issa!</span></div>
       <div class="line-row"><span class="it">Oh! Un giro ancor!</span><span class="es">¡Oh! ¡Otra vuelta!</span></div>
+      <div class="stage-direction">
+        <span>(voce lontana.)</span>
+        <span class="es">(Con acento pesado y voz lejana.)</span>
+      </div>
       <div class="line-row"><span class="it">Se lavoriam senza ardore,</span><span class="es">Si trabajamos con tesón</span></div>
       <div class="line-row"><span class="it">si resterà ad ormeggiare,</span><span class="es">quedaremos sin fuerzas</span></div>
       <div class="line-row"><span class="it">e Margot con altri</span><span class="es">y Margot se</span></div>
@@ -715,7 +743,11 @@
       <div class="line-row"><span class="it">la sete, e li ristora.</span><span class="es">y los reconfortará.</span></div>
       <div class="character-row">
         <span class="character-name">Scaricatori</span>
-        <span class="character-name">Scaricatori</span>
+        <span class="character-name">Estibadores</span>
+      </div>
+      <div class="stage-direction">
+        <span>(voce lontana.)</span>
+        <span class="es">(Con acento pesado.)</span>
       </div>
       <div class="line-row"><span class="it">Oh! Issa!</span><span class="es">¡Oh! ¡Issa!</span></div>
       <div class="line-row"><span class="it">Oh! Un giro ancor!</span><span class="es">¡Oh! ¡Otra vuelta!</span></div>
@@ -727,11 +759,19 @@
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(avvicinandosi a Giorgetta, affettuosamente)</span>
+        <span class="es">(Acercándose afectuosamente a Giorgetta.)</span>
+      </div>
       <div class="line-row"><span class="it">E a me, non hai</span><span class="es">¿Y no has pensado</span></div>
       <div class="line-row"><span class="it">pensato?</span><span class="es">en mí?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(scostandosi un poco.)</span>
+        <span class="es">(Alejándose un poco.)</span>
       </div>
       <div class="line-row"><span class="it">A te?...</span><span class="es">¿En ti?</span></div>
       <div class="line-row"><span class="it">Che cosa?</span><span class="es">¿Por qué?</span></div>
@@ -739,29 +779,53 @@
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(cingendola con un braccio.)</span>
+        <span class="es">(Abrazándola.)</span>
+      </div>
       <div class="line-row"><span class="it">Al vino ho rinunciato;</span><span class="es">He renunciado al vino;</span></div>
       <div class="line-row"><span class="it">ma, se la pipa è spenta,</span><span class="es">pero si la pipa está</span></div>
       <div class="line-row"><span class="it">non è spento il mio</span><span class="es">apagada, no está apagada</span></div>
       <div class="line-row"><span class="it">ardore...</span><span class="es">mi pasión...</span></div>
       <div class="character-row">
         <span class="character-name">Scaricatori</span>
-        <span class="character-name">Scaricatori</span>
+        <span class="character-name">Estibadores</span>
+      </div>
+      <div class="stage-direction">
+        <span>(voce lontana.)</span>
+        <span class="es">(Con voz lejana.)</span>
       </div>
       <div class="line-row"><span class="it">Oh! Issa! Oh!</span><span class="es">¡Oh! ¡Issa! ¡Oh!</span></div>
       <div class="line-row"><span class="it">Un giro ancor!</span><span class="es">¡Otra vuelta!</span></div>
       <div class="line-row"><span class="it">Ora la stiva è vuotata,</span><span class="es">Ahora la bodega está vacía,</span></div>
       <div class="line-row"><span class="it">chiusa è la lunga</span><span class="es">la larga jornada</span></div>
       <div class="line-row"><span class="it">giornata,</span><span class="es">acabó, y Margot te</span></div>
-      <div class="line-row"><span class="it">e Margot l’amor ti darà!</span><span class="es">dará su amor.</span></div>
+      <div class="line-row"><span class="it">e Margot l'amor ti darà!</span><span class="es">dará su amor.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(La bacia, Giorgetta si scansa voltando il</span>
+        <span class="es">(La besa, Giorgetta le ofrece la mejilla en</span>
+      </div>
+      <div class="stage-direction">
+        <span>viso)</span>
+        <span class="es">lugar de la boca.)</span>
+      </div>
       <div class="line-row"><span class="it">Un tuo bacio, o mio</span><span class="es">Un beso tuyo,</span></div>
       <div class="line-row"><span class="it">amore...</span><span class="es">mi amor...</span></div>
+      <div class="stage-direction">
+        <span>(s'avvia verso la stiva e discende)</span>
+        <span class="es">(Se dirige hacia la bodega y baja.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(passando dallo scalo al battello)</span>
+        <span class="es">(Pasando del muelle al barco.)</span>
       </div>
       <div class="line-row"><span class="it">Si soffoca</span><span class="es">¡Hace calor aquí,</span></div>
       <div class="line-row"><span class="it">padrona!</span><span class="es">patrona!</span></div>
@@ -772,9 +836,21 @@
       <div class="line-row"><span class="it">Lo pensavo.</span><span class="es">Es verdad.</span></div>
       <div class="line-row"><span class="it">Ho quel che ci vuole.</span><span class="es">Tengo lo que hace falta.</span></div>
       <div class="line-row"><span class="it">Sentirete che vino!</span><span class="es">¡Prueba este vino!</span></div>
+      <div class="stage-direction">
+        <span>(si avvia verso la cabina, dopo aver lanciata</span>
+        <span class="es">(Entra en la cabina dirigiéndole una larga</span>
+      </div>
+      <div class="stage-direction">
+        <span>un'occhiata espressiva a Luigi.)</span>
+        <span class="es">mirada a Luis.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Tinca</span>
         <span class="character-name">Tinca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(salendo dalla stiva)</span>
+        <span class="es">(Saliendo de la bodega)</span>
       </div>
       <div class="line-row"><span class="it">Sacchi dannati!</span><span class="es">¡Fardos malditos!</span></div>
       <div class="line-row"><span class="it">Mondo birbone!</span><span class="es">¡Mundo malvado!</span></div>
@@ -784,12 +860,40 @@
         <span class="character-name">Talpa</span>
         <span class="character-name">Talpa</span>
       </div>
+      <div class="stage-direction">
+        <span>(salendo dalla stiva con un carico</span>
+        <span class="es">(Saliendo de la bodega con la carga sobre</span>
+      </div>
+      <div class="stage-direction">
+        <span>sulle spalle)</span>
+        <span class="es">los hombros.)</span>
+      </div>
       <div class="line-row"><span class="it">Non aver fretta, non</span><span class="es">¡No tan a prisa,</span></div>
       <div class="line-row"><span class="it">mi seccare!</span><span class="es">no me fastidies!</span></div>
       <div class="line-row"><span class="it">Ah! Questo sacco</span><span class="es">¡Ah! ¡Este fardo</span></div>
       <div class="line-row"><span class="it">spacca il groppone!</span><span class="es">me rompe la espalda!</span></div>
+      <div class="stage-direction">
+        <span>(scotendo la testa e tergendosi il sudore</span>
+        <span class="es">(Sacudiendo la cabeza y secándose el</span>
+      </div>
+      <div class="stage-direction">
+        <span>col rovescio della mano)</span>
+        <span class="es">sudor con el dorso de la mano.)</span>
+      </div>
       <div class="line-row"><span class="it">Dio! che caldo!... O Luigi,</span><span class="es">¡Dios! ¡Qué calor!...</span></div>
       <div class="line-row"><span class="it">ancora una passata.</span><span class="es">Luis, otra vuelta más.</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(indicando Giorgetta, che reca la brocca</span>
+        <span class="es">(Señalando a Giorgetta, que trae una jarra</span>
+      </div>
+      <div class="stage-direction">
+        <span>del vino e i bicchieri)</span>
+        <span class="es">de vino con vasos.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc2">
@@ -799,20 +903,32 @@
       </div>
     </div>
     <div class="text-col" id="t2">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
-      </div>
       <div class="line-row"><span class="it">Eccola la passata!...</span><span class="es">¡Aquí viene la vuelta!</span></div>
       <div class="line-row"><span class="it">Ragazzi, si beve!</span><span class="es">¡Bebed, muchachos!</span></div>
       <div class="line-row"><span class="it">Qui, tutti insiem</span><span class="es">¡Aquí, todos juntos,</span></div>
       <div class="line-row"><span class="it">lesti!</span><span class="es">rápido!</span></div>
+      <div class="stage-direction">
+        <span>(tutti accorrono alla chiamata, facendosi</span>
+        <span class="es">(Todos acuden a la llamada, agrupándose</span>
+      </div>
+      <div class="stage-direction">
+        <span>intorno a Giorgetta, che distribuisce</span>
+        <span class="es">alrededor de Giorgetta, que distribuye los</span>
+      </div>
+      <div class="stage-direction">
+        <span>bicchieri e verrà mescendo)</span>
+        <span class="es">vasos.)</span>
+      </div>
       <div class="line-row"><span class="it">Lesti! Pronti!</span><span class="es">¡Rápido! ¡Pronto!</span></div>
       <div class="line-row"><span class="it">Nel vino troverem</span><span class="es">¡En el vino encontraremos</span></div>
-      <div class="line-row"><span class="it">l’energia per finir!</span><span class="es">la energía para terminar!</span></div>
+      <div class="line-row"><span class="it">l'energia per finir!</span><span class="es">la energía para terminar!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Ridendo.)</span>
+        <span class="es">(Riendo.)</span>
       </div>
       <div class="line-row"><span class="it">Come parla difficile!...</span><span class="es">¡Qué cosas dices!</span></div>
       <div class="line-row"><span class="it">Ma certo: vino alla</span><span class="es">Pero es cierto:</span></div>
@@ -826,7 +942,7 @@
       </div>
       <div class="line-row"><span class="it">Alla salute vostra</span><span class="es">¡Bebamos este vino a</span></div>
       <div class="line-row"><span class="it">il vino si beva!</span><span class="es">vuestra salud!</span></div>
-      <div class="line-row"><span class="it">S’alzi il bicchier!</span><span class="es">¡Alcemos los vasos!</span></div>
+      <div class="line-row"><span class="it">S'alzi il bicchier!</span><span class="es">¡Alcemos los vasos!</span></div>
       <div class="line-row"><span class="it">Bevo! Viva!</span><span class="es">¡Bebamos! ¡Viva!</span></div>
       <div class="line-row"><span class="it">Tanta felicità per la</span><span class="es">¡Qué felicidad</span></div>
       <div class="line-row"><span class="it">gioia che dà!</span><span class="es">y qué alegría!</span></div>
@@ -839,18 +955,38 @@
         <span class="character-name">Talpa</span>
         <span class="character-name">Talpa</span>
       </div>
+      <div class="stage-direction">
+        <span>(e s'asciuga la bocca con il dorso della mano)</span>
+        <span class="es">(Se seca la boca con el dorso de la mano.)</span>
+      </div>
       <div class="line-row"><span class="it">Non si rifiuta mai!</span><span class="es">¡Eso no se rechaza nunca!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(agli altri)</span>
+        <span class="es">(A los otros.)</span>
+      </div>
       <div class="line-row"><span class="it">Avanti coi bicchieri!</span><span class="es">¡Poned los vasos!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">Guarda là l’organetto!</span><span class="es">¡Mirad allá, el del organillo!</span></div>
+      <div class="stage-direction">
+        <span>(indicando un suonatore di organetto che</span>
+        <span class="es">(Señalando a un organillero que pasa por</span>
+      </div>
+      <div class="stage-direction">
+        <span>passa sulla banchina)</span>
+        <span class="es">la acera.)</span>
+      </div>
+      <div class="line-row"><span class="it">Guarda là l'organetto!</span><span class="es">¡Mirad allá, el del organillo!</span></div>
       <div class="line-row"><span class="it">E arrivato in buon punto.</span><span class="es">Ha llegado justo a tiempo.</span></div>
+      <div class="stage-direction">
+        <span>(al suonatore).</span>
+        <span class="es">(Llama al organillero.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Tinca</span>
         <span class="character-name">Tinca</span>
@@ -858,16 +994,28 @@
       <div class="line-row"><span class="it">In questo vino affogo</span><span class="es">Ahogo en este vino</span></div>
       <div class="line-row"><span class="it">i tristi pensieri.</span><span class="es">los pensamientos tristes.</span></div>
       <div class="line-row"><span class="it">Bevo al padron!</span><span class="es">¡A la salud del patrón!</span></div>
+      <div class="stage-direction">
+        <span>(Giorgetta torna a mescere)</span>
+        <span class="es">(Giorgetta vuelve a servir)</span>
+      </div>
       <div class="line-row"><span class="it">Viva! Grazie, grazie!</span><span class="es">¡Viva! ¡Gracias, gracias!</span></div>
-      <div class="line-row"><span class="it">L’unico mio piacer</span><span class="es">¡Mi único placer</span></div>
+      <div class="line-row"><span class="it">L'unico mio piacer</span><span class="es">¡Mi único placer</span></div>
       <div class="line-row"><span class="it">sta qui in fondo</span><span class="es">es el que está aquí,</span></div>
       <div class="line-row"><span class="it">bicchier!</span><span class="es">en el fondo del vaso!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(al suonatore)</span>
+        <span class="es">(Al organillero.)</span>
       </div>
       <div class="line-row"><span class="it">Ei, là! Professore!</span><span class="es">¡Eh! ¡Profesor!</span></div>
       <div class="line-row"><span class="it">Vien qua!</span><span class="es">¡Ven aquí!</span></div>
+      <div class="stage-direction">
+        <span>(agli amici)</span>
+        <span class="es">(A los otros.)</span>
+      </div>
       <div class="line-row"><span class="it">Sentirete che artista.</span><span class="es">¡Veréis qué artista!.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
@@ -880,6 +1028,10 @@
         <span class="character-name">Tinca</span>
         <span class="character-name">Tinca</span>
       </div>
+      <div class="stage-direction">
+        <span>(offrendosi)</span>
+        <span class="es">(Se adelanta como primer candidato.)</span>
+      </div>
       <div class="line-row"><span class="it">Ma sicuro! Ai suoi</span><span class="es">¡Seguro! Siempre a</span></div>
       <div class="line-row"><span class="it">ordini sempre, e gamba</span><span class="es">sus órdenes, y con</span></div>
       <div class="line-row"><span class="it">buona.</span><span class="es">los pies listos.</span></div>
@@ -887,36 +1039,100 @@
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
-      <div class="line-row"><span class="it">To’! Io ti prendo in parola.</span><span class="es">¡Ja, te tomo la palabra!</span></div>
+      <div class="stage-direction">
+        <span>(Ridendo)</span>
+        <span class="es">(Riendo)</span>
+      </div>
+      <div class="line-row"><span class="it">To'! Io ti prendo in parola.</span><span class="es">¡Ja, te tomo la palabra!</span></div>
       <div class="character-row">
         <span class="character-name">Tinca</span>
         <span class="character-name">Tinca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(lusingatissimo)</span>
+        <span class="es">(Contento.)</span>
       </div>
       <div class="line-row"><span class="it">Ballo con la padrona.</span><span class="es">Bailo con la patrona.</span></div>
+      <div class="stage-direction">
+        <span>(si ride. Ma si ride anche di più perchè il</span>
+        <span class="es">(todos ríen porque el Tinca no puede</span>
+      </div>
+      <div class="stage-direction">
+        <span>Tinca non riesce a prendere il passo e a</span>
+        <span class="es">llevar el paso y ponerse de acuerdo</span>
+      </div>
+      <div class="stage-direction">
+        <span>mettersi d'accordo con Giorgetta)</span>
+        <span class="es">con Giorgetta)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">La musica e la danza</span><span class="es">¡La música y los pies</span></div>
-      <div class="line-row"><span class="it">van d’accordo.</span><span class="es">no van perejos!</span></div>
+      <div class="line-row"><span class="it">van d'accordo.</span><span class="es">no van perejos!</span></div>
+      <div class="stage-direction">
+        <span>(Al Tinca)</span>
+        <span class="es">(Al Tinca, que baila arrastrando los pies.)</span>
+      </div>
       <div class="line-row"><span class="it">Sembra che tu pulisca</span><span class="es">Parece que estuvieras</span></div>
       <div class="line-row"><span class="it">il pavimento!</span><span class="es">limpiando el piso.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
-      <div class="line-row"><span class="it">Ahi! m’hai pestato un piede!</span><span class="es">¡Ay! ¡Me pisaste un pie!</span></div>
+      <div class="line-row"><span class="it">Ahi! m'hai pestato un piede!</span><span class="es">¡Ay! ¡Me pisaste un pie!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">Va’!</span><span class="es">¡Vete!</span></div>
+      <div class="line-row"><span class="it">Va'!</span><span class="es">¡Vete!</span></div>
+      <div class="stage-direction">
+        <span>(Allontanando il Tinca con una spinta e</span>
+        <span class="es">(Alejando al Tinca con un empujón y</span>
+      </div>
+      <div class="stage-direction">
+        <span>sostituendolo)</span>
+        <span class="es">sustituyéndolo.)</span>
+      </div>
       <div class="line-row"><span class="it">Lascia! Son qua io!</span><span class="es">¡Déjala! ¡Aquí estoy yo!</span></div>
+      <div class="stage-direction">
+        <span>(E serra Giorgetta fra le braccia. Essa</span>
+        <span class="es">(Toma con los brazos a Giorgetta. Ésta se</span>
+      </div>
+      <div class="stage-direction">
+        <span>s'abbandona languidamente. La danza</span>
+        <span class="es">abandona lánguidamente. Continúan</span>
+      </div>
+      <div class="stage-direction">
+        <span>continua mentre dalla stiva appare Michele)</span>
+        <span class="es">bailando mientras aparece Michele)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Talpa</span>
         <span class="character-name">Talpa</span>
       </div>
-      <div class="line-row"><span class="it">Ragazzi, c’è il padrone!</span><span class="es">¡Muchachos! ¡El patrón!</span></div>
+      <div class="line-row"><span class="it">Ragazzi, c'è il padrone!</span><span class="es">¡Muchachos! ¡El patrón!</span></div>
+      <div class="stage-direction">
+        <span>(Luigi e Giorgetta si staccano. Luigi getta</span>
+        <span class="es">(Los dos dejan de bailar. Luis hace señas al</span>
+      </div>
+      <div class="stage-direction">
+        <span>qualche moneta al suonatore, poi assieme</span>
+        <span class="es">organillero para que deje de tocar. Luis y los</span>
+      </div>
+      <div class="stage-direction">
+        <span>agli altri s'avvia verso la stiva mentre</span>
+        <span class="es">otros estibadores descienden a la bodega.</span>
+      </div>
+      <div class="stage-direction">
+        <span>Michele procede verso Giorgetta)</span>
+        <span class="es">Entra Michele y se dirigen hacia Giorgetta)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
+        <span class="character-name">Giorgetta</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc3">
@@ -926,16 +1142,16 @@
       </div>
     </div>
     <div class="text-col" id="t3">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">Dunque, che cosa credi?</span><span class="es">¿Entonces, qué crees?</span></div>
       <div class="line-row"><span class="it">Partiremo la settimana</span><span class="es">¿Partiremos la próxima</span></div>
       <div class="line-row"><span class="it">prossima?</span><span class="es">semana?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Vagamente.)</span>
+        <span class="es">(Vagamente.)</span>
       </div>
       <div class="line-row"><span class="it">Vedremo.</span><span class="es">Ya veremos.</span></div>
       <div class="character-row">
@@ -958,6 +1174,10 @@
         <span class="character-name">Michele</span>
       </div>
       <div class="line-row"><span class="it">Ed oggi, penso.</span><span class="es">Hoy sí lo pienso.</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
+        <span class="character-name">Giorgetta</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc4">
@@ -967,36 +1187,36 @@
       </div>
     </div>
     <div class="text-col" id="t4">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">Perchè?</span><span class="es">¿Por qué?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
       </div>
-      <div class="line-row"><span class="it">Chi vuol l’ultima</span><span class="es">¿Quién quiere la</span></div>
+      <div class="stage-direction">
+        <span>(Interno, lontano.)</span>
+        <span class="es">(fuera de escena, un poco lejano.)</span>
+      </div>
+      <div class="line-row"><span class="it">Chi vuol l'ultima</span><span class="es">¿Quién quiere la</span></div>
       <div class="line-row"><span class="it">canzonetta?</span><span class="es">última canción?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
-      <div class="line-row"><span class="it">Perchè non voglio ch’egli</span><span class="es">Porque no quiero que</span></div>
+      <div class="line-row"><span class="it">Perchè non voglio ch'egli</span><span class="es">Porque no quiero que</span></div>
       <div class="line-row"><span class="it">crepi di fame.</span><span class="es">se muera de hambre.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
-      <div class="line-row"><span class="it">Quello s’arrangia sempre.</span><span class="es">Eso se arregla siempre.</span></div>
+      <div class="line-row"><span class="it">Quello s'arrangia sempre.</span><span class="es">Eso se arregla siempre.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
-      <div class="line-row"><span class="it">Lo so: s’arrangia, è vero.</span><span class="es">Lo sé, se arregla, es cierto.</span></div>
+      <div class="line-row"><span class="it">Lo so: s'arrangia, è vero.</span><span class="es">Lo sé, se arregla, es cierto.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
       </div>
       <div class="line-row"><span class="it">Chi la vuole?</span><span class="es">¿Quién la quiere?</span></div>
       <div class="character-row">
@@ -1009,11 +1229,19 @@
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(seccata.)</span>
+        <span class="es">(Molesta.)</span>
+      </div>
       <div class="line-row"><span class="it">Con te non si sa mai</span><span class="es">¡Contigo no se sabe nunca</span></div>
       <div class="line-row"><span class="it">chi fa male o fa bene!</span><span class="es">qué está mal y que está bien!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
+      </div>
+      <div class="stage-direction">
+        <span>(cerca.)</span>
+        <span class="es">(Más cerca.)</span>
       </div>
       <div class="line-row"><span class="it">Chi la vuole?</span><span class="es">¿Quién la quiere?</span></div>
       <div class="character-row">
@@ -1022,6 +1250,10 @@
       </div>
       <div class="line-row"><span class="it">Chi lavora</span><span class="es">El que trabaja</span></div>
       <div class="line-row"><span class="it">si tiene!</span><span class="es">no pasa hambre.</span></div>
+      <div class="stage-direction">
+        <span>(da lontano il sibilo d'una sirena)</span>
+        <span class="es">(Se oye a lo lejos la sirena de un remolcador.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -1029,14 +1261,18 @@
       <div class="line-row"><span class="it">Già discende la sera...</span><span class="es">Ya cae la tarde...</span></div>
       <div class="line-row"><span class="it">Oh che rosso tramonto</span><span class="es">¡Qué rojo es el crepúsculo</span></div>
       <div class="line-row"><span class="it">di settembre!</span><span class="es">de setiembre!</span></div>
-      <div class="line-row"><span class="it">Che brivido d’autunno!</span><span class="es">¡Ya se anuncia el otoño!</span></div>
+      <div class="line-row"><span class="it">Che brivido d'autunno!</span><span class="es">¡Ya se anuncia el otoño!</span></div>
       <div class="line-row"><span class="it">Non sembra un grosso</span><span class="es">¿No parece una gran</span></div>
       <div class="line-row"><span class="it">arancio questo sole</span><span class="es">naranja este sol que</span></div>
       <div class="line-row"><span class="it">che muore nella Senna?</span><span class="es">muere en el Sena?</span></div>
       <div class="line-row"><span class="it">Guarda laggiù la Frugola!</span><span class="es">¡Mira allá abajo la Frugola!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
+      </div>
+      <div class="stage-direction">
+        <span>(più vicino.)</span>
+        <span class="es">(Más cerca.)</span>
       </div>
       <div class="line-row"><span class="it">Chi la vuole,</span><span class="es">¿Quién la quiere, con</span></div>
       <div class="line-row"><span class="it">con musica e parole?</span><span class="es">música y palabras?</span></div>
@@ -1056,26 +1292,46 @@
         <span class="character-name">Giorgetta</span>
       </div>
       <div class="line-row"><span class="it">Non lo sai che è gelosa?</span><span class="es">¿No sabes que es celosa?</span></div>
+      <div class="stage-direction">
+        <span>(scrutato Michele.)</span>
+        <span class="es">(Observando a Michele.)</span>
+      </div>
       <div class="line-row"><span class="it">O mio uomo, non sei</span><span class="es">¡Oh, mi hombre, no</span></div>
       <div class="line-row"><span class="it">di buon umore!</span><span class="es">estás de buen humor! ¿Qué</span></div>
       <div class="line-row"><span class="it">Che hai?... Che guardi?...</span><span class="es">tienes?... ¿Qué miras?...</span></div>
       <div class="line-row"><span class="it">E perchè taci?...</span><span class="es">¿Y por qué callas?...</span></div>
+      <div class="stage-direction">
+        <span>(Nel tempo il cantatore è apparso sulla</span>
+        <span class="es">(El vendedor de canciones aparece por</span>
+      </div>
+      <div class="stage-direction">
+        <span>strada al di là della Senna, seguito da un</span>
+        <span class="es">una calle frente al Sena, seguido por</span>
+      </div>
+      <div class="stage-direction">
+        <span>gruppo di midinettes che escono da una casa</span>
+        <span class="es">algunas modistillas, que salen de una</span>
+      </div>
+      <div class="stage-direction">
+        <span>di mode e che si fermano ad ascoltarlo)</span>
+        <span class="es">casa de costuras)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
       </div>
-      <div class="line-row"><span class="it">Chi la vuole l’ultima</span><span class="es">¿Quién quiere la última</span></div>
+      <div class="line-row"><span class="it">Chi la vuole l'ultima</span><span class="es">¿Quién quiere la última</span></div>
       <div class="line-row"><span class="it">canzonetta?</span><span class="es">canción?</span></div>
       <div class="character-row">
         <span class="character-name">Midinettes.</span>
-        <span class="character-name">Midinettes.</span>
+        <span class="character-name">Muchachas.</span>
       </div>
       <div class="line-row"><span class="it">Bene! Bene! Sì, sì!</span><span class="es">¡Bien! ¡Bien! ¡Sí, sí!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
-      <div class="line-row"><span class="it">T’ho mai fatto</span><span class="es">¿Alguna vez te hice</span></div>
+      <div class="line-row"><span class="it">T'ho mai fatto</span><span class="es">¿Alguna vez te hice</span></div>
       <div class="line-row"><span class="it">scenate?</span><span class="es">una escena?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
@@ -1085,11 +1341,11 @@
       <div class="line-row"><span class="it">mi batti!</span><span class="es">me has golpeado!</span></div>
       <div class="character-row">
         <span class="character-name">Venditore Di Canzonette.</span>
-        <span class="character-name">Venditore Di Canzonette.</span>
+        <span class="character-name">Vendedor De Canciones.</span>
       </div>
       <div class="line-row"><span class="it">Primavera, primavera,</span><span class="es">Primavera, primavera,</span></div>
       <div class="line-row"><span class="it">non cercare più i due</span><span class="es">no busques más a los</span></div>
-      <div class="line-row"><span class="it">amanti là fra l’ombre</span><span class="es">dos amantes entre las</span></div>
+      <div class="line-row"><span class="it">amanti là fra l'ombre</span><span class="es">dos amantes entre las</span></div>
       <div class="line-row"><span class="it">della sera.</span><span class="es">sombras de la tarde.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
@@ -1103,17 +1359,37 @@
       <div class="line-row"><span class="it">Ai silenzi talvolta,</span><span class="es">Sí, tal vez preferiría</span></div>
       <div class="line-row"><span class="it">sì, preferirei lividi</span><span class="es">estar morada por los</span></div>
       <div class="line-row"><span class="it">di percosse!</span><span class="es">golpes que por tu silencio.</span></div>
+      <div class="stage-direction">
+        <span>(Michele, senza rispondere</span>
+        <span class="es">(Michele, sin responder, vuelve al barco</span>
+      </div>
+      <div class="stage-direction">
+        <span>risale il barcone)</span>
+        <span class="es">y comienza a liar una cuerda)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
       </div>
       <div class="line-row"><span class="it">Primavera, primavera!</span><span class="es">¡Primavera, primavera!</span></div>
       <div class="line-row"><span class="it">Chi ha vissuto per</span><span class="es">Quien ha vivido por amor,</span></div>
       <div class="line-row"><span class="it">amore, per amore si morì.</span><span class="es">morirá por amor.</span></div>
       <div class="line-row"><span class="it">E la storia di Mimi!</span><span class="es">¡Es la historia de Mimí!</span></div>
+      <div class="stage-direction">
+        <span>(le ragazze, leggendo le parole.</span>
+        <span class="es">(Las muchachas compran las canciones</span>
+      </div>
+      <div class="stage-direction">
+        <span>Le loro voci si perdono)</span>
+        <span class="es">y dos de ellas se van leyéndolas.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Michele)</span>
+        <span class="es">(Que ha seguido a Michele con insistencia.)</span>
       </div>
       <div class="line-row"><span class="it">Dimmi al meno che hai!</span><span class="es">¡Al menos dime qué te sucede!</span></div>
       <div class="character-row">
@@ -1123,25 +1399,57 @@
       <div class="line-row"><span class="it">Nulla!... Nulla!</span><span class="es">¡Nada!... ¡Nada!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="venditore">Venditore Di Canzonette</span>
-        <span class="character-name">Venditore Di Canzonette</span>
+        <span class="character-name">Vendedor De Canciones</span>
       </div>
       <div class="line-row"><span class="it">Chi aspettando sa che</span><span class="es">El que sabe que se</span></div>
       <div class="line-row"><span class="it">muore conta ad ore</span><span class="es">muere, cuenta las</span></div>
       <div class="line-row"><span class="it">le giornate con i</span><span class="es">horas del día con los</span></div>
       <div class="line-row"><span class="it">battiti del cuore,</span><span class="es">latidos del corazón.</span></div>
-      <div class="line-row"><span class="it">Ma l’amante non tornò</span><span class="es">Pero el amante</span></div>
+      <div class="line-row"><span class="it">Ma l'amante non tornò</span><span class="es">Pero el amante</span></div>
       <div class="line-row"><span class="it">e i suoi battiti finì</span><span class="es">no volvió y sus latidos</span></div>
       <div class="line-row"><span class="it">anche il cuore di</span><span class="es">terminaron junto con el</span></div>
       <div class="line-row"><span class="it">Mimi!</span><span class="es">corazón de Mimí.</span></div>
+      <div class="stage-direction">
+        <span>(il cantore si allontana.</span>
+        <span class="es">(El vendedor de canciones se aleja. Las muchachas se</span>
+      </div>
+      <div class="stage-direction">
+        <span>Le ragazze sciamo ripetendo la strofa)</span>
+        <span class="es">dispersan)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Midinettes</span>
-        <span class="character-name">Midinettes</span>
+        <span class="character-name">Modistillas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Interno, lontano.)</span>
+        <span class="es">(fuera de escena, lejano.)</span>
       </div>
       <div class="line-row"><span class="it">Conta ad ore le giornate.</span><span class="es">Cuenta las horas del día.</span></div>
-      <div class="line-row"><span class="it">Ma l’amante non tornò</span><span class="es">Pero el amante</span></div>
+      <div class="line-row"><span class="it">Ma l'amante non tornò</span><span class="es">Pero el amante</span></div>
       <div class="line-row"><span class="it">e i suoi battiti finì</span><span class="es">no volvió y sus latidos</span></div>
       <div class="line-row"><span class="it">anche il cuore di</span><span class="es">terminaron junto con el</span></div>
       <div class="line-row"><span class="it">Mimi!</span><span class="es">corazón de Mimí.</span></div>
+      <div class="stage-direction">
+        <span>(la Frugola è apparsa sul molo,</span>
+        <span class="es">(Aparece la Frugola sobre el muelle,</span>
+      </div>
+      <div class="stage-direction">
+        <span>attraversa la passerella e sale sul barcone.</span>
+        <span class="es">atraviesa la pasarela y sube al barco. Tiene</span>
+      </div>
+      <div class="stage-direction">
+        <span>Ha sulle spalle una vecchia sacca gonfia di</span>
+        <span class="es">sobre los hombros una vieja bolsa llena de</span>
+      </div>
+      <div class="stage-direction">
+        <span>ogni sorta di roba raccattata)</span>
+        <span class="es">todo tipo de cosas recolectadas.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Frugola</span>
+        <span class="character-name">Frugola</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc5">
@@ -1151,10 +1459,6 @@
       </div>
     </div>
     <div class="text-col" id="t5">
-      <div class="character-row">
-        <span class="character-name">Frugola</span>
-        <span class="character-name">Frugola</span>
-      </div>
       <div class="line-row"><span class="it">O eterni innamorati,</span><span class="es">Buenas noches, eternos</span></div>
       <div class="line-row"><span class="it">buona sera.</span><span class="es">enamorados.</span></div>
       <div class="character-row">
@@ -1169,12 +1473,32 @@
       </div>
       <div class="line-row"><span class="it">Il mio uomo</span><span class="es">¿Mi marido terminó</span></div>
       <div class="line-row"><span class="it">ha finito il lavoro?</span><span class="es">su trabajo?</span></div>
+      <div class="stage-direction">
+        <span>(Michele, dopo di avere salutato con un gesto</span>
+        <span class="es">(Michele, después de haber saludado con</span>
+      </div>
+      <div class="stage-direction">
+        <span>la Frugola, entra nella cabina)</span>
+        <span class="es">un gesto a la Frugola, entra en la cabina.)</span>
+      </div>
       <div class="line-row"><span class="it">Stamattina non ne</span><span class="es">Esta mañana no podía más</span></div>
       <div class="line-row"><span class="it">poteva più dal mal di reni.</span><span class="es">con sus riñones.</span></div>
       <div class="line-row"><span class="it">Faceva proprio pena. Ma</span><span class="es">Daba lástima.</span></div>
-      <div class="line-row"><span class="it">l’ho curato io: una buona</span><span class="es">Pero yo lo curé.</span></div>
+      <div class="line-row"><span class="it">l'ho curato io: una buona</span><span class="es">Pero yo lo curé.</span></div>
       <div class="line-row"><span class="it">frizione e il mio rum</span><span class="es">Le di una buena fricción y su</span></div>
-      <div class="line-row"><span class="it">l’ha bevuto la sua schiena!</span><span class="es">espalda se bebió mi ron.</span></div>
+      <div class="line-row"><span class="it">l'ha bevuto la sua schiena!</span><span class="es">espalda se bebió mi ron.</span></div>
+      <div class="stage-direction">
+        <span>(ride rumorosamente, poi getta a terra la</span>
+        <span class="es">(Se ríe a carcajadas, luego tira la bolsa al</span>
+      </div>
+      <div class="stage-direction">
+        <span>sacca e vi fruga dentro con voluttà</span>
+        <span class="es">suelo, la revuelve con voluptuosidad,</span>
+      </div>
+      <div class="stage-direction">
+        <span>cavandone vari oggetti)</span>
+        <span class="es">extrayendo varios objetos.)</span>
+      </div>
       <div class="line-row"><span class="it">Ah! Giorgetta, guarda:</span><span class="es">¡Ah, Giorgetta, mira:</span></div>
       <div class="line-row"><span class="it">un pettine fiammante!</span><span class="es">un peine flamante!</span></div>
       <div class="line-row"><span class="it">Se lo vuoi, te lo dono.</span><span class="es">Si lo quieres, te lo doy.</span></div>
@@ -1184,10 +1508,22 @@
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(prendendo il pettine.)</span>
+        <span class="es">(Tomando el peine.)</span>
+      </div>
       <div class="line-row"><span class="it">Hanno ragione di</span><span class="es">Tienen razón de llamarte</span></div>
       <div class="line-row"><span class="it">chiamarti Frugola;</span><span class="es">Frugola; buscas</span></div>
       <div class="line-row"><span class="it">tu rovisti ogni angolo</span><span class="es">en todos los rincones</span></div>
       <div class="line-row"><span class="it">ed hai la sacca piena.</span><span class="es">y tienes la bolsa llena.</span></div>
+      <div class="character-row">
+        <span class="character-name">Frugola</span>
+        <span class="character-name">Frugola</span>
+      </div>
+      <div class="stage-direction">
+        <span>(mostrando la bolsa.)</span>
+        <span class="es">(Señalando la bolsa.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc6">
@@ -1197,10 +1533,6 @@
       </div>
     </div>
     <div class="text-col" id="t6">
-      <div class="character-row">
-        <span class="character-name">Frugola</span>
-        <span class="character-name">Frugola</span>
-      </div>
       <div class="line-row"><span class="it">Se tu sapessi gli oggetti strani</span><span class="es">¡Si supieses la de objetos extraños</span></div>
       <div class="line-row"><span class="it">che in questa sacca sono</span><span class="es">que hay en esta</span></div>
       <div class="line-row"><span class="it">racchiusi! Guarda! Guarda!</span><span class="es">bolsa! ¡Mira! ¡Mira!</span></div>
@@ -1228,11 +1560,15 @@
       <div class="line-row"><span class="it">Cuore di manzo</span><span class="es">Corazón de becerro</span></div>
       <div class="line-row"><span class="it">per Caporale,</span><span class="es">para Sargento,</span></div>
       <div class="line-row"><span class="it">il mio soriano dal pelo</span><span class="es">pelos de gato</span></div>
-      <div class="line-row"><span class="it">fulvo, dall’occhio strano,</span><span class="es">leonado, ojos extraños,</span></div>
+      <div class="line-row"><span class="it">fulvo, dall'occhio strano,</span><span class="es">leonado, ojos extraños,</span></div>
       <div class="line-row"><span class="it">che non ha uguale!</span><span class="es">que no tiene igual.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Ridendo.)</span>
+        <span class="es">(Riendo.)</span>
       </div>
       <div class="line-row"><span class="it">Gode dei privilegi</span><span class="es">¡Pues sí que goza de privilegios</span></div>
       <div class="line-row"><span class="it">il tuo soriano!</span><span class="es">tu gato!</span></div>
@@ -1241,6 +1577,10 @@
         <span class="character-name">Frugola</span>
       </div>
       <div class="line-row"><span class="it">Li merita! Vedessi!</span><span class="es">¡Los merece! Si vieras.</span></div>
+      <div class="stage-direction">
+        <span>(Ride)</span>
+        <span class="es">(Ríe a carcajadas.)</span>
+      </div>
       <div class="line-row"><span class="it">E il più bel gatto,</span><span class="es">Es el gato más lindo,</span></div>
       <div class="line-row"><span class="it">il mio più bel romanzo.</span><span class="es">mi más lindo consuelo.</span></div>
       <div class="line-row"><span class="it">Quando il mio Talpa è</span><span class="es">Cuando mi Talpa está fuera,</span></div>
@@ -1256,7 +1596,15 @@
       <div class="line-row"><span class="it">Ron, ron, ron, ron, ron:</span><span class="es">Ron, ron y ron.</span></div>
       <div class="line-row"><span class="it">meglio cibarsi con due fette</span><span class="es">Mejor alimentarse con dos pesas de</span></div>
       <div class="line-row"><span class="it">di cuore che logorare</span><span class="es">corazón, que consumir el</span></div>
-      <div class="line-row"><span class="it">il proprio nell’amor!</span><span class="es">propio por el amor.</span></div>
+      <div class="line-row"><span class="it">il proprio nell'amor!</span><span class="es">propio por el amor.</span></div>
+      <div class="character-row">
+        <span class="character-name">Talpa</span>
+        <span class="character-name">Talpa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(appare dalla stiva seguito da Luigi.)</span>
+        <span class="es">(Viene de la bodega, seguido por Luis.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc7">
@@ -1266,11 +1614,7 @@
       </div>
     </div>
     <div class="text-col" id="t7">
-      <div class="character-row">
-        <span class="character-name">Talpa</span>
-        <span class="character-name">Talpa</span>
-      </div>
-      <div class="line-row"><span class="it">To’! guarda la mia ¡ vecchia!</span><span class="es">Ah, ¡mira a mi vieja!</span></div>
+      <div class="line-row"><span class="it">To'! guarda la mia ¡ vecchia!</span><span class="es">Ah, ¡mira a mi vieja!</span></div>
       <div class="line-row"><span class="it">...Che narravi?</span><span class="es">...¿Qué contabas?</span></div>
       <div class="character-row">
         <span class="character-name">Frugola</span>
@@ -1282,27 +1626,51 @@
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(uscendo dalla cabina, si avvicina a Luigi.)</span>
+        <span class="es">(Saliendo de la cabina, se acerca a Luis.)</span>
+      </div>
       <div class="line-row"><span class="it">O Luigi, domani si</span><span class="es">Luis, mañana se</span></div>
       <div class="line-row"><span class="it">carica del ferro!</span><span class="es">carga el hierro. ¿Vedrás</span></div>
       <div class="line-row"><span class="it">Vieni a darci una mano?</span><span class="es">a echarnos una mano?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Verrò, padrone.</span><span class="es">Vendré, patrón.</span></div>
       <div class="character-row">
         <span class="character-name">Tinca</span>
         <span class="character-name">Tinca</span>
       </div>
+      <div class="stage-direction">
+        <span>(venendo dalla stiva seguito dagli altri</span>
+        <span class="es">(Viniendo de la bodega, seguido por los</span>
+      </div>
+      <div class="stage-direction">
+        <span>scaricatori che se ne vanno pel molo dopo di</span>
+        <span class="es">otros estibadores, que se van por el muelle</span>
+      </div>
+      <div class="stage-direction">
+        <span>avere salutato Michele.)</span>
+        <span class="es">después de haber saludado a Michele.)</span>
+      </div>
       <div class="line-row"><span class="it">Buona notte a tutti.</span><span class="es">Buenas noches a todos.</span></div>
       <div class="character-row">
         <span class="character-name">Talpa</span>
         <span class="character-name">Talpa</span>
       </div>
+      <div class="stage-direction">
+        <span>(Al Tinca.)</span>
+        <span class="es">(Al Tinca.)</span>
+      </div>
       <div class="line-row"><span class="it">Hai tanta fretta?</span><span class="es">¿Tienes tanta prisa?</span></div>
       <div class="character-row">
         <span class="character-name">Frugola</span>
         <span class="character-name">Frugola</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Al Tinca.)</span>
+        <span class="es">(Al Tinca.)</span>
       </div>
       <div class="line-row"><span class="it">Corri ad ubriacarti?</span><span class="es">¿Corres a emborracharte?</span></div>
       <div class="line-row"><span class="it">Ah! se fossi tua moglie!</span><span class="es">¡Ay, si yo fuese tu mujer!</span></div>
@@ -1317,7 +1685,7 @@
       </div>
       <div class="line-row"><span class="it">Ti pesterei finchè</span><span class="es">Te patearía hasta que</span></div>
       <div class="line-row"><span class="it">non la smettessi di</span><span class="es">dejaras de pasar las noches</span></div>
-      <div class="line-row"><span class="it">passar le notte all’osteria.</span><span class="es">en la taberna.</span></div>
+      <div class="line-row"><span class="it">passar le notte all'osteria.</span><span class="es">en la taberna.</span></div>
       <div class="line-row"><span class="it">Non ti vergogni?</span><span class="es">¿No te da vergüenza?</span></div>
       <div class="character-row">
         <span class="character-name">Tinca</span>
@@ -1329,8 +1697,20 @@
       <div class="line-row"><span class="it">di rivolta:</span><span class="es">pensamientos de rebeldía:</span></div>
       <div class="line-row"><span class="it">che se bevo non penso,</span><span class="es">si bebo no pienso,</span></div>
       <div class="line-row"><span class="it">e se penso non rido?</span><span class="es">y si pienso no río.</span></div>
+      <div class="stage-direction">
+        <span>(Michele discende nella stiva)</span>
+        <span class="es">(Michele baja a la bodega.)</span>
+      </div>
       <div class="line-row"><span class="it">Ah! ah! ah! ah!</span><span class="es">¡Ah! ¡ah! ¡ah! ¡ah!</span></div>
       <div class="line-row"><span class="it">Ah! ah! ah! ah! ah!</span><span class="es">¡Ah! ¡ah! ¡ah! ¡ah! ¡ah!</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Tinca.)</span>
+        <span class="es">(Deteniendo a Tinca.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc8">
@@ -1340,10 +1720,6 @@
       </div>
     </div>
     <div class="text-col" id="t8">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
-      </div>
       <div class="line-row"><span class="it">Hai ben ragione;</span><span class="es">Tienes mucha razón;</span></div>
       <div class="line-row"><span class="it">meglio non pensare,</span><span class="es">es mejor no pensar,</span></div>
       <div class="line-row"><span class="it">piegare il capo ed</span><span class="es">bajar la cabeza y curvar</span></div>
@@ -1355,12 +1731,16 @@
       <div class="line-row"><span class="it">e giù la testa a terra!</span><span class="es">y la cabeza hacia la tierra!</span></div>
       <div class="line-row"><span class="it">Si guardi in alto, bada</span><span class="es">Si miras para arriba,</span></div>
       <div class="line-row"><span class="it">alla frustata.</span><span class="es">cuidado con el latigazo.</span></div>
+      <div class="stage-direction">
+        <span>(Con amarezza)</span>
+        <span class="es">(Con amargura.)</span>
+      </div>
       <div class="line-row"><span class="it">Il pane lo guadagni</span><span class="es">El pan lo ganas con</span></div>
-      <div class="line-row"><span class="it">col sudore, e l’ora</span><span class="es">el sudor y</span></div>
-      <div class="line-row"><span class="it">dell’amore va rubata!</span><span class="es">el amor hay que robarlo.</span></div>
+      <div class="line-row"><span class="it">col sudore, e l'ora</span><span class="es">el sudor y</span></div>
+      <div class="line-row"><span class="it">dell'amore va rubata!</span><span class="es">el amor hay que robarlo.</span></div>
       <div class="line-row"><span class="it">Va rubata fra spasimi</span><span class="es">Robarlo entre espasmos</span></div>
       <div class="line-row"><span class="it">e paure che offuscano</span><span class="es">y miedos que enturbian</span></div>
-      <div class="line-row"><span class="it">l’ebbrezza più divina</span><span class="es">la más divina embriaguez.</span></div>
+      <div class="line-row"><span class="it">l'ebbrezza più divina</span><span class="es">la más divina embriaguez.</span></div>
       <div class="line-row"><span class="it">Tutto è conteso,</span><span class="es">Todo nos es negado,</span></div>
       <div class="line-row"><span class="it">tutto ci è rapito</span><span class="es">nos es arrebatado,</span></div>
       <div class="line-row"><span class="it">la giornata è già</span><span class="es">la jornada ya es</span></div>
@@ -1369,6 +1749,10 @@
       <div class="line-row"><span class="it">meglio non pensare,</span><span class="es">es mejor no pensar,</span></div>
       <div class="line-row"><span class="it">piegare il capo ed</span><span class="es">bajar la cabeza y</span></div>
       <div class="line-row"><span class="it">incurvar la schiena.</span><span class="es">curvar la espalda.</span></div>
+      <div class="character-row">
+        <span class="character-name">Tinca</span>
+        <span class="character-name">Tinca</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc9">
@@ -1378,10 +1762,6 @@
       </div>
     </div>
     <div class="text-col" id="t9">
-      <div class="character-row">
-        <span class="character-name">Tinca</span>
-        <span class="character-name">Tinca</span>
-      </div>
       <div class="line-row"><span class="it">Segui il mio esempio: bevi!</span><span class="es">¡Sigue mi ejemplo: bebe!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
@@ -1395,11 +1775,19 @@
       <div class="line-row"><span class="it">Non parlo più!</span><span class="es">¡No hablo más!</span></div>
       <div class="line-row"><span class="it">A domani, ragazzi, e</span><span class="es">Hasta mañana, muchachos,</span></div>
       <div class="line-row"><span class="it">state bene.</span><span class="es">que descanséis.</span></div>
+      <div class="stage-direction">
+        <span>(esce)</span>
+        <span class="es">(Sale.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Talpa</span>
         <span class="character-name">Talpa</span>
       </div>
-      <div class="line-row"><span class="it">Ce n’andiamo</span><span class="es">¿Nos vamos nosotros</span></div>
+      <div class="stage-direction">
+        <span>(A Frugola.)</span>
+        <span class="es">(A Frugola.)</span>
+      </div>
+      <div class="line-row"><span class="it">Ce n'andiamo</span><span class="es">¿Nos vamos nosotros</span></div>
       <div class="line-row"><span class="it">anche noi?</span><span class="es">también?</span></div>
       <div class="line-row"><span class="it">Son stanco morto.</span><span class="es">Estoy muerto de cansancio.</span></div>
       <div class="character-row">
@@ -1415,6 +1803,10 @@
       </div>
       <div class="line-row"><span class="it">E la tua fissazione,</span><span class="es">¡Es tu idea fija,</span></div>
       <div class="line-row"><span class="it">la campagna!</span><span class="es">el campo!</span></div>
+      <div class="character-row">
+        <span class="character-name">Frugola</span>
+        <span class="character-name">Frugola</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc10">
@@ -1424,10 +1816,6 @@
       </div>
     </div>
     <div class="text-col" id="t10">
-      <div class="character-row">
-        <span class="character-name">Frugola</span>
-        <span class="character-name">Frugola</span>
-      </div>
       <div class="line-row"><span class="it">Ho sognato una casetta</span><span class="es">He soñado con una casita</span></div>
       <div class="line-row"><span class="it">con un piccolo orticello.</span><span class="es">con un pequeño huerto.</span></div>
       <div class="line-row"><span class="it">Quattro muri, stretta</span><span class="es">Cuatro paredes,</span></div>
@@ -1437,7 +1825,11 @@
       <div class="line-row"><span class="it">ai miei piedi Caporale,</span><span class="es">a mis pies Sargento,</span></div>
       <div class="line-row"><span class="it">e aspettar così la</span><span class="es">y esperar así la</span></div>
       <div class="line-row"><span class="it">morte che è rimedio</span><span class="es">muerte, que es el remedio</span></div>
-      <div class="line-row"><span class="it">d’ogni male!</span><span class="es">para todos los males.</span></div>
+      <div class="line-row"><span class="it">d'ogni male!</span><span class="es">para todos los males.</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
+        <span class="character-name">Giorgetta</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc11">
@@ -1447,14 +1839,10 @@
       </div>
     </div>
     <div class="text-col" id="t11">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">E ben altro il mio sogno!</span><span class="es">Mi sueño es muy diferente.</span></div>
       <div class="line-row"><span class="it">Son nata nel sobborgo,</span><span class="es">Yo nací en los suburbios,</span></div>
-      <div class="line-row"><span class="it">e solo l’aria m’esalta,</span><span class="es">y sólo el aire me</span></div>
-      <div class="line-row"><span class="it">m’esalta e mi nutrisce!</span><span class="es">entusiasma y me nutre.</span></div>
+      <div class="line-row"><span class="it">e solo l'aria m'esalta,</span><span class="es">y sólo el aire me</span></div>
+      <div class="line-row"><span class="it">m'esalta e mi nutrisce!</span><span class="es">entusiasma y me nutre.</span></div>
       <div class="line-row"><span class="it">Oh! se Michele, un giorno,</span><span class="es">Oh, si un día Michele,</span></div>
       <div class="line-row"><span class="it">abbandonasse questa logora</span><span class="es">abandonase esta vida</span></div>
       <div class="line-row"><span class="it">vita vagabonda!...</span><span class="es">vagabunda y agotadora.</span></div>
@@ -1474,7 +1862,11 @@
       <div class="line-row"><span class="it">Non lo sai?</span><span class="es">¿No lo sabes?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Avanzando d'improvviso.)</span>
+        <span class="es">(Avanzando sorpresivamente.)</span>
       </div>
       <div class="line-row"><span class="it">Belleville!</span><span class="es">¡En Belleville!</span></div>
       <div class="character-row">
@@ -1484,18 +1876,18 @@
       <div class="line-row"><span class="it">Luigi lo conosce!</span><span class="es">¡Luis lo conoce!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">Anch’io ci son nato!</span><span class="es">¡También yo he nacido allí!</span></div>
+      <div class="line-row"><span class="it">Anch'io ci son nato!</span><span class="es">¡También yo he nacido allí!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
       <div class="line-row"><span class="it">Come me.</span><span class="es">Como yo. Lo lleva</span></div>
-      <div class="line-row"><span class="it">Come me, l’ha nel sangue!</span><span class="es">en la sangre, como yo.</span></div>
+      <div class="line-row"><span class="it">Come me, l'ha nel sangue!</span><span class="es">en la sangre, como yo.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Non ci si può</span><span class="es">¡Uno no se puede</span></div>
       <div class="line-row"><span class="it">staccare!</span><span class="es">desprender de eso!</span></div>
@@ -1508,19 +1900,19 @@
       <div class="line-row"><span class="it">suolo e il nostro</span><span class="es">suelo y nuestro</span></div>
       <div class="line-row"><span class="it">mondo!</span><span class="es">mundo.</span></div>
       <div class="line-row"><span class="it">Noi non possiamo vivere</span><span class="es">¡Nosotros no podemos</span></div>
-      <div class="line-row"><span class="it">sull’acqua!</span><span class="es">vivir sobre el agua!</span></div>
+      <div class="line-row"><span class="it">sull'acqua!</span><span class="es">vivir sobre el agua!</span></div>
       <div class="line-row"><span class="it">Bisogna calpestare il</span><span class="es">¡Hay que caminar por</span></div>
       <div class="line-row"><span class="it">marciapiede!...</span><span class="es">las veredas!...</span></div>
-      <div class="line-row"><span class="it">Là c’è una casa,</span><span class="es">Allí hay una casa,</span></div>
+      <div class="line-row"><span class="it">Là c'è una casa,</span><span class="es">Allí hay una casa,</span></div>
       <div class="line-row"><span class="it">là ci sono amici,</span><span class="es">allí hay amigos,</span></div>
       <div class="line-row"><span class="it">festosi incontri e piene</span><span class="es">encuentros festivos</span></div>
       <div class="line-row"><span class="it">confidenze...</span><span class="es">y plena confianza...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Ci si conosce tutti!</span><span class="es">¡Allí se conocen todos!</span></div>
-      <div class="line-row"><span class="it">S’è tutti una famiglia!</span><span class="es">¡Es una gran familia!</span></div>
+      <div class="line-row"><span class="it">S'è tutti una famiglia!</span><span class="es">¡Es una gran familia!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -1529,39 +1921,43 @@
       <div class="line-row"><span class="it">che ci aspetta.</span><span class="es">que nos espera. A la noche,</span></div>
       <div class="line-row"><span class="it">Alla sera, i ritorni</span><span class="es">el regreso en grupo...</span></div>
       <div class="line-row"><span class="it">in comitiva...</span><span class="es">Negocios que</span></div>
-      <div class="line-row"><span class="it">Botteghe che s’accendono</span><span class="es">encienden sus luces</span></div>
+      <div class="line-row"><span class="it">Botteghe che s'accendono</span><span class="es">encienden sus luces</span></div>
       <div class="line-row"><span class="it">di luci e di lusinghe,</span><span class="es">atractivas, coches que</span></div>
-      <div class="line-row"><span class="it">vetture che s’incrociano,</span><span class="es">se cruzan, domingos</span></div>
+      <div class="line-row"><span class="it">vetture che s'incrociano,</span><span class="es">se cruzan, domingos</span></div>
       <div class="line-row"><span class="it">domeniche che chiassose...</span><span class="es">estrepitosos... Pequeñas</span></div>
       <div class="line-row"><span class="it">Piccole gite in due</span><span class="es">excursiones al</span></div>
       <div class="line-row"><span class="it">al bosco di Boulogne!</span><span class="es">bosque de Boulogne.</span></div>
-      <div class="line-row"><span class="it">Balli all’aperto,</span><span class="es">Bailes al aire libre,</span></div>
+      <div class="line-row"><span class="it">Balli all'aperto,</span><span class="es">Bailes al aire libre,</span></div>
       <div class="line-row"><span class="it">intimità amorose...</span><span class="es">intimidad amorosa...</span></div>
       <div class="line-row"><span class="it">E difficile dire</span><span class="es">Es difícil decir</span></div>
-      <div class="line-row"><span class="it">cosa sia quest’ansia,</span><span class="es">como es ese ansia,</span></div>
+      <div class="line-row"><span class="it">cosa sia quest'ansia,</span><span class="es">como es ese ansia,</span></div>
       <div class="line-row"><span class="it">questa strana nostalgia.</span><span class="es">esta extraña nostalgia.</span></div>
       <div class="line-row"><span class="it">Ma chi lascia il</span><span class="es">Pero quien deja el</span></div>
       <div class="line-row"><span class="it">sobborgo vuol tornare,</span><span class="es">suburbio, quiere volver,</span></div>
       <div class="line-row"><span class="it">e chi ritorna,</span><span class="es">y quien vuelve,</span></div>
       <div class="line-row"><span class="it">chi ritorna non</span><span class="es">sí, quien vuelve no se</span></div>
       <div class="line-row"><span class="it">può staccare.</span><span class="es">puede desprender de él.</span></div>
-      <div class="line-row"><span class="it">C’è là in fondo</span><span class="es">Allí, en el fondo, está</span></div>
+      <div class="line-row"><span class="it">C'è là in fondo</span><span class="es">Allí, en el fondo, está</span></div>
       <div class="line-row"><span class="it">Parigi che ci grida</span><span class="es">París, que grita</span></div>
       <div class="line-row"><span class="it">mille voci liete</span><span class="es">con mil voces alegres</span></div>
       <div class="line-row"><span class="it">il suo fascino immortal!</span><span class="es">su inmortal fascinación.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Ma chi lascia il</span><span class="es">Pero quien deja el</span></div>
       <div class="line-row"><span class="it">sobborgo vuol tornare,</span><span class="es">suburbio, quiere volver,</span></div>
       <div class="line-row"><span class="it">e chi ritorna,</span><span class="es">y quien vuelve,</span></div>
       <div class="line-row"><span class="it">chi ritorna non</span><span class="es">sí, quien vuelve no se</span></div>
       <div class="line-row"><span class="it">può staccare.</span><span class="es">puede desprender de él.</span></div>
-      <div class="line-row"><span class="it">C’è là in fondo</span><span class="es">Allí, en el fondo, está</span></div>
+      <div class="line-row"><span class="it">C'è là in fondo</span><span class="es">Allí, en el fondo, está</span></div>
       <div class="line-row"><span class="it">Parigi che ci grida</span><span class="es">París, que grita</span></div>
       <div class="line-row"><span class="it">mille voci liete</span><span class="es">con mil voces alegres</span></div>
       <div class="line-row"><span class="it">il suo fascino immortal!</span><span class="es">su inmortal fascinación.</span></div>
+      <div class="stage-direction">
+        <span>(restano per un attimo assorti.)</span>
+        <span class="es">(Se quedan extasiados.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Frugola</span>
         <span class="character-name">Frugola</span>
@@ -1572,11 +1968,15 @@
         <span class="character-name">Talpa</span>
         <span class="character-name">Talpa</span>
       </div>
-      <div class="line-row"><span class="it">Se s’andasse a mangiare?</span><span class="es">¿Y si nos fuéramos a comer?</span></div>
+      <div class="line-row"><span class="it">Se s'andasse a mangiare?</span><span class="es">¿Y si nos fuéramos a comer?</span></div>
+      <div class="stage-direction">
+        <span>(A Luigi.)</span>
+        <span class="es">(A Luis.)</span>
+      </div>
       <div class="line-row"><span class="it">Che ne dici?</span><span class="es">¿Qué dices?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Io resto:</span><span class="es">Yo me quedo: tengo</span></div>
       <div class="line-row"><span class="it">ho da parlare col padrone.</span><span class="es">que hablar con el patrón.</span></div>
@@ -1590,6 +1990,22 @@
         <span class="character-name">Frugola</span>
       </div>
       <div class="line-row"><span class="it">Miei vecchi, buona notte!</span><span class="es">¡Viejos, buenas noches!</span></div>
+      <div class="stage-direction">
+        <span>(s'incamminano canterellando.</span>
+        <span class="es">(Se van juntos del brazo, mientras sus</span>
+      </div>
+      <div class="stage-direction">
+        <span>Le loro voci si perdono)</span>
+        <span class="es">voces se pierden a lo lejos.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Frugola, Talpa.</span>
+        <span class="character-name">Frugola, Talpa.</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Mormorando.)</span>
+        <span class="es">(Murmurando.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc12">
@@ -1599,10 +2015,6 @@
       </div>
     </div>
     <div class="text-col" id="t12">
-      <div class="character-row">
-        <span class="character-name">Frugola, Talpa.</span>
-        <span class="character-name">Frugola, Talpa.</span>
-      </div>
       <div class="line-row"><span class="it">Ho sognato una casetta</span><span class="es">He soñado con una casita</span></div>
       <div class="line-row"><span class="it">con un piccolo orticello.</span><span class="es">con un pequeño huerto.</span></div>
       <div class="line-row"><span class="it">Quattro muri, stretta</span><span class="es">Cuatro paredes, estrecha,</span></div>
@@ -1612,14 +2024,26 @@
       <div class="line-row"><span class="it">ai miei piedi Caporale,</span><span class="es">a mis pies Sargento,</span></div>
       <div class="line-row"><span class="it">e aspettar così la</span><span class="es">y esperar así la</span></div>
       <div class="line-row"><span class="it">morte che è rimedio</span><span class="es">muerte, que es el remedio</span></div>
-      <div class="line-row"><span class="it">d’ogni male!</span><span class="es">para todos los males.</span></div>
+      <div class="line-row"><span class="it">d'ogni male!</span><span class="es">para todos los males.</span></div>
       <div class="character-row">
         <span class="character-name">Voce Interna</span>
-        <span class="character-name">Voce Interna</span>
+        <span class="character-name">Voz Fuera De Escena</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah!</span><span class="es">¡Ah! ¡Ah!</span></div>
       <div class="line-row"><span class="it">La la la la la</span><span class="es">La la la la la</span></div>
       <div class="line-row"><span class="it">la la la la la la la la la la la.</span><span class="es">la la la la la la la la la la la.</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
+        <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Luigi fa l'atto di avvicinarsi, essa con un</span>
+        <span class="es">(Luis se aproxima a Giorgetta, que lo</span>
+      </div>
+      <div class="stage-direction">
+        <span>gesto lo ferma)</span>
+        <span class="es">detiene con un gesto.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc13">
@@ -1629,10 +2053,6 @@
       </div>
     </div>
     <div class="text-col" id="t13">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">O Luigi! Luigi!</span><span class="es">¡Oh, Luis! ¡Luis!</span></div>
       <div class="line-row"><span class="it">Bada a te!</span><span class="es">¡Ten cuidado!</span></div>
       <div class="line-row"><span class="it">Può salir fra un</span><span class="es">¡Puede subir de un</span></div>
@@ -1640,7 +2060,7 @@
       <div class="line-row"><span class="it">Resta pur là, lontano!</span><span class="es">¡Quédate allá, lejos!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Perchè dunque inasprisci</span><span class="es">¿Entonces por qué</span></div>
       <div class="line-row"><span class="it">il tormento?</span><span class="es">exasperas mi tormento?</span></div>
@@ -1652,14 +2072,14 @@
       </div>
       <div class="line-row"><span class="it">Vibro tutta se penso</span><span class="es">¡Todo mi ser tiembla</span></div>
       <div class="line-row"><span class="it">a ier sera,</span><span class="es">pensando en la noche</span></div>
-      <div class="line-row"><span class="it">all’ardor dei tuoi</span><span class="es">de ayer, en el ardor</span></div>
+      <div class="line-row"><span class="it">all'ardor dei tuoi</span><span class="es">de ayer, en el ardor</span></div>
       <div class="line-row"><span class="it">baci...!</span><span class="es">de tus besos...!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">In quei baci tu sai</span><span class="es">Sabes lo que había</span></div>
-      <div class="line-row"><span class="it">cosa c’era...</span><span class="es">en esos besos...</span></div>
+      <div class="line-row"><span class="it">cosa c'era...</span><span class="es">en esos besos...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -1668,7 +2088,7 @@
       <div class="line-row"><span class="it">Ma taci!.</span><span class="es">¡Pero calla!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Quale folle paura</span><span class="es">¿Qué temor insensato</span></div>
       <div class="line-row"><span class="it">ti prende?</span><span class="es">te invade?</span></div>
@@ -1679,7 +2099,11 @@
       <div class="line-row"><span class="it">Se ci scopre, è la morte!</span><span class="es">¡Si nos descubre nos matará!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(con ardore)</span>
+        <span class="es">(Arrebatado.)</span>
       </div>
       <div class="line-row"><span class="it">Preferisco morire,</span><span class="es">Prefiero la muerte al</span></div>
       <div class="line-row"><span class="it">alla sorte che ti tieni legata!</span><span class="es">destino que te tiene atada.</span></div>
@@ -1691,7 +2115,7 @@
       <div class="line-row"><span class="it">lontani...</span><span class="es">solos, lejos...!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">E sempre uniti!...</span><span class="es">¡Y siempre unidos...!</span></div>
       <div class="character-row">
@@ -1703,28 +2127,44 @@
       <div class="line-row"><span class="it">manchi!...</span><span class="es">dejarás!...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Correndo a lei)</span>
+        <span class="es">(Corriendo hacia ella.)</span>
       </div>
       <div class="line-row"><span class="it">Mai!...</span><span class="es">¡Nunca!...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(bruscamente)</span>
+        <span class="es">(Asustada.)</span>
+      </div>
       <div class="line-row"><span class="it">Sta attento!</span><span class="es">¡Cuidado!</span></div>
+      <div class="stage-direction">
+        <span>(infatti Michele risale dalla stiva)</span>
+        <span class="es">(Aparece Michele, de la bodega.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(A Luigi.)</span>
+        <span class="es">(A Luis.)</span>
+      </div>
       <div class="line-row"><span class="it">Come? Non sei andato?...</span><span class="es">¿Cómo? ¿No te has ido?...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">Padrone, v’ho aspettato,</span><span class="es">Patrón, lo he esperado,</span></div>
+      <div class="line-row"><span class="it">Padrone, v'ho aspettato,</span><span class="es">Patrón, lo he esperado,</span></div>
       <div class="line-row"><span class="it">perchè volevo dirvi</span><span class="es">porque quería decirle</span></div>
       <div class="line-row"><span class="it">quattro parole sole:</span><span class="es">sólo cuatro palabras:</span></div>
       <div class="line-row"><span class="it">intanto ringraziarvi</span><span class="es">además de agradecerle</span></div>
-      <div class="line-row"><span class="it">d’avermi tenuto...</span><span class="es">por haberme empleado...</span></div>
+      <div class="line-row"><span class="it">d'avermi tenuto...</span><span class="es">por haberme empleado...</span></div>
       <div class="line-row"><span class="it">Poi volevo pregarvi,</span><span class="es">También quería rogarle,</span></div>
       <div class="line-row"><span class="it">se lo potete fare,</span><span class="es">si puede hacerlo,</span></div>
       <div class="line-row"><span class="it">di portarmi a Rouen</span><span class="es">de llevarme a Rouen</span></div>
@@ -1734,17 +2174,25 @@
         <span class="character-name">Michele</span>
       </div>
       <div class="line-row"><span class="it">A Rouen? Ma sei matto?</span><span class="es">¿En Rouen? ¿Pero estás loco?</span></div>
-      <div class="line-row"><span class="it">Là non c’è che miseria:</span><span class="es">Allí no hay más que miseria:</span></div>
+      <div class="line-row"><span class="it">Là non c'è che miseria:</span><span class="es">Allí no hay más que miseria:</span></div>
       <div class="line-row"><span class="it">ti troveresti peggio.</span><span class="es">te encontrarías peor.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Sta bene.</span><span class="es">Está bien.</span></div>
       <div class="line-row"><span class="it">Allora resto.</span><span class="es">Entonces, me quedo.</span></div>
+      <div class="stage-direction">
+        <span>(Michele s'avvia verso la cabina)</span>
+        <span class="es">(Michele se dirige a la cabina.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(A Michele.)</span>
+        <span class="es">(A Michele.)</span>
       </div>
       <div class="line-row"><span class="it">Dove vai?</span><span class="es">¿Dónde vas?</span></div>
       <div class="character-row">
@@ -1754,7 +2202,7 @@
       <div class="line-row"><span class="it">A preparare i lumi.</span><span class="es">A preparar las luces.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Buona notte, padrone...</span><span class="es">Buenas noches, patrón...</span></div>
       <div class="character-row">
@@ -1762,6 +2210,14 @@
         <span class="character-name">Michele</span>
       </div>
       <div class="line-row"><span class="it">Buona notte.</span><span class="es">Buenas noches.</span></div>
+      <div class="stage-direction">
+        <span>(Michele entra nella cabina.)</span>
+        <span class="es">(Michele entra en la cabina.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
+        <span class="character-name">Giorgetta</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc14">
@@ -1771,16 +2227,12 @@
       </div>
     </div>
     <div class="text-col" id="t14">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">Dimmi perchè hai</span><span class="es">Dime, ¿por qué le has</span></div>
       <div class="line-row"><span class="it">chiesto di sbarcarti</span><span class="es">pedido desembarcar</span></div>
       <div class="line-row"><span class="it">a Rouen?</span><span class="es">en Rouen?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Perchè non posso</span><span class="es">¡Porque no puedo</span></div>
       <div class="line-row"><span class="it">dividerti con lui!...</span><span class="es">compartirte con él!...</span></div>
@@ -1790,8 +2242,8 @@
       </div>
       <div class="line-row"><span class="it">Hai ragione:</span><span class="es">Tienes razón:</span></div>
       <div class="line-row"><span class="it">è un tormento.</span><span class="es">es un tormento.</span></div>
-      <div class="line-row"><span class="it">Anch’io ne son presa,</span><span class="es">¡Yo también estoy presa,</span></div>
-      <div class="line-row"><span class="it">anch’io la sento ben</span><span class="es">también yo siento</span></div>
+      <div class="line-row"><span class="it">Anch'io ne son presa,</span><span class="es">¡Yo también estoy presa,</span></div>
+      <div class="line-row"><span class="it">anch'io la sento ben</span><span class="es">también yo siento</span></div>
       <div class="line-row"><span class="it">più forte di te questa</span><span class="es">más fuerte que tú</span></div>
       <div class="line-row"><span class="it">catena! Hai ragione:</span><span class="es">esta cadena! Tienes razón:</span></div>
       <div class="line-row"><span class="it">è un tormento,</span><span class="es">es un tormento,</span></div>
@@ -1801,7 +2253,7 @@
       <div class="line-row"><span class="it">grande il compenso!</span><span class="es">más grande mi recompensa.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Par di rubare insieme ¡</span><span class="es">¡Parece que juntos</span></div>
       <div class="line-row"><span class="it">qualche cosa alla vita!</span><span class="es">le robáramos algo a la vida!</span></div>
@@ -1812,7 +2264,7 @@
       <div class="line-row"><span class="it">La voluttà è più intensa!</span><span class="es">¡El placer es más intenso!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">E la gioia rapita</span><span class="es">Y la alegría arrebatada</span></div>
       <div class="line-row"><span class="it">fra spasimi e paure...</span><span class="es">entre espasmos y miedo.</span></div>
@@ -1826,7 +2278,7 @@
       <div class="line-row"><span class="it">E parole sommesse...</span><span class="es">Y palabras murmuradas...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">E baci senza fine!</span><span class="es">¡Y besos sin fin!</span></div>
       <div class="character-row">
@@ -1836,9 +2288,9 @@
       <div class="line-row"><span class="it">Giuramenti e promesse...</span><span class="es">Juramentos y promesas...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">D’esser soli noi...</span><span class="es">De estar solos los dos...</span></div>
+      <div class="line-row"><span class="it">D'esser soli noi...</span><span class="es">De estar solos los dos...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -1846,10 +2298,14 @@
       <div class="line-row"><span class="it">Noi soli, via, via, lontani!</span><span class="es">¡Solos los dos, lejos, lejos!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Noi tutti soli, lontani</span><span class="es">Nosotros dos, solos,</span></div>
       <div class="line-row"><span class="it">dal mondo!...</span><span class="es">lejos del mundo...</span></div>
+      <div class="stage-direction">
+        <span>(mormorando.)</span>
+        <span class="es">(Susurrando.)</span>
+      </div>
       <div class="line-row"><span class="it">E lui?</span><span class="es">¿Y él?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
@@ -1860,9 +2316,9 @@
       <div class="line-row"><span class="it">più tardi...</span><span class="es">más tarde...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">Sì, fra un’ora...</span><span class="es">Sí, dentro de una hora...</span></div>
+      <div class="line-row"><span class="it">Sì, fra un'ora...</span><span class="es">Sí, dentro de una hora...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -1873,7 +2329,7 @@
       <div class="line-row"><span class="it">Hai le scarpe di corda?</span><span class="es">¿Tienes la cuerda?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Sì...Fai lo stesso segnale?</span><span class="es">Sí, ¿harás la misma señal?</span></div>
       <div class="character-row">
@@ -1884,13 +2340,13 @@
       <div class="line-row"><span class="it">Come tremava sul braccio</span><span class="es">¡Cómo temblaba la</span></div>
       <div class="line-row"><span class="it">mio teso la piccola</span><span class="es">pequeña llama en mi</span></div>
       <div class="line-row"><span class="it">fiammella!</span><span class="es">brazo extendido!</span></div>
-      <div class="line-row"><span class="it">Mi pareva d’accendere</span><span class="es">Me parecía encender</span></div>
+      <div class="line-row"><span class="it">Mi pareva d'accendere</span><span class="es">Me parecía encender</span></div>
       <div class="line-row"><span class="it">una stella,</span><span class="es">una estrella,</span></div>
       <div class="line-row"><span class="it">fiamma del nostro amore,</span><span class="es">llama de nuestro amor,</span></div>
       <div class="line-row"><span class="it">stella senza tramonto!...</span><span class="es">estrella sin ocaso.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Io voglio la tua bocca,</span><span class="es">¡Quiero tu boca,</span></div>
       <div class="line-row"><span class="it">voglio le tue carezze!</span><span class="es">tus caricias!</span></div>
@@ -1902,7 +2358,7 @@
       <div class="line-row"><span class="it">lo senti folle il desiderio!</span><span class="es">sientes este loco deseo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Folle di gelosia!</span><span class="es">¡Loco de celos!</span></div>
       <div class="line-row"><span class="it">Vorrei tenerti stretta</span><span class="es">¡Quisiera tenerte</span></div>
@@ -1915,8 +2371,28 @@
       <div class="line-row"><span class="it">io te lo giuro,</span><span class="es">te juro, juro que no</span></div>
       <div class="line-row"><span class="it">lo giuro, non tremo</span><span class="es">tengo miedo de empuñar</span></div>
       <div class="line-row"><span class="it">a vibrare il coltello,</span><span class="es">mi cuchillo,</span></div>
+      <div class="stage-direction">
+        <span>(Giorgetta improvviso scatto lo spinge via.</span>
+        <span class="es">(trata de frenar a Luis y trata de alejarlo)</span>
+      </div>
       <div class="line-row"><span class="it">e con gocce di sangue</span><span class="es">y con gotas de sangre</span></div>
       <div class="line-row"><span class="it">fabbricarti un gioiello!</span><span class="es">fabricarte una alhaja!</span></div>
+      <div class="stage-direction">
+        <span>(Giorgetta risalendo lentamente e passandosi</span>
+        <span class="es">(Giorgetta se pasa la mano por</span>
+      </div>
+      <div class="stage-direction">
+        <span>una mano sulla fronte)</span>
+        <span class="es">la frente, muy apenada.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
+        <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Sospirando.)</span>
+        <span class="es">(Suspirando.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc15">
@@ -1926,14 +2402,18 @@
       </div>
     </div>
     <div class="text-col" id="t15">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
-        <span class="character-name">Giorgetta</span>
-      </div>
       <div class="line-row"><span class="it">Come è difficile esser felici!...</span><span class="es">¡Qué difícil es ser feliz!...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(recando i fanali accesi, viene</span>
+        <span class="es">(Trayendo los faroles encendidos, viene</span>
+      </div>
+      <div class="stage-direction">
+        <span>dalla cabina.)</span>
+        <span class="es">de la cabina.)</span>
       </div>
       <div class="line-row"><span class="it">Perchè non vai a letto?</span><span class="es">¿Por qué no te vas a acostar?</span></div>
       <div class="character-row">
@@ -1968,7 +2448,7 @@
       </div>
       <div class="line-row"><span class="it">Forse ho fatto male.</span><span class="es">Tal vez he hecho mal.</span></div>
       <div class="line-row"><span class="it">Basteranno due uomini:</span><span class="es">Bastaría con dos hombres:</span></div>
-      <div class="line-row"><span class="it">non c’è molto lavoro.</span><span class="es">no es mucho el trabajo.</span></div>
+      <div class="line-row"><span class="it">non c'è molto lavoro.</span><span class="es">no es mucho el trabajo.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -1979,7 +2459,7 @@
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
-      <div class="line-row"><span class="it">S’ubriaca per calmare</span><span class="es">Se embriaga para</span></div>
+      <div class="line-row"><span class="it">S'ubriaca per calmare</span><span class="es">Se embriaga para</span></div>
       <div class="line-row"><span class="it">i suoi dolori.</span><span class="es">calmar sus dolores. ¡Tiene</span></div>
       <div class="line-row"><span class="it">Ha per moglie una bagascia!</span><span class="es">una ramera por mujer!</span></div>
       <div class="line-row"><span class="it">Beve per non ucciderla...</span><span class="es">Bebe para no matarla...</span></div>
@@ -1988,24 +2468,44 @@
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(turbata e nervosa)</span>
+        <span class="es">(Turbada y nerviosa.)</span>
+      </div>
       <div class="line-row"><span class="it">Son tutte queste storie...</span><span class="es">Son esas historias</span></div>
       <div class="line-row"><span class="it">che a me non interessano...</span><span class="es">que no me interesan...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(avvicinandosi a Giorgetta con commozione)</span>
+        <span class="es">(Acercándose conmovido a Giorgetta.)</span>
+      </div>
       <div class="line-row"><span class="it">Perchè, perchè non</span><span class="es">¿Por qué, por qué</span></div>
-      <div class="line-row"><span class="it">m’ami più? Perchè?...</span><span class="es">ya no me amas? ¿Por qué?...</span></div>
+      <div class="line-row"><span class="it">m'ami più? Perchè?...</span><span class="es">ya no me amas? ¿Por qué?...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
-      <div class="line-row"><span class="it">Ti sbagli; t’amo...</span><span class="es">Te equivocas; te amo...</span></div>
+      <div class="stage-direction">
+        <span>(con freddezza)</span>
+        <span class="es">(Fríamente.)</span>
+      </div>
+      <div class="line-row"><span class="it">Ti sbagli; t'amo...</span><span class="es">Te equivocas; te amo...</span></div>
       <div class="line-row"><span class="it">Tu sei buono, onesto...</span><span class="es">Eres bueno y honesto...</span></div>
+      <div class="stage-direction">
+        <span>(poi, per troncare il discorso)</span>
+        <span class="es">(Como para cambiar la conversación.)</span>
+      </div>
       <div class="line-row"><span class="it">Ora andiamo a dormire...</span><span class="es">Ahora, vayamos a dormir...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fissandola)</span>
+        <span class="es">(Mirándola fijo.)</span>
       </div>
       <div class="line-row"><span class="it">Tu non dormi!</span><span class="es">¡Tú no duermes!</span></div>
       <div class="character-row">
@@ -2022,14 +2522,18 @@
       </div>
       <div class="line-row"><span class="it">Ora le notti son</span><span class="es">Ahora las noches son</span></div>
       <div class="line-row"><span class="it">tanto fresche...</span><span class="es">tan frescas...</span></div>
-      <div class="line-row"><span class="it">E l’anno scorso là</span><span class="es">Y el año pasado, allá</span></div>
+      <div class="line-row"><span class="it">E l'anno scorso là</span><span class="es">Y el año pasado, allá</span></div>
       <div class="line-row"><span class="it">in quel nero guscio</span><span class="es">en ese cuartito oscuro</span></div>
       <div class="line-row"><span class="it">eravamo pur tre...</span><span class="es">éramos tres...</span></div>
-      <div class="line-row"><span class="it">c’era il lettuccio del</span><span class="es">estaba la cunita de</span></div>
+      <div class="line-row"><span class="it">c'era il lettuccio del</span><span class="es">estaba la cunita de</span></div>
       <div class="line-row"><span class="it">nostro bimbo...</span><span class="es">nuestro hijo...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sconvolta)</span>
+        <span class="es">(Profundamente perturbada.)</span>
       </div>
       <div class="line-row"><span class="it">Il nostro bimbo! Taci, taci!...</span><span class="es">¡Nuestro hijo! ¡Calla, calla!...</span></div>
       <div class="character-row">
@@ -2040,10 +2544,14 @@
       <div class="line-row"><span class="it">e lo cullavi dolcemente,</span><span class="es">y lo acunabas dulcemente,</span></div>
       <div class="line-row"><span class="it">lentamente, e poi sul</span><span class="es">lentamente, y después</span></div>
       <div class="line-row"><span class="it">braccio mio</span><span class="es">te adormecías sobre</span></div>
-      <div class="line-row"><span class="it">t’addormentavi...</span><span class="es">mi brazo...</span></div>
+      <div class="line-row"><span class="it">t'addormentavi...</span><span class="es">mi brazo...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Con angustia.)</span>
+        <span class="es">(Con angustia.)</span>
       </div>
       <div class="line-row"><span class="it">Ti supplico, Michele:</span><span class="es">Te suplico, Michele:</span></div>
       <div class="line-row"><span class="it">non dir niente...</span><span class="es">no digas nada...</span></div>
@@ -2062,7 +2570,7 @@
       <div class="line-row"><span class="it">vicino alla mia bocca.</span><span class="es">junto a mi boca.</span></div>
       <div class="line-row"><span class="it">Ero tanto felice,</span><span class="es">¡Era tan feliz,</span></div>
       <div class="line-row"><span class="it">ah! tanto felice!...</span><span class="es">ah, tan feliz!</span></div>
-      <div class="line-row"><span class="it">Ora che non c’è più</span><span class="es">Ahora que ya no está,</span></div>
+      <div class="line-row"><span class="it">Ora che non c'è più</span><span class="es">Ahora que ya no está,</span></div>
       <div class="line-row"><span class="it">i miei capelli grigi</span><span class="es">mis cabellos grises</span></div>
       <div class="line-row"><span class="it">mi sembrano un insulto</span><span class="es">me parecen un insulto</span></div>
       <div class="line-row"><span class="it">alla tua gioventù!</span><span class="es">a tu juventud.</span></div>
@@ -2080,12 +2588,20 @@
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
+      <div class="stage-direction">
+        <span>(Aspro)</span>
+        <span class="es">(Asperamente.)</span>
+      </div>
       <div class="line-row"><span class="it">Ma non puoi dormire!</span><span class="es">¡Pero no puedes dormir!</span></div>
       <div class="line-row"><span class="it">Sai bene che non</span><span class="es">¡Sabes bien que no</span></div>
       <div class="line-row"><span class="it">devi addormentarti!</span><span class="es">debes adormecerte!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(atterrita.)</span>
+        <span class="es">(con miedo)</span>
       </div>
       <div class="line-row"><span class="it">Perchè mi dici questo?</span><span class="es">¿Por qué me dices esto?</span></div>
       <div class="character-row">
@@ -2095,6 +2611,14 @@
       <div class="line-row"><span class="it">Non so bene...</span><span class="es">No lo sé bien...</span></div>
       <div class="line-row"><span class="it">Ma so che è molto</span><span class="es">¡Pero sé que hace mucho</span></div>
       <div class="line-row"><span class="it">tempo che non dormi!</span><span class="es">tiempo que no duermes!</span></div>
+      <div class="stage-direction">
+        <span>(cercando di attirare Giorgetta fra</span>
+        <span class="es">(Busca acercar a Giorgetta hacia él. Con</span>
+      </div>
+      <div class="stage-direction">
+        <span>le sue braccia.)</span>
+        <span class="es">intensa emoción.)</span>
+      </div>
       <div class="line-row"><span class="it">Resta vicino a me!</span><span class="es">¡Quédate junto a mí!</span></div>
       <div class="line-row"><span class="it">Non ti ricordi altre notti,</span><span class="es">¿No recuerdas otras noches,</span></div>
       <div class="line-row"><span class="it">altri cieli ed altri lune?</span><span class="es">otros cielos y otras lunas?</span></div>
@@ -2102,7 +2626,7 @@
       <div class="line-row"><span class="it">Ti rammenti le ore</span><span class="es">¿Recuerdas las horas</span></div>
       <div class="line-row"><span class="it">che volavan via su</span><span class="es">que pasaban velozmente</span></div>
       <div class="line-row"><span class="it">questa barca trascinate</span><span class="es">en esta barca arrastrada</span></div>
-      <div class="line-row"><span class="it">dall’onda?...</span><span class="es">por las olas?...</span></div>
+      <div class="line-row"><span class="it">dall'onda?...</span><span class="es">por las olas?...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
@@ -2116,10 +2640,10 @@
       <div class="line-row"><span class="it">Ah! Ritorna, ritorna</span><span class="es">¡Ah, regresa, regresa</span></div>
       <div class="line-row"><span class="it">come allora,</span><span class="es">como antes,</span></div>
       <div class="line-row"><span class="it">ritorna ancora mia!</span><span class="es">regresa, sé nuevamente mía!</span></div>
-      <div class="line-row"><span class="it">quando tu m’amavi e</span><span class="es">Cuando me amabas y</span></div>
+      <div class="line-row"><span class="it">quando tu m'amavi e</span><span class="es">Cuando me amabas y</span></div>
       <div class="line-row"><span class="it">ardentemente mi cercavi</span><span class="es">con ardor me buscabas y</span></div>
       <div class="line-row"><span class="it">e mi baciavi...</span><span class="es">besabas...</span></div>
-      <div class="line-row"><span class="it">quando tu m’amavi!</span><span class="es">¡Cuando me amabas!</span></div>
+      <div class="line-row"><span class="it">quando tu m'amavi!</span><span class="es">¡Cuando me amabas!</span></div>
       <div class="line-row"><span class="it">Resta vicino a me!</span><span class="es">¡Quédate conmigo!</span></div>
       <div class="line-row"><span class="it">La notte è bella!</span><span class="es">¡La noche es bella!</span></div>
       <div class="character-row">
@@ -2127,7 +2651,7 @@
         <span class="character-name">Giorgetta</span>
       </div>
       <div class="line-row"><span class="it">Che vuoi!</span><span class="es">¡Qué quieres!</span></div>
-      <div class="line-row"><span class="it">S’invecchia!</span><span class="es">¡El tiempo pasa!</span></div>
+      <div class="line-row"><span class="it">S'invecchia!</span><span class="es">¡El tiempo pasa!</span></div>
       <div class="line-row"><span class="it">Non son più la stessa.</span><span class="es">Ya no soy la misma.</span></div>
       <div class="line-row"><span class="it">Tu pure sei cambiato...</span><span class="es">Tú también has cambiado.</span></div>
       <div class="line-row"><span class="it">Diffidi...Ma che credi?</span><span class="es">Desconfías... pero, ¿Qué crees?</span></div>
@@ -2148,21 +2672,49 @@
       </div>
       <div class="line-row"><span class="it">E allora va pure;</span><span class="es">Entonces ve,</span></div>
       <div class="line-row"><span class="it">ti raggiungo...</span><span class="es">ya te alcanzo...</span></div>
+      <div class="stage-direction">
+        <span>(Giorgetta entra alla cabina.)</span>
+        <span class="es">(Giorgetta entra en la cabina.)</span>
+      </div>
       <div class="line-row"><span class="it">Sgualdrina!</span><span class="es">¡Puta!</span></div>
+      <div class="stage-direction">
+        <span>(sulle strada due ombre d'amanti passano)</span>
+        <span class="es">(Entre las sombras pasan dos amantes.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name">Dos Amanti</span>
-        <span class="character-name">Dos Amanti</span>
+        <span class="character-name">Dos Amantes</span>
       </div>
       <div class="line-row"><span class="it">Bocca di rosa fresca...</span><span class="es">Boca de rosa fresca...</span></div>
       <div class="line-row"><span class="it">E baci di rugiada ...</span><span class="es">Y besos de rocío...</span></div>
       <div class="line-row"><span class="it">O labbra profumate...</span><span class="es">Oh, labios perfumados...</span></div>
       <div class="line-row"><span class="it">O profumata sera... ,</span><span class="es">Oh, perfumada noche...</span></div>
-      <div class="line-row"><span class="it">C’è la luna...</span><span class="es">Hay luna...</span></div>
+      <div class="line-row"><span class="it">C'è la luna...</span><span class="es">Hay luna...</span></div>
       <div class="line-row"><span class="it">la luna che ci spia...</span><span class="es">La luna que espía...</span></div>
       <div class="line-row"><span class="it">A domani, mio amore...</span><span class="es">Hasta mañana, mi amor...</span></div>
       <div class="line-row"><span class="it">Domani, amante mia!...</span><span class="es">¡Mañana, amada mía!...</span></div>
+      <div class="stage-direction">
+        <span>(lontano)</span>
+        <span class="es">(Desde lejos.)</span>
+      </div>
       <div class="line-row"><span class="it">A domani, mio amore...</span><span class="es">Hasta mañana, mi amor...</span></div>
       <div class="line-row"><span class="it">Domani, amante mia!</span><span class="es">¡Mañana, amada mía!</span></div>
+      <div class="stage-direction">
+        <span>(da una caserma suona io silenzio)</span>
+        <span class="es">(en el cuartel, una corneta toca silencio)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
+        <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(lentamente, cautamente, si avvicina alla</span>
+        <span class="es">(Lentamente, con cautela, se acerca a la</span>
+      </div>
+      <div class="stage-direction">
+        <span>cabina. Tende l'orecchio. Dice:)</span>
+        <span class="es">cabina. Trata de escuchar algo y dice:)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc16">
@@ -2172,21 +2724,37 @@
       </div>
     </div>
     <div class="text-col" id="t16">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
-        <span class="character-name">Michele</span>
-      </div>
       <div class="line-row"><span class="it">Nulla! Silenzio!</span><span class="es">¡Nada! ¡Silencio!</span></div>
+      <div class="stage-direction">
+        <span>(strisciando verso la parete e spiando</span>
+        <span class="es">(Acercándose a las paredes y espiando</span>
+      </div>
+      <div class="stage-direction">
+        <span>nell'interno.)</span>
+        <span class="es">hacia adentro.)</span>
+      </div>
       <div class="line-row"><span class="it">E là!</span><span class="es">¡Allí está!</span></div>
-      <div class="line-row"><span class="it">Non s’è spogliata...</span><span class="es">No se ha desvestido...</span></div>
+      <div class="line-row"><span class="it">Non s'è spogliata...</span><span class="es">No se ha desvestido...</span></div>
       <div class="line-row"><span class="it">non dorme... Aspetta...</span><span class="es">no duerme... Espera...</span></div>
+      <div class="stage-direction">
+        <span>(con un brivido.)</span>
+        <span class="es">(Temblando.)</span>
+      </div>
       <div class="line-row"><span class="it">Chi? Che cosa aspetta?</span><span class="es">¿A quién? ¿Qué espera?</span></div>
+      <div class="stage-direction">
+        <span>(risalendo, cupo, tutto chiuso nel suo dubbio)</span>
+        <span class="es">(Bajando, atormentado por la sospecha.)</span>
+      </div>
       <div class="line-row"><span class="it">Chi?...chi?...</span><span class="es">¿Quién?...¿Quién?...</span></div>
       <div class="line-row"><span class="it">Forse il mio sonno!...</span><span class="es">¡Tal vez que yo me duerma!</span></div>
-      <div class="line-row"><span class="it">Chi l’ha trasformata?</span><span class="es">¿Quién la ha transformado?</span></div>
+      <div class="line-row"><span class="it">Chi l'ha trasformata?</span><span class="es">¿Quién la ha transformado?</span></div>
       <div class="line-row"><span class="it">Qual ombra maledetta</span><span class="es">¿Qué sombra maldita ha</span></div>
       <div class="line-row"><span class="it">è discesa fra noi?</span><span class="es">descendido entre nosotros?</span></div>
-      <div class="line-row"><span class="it">Chi l’ha insidiata?...</span><span class="es">¿Quién le ha vertido el odio?</span></div>
+      <div class="line-row"><span class="it">Chi l'ha insidiata?...</span><span class="es">¿Quién le ha vertido el odio?</span></div>
+      <div class="stage-direction">
+        <span>(e riandando col pensiero ai suoi uomini)</span>
+        <span class="es">(Tratando de adivinar.)</span>
+      </div>
       <div class="line-row"><span class="it">Il Talpa?...</span><span class="es">¿Talpa?...</span></div>
       <div class="line-row"><span class="it">Troppo vecchio!...</span><span class="es">¡Demasiado viejo!...</span></div>
       <div class="line-row"><span class="it">Il Tinca forse?</span><span class="es">¿Tal vez, Tinca? No...</span></div>
@@ -2194,7 +2762,7 @@
       <div class="line-row"><span class="it">E dunque chi?</span><span class="es">¿Entonces, quién?</span></div>
       <div class="line-row"><span class="it">Luigi... no... se proprio</span><span class="es">Luis... no... si</span></div>
       <div class="line-row"><span class="it">questa sera voleva</span><span class="es">esta misma noche quería</span></div>
-      <div class="line-row"><span class="it">abbandonarmi... e m’ha</span><span class="es">abandonarme... ¡y me ha</span></div>
+      <div class="line-row"><span class="it">abbandonarmi... e m'ha</span><span class="es">abandonarme... ¡y me ha</span></div>
       <div class="line-row"><span class="it">fatto preghiera di</span><span class="es">rogado dejarlo</span></div>
       <div class="line-row"><span class="it">sbarcarlo a Rouen!...</span><span class="es">desembarcar en Rouen!...</span></div>
       <div class="line-row"><span class="it">Ma chi dunque?</span><span class="es">¿Entonces, quién?</span></div>
@@ -2220,6 +2788,34 @@
       <div class="line-row"><span class="it">Accomuna la tua con</span><span class="es">Suframos juntos la</span></div>
       <div class="line-row"><span class="it">la mia sorte...</span><span class="es">misma suerte...</span></div>
       <div class="line-row"><span class="it">La pace è nella morte!</span><span class="es">¡La paz está en la muerte!</span></div>
+      <div class="stage-direction">
+        <span>(s'accascia sfibrato. Macchinalmente leva</span>
+        <span class="es">(Se desmorona, extenuado. Michele saca</span>
+      </div>
+      <div class="stage-direction">
+        <span>di tasca la pipa e l'accende. Alla luce del</span>
+        <span class="es">la pipa del bolsillo y la enciende. Luis, que</span>
+      </div>
+      <div class="stage-direction">
+        <span>fiammifero Luigi cautamente attraversa la</span>
+        <span class="es">estaba en la muelle esperando la señal,</span>
+      </div>
+      <div class="stage-direction">
+        <span>passerella e balza sul barcone. Michele vede</span>
+        <span class="es">atraviesa corriendo la plancha y sube al barco. Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>l'ombra, sussulta, si mette in agguato,</span>
+        <span class="es">ve la sombra se sobresalta y</span>
+      </div>
+      <div class="stage-direction">
+        <span>riconosce Luigi e di colpo si precipita</span>
+        <span class="es">reconoce a Luis. Después de un momento se</span>
+      </div>
+      <div class="stage-direction">
+        <span>afferrandolo per la gola)</span>
+        <span class="es">precipita sobre él y lo aferra de la garganta.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc17">
@@ -2229,14 +2825,14 @@
       </div>
     </div>
     <div class="text-col" id="t17">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
-        <span class="character-name">Michele</span>
-      </div>
-      <div class="line-row"><span class="it">T’ho colto!</span><span class="es">¡Te atrapé!</span></div>
+      <div class="line-row"><span class="it">T'ho colto!</span><span class="es">¡Te atrapé!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(dibattendosi)</span>
+        <span class="es">(Defendiéndose.)</span>
       </div>
       <div class="line-row"><span class="it">Sangue di Dio! Son preso!</span><span class="es">¡Dios mío! ¡Estoy preso!</span></div>
       <div class="character-row">
@@ -2248,7 +2844,7 @@
       <div class="line-row"><span class="it">Volevi la tua amante?</span><span class="es">¿Querías a tu amante?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Non è vero!</span><span class="es">¡No es cierto!</span></div>
       <div class="character-row">
@@ -2258,7 +2854,7 @@
       <div class="line-row"><span class="it">Mentisci! Confessa, confessa!</span><span class="es">¡Mientes! ¡Confiesa, confiesa!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Non è vero!</span><span class="es">¡No es cierto!</span></div>
       <div class="character-row">
@@ -2268,12 +2864,20 @@
       <div class="line-row"><span class="it">Volevi la tua amante?</span><span class="es">¿Buscabas a tu amante?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>(tentando di levare il coltello)</span>
+        <span class="es">(Sacando su cuchillo.)</span>
       </div>
       <div class="line-row"><span class="it">Ah! Perdio!</span><span class="es">¡Ah, por Dios!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(serrandogli il braccio)</span>
+        <span class="es">(forzando a Luis a dejar caer el cuchillo.)</span>
       </div>
       <div class="line-row"><span class="it">Giù il coltello!</span><span class="es">¡Tira el cuchillo!</span></div>
       <div class="line-row"><span class="it">Non mi sfuggi, canaglia!</span><span class="es">¡No te escaparás, canalla!</span></div>
@@ -2283,18 +2887,18 @@
       <div class="line-row"><span class="it">Morto ci andrai, nel fiume!</span><span class="es">¡Te irás muerto al río!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Assassino! Assassino!</span><span class="es">¡Asesino! ¡Asesino!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
       </div>
-      <div class="line-row"><span class="it">Confessami che l’ami!</span><span class="es">¡Confiésame que la amas!</span></div>
+      <div class="line-row"><span class="it">Confessami che l'ami!</span><span class="es">¡Confiésame que la amas!</span></div>
       <div class="line-row"><span class="it">Confessa! confessa!</span><span class="es">¡Confiesa! ¡Confiesa!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Lasciami, lasciami, lasciami!</span><span class="es">¡Déjame, déjame, déjame!</span></div>
       <div class="character-row">
@@ -2305,7 +2909,7 @@
       <div class="line-row"><span class="it">Infami! Si confessi, ti lascio!</span><span class="es">¡Si confiesas, te dejo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
       <div class="line-row"><span class="it">Sì...</span><span class="es">Sí...</span></div>
       <div class="character-row">
@@ -2315,9 +2919,13 @@
       <div class="line-row"><span class="it">Ripeti! Ripeti!</span><span class="es">¡Repítelo! ¡Repítelo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">Sì... l’amo!</span><span class="es">¡Sí... la amo!</span></div>
+      <div class="stage-direction">
+        <span>(Con voce fioca.)</span>
+        <span class="es">(Con voz ronca.)</span>
+      </div>
+      <div class="line-row"><span class="it">Sì... l'amo!</span><span class="es">¡Sí... la amo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
@@ -2325,9 +2933,13 @@
       <div class="line-row"><span class="it">Ripeti! Ripeti!</span><span class="es">¡Repítelo! ¡Repítelo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">L’amo!</span><span class="es">¡La amo!</span></div>
+      <div class="stage-direction">
+        <span>(Con un gemito.)</span>
+        <span class="es">(Con un gemido.)</span>
+      </div>
+      <div class="line-row"><span class="it">L'amo!</span><span class="es">¡La amo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
@@ -2335,9 +2947,13 @@
       <div class="line-row"><span class="it">Ripeti!</span><span class="es">¡Repite!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">L’amo!</span><span class="es">¡La amo!</span></div>
+      <div class="stage-direction">
+        <span>(più debole ancora)</span>
+        <span class="es">(Más débil aún.)</span>
+      </div>
+      <div class="line-row"><span class="it">L'amo!</span><span class="es">¡La amo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
@@ -2345,16 +2961,64 @@
       <div class="line-row"><span class="it">Ancora!</span><span class="es">¡Otra vez!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="luigi">Luigi</span>
-        <span class="character-name">Luigi</span>
+        <span class="character-name">Luis</span>
       </div>
-      <div class="line-row"><span class="it">L’amo! Ah!</span><span class="es">¡La amo! ¡Ah!</span></div>
+      <div class="stage-direction">
+        <span>(e resta aggrappato a Michele in una</span>
+        <span class="es">(Agonizando, queda aferrado a Michele en</span>
+      </div>
+      <div class="stage-direction">
+        <span>contorsione di morte)</span>
+        <span class="es">un último espasmo de muerte.)</span>
+      </div>
+      <div class="line-row"><span class="it">L'amo! Ah!</span><span class="es">¡La amo! ¡Ah!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(dall'interno della cabina.)</span>
+        <span class="es">(Desde la cabina.)</span>
+      </div>
       <div class="line-row"><span class="it">Michele! Michele!</span><span class="es">¡Michele! ¡Michele!</span></div>
+      <div class="stage-direction">
+        <span>(appare sulla porta. A mezza voce)</span>
+        <span class="es">(Abre la puerta de la cabina. A media voz)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Michele sente, e rapidissimo siede e ravvolge</span>
+        <span class="es">(Escuchando la voz de Giorgetta,</span>
+      </div>
+      <div class="stage-direction">
+        <span>il tabarro sopra il cadavere aggrappato</span>
+        <span class="es">rápidamente envuelve en el capote el</span>
+      </div>
+      <div class="stage-direction">
+        <span>a lui)</span>
+        <span class="es">cadáver de Luis, aferrado a él,</span>
+      </div>
       <div class="line-row"><span class="it">Ho paura, Michele...</span><span class="es">Tengo miedo, Michele...</span></div>
+      <div class="stage-direction">
+        <span>(vedendo il marito seduto e calmo)</span>
+        <span class="es">(viéndolo sentado y tranquilo)</span>
+      </div>
       <div class="line-row"><span class="it">No... Ho avuto paura...</span><span class="es">No... ya no tengo miedo</span></div>
+      <div class="stage-direction">
+        <span>(s'avvicina lentamente a Michele, sempre</span>
+        <span class="es">(se acerca lentamente a Michele,</span>
+      </div>
+      <div class="stage-direction">
+        <span>guardando intorno con ansia)</span>
+        <span class="es">mirando alrededor con ansiedad.</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
+        <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(calmissimo)</span>
+        <span class="es">(Con mucha calma.)</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc18">
@@ -2364,10 +3028,6 @@
       </div>
     </div>
     <div class="text-col" id="t18">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
-        <span class="character-name">Michele</span>
-      </div>
       <div class="line-row"><span class="it">Avevo ben ragione:</span><span class="es">Yo tenía razón:</span></div>
       <div class="line-row"><span class="it">non dovevi dormire...</span><span class="es">no debías dormir...</span></div>
       <div class="character-row">
@@ -2375,7 +3035,7 @@
         <span class="character-name">Giorgetta</span>
       </div>
       <div class="line-row"><span class="it">Son presa dal rimorso</span><span class="es">Tengo remordimientos</span></div>
-      <div class="line-row"><span class="it">d’averti dato pena...</span><span class="es">por haberte apenado...</span></div>
+      <div class="line-row"><span class="it">d'averti dato pena...</span><span class="es">por haberte apenado...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
@@ -2389,11 +3049,19 @@
       <div class="line-row"><span class="it">Ecco...è questo...</span><span class="es">Eso... es eso...</span></div>
       <div class="line-row"><span class="it">hai ragione...</span><span class="es">tienes razón...</span></div>
       <div class="line-row"><span class="it">Dimmi che mi perdoni...</span><span class="es">Dime que me perdonas...</span></div>
+      <div class="stage-direction">
+        <span>(Insinuante.)</span>
+        <span class="es">(Insinuante.)</span>
+      </div>
       <div class="line-row"><span class="it">Non mi vuoi più</span><span class="es">¿Ya no me quieres</span></div>
       <div class="line-row"><span class="it">vicina?...</span><span class="es">que esté cerca de ti?...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
         <span class="character-name">Michele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Terribile.)</span>
+        <span class="es">(Terrible.)</span>
       </div>
       <div class="line-row"><span class="it">Dove?...Nel mio tabarro?</span><span class="es">¿Dónde?...¿En mi capote?</span></div>
       <div class="character-row">
@@ -2413,11 +3081,31 @@
       <div class="line-row"><span class="it">Qualche volta</span><span class="es">¡Y otras veces oculta</span></div>
       <div class="line-row"><span class="it">un delitto!</span><span class="es">un delito!</span></div>
       <div class="line-row"><span class="it">Vieni nel mio tabarro! Vieni!</span><span class="es">¡Ven a mi capote! ¡Ven!</span></div>
+      <div class="stage-direction">
+        <span>(si erge terribile, apre il tabarro; il cadavere</span>
+        <span class="es">(terrible, abre el capote y el cadáver de Luis</span>
+      </div>
+      <div class="stage-direction">
+        <span>di Luigi rotola ai piedi di Giorgetta)</span>
+        <span class="es">cae rodando a los pies de Giorgetta.)</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="giorgetta">Giorgetta</span>
         <span class="character-name">Giorgetta</span>
       </div>
+      <div class="stage-direction">
+        <span>(Gridando disperatamente y retrocedendo</span>
+        <span class="es">(Gritando desesperadamente y retrocediendo</span>
+      </div>
+      <div class="stage-direction">
+        <span>con orrore)</span>
+        <span class="es">aterrorizada.)</span>
+      </div>
       <div class="line-row"><span class="it">Ah!</span><span class="es">¡Ah!</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
+        <span class="character-name">Michele</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc19">
@@ -2427,11 +3115,15 @@
       </div>
     </div>
     <div class="text-col" id="t19">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="michele">Michele</span>
-        <span class="character-name">Michele</span>
-      </div>
       <div class="line-row"><span class="it">Vien!</span><span class="es">¡Ven!</span></div>
+      <div class="stage-direction">
+        <span>(sopra Giorgetta, l'afferra, e la trascina, e le</span>
+        <span class="es">(Aferra a Giorgetta, la arrastra y restriega</span>
+      </div>
+      <div class="stage-direction">
+        <span>piega contro il volto dell'amante morto)</span>
+        <span class="es">su rostro contra el del amante muerto.)</span>
+      </div>
     </div>
 
   </div>

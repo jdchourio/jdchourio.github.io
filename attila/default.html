@@ -305,6 +305,22 @@
     align-items: baseline;
   }
 
+  /* Inline stage direction — sits between character name and first sung line */
+  .inline-direction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+    margin: 0.2rem 0 0.25rem;
+  }
+
+  .inline-direction span {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
   .fr {
     font-family: var(--serif);
     font-size: 15.5px;
@@ -654,10 +670,6 @@
         <span>(Attila viene condotto sopra un carro tirato dagli schiavi, duci, re, ecc.)</span>
         <span class="es">(Atila viene conducido sobre un carro del que tiran esclavos, jefes, reyes...)</span>
       </div>
-      <div class="stage-direction">
-        <span>(scende dal carro)</span>
-        <span class="es">(descendiendo del carro)</span>
-      </div>
     </div>
 
     <div class="track-col" id="tc2">
@@ -670,6 +682,10 @@
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(scende dal carro)</span>
+        <span>(descendiendo del carro)</span>
       </div>
       <div class="line-row"><span class="it">Eroi, levatevi!</span><span class="es">¡Héroes, levantaos!</span></div>
       <div class="line-row"><span class="it">Stia nella polvere</span><span class="es">Sólo está sobre el polvo</span></div>
@@ -704,10 +720,6 @@
         <span>(Entrano Udino, Odabella, e Vergini d'Aquileia)</span>
         <span class="es">(Entran Uldino, Odabella y vírgenes de Aquilea)</span>
       </div>
-      <div class="stage-direction">
-        <span>(scendendo dal trono)</span>
-        <span class="es">(descendiendo del trono)</span>
-      </div>
     </div>
 
     <div class="track-col" id="tc3">
@@ -720,6 +732,10 @@
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(scendendo dal trono)</span>
+        <span>(descendiendo del trono)</span>
       </div>
       <div class="line-row"><span class="it">Di vergini straniere,</span><span class="es">Qué gran cantidad</span></div>
       <div class="line-row"><span class="it">Oh, quale stuol vegg'io?</span><span class="es">de vírgenes extranjeras veo.</span></div>
@@ -738,10 +754,6 @@
       </div>
       <div class="line-row"><span class="it">Che sento? A donne imbelli</span><span class="es">¿Cómo dices? ¿A las bellas mujeres</span></div>
       <div class="line-row"><span class="it">Chi mai spirò valor?</span><span class="es">qué fue lo que le inspiró valor?</span></div>
-      <div class="stage-direction">
-        <span>(con energia)</span>
-        <span class="es">(con energía)</span>
-      </div>
     </div>
 
     <div class="track-col" id="tc4">
@@ -754,6 +766,10 @@
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
+      </div>
+      <div class="inline-direction">
+        <span>(con energia)</span>
+        <span>(con energía)</span>
       </div>
       <div class="line-row"><span class="it">Santo di patria indefinito amor!</span><span class="es">¡El santo e infinito amor a la patria!</span></div>
     </div>
@@ -797,13 +813,13 @@
         <span class="character-name">Attila</span>
       </div>
       <div class="line-row"><span class="it">La mia ti cingi!...</span><span class="es">¡La mía te ceñirás!...</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Oh acciar!</span><span class="es">¡Su espada!</span></div>
     </div>
@@ -827,13 +843,13 @@
       <div class="line-row"><span class="it">Per qual petto è tua punta?</span><span class="es">quién está destinada tu punta?</span></div>
       <div class="line-row"><span class="it">Di vendetta l'ora è giunta...</span><span class="es">La hora de la venganza está próxima.</span></div>
       <div class="line-row"><span class="it">Fu segnata dal Signor.</span><span class="es">La señalará el Señor.</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Qual nell'alma, che struggere anela,</span><span class="es">¿Qué es este nuevo sentimiento</span></div>
       <div class="line-row"><span class="it">Nuovo senso discende improvviso?...</span><span class="es">que a mi alma hace consumirse?</span></div>
@@ -896,15 +912,6 @@
         <span class="character-name">Ezio</span>
       </div>
       <div class="line-row"><span class="it">Attila!</span><span class="es">¡Atila!</span></div>
-    </div>
-
-    <div class="track-col" id="tc9">
-      <div class="track-tag" style="visibility:hidden">
-        <span class="track-tag-cd"></span>
-        <span class="track-tag-num"></span>
-      </div>
-    </div>
-    <div class="text-col" id="t9">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
@@ -945,13 +952,13 @@
       <div class="line-row"><span class="it">Ezio in tua man vuol dar.</span><span class="es">quiere poner en tus manos.</span></div>
     </div>
 
-    <div class="track-col" id="tc10">
+    <div class="track-col" id="tc9">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">10</span>
       </div>
     </div>
-    <div class="text-col" id="t10">
+    <div class="text-col" id="t9">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -964,13 +971,13 @@
       <div class="line-row"><span class="it">Quand'io mi unisca a te...</span><span class="es">cuando yo me una a ti...</span></div>
       <div class="line-row"><span class="it">Avrai tu l'universo,</span><span class="es">Tú tendrás el universo,</span></div>
       <div class="line-row"><span class="it">Resti l'Italia a me.</span><span class="es">deja Italia para mí.</span></div>
-      <div class="stage-direction">
-        <span>(severo)</span>
-        <span class="es">(severo)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(severo)</span>
+        <span>(severo)</span>
       </div>
       <div class="line-row"><span class="it">Dove l'eroe più valido</span><span class="es">Donde el héroe más valioso</span></div>
       <div class="line-row"><span class="it">È traditor, spergiuro,</span><span class="es">es traidor y perjuro,</span></div>
@@ -980,13 +987,13 @@
       <div class="line-row"><span class="it">Ivi è codardo il re...</span><span class="es">allí es cobarde el rey...</span></div>
       <div class="line-row"><span class="it">Là col flagello mio</span><span class="es">¡Allí con mi látigo</span></div>
       <div class="line-row"><span class="it">Rechi Wodan la fè!</span><span class="es">reinará la fe de Wotan!</span></div>
-      <div class="stage-direction">
-        <span>(rimettendosi)</span>
-        <span class="es">(reprimiéndose)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
+      </div>
+      <div class="inline-direction">
+        <span>(rimettendosi)</span>
+        <span>(reprimiéndose)</span>
       </div>
       <div class="line-row"><span class="it">Ma se fraterno vincolo</span><span class="es">Pues si un vínculo fraterno</span></div>
       <div class="line-row"><span class="it">Stringer non vuoi tu meco,</span><span class="es">no quieres hacer conmigo,</span></div>
@@ -1003,13 +1010,13 @@
       <div class="line-row"><span class="it">Del nembo struggitor?</span><span class="es">el ímpetu de la nube destructora?</span></div>
     </div>
 
-    <div class="track-col" id="tc11">
+    <div class="track-col" id="tc10">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">11</span>
       </div>
     </div>
-    <div class="text-col" id="t11">
+    <div class="text-col" id="t10">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
@@ -1044,13 +1051,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc12">
+    <div class="track-col" id="tc11">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">12</span>
       </div>
     </div>
-    <div class="text-col" id="t12">
+    <div class="text-col" id="t11">
       <div class="character-row">
         <span class="character-name">Eremiti</span>
         <span class="character-name">Eremiti</span>
@@ -1064,13 +1071,13 @@
       <div class="line-row"><span class="it">D'eterna pace Ei nutre i nostri cor.</span><span class="es">Esté agitada o tranquila la naturaleza,</span></div>
     </div>
 
-    <div class="track-col" id="tc13">
+    <div class="track-col" id="tc12">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">13</span>
       </div>
     </div>
-    <div class="text-col" id="t13">
+    <div class="text-col" id="t12">
       <div class="character-row">
         <span class="character-name">Eremiti</span>
         <span class="character-name">Eremiti</span>
@@ -1093,13 +1100,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc14">
+    <div class="track-col" id="tc13">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">14</span>
       </div>
     </div>
-    <div class="text-col" id="t14">
+    <div class="text-col" id="t13">
       <div class="character-row">
         <span class="character-name">Eremiti</span>
         <span class="character-name">Eremiti</span>
@@ -1137,13 +1144,13 @@
       <div class="line-row"><span class="it">Serbata al duol.</span><span class="es">entregada al dolor.</span></div>
     </div>
 
-    <div class="track-col" id="tc15">
+    <div class="track-col" id="tc14">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">15</span>
       </div>
     </div>
-    <div class="text-col" id="t15">
+    <div class="text-col" id="t14">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
@@ -1176,13 +1183,13 @@
       <div class="line-row"><span class="it">Sempre la patria avrà.</span><span class="es">el suspiro de los exiliados.</span></div>
     </div>
 
-    <div class="track-col" id="tc16">
+    <div class="track-col" id="tc15">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">16</span>
       </div>
     </div>
-    <div class="text-col" id="t16">
+    <div class="text-col" id="t15">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
@@ -1218,13 +1225,13 @@
       <span>Acto Primero</span>
     </div>
 
-    <div class="track-col" id="tc17">
+    <div class="track-col" id="tc16">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">17</span>
       </div>
     </div>
-    <div class="text-col" id="t17">
+    <div class="text-col" id="t16">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -1236,13 +1243,13 @@
       <div class="line-row"><span class="it">Eppur sempre quest'ora attendo, invoco.</span><span class="es">Siempre este momento ansío e invoco.</span></div>
     </div>
 
-    <div class="track-col" id="tc18">
+    <div class="track-col" id="tc17">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">18</span>
       </div>
     </div>
-    <div class="text-col" id="t18">
+    <div class="text-col" id="t17">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -1257,13 +1264,13 @@
       <div class="line-row"><span class="it">Possa la voce udir.</span><span class="es">la voz de los espíritus amados.</span></div>
     </div>
 
-    <div class="track-col" id="tc19">
+    <div class="track-col" id="tc18">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">19</span>
       </div>
     </div>
-    <div class="text-col" id="t19">
+    <div class="text-col" id="t18">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -1305,13 +1312,13 @@
         <span class="character-name">Foresto</span>
       </div>
       <div class="line-row"><span class="it">Né a me dinanzi provi terror?</span><span class="es">¿No sientes vergüenza ante mí?</span></div>
-      <div class="stage-direction">
-        <span>(riscuotendosi)</span>
-        <span class="es">(sorprendida)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
+      </div>
+      <div class="inline-direction">
+        <span>(riscuotendosi)</span>
+        <span>(sorprendida)</span>
       </div>
       <div class="line-row"><span class="it">Ciel! Che dicesti?</span><span class="es">¡Cielos! ¿Qué dices?</span></div>
       <div class="character-row">
@@ -1330,13 +1337,13 @@
       <div class="line-row"><span class="it">Tu!... tu, Foresto, parli così?</span><span class="es">¡Tú, tú, Foresto, me hablas así?</span></div>
     </div>
 
-    <div class="track-col" id="tc20">
+    <div class="track-col" id="tc19">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">20</span>
       </div>
     </div>
-    <div class="text-col" id="t20">
+    <div class="text-col" id="t19">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
@@ -1363,13 +1370,13 @@
       <div class="line-row"><span class="it">D'alta vendetta in cor.</span><span class="es">no anhela venganza.</span></div>
     </div>
 
-    <div class="track-col" id="tc21">
+    <div class="track-col" id="tc20">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">21</span>
       </div>
     </div>
-    <div class="text-col" id="t21">
+    <div class="text-col" id="t20">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
@@ -1421,13 +1428,13 @@
       <div class="line-row"><span class="it">S'addoppia il valor!</span><span class="es">¡Mi valor se acrecienta!</span></div>
     </div>
 
-    <div class="track-col" id="tc22">
+    <div class="track-col" id="tc21">
       <div class="track-tag">
         <span class="track-tag-cd">CD1</span>
         <span class="track-tag-num">22</span>
       </div>
     </div>
-    <div class="text-col" id="t22">
+    <div class="text-col" id="t21">
       <div class="character-row">
         <span class="character-name">Foresto, Odabella</span>
         <span class="character-name">Foresto, Odabella</span>
@@ -1448,22 +1455,22 @@
         <span>(Tenda d'Attila. Sopra il suolo, coperto da una pelle di tigre, è disteso Uldino che dorme. In fondo, alla sinistra, per mezo di una cortina sollevata a mezzo, la quale forma come una stanza appartata, scorgessi Attila in preda al sonno sopra il letto orientale assai basso, e coperto egualmente da pelli di tigre)</span>
         <span class="es">(Tienda de Atila. Sobre el suelo, cubierto por una piel de tigre duerme Uldino. Al fondo, a través de una cortina medio elevada, podemos ver a Atila presa del sueño sobre un lecho oriental bastante bajo, y cubierto igualmente por una piel de tigre)</span>
       </div>
-      <div class="stage-direction">
-        <span>(balzando esterrefatto)</span>
-        <span class="es">(se despierta aterrorizado)</span>
-      </div>
     </div>
 
-    <div class="track-col" id="tc23">
+    <div class="track-col" id="tc22">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">1</span>
       </div>
     </div>
-    <div class="text-col" id="t23">
+    <div class="text-col" id="t22">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(balzando esterrefatto)</span>
+        <span>(se despierta aterrorizado)</span>
       </div>
       <div class="line-row"><span class="it">Uldino! Uldin!</span><span class="es">¡Uldino! ¡Uldino!</span></div>
       <div class="character-row">
@@ -1513,13 +1520,13 @@
       <div class="line-row"><span class="it">Mio fido, ascolta!</span><span class="es">¡Fiel mío, escucha!</span></div>
     </div>
 
-    <div class="track-col" id="tc24">
+    <div class="track-col" id="tc23">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">2</span>
       </div>
     </div>
-    <div class="text-col" id="t24">
+    <div class="text-col" id="t23">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
@@ -1545,13 +1552,13 @@
         <span class="character-name">Uldino</span>
       </div>
       <div class="line-row"><span class="it">Raccapriccio! E che far pensi?</span><span class="es">¡Qué horror! ¿Y qué piensas hacer?</span></div>
-      <div class="stage-direction">
-        <span>(riaccendendosi)</span>
-        <span class="es">(rehaciéndose)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(riaccendendosi)</span>
+        <span>(rehaciéndose)</span>
       </div>
       <div class="line-row"><span class="it">Or son liberi i miei sensi!</span><span class="es">¡Ahora ya están libres mis sentidos!</span></div>
       <div class="line-row"><span class="it">Ho rossor del mio spavento.</span><span class="es">Siento vergüenza de mi miedo.</span></div>
@@ -1568,13 +1575,13 @@
       </div>
     </div>
 
-    <div class="track-col" id="tc25">
+    <div class="track-col" id="tc24">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">3</span>
       </div>
     </div>
-    <div class="text-col" id="t25">
+    <div class="text-col" id="t24">
       <div class="stage-direction">
         <span>Oltre a quel limite
 T'attendo, o spettro!
@@ -1584,13 +1591,13 @@ Vedrai se pavido
 Io là m'arretro,
 Se alfin me vindice
 Il mondo avrà.</span>
-        <span class="es">¡En aquellos lugares
+        <span class="es">¡En aquellos lugares 
 te estaré esperando, espectro!
-¿Quién podrá nunca
+¿Quién podrá nunca 
 prohibírselo a Atila?
-¡Verás si allí
+¡Verás si allí 
 puedes aterrorizarme,
-si al fin el mundo
+si al fin el mundo 
 tendrá un vengador!</span>
       </div>
       <div class="scene-heading">
@@ -1603,13 +1610,13 @@ tendrá un vengador!</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc26">
+    <div class="track-col" id="tc25">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">4</span>
       </div>
     </div>
-    <div class="text-col" id="t26">
+    <div class="text-col" id="t25">
       <div class="character-row">
         <span class="character-name">Coro</span>
         <span class="character-name">Coro</span>
@@ -1663,32 +1670,32 @@ tendrá un vengador!</span>
       </div>
       <div class="stage-direction">
         <span>(Il campo d'Attila. Dalla collina in fondo vedesi avanzare, preceduta da Leone e da sei Anziani, processionalmente una schiera di vergini e fanciulli in bianche vesti recanti palme. La scena è ingombra dalle schiere d'Attila in armi. Fra la moltitudine appare Foresto con visiera calata e Odabella)</span>
-        <span class="es">(El campamento de Atila. Desde la ) precedida por el papa León y seis ancianos, una fila de vírgenes y muchachos con vestidos blancos. La escena se llena de tropas de Atila. Entre la multitud aparecen Foresto, con la visera calada, y Odabella.)</span>
+        <span class="es">(El campamento de Atila. Desde la ) colina del fondo avanza en procesión, precedida por el papa León y seis ancianos, una fila de vírgenes y muchachos con vestidos blancos. La escena se llena de tropas de Atila. Entre la multitud aparecen Foresto, con la visera calada, y Odabella.)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Attila, Coro</span>
         <span class="character-name">Attila, Coro</span>
       </div>
       <div class="line-row"><span class="it">Chi viene?</span><span class="es">¿Quién viene?</span></div>
-      <div class="stage-direction">
-        <span>(sempre avanzandosi)</span>
-        <span class="es">(siempre acercándose)</span>
-      </div>
       <div class="character-row">
         <span class="character-name">Vergini, Fanciulli</span>
         <span class="character-name">Vergini, Fanciulli</span>
+      </div>
+      <div class="inline-direction">
+        <span>(sempre avanzandosi)</span>
+        <span>(siempre acercándose)</span>
       </div>
       <div class="line-row"><span class="it">I guasti sensi illumina,</span><span class="es">Ilumina a los que sufren,</span></div>
       <div class="line-row"><span class="it">Spirane amor in sen.</span><span class="es">inspíranos amor en el corazón.</span></div>
       <div class="line-row"><span class="it">L'oste debella e spandasi</span><span class="es">Despierta a la horda</span></div>
       <div class="line-row"><span class="it">Di pace il bel seren.</span><span class="es">y dale el bien sereno de la paz.</span></div>
-      <div class="stage-direction">
-        <span>(commovendosi a poco a poco)</span>
-        <span class="es">(conmoviéndose un poco)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(commovendosi a poco a poco)</span>
+        <span>(conmoviéndose un poco)</span>
       </div>
       <div class="line-row"><span class="it">Uldino! è quello il bieco</span><span class="es">¡Uldino!</span></div>
       <div class="line-row"><span class="it">Fantasma!...</span><span class="es">¡Aquel es el malvado fantasma!...</span></div>
@@ -1714,13 +1721,13 @@ tendrá un vengador!</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc27">
+    <div class="track-col" id="tc26">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">5</span>
       </div>
     </div>
-    <div class="text-col" id="t27">
+    <div class="text-col" id="t26">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
@@ -1732,13 +1739,13 @@ tendrá un vengador!</span>
       <div class="line-row"><span class="it">Spiriti, fermate.</span><span class="es">Las ardientes puntas llegan hasta mí.</span></div>
       <div class="line-row"><span class="it">Qui l'uom s'arretra;</span><span class="es">Espíritus, ¡deteneos!.</span></div>
       <div class="line-row"><span class="it">Dinanzi ai numi prostrasi il re!</span><span class="es">¡Ante los dioses se postra el rey!</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name">Uldino, Coro</span>
         <span class="character-name">Uldino, Coro</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Sordo ai lamenti pur de' fratelli,</span><span class="es">Sordo a los lamentos de los guerreros,</span></div>
       <div class="line-row"><span class="it">Vago di sangue, di pugne solo,</span><span class="es">ávidos de sangre, de combates...</span></div>
@@ -1771,13 +1778,13 @@ tendrá un vengador!</span>
       <span>Acto Segundo</span>
     </div>
 
-    <div class="track-col" id="tc28">
+    <div class="track-col" id="tc27">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">6</span>
       </div>
     </div>
-    <div class="text-col" id="t28">
+    <div class="text-col" id="t27">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -1797,13 +1804,13 @@ tendrá un vengador!</span>
       <div class="line-row"><span class="it">La patria leverà da tanto estremo!</span><span class="es">de tanto exceso!</span></div>
     </div>
 
-    <div class="track-col" id="tc29">
+    <div class="track-col" id="tc28">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">7</span>
       </div>
     </div>
-    <div class="text-col" id="t29">
+    <div class="text-col" id="t28">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -1818,13 +1825,13 @@ tendrá un vengador!</span>
       <div class="line-row"><span class="it">Chi ravvisare or può?</span><span class="es">en ese vil cadáver?</span></div>
     </div>
 
-    <div class="track-col" id="tc30">
+    <div class="track-col" id="tc29">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">8</span>
       </div>
     </div>
-    <div class="text-col" id="t30">
+    <div class="text-col" id="t29">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -1867,13 +1874,13 @@ tendrá un vengador!</span>
       </div>
       <div class="line-row"><span class="it">Ezio, al comune scampo</span><span class="es">Aecio, para la causa común</span></div>
       <div class="line-row"><span class="it">Manca la tua virtù.</span><span class="es">es necesario tu valor.</span></div>
-      <div class="stage-direction">
-        <span>(sorpreso)</span>
-        <span class="es">(sorprendido)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
+      </div>
+      <div class="inline-direction">
+        <span>(sorpreso)</span>
+        <span>(sorprendido)</span>
       </div>
       <div class="line-row"><span class="it">Che intendi? Oh, chi tu sei?</span><span class="es">¿Qué oigo? ¿quién eres?</span></div>
       <div class="character-row">
@@ -1926,13 +1933,13 @@ tendrá un vengador!</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc31">
+    <div class="track-col" id="tc30">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">9</span>
       </div>
     </div>
-    <div class="text-col" id="t31">
+    <div class="text-col" id="t30">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -1952,24 +1959,24 @@ tendrá un vengador!</span>
       <div class="stage-direction">
         <span>(Campo d'Attila come nell'atto primo,
 apprestato a solenne convito. La notte è
-vivamente rischiarata da cento fiamme
+vivamente rischiarata da cento fiamme 
 che irrompono da grossi tronchi di quercia
 preparati all'uopo. Unni, Ostrogoti, Eruli,
 ecc. Mentre i guerrieri cantano, Attila,
-seguito dai Druidi, dalle sacerdotesse,
+seguito dai Druidi, dalle sacerdotesse, 
 dai duci e re, va ad assidersi al suo
 d'Amazzone)</span>
         <span class="es">(Campamento de Atila como en el acto primero, preparado para un festín. La noche está iluminada por cien llamas que salen de gruesos troncos de encina. Hunos, érulos, ostrogodos, cantan. Atila, seguido de los druidas, va a sentarse en su lugar. Odabella está cerca de él vestida de amazona.)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc32">
+    <div class="track-col" id="tc31">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">10</span>
       </div>
     </div>
-    <div class="text-col" id="t32">
+    <div class="text-col" id="t31">
       <div class="character-row">
         <span class="character-name">Coro</span>
         <span class="character-name">Coro</span>
@@ -1990,22 +1997,22 @@ d'Amazzone)</span>
         <span>Scena Sesta</span>
         <span>Escena Sexta</span>
       </div>
-      <div class="stage-direction">
-        <span>(alzandosi)</span>
-        <span class="es">(levantándose)</span>
-      </div>
     </div>
 
-    <div class="track-col" id="tc33">
+    <div class="track-col" id="tc32">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">11</span>
       </div>
     </div>
-    <div class="text-col" id="t33">
+    <div class="text-col" id="t32">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(alzandosi)</span>
+        <span>(levantándose)</span>
       </div>
       <div class="line-row"><span class="it">Ezio, ben vieni!</span><span class="es">¡Aecio, bienvenido!</span></div>
       <div class="line-row"><span class="it">Della tregua nostra</span><span class="es">De nuestra tregua</span></div>
@@ -2051,13 +2058,13 @@ d'Amazzone)</span>
         <span class="character-name">Druidi</span>
       </div>
       <div class="line-row"><span class="it">Wodan ti guardi.</span><span class="es">Wotan te guarde.</span></div>
-      <div class="stage-direction">
-        <span>(alle sacerdotesse)</span>
-        <span class="es">(a las sacerdotisas)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(alle sacerdotesse)</span>
+        <span>(a las sacerdotisas)</span>
       </div>
       <div class="line-row"><span class="it">Sacre figlie degli Unni,</span><span class="es">Sagradas hijas de los hunos,</span></div>
       <div class="line-row"><span class="it">Percuotete le cetre, e si diffonda</span><span class="es">tañed la cítara y que se expanda</span></div>
@@ -2068,13 +2075,13 @@ d'Amazzone)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc34">
+    <div class="track-col" id="tc33">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">12</span>
       </div>
     </div>
-    <div class="text-col" id="t34">
+    <div class="text-col" id="t33">
       <div class="character-row">
         <span class="character-name">Sacerdotesse</span>
         <span class="character-name">Sacerdotesse</span>
@@ -2091,13 +2098,13 @@ d'Amazzone)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc35">
+    <div class="track-col" id="tc34">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">13</span>
       </div>
     </div>
-    <div class="text-col" id="t35">
+    <div class="text-col" id="t34">
       <div class="character-row">
         <span class="character-name">Tutti</span>
         <span class="character-name">Tutti</span>
@@ -2115,13 +2122,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Sull'anima ha impero...</span><span class="es">sobre el alma imperan...</span></div>
       <div class="line-row"><span class="it">Stuol d'ombre vaganti</span><span class="es">Multitud de sombras errantes</span></div>
       <div class="line-row"><span class="it">Nel buio apparì.</span><span class="es">aparecen en la obscuridad.</span></div>
-      <div class="stage-direction">
-        <span>(ad Attila)</span>
-        <span class="es">(a Atila)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
+      </div>
+      <div class="inline-direction">
+        <span>(ad Attila)</span>
+        <span>(a Atila)</span>
       </div>
       <div class="line-row"><span class="it">Rammenta i miei patti:</span><span class="es">Recuerda mis pactos:</span></div>
       <div class="line-row"><span class="it">Con Ezio combatti;</span><span class="es">combate junto a Aecio.</span></div>
@@ -2129,15 +2136,19 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">La mano non sprezzar.</span><span class="es">del viejo guerrero.</span></div>
       <div class="line-row"><span class="it">Dedici. Fra poco</span><span class="es">¡Decide!</span></div>
       <div class="line-row"><span class="it">Non fora più loco.</span><span class="es">Dentro de poco ya será tarde.</span></div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(Para sí)</span>
+      </div>
       <div class="line-row"><span class="it">Del barbaro altiero</span><span class="es">Desaparece el astro</span></div>
       <div class="line-row"><span class="it">Già l'astro dispar.</span><span class="es">del orgulloso bárbaro.</span></div>
-      <div class="stage-direction">
-        <span>(ad Odabella)</span>
-        <span class="es">(a Odabella)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
+      </div>
+      <div class="inline-direction">
+        <span>(ad Odabella)</span>
+        <span>(a Odabella)</span>
       </div>
       <div class="line-row"><span class="it">O sposa, t'allieta,</span><span class="es">¡Oh esposa, alégrate,</span></div>
       <div class="line-row"><span class="it">È giunta la meta;</span><span class="es">próxima está la meta!</span></div>
@@ -2147,13 +2158,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Ministra dell'ira,</span><span class="es">¡Mírala!</span></div>
       <div class="line-row"><span class="it">Al labbro dell'empio,</span><span class="es">En los labios del impío,</span></div>
       <div class="line-row"><span class="it">Uldin l'offrirà.</span><span class="es">será ministra de nuestra ira,</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Vendetta avrem noi</span><span class="es">¿Obtendré venganza</span></div>
       <div class="line-row"><span class="it">Per mano de' suoi?...</span><span class="es">por mano ajena?...</span></div>
@@ -2163,13 +2174,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">A Dio l'ho giurato,</span><span class="es">a Dios lo he jurado,</span></div>
       <div class="line-row"><span class="it">È questa la spada.</span><span class="es">y ésta es la espada</span></div>
       <div class="line-row"><span class="it">Che il deve colpir.</span><span class="es">que le matará.</span></div>
-      <div class="stage-direction">
-        <span>(ad Ezio)</span>
-        <span class="es">(a Aecio)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(ad Ezio)</span>
+        <span>(a Aecio)</span>
       </div>
       <div class="line-row"><span class="it">M'irriti, o Romano...</span><span class="es">Me irritas, Romano...</span></div>
       <div class="line-row"><span class="it">Sorprendermi è vano:</span><span class="es">intentas sorprenderme en vano.</span></div>
@@ -2183,13 +2194,13 @@ d'Amazzone)</span>
       </div>
       <div class="line-row"><span class="it">Oh rabbia; non sento</span><span class="es">¡Oh, el corazón de Atila</span></div>
       <div class="line-row"><span class="it">Più d'Attila il cor!</span><span class="es">ya no siente odio!</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="uldino">Uldino</span>
         <span class="character-name">Uldino</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Dell'ora funesta</span><span class="es">De la funesta hora</span></div>
       <div class="line-row"><span class="it">L'istante s'appresta...</span><span class="es">el momento se prepara...</span></div>
@@ -2204,13 +2215,13 @@ d'Amazzone)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc36">
+    <div class="track-col" id="tc35">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">14</span>
       </div>
     </div>
-    <div class="text-col" id="t36">
+    <div class="text-col" id="t35">
       <div class="character-row">
         <span class="character-name">Tutti</span>
         <span class="character-name">Tutti</span>
@@ -2219,22 +2230,22 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Qual lampo sparì.</span><span class="es">como un relámpago desapareció.</span></div>
       <div class="line-row"><span class="it">Di calma novella</span><span class="es">Con nueva calma</span></div>
       <div class="line-row"><span class="it">Il ciel si vestì.</span><span class="es">el cielo se vistió.</span></div>
-      <div class="stage-direction">
-        <span>(riscuotendosi)</span>
-        <span class="es">(dominándose)</span>
-      </div>
     </div>
 
-    <div class="track-col" id="tc37">
+    <div class="track-col" id="tc36">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">15</span>
       </div>
     </div>
-    <div class="text-col" id="t37">
+    <div class="text-col" id="t36">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(riscuotendosi)</span>
+        <span>(dominándose)</span>
       </div>
       <div class="line-row"><span class="it">Si riaccendan le quercie d'intorno,</span><span class="es">¡Volved a encender las encinas!</span></div>
       <div class="stage-direction">
@@ -2245,32 +2256,32 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Sia per tutti festivo tal giorno,</span><span class="es">Hoy sea para todos un día de fiesta.</span></div>
       <div class="line-row"><span class="it">Porgi, Uldino,</span><span class="es">¡Tráeme, Uldino,</span></div>
       <div class="line-row"><span class="it">la conca ospital.</span><span class="es">la copa de la hospitalidad!</span></div>
-      <div class="stage-direction">
-        <span>(piano ad Odabella)</span>
-        <span class="es">(por lo bajo a Odabella)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
       </div>
+      <div class="inline-direction">
+        <span>(piano ad Odabella)</span>
+        <span>(por lo bajo a Odabella)</span>
+      </div>
       <div class="line-row"><span class="it">Perchè tremi?</span><span class="es">¿Por qué tiemblas?...</span></div>
       <div class="line-row"><span class="it">S'imbianca il tuo volto.</span><span class="es">Tu rostro palidece.</span></div>
-      <div class="stage-direction">
-        <span>(ricevendo la tazza da Uldino)</span>
-        <span class="es">(recibiendo la copa de Uldino)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
       </div>
-      <div class="line-row"><span class="it">Libo a te, gran Wodano, che invoco!</span><span class="es">¡Yo te invoco gran Wotan!</span></div>
-      <div class="stage-direction">
-        <span>(trattenendolo)</span>
-        <span class="es">(impidiéndole beber)</span>
+      <div class="inline-direction">
+        <span>(ricevendo la tazza da Uldino)</span>
+        <span>(recibiendo la copa de Uldino)</span>
       </div>
+      <div class="line-row"><span class="it">Libo a te, gran Wodano, che invoco!</span><span class="es">¡Yo te invoco gran Wotan!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
+      </div>
+      <div class="inline-direction">
+        <span>(trattenendolo)</span>
+        <span>(impidiéndole beber)</span>
       </div>
       <div class="line-row"><span class="it">Re, ti ferma!... è veleno!...</span><span class="es">¡Rey, no lo bebas!... ¡es un veneno!</span></div>
       <div class="character-row">
@@ -2278,40 +2289,40 @@ d'Amazzone)</span>
         <span class="character-name">Coro</span>
       </div>
       <div class="line-row"><span class="it">Che ascolto!</span><span class="es">¡Qué escucho!</span></div>
-      <div class="stage-direction">
-        <span>(furibondo)</span>
-        <span class="es">(furioso)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
       </div>
-      <div class="line-row"><span class="it">Chi 'l temprava?</span><span class="es">¿Quién se ha atrevido?</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
+      <div class="inline-direction">
+        <span>(furibondo)</span>
+        <span>(furioso)</span>
       </div>
+      <div class="line-row"><span class="it">Chi 'l temprava?</span><span class="es">¿Quién se ha atrevido?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
       </div>
-      <div class="line-row"><span class="it">Oh momento fatal!</span><span class="es">¡Oh, momento fatal!</span></div>
-      <div class="stage-direction">
-        <span>(avanzandosi con fermezza)</span>
-        <span class="es">(adelantándose con firmeza)</span>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
+      <div class="line-row"><span class="it">Oh momento fatal!</span><span class="es">¡Oh, momento fatal!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
       </div>
-      <div class="line-row"><span class="it">Io.</span><span class="es">¡Yo!</span></div>
-      <div class="stage-direction">
+      <div class="inline-direction">
         <span>(avanzandosi con fermezza)</span>
-        <span class="es">(reconociéndolo)</span>
+        <span>(adelantándose con firmeza)</span>
       </div>
+      <div class="line-row"><span class="it">Io.</span><span class="es">¡Yo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(avanzandosi con fermezza)</span>
+        <span>(reconociéndolo)</span>
       </div>
       <div class="line-row"><span class="it">Foresto.</span><span class="es">¡Foresto!</span></div>
       <div class="character-row">
@@ -2320,32 +2331,32 @@ d'Amazzone)</span>
       </div>
       <div class="line-row"><span class="it">Sì, quel che un giorno</span><span class="es">Sí, el mismo que un día</span></div>
       <div class="line-row"><span class="it">La corona strappò dal tuo crine...</span><span class="es">la corona te arrancó de la cabeza...</span></div>
-      <div class="stage-direction">
-        <span>(traendo la spada)</span>
-        <span class="es">(desenvainando la espada)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
       </div>
+      <div class="inline-direction">
+        <span>(traendo la spada)</span>
+        <span>(desenvainando la espada)</span>
+      </div>
       <div class="line-row"><span class="it">Ah! In mia mano caduto se' alfine,</span><span class="es">¡Ah, en mis manos has caído al fin,</span></div>
       <div class="line-row"><span class="it">Ben io l'alma dal sen ti trarrò.</span><span class="es">te sacaré el alma del cuerpo!</span></div>
-      <div class="stage-direction">
-        <span>(con scherno)</span>
-        <span class="es">(arrogante)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
       </div>
-      <div class="line-row"><span class="it">Or t'è lieve...</span><span class="es">¡Eso es fácil para ti!...</span></div>
-      <div class="stage-direction">
-        <span>(fermandosi a tali parole)</span>
-        <span class="es">(reprimiéndose)</span>
+      <div class="inline-direction">
+        <span>(con scherno)</span>
+        <span>(arrogante)</span>
       </div>
+      <div class="line-row"><span class="it">Or t'è lieve...</span><span class="es">¡Eso es fácil para ti!...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fermandosi a tali parole)</span>
+        <span>(reprimiéndose)</span>
       </div>
       <div class="line-row"><span class="it">Oh, mia rabbia! Oh, mio scorno!</span><span class="es">¡Oh, rabia! ¡Oh, vergüenza!</span></div>
       <div class="character-row">
@@ -2356,13 +2367,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Io t'ho salvo...</span><span class="es">Yo te he salvado...</span></div>
       <div class="line-row"><span class="it">il delitto svelai...</span><span class="es">El delito he desvelado...</span></div>
       <div class="line-row"><span class="it">Da me sol fia punito l'indegno.</span><span class="es">Sólo por mí sea castigado el indigno.</span></div>
-      <div class="stage-direction">
-        <span>(compiacendosi del fiero atto)</span>
-        <span class="es">(complaciente) )</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(compiacendosi del fiero atto)</span>
+        <span>(complaciente) )</span>
       </div>
       <div class="line-row"><span class="it">Io tel dono! Ma premio più degno,</span><span class="es">¡Te lo doy!</span></div>
       <div class="line-row"><span class="it">Mia fedele, riserbasi a te:</span><span class="es">Pero un premio más digno te reservo:</span></div>
@@ -2370,13 +2381,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Dalle genti qual sposa del re.</span><span class="es">como la gentil esposa del rey.</span></div>
     </div>
 
-    <div class="track-col" id="tc38">
+    <div class="track-col" id="tc37">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">16</span>
       </div>
     </div>
-    <div class="text-col" id="t38">
+    <div class="text-col" id="t37">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
@@ -2387,13 +2398,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Poscia il vindice flagel.</span><span class="es">por todas partes, el látigo vengador.</span></div>
       <div class="line-row"><span class="it">Ezio, in Roma annuncia intanto</span><span class="es">¡Aecio, anuncia en Roma que yo</span></div>
       <div class="line-row"><span class="it">Ch'io de' sogni ho rotto il vel.</span><span class="es">he roto el hechizo de los sueños!</span></div>
-      <div class="stage-direction">
-        <span>(a Foresto)</span>
-        <span class="es">(a Foresto)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
+      </div>
+      <div class="inline-direction">
+        <span>(a Foresto)</span>
+        <span>(a Foresto)</span>
       </div>
       <div class="line-row"><span class="it">Frena l'ira che t'inganna;</span><span class="es">¡Frena la ira que te ofusca;</span></div>
       <div class="line-row"><span class="it">Fuggi, salvati, o fratello.</span><span class="es">huye, sálvate, querido!</span></div>
@@ -2401,13 +2412,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Di' che vile, infame io son...</span><span class="es">di que soy vil, que soy infame...</span></div>
       <div class="line-row"><span class="it">Ma deh, fuggi... Al dì novello</span><span class="es">Pero, ¡ay! huye... Mañana mismo</span></div>
       <div class="line-row"><span class="it">Avrò tutto il tuo perdon.</span><span class="es">obtendré todo tu perdón.</span></div>
-      <div class="stage-direction">
-        <span>(ad Odabella)</span>
-        <span class="es">(a Odabella)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
+      </div>
+      <div class="inline-direction">
+        <span>(ad Odabella)</span>
+        <span>(a Odabella)</span>
       </div>
       <div class="line-row"><span class="it">Parto, sì per viver solo</span><span class="es">Me marcho, sí, para vivir sólo</span></div>
       <div class="line-row"><span class="it">Fino al dì della vendetta;</span><span class="es">hasta el día de la venganza.</span></div>
@@ -2415,13 +2426,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">A tua colpa si può dar?...</span><span class="es">podrás expiar tu culpa?...</span></div>
       <div class="line-row"><span class="it">Del rimorso che t'aspetta</span><span class="es">¡Sea tu eterno castigo</span></div>
       <div class="line-row"><span class="it">Duri eterno il flagellar.</span><span class="es">el remordimiento que te espera!</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Chi l'arcan svelar potea?</span><span class="es">¿Podría desvelar el secreto?</span></div>
       <div class="line-row"><span class="it">Chi fidarlo a core amante?</span><span class="es">¿Cómo confiar en un corazón amante?</span></div>
@@ -2429,13 +2440,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Fatal uom, di voluttà.</span><span class="es">hombre malvado y lujurioso.</span></div>
       <div class="line-row"><span class="it">Ma doman su te festante</span><span class="es">Pero mañana sobre ti,</span></div>
       <div class="line-row"><span class="it">Ezio in armi piomberà.</span><span class="es">Aecio en armas irrumpirá.</span></div>
-      <div class="stage-direction">
-        <span>(fra sè)</span>
-        <span class="es">(para sí)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="uldino">Uldino</span>
         <span class="character-name">Uldino</span>
+      </div>
+      <div class="inline-direction">
+        <span>(fra sè)</span>
+        <span>(para sí)</span>
       </div>
       <div class="line-row"><span class="it">Io gelar m'intesi il sangue...</span><span class="es">Helarse siento mi sangre...</span></div>
       <div class="line-row"><span class="it">Chi tradir poteane omai?</span><span class="es">¿Quién pudo traicionarte?</span></div>
@@ -2459,7 +2470,7 @@ d'Amazzone)</span>
       </div>
       <div class="stage-direction">
         <span>(Bosco come nell'atto primo, il quale divide il campo di Attila da quello di Ezio. È mattino. Foresto solo. Indi Uldino)</span>
-        <span class="es">(Bosque como en el acto primero, que separa el campamento de Atila está solo, luego entra Uldino)</span>
+        <span class="es">(Bosque como en el acto primero, que separa el campamento de Atila del de Aecio. Es por la mañana. Foresto está solo, luego entra Uldino)</span>
       </div>
     </div>
 
@@ -2468,13 +2479,13 @@ d'Amazzone)</span>
       <span>Acto Tercero</span>
     </div>
 
-    <div class="track-col" id="tc39">
+    <div class="track-col" id="tc38">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">17</span>
       </div>
     </div>
-    <div class="text-col" id="t39">
+    <div class="text-col" id="t38">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
@@ -2525,13 +2536,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Vedrai come ritorni a te Foresto!</span><span class="es">¡Volverás a ver ante ti a Foresto!</span></div>
     </div>
 
-    <div class="track-col" id="tc40">
+    <div class="track-col" id="tc39">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">18</span>
       </div>
     </div>
-    <div class="text-col" id="t40">
+    <div class="text-col" id="t39">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="foresto">Foresto</span>
         <span class="character-name">Foresto</span>
@@ -2554,13 +2565,13 @@ d'Amazzone)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc41">
+    <div class="track-col" id="tc40">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">19</span>
       </div>
     </div>
-    <div class="text-col" id="t41">
+    <div class="text-col" id="t40">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="aezio">Ezio</span>
         <span class="character-name">Ezio</span>
@@ -2575,13 +2586,13 @@ d'Amazzone)</span>
       </div>
       <div class="line-row"><span class="it">Non un, non un de' barbari</span><span class="es">¡Ni uno, ni uno de los bárbaros</span></div>
       <div class="line-row"><span class="it">Ai lari tornerà.</span><span class="es">a sus tierras regresará!</span></div>
-      <div class="stage-direction">
-        <span>(interno)</span>
-        <span class="es">(interno)</span>
-      </div>
       <div class="character-row">
         <span class="character-name">Coro</span>
         <span class="character-name">Coro</span>
+      </div>
+      <div class="inline-direction">
+        <span>(interno)</span>
+        <span>(interno)</span>
       </div>
       <div class="line-row"><span class="it">Entra fra i plausi, o vergine,</span><span class="es">Entra entre ovaciones ¡oh, virgen!</span></div>
       <div class="line-row"><span class="it">Schiusa è la tenda a te;</span><span class="es">abierta tienes la tienda;</span></div>
@@ -2640,13 +2651,13 @@ d'Amazzone)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc42">
+    <div class="track-col" id="tc41">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">20</span>
       </div>
     </div>
-    <div class="text-col" id="t42">
+    <div class="text-col" id="t41">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -2675,13 +2686,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Pietà del mio martir.</span><span class="es">ten piedad de mi martirio.</span></div>
     </div>
 
-    <div class="track-col" id="tc43">
+    <div class="track-col" id="tc42">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">21</span>
       </div>
     </div>
-    <div class="text-col" id="t43">
+    <div class="text-col" id="t42">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -2714,22 +2725,22 @@ d'Amazzone)</span>
         <span>(Entra Attila che va dritto ad Odabella)</span>
         <span class="es">(Entra Atila)</span>
       </div>
-      <div class="stage-direction">
-        <span>(ad Odabella)</span>
-        <span class="es">(a Odabella)</span>
-      </div>
     </div>
 
-    <div class="track-col" id="tc44">
+    <div class="track-col" id="tc43">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">22</span>
       </div>
     </div>
-    <div class="text-col" id="t44">
+    <div class="text-col" id="t43">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(ad Odabella)</span>
+        <span>(a Odabella)</span>
       </div>
       <div class="line-row"><span class="it">Non involarti, seguimi;</span><span class="es">¡No te vayas, sígueme!</span></div>
       <div class="line-row"><span class="it">Perchè fuggir chi t'ama?...</span><span class="es">¿Por qué huyes de quien te ama?...</span></div>
@@ -2741,13 +2752,13 @@ d'Amazzone)</span>
       </div>
     </div>
 
-    <div class="track-col" id="tc45">
+    <div class="track-col" id="tc44">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">23</span>
       </div>
     </div>
-    <div class="text-col" id="t45">
+    <div class="text-col" id="t44">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
@@ -2769,13 +2780,13 @@ d'Amazzone)</span>
       <div class="line-row"><span class="it">Piomberà la vendetta del re.</span><span class="es">la venganza sangrante del rey.</span></div>
     </div>
 
-    <div class="track-col" id="tc46">
+    <div class="track-col" id="tc45">
       <div class="track-tag">
         <span class="track-tag-cd">CD2</span>
         <span class="track-tag-num">24</span>
       </div>
     </div>
-    <div class="text-col" id="t46">
+    <div class="text-col" id="t45">
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="odabella">Odabella</span>
         <span class="character-name">Odabella</span>
@@ -2852,13 +2863,13 @@ d'Amazzone)</span>
         <span>(Abbraccia Foresto)</span>
         <span class="es">(Abraza a Foresto.)</span>
       </div>
-      <div class="stage-direction">
-        <span>(morente)</span>
-        <span class="es">(moribundo)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="attila">Attila</span>
         <span class="character-name">Attila</span>
+      </div>
+      <div class="inline-direction">
+        <span>(morente)</span>
+        <span>(moribundo)</span>
       </div>
       <div class="line-row"><span class="it">E tu pure, Odabella?...</span><span class="es">¿Tú también... Odabella?</span></div>
       <div class="scene-heading">
@@ -2925,43 +2936,43 @@ d'Amazzone)</span>
       { id: "t6", cd: 1, track: 7, title: "Da Te Questo Or M'\u00c8 Concesso", act: "Act Prologo", has_block: true },
       { id: "t7", cd: 1, track: 8, title: "Uldino, A Me Dinanzi L'Inviato", act: "Act Prologo", has_block: true },
       { id: "t8", cd: 1, track: 9, title: "Attila!.. Oh, Il Nobil Messo!", act: "Act Prologo", has_block: true },
-      { id: "t10", cd: 1, track: 10, title: "Tardo Per Gli Anni, E Tremulo", act: "Act Prologo", has_block: true },
-      { id: "t11", cd: 1, track: 11, title: "Vanitosi!", act: "Act Prologo", has_block: true },
-      { id: "t12", cd: 1, track: 12, title: "Qual Notte!", act: "Act Prologo", has_block: true },
-      { id: "t13", cd: 1, track: 13, title: "L'Alito Del Mattin.. Prehiam!", act: "Act Prologo", has_block: true },
-      { id: "t14", cd: 1, track: 14, title: "Quai Voci!", act: "Act Prologo", has_block: true },
-      { id: "t15", cd: 1, track: 15, title: "Ella In Poter Del Barbaro!", act: "Act Prologo", has_block: true },
-      { id: "t16", cd: 1, track: 16, title: "Cara Patria", act: "Act Prologo", has_block: true },
-      { id: "t17", cd: 1, track: 17, title: "Liberamente Or Piangi (Odabella)", act: "Act I", has_block: true },
-      { id: "t18", cd: 1, track: 18, title: "Oh! Nel Fuggente Nuvolo (Odabella)", act: "Act I", has_block: true },
-      { id: "t19", cd: 1, track: 19, title: "Qual Suon Di Passi!", act: "Act I", has_block: true },
-      { id: "t20", cd: 1, track: 20, title: "Si Quell'Io Son", act: "Act I", has_block: true },
-      { id: "t21", cd: 1, track: 21, title: "Va! Racconta Al Sacrilego", act: "Act I", has_block: true },
-      { id: "t22", cd: 1, track: 22, title: "Oh, T'Inebria Nell'Amplesso", act: "Act I", has_block: true },
-      { id: "t23", cd: 2, track: 1, title: "Uldino! Uldin!", act: "Act I", has_block: true },
-      { id: "t24", cd: 2, track: 2, title: "Mentre Gonfiarsi L'Anima", act: "Act I", has_block: true },
-      { id: "t25", cd: 2, track: 3, title: "Oltre A Quel Limite T'Attendo", act: "Act I", has_block: true },
-      { id: "t26", cd: 2, track: 4, title: "Parla, Imponi", act: "Act I", has_block: true },
-      { id: "t27", cd: 2, track: 5, title: "No!...Non \u00c8 Sogno", act: "Act I", has_block: true },
-      { id: "t28", cd: 2, track: 6, title: "Tregua \u00c8 Cogi'Unni", act: "Act II", has_block: true },
-      { id: "t29", cd: 2, track: 7, title: "Dagli Immortali Vertici", act: "Act II", has_block: true },
-      { id: "t30", cd: 2, track: 8, title: "Chi Vien?", act: "Act II", has_block: true },
-      { id: "t31", cd: 2, track: 9, title: "E Gettata La Mia Sorte", act: "Act II", has_block: true },
-      { id: "t32", cd: 2, track: 10, title: "Del Ciel L'Immensa Volta", act: "Act II", has_block: true },
-      { id: "t33", cd: 2, track: 11, title: "Ezio, Ben Vieni!", act: "Act II", has_block: true },
-      { id: "t34", cd: 2, track: 12, title: "Chi Dona Luce Al Cor?", act: "Act II", has_block: true },
-      { id: "t35", cd: 2, track: 13, title: "Ah! Lo Spirto De' Monti", act: "Act II", has_block: true },
-      { id: "t36", cd: 2, track: 14, title: "L'Orrenda Procella", act: "Act II", has_block: true },
-      { id: "t37", cd: 2, track: 15, title: "Si Riaccendan Le Quercie", act: "Act II", has_block: true },
-      { id: "t38", cd: 2, track: 16, title: "Oh, Miei Prodi!", act: "Act II", has_block: true },
-      { id: "t39", cd: 2, track: 17, title: "Qui Del Convegno \u00c8 Il Loco", act: "Act III", has_block: true },
-      { id: "t40", cd: 2, track: 18, title: "Che Non Avrebbe Il Misero", act: "Act III", has_block: true },
-      { id: "t41", cd: 2, track: 19, title: "Che Pi\u00f9 S'Indugia", act: "Act III", has_block: true },
-      { id: "t42", cd: 2, track: 20, title: "Cessa, Deh, Cessa", act: "Act III", has_block: true },
-      { id: "t43", cd: 2, track: 21, title: "Te Sol, Te Sol Quest'Anima", act: "Act III", has_block: true },
-      { id: "t44", cd: 2, track: 22, title: "Non Involarti, Seguimi", act: "Act III", has_block: true },
-      { id: "t45", cd: 2, track: 23, title: "Tu, Rea Donna", act: "Act III", has_block: true },
-      { id: "t46", cd: 2, track: 24, title: "Nella Tenda", act: "Act III", has_block: true }
+      { id: "t9", cd: 1, track: 10, title: "Tardo Per Gli Anni, E Tremulo", act: "Act Prologo", has_block: true },
+      { id: "t10", cd: 1, track: 11, title: "Vanitosi!", act: "Act Prologo", has_block: true },
+      { id: "t11", cd: 1, track: 12, title: "Qual Notte!", act: "Act Prologo", has_block: true },
+      { id: "t12", cd: 1, track: 13, title: "L'Alito Del Mattin.. Prehiam!", act: "Act Prologo", has_block: true },
+      { id: "t13", cd: 1, track: 14, title: "Quai Voci!", act: "Act Prologo", has_block: true },
+      { id: "t14", cd: 1, track: 15, title: "Ella In Poter Del Barbaro!", act: "Act Prologo", has_block: true },
+      { id: "t15", cd: 1, track: 16, title: "Cara Patria", act: "Act Prologo", has_block: true },
+      { id: "t16", cd: 1, track: 17, title: "Liberamente Or Piangi (Odabella)", act: "Act I", has_block: true },
+      { id: "t17", cd: 1, track: 18, title: "Oh! Nel Fuggente Nuvolo (Odabella)", act: "Act I", has_block: true },
+      { id: "t18", cd: 1, track: 19, title: "Qual Suon Di Passi!", act: "Act I", has_block: true },
+      { id: "t19", cd: 1, track: 20, title: "Si Quell'Io Son", act: "Act I", has_block: true },
+      { id: "t20", cd: 1, track: 21, title: "Va! Racconta Al Sacrilego", act: "Act I", has_block: true },
+      { id: "t21", cd: 1, track: 22, title: "Oh, T'Inebria Nell'Amplesso", act: "Act I", has_block: true },
+      { id: "t22", cd: 2, track: 1, title: "Uldino! Uldin!", act: "Act I", has_block: true },
+      { id: "t23", cd: 2, track: 2, title: "Mentre Gonfiarsi L'Anima", act: "Act I", has_block: true },
+      { id: "t24", cd: 2, track: 3, title: "Oltre A Quel Limite T'Attendo", act: "Act I", has_block: true },
+      { id: "t25", cd: 2, track: 4, title: "Parla, Imponi", act: "Act I", has_block: true },
+      { id: "t26", cd: 2, track: 5, title: "No!...Non \u00c8 Sogno", act: "Act I", has_block: true },
+      { id: "t27", cd: 2, track: 6, title: "Tregua \u00c8 Cogi'Unni", act: "Act II", has_block: true },
+      { id: "t28", cd: 2, track: 7, title: "Dagli Immortali Vertici", act: "Act II", has_block: true },
+      { id: "t29", cd: 2, track: 8, title: "Chi Vien?", act: "Act II", has_block: true },
+      { id: "t30", cd: 2, track: 9, title: "E Gettata La Mia Sorte", act: "Act II", has_block: true },
+      { id: "t31", cd: 2, track: 10, title: "Del Ciel L'Immensa Volta", act: "Act II", has_block: true },
+      { id: "t32", cd: 2, track: 11, title: "Ezio, Ben Vieni!", act: "Act II", has_block: true },
+      { id: "t33", cd: 2, track: 12, title: "Chi Dona Luce Al Cor?", act: "Act II", has_block: true },
+      { id: "t34", cd: 2, track: 13, title: "Ah! Lo Spirto De' Monti", act: "Act II", has_block: true },
+      { id: "t35", cd: 2, track: 14, title: "L'Orrenda Procella", act: "Act II", has_block: true },
+      { id: "t36", cd: 2, track: 15, title: "Si Riaccendan Le Quercie", act: "Act II", has_block: true },
+      { id: "t37", cd: 2, track: 16, title: "Oh, Miei Prodi!", act: "Act II", has_block: true },
+      { id: "t38", cd: 2, track: 17, title: "Qui Del Convegno \u00c8 Il Loco", act: "Act III", has_block: true },
+      { id: "t39", cd: 2, track: 18, title: "Che Non Avrebbe Il Misero", act: "Act III", has_block: true },
+      { id: "t40", cd: 2, track: 19, title: "Che Pi\u00f9 S'Indugia", act: "Act III", has_block: true },
+      { id: "t41", cd: 2, track: 20, title: "Cessa, Deh, Cessa", act: "Act III", has_block: true },
+      { id: "t42", cd: 2, track: 21, title: "Te Sol, Te Sol Quest'Anima", act: "Act III", has_block: true },
+      { id: "t43", cd: 2, track: 22, title: "Non Involarti, Seguimi", act: "Act III", has_block: true },
+      { id: "t44", cd: 2, track: 23, title: "Tu, Rea Donna", act: "Act III", has_block: true },
+      { id: "t45", cd: 2, track: 24, title: "Nella Tenda", act: "Act III", has_block: true }
     ]
   }
 };
@@ -2975,9 +2986,9 @@ d'Amazzone)</span>
 
   const ACT_STARTS = {
     "Act Prologo": "t1",
-    "Act I": "t17",
-    "Act II": "t28",
-    "Act III": "t39"
+    "Act I": "t16",
+    "Act II": "t27",
+    "Act III": "t38"
   };
 
   const CHARACTERS = [
