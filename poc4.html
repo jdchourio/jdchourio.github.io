@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
 
@@ -61,14 +62,24 @@
     /* context-left becomes non-interactive, just shows CD·T pill + act */
     .context-left {
       flex: 1;
+      min-width: 0;
       cursor: default;
       gap: 0.4rem;
       padding: 0;
       margin: 0;
       pointer-events: none;
+      overflow: hidden;
     }
     .context-left:hover,
     .context-left:active { background: none; }
+
+    /* Act label truncates with ellipsis if too long */
+    #actLabel {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
 
     /* Lang filter buttons — same style as the small bar pills */
     .lang-filter-btn {
@@ -180,9 +191,10 @@
       display: block;
     }
 
-    /* Hide lang elements when filtered */
-    .fr-hidden .fr { display: none; }
-    .es-hidden .es { display: none; }
+    /* Language filter: only affects sung lines inside .line-row.
+       Character names, directions, scene headings remain visible regardless. */
+    .fr-hidden .line-row .fr { display: none; }
+    .es-hidden .line-row .es { display: none; }
 
     /* Bottom sheet drawer */
     .bottom-sheet-overlay {
@@ -1144,6 +1156,7 @@
     <div class="drawer-body" id="bottomSheetBody"></div>
   </div>
 </div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
       <span class="drawer-header-title">Index</span>
