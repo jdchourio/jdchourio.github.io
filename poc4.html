@@ -1,0 +1,1547 @@
+<meta charset="utf-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Jost', var(--font-sans);
+    --bar-h: 48px;
+    --gold: #8B6914;
+    --gold-light: #f5ede0;
+    --gold-mid: #c49a2a;
+    --gold-border: #d4a84b;
+    --col-gap: 1rem;
+    --col-left: 52px;
+    --text-dim: var(--color-text-secondary);
+    --text-main: var(--color-text-primary);
+    --text-max-width: 900px;
+    --bg: var(--color-background-primary);
+    --bg2: var(--color-background-secondary);
+  }
+
+  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
+
+  .context-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-background-primary, #fdfaf6);
+    border-bottom: 1px solid var(--color-border-secondary);
+    height: var(--bar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem 0 calc(var(--col-left) + 1.25rem);
+    gap: 1rem;
+
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* ── Mobile layout (≤ 600px) ─────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+
+    /* Context bar: single row, all items same small size */
+    .context-bar {
+      padding: 0 0.75rem;
+      gap: 0.35rem;
+      justify-content: flex-start;
+    }
+
+    /* Hide desktop-only context bar elements */
+    .context-sep,
+    .context-chevron,
+    .context-track-title,
+    .recording-switcher-wrap,
+    .cast-btn { display: none; }
+
+    /* context-left becomes non-interactive, just shows CD·T pill + act */
+    .context-left {
+      flex: 1;
+      cursor: default;
+      gap: 0.4rem;
+      padding: 0;
+      margin: 0;
+      pointer-events: none;
+    }
+    .context-left:hover,
+    .context-left:active { background: none; }
+
+    /* Lang filter buttons — same style as the small bar pills */
+    .lang-filter-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: #8B6914;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 3px;
+      padding: 2px 6px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .lang-filter-btn.off {
+      background: none;
+      color: var(--text-dim);
+      border-color: var(--color-border-secondary);
+    }
+
+    /* Index button — same size as CD·T pill */
+    .mobile-index-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: none;
+      border: 1px solid var(--color-border-secondary);
+      border-radius: 3px;
+      padding: 2px 6px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .mobile-index-btn:hover { background: var(--bg2); }
+
+    /* Libretto body: single column, no left gutter */
+    .libretto-body {
+      grid-template-columns: 1fr;
+    }
+
+    /* Hide the desktop track-tag column entirely */
+    .track-col { display: none; }
+
+    /* Text column: full width */
+    .text-col { padding: 0 1rem; }
+
+    /* Act heading: single column */
+    .act-heading {
+      grid-template-columns: 1fr;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .act-heading span:last-child { display: none; }
+
+    /* Scene headings: Spanish only */
+    .scene-heading {
+      grid-template-columns: 1fr;
+    }
+    .scene-heading span:first-child { display: none; }
+
+    /* Stage directions: Spanish only, full width */
+    .stage-direction {
+      grid-template-columns: 1fr;
+      border-left: none;
+      border-top: 0.5px solid var(--color-border-secondary);
+      border-bottom: 0.5px solid var(--color-border-secondary);
+      padding: 0.3rem 0;
+    }
+    .stage-direction span:first-child { display: none; }
+
+    /* Character row: FR only, full width */
+    .character-row {
+      grid-template-columns: 1fr;
+      margin-top: 1rem;
+    }
+    .character-row span:last-child { display: none; }
+
+    /* Inline direction: Spanish only, full width */
+    .inline-direction {
+      grid-template-columns: 1fr;
+    }
+    .inline-direction span:first-child { display: none; }
+
+    /* Sung lines: FR flush left, ES flush right, interleaved */
+    .line-row {
+      display: block;
+    }
+    .line-row .fr {
+      display: block;
+      text-align: left;
+    }
+    .line-row .es {
+      display: block;
+      text-align: right;
+    }
+
+    /* Small inline track marker */
+    .mobile-track-marker {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gold-mid);
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin: 0.6rem 0 0.1rem;
+      display: block;
+    }
+
+    /* Hide lang elements when filtered */
+    .fr-hidden .fr { display: none; }
+    .es-hidden .es { display: none; }
+
+    /* Bottom sheet drawer */
+    .bottom-sheet-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 300;
+    }
+    .bottom-sheet-overlay.open { display: block; }
+
+    .bottom-sheet {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 75%;
+      background: var(--color-background-primary, #fdfaf6);
+      border-radius: 16px 16px 0 0;
+      border-top: 1px solid var(--color-border-primary);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .bottom-sheet-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--color-border-secondary);
+      border-radius: 2px;
+      margin: 10px auto 6px;
+      flex-shrink: 0;
+    }
+
+    /* Desktop drawer hidden on mobile */
+    .drawer-overlay { display: none !important; }
+    .cast-overlay { display: none !important; }
+  }
+
+  /* Hide mobile-only elements on desktop */
+  @media (min-width: 601px) {
+    .lang-filter-btn,
+    .mobile-index-btn,
+    .mobile-track-marker,
+    .bottom-sheet-overlay { display: none; }
+  }
+
+  .context-left {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--sans);
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 4px 6px;
+    margin: -4px -6px;
+    transition: background 0.15s;
+  }
+  .context-left:hover { background: var(--bg2); }
+  .context-left:active { background: var(--gold-light); }
+
+  .context-sep { opacity: 0.3; }
+  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
+
+  .context-track {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 3px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .context-track-title {
+    font-size: 11px;
+    color: var(--text-dim);
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--sans);
+  }
+
+  .context-right { display: flex; align-items: center; gap: 10px; }
+  .recording-switcher-wrap { position: relative; }
+
+  .recording-switcher {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 3px 8px;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .recording-switcher:hover { background: var(--bg2); }
+
+  .switcher-chevron { font-size: 8px; opacity: 0.5; }
+
+  .recording-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--color-background-primary, #fdfaf6);
+    border: 1px solid var(--color-border-primary);
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    min-width: 220px;
+    z-index: 300;
+  }
+  .recording-dropdown.open { display: block; }
+
+  .recording-option {
+    font-family: var(--sans);
+    font-size: 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+    color: var(--text-main);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .recording-option:last-child { border-bottom: none; }
+  .recording-option:hover { background: var(--bg2); }
+  .recording-option.active {
+    background: var(--gold-light);
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+
+  .libretto-body {
+    display: grid;
+    grid-template-columns: var(--col-left) 1fr;
+    padding-bottom: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .act-heading {
+    grid-column: 1 / -1;
+    font-family: var(--sans);
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
+    border-bottom: 1px solid var(--color-border-secondary);
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+  }
+
+  .track-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-top: 1.6rem;
+    padding-right: 0;
+    position: relative;
+  }
+
+  .track-tag {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--gold-light);
+    border: 1px solid var(--gold-border);
+    border-radius: 3px;
+    padding: 4px 6px;
+    gap: 1px;
+    cursor: default;
+    width: 40px;
+  }
+
+  .track-tag-cd {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold-mid);
+  }
+
+  .track-tag-num {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .text-col { 
+    padding: 0 1.25rem; 
+    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
+    max-width: var(--text-max-width);
+  }
+
+  .musical-number {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin: 1.25rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .musical-number::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-secondary);
+  }
+
+  .scene-heading {
+    font-family: var(--sans);
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: italic;
+    margin: 0.75rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+  }
+
+  .stage-direction {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    font-style: italic;
+    color: var(--text-dim);
+    margin: 0.6rem 0;
+    border-left: 2px solid var(--color-border-secondary);
+    line-height: 1.5;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+  }
+
+  .stage-direction .es { font-style: italic; }
+
+  .character-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+    margin: 0.9rem 0 0.15rem;
+  }
+
+  .character-name {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 550;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .line-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+    align-items: baseline;
+  }
+
+  /* Inline stage direction — sits between character name and first sung line */
+  .inline-direction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
+    margin: 0.2rem 0 0.25rem;
+  }
+
+  .inline-direction span {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .fr {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .es {
+    font-family: var(--serif);
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--text-main);
+  }
+
+  .spacer-row { grid-column: 1/-1; height: 2rem; }
+  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
+
+  .drawer-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 200;
+  }
+
+  .drawer-overlay.open { display: block; }
+
+  .drawer {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-right: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .drawer-header-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Shared close button (used in both drawers) ── */
+  .drawer-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--text-dim);
+    line-height: 1;
+    padding: 4px 6px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    transition: color 0.15s;
+  }
+  .drawer-close:hover { color: #c0392b; background: none; }
+
+  .drawer-body { overflow-y: auto; flex: 1; }
+
+  .drawer-cd-label {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 1.25rem 1.25rem 0.5rem;
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-tertiary);
+    border-top: 1px solid var(--color-border-tertiary);
+  }
+
+  .drawer-track {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 1.25rem;
+    cursor: pointer;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .drawer-track:hover { background: var(--bg2); }
+  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
+
+  .drawer-track-num {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-dim);
+    width: 20px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .drawer-track.active .drawer-track-num { color: var(--gold); }
+
+  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
+
+  .drawer-track-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+    line-height: 1.3;
+  }
+
+  .drawer-track.active .drawer-track-title { color: var(--gold); }
+
+  .drawer-track-act {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Cast button ── */
+  .cast-btn {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    color: var(--text-main);
+  }
+  .cast-btn:hover { background: var(--bg2); }
+
+  /* ── Cast drawer (mirrors index drawer) ── */
+  .cast-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 250;
+  }
+  .cast-overlay.open { display: block; }
+
+  .cast-drawer {
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 340px;
+    background: var(--color-background-primary, #fdfaf6);
+    border-left: 1.5px solid var(--color-border-primary);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .cast-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.25rem;
+    height: var(--bar-h);
+    border-bottom: 1.5px solid var(--color-border-primary);
+    flex-shrink: 0;
+    background: var(--color-background-secondary, #f5ede0);
+  }
+
+  .cast-drawer-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+  }
+
+  .cast-drawer-body { overflow-y: auto; flex: 1; }
+
+  .cast-table { width: 100%; border-collapse: collapse; }
+
+  .cast-table thead tr {
+    background: var(--color-background-secondary, #f5ede0);
+    border-bottom: 1px solid var(--color-border-secondary);
+  }
+
+  .cast-table th {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    padding: 8px 1.25rem;
+    text-align: left;
+  }
+
+  .cast-table td {
+    padding: 9px 1.25rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    vertical-align: middle;
+  }
+
+  .cast-table tr:last-child td { border-bottom: none; }
+
+  .cast-char-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--text-main);
+  }
+
+  .cast-voice {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    margin-top: 1px;
+  }
+
+  .cast-description {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-top: 1px;
+    letter-spacing: 0.02em;
+  }
+
+  .cast-singer {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--text-main);
+    font-style: italic;
+  }
+
+  .cast-singer.empty {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--text-dim);
+    font-style: normal;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
+  @media (hover: hover) {
+    .character-name[data-tooltip] {
+      position: relative;
+      cursor: default;
+    }
+    .character-name[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 6px);
+      left: 0;
+      background: var(--color-background-primary, #fdfaf6);
+      border: 1px solid var(--color-border-primary);
+      border-radius: 3px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      font-family: var(--sans);
+      font-size: 10.5px;
+      color: var(--text-main);
+      white-space: nowrap;
+      padding: 5px 9px;
+      pointer-events: none;
+      z-index: 150;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+  }
+</style>
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openDrawer()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 &middot; T2</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Sur la place</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Carmen &nbsp;&middot;&nbsp; Beecham / de los &Aacute;ngeles</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <!-- Mobile-only controls -->
+    <button class="lang-filter-btn" id="mobileBtnFR" onclick="toggleLang('fr')">FR</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-index-btn" onclick="openBottomSheet()">Index</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Acte Premier</span>
+      <span>Acto Primero</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="scene-heading">
+        <span>(Une place &agrave; S&eacute;ville. &Agrave; droite, la manufacture de tabac. &Agrave; gauche, le corps de garde.)</span>
+        <span>(Una plaza p&uacute;blica de Sevilla. A la derecha la F&aacute;brica de Tabaco. A la izquierda, el cuerpo de guardia.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="musical-number">1. Introduction</div>
+      <div class="stage-direction">
+        <span>(Au lever du rideau, une quinzaine de soldats sont group&eacute;s devant le corps de garde, les uns assis et fumant.)</span>
+        <span>(Al levantar el tel&oacute;n, unos soldados est&aacute;n frente al cuerpo de guardia, sentados y fumando.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Soldats</span>
+        <span class="character-name">Soldados</span>
+      </div>
+      <div class="line-row"><span class="fr">Sur la place chacun passe,</span><span class="es">En la plaza, gente pasa,</span></div>
+      <div class="line-row"><span class="fr">chacun vient, chacun va&nbsp;;</span><span class="es">unos vienen, otros van;</span></div>
+      <div class="line-row"><span class="fr">Dr&ocirc;les de gens que ces gens-l&agrave;&nbsp;!</span><span class="es">&iexcl;Qu&eacute; gente tan curiosa pasa por ac&aacute;!</span></div>
+      <div class="character-row">
+        <span class="character-name">Moral&egrave;s</span>
+        <span class="character-name">Morales</span>
+      </div>
+      <div class="line-row"><span class="fr">&Agrave; la porte du corps de garde,</span><span class="es">A la puerta del cuerpo de guardia,</span></div>
+      <div class="line-row"><span class="fr">pour tuer le temps, on fume, on jase,</span><span class="es">para matar el tiempo, fumamos, hablamos,</span></div>
+      <div class="line-row"><span class="fr">l&rsquo;on regarde passer les passants.</span><span class="es">y miramos la gente pasar.</span></div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="musical-number">2. Marche et Ch&oelig;ur des Gamins</div>
+      <div class="stage-direction">
+        <span>(Clairon au loin. La garde montante para&icirc;t&nbsp;: Don Jos&eacute; et Zuniga en t&ecirc;te.)</span>
+        <span>(Clar&iacute;n a lo lejos. La guardia entrante aparece: Don Jos&eacute; y Z&uacute;&ntilde;iga al frente.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Gamins</span>
+        <span class="character-name">Golfillos</span>
+      </div>
+      <div class="line-row"><span class="fr">Avec la garde montante</span><span class="es">Si la guardia llega,</span></div>
+      <div class="line-row"><span class="fr">nous arrivons, nous voil&agrave;&nbsp;!</span><span class="es">nosotros tambi&eacute;n: &iexcl;Aqu&iacute; estamos!</span></div>
+      <div class="line-row"><span class="fr">Sonne, trompette &eacute;clatante&nbsp;!</span><span class="es">&iexcl;Suena, trompeta estridente!</span></div>
+      <div class="line-row"><span class="fr">Ta ra ta ta, ta ra ta ta&hellip;</span><span class="es">Ta ra ta ta, ta ra ta ta&hellip;</span></div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="musical-number">3. Ch&oelig;ur et Sc&egrave;ne</div>
+      <div class="character-row">
+        <span class="character-name">Jeunes Gens</span>
+        <span class="character-name">Muchachos</span>
+      </div>
+      <div class="line-row"><span class="fr">La cloche a sonn&eacute;.</span><span class="es">La campana ha sonado.</span></div>
+      <div class="line-row"><span class="fr">Nous, des ouvri&egrave;res, nous venons ici</span><span class="es">Venimos a esperar la salida</span></div>
+      <div class="line-row"><span class="fr">guetter le retour&nbsp;;</span><span class="es">de las mujeres de la f&aacute;brica.</span></div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="musical-number">4. Havanaise</div>
+      <div class="stage-direction">
+        <span>(Carmen a un bouquet de cassie &agrave; son corsage. Elle regarde Don Jos&eacute; qui reste indiff&eacute;rent.)</span>
+        <span>(Carmen lleva un ramo de flores en su blusa. Mira a Don Jos&eacute;, quien permanece indiferente.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="carmen">Carmen</span>
+        <span class="character-name">Carmen</span>
+      </div>
+      <div class="inline-direction">
+        <span>(avec intention en regardant souvent don Jos&eacute; qui se rapproche peu &agrave; peu)</span>
+        <span>(descaradamente mira a don Jos&eacute;, que gradualmente se aproxima a ella)</span>
+      </div>
+      <div class="line-row"><span class="fr">L&rsquo;amour est un oiseau rebelle</span><span class="es">El amor es un p&aacute;jaro rebelde,</span></div>
+      <div class="line-row"><span class="fr">que nul ne peut apprivoiser,</span><span class="es">que nadie puede enjaular,</span></div>
+      <div class="line-row"><span class="fr">et c&rsquo;est bien en vain qu&rsquo;on l&rsquo;appelle,</span><span class="es">y es in&uacute;til llamarlo</span></div>
+      <div class="line-row"><span class="fr">s&rsquo;il lui convient de refuser&nbsp;!</span><span class="es">si &eacute;l no quiere contestar.</span></div>
+      <div class="line-row"><span class="fr">Rien n&rsquo;y fait, menace ou pri&egrave;re,</span><span class="es">De nada sirven amenazas o rezos,</span></div>
+      <div class="line-row"><span class="fr">l&rsquo;un parle bien, l&rsquo;autre se tait&nbsp;;</span><span class="es">uno dice cosas bonitas, el otro se calla;</span></div>
+      <div class="line-row"><span class="fr">et c&rsquo;est l&rsquo;autre que je pr&eacute;f&egrave;re,</span><span class="es">y es al otro a quien yo prefiero,</span></div>
+      <div class="line-row"><span class="fr">il n&rsquo;a rien dit, mais il me pla&icirc;t.</span><span class="es">&eacute;l no dice nada, pero me gusta igual.</span></div>
+      <div class="character-row">
+        <span class="character-name">Carmen, Ch&oelig;ur</span>
+        <span class="character-name">Carmen, Coro</span>
+      </div>
+      <div class="line-row"><span class="fr">L&rsquo;amour&nbsp;! l&rsquo;amour&nbsp;!</span><span class="es">&iexcl;El amor! &iexcl;El amor!</span></div>
+      <div class="line-row"><span class="fr">L&rsquo;amour est enfant de Boh&ecirc;me,</span><span class="es">El amor es un gitanillo,</span></div>
+      <div class="line-row"><span class="fr">il n&rsquo;a jamais, jamais connu de loi,</span><span class="es">que nunca conoci&oacute; ley alguna,</span></div>
+      <div class="line-row"><span class="fr">si tu ne m&rsquo;aimes pas, je t&rsquo;aime,</span><span class="es">si t&uacute; no me amas, yo te amo,</span></div>
+      <div class="line-row"><span class="fr">si je t&rsquo;aime, prends garde &agrave; toi&nbsp;!</span><span class="es">y si yo te amo, &iexcl;ten cuidado!</span></div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="musical-number">6. Duo</div>
+      <div class="character-row">
+        <span class="character-name">Mica&euml;la</span>
+        <span class="character-name">Micaela</span>
+      </div>
+      <div class="line-row"><span class="fr">J&rsquo;apporte de sa part, fid&egrave;le messagère,</span><span class="es">Te traigo de su parte, como fiel mensajera,</span></div>
+      <div class="line-row"><span class="fr">cette lettre&hellip;</span><span class="es">esta carta&hellip;</span></div>
+      <div class="character-row">
+        <span class="character-name">Don Jos&eacute;</span>
+        <span class="character-name">Don Jos&eacute;</span>
+      </div>
+      <div class="line-row"><span class="fr">Une lettre&nbsp;!</span><span class="es">&iexcl;Una carta!</span></div>
+      <div class="character-row">
+        <span class="character-name">Mica&euml;la</span>
+        <span class="character-name">Micaela</span>
+      </div>
+      <div class="line-row"><span class="fr">Et puis un peu d&rsquo;argent</span><span class="es">Y adem&aacute;s, algo de dinero</span></div>
+      <div class="line-row"><span class="fr">pour ajouter &agrave; votre traitement.</span><span class="es">para ayudar a tu sueldo.</span></div>
+      <div class="character-row">
+        <span class="character-name">Don Jos&eacute;</span>
+        <span class="character-name">Don Jos&eacute;</span>
+      </div>
+      <div class="line-row"><span class="fr">Ma m&egrave;re, je la vois&nbsp;!</span><span class="es">&iexcl;Puedo ver a mi madre!</span></div>
+      <div class="line-row"><span class="fr">Oui, je revois mon village&nbsp;!</span><span class="es">&iexcl;S&iacute;, veo mi aldea natal!</span></div>
+      <div class="line-row"><span class="fr">O souvenirs d&rsquo;autrefois&nbsp;!</span><span class="es">&iexcl;Oh, recuerdos del pasado!</span></div>
+      <div class="line-row"><span class="fr">Doux souvenirs du pays&nbsp;!</span><span class="es">&iexcl;Dulces recuerdos del hogar!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Acte Deuxi&egrave;me</span>
+      <span>Acto Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">1</span></div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="scene-heading">
+        <span>(Une taverne. Des boh&eacute;miennes dansent. Carmen, Frasquita et Merc&eacute;d&egrave;s sont assises.)</span>
+        <span>(Una taberna. Gitanas bailando. Carmen, Frasquita y Merc&eacute;d&egrave;s est&aacute;n sentadas.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">2</span></div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="musical-number">11. Chanson boh&egrave;me</div>
+      <div class="character-row"><span class="character-name">Carmen</span><span class="character-name">Carmen</span></div>
+      <div class="line-row"><span class="fr">Les tringles des sistres tintaient</span><span class="es">Los aros de los sistros tintineaban</span></div>
+      <div class="line-row"><span class="fr">avec un &eacute;clat m&eacute;tallique,</span><span class="es">con un brillo met&aacute;lico,</span></div>
+      <div class="line-row"><span class="fr">et sur cette &eacute;trange musique</span><span class="es">y sobre esa extra&ntilde;a m&uacute;sica</span></div>
+      <div class="line-row"><span class="fr">les Zingari, les Zingari commen&ccedil;aient &agrave; danser.</span><span class="es">los z&iacute;ngaros empezaban a bailar.</span></div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">3</span></div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="musical-number">12. Ch&oelig;ur et sc&egrave;ne</div>
+      <div class="character-row"><span class="character-name">Carmen</span><span class="character-name">Carmen</span></div>
+      <div class="line-row"><span class="fr">Messieurs, Pastia me dit</span><span class="es">Se&ntilde;ores, Pastia me dice</span></div>
+      <div class="line-row"><span class="fr">que la cloche a sonn&eacute;,</span><span class="es">que la campana ya son&oacute;,</span></div>
+      <div class="line-row"><span class="fr">que le temps est venu</span><span class="es">que el momento ha llegado</span></div>
+      <div class="line-row"><span class="fr">de fermer sa maison.</span><span class="es">de cerrar su posada.</span></div>
+      <div class="character-row">
+        <span class="character-name">Remendado, Danca&iuml;re</span>
+        <span class="character-name">Remendado, Danca&iuml;re</span>
+      </div>
+      <div class="inline-direction">
+        <span>(&agrave; Zuniga, le pistolet &agrave; la main, gracieusement)</span>
+        <span>(a Z&uacute;&ntilde;iga, pistola en mano, graciosamente)</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon cher monsieur&nbsp;!</span><span class="es">&iexcl;Mi querido se&ntilde;or!</span></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">4</span></div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="musical-number">13. Couplets du Tor&eacute;ador</div>
+      <div class="character-row"><span class="character-name has-tooltip" data-character-id="escamillo">Escamillo</span><span class="character-name">Escamillo</span></div>
+      <div class="line-row"><span class="fr">Votre toast, je peux vous le rendre,</span><span class="es">Vuestro brindis puedo corresponder,</span></div>
+      <div class="line-row"><span class="fr">Se&ntilde;ors, se&ntilde;ors, car avec les soldats</span><span class="es">Se&ntilde;ores, se&ntilde;ores, pues con los soldados</span></div>
+      <div class="line-row"><span class="fr">oui, les Tor&eacute;ros peuvent s&rsquo;entendre&nbsp;;</span><span class="es">s&iacute;, los toreros se pueden entender;</span></div>
+      <div class="line-row"><span class="fr">pour plaisirs, pour plaisirs ils ont les combats&nbsp;!</span><span class="es">pues por placer, por placer tienen los combates.</span></div>
+      <div class="character-row"><span class="character-name">Escamillo, Ch&oelig;ur</span><span class="character-name">Escamillo, Coro</span></div>
+      <div class="line-row"><span class="fr">Tor&eacute;ador, en garde&nbsp;!</span><span class="es">&iexcl;Torero, en guardia!</span></div>
+      <div class="line-row"><span class="fr">Tor&eacute;ador&nbsp;! Tor&eacute;ador&nbsp;!</span><span class="es">&iexcl;Torero! &iexcl;Torero!</span></div>
+      <div class="line-row"><span class="fr">Et songe bien, oui, songe en combattant,</span><span class="es">Y piensa bien, s&iacute;, piensa al combatir,</span></div>
+      <div class="line-row"><span class="fr">qu&rsquo;un &oelig;il noir te regarde</span><span class="es">que un ojo oscuro te observa</span></div>
+      <div class="line-row"><span class="fr">et que l&rsquo;amour t&rsquo;attend.</span><span class="es">y que el amor te espera.</span></div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">5</span></div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="musical-number">14. Duo et final</div>
+      <div class="stage-direction">
+        <span>(Carmen commence &agrave; danser. On entend au loin une sonnerie de trompette.)</span>
+        <span>(Carmen empieza a bailar. Se escucha a lo lejos un toque de trompeta.)</span>
+      </div>
+      <div class="character-row"><span class="character-name">Carmen</span><span class="character-name">Carmen</span></div>
+      <div class="line-row"><span class="fr">Je vais danser en votre honneur.</span><span class="es">Bailar&eacute; en vuestro honor.</span></div>
+      <div class="line-row"><span class="fr">Attendez un peu, se&ntilde;or&hellip;</span><span class="es">Esperad un poco, se&ntilde;or&hellip;</span></div>
+      <div class="character-row"><span class="character-name">Don Jos&eacute;</span><span class="character-name">Don Jos&eacute;</span></div>
+      <div class="line-row"><span class="fr">Carmen, il faut que je parte&nbsp;!</span><span class="es">&iexcl;Carmen, tengo que marcharme!</span></div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">6</span></div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="musical-number">15. Air de la fleur</div>
+      <div class="character-row"><span class="character-name">Don Jos&eacute;</span><span class="character-name">Don Jos&eacute;</span></div>
+      <div class="line-row"><span class="fr">La fl&ecirc;ur que tu m&rsquo;avais jet&eacute;e,</span><span class="es">La flor que t&uacute; me arrojaste,</span></div>
+      <div class="line-row"><span class="fr">dans ma prison m&rsquo;&eacute;tait rest&eacute;e.</span><span class="es">en mi pris&oacute;n se qued&oacute;.</span></div>
+      <div class="line-row"><span class="fr">Fl&eacute;trie et s&egrave;che, cette fleur</span><span class="es">Marchita y seca, esa flor</span></div>
+      <div class="line-row"><span class="fr">gardait toujours sa douce odeur&nbsp;;</span><span class="es">guardaba siempre su dulce aroma;</span></div>
+      <div class="line-row"><span class="fr">et pendant des heures enti&egrave;res,</span><span class="es">y durante horas enteras,</span></div>
+      <div class="line-row"><span class="fr">sur mes yeux, fermant mes paupi&egrave;res,</span><span class="es">sobre mis ojos, cerrando los p&aacute;rpados,</span></div>
+      <div class="line-row"><span class="fr">de cette odeur je m&rsquo;enivrais</span><span class="es">de ese aroma me embriagaba</span></div>
+      <div class="line-row"><span class="fr">et dans la nuit je te voyais&nbsp;!</span><span class="es">y en la noche te ve&iacute;a.</span></div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Acte Troisi&egrave;me</span>
+      <span>Acto Tercero</span>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">9</span></div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="scene-heading">
+        <span>(Un site sauvage et montagneux. Carmen et ses compagnons contrebandiers.)</span>
+        <span>(Un paraje salvaje y monta&ntilde;oso. Carmen y sus compa&ntilde;eros contrabandistas.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">10</span></div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="musical-number">20. Ch&oelig;ur de contrebandiers</div>
+      <div class="character-row"><span class="character-name">Le Dancaire, Le Remendado</span><span class="character-name">El Dancairo, El Remendado</span></div>
+      <div class="line-row"><span class="fr">Ecoute, &eacute;coute, compagnons,</span><span class="es">Escucha, escucha, compa&ntilde;eros,</span></div>
+      <div class="line-row"><span class="fr">&eacute;coute&nbsp;! &eacute;coute&nbsp;!</span><span class="es">&iexcl;escucha! &iexcl;escucha!</span></div>
+      <div class="line-row"><span class="fr">Notre affaire est bonne, la voil&agrave;.</span><span class="es">Nuestro negocio est&aacute; bien, as&iacute; es.</span></div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag"><span class="track-tag-cd">CD2</span><span class="track-tag-num">11</span></div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="musical-number">22. Trio des cartes</div>
+      <div class="stage-direction">
+        <span>(Frasquita, Merc&eacute;d&egrave;s et Carmen tirent les cartes.)</span>
+        <span>(Frasquita, Merc&eacute;des y Carmen leen las cartas.)</span>
+      </div>
+      <div class="character-row"><span class="character-name">Frasquita, Merc&eacute;d&egrave;s</span><span class="character-name">Frasquita, Merc&eacute;des</span></div>
+      <div class="line-row"><span class="fr">M&ecirc;lons&nbsp;! Coupons&nbsp;!</span><span class="es">&iexcl;Mezcla! &iexcl;Corta!</span></div>
+      <div class="line-row"><span class="fr">Bien&nbsp;! C&rsquo;est cela&nbsp;! Trois cartes ici&hellip;</span><span class="es">&iexcl;Bien! &iexcl;As&iacute; es! Tres cartas aqu&iacute;&hellip;</span></div>
+      <div class="character-row"><span class="character-name">Carmen</span><span class="character-name">Carmen</span></div>
+      <div class="line-row"><span class="fr">En vain pour &eacute;viter les r&eacute;ponses am&egrave;res,</span><span class="es">En vano para evitar las respuestas amargas,</span></div>
+      <div class="line-row"><span class="fr">en vain tu m&eacute;leras&nbsp;!</span><span class="es">&iexcl;en vano mezclar&aacute;s!</span></div>
+      <div class="line-row"><span class="fr">Cela ne sert &agrave; rien, les cartes sont sinc&egrave;res</span><span class="es">No sirve de nada, las cartas son sinceras</span></div>
+      <div class="line-row"><span class="fr">et ne mentiront pas&nbsp;!</span><span class="es">&iexcl;y no mentir&aacute;n!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="IV">
+      <span>Acte Quatri&egrave;me</span>
+      <span>Acto Cuarto</span>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag"><span class="track-tag-cd">CD3</span><span class="track-tag-num">1</span></div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="scene-heading">
+        <span>(Une place &agrave; S&eacute;ville. Au fond, l&rsquo;ar&egrave;ne. La foule se presse.)</span>
+        <span>(Una plaza de Sevilla. Al fondo, la plaza de toros. La multitud se apretuja.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag"><span class="track-tag-cd">CD3</span><span class="track-tag-num">2</span></div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="musical-number">26. D&eacute;fil&eacute;</div>
+      <div class="character-row"><span class="character-name">Ch&oelig;ur</span><span class="character-name">Coro</span></div>
+      <div class="line-row"><span class="fr">Les voici&nbsp;! Voici la quadrille&nbsp;!</span><span class="es">&iexcl;Ah&iacute; vienen! &iexcl;Ah&iacute; est&aacute; la cuadrilla!</span></div>
+      <div class="line-row"><span class="fr">La quadrille des Tor&eacute;ros&nbsp;!</span><span class="es">&iexcl;La cuadrilla de los toreros!</span></div>
+      <div class="line-row"><span class="fr">Sur les lances le soleil brille&nbsp;!</span><span class="es">&iexcl;El sol brilla en las lanzas!</span></div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag"><span class="track-tag-cd">CD3</span><span class="track-tag-num">3</span></div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="musical-number">27. Duo final</div>
+      <div class="character-row"><span class="character-name has-tooltip" data-character-id="don_jose">Don Jos&eacute;</span><span class="character-name">Don Jos&eacute;</span></div>
+      <div class="line-row"><span class="fr">C&rsquo;est toi&nbsp;! C&rsquo;est moi&nbsp;!</span><span class="es">&iexcl;Eres t&uacute;! &iexcl;Soy yo!</span></div>
+      <div class="line-row"><span class="fr">Carmen, il est temps encore,</span><span class="es">Carmen, a&uacute;n hay tiempo,</span></div>
+      <div class="line-row"><span class="fr">o ma Carmen, laisse-moi</span><span class="es">oh mi Carmen, d&eacute;jame</span></div>
+      <div class="line-row"><span class="fr">te sauver, toi que j&rsquo;adore&nbsp;!</span><span class="es">salvarte, a ti que adoro.</span></div>
+      <div class="character-row"><span class="character-name has-tooltip" data-character-id="carmen">Carmen</span><span class="character-name">Carmen</span></div>
+      <div class="line-row"><span class="fr">Non&nbsp;! Non&nbsp;! Jamais&nbsp;!</span><span class="es">&iexcl;No! &iexcl;No! &iexcl;Nunca!</span></div>
+      <div class="line-row"><span class="fr">Entre nous, c&rsquo;est fini&nbsp;!</span><span class="es">&iexcl;Entre nosotros, todo termin&oacute;!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Mobile bottom sheet index -->
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title" id="bottomSheetTitle">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Block 6: Characters ───────────────────────────────────────────────────
+  const CHARACTERS = [
+    { id: 'carmen',    name: 'Carmen',    voice: 'Mezzo-soprano', description: 'A gypsy factory girl' },
+    { id: 'don_jose',  name: 'Don José',  voice: 'Tenor',         description: 'A corporal of dragoons' },
+    { id: 'escamillo', name: 'Escamillo', voice: 'Baritone',      description: 'A bullfighter from Granada' },
+    { id: 'micaela',   name: 'Micaëla',  voice: 'Soprano',       description: 'Childhood friend of Don José' },
+    { id: 'zuniga',    name: 'Zuniga',    voice: 'Bass',          description: 'A lieutenant of dragoons' },
+    { id: 'morales',   name: 'Moralès',  voice: 'Baritone',      description: 'A corporal of dragoons' },
+    { id: 'frasquita', name: 'Frasquita', voice: 'Soprano',       description: 'Gypsy companion of Carmen' },
+    { id: 'mercedes',  name: 'Mercédès', voice: 'Mezzo-soprano', description: 'Gypsy companion of Carmen' },
+    { id: 'dancaire',  name: 'Dancaïre', voice: 'Baritone',      description: 'A smuggler' },
+    { id: 'remendado', name: 'Remendado', voice: 'Tenor',         description: 'A smuggler' },
+  ];
+
+  // ── Block 7: Cast per recording ───────────────────────────────────────────
+  // Beecham: fully cast; Karajan: intentionally blank to show graceful degradation
+  const CAST = {
+    beecham: {
+      carmen:    'Victoria de los Ángeles',
+      don_jose:  'Nicolai Gedda',
+      escamillo: 'Ernest Blanc',
+      micaela:   'Janine Micheau',
+      zuniga:    'René Bianco',
+      morales:   'Michel Roux',
+      frasquita: 'Hazel Vivienne',
+      mercedes:  'Marthe Journet',
+      dancaire:  'Jean-Christophe Benoit',
+      remendado: 'Georges Fouré',
+    },
+    karajan: {
+      // Cast entries intentionally absent — demonstrates graceful degradation
+    },
+  };
+
+  // ── Cast panel ─────────────────────────────────────────────────────────────
+
+  function buildCast() {
+    const cast = CAST[activeRecording];
+    const tbody = document.getElementById('castTableBody');
+    tbody.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      return `<tr>
+        <td>
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+          <div class="cast-description">${ch.description}</div>
+        </td>
+        <td>
+          ${singer
+            ? `<div class="cast-singer">${singer}</div>`
+            : `<div class="cast-singer empty">—</div>`}
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  // ── Character name tooltips (progressive enhancement) ────────────────────
+  // Applied only to .has-tooltip spans; updated on recording switch.
+  function applyTooltips() {
+    const cast = CAST[activeRecording];
+    document.querySelectorAll('.character-name.has-tooltip').forEach(el => {
+      const id = el.dataset.characterId;
+      const ch = CHARACTERS.find(c => c.id === id);
+      if (!ch) return;
+      const singer = cast[id];
+      el.setAttribute('data-tooltip',
+        singer ? `${ch.voice}\u2002·\u2002${singer}` : ch.voice
+      );
+    });
+  }
+
+  const RECORDINGS = {
+    beecham: {
+      label: 'Carmen · Beecham / de los Ángeles',
+      short: 'Beecham / de los Ángeles',
+      tracks: [
+        { id: 't1',  cd: 1, track: 1,  title: 'Ouverture',                              act: 'Act I'   },
+        { id: 't2',  cd: 1, track: 2,  title: 'Sur la place',                            act: 'Act I'   },
+        { id: 't3',  cd: 1, track: 3,  title: 'Avec la garde montante',                  act: 'Act I'   },
+        { id: 't4',  cd: 1, track: 4,  title: 'La cloche a sonné',                  act: 'Act I'   },
+        { id: 't5',  cd: 1, track: 5,  title: 'L’amour est un oiseau rebelle',      act: 'Act I'   },
+        { id: 't6',  cd: 1, track: 6,  title: 'Parle-moi de ma mère !',        act: 'Act I'   },
+        { id: 't12', cd: 2, track: 1,  title: 'Entr’Acte',                          act: 'Act II'  },
+        { id: 't13', cd: 2, track: 2,  title: 'Les tringles des sistres tintaient',      act: 'Act II'  },
+        { id: 't14', cd: 2, track: 3,  title: 'Messieurs, Pastia me dit',                act: 'Act II'  },
+        { id: 't15', cd: 2, track: 4,  title: 'Votre toast, je peux vous le rendre',     act: 'Act II'  },
+        { id: 't16', cd: 2, track: 5,  title: 'Je vais danser en votre honneur',         act: 'Act II'  },
+        { id: 't17', cd: 2, track: 6,  title: 'La flêur que tu m’avais jetée', act: 'Act II' },
+        { id: 't20', cd: 2, track: 9,  title: 'Entr’Acte',                          act: 'Act III' },
+        { id: 't21', cd: 2, track: 10, title: 'Ecoute, écoute, compagnons',          act: 'Act III' },
+        { id: 't22', cd: 2, track: 11, title: 'Mêlons ! Coupons !',        act: 'Act III' },
+        { id: 't23', cd: 3, track: 1,  title: 'Entr’Acte',                          act: 'Act IV'  },
+        { id: 't24', cd: 3, track: 2,  title: 'Les voici ! Voici la quadrille !', act: 'Act IV' },
+        { id: 't25', cd: 3, track: 3,  title: 'Si tu m’aimes, Carmen',               act: 'Act IV'  },
+      ]
+    },
+    karajan: {
+      label: 'Carmen · Karajan / Price',
+      short: 'Karajan / Price',
+      tracks: [
+        { id: 't1',  cd: 1, track: 1,  title: 'Prélude',                             act: 'Act I'   },
+        { id: 't2',  cd: 1, track: 2,  title: 'Sur la place',                             act: 'Act I'   },
+        { id: 't3',  cd: 1, track: 3,  title: 'Avec la garde montante',                   act: 'Act I'   },
+        { id: 't4',  cd: 1, track: 4,  title: 'La cloche a sonné',                   act: 'Act I'   },
+        { id: 't5',  cd: 1, track: 5,  title: 'L’amour est un oiseau rebelle',       act: 'Act I'   },
+        { id: 't6',  cd: 1, track: 7,  title: 'Parle-moi de ma mère !',         act: 'Act I'   },
+        { id: 't12', cd: 1, track: 13, title: 'Entr’Acte',                           act: 'Act II'  },
+        { id: 't13', cd: 1, track: 14, title: 'Les tringles des sistres tintaient',       act: 'Act II'  },
+        { id: 't14', cd: 2, track: 1,  title: 'Messieurs, Pastia me dit',                 act: 'Act II'  },
+        { id: 't15', cd: 2, track: 2,  title: 'Votre toast, je peux vous le rendre',      act: 'Act II'  },
+        { id: 't16', cd: 2, track: 4,  title: 'Je vais danser en votre honneur',          act: 'Act II'  },
+        { id: 't17', cd: 2, track: 5,  title: 'La fleur que tu m’avais jetée',  act: 'Act II'  },
+        { id: 't20', cd: 2, track: 9,  title: 'Entr’Acte',                           act: 'Act III' },
+        { id: 't21', cd: 2, track: 10, title: 'Écoute, écoute, compagnons',      act: 'Act III' },
+        { id: 't22', cd: 2, track: 12, title: 'Mêlons ! Coupons !',         act: 'Act III' },
+        { id: 't23', cd: 2, track: 16, title: 'Entr’Acte',                           act: 'Act IV'  },
+        { id: 't24', cd: 2, track: 17, title: 'Les voici ! Voici la quadrille !', act: 'Act IV' },
+        { id: 't25', cd: 2, track: 18, title: 'C’est toi ! C’est moi !', act: 'Act IV' },
+      ]
+    }
+  };
+
+  const ACT_DISPLAY = {
+    'Act I':   'Acte I',
+    'Act II':  'Acte II',
+    'Act III': 'Acte III',
+    'Act IV':  'Acte IV',
+  };
+
+  const ACT_STARTS = {
+    'Act I':   't1',
+    'Act II':  't12',
+    'Act III': 't20',
+    'Act IV':  't23',
+  };
+
+  let activeRecording = 'beecham';
+  let currentActiveId = 't2';
+  let observer = null;
+
+  function openDrawer() {
+    closeCast();
+    buildDrawer();
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function jumpTo(id) {
+    closeDrawer();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  function openCast() {
+    closeDrawer();
+    buildCast();
+    document.getElementById('castOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCast() {
+    document.getElementById('castOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeDrawer();
+    closeCast();
+  });
+
+  function toggleSwitcher(event) {
+    event.stopPropagation();
+    const dd = document.getElementById('recDropdown');
+    if (dd.classList.contains('open')) {
+      dd.classList.remove('open');
+    } else {
+      dd.classList.add('open');
+      setTimeout(() => document.addEventListener('click', closeSwitcherOnOutside, { once: true }), 0);
+    }
+  }
+  function closeSwitcherOnOutside() {
+    document.getElementById('recDropdown').classList.remove('open');
+  }
+
+  function buildSwitcherDropdown() {
+    const dd = document.getElementById('recDropdown');
+    dd.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<div class="recording-option${key === activeRecording ? ' active' : ''}" onclick="switchRecording('${key}')">${rec.label}</div>`
+    ).join('');
+  }
+
+  function buildDrawer() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('drawerBody');
+    let html = '';
+    let lastGroup = null;
+
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} &mdash; ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+
+    body.innerHTML = html;
+  }
+
+  function updateTrackTags() {
+    const rec = RECORDINGS[activeRecording];
+    for (const t of rec.tracks) {
+      const suffix = t.id.slice(1);
+      const tc = document.getElementById('tc' + suffix);
+      if (!tc) continue;
+      const tag = tc.querySelector('.track-tag');
+      if (!tag) continue;
+      tag.innerHTML = `<span class="track-tag-cd">CD${t.cd}</span><span class="track-tag-num">${t.track}</span>`;
+    }
+  }
+
+  function scrollToCurrentAct() {
+    const rec = RECORDINGS[activeRecording];
+    const track = rec.tracks.find(t => t.id === currentActiveId);
+    if (!track) return;
+    const startId = ACT_STARTS[track.act];
+    if (!startId) return;
+    const el = document.getElementById(startId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function switchRecording(key) {
+    activeRecording = key;
+    document.getElementById('recordingLabel').textContent = RECORDINGS[key].label;
+    updateTrackTags();
+    buildDrawer();
+    buildSwitcherDropdown();
+    scrollToCurrentAct();
+    updateActive(currentActiveId);
+    applyTooltips();
+    if (document.getElementById('castOverlay').classList.contains('open')) {
+      buildCast();
+    }
+  }
+
+  function updateActive(activeId) {
+    currentActiveId = activeId;
+    const rec = RECORDINGS[activeRecording];
+    const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[1];
+    document.getElementById('trackLabel').textContent = 'CD ' + t.cd + ' · T' + t.track;
+    document.getElementById('trackTitle').textContent = t.title;
+    document.getElementById('actLabel').textContent = ACT_DISPLAY[t.act] || t.act;
+    document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
+    const idx = document.getElementById('idx-' + activeId);
+    if (idx) idx.classList.add('active');
+  }
+
+  function rewireObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+    }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+
+    const rec = RECORDINGS[activeRecording];
+    rec.tracks.forEach(t => {
+      const el = document.getElementById(t.id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  buildSwitcherDropdown();
+  buildDrawer();
+  rewireObserver();
+  applyTooltips();
+
+  // ── Mobile: language filter ───────────────────────────────────────────────
+  const mobileLangState = { fr: true, es: true };
+
+  function toggleLang(lang) {
+    const other = lang === 'fr' ? 'es' : 'fr';
+    if (mobileLangState[lang] && !mobileLangState[other]) return; // keep one on
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('fr-hidden', !mobileLangState.fr);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnFR').classList.toggle('off', !mobileLangState.fr);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  // ── Mobile: track markers ─────────────────────────────────────────────────
+  function buildMobileTrackMarkers() {
+    // Remove any existing markers
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of rec.tracks) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  // ── Mobile: bottom sheet ──────────────────────────────────────────────────
+  function buildBottomSheet() {
+    const rec = RECORDINGS[activeRecording];
+    document.getElementById('bottomSheetTitle').textContent = rec.short || rec.label;
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} &mdash; ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  // Patch switchRecording to also rebuild mobile markers
+  const _origSwitchRecording = switchRecording;
+  switchRecording = function(key) {
+    _origSwitchRecording(key);
+    buildMobileTrackMarkers();
+  };
+
+  buildMobileTrackMarkers();
+</script>
