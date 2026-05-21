@@ -42,204 +42,6 @@
     width: 100%;
   }
 
-  /* ── Mobile layout (≤ 600px) ─────────────────────────────────────────────── */
-  @media (max-width: 600px) {
-
-    /* Context bar: single row, all items same small size */
-    .context-bar {
-      padding: 0 0.75rem;
-      gap: 0.35rem;
-      justify-content: flex-start;
-    }
-
-    /* Hide desktop-only context bar elements */
-    .context-sep,
-    .context-chevron,
-    .context-track-title,
-    .recording-switcher-wrap,
-    .cast-btn { display: none; }
-
-    /* context-left becomes non-interactive, just shows CD·T pill + act */
-    .context-left {
-      flex: 1;
-      min-width: 0;
-      cursor: default;
-      gap: 0.4rem;
-      padding: 0;
-      margin: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .context-left:hover,
-    .context-left:active { background: none; }
-
-    /* Act label truncates with ellipsis if too long */
-    #actLabel {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      min-width: 0;
-    }
-
-    /* Lang filter buttons — same style as the small bar pills */
-    .lang-filter-btn {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 600;
-      color: #8B6914;
-      background: var(--gold-light);
-      border: 1px solid var(--gold-border);
-      border-radius: 3px;
-      padding: 2px 6px;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-    .lang-filter-btn.off {
-      background: none;
-      color: var(--text-dim);
-      border-color: var(--color-border-secondary);
-    }
-
-    /* Index button — same size as CD·T pill */
-    .mobile-index-btn {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-dim);
-      background: none;
-      border: 1px solid var(--color-border-secondary);
-      border-radius: 3px;
-      padding: 2px 6px;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .mobile-index-btn:hover { background: var(--bg2); }
-
-    /* Libretto body: single column, no left gutter */
-    .libretto-body {
-      grid-template-columns: 1fr;
-    }
-
-    /* Hide the desktop track-tag column entirely */
-    .track-col { display: none; }
-
-    /* Text column: full width */
-    .text-col { padding: 0 1rem; }
-
-    /* Act heading: single column */
-    .act-heading {
-      grid-template-columns: 1fr;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    .act-heading span:last-child { display: none; }
-
-    /* Scene headings: Spanish only */
-    .scene-heading {
-      grid-template-columns: 1fr;
-    }
-    .scene-heading span:first-child { display: none; }
-
-    /* Stage directions: Spanish only, full width */
-    .stage-direction {
-      grid-template-columns: 1fr;
-      border-left: none;
-      border-top: 0.5px solid var(--color-border-secondary);
-      border-bottom: 0.5px solid var(--color-border-secondary);
-      padding: 0.3rem 0;
-    }
-    .stage-direction span:first-child { display: none; }
-
-    /* Character row: FR only, full width */
-    .character-row {
-      grid-template-columns: 1fr;
-      margin-top: 1rem;
-    }
-    .character-row span:last-child { display: none; }
-
-    /* Inline direction: Spanish only, full width */
-    .inline-direction {
-      grid-template-columns: 1fr;
-    }
-    .inline-direction span:first-child { display: none; }
-
-    /* Sung lines: FR flush left, ES flush right, interleaved */
-    .line-row {
-      display: block;
-    }
-    .line-row .fr {
-      display: block;
-      text-align: left;
-    }
-    .line-row .es {
-      display: block;
-      text-align: right;
-    }
-
-    /* Small inline track marker */
-    .mobile-track-marker {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 600;
-      color: var(--gold-mid);
-      letter-spacing: 0.08em;
-      opacity: 0.7;
-      margin: 0.6rem 0 0.1rem;
-      display: block;
-    }
-
-    /* Language filter: only affects sung lines inside .line-row.
-       Character names, directions, scene headings remain visible regardless. */
-    .fr-hidden .line-row .fr { display: none; }
-    .es-hidden .line-row .es { display: none; }
-
-    /* Bottom sheet drawer */
-    .bottom-sheet-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 300;
-    }
-    .bottom-sheet-overlay.open { display: block; }
-
-    .bottom-sheet {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 75%;
-      background: var(--color-background-primary, #fdfaf6);
-      border-radius: 16px 16px 0 0;
-      border-top: 1px solid var(--color-border-primary);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .bottom-sheet-handle {
-      width: 36px;
-      height: 4px;
-      background: var(--color-border-secondary);
-      border-radius: 2px;
-      margin: 10px auto 6px;
-      flex-shrink: 0;
-    }
-
-    /* Desktop drawer hidden on mobile */
-    .drawer-overlay { display: none !important; }
-    .cast-overlay { display: none !important; }
-  }
-
-  /* Hide mobile-only elements on desktop */
-  @media (min-width: 601px) {
-    .lang-filter-btn,
-    .mobile-index-btn,
-    .mobile-track-marker,
-    .bottom-sheet-overlay { display: none; }
-  }
-
   .context-left {
     display: flex;
     align-items: center;
@@ -767,6 +569,207 @@
       letter-spacing: 0.02em;
       line-height: 1.5;
     }
+  }
+
+  /* ── Hide mobile-only elements on desktop ───────────────────────────────── */
+  @media (min-width: 601px) {
+    .lang-filter-btn,
+    .mobile-index-btn,
+    .mobile-track-marker,
+    .bottom-sheet-overlay { display: none; }
+  }
+
+  /* ── Mobile layout (≤ 600px) ─────────────────────────────────────────────── */
+  /* Placed last so these rules always win over desktop declarations above.     */
+  @media (max-width: 600px) {
+
+    /* Context bar: single compact row */
+    .context-bar {
+      padding: 0 0.75rem;
+      gap: 0.35rem;
+      justify-content: flex-start;
+    }
+
+    /* Hide desktop-only context bar elements */
+    .context-sep,
+    .context-chevron,
+    .context-track-title,
+    .recording-switcher-wrap,
+    .cast-btn { display: none; }
+
+    /* context-left: non-interactive, shows CD·T pill + act only */
+    .context-left {
+      flex: 1;
+      min-width: 0;
+      cursor: default;
+      gap: 0.4rem;
+      padding: 0;
+      margin: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .context-left:hover,
+    .context-left:active { background: none; }
+
+    /* Act label truncates with ellipsis */
+    #actLabel {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    /* Language filter buttons */
+    .lang-filter-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: #8B6914;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 3px;
+      padding: 2px 6px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .lang-filter-btn.off {
+      background: none;
+      color: var(--text-dim);
+      border-color: var(--color-border-secondary);
+    }
+
+    /* Mobile Index button */
+    .mobile-index-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-dim);
+      background: none;
+      border: 1px solid var(--color-border-secondary);
+      border-radius: 3px;
+      padding: 2px 6px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .mobile-index-btn:hover { background: var(--bg2); }
+
+    /* Libretto body: single column, no track gutter */
+    .libretto-body {
+      grid-template-columns: 1fr;
+    }
+
+    /* Track-tag column hidden; replaced by inline JS markers */
+    .track-col { display: none; }
+
+    /* Text column: full width, tighter padding */
+    .text-col { padding: 0 1rem; }
+
+    /* Act heading: single column, ES span hidden */
+    .act-heading {
+      grid-template-columns: 1fr;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .act-heading span:last-child { display: none; }
+
+    /* Scene headings: ES only */
+    .scene-heading {
+      grid-template-columns: 1fr;
+    }
+    .scene-heading span:first-child { display: none; }
+
+    /* Stage directions: ES only, full width, horizontal rules instead of left border */
+    .stage-direction {
+      display: block;
+      border-left: none;
+      border-top: 0.5px solid var(--color-border-secondary);
+      border-bottom: 0.5px solid var(--color-border-secondary);
+      padding: 0.3rem 0;
+    }
+    .stage-direction span:first-child { display: none; }
+
+    /* Character row: FR only, full width */
+    .character-row {
+      display: block;
+      margin-top: 1rem;
+    }
+    .character-row span:last-child { display: none; }
+
+    /* Inline direction: ES only, full width */
+    .inline-direction {
+      display: block;
+    }
+    .inline-direction span:first-child { display: none; }
+
+    /* Sung lines: FR flush left, ES flush right, stacked vertically */
+    .line-row {
+      display: block;
+    }
+    .line-row .fr {
+      display: block;
+      text-align: left;
+      line-height: normal;
+    }
+    .line-row .es {
+      display: block;
+      text-align: right;
+      line-height: normal;
+    }
+
+    /* Inline track marker */
+    .mobile-track-marker {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gold-mid);
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin: 0.6rem 0 0.1rem;
+      display: block;
+    }
+
+    /* Language filter: only sung lines inside .line-row are affected.
+       Character names, directions, scene headings always stay visible. */
+    .fr-hidden .line-row .fr { display: none; }
+    .es-hidden .line-row .es { display: none; }
+
+    /* Bottom sheet overlay */
+    .bottom-sheet-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 300;
+    }
+    .bottom-sheet-overlay.open { display: block; }
+
+    .bottom-sheet {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 75%;
+      background: var(--color-background-primary, #fdfaf6);
+      border-radius: 16px 16px 0 0;
+      border-top: 1px solid var(--color-border-primary);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .bottom-sheet-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--color-border-secondary);
+      border-radius: 2px;
+      margin: 10px auto 6px;
+      flex-shrink: 0;
+    }
+
+    /* Hide desktop drawers on mobile */
+    .drawer-overlay { display: none !important; }
+    .cast-overlay { display: none !important; }
   }
 </style>
 
