@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
 
@@ -39,36 +40,6 @@
     max-width: 1000px;
     margin: 0 auto;
     width: 100%;
-  }
-
-  @media (max-width: 580px) {
-    .context-bar {
-      height: auto;
-      min-height: var(--bar-h);
-      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .context-left {
-      flex: 1 1 100%;
-      gap: 0.5rem;
-    }
-
-    .context-track-title {
-      width: auto !important;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .recording-switcher {
-      font-size: 11px !important;
-      border: none;
-      padding: 0;
-      background: none;
-    }
-
-    #actLabel { font-size: 11px !important; }
   }
 
   .context-left {
@@ -599,12 +570,217 @@
       line-height: 1.5;
     }
   }
+
+  /* ── Hide mobile-only elements on desktop ───────────────────────────────── */
+  @media (min-width: 601px) {
+    .lang-filter-btn,
+    .mobile-cast-btn,
+    .mobile-track-marker,
+    .bottom-sheet-overlay { display: none; }
+  }
+
+  /* ── Mobile layout (≤ 600px) ─────────────────────────────────────────────── */
+  /* Placed last so these rules always win over desktop declarations above.     */
+  @media (max-width: 600px) {
+
+    .context-bar {
+      padding: 0 0.75rem;
+      gap: 0.35rem;
+      justify-content: flex-start;
+    }
+
+    .context-sep,
+    .context-chevron,
+    .context-track-title,
+    .recording-switcher-wrap,
+    .cast-btn { display: none; }
+
+    .context-left {
+      flex: 1;
+      min-width: 0;
+      cursor: pointer;
+      gap: 0.4rem;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+    .context-left:active { background: var(--gold-light); }
+
+    #actLabel {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .lang-filter-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: #8B6914;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 3px;
+      padding: 2px 6px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .lang-filter-btn.off {
+      background: none;
+      color: var(--text-dim);
+      border-color: var(--color-border-secondary);
+    }
+
+    .libretto-body { grid-template-columns: 1fr; }
+
+    .track-col { display: none; }
+
+    .text-col { padding: 0 1rem; }
+
+    .act-heading {
+      grid-template-columns: 1fr;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    .act-heading span:last-child { display: none; }
+
+    .scene-heading { grid-template-columns: 1fr; }
+    .scene-heading span:first-child { display: none; }
+
+    .stage-direction {
+      display: block;
+      border-left: none;
+      border-top: 0.5px solid var(--color-border-secondary);
+      border-bottom: 0.5px solid var(--color-border-secondary);
+      padding: 0.3rem 0;
+    }
+    .stage-direction span:first-child { display: none; }
+
+    .character-row { display: block; margin-top: 1rem; }
+    .character-row span:last-child { display: none; }
+
+    .inline-direction { display: block; }
+    .inline-direction span:first-child { display: none; }
+
+    .line-row { display: block; }
+    .line-row .fr { display: block; text-align: left; line-height: normal; }
+    .line-row .es { display: block; text-align: right; line-height: normal; }
+
+    .mobile-track-marker {
+      font-family: var(--sans);
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--gold-mid);
+      letter-spacing: 0.08em;
+      opacity: 0.7;
+      margin: 0.6rem 0 0.1rem;
+      display: block;
+    }
+
+    .fr-hidden .line-row .fr { display: none; }
+    .es-hidden .line-row .es { display: none; }
+
+    .bottom-sheet-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 300;
+    }
+    .bottom-sheet-overlay.open { display: block; }
+
+    .bottom-sheet {
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 75%;
+      background: var(--color-background-primary, #fdfaf6);
+      border-radius: 16px 16px 0 0;
+      border-top: 1px solid var(--color-border-primary);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .bottom-sheet-handle {
+      width: 36px;
+      height: 4px;
+      background: var(--color-border-secondary);
+      border-radius: 2px;
+      margin: 10px auto 6px;
+      flex-shrink: 0;
+    }
+
+    .drawer-overlay { display: none !important; }
+    .cast-overlay { display: none !important; }
+
+    .mobile-cast-btn {
+      font-family: var(--sans);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 3px;
+      padding: 2px 6px;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .mobile-cast-btn:hover { background: var(--bg2); }
+
+    .sheet-recording-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 1.25rem 10px;
+      border-bottom: 1px solid var(--color-border-secondary);
+      margin-bottom: 2px;
+      gap: 8px;
+    }
+    .sheet-recording-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+    .sheet-recording-picker { display: flex; gap: 6px; }
+    .sheet-rec-btn {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--color-border-secondary);
+      border-radius: 3px;
+      padding: 3px 9px;
+      background: none;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+    }
+    .sheet-rec-btn.active {
+      background: var(--gold-light);
+      border-color: var(--gold-border);
+      color: var(--gold);
+    }
+
+    .cast-sheet-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 1.25rem;
+      border-bottom: 0.5px solid var(--color-border-tertiary);
+    }
+    .cast-sheet-char { flex: 1; min-width: 0; }
+  }
 </style>
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left" onclick="openDrawer()" title="Open index">
+    <div class="context-left" onclick="openIndex()" title="Open index">
       <span class="context-track" id="trackLabel">CD 1 · T1</span>
       <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
@@ -622,6 +798,9 @@
       </div>
       <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
+    <button class="lang-filter-btn" id="mobileBtnFR" onclick="toggleLang('fr')">FR</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
   </div>
 
   <div class="libretto-body">
@@ -2816,6 +2995,30 @@
   </div>
 </div>
 
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
@@ -2930,6 +3133,14 @@
   let currentActiveId = "t1";
   let observer = null;
 
+  function openIndex() {
+    if (window.innerWidth <= 600) {
+      openBottomSheet();
+    } else {
+      openDrawer();
+    }
+  }
+
   function openDrawer() {
     closeCast();
     buildDrawer();
@@ -2962,6 +3173,7 @@
     if (e.key !== 'Escape') return;
     closeDrawer();
     closeCast();
+    closeCastSheet();
   });
 
   function toggleSwitcher(event) {
@@ -3079,6 +3291,7 @@
     const lbl = document.getElementById('recordingLabel');
     if (lbl) lbl.textContent = RECORDINGS[key].label;
     updateTrackTags();
+    buildMobileTrackMarkers();
     buildDrawer();
     buildSwitcherDropdown();
     const dd = document.getElementById('recDropdown');
@@ -3088,6 +3301,9 @@
     applyTooltips();
     if (document.getElementById('castOverlay').classList.contains('open')) {
       buildCast();
+    }
+    if (document.getElementById('castSheetOverlay').classList.contains('open')) {
+      buildCastSheet();
     }
   }
 
@@ -3120,9 +3336,130 @@
     });
   }
 
+  const mobileLangState = { fr: true, es: true };
+
+  function toggleLang(lang) {
+    const langs = Object.keys(mobileLangState);
+    const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
+    if (mobileLangState[lang] && !hasOtherOn) return;
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('fr-hidden', !mobileLangState.fr);
+    document.getElementById('mobileBtnFR').classList.toggle('off', !mobileLangState.fr);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  function buildMobileTrackMarkers() {
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of rec.tracks) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  function buildCastSheet() {
+    const cast = CAST[activeRecording];
+    const body = document.getElementById('castSheetBody');
+    body.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      const singerClass = singer ? 'cast-singer' : 'cast-singer empty';
+      const singerText = singer || '—';
+      return `<div class="cast-sheet-row">
+        <div class="cast-sheet-char">
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+        </div>
+        <div class="${singerClass}">${singerText}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCastSheet() {
+    buildCastSheet();
+    document.getElementById('castSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCastSheet() {
+    document.getElementById('castSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildSheetRecordingPicker() {
+    const picker = document.getElementById('sheetRecPicker');
+    if (!picker) return;
+    picker.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<button class="sheet-rec-btn${key === activeRecording ? ' active' : ''}" onclick="switchRecordingFromSheet('${key}')">${rec.short}</button>`
+    ).join('');
+  }
+
+  function switchRecordingFromSheet(key) {
+    if (key === activeRecording) return;
+    switchRecording(key);
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function buildBottomSheetBody() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function buildBottomSheet() {
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
   buildSwitcherDropdown();
   buildDrawer();
   rewireObserver();
   updateActive("t1");
   applyTooltips();
+  buildMobileTrackMarkers();
 </script>
