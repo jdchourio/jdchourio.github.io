@@ -1,594 +1,11 @@
 <meta charset="utf-8">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --serif: 'EB Garamond', Georgia, serif;
-    --sans: 'Jost', var(--font-sans);
-    --bar-h: 48px;
-    --gold: #8B6914;
-    --gold-light: #f5ede0;
-    --gold-mid: #c49a2a;
-    --gold-border: #d4a84b;
-    --col-gap: 1rem;
-    --col-left: 52px;
-    --text-dim: var(--color-text-secondary);
-    --text-main: var(--color-text-primary);
-    --text-max-width: 900px;
-    --bg: var(--color-background-primary);
-    --bg2: var(--color-background-secondary);
-  }
-
-  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
-
-  .context-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-background-primary, #fdfaf6);
-    border-bottom: 1px solid var(--color-border-secondary);
-    height: var(--bar-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    gap: 1rem;
-
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  @media (max-width: 580px) {
-    .context-bar {
-      height: auto;
-      min-height: var(--bar-h);
-      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .context-left {
-      flex: 1 1 100%;
-      gap: 0.5rem;
-    }
-
-    .context-track-title {
-      width: auto !important;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .recording-switcher {
-      font-size: 11px !important;
-      border: none;
-      padding: 0;
-      background: none;
-    }
-
-    #actLabel { font-size: 11px !important; }
-  }
-
-  .context-left {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 4px 6px;
-    margin: -4px -6px;
-    transition: background 0.15s;
-  }
-  .context-left:hover { background: var(--bg2); }
-  .context-left:active { background: var(--gold-light); }
-
-  .context-sep { opacity: 0.3; }
-  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
-
-  .context-track {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 2px 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .context-track-title {
-    font-size: 11px;
-    color: var(--text-dim);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-family: var(--sans);
-  }
-
-  .context-right { display: flex; align-items: center; gap: 10px; }
-  .recording-switcher-wrap { position: relative; }
-
-  .recording-switcher {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 3px 8px;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .recording-switcher:hover { background: var(--bg2); }
-
-  .switcher-chevron { font-size: 8px; opacity: 0.5; }
-
-  .recording-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 4px);
-    right: 0;
-    background: var(--color-background-primary, #fdfaf6);
-    border: 1px solid var(--color-border-primary);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    min-width: 220px;
-    z-index: 300;
-  }
-  .recording-dropdown.open { display: block; }
-
-  .recording-option {
-    font-family: var(--sans);
-    font-size: 12px;
-    padding: 10px 14px;
-    cursor: pointer;
-    color: var(--text-main);
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-  .recording-option:last-child { border-bottom: none; }
-  .recording-option:hover { background: var(--bg2); }
-  .recording-option.active {
-    background: var(--gold-light);
-    color: var(--gold);
-    font-weight: 500;
-  }
-
-
-  .libretto-body {
-    display: grid;
-    grid-template-columns: var(--col-left) 1fr;
-    padding-bottom: 4rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .act-heading {
-    grid-column: 1 / -1;
-    font-family: var(--sans);
-    font-size: 25px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
-    border-bottom: 1px solid var(--color-border-secondary);
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .track-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-top: 1.6rem;
-    padding-right: 0;
-    position: relative;
-  }
-
-  .track-tag {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 4px 6px;
-    gap: 1px;
-    cursor: default;
-    width: 40px;
-  }
-
-  .track-tag-cd {
-    font-family: var(--sans);
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-mid);
-  }
-
-  .track-tag-num {
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .text-col { 
-    padding: 0 1.25rem; 
-    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
-    max-width: var(--text-max-width);
-  }
-
-  .musical-number {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 1.25rem 0 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .musical-number::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border-secondary);
-  }
-
-  .scene-heading {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    font-style: italic;
-    margin: 0.75rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    font-style: italic;
-    color: var(--text-dim);
-    margin: 0.6rem 0;
-    border-left: 2px solid var(--color-border-secondary);
-    line-height: 1.5;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction .es { font-style: italic; }
-
-  .character-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.9rem 0 0.15rem;
-  }
-
-  .character-name {
-    font-family: var(--sans);
-    font-size: 16px;
-    font-weight: 550;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .line-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    align-items: baseline;
-  }
-
-  .fr {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .es {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .spacer-row { grid-column: 1/-1; height: 2rem; }
-  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
-
-  .drawer-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 200;
-  }
-
-  .drawer-overlay.open { display: block; }
-
-  .drawer {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-right: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .drawer-header-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Shared close button (used in both drawers) ── */
-  .drawer-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--sans);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--text-dim);
-    line-height: 1;
-    padding: 4px 6px;
-    flex-shrink: 0;
-    border-radius: 3px;
-    transition: color 0.15s;
-  }
-  .drawer-close:hover { color: #c0392b; background: none; }
-
-  .drawer-body { overflow-y: auto; flex: 1; }
-
-  .drawer-cd-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 1.25rem 1.25rem 0.5rem;
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-tertiary);
-    border-top: 1px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 9px 1.25rem;
-    cursor: pointer;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track:hover { background: var(--bg2); }
-  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
-
-  .drawer-track-num {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-dim);
-    width: 20px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .drawer-track.active .drawer-track-num { color: var(--gold); }
-
-  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
-
-  .drawer-track-title {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-    line-height: 1.3;
-  }
-
-  .drawer-track.active .drawer-track-title { color: var(--gold); }
-
-  .drawer-track-act {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Cast button ── */
-  .cast-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-  }
-  .cast-btn:hover { background: var(--bg2); }
-
-  /* ── Cast drawer (mirrors index drawer) ── */
-  .cast-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 250;
-  }
-  .cast-overlay.open { display: block; }
-
-  .cast-drawer {
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .cast-drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .cast-drawer-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  .cast-drawer-body { overflow-y: auto; flex: 1; }
-
-  .cast-table { width: 100%; border-collapse: collapse; }
-
-  .cast-table thead tr {
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-secondary);
-  }
-
-  .cast-table th {
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 8px 1.25rem;
-    text-align: left;
-  }
-
-  .cast-table td {
-    padding: 9px 1.25rem;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    vertical-align: middle;
-  }
-
-  .cast-table tr:last-child td { border-bottom: none; }
-
-  .cast-char-name {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-  }
-
-  .cast-voice {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    margin-top: 1px;
-  }
-
-  .cast-description {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    margin-top: 1px;
-    letter-spacing: 0.02em;
-  }
-
-  .cast-singer {
-    font-family: var(--serif);
-    font-size: 14px;
-    color: var(--text-main);
-    font-style: italic;
-  }
-
-  .cast-singer.empty {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    font-style: normal;
-    letter-spacing: 0.03em;
-  }
-
-  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
-  @media (hover: hover) {
-    .character-name[data-tooltip] {
-      position: relative;
-      cursor: default;
-    }
-    .character-name[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 0;
-      background: var(--color-background-primary, #fdfaf6);
-      border: 1px solid var(--color-border-primary);
-      border-radius: 3px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      font-family: var(--sans);
-      font-size: 10.5px;
-      color: var(--text-main);
-      white-space: nowrap;
-      padding: 5px 9px;
-      pointer-events: none;
-      z-index: 150;
-      letter-spacing: 0.02em;
-      line-height: 1.5;
-    }
-  }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left" onclick="openDrawer()" title="Open index">
+    <div class="context-left" onclick="openIndex()" title="Open index">
       <span class="context-track" id="trackLabel">CD 1 · T1</span>
       <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
@@ -606,13 +23,16 @@
       </div>
       <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
+    <button class="lang-filter-btn" id="mobileBtnIT" onclick="toggleLang('it')">IT</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
   </div>
 
   <div class="libretto-body">
 
     <div class="act-heading" data-act="I">
       <span>Atto Primo</span>
-      <span>Acto Primero</span>
+      <span>Acto Primo</span>
     </div>
 
     <div class="track-col" id="tc1">
@@ -622,6 +42,24 @@
       </div>
     </div>
     <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>Amiens. Una plaza junto a la Puerta de París.</span>
+        <span class="es">Amiens. Una plaza junto a la Puerta de París.</span>
+        <span>A la derecha, una calle. A la izquierda, una posada</span>
+        <span class="es">A la derecha, una calle. A la izquierda, una posada</span>
+        <span>con un porche con mesas. Una escalera exterior da</span>
+        <span class="es">con un porche con mesas. Una escalera exterior da</span>
+        <span>acceso al primer piso.</span>
+        <span class="es">acceso al primer piso.</span>
+        <span>Estudiantes, burgueses, hombres y mujeres, muchachas</span>
+        <span class="es">Estudiantes, burgueses, hombres y mujeres, muchachas</span>
+        <span>y soldados pasean.</span>
+        <span class="es">y soldados pasean.</span>
+        <span>Otros charlan en grupos. Los demás, sentados a las</span>
+        <span class="es">Otros charlan en grupos. Los demás, sentados a las</span>
+        <span>mesas, beben y juegan.</span>
+        <span class="es">mesas, beben y juegan.</span>
+      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="edmondo">Edmondo</span>
         <span class="character-name">Edmondo</span>
@@ -633,7 +71,7 @@
       <div class="line-row"><span class="it">ed agli amanti...</span><span class="es">y los amantes...</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah! Ah!</span><span class="es">¡Ah! ¡Ah! ¡Ah!</span></div>
       <div class="line-row"><span class="it">Ai ladri ed ai briachi!</span><span class="es">¡A los ladrones y borrachos!</span></div>
@@ -650,7 +88,7 @@
       <div class="line-row"><span class="it">le nostre artigianelle...</span><span class="es">nuestras jóvenes artesanas..</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Or s'anima il viale...</span><span class="es">Ahora se anima la calle...</span></div>
       <div class="character-row">
@@ -663,7 +101,7 @@
       <div class="line-row"><span class="it">le nostre artigianelle...</span><span class="es">nuestras jóvenes artesanas..</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">...fresche, ridenti e belle.</span><span class="es">..frescas, sonrientes y bellas.</span></div>
       <div class="character-row">
@@ -680,7 +118,7 @@
       <div class="line-row"><span class="it">indomabile virtù.</span><span class="es">con indomable virtud.</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Giovinezza é il nostro nome,</span><span class="es">Juventud es nuestro nombre,</span></div>
       <div class="line-row"><span class="it">la speranza é nostra iddia,</span><span class="es">la esperanza nuestra diosa, que</span></div>
@@ -688,7 +126,7 @@
       <div class="line-row"><span class="it">indomabile virtù.</span><span class="es">con indomable virtud.</span></div>
       <div class="character-row">
         <span class="character-name">Ragazze</span>
-        <span class="character-name">Ragazze</span>
+        <span class="character-name">Muchachas</span>
       </div>
       <div class="line-row"><span class="it">Vaga per l'aura</span><span class="es">¡Flota en el aire</span></div>
       <div class="line-row"><span class="it">un'onda di profumi,</span><span class="es">una ola de perfumes,</span></div>
@@ -699,7 +137,7 @@
       <div class="line-row"><span class="it">e le malinconie</span><span class="es">melancolía.</span></div>
       <div class="character-row">
         <span class="character-name">Studenti, Borghesi</span>
-        <span class="character-name">Studenti, Borghesi</span>
+        <span class="character-name">Estudiantes, Burgueses</span>
       </div>
       <div class="line-row"><span class="it">Date il labbro,</span><span class="es">¡Entregad los labios,</span></div>
       <div class="line-row"><span class="it">date il core</span><span class="es">entregad los corazones</span></div>
@@ -710,7 +148,7 @@
       </div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Ecco Des Grieux!</span><span class="es">Aquí llega Des Grieux</span></div>
       <div class="character-row">
@@ -721,8 +159,12 @@
       <div class="line-row"><span class="it">e ti vinca la cura</span><span class="es">para curar así</span></div>
       <div class="line-row"><span class="it">di balzana avventura.</span><span class="es">casquivanas aventuras.</span></div>
       <div class="line-row"><span class="it">Non rispondi? Perché? Forse</span><span class="es">¿No contestas? ¿Por qué? ¿Tal</span></div>
-      <div class="line-row"><span class="it">di dama inaccessibile</span><span class="es">vez  te consumes de amor</span></div>
+      <div class="line-row"><span class="it">di dama inaccessibile</span><span class="es">vez te consumes de amor</span></div>
       <div class="line-row"><span class="it">acuto amor ti morse?</span><span class="es">por una dama inaccesible?</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc2">
@@ -732,17 +174,13 @@
       </div>
     </div>
     <div class="text-col" id="t2">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">L'amor?... L'amor?</span><span class="es">¿El amor?... ¿El amor?</span></div>
       <div class="line-row"><span class="it">Questa tragedia,</span><span class="es">¡Esa tragedia,</span></div>
       <div class="line-row"><span class="it">ovver commedia,</span><span class="es">o tal vez comedia,</span></div>
       <div class="line-row"><span class="it">io non conosco!</span><span class="es">no la conozco!</span></div>
       <div class="character-row">
         <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Baie!</span><span class="es">¡Tonterías!</span></div>
       <div class="line-row"><span class="it">Misteriose vittorie</span><span class="es">¡Nos escondes con prudencia</span></div>
@@ -755,7 +193,7 @@
       <div class="line-row"><span class="it">Amici, troppo onor mi fate.</span><span class="es">Amigos, me hacéis un gran honor.</span></div>
       <div class="character-row">
         <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Per Bacco, indoviniam, amico..</span><span class="es">Por Baco, lo adivinamos, amigo..</span></div>
       <div class="line-row"><span class="it">Ti crucci d'uno scacco...</span><span class="es">Te atormenta algún fracaso...</span></div>
@@ -779,10 +217,6 @@
       </div>
     </div>
     <div class="text-col" id="t3">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Tra voi, belle, brune e bionde</span><span class="es">¿Entre vosotras, bellas, morenas</span></div>
       <div class="line-row"><span class="it">si nasconde giovinetta</span><span class="es">y rubias se esconde una jovencita</span></div>
       <div class="line-row"><span class="it">vaga e vezzosa,</span><span class="es">bonita y graciosa</span></div>
@@ -795,7 +229,7 @@
       <div class="line-row"><span class="it">eternamente!</span><span class="es">eternamente!</span></div>
       <div class="character-row">
         <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Ah, ah, ah, ah, ah!</span><span class="es">¡Ah, ah, ah, ah, ah!</span></div>
       <div class="character-row">
@@ -803,9 +237,13 @@
         <span class="character-name">Des Grieux</span>
       </div>
       <div class="line-row"><span class="it">Tra voi, belle, brune</span><span class="es">¿Entre vosotras,</span></div>
-      <div class="line-row"><span class="it">e bionde (ecc.)</span><span class="es">bellas, etc...</span></div>
+      <div class="line-row"><span class="it">e bionde ecc.</span><span class="es">bellas, etc...</span></div>
       <div class="line-row"><span class="it">Sei tu, bruna snella?</span><span class="es">¿Eres tú, morena esbelta?</span></div>
       <div class="line-row"><span class="it">Dillo a me!</span><span class="es">¡Dímelo!</span></div>
+      <div class="character-row">
+        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc4">
@@ -815,10 +253,6 @@
       </div>
     </div>
     <div class="text-col" id="t4">
-      <div class="character-row">
-        <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
-      </div>
       <div class="line-row"><span class="it">Ma bravo!</span><span class="es">¡Bravo!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="edmondo">Edmondo</span>
@@ -828,14 +262,16 @@
       <div class="line-row"><span class="it">di lui nessuno più si lagni!</span><span class="es">que nadie se preocupe más de él!</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Ma bravo!</span><span class="es">¡Bravo!</span></div>
       <div class="character-row">
-        <span class="character-name">Edmondo, Studenti,
-Ragazze, Borghesi</span>
-        <span class="character-name">Edmondo, Studenti,
-Ragazze, Borghesi</span>
+        <span class="character-name">Edmondo, Studenti,</span>
+        <span class="character-name">Edmondo, Estudiantes,</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Ragazze, Borghesi</span>
+        <span class="character-name">Muchachas, Burgueses</span>
       </div>
       <div class="line-row"><span class="it">Festeggiam la serata!</span><span class="es">¡Gocemos de la tarde!</span></div>
       <div class="line-row"><span class="it">Come é nostro costume,</span><span class="es">¡Según nuestra costumbre,</span></div>
@@ -853,13 +289,21 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">tutto vinca, tutto avvinca</span><span class="es">venza a todos, ate con fuerza,</span></div>
       <div class="line-row"><span class="it">la sua luce e il suo furor!</span><span class="es">su luz y su furor!</span></div>
       <div class="stage-direction">
-        <span>(suona la tromba del postiglione)</span>
-        <span class="es">( Suena la corneta del postillón)</span>
+        <span>(suona la tromba del</span>
+        <span class="es">(Suena la corneta del</span>
+        <span>postiglione)</span>
+        <span class="es">postillón)</span>
       </div>
       <div class="line-row"><span class="it">Giunge il cocchio d'Arras!</span><span class="es">¡Llega el coche de Arrás!</span></div>
       <div class="stage-direction">
-        <span>(Lescaut, Manon e Geronte scendono della carrozza)</span>
-        <span class="es">(Lescaut, Manon y Geronte bajan de la diligencia)</span>
+        <span>(Lescaut, Manon e Geronte</span>
+        <span class="es">(Lescaut, Manon y Geronte bajan</span>
+        <span>scendono della carrozza)</span>
+        <span class="es">de la diligencia)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Borghesi</span>
+        <span class="character-name">Burgueses</span>
       </div>
     </div>
 
@@ -870,15 +314,11 @@ Ragazze, Borghesi</span>
       </div>
     </div>
     <div class="text-col" id="t5">
-      <div class="character-row">
-        <span class="character-name">Borghesi</span>
-        <span class="character-name">Borghesi</span>
-      </div>
       <div class="line-row"><span class="it">Discendono, vediam!</span><span class="es">¡Fijémonos en quién baja!</span></div>
       <div class="line-row"><span class="it">Viaggiatori eleganti, galanti!</span><span class="es">¡Elegantes, galantes viajeros!</span></div>
       <div class="character-row">
         <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Chi non darebbe a quella</span><span class="es">¿Quién no daría a tan</span></div>
       <div class="line-row"><span class="it">donnina bella il gentile</span><span class="es">bella señorita</span></div>
@@ -897,7 +337,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">Ehi! L'oste!</span><span class="es">¡Eh! ¡Posadero!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="oste">L'Oste</span>
-        <span class="character-name">L'Oste</span>
+        <span class="character-name">Posadero</span>
       </div>
       <div class="line-row"><span class="it">Eccomi qua!</span><span class="es">¡Aquí estoy!</span></div>
       <div class="character-row">
@@ -920,13 +360,17 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">bagaglio.</span><span class="es">equipaje.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="oste">L'Oste</span>
-        <span class="character-name">L'Oste</span>
+        <span class="character-name">Posadero</span>
       </div>
       <div class="line-row"><span class="it">Ubbidirò!</span><span class="es">¡A vuestro servicio!</span></div>
       <div class="line-row"><span class="it">Vi prego, mi vogliate seguir...</span><span class="es">Por favor, seguidme...</span></div>
       <div class="stage-direction">
         <span>(Geronte e Lescaut partono)</span>
         <span class="es">(Geronte y Lescaut salen)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
       </div>
     </div>
 
@@ -937,10 +381,6 @@ Ragazze, Borghesi</span>
       </div>
     </div>
     <div class="text-col" id="t6">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Cortese damigella,</span><span class="es">Gentil damisela,</span></div>
       <div class="line-row"><span class="it">il priego mio accettate:</span><span class="es">os suplico me permitáis:</span></div>
       <div class="line-row"><span class="it">dican le dolci labbra</span><span class="es">¿podrían tan dulces labios</span></div>
@@ -1058,6 +498,10 @@ Ragazze, Borghesi</span>
         <span>(parte)</span>
         <span class="es">(va al encuentro de Lescaut)</span>
       </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc7">
@@ -1067,10 +511,6 @@ Ragazze, Borghesi</span>
       </div>
     </div>
     <div class="text-col" id="t7">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Donna non vidi mai simile</span><span class="es">¡Nunca vi una mujer como ésta!</span></div>
       <div class="line-row"><span class="it">a questa!</span><span class="es">Decirle: te amo,</span></div>
       <div class="line-row"><span class="it">A dirle: io t'amo,</span><span class="es">despierta en mi alma</span></div>
@@ -1085,6 +525,10 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">"Manon Lescaut mi chiamo!"</span><span class="es">"¡Me llamo Manon Lescaut!"</span></div>
       <div class="line-row"><span class="it">Sussurro gentil,</span><span class="es">Susurro gentil,</span></div>
       <div class="line-row"><span class="it">deh! non cessare!</span><span class="es">¡ay!, ¡no ceses nunca!</span></div>
+      <div class="character-row">
+        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc8">
@@ -1094,10 +538,6 @@ Ragazze, Borghesi</span>
       </div>
     </div>
     <div class="text-col" id="t8">
-      <div class="character-row">
-        <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
-      </div>
       <div class="line-row"><span class="it">La tua ventura ei rassicura.</span><span class="es">Tu fortuna se asegura.</span></div>
       <div class="line-row"><span class="it">O di Cupido degno fedel,</span><span class="es">¡Oh, digno seguidor de Cupido,</span></div>
       <div class="line-row"><span class="it">bella e divina la cherubina</span><span class="es">bello y divino, el querubín</span></div>
@@ -1111,20 +551,22 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">Ah! Ah!</span><span class="es">¡Ah! ¡Ah!</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Venite, o fanciulle</span><span class="es">¡Venid, muchachitas!</span></div>
       <div class="line-row"><span class="it">Augurio ei siate di</span><span class="es">¡Sois augurio de</span></div>
       <div class="line-row"><span class="it">buona fortuna!</span><span class="es">buena suerte!</span></div>
       <div class="character-row">
         <span class="character-name">Ragazze</span>
-        <span class="character-name">Ragazze</span>
+        <span class="character-name">Muchachas</span>
       </div>
       <div class="line-row"><span class="it">É bionda, od é bruna la diva</span><span class="es">¿Es rubia o es morena la</span></div>
       <div class="line-row"><span class="it">che guida la vostra tenzon?</span><span class="es">diosa que guía vuestras lides?</span></div>
       <div class="stage-direction">
-        <span>(Geronte e Lescaut scendono della galleria)</span>
-        <span class="es">(Geronte y Lescaut bajan por las escaleras de la posada)</span>
+        <span>(Geronte e Lescaut scendono</span>
+        <span class="es">(Geronte y Lescaut bajan por</span>
+        <span>della galleria)</span>
+        <span class="es">las escaleras de la posada)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Geronte</span>
@@ -1165,7 +607,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">sin qualche compenso:...</span><span class="es">alguna compensación...</span></div>
       <div class="character-row">
         <span class="character-name">Ragazze</span>
-        <span class="character-name">Ragazze</span>
+        <span class="character-name">Muchachas</span>
       </div>
       <div class="line-row"><span class="it">Amiche fedeli d'un ora,</span><span class="es">Fieles amigos de una hora,</span></div>
       <div class="line-row"><span class="it">volete il bacio,</span><span class="es">¿queréis un beso,</span></div>
@@ -1175,7 +617,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">il sospir? Ah!</span><span class="es">un suspiro? ¡Ah!</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Chi perde, chi vince,</span><span class="es">Tanto quien pierde como quien</span></div>
       <div class="line-row"><span class="it">vi brama,</span><span class="es">gana suspira por vosotras,</span></div>
@@ -1193,7 +635,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">Geronte di Ravoir.</span><span class="es">Geronte de Ravoir.</span></div>
       <div class="character-row">
         <span class="character-name">Studenti</span>
-        <span class="character-name">Studenti</span>
+        <span class="character-name">Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Chi piange e chi ride,</span><span class="es">Tanto quien llora como quien</span></div>
       <div class="line-row"><span class="it">noi prostra ed irride</span><span class="es">ríe, vence y se burla de la</span></div>
@@ -1203,7 +645,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">l'eterna canzon. Ah! Ah! Ah!</span><span class="es">!Ah!Ah!Ah!</span></div>
       <div class="character-row">
         <span class="character-name">Ragazze</span>
-        <span class="character-name">Ragazze</span>
+        <span class="character-name">Muchachas</span>
       </div>
       <div class="line-row"><span class="it">Orniam la vittoria</span><span class="es">Coronamos la victoria</span></div>
       <div class="line-row"><span class="it">e il core del vinto,</span><span class="es">y el corazón del vencido,</span></div>
@@ -1225,7 +667,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">e per un giorno non mi tradir.</span><span class="es">no me traiciones durante un día.</span></div>
       <div class="stage-direction">
         <span>(osserva a Geronte e Lescaut)</span>
-        <span class="es">(observa a Geronte y Lescaut )</span>
+        <span class="es">(observa a Geronte y Lescaut)</span>
       </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
@@ -1286,17 +728,13 @@ Ragazze, Borghesi</span>
       </div>
       <div class="character-row">
         <span class="character-name">Studenti, Borghesi</span>
-        <span class="character-name">Studenti, Borghesi</span>
+        <span class="character-name">Estudiantes, Burgueses</span>
       </div>
       <div class="line-row"><span class="it">Un asso... Un fante...</span><span class="es">Un as... Una sota...</span></div>
       <div class="line-row"><span class="it">Un tre!</span><span class="es">¡Un tres!</span></div>
       <div class="stage-direction">
         <span>(Lescaut s'avvia e osserva)</span>
         <span class="es">(Lescaut se acerca y observa)</span>
-      </div>
-      <div class="character-row">
-        <span class="character-name">Borghesi</span>
-        <span class="character-name">Borghesi</span>
       </div>
       <div class="line-row"><span class="it">Che giuoco maledetto!</span><span class="es">¡Qué malas cartas!</span></div>
       <div class="character-row">
@@ -1308,7 +746,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">qualche colpo perfetto!</span><span class="es">la buena suerte!</span></div>
       <div class="character-row">
         <span class="character-name">Studenti, Borghesi</span>
-        <span class="character-name">Studenti, Borghesi</span>
+        <span class="character-name">Estudiantes, Burgueses</span>
       </div>
       <div class="line-row"><span class="it">Puntate! Puntate! Carte!</span><span class="es">Apostad! ¡Apostad! ¡Cartas!</span></div>
       <div class="line-row"><span class="it">Un asso!</span><span class="es">¡Un as!</span></div>
@@ -1320,7 +758,7 @@ Ragazze, Borghesi</span>
       <div class="line-row"><span class="it">Errore, errore!</span><span class="es">¡Error, error!</span></div>
       <div class="character-row">
         <span class="character-name">Studenti, Borghesi</span>
-        <span class="character-name">Studenti, Borghesi</span>
+        <span class="character-name">Estudiantes, Burgueses</span>
       </div>
       <div class="line-row"><span class="it">É ver! Un fante!</span><span class="es">¡Es cierto! ¡Una sota!</span></div>
       <div class="line-row"><span class="it">Siete un maestro!</span><span class="es">¡Sois un maestro!</span></div>
@@ -1329,11 +767,8 @@ Ragazze, Borghesi</span>
         <span class="character-name">Lescaut</span>
       </div>
       <div class="line-row"><span class="it">Celiate! Un dilettante...</span><span class="es">¡Bromeáis! Un aficionado...</span></div>
-      <div class="stage-direction">
-        <span>(Lescaut gioca, Geronte l'osserva e chiama a l'oste)</span>
-        <span class="es">(Lescaut se pone a jugar. Geronte,
-lo observa y llama al posadero)</span>
-      </div>
+      <div class="line-row"><span class="it">(Lescaut gioca, Geronte</span><span class="es">(Lescaut se pone a jugar. Geronte,</span></div>
+      <div class="line-row"><span class="it">l'osserva e chiama a l'oste)</span><span class="es">lo observa y llama al posadero)</span></div>
       <div class="character-row">
         <span class="character-name">Geronte</span>
         <span class="character-name">Geronte</span>
@@ -1349,7 +784,7 @@ lo observa y llama al posadero)</span>
       <div class="line-row"><span class="it">fra un'ora!</span><span class="es">dentro de una hora!</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="oste">L'Oste</span>
-        <span class="character-name">L'Oste</span>
+        <span class="character-name">Posadero</span>
       </div>
       <div class="line-row"><span class="it">SI, Signore!</span><span class="es">¡Sí, señor!</span></div>
       <div class="stage-direction">
@@ -1370,7 +805,7 @@ lo observa y llama al posadero)</span>
       <div class="line-row"><span class="it">silenzio é d'or.</span><span class="es">silencio es oro.</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="oste">L'Oste</span>
-        <span class="character-name">L'Oste</span>
+        <span class="character-name">Posadero</span>
       </div>
       <div class="line-row"><span class="it">L'oro adoro.</span><span class="es">Adoro el oro.</span></div>
       <div class="character-row">
@@ -1388,7 +823,7 @@ lo observa y llama al posadero)</span>
       <div class="line-row"><span class="it">l'osteria solamente?</span><span class="es">de la posada?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="oste">L'Oste</span>
-        <span class="character-name">L'Oste</span>
+        <span class="character-name">Posadero</span>
       </div>
       <div class="line-row"><span class="it">Ve n'ha un'altra.</span><span class="es">Hay otra</span></div>
       <div class="character-row">
@@ -1397,12 +832,14 @@ lo observa y llama al posadero)</span>
       </div>
       <div class="line-row"><span class="it">Indicatemi la via.</span><span class="es">Mostrádmela.</span></div>
       <div class="stage-direction">
-        <span>(partono) (dall'interno)</span>
-        <span class="es">(Salen) (desde dentro)</span>
+        <span>(partono)</span>
+        <span class="es">(Salen)</span>
+        <span>(dall'interno)</span>
+        <span class="es">(desde dentro)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Ragazze</span>
-        <span class="character-name">Ragazze</span>
+        <span class="character-name">Muchachas</span>
       </div>
       <div class="line-row"><span class="it">Chiedete il bacio, il sospir?</span><span class="es">¿Queréis un beso, un suspiro?</span></div>
       <div class="stage-direction">
@@ -1411,7 +848,7 @@ lo observa y llama al posadero)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Studenti, Borghesi</span>
-        <span class="character-name">Studenti, Borghesi</span>
+        <span class="character-name">Estudiantes, Burgueses</span>
       </div>
       <div class="line-row"><span class="it">A noi... v'invito.. banco!</span><span class="es">¡Le invitamos... sea la banca!</span></div>
       <div class="character-row">
@@ -1419,13 +856,13 @@ lo observa y llama al posadero)</span>
         <span class="character-name">Lescaut</span>
       </div>
       <div class="line-row"><span class="it">Carte!</span><span class="es">¡Cartas!</span></div>
-      <div class="stage-direction">
-        <span>(osserva Geronte)</span>
-        <span class="es">(mirando a Geronte)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="edmondo">Edmondo</span>
         <span class="character-name">Edmondo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(osserva Geronte)</span>
+        <span class="es">(mirando a Geronte)</span>
       </div>
       <div class="line-row"><span class="it">Vecchietto amabile,</span><span class="es">¡Amable ancianito,</span></div>
       <div class="line-row"><span class="it">incipriato Pluton sei tu!</span><span class="es">resultas un empolvado Plutón!</span></div>
@@ -1438,10 +875,6 @@ lo observa y llama al posadero)</span>
       </div>
     </div>
     <div class="text-col" id="t9">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="edmondo">Edmondo</span>
-        <span class="character-name">Edmondo</span>
-      </div>
       <div class="line-row"><span class="it">La tua Proserpina</span><span class="es">¿Tendrá tu Proserpina</span></div>
       <div class="line-row"><span class="it">di resisterti forse</span><span class="es">suficiente virtud para</span></div>
       <div class="line-row"><span class="it">avrà virtù?</span><span class="es">resistirte?</span></div>
@@ -1520,8 +953,14 @@ lo observa y llama al posadero)</span>
       <div class="line-row"><span class="it">Il vecchio?</span><span class="es">¿El viejo?</span></div>
       <div class="line-row"><span class="it">Oh, l'avrà da far con me!</span><span class="es">¡Oh, se las verá conmigo!</span></div>
       <div class="stage-direction">
-        <span>(Manon scende per la scala e si avanza verso Des Grieux)</span>
-        <span class="es">(Manon baja por la escalera y y se acerca a Des Grieux)</span>
+        <span>(Manon scende per la scala e</span>
+        <span class="es">(Manon baja por la escalera y</span>
+        <span>si avanza verso Des Grieux)</span>
+        <span class="es">y se acerca a Des Grieux)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
       </div>
     </div>
 
@@ -1532,10 +971,6 @@ lo observa y llama al posadero)</span>
       </div>
     </div>
     <div class="text-col" id="t10">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Vedete?</span><span class="es">¿Veis?</span></div>
       <div class="line-row"><span class="it">Io son fedele</span><span class="es">Soy fiel</span></div>
       <div class="line-row"><span class="it">alla parola mia.</span><span class="es">a mi palabra.</span></div>
@@ -1613,6 +1048,10 @@ lo observa y llama al posadero)</span>
       <div class="line-row"><span class="it">Non é ver, non é vero,</span><span class="es">No es verdad, no es verdad,</span></div>
       <div class="line-row"><span class="it">ah! sogno gentil,</span><span class="es">¡sueño gentil,</span></div>
       <div class="line-row"><span class="it">mio sospiro infinito!</span><span class="es">mi anhelo infinito!</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
+        <span class="character-name">Lescaut</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc11">
@@ -1622,10 +1061,6 @@ lo observa y llama al posadero)</span>
       </div>
     </div>
     <div class="text-col" id="t11">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
-        <span class="character-name">Lescaut</span>
-      </div>
       <div class="line-row"><span class="it">Non c'è più vino? E che?</span><span class="es">¿No hay más vino? ¿Cómo?</span></div>
       <div class="line-row"><span class="it">Vuota é la botte?</span><span class="es">¿Está vacío el tonel?</span></div>
       <div class="character-row">
@@ -1650,9 +1085,10 @@ lo observa y llama al posadero)</span>
       </div>
       <div class="line-row"><span class="it">Il vero!</span><span class="es">¡La verdad!</span></div>
       <div class="stage-direction">
-        <span>(Edmondo si avanza verso Manon e Des Grieux)</span>
-        <span class="es">(Edmondo se acerca rápidamente
-a Manon y Des Grieux)</span>
+        <span>(Edmondo si avanza verso</span>
+        <span class="es">(Edmondo se acerca rápidamente</span>
+        <span>Manon e Des Grieux)</span>
+        <span class="es">a Manon y Des Grieux)</span>
       </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="edmondo">Edmondo</span>
@@ -1754,7 +1190,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Eh!, dico! Pronta é la cena?</span><span class="es">¡Eh, dime! ¿Está lista la cena?</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="oste">L'Oste</span>
-        <span class="character-name">L'Oste</span>
+        <span class="character-name">Posadero</span>
       </div>
       <div class="line-row"><span class="it">Si, eccellenza!</span><span class="es">¡Sí, excelencia!</span></div>
       <div class="character-row">
@@ -1775,8 +1211,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Essa parte in compagnia</span><span class="es">¡Parte en compañía</span></div>
       <div class="line-row"><span class="it">d'uno studente.</span><span class="es">de un estudiante!</span></div>
       <div class="stage-direction">
-        <span>(Geronte rimira e corre verso Lescaut)</span>
-        <span class="es">(Geronte mira sorprendido, y corre hacia Lescaut)</span>
+        <span>(Geronte rimira e corre</span>
+        <span class="es">(Geronte mira sorprendido, y</span>
+        <span>verso Lescaut)</span>
+        <span class="es">corre hacia Lescaut)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Geronte</span>
@@ -1820,10 +1258,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t12">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
-        <span class="character-name">Lescaut</span>
-      </div>
       <div class="line-row"><span class="it">Cavalli pronti avete?</span><span class="es">¿Tenéis caballos a punto?</span></div>
       <div class="line-row"><span class="it">Il colpo é fatto!</span><span class="es">¡Lo hecho, hecho está!</span></div>
       <div class="line-row"><span class="it">Disperarsi é da matto!</span><span class="es">¡Desesperarse es una locura!</span></div>
@@ -1861,7 +1295,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">filosofia...</span><span class="es">filosofía...</span></div>
       <div class="character-row">
         <span class="character-name">Edmondo, Studenti</span>
-        <span class="character-name">Edmondo, Studenti</span>
+        <span class="character-name">Edmondo, Estudiantes</span>
       </div>
       <div class="line-row"><span class="it">Venticelli ricciutelli</span><span class="es">Gentil brisa</span></div>
       <div class="line-row"><span class="it">che spirate</span><span class="es">que espiras</span></div>
@@ -1872,11 +1306,15 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">coppa piena,</span><span class="es">una copa llena,</span></div>
       <div class="line-row"><span class="it">ber voleva e avidamente</span><span class="es">beber querían y ávidamente</span></div>
       <div class="line-row"><span class="it">già suggeva... ah! ah! ah!</span><span class="es">libaban ya... ¡Ah! ¡Ah! ¡Ah!</span></div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
+      </div>
     </div>
 
     <div class="act-heading" data-act="II">
       <span>Atto Secondo</span>
-      <span>Acto Segundo</span>
+      <span>Acto Secondo</span>
     </div>
 
     <div class="track-col" id="tc13">
@@ -1886,10 +1324,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t13">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Dispettosetto questo riccio!</span><span class="es">¡Dichosos rizos!</span></div>
       <div class="line-row"><span class="it">Il calamistro, presto!</span><span class="es">¡Las tenacillas, rápido,</span></div>
       <div class="line-row"><span class="it">presto!</span><span class="es">rápido!</span></div>
@@ -2059,10 +1493,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t14">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">In quelle</span><span class="es">¡Tras esas mórbidas</span></div>
       <div class="line-row"><span class="it">trine morbide...</span><span class="es">cortinas...</span></div>
       <div class="line-row"><span class="it">nell'alcova dorata</span><span class="es">de la dorada alcoba</span></div>
@@ -2081,6 +1511,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">gaia, isolata, bianca</span><span class="es">alegre, aislada, blanca</span></div>
       <div class="line-row"><span class="it">come un sogno gentile</span><span class="es">como un sueño gentil</span></div>
       <div class="line-row"><span class="it">di pace e d'amor!</span><span class="es">de paz y de amor!</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
+        <span class="character-name">Lescaut</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc15">
@@ -2090,10 +1524,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t15">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
-        <span class="character-name">Lescaut</span>
-      </div>
       <div class="line-row"><span class="it">Poiché tu vuoi</span><span class="es">Puesto que lo quieres</span></div>
       <div class="line-row"><span class="it">saper...</span><span class="es">saber...</span></div>
       <div class="line-row"><span class="it">Des Grieux</span><span class="es">Des Grieux,</span></div>
@@ -2193,7 +1623,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Bello!</span><span class="es">¡Hermosa!</span></div>
       <div class="stage-direction">
         <span>(i musici entrano)</span>
-        <span class="es">(Entran varios músicos) )</span>
+        <span class="es">(Entran varios músicos)</span>
       </div>
     </div>
 
@@ -2204,10 +1634,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t16">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
-        <span class="character-name">Lescaut</span>
-      </div>
       <div class="line-row"><span class="it">Che ceffi son costor?</span><span class="es">¿Quiénes son éstos?</span></div>
       <div class="line-row"><span class="it">Ciarlatani o speziali?</span><span class="es">¿Charlatanes o boticarios?</span></div>
       <div class="character-row">
@@ -2245,6 +1671,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">No! Clori a zampogna</span><span class="es">¡No! ¡Cloris al caramillo</span></div>
       <div class="line-row"><span class="it">che soave plorò</span><span class="es">que dulce lloró</span></div>
       <div class="line-row"><span class="it">non disse mai no!</span><span class="es">no dice nunca que no!</span></div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc17">
@@ -2254,14 +1684,12 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t17">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Paga costor!</span><span class="es">¡Págales!</span></div>
       <div class="stage-direction">
-        <span>(annoiata, le tende una borsa a Lescaut)</span>
-        <span class="es">(Aburrida, le da una bolsa a Lescaut. Éste se la guarda)</span>
+        <span>(annoiata, le tende una borsa</span>
+        <span class="es">(Aburrida, le da una bolsa</span>
+        <span>a Lescaut)</span>
+        <span class="es">a Lescaut. Éste se la guarda)</span>
       </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
@@ -2299,6 +1727,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Andiam da Des Grieux!</span><span class="es">¡Voy a por Des Grieux!</span></div>
       <div class="line-row"><span class="it">É da maestro</span><span class="es">¡Preparar los acontecimientos</span></div>
       <div class="line-row"><span class="it">preparar gli eventi!</span><span class="es">es cosa de un maestro!</span></div>
+      <div class="character-row">
+        <span class="character-name">Maestro Di Ballo</span>
+        <span class="character-name">Maestro De Baile</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc18">
@@ -2308,10 +1740,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t18">
-      <div class="character-row">
-        <span class="character-name">Maestro Di Ballo</span>
-        <span class="character-name">Maestro Di Ballo</span>
-      </div>
       <div class="line-row"><span class="it">Vi prego, signorina,</span><span class="es">Os ruego, señorita,</span></div>
       <div class="line-row"><span class="it">un po'elevato il busto...</span><span class="es">el busto un poco más</span></div>
       <div class="line-row"><span class="it">indi... Ma brava,</span><span class="es">alto... así...</span></div>
@@ -2331,14 +1759,14 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Un po' inesperta.</span><span class="es">Un poco inexperta.</span></div>
       <div class="character-row">
         <span class="character-name">Maestro Di Ballo</span>
-        <span class="character-name">Maestro Di Ballo</span>
+        <span class="character-name">Maestro De Baile</span>
       </div>
       <div class="line-row"><span class="it">Vi prego, non badate</span><span class="es">Os lo ruego, no os distraigáis</span></div>
       <div class="line-row"><span class="it">a lodi sussurrate...</span><span class="es">con susurradas adulaciones...</span></div>
       <div class="line-row"><span class="it">É cosa seria il ballo!</span><span class="es">¡El baile es algo muy serio!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">Tacete!</span><span class="es">¡Callaos!</span></div>
       <div class="stage-direction">
@@ -2352,7 +1780,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">É cosa seria.</span><span class="es">Es algo muy serio.</span></div>
       <div class="character-row">
         <span class="character-name">Maestro Di Ballo</span>
-        <span class="character-name">Maestro Di Ballo</span>
+        <span class="character-name">Maestro De Baile</span>
       </div>
       <div class="line-row"><span class="it">A manca! ... Brava!...</span><span class="es">¡A la izquierda!... ¡Bravo!</span></div>
       <div class="line-row"><span class="it">... A destra! ... Un saluto!</span><span class="es">¡A la derecha!... ¡Saludad!</span></div>
@@ -2364,7 +1792,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Minuetto perfetto.</span><span class="es">Un minué perfecto.</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">Che languore nello sguardo!</span><span class="es">¡Qué languidez en su mirada!</span></div>
       <div class="line-row"><span class="it">Che dolcezza! Che carezza!</span><span class="es">¡Qué dulzura! ¡Qué caricia!</span></div>
@@ -2403,7 +1831,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">delirare!</span><span class="es">delirar!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">La deità siete del giorno!</span><span class="es">¡Sois la diosa del día!</span></div>
       <div class="line-row"><span class="it">Della notte ell'è regina!</span><span class="es">¡De la noche sois la reina!</span></div>
@@ -2421,7 +1849,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">troppo felice.</span><span class="es">demasiado feliz.</span></div>
       <div class="character-row">
         <span class="character-name">Maestro Di Ballo</span>
-        <span class="character-name">Maestro Di Ballo</span>
+        <span class="character-name">Maestro De Baile</span>
       </div>
       <div class="line-row"><span class="it">Un cavalier...</span><span class="es">Un caballero...</span></div>
       <div class="character-row">
@@ -2431,7 +1859,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Son qua!</span><span class="es">¡Aquí estoy!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">Bravi! Che coppia!</span><span class="es">¡Bravo! ¡Qué pareja!</span></div>
       <div class="line-row"><span class="it">Evviva i fortunati</span><span class="es">¡Vivan los afortunados</span></div>
@@ -2460,7 +1888,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">sul miracolo d'amor!</span><span class="es">sobre el milagro del amor!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">Voi siete il miracolo,</span><span class="es">¡Vos sois el milagro,</span></div>
       <div class="line-row"><span class="it">siete l'amore!</span><span class="es">sois el amor!</span></div>
@@ -2475,7 +1903,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">ondeggia pei baluardi.</span><span class="es">se pasea por los baluartes.</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">Qui il tempo vola!</span><span class="es">¡Aquí el tiempo vuela!</span></div>
       <div class="character-row">
@@ -2496,12 +1924,12 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">fra il bel mondo dorato.</span><span class="es">leve en ese dorado mundo.</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Invitados</span>
       </div>
       <div class="line-row"><span class="it">Grave é sempre l'attesa.</span><span class="es">Siempre se hace larga la espera.</span></div>
       <div class="stage-direction">
         <span>(il coro esce)</span>
-        <span class="es">(Los invitados empiezan a salir) )</span>
+        <span class="es">(Los invitados empiezan a salir)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Geronte</span>
@@ -2515,6 +1943,10 @@ a Manon y Des Grieux)</span>
         <span>(esce)</span>
         <span class="es">(Sale)</span>
       </div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc19">
@@ -2524,10 +1956,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t19">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Oh, sarò la più bella!</span><span class="es">¡Oh, seré la más bella!</span></div>
       <div class="stage-direction">
         <span>(senti un rumore)</span>
@@ -2761,12 +2189,16 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Labbra dolci a baciare!</span><span class="es">¡Labios dulces de besar!</span></div>
       <div class="character-row">
         <span class="character-name">Manon, Des Grieux</span>
-        <span class="character-name">Manon, Des Grieux</span>
+        <span class="character-name">Ambos</span>
       </div>
       <div class="line-row"><span class="it">Dolcissimo soffrir!</span><span class="es">¡Dulcísimo sufrimiento!</span></div>
       <div class="stage-direction">
         <span>(Geronte apparisce)</span>
         <span class="es">(Geronte aparece en la puerta)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
       </div>
     </div>
 
@@ -2777,10 +2209,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t20">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Ah!</span><span class="es">¡Ah!</span></div>
       <div class="character-row">
         <span class="character-name">Geronte</span>
@@ -2850,9 +2278,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">O gentil cavaliere,</span><span class="es">Oh gentil caballero,</span></div>
       <div class="line-row"><span class="it">o vaga signorina,</span><span class="es">oh, graciosa damisela,</span></div>
       <div class="line-row"><span class="it">arrivederci... e presto!</span><span class="es">¡adiós... y hasta pronto!</span></div>
-      <div class="stage-direction">
-        <span>(esce)</span>
-        <span class="es">(Sale)</span>
+      <div class="line-row"><span class="it">(esce)</span><span class="es">(Sale)</span></div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
       </div>
     </div>
 
@@ -2863,10 +2292,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t21">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Ah! Ah!... Liberi!</span><span class="es">¡Ah! ¡Ah!... ¡Libres!</span></div>
       <div class="line-row"><span class="it">Liberi come l'aria!</span><span class="es">¡Libres como el viento!</span></div>
       <div class="line-row"><span class="it">Che gioia, cavaliere,</span><span class="es">¡Qué alegría, caballero,</span></div>
@@ -2924,9 +2349,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">deh, mi perdona!</span><span class="es">ay, perdóname!</span></div>
       <div class="line-row"><span class="it">Sarò fedele e buona,</span><span class="es">Seré fiel y buena,</span></div>
       <div class="line-row"><span class="it">lo giuro, lo giuro...</span><span class="es">lo juro, lo juro...</span></div>
-      <div class="stage-direction">
-        <span>(entra Lescaut)</span>
-        <span class="es">(Entra Lescaut corriendo)</span>
+      <div class="line-row"><span class="it">(entra Lescaut)</span><span class="es">(Entra Lescaut corriendo)</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
       </div>
     </div>
 
@@ -2937,10 +2363,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t22">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Lescaut!</span><span class="es">¡Lescaut!</span></div>
       <div class="character-row">
         <span class="character-name">Manon</span>
@@ -2969,7 +2391,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Di'!</span><span class="es">¡Habla!</span></div>
       <div class="character-row">
         <span class="character-name">Manon, Des Grieux</span>
-        <span class="character-name">Manon, Des Grieux</span>
+        <span class="character-name">Ambos</span>
       </div>
       <div class="line-row"><span class="it">O ciel!</span><span class="es">¡Oh cielos!</span></div>
       <div class="line-row"><span class="it">Che é stato?</span><span class="es">¿Qué ocurre?</span></div>
@@ -2982,7 +2404,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">flato...</span><span class="es">el aliento...</span></div>
       <div class="character-row">
         <span class="character-name">Manon, Des Grieux</span>
-        <span class="character-name">Manon, Des Grieux</span>
+        <span class="character-name">Ambos</span>
       </div>
       <div class="line-row"><span class="it">Ci fa tremar!</span><span class="es">¡Nos haces temblar! ...</span></div>
       <div class="character-row">
@@ -2993,7 +2415,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">parlar...</span><span class="es">hablar...</span></div>
       <div class="character-row">
         <span class="character-name">Manon, Des Grieux</span>
-        <span class="character-name">Manon, Des Grieux</span>
+        <span class="character-name">Ambos</span>
       </div>
       <div class="line-row"><span class="it">O ciel! Che é stato?</span><span class="es">¡Oh cielos! ¿Qué ocurre?</span></div>
       <div class="character-row">
@@ -3077,7 +2499,7 @@ a Manon y Des Grieux)</span>
         <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
         <span class="character-name">Des Grieux</span>
       </div>
-      <div class="line-row"><span class="it">Maledetto il vecchio astuto!</span><span class="es">¡Maldito   viejo astuto!</span></div>
+      <div class="line-row"><span class="it">Maledetto il vecchio astuto!</span><span class="es">¡Maldito viejo astuto!</span></div>
       <div class="character-row">
         <span class="character-name">Manon</span>
         <span class="character-name">Manon</span>
@@ -3208,8 +2630,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">tosto fuggir!</span><span class="es">huir sin tardanza!</span></div>
       <div class="line-row"><span class="it">Torturar mi vuoi ancor!</span><span class="es">¡Aún me quieres torturar!</span></div>
       <div class="stage-direction">
-        <span>(Lescaut osserva per la finestra)</span>
-        <span class="es">(Lescaut corre a observar por la ventana)</span>
+        <span>(Lescaut osserva per</span>
+        <span class="es">(Lescaut corre a observar</span>
+        <span>la finestra)</span>
+        <span class="es">por la ventana)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Manon</span>
@@ -3219,7 +2643,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">lasciar quest'oro,</span><span class="es">dejar este oro,</span></div>
       <div class="line-row"><span class="it">o mio tesoro!</span><span class="es">oh, tesoro mío!</span></div>
       <div class="stage-direction">
-        <span>(prendi gli gioielli)</span>
+        <span>(prendi gli gioielli</span>
         <span class="es">(Coge otras joyas)</span>
       </div>
       <div class="character-row">
@@ -3317,7 +2741,7 @@ a Manon y Des Grieux)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Nessun si muova!,</span><span class="es">¡Que nadie se mueva!</span></div>
       <div class="character-row">
@@ -3335,18 +2759,19 @@ a Manon y Des Grieux)</span>
       </div>
       <div class="line-row"><span class="it">Se v'arrestan, cavalier,</span><span class="es">Si os arrestan, caballero,</span></div>
       <div class="line-row"><span class="it">chi potrà Manon salvar?</span><span class="es">¿quién podrá salvar a Manon?</span></div>
-      <div class="stage-direction">
-        <span>(Manon esce con il sergente)</span>
-        <span class="es">(el sargento se lleva a Manon)</span>
-      </div>
+      <div class="line-row"><span class="it">(Manon esce con il sergente)</span><span class="es">(el sargento se lleva a Manon)</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
         <span class="character-name">Des Grieux</span>
       </div>
       <div class="line-row"><span class="it">O Manon! O mia Manon!</span><span class="es">¡Oh Manon! ¡Oh mi Manon!</span></div>
       <div class="character-row">
-        <span class="character-name">Intermezzo, Des Grieux</span>
-        <span class="character-name">Intermezzo, Des Grieux</span>
+        <span class="character-name">Intermezzo</span>
+        <span class="character-name">Intermezzo</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
       </div>
       <div class="line-row"><span class="it">"...Gli é che io l'amo!</span><span class="es">"... ¡El hecho es que la amo!</span></div>
       <div class="line-row"><span class="it">La mia passione è così forte</span><span class="es">Mi pasión es tan fuerte</span></div>
@@ -3373,7 +2798,7 @@ a Manon y Des Grieux)</span>
 
     <div class="act-heading" data-act="III">
       <span>Atto Terzo</span>
-      <span>Acto Tercero</span>
+      <span>Acto Terzo</span>
     </div>
 
     <div class="track-col" id="tc23">
@@ -3383,10 +2808,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t23">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Ansia eterna, crudel...</span><span class="es">Ansia eterna, despiadada...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
@@ -3439,10 +2860,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">triste agonia!</span><span class="es">feroz, triste agonía!</span></div>
       <div class="line-row"><span class="it">Oh! lungo strazio</span><span class="es">¡Oh! ¡Larga aflicción</span></div>
       <div class="line-row"><span class="it">della vita mia!</span><span class="es">de mi vida!</span></div>
-      <div class="stage-direction">
-        <span>(gli soldati appariscono)</span>
-        <span class="es">(entra el relevo de la guardia)</span>
-      </div>
+      <div class="line-row"><span class="it">(gli soldati appariscono)</span><span class="es">(entra el relevo de la guardia)</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
         <span class="character-name">Lescaut</span>
@@ -3462,8 +2880,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">È l'Havre addormentata!</span><span class="es">¡El Havre sigue adormecido!</span></div>
       <div class="line-row"><span class="it">L'ora è giunta!</span><span class="es">¡Llega el momento!</span></div>
       <div class="stage-direction">
-        <span>(bussa la finestra e apparisse Manon)</span>
-        <span class="es">(golpea la ventana y aparece en ella Manon)</span>
+        <span>(bussa la finestra e</span>
+        <span class="es">(golpea la ventana y aparece</span>
+        <span>apparisse Manon)</span>
+        <span class="es">en ella Manon)</span>
       </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
@@ -3537,6 +2957,10 @@ a Manon y Des Grieux)</span>
         <span class="character-name">Des Grieux</span>
       </div>
       <div class="line-row"><span class="it">Taci! Taci!</span><span class="es">¡Calla! ¡Calla!</span></div>
+      <div class="character-row">
+        <span class="character-name">Guardie Notturna</span>
+        <span class="character-name">Farolero</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc24">
@@ -3546,10 +2970,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t24">
-      <div class="character-row">
-        <span class="character-name">Guardie Notturna</span>
-        <span class="character-name">Guardie Notturna</span>
-      </div>
       <div class="line-row"><span class="it">... e Kate rispose</span><span class="es">... y Kate respondió</span></div>
       <div class="line-row"><span class="it">al Re:</span><span class="es">al rey:</span></div>
       <div class="line-row"><span class="it">"D'una zitella</span><span class="es">"¿Por qué tentar</span></div>
@@ -3583,7 +3003,7 @@ a Manon y Des Grieux)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Guardie Notturna</span>
-        <span class="character-name">Guardie Notturna</span>
+        <span class="character-name">Farolero</span>
       </div>
       <div class="line-row"><span class="it">...e Kate rispose</span><span class="es">...y Kate respondió</span></div>
       <div class="line-row"><span class="it">al Re.</span><span class="es">al Rey.</span></div>
@@ -3600,6 +3020,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">funebre io sento!</span><span class="es">fúnebre amenaza!</span></div>
       <div class="line-row"><span class="it">Tremo a un periglio</span><span class="es">Temo un peligro</span></div>
       <div class="line-row"><span class="it">che ignoto m'è.</span><span class="es">que ignoro.</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc25">
@@ -3609,10 +3033,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t25">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Manon, disperato è</span><span class="es">¡Manon, desesperada</span></div>
       <div class="line-row"><span class="it">il mio prego!</span><span class="es">es mi súplica!</span></div>
       <div class="line-row"><span class="it">L'affanno la parola</span><span class="es">El anhelo me deja</span></div>
@@ -3634,6 +3054,10 @@ a Manon y Des Grieux)</span>
         <span>(s'odi un colpo)</span>
         <span class="es">(Se escucha un disparo)</span>
       </div>
+      <div class="character-row">
+        <span class="character-name">Coro Interno</span>
+        <span class="character-name">Voces</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc26">
@@ -3643,22 +3067,18 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t26">
-      <div class="character-row">
-        <span class="character-name">Coro Interno</span>
-        <span class="character-name">Coro Interno</span>
-      </div>
       <div class="line-row"><span class="it">All'armi! All'armi!</span><span class="es">¡A las armas! ¡A las armas!</span></div>
       <div class="stage-direction">
         <span>(all'interno)</span>
         <span class="es">(desde dentro)</span>
       </div>
-      <div class="stage-direction">
-        <span>(qui entra correndo)</span>
-        <span class="es">(que entra corriendo)</span>
-      </div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="lescaut">Lescaut</span>
         <span class="character-name">Lescaut</span>
+      </div>
+      <div class="stage-direction">
+        <span>(qui entra correndo)</span>
+        <span class="es">(que entra corriendo)</span>
       </div>
       <div class="line-row"><span class="it">Perduta è la partita!</span><span class="es">¡Perdida está la partida!</span></div>
       <div class="line-row"><span class="it">Cavalier, salviam la vita!</span><span class="es">¡Caballero, salvemos la vida!</span></div>
@@ -3669,7 +3089,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Che avvenne?</span><span class="es">¿Qué ha ocurrido?</span></div>
       <div class="character-row">
         <span class="character-name">Coro Interno</span>
-        <span class="character-name">Coro Interno</span>
+        <span class="character-name">Voces</span>
       </div>
       <div class="line-row"><span class="it">All'armi! Ah!</span><span class="es">¡A las armas! ¡Ah!</span></div>
       <div class="stage-direction">
@@ -3722,12 +3142,14 @@ a Manon y Des Grieux)</span>
       </div>
       <div class="line-row"><span class="it">Cattivo affar!</span><span class="es">¡Mal asunto!</span></div>
       <div class="stage-direction">
-        <span>(Lescaut e Des Grieux scendono. Entra la folla)</span>
-        <span class="es">(Salen. Atraídos por el disparo acude la muchedumbre)</span>
+        <span>(Lescaut e Des Grieux</span>
+        <span class="es">(Salen. Atraídos por el disparo</span>
+        <span>scendono. Entra la folla)</span>
+        <span class="es">acude la muchedumbre)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Udiste! Che avvenne?</span><span class="es">¡Ah! ¡Oísteis! ¿Qué pasa?</span></div>
       <div class="line-row"><span class="it">Che fu? Olà!</span><span class="es">¿Qué ha sido? ¿Un rapto?</span></div>
@@ -3737,33 +3159,44 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">tenebra protesse laggiù</span><span class="es">tiniebla protegía a</span></div>
       <div class="line-row"><span class="it">i rapitori!</span><span class="es">los raptores!</span></div>
       <div class="stage-direction">
-        <span>(a tambur battente entrano gli soldati e il sergente con parecchi donne e s'incamminano verso la nave)</span>
-        <span class="es">(Redoble de tambores. Sale del cuartel el piquete de soldados, custodiando a varias mujeres, y se dirigen hacia el barco)</span>
+        <span>(a tambur battente entrano</span>
+        <span class="es">(Redoble de tambores. Sale del</span>
+        <span>gli soldati e il sergente</span>
+        <span class="es">cuartel el piquete de soldados,</span>
+      </div>
+      <div class="line-row"><span class="it">con parecchi donne e</span><span class="es">custodiando a varias mujeres, y</span></div>
+      <div class="stage-direction">
+        <span>s'incamminano verso la nave)</span>
+        <span class="es">se dirigen hacia el barco)</span>
       </div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Il passo m'aprite!</span><span class="es">¡Abrid paso!</span></div>
+      <div class="character-row">
+        <span class="character-name">Capitano</span>
+        <span class="character-name">Capitán Del Barco</span>
+      </div>
       <div class="stage-direction">
         <span>(scendendo dalla nave)</span>
         <span class="es">(descendiendo del barco)</span>
-      </div>
-      <div class="character-row">
-        <span class="character-name">Capitano</span>
-        <span class="character-name">Capitano</span>
       </div>
       <div class="line-row"><span class="it">È pronta la nave.</span><span class="es">La nave está dispuesta.</span></div>
       <div class="line-row"><span class="it">L'appello affrettate!</span><span class="es">¡Pasad lista deprisa!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Silenzio!</span><span class="es">¡Silencio!</span></div>
       <div class="line-row"><span class="it">L'appello cominciano già!</span><span class="es">¡Empiezan a llamar!</span></div>
       <div class="stage-direction">
         <span>(il sergente far l'appello)</span>
         <span class="es">(El sargento pasa lista)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
     </div>
 
@@ -3774,37 +3207,33 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t27">
-      <div class="character-row">
-        <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
-      </div>
       <div class="line-row"><span class="it">Rosetta!</span><span class="es">¡Rosetta!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Eh! Che aria!</span><span class="es">¡Ah! ¡Qué aires!</span></div>
       <div class="line-row"><span class="it">È un amore!</span><span class="es">¡Es un encanto!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Madelon!</span><span class="es">¡Madelon!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Qui sei ridotta!</span><span class="es">¡Ah! ¡Qué bajo has caído!</span></div>
       <div class="line-row"><span class="it">Ah! ah!</span><span class="es">¡Ah! ¡Ah!</span></div>
       <div class="line-row"><span class="it">Che riso insolente!</span><span class="es">¡Qué risa tan insolente!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Manon...</span><span class="es">Manon...</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Chissà!</span><span class="es">¡Quién será!</span></div>
       <div class="line-row"><span class="it">Una sedotta!</span><span class="es">¡La habrán seducido!</span></div>
@@ -3815,32 +3244,32 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">che dolore!</span><span class="es">cuánta tristeza!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Ninetta!</span><span class="es">¡Ninetta!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Che incesso!</span><span class="es">¡Qué majestuosidad!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Caton!</span><span class="es">¡Caton!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">È un dea!</span><span class="es">¡Es una diosa!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Regina!</span><span class="es">¡Regina!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah!</span><span class="es">¡Ah! ¡Ah!</span></div>
       <div class="line-row"><span class="it">Qui sei ridotta!</span><span class="es">¡Qué bajo has caído!</span></div>
@@ -3849,66 +3278,66 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Che riso insolente!</span><span class="es">¡Qué risa tan insolente!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Claretta!</span><span class="es">¡Claretta!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah! Che bionda!</span><span class="es">¡Ah! ¡Ah! ¡Qué rubia!</span></div>
       <div class="line-row"><span class="it">Che gaia assemblea!</span><span class="es">¡Qué alegre asamblea!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Violetta!</span><span class="es">¡Violetta!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah! Che bruna!</span><span class="es">¡Ah! ¡Ah! ¡Vaya morena!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Nerina!</span><span class="es">¡Nerina!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Che splendidi nei!</span><span class="es">¡Qué espléndidos lunares!</span></div>
       <div class="line-row"><span class="it">Di vaghe nessuna!</span><span class="es">¡Qué adorables!</span></div>
       <div class="line-row"><span class="it">Che gaia assemblea!</span><span class="es">¡Qué alegre asamblea!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Elisa!</span><span class="es">¡Elisa!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Che gaia assemblea!</span><span class="es">¡Qué alegre asamblea!</span></div>
       <div class="line-row"><span class="it">Di vaghe nessuna!</span><span class="es">¡Qué adorables!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Ninon!</span><span class="es">¡Ninon!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah!</span><span class="es">¡Ah! ¡Ah!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Giorgetta!</span><span class="es">¡Giorgetta!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Ah! Ah! Ah! Ah!</span><span class="es">¡Ah! ¡Ah! ¡Ah! ¡Ah!</span></div>
       <div class="character-row">
@@ -3918,7 +3347,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Costei? V'è un mistero!</span><span class="es">¿Ésta? ¡Es un misterio!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Sedotta? Tradita?</span><span class="es">¿Seducida? ¿Traicionada?</span></div>
       <div class="character-row">
@@ -3930,7 +3359,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">d'un vago garzone!</span><span class="es">de un hermoso joven!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Che infamia! Che orror!</span><span class="es">¡Qué infamia! ¡Qué horror!</span></div>
       <div class="line-row"><span class="it">Fa compassione!</span><span class="es">¡Inspira compasión!</span></div>
@@ -3943,7 +3372,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">carezze gittata!</span><span class="es">sucias caricias!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">È sempre cosi!</span><span class="es">¡Siempre pasa lo mismo!</span></div>
       <div class="character-row">
@@ -3956,7 +3385,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">cacciata!</span><span class="es">despedida!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Che infamia! Che orrore!</span><span class="es">¡Qué infamia! ¡Qué horror!</span></div>
       <div class="line-row"><span class="it">Ah! Fa compassion!</span><span class="es">¡Ah! ¡Inspira compasión!</span></div>
@@ -3974,7 +3403,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">la sposa rapita!</span><span class="es">la esposa raptada!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Che infamia! Che orror!</span><span class="es">¡Qué infamia! ¡Qué horror!</span></div>
       <div class="line-row"><span class="it">Inver fa pietà,</span><span class="es">¡En verdad inspira piedad,</span></div>
@@ -4022,6 +3451,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Ah! M'ho nell'animo</span><span class="es">¡Ah! ¡Sólo tengo ánimos</span></div>
       <div class="line-row"><span class="it">l'odio soltanto</span><span class="es">para odiar tanto a los</span></div>
       <div class="line-row"><span class="it">degl'uomini e di Dio!</span><span class="es">hombres como a Dios!</span></div>
+      <div class="character-row">
+        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc28">
@@ -4031,10 +3464,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t28">
-      <div class="character-row">
-        <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
-      </div>
       <div class="line-row"><span class="it">Presto! In fila!</span><span class="es">¡Rápido! ¡En fila!</span></div>
       <div class="line-row"><span class="it">Marciate!</span><span class="es">¡En marcha!</span></div>
       <div class="stage-direction">
@@ -4054,12 +3483,12 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Indietro!</span><span class="es">¡Atrás!</span></div>
       <div class="character-row">
         <span class="character-name">Sergente</span>
-        <span class="character-name">Sergente</span>
+        <span class="character-name">Sargento</span>
       </div>
       <div class="line-row"><span class="it">Via!</span><span class="es">¡Largo de aquí!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Coraggio!</span><span class="es">¡Valor!</span></div>
       <div class="character-row">
@@ -4070,12 +3499,12 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Manon, ti stringi a me!</span><span class="es">¡Manon, abrázate a mí!</span></div>
       <div class="character-row">
         <span class="character-name">Coro</span>
-        <span class="character-name">Coro</span>
+        <span class="character-name">Muchedumbre</span>
       </div>
       <div class="line-row"><span class="it">Così! Bravo!</span><span class="es">¡Así se hace! ¡Bravo!</span></div>
       <div class="character-row">
         <span class="character-name">Capitano</span>
-        <span class="character-name">Capitano</span>
+        <span class="character-name">Capitán Del Barco</span>
       </div>
       <div class="line-row"><span class="it">Che avvien?</span><span class="es">¿Qué pasa aquí?</span></div>
       <div class="character-row">
@@ -4109,7 +3538,7 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Ingrato non sarò!</span><span class="es">¡No seré desagradecido!</span></div>
       <div class="character-row">
         <span class="character-name">Capitano</span>
-        <span class="character-name">Capitano</span>
+        <span class="character-name">Capitán Del Barco</span>
       </div>
       <div class="line-row"><span class="it">Ah! Popolar le Americhe,</span><span class="es">¡Ah! ¿Deseas poblar América,</span></div>
       <div class="line-row"><span class="it">giovinotto, desiate?</span><span class="es">jovencito?</span></div>
@@ -4120,6 +3549,10 @@ a Manon y Des Grieux)</span>
       <div class="stage-direction">
         <span>(ascende alla nave)</span>
         <span class="es">(sube corriendo al barco)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
       </div>
     </div>
 
@@ -4135,10 +3568,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t29">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Tutta su me ti posa,</span><span class="es">Apóyate en mí,</span></div>
       <div class="line-row"><span class="it">o mia stanca diletta.</span><span class="es">mi cansada amiga.</span></div>
       <div class="line-row"><span class="it">La strada polverosa,</span><span class="es">El camino polvoriento,</span></div>
@@ -4194,6 +3623,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Un solo istante...</span><span class="es">Un solo instante...</span></div>
       <div class="line-row"><span class="it">Mo dolce amante a</span><span class="es">¡Mi dulce amor, acércate,</span></div>
       <div class="line-row"><span class="it">me t'appressa, a me!</span><span class="es">acércate a mí!</span></div>
+      <div class="character-row">
+        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
+        <span class="character-name">Des Grieux</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc30">
@@ -4203,10 +3636,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t30">
-      <div class="character-row">
-        <span class="character-name has-tooltip" data-character-id="desgrieux">Des Grieux</span>
-        <span class="character-name">Des Grieux</span>
-      </div>
       <div class="line-row"><span class="it">Manon, senti, amor mio.</span><span class="es">Manon, escúchame, amor mío.</span></div>
       <div class="line-row"><span class="it">Non mi rispondi, amore?</span><span class="es">¿No me contestas, amor?</span></div>
       <div class="line-row"><span class="it">Vedi, son io che piango,</span><span class="es">¡Mira, soy yo quien solloza,</span></div>
@@ -4223,6 +3652,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Rispondimi, amor mio!...</span><span class="es">¡Respóndeme, amor mío!...</span></div>
       <div class="line-row"><span class="it">Tace! Manon,</span><span class="es">¡Callas! Manon,</span></div>
       <div class="line-row"><span class="it">non mi rispondi?</span><span class="es">¿no me contestas?</span></div>
+      <div class="character-row">
+        <span class="character-name">Manon</span>
+        <span class="character-name">Manon</span>
+      </div>
     </div>
 
     <div class="track-col" id="tc31">
@@ -4232,10 +3665,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t31">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Sei tu che piangi?</span><span class="es">¿Eres tú quien llora?</span></div>
       <div class="line-row"><span class="it">Sei tu che implori?...</span><span class="es">¿Eres tú quien implora?...</span></div>
       <div class="line-row"><span class="it">I tuoi singulti ascolto</span><span class="es">Oigo tus sollozos</span></div>
@@ -4264,8 +3693,10 @@ a Manon y Des Grieux)</span>
       <div class="line-row"><span class="it">Tutto il mio sangue</span><span class="es">¡Daría toda mi sangre</span></div>
       <div class="line-row"><span class="it">per la tua vita!</span><span class="es">por tu vida!</span></div>
       <div class="stage-direction">
-        <span>(guarda all'orizzonte e poi esce)</span>
-        <span class="es">(corre hacia el fondo para mirar al lejano horizonte)</span>
+        <span>(guarda all'orizzonte</span>
+        <span class="es">(corre hacia el fondo para</span>
+        <span>e poi esce)</span>
+        <span class="es">mirar al lejano horizonte)</span>
       </div>
       <div class="line-row"><span class="it">E nulla! Nulla!</span><span class="es">¡No hay nada! ¡Nada!</span></div>
       <div class="line-row"><span class="it">Arinda landa...</span><span class="es">árida tierra...</span></div>
@@ -4299,10 +3730,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t32">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Sola, perduta,</span><span class="es">Sola, perdida,</span></div>
       <div class="line-row"><span class="it">abbandonata...</span><span class="es">abandonada...</span></div>
       <div class="line-row"><span class="it">in landa desolata!</span><span class="es">en un país desolado.</span></div>
@@ -4347,10 +3774,6 @@ a Manon y Des Grieux)</span>
       </div>
     </div>
     <div class="text-col" id="t33">
-      <div class="character-row">
-        <span class="character-name">Manon</span>
-        <span class="character-name">Manon</span>
-      </div>
       <div class="line-row"><span class="it">Fra le tue braccia,</span><span class="es">¡Entre tus brazos,</span></div>
       <div class="line-row"><span class="it">amore, Fultima volta!</span><span class="es">amor, por última vez!</span></div>
       <div class="line-row"><span class="it">Apporti tu la</span><span class="es">¿Traes buenas</span></div>
@@ -4486,6 +3909,30 @@ a Manon y Des Grieux)</span>
   </div>
 </div>
 
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
@@ -4596,6 +4043,14 @@ a Manon y Des Grieux)</span>
   let currentActiveId = "t1";
   let observer = null;
 
+  function openIndex() {
+    if (window.innerWidth <= 600) {
+      openBottomSheet();
+    } else {
+      openDrawer();
+    }
+  }
+
   function openDrawer() {
     closeCast();
     buildDrawer();
@@ -4628,6 +4083,7 @@ a Manon y Des Grieux)</span>
     if (e.key !== 'Escape') return;
     closeDrawer();
     closeCast();
+    closeCastSheet();
   });
 
   function toggleSwitcher(event) {
@@ -4745,6 +4201,7 @@ a Manon y Des Grieux)</span>
     const lbl = document.getElementById('recordingLabel');
     if (lbl) lbl.textContent = RECORDINGS[key].label;
     updateTrackTags();
+    buildMobileTrackMarkers();
     buildDrawer();
     buildSwitcherDropdown();
     const dd = document.getElementById('recDropdown');
@@ -4754,6 +4211,9 @@ a Manon y Des Grieux)</span>
     applyTooltips();
     if (document.getElementById('castOverlay').classList.contains('open')) {
       buildCast();
+    }
+    if (document.getElementById('castSheetOverlay').classList.contains('open')) {
+      buildCastSheet();
     }
   }
 
@@ -4786,9 +4246,130 @@ a Manon y Des Grieux)</span>
     });
   }
 
+  const mobileLangState = { it: true, es: true };
+
+  function toggleLang(lang) {
+    const langs = Object.keys(mobileLangState);
+    const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
+    if (mobileLangState[lang] && !hasOtherOn) return;
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('it-hidden', !mobileLangState.it);
+    document.getElementById('mobileBtnIT').classList.toggle('off', !mobileLangState.it);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  function buildMobileTrackMarkers() {
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of rec.tracks) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  function buildCastSheet() {
+    const cast = CAST[activeRecording];
+    const body = document.getElementById('castSheetBody');
+    body.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      const singerClass = singer ? 'cast-singer' : 'cast-singer empty';
+      const singerText = singer || '—';
+      return `<div class="cast-sheet-row">
+        <div class="cast-sheet-char">
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+        </div>
+        <div class="${singerClass}">${singerText}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCastSheet() {
+    buildCastSheet();
+    document.getElementById('castSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCastSheet() {
+    document.getElementById('castSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildSheetRecordingPicker() {
+    const picker = document.getElementById('sheetRecPicker');
+    if (!picker) return;
+    picker.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<button class="sheet-rec-btn${key === activeRecording ? ' active' : ''}" onclick="switchRecordingFromSheet('${key}')">${rec.short}</button>`
+    ).join('');
+  }
+
+  function switchRecordingFromSheet(key) {
+    if (key === activeRecording) return;
+    switchRecording(key);
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function buildBottomSheetBody() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function buildBottomSheet() {
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
   buildSwitcherDropdown();
   buildDrawer();
   rewireObserver();
   updateActive("t1");
   applyTooltips();
+  buildMobileTrackMarkers();
 </script>

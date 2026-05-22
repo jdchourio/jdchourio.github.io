@@ -1,610 +1,11 @@
 <meta charset="utf-8">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --serif: 'EB Garamond', Georgia, serif;
-    --sans: 'Jost', var(--font-sans);
-    --bar-h: 48px;
-    --gold: #8B6914;
-    --gold-light: #f5ede0;
-    --gold-mid: #c49a2a;
-    --gold-border: #d4a84b;
-    --col-gap: 1rem;
-    --col-left: 52px;
-    --text-dim: var(--color-text-secondary);
-    --text-main: var(--color-text-primary);
-    --text-max-width: 900px;
-    --bg: var(--color-background-primary);
-    --bg2: var(--color-background-secondary);
-  }
-
-  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
-
-  .context-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-background-primary, #fdfaf6);
-    border-bottom: 1px solid var(--color-border-secondary);
-    height: var(--bar-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    gap: 1rem;
-
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  @media (max-width: 580px) {
-    .context-bar {
-      height: auto;
-      min-height: var(--bar-h);
-      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .context-left {
-      flex: 1 1 100%;
-      gap: 0.5rem;
-    }
-
-    .context-track-title {
-      width: auto !important;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .recording-switcher {
-      font-size: 11px !important;
-      border: none;
-      padding: 0;
-      background: none;
-    }
-
-    #actLabel { font-size: 11px !important; }
-  }
-
-  .context-left {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 4px 6px;
-    margin: -4px -6px;
-    transition: background 0.15s;
-  }
-  .context-left:hover { background: var(--bg2); }
-  .context-left:active { background: var(--gold-light); }
-
-  .context-sep { opacity: 0.3; }
-  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
-
-  .context-track {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 2px 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .context-track-title {
-    font-size: 11px;
-    color: var(--text-dim);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-family: var(--sans);
-  }
-
-  .context-right { display: flex; align-items: center; gap: 10px; }
-  .recording-switcher-wrap { position: relative; }
-
-  .recording-switcher {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 3px 8px;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .recording-switcher:hover { background: var(--bg2); }
-
-  .switcher-chevron { font-size: 8px; opacity: 0.5; }
-
-  .recording-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 4px);
-    right: 0;
-    background: var(--color-background-primary, #fdfaf6);
-    border: 1px solid var(--color-border-primary);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    min-width: 220px;
-    z-index: 300;
-  }
-  .recording-dropdown.open { display: block; }
-
-  .recording-option {
-    font-family: var(--sans);
-    font-size: 12px;
-    padding: 10px 14px;
-    cursor: pointer;
-    color: var(--text-main);
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-  .recording-option:last-child { border-bottom: none; }
-  .recording-option:hover { background: var(--bg2); }
-  .recording-option.active {
-    background: var(--gold-light);
-    color: var(--gold);
-    font-weight: 500;
-  }
-
-
-  .libretto-body {
-    display: grid;
-    grid-template-columns: var(--col-left) 1fr;
-    padding-bottom: 4rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .act-heading {
-    grid-column: 1 / -1;
-    font-family: var(--sans);
-    font-size: 25px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
-    border-bottom: 1px solid var(--color-border-secondary);
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .track-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-top: 1.6rem;
-    padding-right: 0;
-    position: relative;
-  }
-
-  .track-tag {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 4px 6px;
-    gap: 1px;
-    cursor: default;
-    width: 40px;
-  }
-
-  .track-tag-cd {
-    font-family: var(--sans);
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-mid);
-  }
-
-  .track-tag-num {
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .text-col { 
-    padding: 0 1.25rem; 
-    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
-    max-width: var(--text-max-width);
-  }
-
-  .musical-number {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 1.25rem 0 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .musical-number::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border-secondary);
-  }
-
-  .scene-heading {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    font-style: italic;
-    margin: 0.75rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    font-style: italic;
-    color: var(--text-dim);
-    margin: 0.6rem 0;
-    border-left: 2px solid var(--color-border-secondary);
-    line-height: 1.5;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction .es { font-style: italic; }
-
-  .character-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.9rem 0 0.15rem;
-  }
-
-  .character-name {
-    font-family: var(--sans);
-    font-size: 16px;
-    font-weight: 550;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .line-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    align-items: baseline;
-  }
-
-  /* Inline stage direction — sits between character name and first sung line */
-  .inline-direction {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.2rem 0 0.25rem;
-  }
-
-  .inline-direction span {
-    font-family: var(--serif);
-    font-size: 13px;
-    font-style: italic;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  .fr {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .es {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .spacer-row { grid-column: 1/-1; height: 2rem; }
-  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
-
-  .drawer-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 200;
-  }
-
-  .drawer-overlay.open { display: block; }
-
-  .drawer {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-right: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .drawer-header-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Shared close button (used in both drawers) ── */
-  .drawer-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--sans);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--text-dim);
-    line-height: 1;
-    padding: 4px 6px;
-    flex-shrink: 0;
-    border-radius: 3px;
-    transition: color 0.15s;
-  }
-  .drawer-close:hover { color: #c0392b; background: none; }
-
-  .drawer-body { overflow-y: auto; flex: 1; }
-
-  .drawer-cd-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 1.25rem 1.25rem 0.5rem;
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-tertiary);
-    border-top: 1px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 9px 1.25rem;
-    cursor: pointer;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track:hover { background: var(--bg2); }
-  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
-
-  .drawer-track-num {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-dim);
-    width: 20px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .drawer-track.active .drawer-track-num { color: var(--gold); }
-
-  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
-
-  .drawer-track-title {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-    line-height: 1.3;
-  }
-
-  .drawer-track.active .drawer-track-title { color: var(--gold); }
-
-  .drawer-track-act {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Cast button ── */
-  .cast-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-  }
-  .cast-btn:hover { background: var(--bg2); }
-
-  /* ── Cast drawer (mirrors index drawer) ── */
-  .cast-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 250;
-  }
-  .cast-overlay.open { display: block; }
-
-  .cast-drawer {
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .cast-drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .cast-drawer-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  .cast-drawer-body { overflow-y: auto; flex: 1; }
-
-  .cast-table { width: 100%; border-collapse: collapse; }
-
-  .cast-table thead tr {
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-secondary);
-  }
-
-  .cast-table th {
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 8px 1.25rem;
-    text-align: left;
-  }
-
-  .cast-table td {
-    padding: 9px 1.25rem;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    vertical-align: middle;
-  }
-
-  .cast-table tr:last-child td { border-bottom: none; }
-
-  .cast-char-name {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-  }
-
-  .cast-voice {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    margin-top: 1px;
-  }
-
-  .cast-description {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    margin-top: 1px;
-    letter-spacing: 0.02em;
-  }
-
-  .cast-singer {
-    font-family: var(--serif);
-    font-size: 14px;
-    color: var(--text-main);
-    font-style: italic;
-  }
-
-  .cast-singer.empty {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    font-style: normal;
-    letter-spacing: 0.03em;
-  }
-
-  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
-  @media (hover: hover) {
-    .character-name[data-tooltip] {
-      position: relative;
-      cursor: default;
-    }
-    .character-name[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 0;
-      background: var(--color-background-primary, #fdfaf6);
-      border: 1px solid var(--color-border-primary);
-      border-radius: 3px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      font-family: var(--sans);
-      font-size: 10.5px;
-      color: var(--text-main);
-      white-space: nowrap;
-      padding: 5px 9px;
-      pointer-events: none;
-      z-index: 150;
-      letter-spacing: 0.02em;
-      line-height: 1.5;
-    }
-  }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left" onclick="openDrawer()" title="Open index">
+    <div class="context-left" onclick="openIndex()" title="Open index">
       <span class="context-track" id="trackLabel">CD 1 · T1</span>
       <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
@@ -622,6 +23,9 @@
       </div>
       <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
+    <button class="lang-filter-btn" id="mobileBtnIT" onclick="toggleLang('it')">IT</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
   </div>
 
   <div class="libretto-body">
@@ -638,6 +42,40 @@
       </div>
     </div>
     <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>(Collina presso Nagasaki. Casa</span>
+        <span class="es">(Una colina en las afueras de</span>
+        <span>giapponese, terrazza e giardino. In</span>
+        <span class="es">Nagasaki. Una casa con terraza y</span>
+        <span>fondo, al basso, la rada, il porto,</span>
+        <span class="es">jardín, desde la que se ven la bahía,</span>
+        <span>la città di Nagasaki.)</span>
+        <span class="es">el puerto y la ciudad de Nagasaki)</span>
+        <span>(Si alza il sipario.)</span>
+        <span class="es">(Se levanta el telón)</span>
+        <span>(Dalla camera in fondo alla casetta, Goro</span>
+        <span class="es">(Habitación al fondo de la casa.</span>
+        <span>con molti inchini introduce Pinkerton, al</span>
+        <span class="es">Goro enseñando a Pinkerton la</span>
+        <span>quale con grande prosopopea, ma sempre</span>
+        <span class="es">casa con muchas reverencias. Con</span>
+        <span>ossequente, fa ammirare in dettaglio la</span>
+        <span class="es">gran pomposidad explica los</span>
+        <span>piccola casa. Goro fa scorrere una parete</span>
+        <span class="es">detalles de la pequeña casa. Goro</span>
+        <span>nel fondo, e ne spiega lo scopo a Pinkerton.</span>
+        <span class="es">corre una pared en el fondo y</span>
+        <span>Si avanzano un poco sul terrazzo.)</span>
+        <span class="es">explica la finalidad a Pinkerton.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Pinkerton</span>
+        <span class="character-name">Pinkerton</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sorpreso per quanto ha visto dice a Goro:)</span>
+        <span class="es">(Sorprendido)</span>
+      </div>
       <div class="line-row"><span class="it">... E soffitto... e pareti...</span><span class="es">...Y techo... y paredes...</span></div>
       <div class="character-row">
         <span class="character-name has-tooltip" data-character-id="goro">Goro</span>
@@ -696,8 +134,6 @@
       <div class="stage-direction">
         <span>(Goro fa scorrere la parete</span>
         <span class="es">(Goro desliza un panel</span>
-      </div>
-      <div class="stage-direction">
         <span>verso la terrazza)</span>
         <span class="es">hacia la terraza)</span>
       </div>
@@ -742,8 +178,6 @@
       <div class="stage-direction">
         <span>(invita Pinkerton a</span>
         <span class="es">(Invita a Pinkerton</span>
-      </div>
-      <div class="stage-direction">
         <span>scendere nel giardino)</span>
         <span class="es">a bajar al jardín)</span>
       </div>
@@ -755,12 +189,8 @@
       <div class="stage-direction">
         <span>(Goro batte tre volte le mani palma a</span>
         <span class="es">(Goro da tres palmadas. Y entran</span>
-      </div>
-      <div class="stage-direction">
         <span>palma. Entrano due uomini ed una donna</span>
         <span class="es">dos hombres y una mujer que se</span>
-      </div>
-      <div class="stage-direction">
         <span>e si genuflettono innanzi a Pinkerton.)</span>
         <span class="es">inclinan ante Pinkerton)</span>
       </div>
@@ -824,8 +254,6 @@
       <div class="stage-direction">
         <span>(sempre in ginocchio, ma</span>
         <span class="es">(permaneciendo de rodillas</span>
-      </div>
-      <div class="stage-direction">
         <span>fatta ardita rialza la testa)</span>
         <span class="es">pero con la cabeza levantada)</span>
       </div>
@@ -845,8 +273,6 @@
       <div class="stage-direction">
         <span>(Scende nel giardino, seguendo</span>
         <span class="es">(Desciende al jardín, siguiendo a</span>
-      </div>
-      <div class="stage-direction">
         <span>Pinkerton che si allontana sorridendo.)</span>
         <span class="es">Pinkerton que se aleja sonriendo)</span>
       </div>
@@ -859,20 +285,12 @@
       <div class="stage-direction">
         <span>(Pinkerton è distratto e seccato. Goro,</span>
         <span class="es">(Goro, dándose cuenta de que</span>
-      </div>
-      <div class="stage-direction">
         <span>accorgendosi che Pinkerton comincia ad</span>
         <span class="es">Pinkerton empieza a aburrirse de</span>
-      </div>
-      <div class="stage-direction">
         <span>essera infastidito dalla loquela di Suzuki,</span>
         <span class="es">la locuacidad de Suzuki, da unas</span>
-      </div>
-      <div class="stage-direction">
         <span>batte tre volte le mani. I tre si alzano e</span>
         <span class="es">palmadas, y los tres sirvientes se</span>
-      </div>
-      <div class="stage-direction">
         <span>fuggono rapidamente rientrando in casa.)</span>
         <span class="es">retiran rápidamente hacia la casa)</span>
       </div>
@@ -885,8 +303,6 @@
       <div class="stage-direction">
         <span>(a Goro che è andato</span>
         <span class="es">(a Goro que se va hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>verso il fondo ad osservare)</span>
         <span class="es">el fondo a observar)</span>
       </div>
@@ -972,8 +388,6 @@
       <div class="stage-direction">
         <span>(ch'è accorso al fondo,</span>
         <span class="es">(Que ha acudido al</span>
-      </div>
-      <div class="stage-direction">
         <span>annuncia a Pinkerton)</span>
         <span class="es">fondo, anuncia a Pinkerton)</span>
       </div>
@@ -999,8 +413,6 @@
       <div class="stage-direction">
         <span>(va incontro al Console:</span>
         <span class="es">(se apresura a saludar al cónsul</span>
-      </div>
-      <div class="stage-direction">
         <span>i due si stringono la mano.)</span>
         <span class="es">y a estrecharle las manos)</span>
       </div>
@@ -1053,8 +465,6 @@
       <div class="stage-direction">
         <span>(contemplando la città</span>
         <span class="es">(Mirando abajo, a</span>
-      </div>
-      <div class="stage-direction">
         <span>ed il mare sottoposti)</span>
         <span class="es">la ciudad y al mar)</span>
       </div>
@@ -1071,20 +481,12 @@
       <div class="stage-direction">
         <span>(Goro viene frettoloso dalla casa, seguito</span>
         <span class="es">(Goro sale de la casa seguido por</span>
-      </div>
-      <div class="stage-direction">
         <span>da due servi: portano bicchieri e bottiglie</span>
         <span class="es">dos sirvientes llevando vasos y</span>
-      </div>
-      <div class="stage-direction">
         <span>che depongono sulla terrazza; i due servi</span>
         <span class="es">botellas que dejan en la terraza.</span>
-      </div>
-      <div class="stage-direction">
         <span>rientrano in casa e Goro si dà a preparare</span>
         <span class="es">Ellos entran en la casa mientras</span>
-      </div>
-      <div class="stage-direction">
         <span>le bevande.)</span>
         <span class="es">Goro prepara las bebidas)</span>
       </div>
@@ -1116,16 +518,10 @@
       <div class="stage-direction">
         <span>(Pinkerton e Sharpless si siedono</span>
         <span class="es">(Pinkerton y Sharpless se sientan</span>
-      </div>
-      <div class="stage-direction">
         <span>sulla terrazza dove Goro ha</span>
         <span class="es">en la terraza donde Goro está</span>
-      </div>
-      <div class="stage-direction">
         <span>preparano le bevande.)</span>
         <span class="es">preparando las bebidas.)</span>
-      </div>
-      <div class="stage-direction">
         <span>(A Sharpless con franchezza)</span>
         <span class="es">(A Sharpless con franqueza)</span>
       </div>
@@ -1146,8 +542,6 @@
       <div class="stage-direction">
         <span>(s'interrompe per offrire</span>
         <span class="es">(Se adelanta para ofrecer</span>
-      </div>
-      <div class="stage-direction">
         <span>da bere a Sharpless)</span>
         <span class="es">una bebida a Sharpless.)</span>
       </div>
@@ -1213,8 +607,6 @@
       <div class="stage-direction">
         <span>(si alza, toccando il</span>
         <span class="es">(levantándose y brindando</span>
-      </div>
-      <div class="stage-direction">
         <span>bicchiere con Sharpless)</span>
         <span class="es">con Sharpless)</span>
       </div>
@@ -1236,8 +628,6 @@
       <div class="stage-direction">
         <span>(Pinkerton e Sharpless si</span>
         <span class="es">(Pinkerton y Sharpless se sientan</span>
-      </div>
-      <div class="stage-direction">
         <span>siedono ancora sulla terrazza.)</span>
         <span class="es">otra vez en la terraza.)</span>
       </div>
@@ -1258,8 +648,6 @@
       <div class="stage-direction">
         <span>(Goro che ha udito, si affaccia al</span>
         <span class="es">(Que ha estado escuchando y entra</span>
-      </div>
-      <div class="stage-direction">
         <span>terrazzo pauroso ed insinuante.)</span>
         <span class="es">en la terraza miedoso e insinuante)</span>
       </div>
@@ -1275,8 +663,6 @@
       <div class="stage-direction">
         <span>(Pinkerton si alza impaziente; il Console</span>
         <span class="es">(Pinkerton se levanta impaciente.</span>
-      </div>
-      <div class="stage-direction">
         <span>ridendo, ringrazia e si alza pure.)</span>
         <span class="es">El cónsul, risueño, sigue su ejemplo)</span>
       </div>
@@ -1292,8 +678,6 @@
       <div class="stage-direction">
         <span>(Goro corre in fondo e scompare</span>
         <span class="es">(Goro corre al fondo y desaparece</span>
-      </div>
-      <div class="stage-direction">
         <span>discendendo il colle.)</span>
         <span class="es">descendiendo colina abajo.)</span>
       </div>
@@ -1470,8 +854,6 @@
       <div class="stage-direction">
         <span>al giardino osservando verso il sentiero</span>
         <span class="es">al fondo del jardín mirando hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>della collina.)</span>
         <span class="es">el sendero de la colina)</span>
       </div>
@@ -1610,8 +992,6 @@
       <div class="stage-direction">
         <span>scena hanno tutte grandi ombrelli</span>
         <span class="es">el jardín. Todas llevan sombrillas</span>
-      </div>
-      <div class="stage-direction">
         <span>aperti, a vivi colori)</span>
         <span class="es">grandes de colores brillantes)</span>
       </div>
@@ -1625,8 +1005,6 @@
       <div class="stage-direction">
         <span>e riconosce Pinkerton. Chiude subito</span>
         <span class="es">a Pinkerton y cerrando su sombrilla,</span>
-      </div>
-      <div class="stage-direction">
         <span>l'ombrello e pronta lo addita alle amiche.)</span>
         <span class="es">lo señala apartándose de sus amigas)</span>
       </div>
@@ -1713,12 +1091,8 @@
       <div class="stage-direction">
         <span>curiosamente il gruppo delle fanciulle,</span>
         <span class="es">con curiosidad el grupo de jovencitas,</span>
-      </div>
-      <div class="stage-direction">
         <span>poi si è avvicinato a Butterfly, che lo</span>
         <span class="es">después se acerca a Butterfly que lo</span>
-      </div>
-      <div class="stage-direction">
         <span>ascolta con attenzione)</span>
         <span class="es">escucha con atención)</span>
       </div>
@@ -1830,8 +1204,6 @@
       <div class="stage-direction">
         <span>è imbarazzato. Tutte si sventolano</span>
         <span class="es">la cabeza; Goro está violento,</span>
-      </div>
-      <div class="stage-direction">
         <span>nervosamente coi ventagli.)</span>
         <span class="es">todas se abanican nerviosamente)</span>
       </div>
@@ -1898,8 +1270,6 @@
       <div class="stage-direction">
         <span>persone e le ha riconosciute, annuncia</span>
         <span class="es">y los reconoce; los anuncia con</span>
-      </div>
-      <div class="stage-direction">
         <span>con importanza)</span>
         <span class="es">importancia)</span>
       </div>
@@ -1924,44 +1294,24 @@
       <div class="stage-direction">
         <span>fondo si vendono salire e sfilare i parenti</span>
         <span class="es">de Butterfly; ella y sus amigas van a</span>
-      </div>
-      <div class="stage-direction">
         <span>di Butterfly: questa va loro incontro</span>
         <span class="es">recibirlos. Hay muchas reverencias.</span>
-      </div>
-      <div class="stage-direction">
         <span>insieme alle amiche: grandi saluti,</span>
         <span class="es">Los parientes examinan con mucha</span>
-      </div>
-      <div class="stage-direction">
         <span>riverenze: i parenti osservano curiosamente</span>
         <span class="es">curiosidad a los dos americanos.</span>
-      </div>
-      <div class="stage-direction">
         <span>i due americani. Pinkerton ha presso</span>
         <span class="es">Pinkerton coge a Sharpless del brazo</span>
-      </div>
-      <div class="stage-direction">
         <span>sottobraccio Sharpless e, condottolo</span>
         <span class="es">y, empujándolo hacia un lado y</span>
-      </div>
-      <div class="stage-direction">
         <span>da un lato, gli fa osservare, ridendo,</span>
         <span class="es">riendo, mira fijamente al grupo de</span>
-      </div>
-      <div class="stage-direction">
         <span>il bizzarro gruppo dei parenti; il</span>
         <span class="es">parientes. El Comisario Imperial</span>
-      </div>
-      <div class="stage-direction">
         <span>Commissario Imperiale e l'Ufficiale del</span>
         <span class="es">saluda a Pinkerton. Todos entran</span>
-      </div>
-      <div class="stage-direction">
         <span>registro salutano Pinkerton ed entrano</span>
         <span class="es">en la casa donde son recibidos por</span>
-      </div>
-      <div class="stage-direction">
         <span>in casa, ricevuti da Goro.)</span>
         <span class="es">Goro)</span>
       </div>
@@ -2055,8 +1405,6 @@
       <div class="stage-direction">
         <span>garrulo cicalio, va dall'uno all'altro</span>
         <span class="es">la cháchara, va de uno a otro</span>
-      </div>
-      <div class="stage-direction">
         <span>raccomandando di parlare sottovoce)</span>
         <span class="es">recomendando hablar en voz baja)</span>
       </div>
@@ -2263,24 +1611,14 @@
       <div class="stage-direction">
         <span>innanzi a Pinkerton ed a Sharpless. I</span>
         <span class="es">inclinan ante Pinkerton y Sharpless.</span>
-      </div>
-      <div class="stage-direction">
         <span>parenti si rialzano e si spargono nel</span>
         <span class="es">Entonces los parientes se levantan</span>
-      </div>
-      <div class="stage-direction">
         <span>giardino; Goro ne conduce qualcuno</span>
         <span class="es">dispersándose por el jardín. Goro</span>
-      </div>
-      <div class="stage-direction">
         <span>nell'interno della casa. Pinkerton</span>
         <span class="es">conduce a algunos de ellos afuera.</span>
-      </div>
-      <div class="stage-direction">
         <span>prende per mano Butterfly e la conduce</span>
         <span class="es">Pinkerton toma a Butterfly por la</span>
-      </div>
-      <div class="stage-direction">
         <span>verso la casa.)</span>
         <span class="es">mano y la conduce hacia la casa)</span>
       </div>
@@ -2341,8 +1679,6 @@
       <div class="stage-direction">
         <span>oggetti e li consegna a Suzuki, che è uscita</span>
         <span class="es">dándoselas a Suzuki, que las</span>
-      </div>
-      <div class="stage-direction">
         <span>sulla terrazza, e li depone nelle casa)</span>
         <span class="es">introduce en la casa)</span>
       </div>
@@ -2437,8 +1773,6 @@
       <div class="stage-direction">
         <span>sulla terrazza vicino a Pinkerton e leva</span>
         <span class="es">con Pinkerton y sacando unas</span>
-      </div>
-      <div class="stage-direction">
         <span>dalle maniche alcune statuette.)</span>
         <span class="es">figurillas de sus mangas)</span>
       </div>
@@ -2496,28 +1830,16 @@
       <div class="stage-direction">
         <span>udita dai parenti Intanto Goro ha aperto</span>
         <span class="es">de ser escuchada por sus parientes.</span>
-      </div>
-      <div class="stage-direction">
         <span>lo sposi, nella stanza dove tutto è pronto</span>
         <span class="es">Goro mueve hacia atrás el panel de</span>
-      </div>
-      <div class="stage-direction">
         <span>pel matrimonio, si trovano Sharpless e le</span>
         <span class="es">la habitación en la cual todo está</span>
-      </div>
-      <div class="stage-direction">
         <span>autorità, Butterfly entra nella casa e si</span>
         <span class="es">preparado para la boda. Sharpless y</span>
-      </div>
-      <div class="stage-direction">
         <span>inginocchia; Pinkerton è in piedi vicino</span>
         <span class="es">los oficiales están dentro. Butterfly y</span>
-      </div>
-      <div class="stage-direction">
         <span>a lei, i parenti sono nel giardino rivolti</span>
         <span class="es">los parientes se arrodillan ante ellos.</span>
-      </div>
-      <div class="stage-direction">
         <span>verso la casa, inginocchiati.)</span>
         <span class="es">Pinkerton se sitúa a su lado)</span>
       </div>
@@ -2596,16 +1918,10 @@
       <div class="stage-direction">
         <span>bacia qualcuna: intanto l'Ufficiale dello</span>
         <span class="es">mientras tanto el Oficial toma el</span>
-      </div>
-      <div class="stage-direction">
         <span>Stato Civile ritira l'atto e le altre carete,</span>
         <span class="es">contrato y los otros papeles, después</span>
-      </div>
-      <div class="stage-direction">
         <span>poi avverte il Commissario Imperiale che</span>
         <span class="es">hace señas al Comisario Imperial de</span>
-      </div>
-      <div class="stage-direction">
         <span>tutto è finito.)</span>
         <span class="es">que todo ha acabado)</span>
       </div>
@@ -2656,8 +1972,6 @@
       <div class="stage-direction">
         <span>e l'Ufficiale del registro si avviano per</span>
         <span class="es">y el oficial del registro empiezan</span>
-      </div>
-      <div class="stage-direction">
         <span>scendere alla città.)</span>
         <span class="es">a alejarse)</span>
       </div>
@@ -2675,12 +1989,8 @@
       <div class="stage-direction">
         <span>saluta colla mano. Sharpless scende pel</span>
         <span class="es">gesto y se despide agitando la mano.</span>
-      </div>
-      <div class="stage-direction">
         <span>sentiero; Pinkerton che è andato verso</span>
         <span class="es">Sharpless desciende por el sendero.</span>
-      </div>
-      <div class="stage-direction">
         <span>il fondo lo saluta di nuovo.)</span>
         <span class="es">Pinkerton le saluda de nuevo)</span>
       </div>
@@ -2773,8 +2083,6 @@
       <div class="stage-direction">
         <span>allibiscono e si raccolgono impauriti:</span>
         <span class="es">corren colina abajo en tropel,</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly rimane isolata in un angolo.)</span>
         <span class="es">aterrorizados; ella queda sola.)</span>
       </div>
@@ -2815,8 +2123,6 @@
       <div class="stage-direction">
         <span>Bonzo, preceduto da due portatori di</span>
         <span class="es">budista, aparece precedido por</span>
-      </div>
-      <div class="stage-direction">
         <span>lanterne e seguito da due Bonzi.)</span>
         <span class="es">otros dos sacerdotes.)</span>
       </div>
@@ -2825,8 +2131,6 @@
       <div class="stage-direction">
         <span>il Bonzo stende le mani minacciose verso</span>
         <span class="es">está apartada del resto y la señala</span>
-      </div>
-      <div class="stage-direction">
         <span>di lei.)</span>
         <span class="es">amenazadoramente con el dedo)</span>
       </div>
@@ -2889,16 +2193,10 @@
       <div class="stage-direction">
         <span>il volto colle mani: la madre si avanza</span>
         <span class="es">su rostro con los manos. Su madre va</span>
-      </div>
-      <div class="stage-direction">
         <span>per difenderla, ma il Bonzo duramente la</span>
         <span class="es">hacia ella protectoramente, pero el</span>
-      </div>
-      <div class="stage-direction">
         <span>respinge e si avvicina terribile a Butterfly,</span>
         <span class="es">sacerdote la empuja a un lado: se</span>
-      </div>
-      <div class="stage-direction">
         <span>gridandole sulla faccia:)</span>
         <span class="es">detiene ante Butterfly, gritándole.)</span>
       </div>
@@ -2921,8 +2219,6 @@
       <div class="stage-direction">
         <span>stupefatto, poi con subita risoluzione invita</span>
         <span class="es">se vuelve y ordena a los invitados</span>
-      </div>
-      <div class="stage-direction">
         <span>i parenti e le amiche a partire)</span>
         <span class="es">que se vayan con él.)</span>
       </div>
@@ -2965,28 +2261,16 @@
       <div class="stage-direction">
         <span>precipitosamente verso il sentiero che</span>
         <span class="es">huyen en tropel hacia el camino que</span>
-      </div>
-      <div class="stage-direction">
         <span>scende alla città: la Madre tenta di</span>
         <span class="es">baja a la ciudad La madre de</span>
-      </div>
-      <div class="stage-direction">
         <span>nuovo di andare presso Butterfly,</span>
         <span class="es">Butterfly intenta volverse hacia su</span>
-      </div>
-      <div class="stage-direction">
         <span>ma viene travolta dagli altri. Il Bonzo</span>
         <span class="es">hija pero es empujada con los</span>
-      </div>
-      <div class="stage-direction">
         <span>sparisce pel sentiero che va al tempio</span>
         <span class="es">demás. El sacerdote desaparece</span>
-      </div>
-      <div class="stage-direction">
         <span>seguito dagli accoliti. Le voci a poco</span>
         <span class="es">colina abajo, hacia el templo,</span>
-      </div>
-      <div class="stage-direction">
         <span>a poco si allontanano)</span>
         <span class="es">seguido por sus acólitos)</span>
       </div>
@@ -2998,16 +2282,10 @@
       <div class="stage-direction">
         <span>colla faccia nelle mani, mentre Pinkerton</span>
         <span class="es">silenciosa, con el rostro entre las</span>
-      </div>
-      <div class="stage-direction">
         <span>si è recato alla sommità dal sentiero per</span>
         <span class="es">manos. Pinkerton sube hasta la cima</span>
-      </div>
-      <div class="stage-direction">
         <span>assicurarsi che tutti quei seccatori se ne</span>
         <span class="es">de la colina para asegurarse de que</span>
-      </div>
-      <div class="stage-direction">
         <span>vanno.)</span>
         <span class="es">todos se hayan marchado)</span>
       </div>
@@ -3037,20 +2315,12 @@
       <div class="stage-direction">
         <span>scoppia in pianto infantile. Pinkerton</span>
         <span class="es">cerrada. Butterfly estalla en</span>
-      </div>
-      <div class="stage-direction">
         <span>l'ode e va premuroso presso di lei,</span>
         <span class="es">lágrimas y Pinkerton va hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>sollevandola dall'abbattimento in cui</span>
         <span class="es">ella para consolarla y le quita</span>
-      </div>
-      <div class="stage-direction">
         <span>è caduta e togliendole con delicatezza</span>
         <span class="es">con delicadeza las manos de la</span>
-      </div>
-      <div class="stage-direction">
         <span>le mani dal viso piangente.)</span>
         <span class="es">cara llorosa)</span>
       </div>
@@ -3177,8 +2447,6 @@
       <div class="stage-direction">
         <span>servi e Suzuki accorrono subito, e</span>
         <span class="es">tres sirvientes junto con Suzuki</span>
-      </div>
-      <div class="stage-direction">
         <span>Pinkerton ordina ai servi:)</span>
         <span class="es">aparecen rápido)</span>
       </div>
@@ -3219,8 +2487,6 @@
       <div class="stage-direction">
         <span>gli abiti per la notte ed un cofanetto</span>
         <span class="es">algunas ropas de noche y un</span>
-      </div>
-      <div class="stage-direction">
         <span>coll'occorrente per la toeletta.)</span>
         <span class="es">cofrecillo que entrega a Butterfly.)</span>
       </div>
@@ -3234,24 +2500,14 @@
       <div class="stage-direction">
         <span>via. Butterfly entra nella casa ed aiutata</span>
         <span class="es">palmadas y los sirvientes se van.</span>
-      </div>
-      <div class="stage-direction">
         <span>da Suzuki fa cautelosamente la sua toeletta</span>
         <span class="es">Butterfly entra en la casa donde</span>
-      </div>
-      <div class="stage-direction">
         <span>da notte, levandosi la veste nuziale ed</span>
         <span class="es">Suzuki le ayuda en sus preparativos</span>
-      </div>
-      <div class="stage-direction">
         <span>indossandone una tutta bianca; poi siede</span>
         <span class="es">para la noche. Se pone un camisón</span>
-      </div>
-      <div class="stage-direction">
         <span>su di un cuscino e mirandosi in uno</span>
         <span class="es">blanco de novia. Después sentándose</span>
-      </div>
-      <div class="stage-direction">
         <span>specchietto si ravvia i capelli: Suzuki esce)</span>
         <span class="es">en un cajón se peina. Suzuki sale.)</span>
       </div>
@@ -3409,12 +2665,8 @@
       <div class="stage-direction">
         <span>gli orecchi, come se ancora avesse ad udire</span>
         <span class="es">parece oír los gritos de sus parientes.</span>
-      </div>
-      <div class="stage-direction">
         <span>le urla die parenti: poi si rassicura e con</span>
         <span class="es">Entonces tranquilizándose se acerca</span>
-      </div>
-      <div class="stage-direction">
         <span>fiducia si rivolge a Pinkerton.)</span>
         <span class="es">más a Pinkerton.)</span>
       </div>
@@ -3426,16 +2678,10 @@
       <div class="stage-direction">
         <span>stellato. Avvicinandosi lentamente a</span>
         <span class="es">lleno de estrellas. Butterfly avanza</span>
-      </div>
-      <div class="stage-direction">
         <span>Pinkerton seduto sulla panca nel giardino.</span>
         <span class="es">hacia Pinkerton que está sentado</span>
-      </div>
-      <div class="stage-direction">
         <span>Si inginocchia ai piedi di Pinkerton e lo</span>
         <span class="es">en un banco del jardín. Se arrodilla</span>
-      </div>
-      <div class="stage-direction">
         <span>guarda con tenerezza, quasi supplichevole.)</span>
         <span class="es">a sus pies y le mira tiernamente)</span>
       </div>
@@ -3654,28 +2900,16 @@
       <div class="stage-direction">
         <span>(Le pareti sono chiuse lasciando la camera</span>
         <span class="es">(la habitación está en semipenumbra.</span>
-      </div>
-      <div class="stage-direction">
         <span>in una semioscurità. Suzuki prega,</span>
         <span class="es">Suzuki está rezando agazapada</span>
-      </div>
-      <div class="stage-direction">
         <span>raggomitolata davanti all'immagine di</span>
         <span class="es">frente a una estatua de Buda; de</span>
-      </div>
-      <div class="stage-direction">
         <span>Buddha: suona di quando in quando la</span>
         <span class="es">vez en cuando toca la campanilla</span>
-      </div>
-      <div class="stage-direction">
         <span>campanella delle preghiere. Butterfly è</span>
         <span class="es">de la oración. Butterfly está tumbada</span>
-      </div>
-      <div class="stage-direction">
         <span>stesa a terra, appoggiando la testa nelle</span>
         <span class="es">en el suelo, con la cabeza entre las</span>
-      </div>
-      <div class="stage-direction">
         <span>palme delle mani.)</span>
         <span class="es">manos)</span>
       </div>
@@ -3872,8 +3106,6 @@
       <div class="stage-direction">
         <span>assistesse e si avvicina poco a poco</span>
         <span class="es">de su marido como si estuviera</span>
-      </div>
-      <div class="stage-direction">
         <span>allo shosi del fondo)</span>
         <span class="es">teniendo lugar.)</span>
       </div>
@@ -3919,24 +3151,14 @@
       <div class="stage-direction">
         <span>commosse Butterfly congeda Suzuki,</span>
         <span class="es">tristemente mientras se aleja y sale</span>
-      </div>
-      <div class="stage-direction">
         <span>che esce dall'uscio di sinistra, e la segue</span>
         <span class="es">por la puerta de la izquierda. Goro</span>
-      </div>
-      <div class="stage-direction">
         <span>mestamente collo sguardo. Nel giardino</span>
         <span class="es">y Sharpless aparecen en el jardín.</span>
-      </div>
-      <div class="stage-direction">
         <span>compariscono Goro e Sharpless. Goro</span>
         <span class="es">Goro, mira hacia el interior de la</span>
-      </div>
-      <div class="stage-direction">
         <span>guarda entro la camera, scorge Butterfly</span>
         <span class="es">habitación y ve a Butterfly. Y le dice</span>
-      </div>
-      <div class="stage-direction">
         <span>e dice a Sharpless che lo segue:)</span>
         <span class="es">a Sharpless que lo siga)</span>
       </div>
@@ -4011,24 +3233,14 @@
       <div class="stage-direction">
         <span>presso il tavolino: Sharpless si lascia</span>
         <span class="es">junto a la mesa. Él se recuesta en</span>
-      </div>
-      <div class="stage-direction">
         <span>cadere grottescamente su di un cuscino:</span>
         <span class="es">un almohadón. Butterfly se sienta</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly si siede dall'altra parte e</span>
         <span class="es">frente a él y le sonríe ocultándose</span>
-      </div>
-      <div class="stage-direction">
         <span>sorride maliziosamente dietro il ventaglio</span>
         <span class="es">con su abanico, turbándole. A</span>
-      </div>
-      <div class="stage-direction">
         <span>vedendo l'imbarazzo del Console;</span>
         <span class="es">continuación le pregunta con</span>
-      </div>
-      <div class="stage-direction">
         <span>poi con molta grazia gli chiede:)</span>
         <span class="es">infinita gracia:)</span>
       </div>
@@ -4079,8 +3291,6 @@
       <div class="stage-direction">
         <span>pipa che Suzuki ha preparata, l'offre</span>
         <span class="es">por Suzuki, da una bocanada y se</span>
-      </div>
-      <div class="stage-direction">
         <span>al Console.)</span>
         <span class="es">la ofrece al cónsul.)</span>
       </div>
@@ -4127,8 +3337,6 @@
       <div class="stage-direction">
         <span>subito e presentando la lettera si siede</span>
         <span class="es">rápidamente mostrando la carta</span>
-      </div>
-      <div class="stage-direction">
         <span>sullo sgabello)</span>
         <span class="es">a Butterfly.)</span>
       </div>
@@ -4185,8 +3393,6 @@
       <div class="stage-direction">
         <span>avvicina alla terrazza e ascolta, non</span>
         <span class="es">se acerca a la terraza y sin ser visto</span>
-      </div>
-      <div class="stage-direction">
         <span>visto, quanto dice Butterfly.)</span>
         <span class="es">escucha a Butterfly.)</span>
       </div>
@@ -4291,12 +3497,8 @@
       <div class="stage-direction">
         <span>il Principe Yamadori in un palanchino,</span>
         <span class="es">Yamadori, riendo en su palanquín</span>
-      </div>
-      <div class="stage-direction">
         <span>attorniato dai servi. vede Yamadori e</span>
         <span class="es">rodeado de sirvientes. Butterfly lo</span>
-      </div>
-      <div class="stage-direction">
         <span>lo indica a Sharpless sorridendo)</span>
         <span class="es">ve y se lo muestra a Sharpless.)</span>
       </div>
@@ -4310,20 +3512,12 @@
       <div class="stage-direction">
         <span>scende dai palanchino, saluta il Console</span>
         <span class="es">recibe a Yamadori, que desciende</span>
-      </div>
-      <div class="stage-direction">
         <span>e Butterfly, che si è avvicinata alla parete</span>
         <span class="es">de su palanquín y saluda al cónsul</span>
-      </div>
-      <div class="stage-direction">
         <span>del fondo; Yamadori si siede sulla terrazza</span>
         <span class="es">y a Butterfly. Se sienta en la terraza</span>
-      </div>
-      <div class="stage-direction">
         <span>rivolto rispettosamente verso Butterfly la</span>
         <span class="es">respetuosamente y se gira hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>quale s'inginocchia nella stanza.)</span>
         <span class="es">Butterfly.)</span>
       </div>
@@ -4553,8 +3747,6 @@
       <div class="stage-direction">
         <span>Suzuki, si avvicina per offrire il thè,</span>
         <span class="es">a Butterfly, seguida de Suzuki,</span>
-      </div>
-      <div class="stage-direction">
         <span>tronca il discorso.)</span>
         <span class="es">que se acerca con el té.)</span>
       </div>
@@ -4603,32 +3795,18 @@
       <div class="stage-direction">
         <span>sospirando, se ne va, sale nel palanchino</span>
         <span class="es">Sharpless, se va seguido por sus</span>
-      </div>
-      <div class="stage-direction">
         <span>e si allontana seguito dai servi e da Goro.</span>
         <span class="es">sirvientes y Goro. Butterfly continúa</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly ride ancora dietro il ventaglio.</span>
         <span class="es">sonriendo detrás de su abanico.</span>
-      </div>
-      <div class="stage-direction">
         <span>Sharpless siede sullo sgabello, assume</span>
         <span class="es">Sharpless se sienta en un taburete,</span>
-      </div>
-      <div class="stage-direction">
         <span>un fare grave, serio, poi con gran rispetto</span>
         <span class="es">con un aire serio y pide a Butterfly</span>
-      </div>
-      <div class="stage-direction">
         <span>ed una certa commozione invita</span>
         <span class="es">respetuosamente, que se siente a su</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly a sedere, e torna a tirar fuori</span>
         <span class="es">lado. Una vez más saca la carta de</span>
-      </div>
-      <div class="stage-direction">
         <span>di tasca la lettera.)</span>
         <span class="es">su bolsillo, conmovido.)</span>
       </div>
@@ -4761,8 +3939,6 @@
       <div class="stage-direction">
         <span>imperterrito ma con voce tremante per</span>
         <span class="es">inmutarse, pero con voz temblorosa</span>
-      </div>
-      <div class="stage-direction">
         <span>l'emozione)</span>
         <span class="es">por la emoción)</span>
       </div>
@@ -4826,12 +4002,8 @@
       <div class="stage-direction">
         <span>a morte, china la testa e risponde</span>
         <span class="es">sido golpeada: entonces con la</span>
-      </div>
-      <div class="stage-direction">
         <span>con sommessione infantile,</span>
         <span class="es">cabeza inclinada pregunta, con</span>
-      </div>
-      <div class="stage-direction">
         <span>quasi balbettando:)</span>
         <span class="es">infantil sumisión, tartamudeando.)</span>
       </div>
@@ -4856,12 +4028,8 @@
       <div class="stage-direction">
         <span>passeggia agitatissimo; poi torna</span>
         <span class="es">conmovido se acerca, muy</span>
-      </div>
-      <div class="stage-direction">
         <span>verso Butterfly, le prende le due mani</span>
         <span class="es">nervioso, a Butterfly y con</span>
-      </div>
-      <div class="stage-direction">
         <span>e con paterna tenerezza le dice:)</span>
         <span class="es">dulzura toma sus manos.)</span>
       </div>
@@ -4956,12 +4124,8 @@
       <div class="stage-direction">
         <span>Butterfly rientra trionfalmente tenendo</span>
         <span class="es">la izquierda. Cuando vuelve trae</span>
-      </div>
-      <div class="stage-direction">
         <span>il suo bambino seduto sulla spalla sinistra</span>
         <span class="es">triunfalmente a un niño sobre su</span>
-      </div>
-      <div class="stage-direction">
         <span>e lo mostra a Sharpless)</span>
         <span class="es">hombro y se lo muestra a Sharpless)</span>
       </div>
@@ -5087,8 +4251,6 @@
       <div class="stage-direction">
         <span>abbraccia strettamente ed accarezza</span>
         <span class="es">besándolo apasionadamente</span>
-      </div>
-      <div class="stage-direction">
         <span>con moto convulsivo)</span>
         <span class="es">con gesto compulsivo.)</span>
       </div>
@@ -5117,8 +4279,6 @@
       <div class="stage-direction">
         <span>a Sharpless che la stringe nelle sue con</span>
         <span class="es">mano a Sharpless que la aprieta</span>
-      </div>
-      <div class="stage-direction">
         <span>effusione.)</span>
         <span class="es">efusivamente)</span>
       </div>
@@ -5214,8 +4374,6 @@
       <div class="stage-direction">
         <span>presso al reliquario e prende il coltello</span>
         <span class="es">el relicario y coge la daga que</span>
-      </div>
-      <div class="stage-direction">
         <span>che sta appeso)</span>
         <span class="es">cuelga de él.)</span>
       </div>
@@ -5230,8 +4388,6 @@
       <div class="stage-direction">
         <span>minaccia d'ucciderlo. Goro emette</span>
         <span class="es">ella le amenaza con la daga y él</span>
-      </div>
-      <div class="stage-direction">
         <span>grida fortissime, disperate, prolungate.)</span>
         <span class="es">grita con fuerza, desesperado.)</span>
       </div>
@@ -5245,8 +4401,6 @@
       <div class="stage-direction">
         <span>scena, prende il bimbo e lo porta nella</span>
         <span class="es">coge al niño y lo lleva a la otra</span>
-      </div>
-      <div class="stage-direction">
         <span>stanza a sinistra)</span>
         <span class="es">habitación.)</span>
       </div>
@@ -5260,8 +4414,6 @@
       <div class="stage-direction">
         <span>come impietrita. Butterfly si scuote a</span>
         <span class="es">inmóvil un momento; luego volviendo</span>
-      </div>
-      <div class="stage-direction">
         <span>poco a poco e va a riporre il coltello.)</span>
         <span class="es">en sí, devuelve la daga a su sitio.)</span>
       </div>
@@ -5327,16 +4479,10 @@
       <div class="stage-direction">
         <span>corre sul terrazzo ad osservare. Tutta</span>
         <span class="es">a la terraza para mirar. Está</span>
-      </div>
-      <div class="stage-direction">
         <span>tremante per l'emozione, appunta il</span>
         <span class="es">temblando de excitación, dirige el</span>
-      </div>
-      <div class="stage-direction">
         <span>cannocchiale verso il porto e dice a</span>
         <span class="es">catalejo hacia el puerto y le dice a</span>
-      </div>
-      <div class="stage-direction">
         <span>Suzuki:)</span>
         <span class="es">Suzuki )</span>
       </div>
@@ -5556,8 +4702,6 @@
       <div class="stage-direction">
         <span>seguono il ritmo con un blando</span>
         <span class="es">siguiendo el ritmo con un suave</span>
-      </div>
-      <div class="stage-direction">
         <span>ondeggiare di danza)</span>
         <span class="es">ondear de danza)</span>
       </div>
@@ -5592,12 +4736,8 @@
       <div class="stage-direction">
         <span>bambino che fa sedere vicino a Butterfly,</span>
         <span class="es">izquierda y trae al niño, sentándolo</span>
-      </div>
-      <div class="stage-direction">
         <span>mentre questa si guarda in un piccolo</span>
         <span class="es">cerca de Butterfly, mientras se mira</span>
-      </div>
-      <div class="stage-direction">
         <span>specchio a mano e dice tristemente:)</span>
         <span class="es">tristemente en el espejo y dice)</span>
       </div>
@@ -5690,84 +4830,44 @@
       <div class="stage-direction">
         <span>lo shosi nel fondo. Butterfly conduce il</span>
         <span class="es">panel de detrás. Butterfly lleva</span>
-      </div>
-      <div class="stage-direction">
         <span>bambino presso lo shosi e fa tre fori nello</span>
         <span class="es">al niño hasta la mampara y comienza</span>
-      </div>
-      <div class="stage-direction">
         <span>shosi: uno alto per sè, uno più basso per</span>
         <span class="es">a hacer tres agujeros uno para ella,</span>
-      </div>
-      <div class="stage-direction">
         <span>Suzuki ed il terzo ancor più basso pel</span>
         <span class="es">otro para Suzuki y el más bajo para</span>
-      </div>
-      <div class="stage-direction">
         <span>bimbo, che fa sedere su di un cuscino,</span>
         <span class="es">el niño. Hecho esto se sienta en un</span>
-      </div>
-      <div class="stage-direction">
         <span>accennandogli di guardare attento fuori</span>
         <span class="es">almohadón mirando cuidadosamente</span>
-      </div>
-      <div class="stage-direction">
         <span>del foro preparatogli. Suzuki dopo aver</span>
         <span class="es">desde su mirilla. Suzuki trae las</span>
-      </div>
-      <div class="stage-direction">
         <span>portato le due lampade vinico alle shosi,</span>
         <span class="es">dos lámparas; después se agacha y</span>
-      </div>
-      <div class="stage-direction">
         <span>si accoscia e spia essa pure all'esterno.</span>
         <span class="es">mira hacia afuera. Mientras Butterfly</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly si pone innanzi al foro più alto e</span>
         <span class="es">permanece inmóvil como una estatua</span>
-      </div>
-      <div class="stage-direction">
         <span>spiando da esso rimane immobile, rigida</span>
         <span class="es">mirando por la mirilla, el niño, que</span>
-      </div>
-      <div class="stage-direction">
         <span>come una statua; il bimbo, che sta fra la</span>
         <span class="es">está entre Suzuki y su madre, mira</span>
-      </div>
-      <div class="stage-direction">
         <span>madre e Suzuki, guarda fuori curiosamente.</span>
         <span class="es">curiosamente. Es de noche. La luz de</span>
-      </div>
-      <div class="stage-direction">
         <span>È notte; i raggi lunari illuminano</span>
         <span class="es">la luna resplandece a través del panel</span>
-      </div>
-      <div class="stage-direction">
         <span>dall'esterno lo shosi. Il bimbo si</span>
         <span class="es">de papel. Un rayo de luna ilumina la</span>
-      </div>
-      <div class="stage-direction">
         <span>addormenta, rovesciandosi all'indietro,</span>
         <span class="es">parte externa del panel. El niño y</span>
-      </div>
-      <div class="stage-direction">
         <span>disteso sul cuscino e Suzuki si addormenta</span>
         <span class="es">Suzuki se quedan dormidos. Sólo</span>
-      </div>
-      <div class="stage-direction">
         <span>pure, rimandando accosciata: solo</span>
         <span class="es">Butterfly se mantiene despierta,</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly rimane sempre ritta ed immobile.</span>
         <span class="es">observando inmóvil. Se oye a lo lejos</span>
-      </div>
-      <div class="stage-direction">
         <span>Da lontano si sentono le che cantano a</span>
         <span class="es">unas voces que cantan a boca cerrada.</span>
-      </div>
-      <div class="stage-direction">
         <span>bocca chiusa. Cala lentamente il sipario.)</span>
         <span class="es">Cae lentamente el telón)</span>
       </div>
@@ -5776,12 +4876,8 @@
       <div class="stage-direction">
         <span>fuori; il bimbo, rovesciato sul cuscino,</span>
         <span class="es">exterior a través de su mirilla. El</span>
-      </div>
-      <div class="stage-direction">
         <span>dorme e dorme pure Suzuki, ripiegata</span>
         <span class="es">pequeño continúa durmiendo, Suzuki</span>
-      </div>
-      <div class="stage-direction">
         <span>sulla persona.)</span>
         <span class="es">está durmiendo en el suelo.)</span>
       </div>
@@ -5822,12 +4918,8 @@
       <div class="stage-direction">
         <span>marinaresche. Fischi d'uccelli dal giardino.</span>
         <span class="es">Sonidos de pájaros en el jardín.</span>
-      </div>
-      <div class="stage-direction">
         <span>Comincia l'alba. L'alba sorge rosea. Spunta</span>
         <span class="es">Amanece, el sol aparece iluminando</span>
-      </div>
-      <div class="stage-direction">
         <span>l'aurora. Al di fuori risplende il sole.)</span>
         <span class="es">la habitación con tintes rojos)</span>
       </div>
@@ -5871,8 +4963,6 @@
       <div class="stage-direction">
         <span>sulle braccia, avviandosi verso la stanza</span>
         <span class="es">brazos y lo lleva a la habitación</span>
-      </div>
-      <div class="stage-direction">
         <span>a sinistra)</span>
         <span class="es">de la izquierda.)</span>
       </div>
@@ -6035,8 +5125,6 @@
       <div class="stage-direction">
         <span>va a guardare fuori ed esclama con</span>
         <span class="es">va a mirar afuera y exclama)</span>
-      </div>
-      <div class="stage-direction">
         <span>meraviglia:)</span>
         <span class="es">sorprendida)</span>
       </div>
@@ -6050,8 +5138,6 @@
       <div class="stage-direction">
         <span>davanti, raccomandandole di</span>
         <span class="es">hacia delante, recomendándole</span>
-      </div>
-      <div class="stage-direction">
         <span>parlare sottovoce)</span>
         <span class="es">que hable en voz baja)</span>
       </div>
@@ -6121,12 +5207,8 @@
       <div class="stage-direction">
         <span>colla persuasione di averne il consenso,</span>
         <span class="es">lado y trata de persuadirla para que</span>
-      </div>
-      <div class="stage-direction">
         <span>mentre Pinkerton, sempre più agitato,</span>
         <span class="es">les ayude; mientras tanto, Pinkerton,</span>
-      </div>
-      <div class="stage-direction">
         <span>si aggira per la stanza ed osserva)</span>
         <span class="es">va de aquí para allá)</span>
       </div>
@@ -6201,8 +5283,6 @@
       <div class="stage-direction">
         <span>(va verso il simulacro di Buddha,</span>
         <span class="es">(Va hacia una estatua de Buda,</span>
-      </div>
-      <div class="stage-direction">
         <span>vede il proprio ritratto)</span>
         <span class="es">y ve un retrato suyo)</span>
       </div>
@@ -6242,8 +5322,6 @@
       <div class="stage-direction">
         <span>(Suzuki spinta da Sharpless va nel giardino</span>
         <span class="es">.</span>
-      </div>
-      <div class="stage-direction">
         <span>a raggiungere Mistress Pinkerton)</span>
         <span class="es">(Suzuki va hacia el jardín para</span>
       </div>
@@ -6260,8 +5338,6 @@
       <div class="stage-direction">
         <span>trattenere il pianto si avvicina a</span>
         <span class="es">(Vencido por la emoción y no</span>
-      </div>
-      <div class="stage-direction">
         <span>Sharpless e gli dice risolutamente:)</span>
         <span class="es">pudiendo retener el llanto, se</span>
       </div>
@@ -6372,16 +5448,10 @@
       <div class="stage-direction">
         <span>esce rapidamente dal fondo: Sharpless</span>
         <span class="es">(Pinkerton da la mano a Sharpless</span>
-      </div>
-      <div class="stage-direction">
         <span>crolla tristemente il capo. Suzuki viene</span>
         <span class="es">y se va deprisa. Sharpless sacude</span>
-      </div>
-      <div class="stage-direction">
         <span>dal giardino seguita da Kate che si ferma</span>
         <span class="es">tristemente la cabeza. Suzuki entra</span>
-      </div>
-      <div class="stage-direction">
         <span>ai piedi del terrazzo.)</span>
         <span class="es">procedente del jardín, seguida por</span>
       </div>
@@ -6499,8 +5569,6 @@
       <div class="stage-direction">
         <span>angolo, nella piccola alcova e dietro il</span>
         <span class="es">(Después de mirar por todas partes,</span>
-      </div>
-      <div class="stage-direction">
         <span>paravento, sgomenta si guarda attorno)</span>
         <span class="es">en cada ángulo de la pequeña</span>
       </div>
@@ -6530,8 +5598,6 @@
       <div class="stage-direction">
         <span>parlarle; questa teme di capire e si fa</span>
         <span class="es">(Sharpless se acerca a Butterfly para</span>
-      </div>
-      <div class="stage-direction">
         <span>piccina come una bimba paurosa.)</span>
         <span class="es">hablar con ella. De repente parece</span>
       </div>
@@ -6699,12 +5765,8 @@
       <div class="stage-direction">
         <span>che scono dal fondo. Butterfly cade a</span>
         <span class="es">(Suzuki acompaña a Kate y a</span>
-      </div>
-      <div class="stage-direction">
         <span>terra, piangendo; Suzuki s'affretta a</span>
         <span class="es">Sharpless que salen por el fondo.</span>
-      </div>
-      <div class="stage-direction">
         <span>soccorrerla.)</span>
         <span class="es">Butterfly cae llorando al suelo;</span>
       </div>
@@ -6732,8 +5794,6 @@
       <div class="stage-direction">
         <span>vedendo che è giorno fatto, si scioglie</span>
         <span class="es">(Butterfly entra y ve la habitación</span>
-      </div>
-      <div class="stage-direction">
         <span>da Suzuki, e le dice:)</span>
         <span class="es">llena de la luz del día. Se suelta de</span>
       </div>
@@ -6747,8 +5807,6 @@
       <div class="stage-direction">
         <span>che la camera rimane quasi in completa</span>
         <span class="es">(Suzuki cierra el panel de modo que</span>
-      </div>
-      <div class="stage-direction">
         <span>oscurità. Suzuki ritorna verso Butterfly.)</span>
         <span class="es">la habitación queda casi oscura;</span>
       </div>
@@ -6781,60 +5839,32 @@
       <div class="stage-direction">
         <span>disperatamente, e la spinge fuori dell'uscio</span>
         <span class="es">(Obliga a Suzuki, que llora</span>
-      </div>
-      <div class="stage-direction">
         <span>di sinistra. Butterfly si inginocchia davanti</span>
         <span class="es">amargamente, a levantarse e irse.</span>
-      </div>
-      <div class="stage-direction">
         <span>all'immagine di Buddha. Butterfly rimane</span>
         <span class="es">Butterfly se arrodilla delante de la</span>
-      </div>
-      <div class="stage-direction">
         <span>immobile, assorta in doloroso pensiero,</span>
         <span class="es">estatua de Buda. Permanece inmóvil,</span>
-      </div>
-      <div class="stage-direction">
         <span>ancora si odono i singhiozzi di Suzuki, i</span>
         <span class="es">absorta en un doloroso pensamiento,</span>
-      </div>
-      <div class="stage-direction">
         <span>quali vanno a poco a poco affievolendosi.</span>
         <span class="es">entonces se da cuenta de los sollozos</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly ha un moto di spasimo. Butterfly</span>
         <span class="es">de Suzuki, los cuales se van poco a</span>
-      </div>
-      <div class="stage-direction">
         <span>va allo stipo e ne leva il velo bianco, che</span>
         <span class="es">poco debilitándose. Sale y coge el</span>
-      </div>
-      <div class="stage-direction">
         <span>getta attraverso il paravento, poi prende il</span>
         <span class="es">velo blanco que cuelga del biombo,</span>
-      </div>
-      <div class="stage-direction">
         <span>coltello, che chiuso in un astuccio di lacca,</span>
         <span class="es">después el cuchillo de su padre, de</span>
-      </div>
-      <div class="stage-direction">
         <span>sta appeso alla parete presso il simulacro</span>
         <span class="es">dentro de un estuche lacado, que</span>
-      </div>
-      <div class="stage-direction">
         <span>di Buddha. ne bacia religiosamente la</span>
         <span class="es">está colgado de la pared cerca de</span>
-      </div>
-      <div class="stage-direction">
         <span>lama, tenendola colle mani per la punta e</span>
         <span class="es">la estatua de Buda. Besa la hoja con</span>
-      </div>
-      <div class="stage-direction">
         <span>per l'impugnatura, legge a voce bassa le</span>
         <span class="es">devoción, cogiéndola con las manos</span>
-      </div>
-      <div class="stage-direction">
         <span>parole che vi sono incise)</span>
         <span class="es">por la punta y por la empuñadura,</span>
       </div>
@@ -6853,24 +5883,14 @@
       <div class="stage-direction">
         <span>S'apre la porta di sinistra e vedesi il</span>
         <span class="es">(Mantiene el cuchillo en su garganta.</span>
-      </div>
-      <div class="stage-direction">
         <span>braccio di Suzuki che spinge il bambino</span>
         <span class="es">La puerta se abre y se ve el brazo de</span>
-      </div>
-      <div class="stage-direction">
         <span>verso la madre: questi entra correndo colle</span>
         <span class="es">Suzuki empujando al niño hacia su</span>
-      </div>
-      <div class="stage-direction">
         <span>manine alzate: Butterfly lascia cadere il</span>
         <span class="es">madre. Él corre hacia ella con sus</span>
-      </div>
-      <div class="stage-direction">
         <span>coltello, si precipita verso il bambino, lo</span>
         <span class="es">brazos extendidos. Butterfly suelta el</span>
-      </div>
-      <div class="stage-direction">
         <span>abbraccia e lo bacia quasi a soffocarlo.)</span>
         <span class="es">cuchillo y abraza a su hijo</span>
       </div>
@@ -6919,64 +5939,34 @@
       <div class="stage-direction">
         <span>una stuoia col viso voltato verso sinistra,</span>
         <span class="es">(Butterfly toma a su hijo y lo coloca</span>
-      </div>
-      <div class="stage-direction">
         <span>gli dà nelle mani la banderuola americana</span>
         <span class="es">sobre una alfombra mirando hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>ed una pupattola e lo invita a</span>
         <span class="es">la izquierda. En sus manos pone</span>
-      </div>
-      <div class="stage-direction">
         <span>trastullarsene, mentre delicatamente gli</span>
         <span class="es">una bandera americana y un muñeco,</span>
-      </div>
-      <div class="stage-direction">
         <span>benda gli occhi. Poi afferra il coltello e,</span>
         <span class="es">obligándole a jugar mientras le tapa</span>
-      </div>
-      <div class="stage-direction">
         <span>collo sguardo sempre fisso sul bambino,</span>
         <span class="es">los ojos con suavidad. Entonces ella</span>
-      </div>
-      <div class="stage-direction">
         <span>va dietro il paravento. qui si ode cadere</span>
         <span class="es">toma el cuchillo y con sus ojos fijos</span>
-      </div>
-      <div class="stage-direction">
         <span>a terra il coltello, e il gran velo bianco</span>
         <span class="es">en el niño se esconde tras el biombo.</span>
-      </div>
-      <div class="stage-direction">
         <span>scompare dietro al paravento. Si vede</span>
         <span class="es">Se oye el ruido del cuchillo cayendo</span>
-      </div>
-      <div class="stage-direction">
         <span>Butterfly sporgersi fuori dal paravento,</span>
         <span class="es">al suelo y un velo blanco colgado en</span>
-      </div>
-      <div class="stage-direction">
         <span>e brancolando muovere verso il bambino,</span>
         <span class="es">el biombo desaparece. Butterfly</span>
-      </div>
-      <div class="stage-direction">
         <span>il gran velo bianco le circonda il collo:</span>
         <span class="es">reaparece al lado del biombo con el</span>
-      </div>
-      <div class="stage-direction">
         <span>con un debole sorriso saluta colla mano il</span>
         <span class="es">velo en su garganta. Se tambalea</span>
-      </div>
-      <div class="stage-direction">
         <span>bambino e si trascina presso di lui, avendo</span>
         <span class="es">hacia el niño y agita su mano</span>
-      </div>
-      <div class="stage-direction">
         <span>ancora forza di abbracciarlo, poi gli cade</span>
         <span class="es">hacia él débilmente, con el tiempo</span>
-      </div>
-      <div class="stage-direction">
         <span>vicino.)</span>
         <span class="es">justo para besarle antes de caer a</span>
       </div>
@@ -6999,20 +5989,12 @@
       <div class="stage-direction">
         <span>Pinkerton e Sharpless si precipitano nella</span>
         <span class="es">(La puerta se abre violentamente y</span>
-      </div>
-      <div class="stage-direction">
         <span>stanza, accorrendo presso Butterfly che con</span>
         <span class="es">Pinkerton y Sharpless acuden cerca</span>
-      </div>
-      <div class="stage-direction">
         <span>debole gesto indica il bambino e muore.</span>
         <span class="es">de Butterfly, que con un débil gesto</span>
-      </div>
-      <div class="stage-direction">
         <span>Pinkerton si inginocchia, mentre Sharpless</span>
         <span class="es">señala al niño y muere. Pinkerton se</span>
-      </div>
-      <div class="stage-direction">
         <span>prende il bimbo e lo bacia singhiozzando.)</span>
         <span class="es">arrodilla mientras Sharpless toma al</span>
       </div>
@@ -7026,6 +6008,30 @@
   </div>
 </div>
 
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
@@ -7307,6 +6313,14 @@
   let currentActiveId = "t1";
   let observer = null;
 
+  function openIndex() {
+    if (window.innerWidth <= 600) {
+      openBottomSheet();
+    } else {
+      openDrawer();
+    }
+  }
+
   function openDrawer() {
     closeCast();
     buildDrawer();
@@ -7339,6 +6353,7 @@
     if (e.key !== 'Escape') return;
     closeDrawer();
     closeCast();
+    closeCastSheet();
   });
 
   function toggleSwitcher(event) {
@@ -7456,6 +6471,7 @@
     const lbl = document.getElementById('recordingLabel');
     if (lbl) lbl.textContent = RECORDINGS[key].label;
     updateTrackTags();
+    buildMobileTrackMarkers();
     buildDrawer();
     buildSwitcherDropdown();
     const dd = document.getElementById('recDropdown');
@@ -7465,6 +6481,9 @@
     applyTooltips();
     if (document.getElementById('castOverlay').classList.contains('open')) {
       buildCast();
+    }
+    if (document.getElementById('castSheetOverlay').classList.contains('open')) {
+      buildCastSheet();
     }
   }
 
@@ -7497,9 +6516,130 @@
     });
   }
 
+  const mobileLangState = { it: true, es: true };
+
+  function toggleLang(lang) {
+    const langs = Object.keys(mobileLangState);
+    const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
+    if (mobileLangState[lang] && !hasOtherOn) return;
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('it-hidden', !mobileLangState.it);
+    document.getElementById('mobileBtnIT').classList.toggle('off', !mobileLangState.it);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  function buildMobileTrackMarkers() {
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of rec.tracks) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  function buildCastSheet() {
+    const cast = CAST[activeRecording];
+    const body = document.getElementById('castSheetBody');
+    body.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      const singerClass = singer ? 'cast-singer' : 'cast-singer empty';
+      const singerText = singer || '—';
+      return `<div class="cast-sheet-row">
+        <div class="cast-sheet-char">
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+        </div>
+        <div class="${singerClass}">${singerText}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCastSheet() {
+    buildCastSheet();
+    document.getElementById('castSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCastSheet() {
+    document.getElementById('castSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildSheetRecordingPicker() {
+    const picker = document.getElementById('sheetRecPicker');
+    if (!picker) return;
+    picker.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<button class="sheet-rec-btn${key === activeRecording ? ' active' : ''}" onclick="switchRecordingFromSheet('${key}')">${rec.short}</button>`
+    ).join('');
+  }
+
+  function switchRecordingFromSheet(key) {
+    if (key === activeRecording) return;
+    switchRecording(key);
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function buildBottomSheetBody() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function buildBottomSheet() {
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
   buildSwitcherDropdown();
   buildDrawer();
   rewireObserver();
   updateActive("t1");
   applyTooltips();
+  buildMobileTrackMarkers();
 </script>

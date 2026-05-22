@@ -1,610 +1,11 @@
 <meta charset="utf-8">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --serif: 'EB Garamond', Georgia, serif;
-    --sans: 'Jost', var(--font-sans);
-    --bar-h: 48px;
-    --gold: #8B6914;
-    --gold-light: #f5ede0;
-    --gold-mid: #c49a2a;
-    --gold-border: #d4a84b;
-    --col-gap: 1rem;
-    --col-left: 52px;
-    --text-dim: var(--color-text-secondary);
-    --text-main: var(--color-text-primary);
-    --text-max-width: 900px;
-    --bg: var(--color-background-primary);
-    --bg2: var(--color-background-secondary);
-  }
-
-  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
-
-  .context-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-background-primary, #fdfaf6);
-    border-bottom: 1px solid var(--color-border-secondary);
-    height: var(--bar-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    gap: 1rem;
-
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  @media (max-width: 580px) {
-    .context-bar {
-      height: auto;
-      min-height: var(--bar-h);
-      padding: 0.5rem 0.75rem 0.5rem calc(var(--col-left) + 0.75rem);
-      gap: 0.4rem;
-      flex-wrap: wrap;
-    }
-
-    .context-left {
-      flex: 1 1 100%;
-      gap: 0.5rem;
-    }
-
-    .context-track-title {
-      width: auto !important;
-      flex: 1;
-      min-width: 0;
-    }
-
-    .recording-switcher {
-      font-size: 11px !important;
-      border: none;
-      padding: 0;
-      background: none;
-    }
-
-    #actLabel { font-size: 11px !important; }
-  }
-
-  .context-left {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 4px 6px;
-    margin: -4px -6px;
-    transition: background 0.15s;
-  }
-  .context-left:hover { background: var(--bg2); }
-  .context-left:active { background: var(--gold-light); }
-
-  .context-sep { opacity: 0.3; }
-  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
-
-  .context-track {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 2px 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .context-track-title {
-    font-size: 11px;
-    color: var(--text-dim);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-family: var(--sans);
-  }
-
-  .context-right { display: flex; align-items: center; gap: 10px; }
-  .recording-switcher-wrap { position: relative; }
-
-  .recording-switcher {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 3px 8px;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .recording-switcher:hover { background: var(--bg2); }
-
-  .switcher-chevron { font-size: 8px; opacity: 0.5; }
-
-  .recording-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 4px);
-    right: 0;
-    background: var(--color-background-primary, #fdfaf6);
-    border: 1px solid var(--color-border-primary);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    min-width: 220px;
-    z-index: 300;
-  }
-  .recording-dropdown.open { display: block; }
-
-  .recording-option {
-    font-family: var(--sans);
-    font-size: 12px;
-    padding: 10px 14px;
-    cursor: pointer;
-    color: var(--text-main);
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-  .recording-option:last-child { border-bottom: none; }
-  .recording-option:hover { background: var(--bg2); }
-  .recording-option.active {
-    background: var(--gold-light);
-    color: var(--gold);
-    font-weight: 500;
-  }
-
-
-  .libretto-body {
-    display: grid;
-    grid-template-columns: var(--col-left) 1fr;
-    padding-bottom: 4rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .act-heading {
-    grid-column: 1 / -1;
-    font-family: var(--sans);
-    font-size: 25px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
-    border-bottom: 1px solid var(--color-border-secondary);
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .track-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-top: 1.6rem;
-    padding-right: 0;
-    position: relative;
-  }
-
-  .track-tag {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 4px 6px;
-    gap: 1px;
-    cursor: default;
-    width: 40px;
-  }
-
-  .track-tag-cd {
-    font-family: var(--sans);
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-mid);
-  }
-
-  .track-tag-num {
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .text-col { 
-    padding: 0 1.25rem; 
-    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
-    max-width: var(--text-max-width);
-  }
-
-  .musical-number {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 1.25rem 0 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .musical-number::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border-secondary);
-  }
-
-  .scene-heading {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    font-style: italic;
-    margin: 0.75rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    font-style: italic;
-    color: var(--text-dim);
-    margin: 0.6rem 0;
-    border-left: 2px solid var(--color-border-secondary);
-    line-height: 1.5;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction .es { font-style: italic; }
-
-  .character-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.9rem 0 0.15rem;
-  }
-
-  .character-name {
-    font-family: var(--sans);
-    font-size: 16px;
-    font-weight: 550;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .line-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    align-items: baseline;
-  }
-
-  /* Inline stage direction — sits between character name and first sung line */
-  .inline-direction {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.2rem 0 0.25rem;
-  }
-
-  .inline-direction span {
-    font-family: var(--serif);
-    font-size: 13px;
-    font-style: italic;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  .fr {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .es {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .spacer-row { grid-column: 1/-1; height: 2rem; }
-  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
-
-  .drawer-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 200;
-  }
-
-  .drawer-overlay.open { display: block; }
-
-  .drawer {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-right: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .drawer-header-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Shared close button (used in both drawers) ── */
-  .drawer-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--sans);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--text-dim);
-    line-height: 1;
-    padding: 4px 6px;
-    flex-shrink: 0;
-    border-radius: 3px;
-    transition: color 0.15s;
-  }
-  .drawer-close:hover { color: #c0392b; background: none; }
-
-  .drawer-body { overflow-y: auto; flex: 1; }
-
-  .drawer-cd-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 1.25rem 1.25rem 0.5rem;
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-tertiary);
-    border-top: 1px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 9px 1.25rem;
-    cursor: pointer;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track:hover { background: var(--bg2); }
-  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
-
-  .drawer-track-num {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-dim);
-    width: 20px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .drawer-track.active .drawer-track-num { color: var(--gold); }
-
-  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
-
-  .drawer-track-title {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-    line-height: 1.3;
-  }
-
-  .drawer-track.active .drawer-track-title { color: var(--gold); }
-
-  .drawer-track-act {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Cast button ── */
-  .cast-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-  }
-  .cast-btn:hover { background: var(--bg2); }
-
-  /* ── Cast drawer (mirrors index drawer) ── */
-  .cast-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 250;
-  }
-  .cast-overlay.open { display: block; }
-
-  .cast-drawer {
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .cast-drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .cast-drawer-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  .cast-drawer-body { overflow-y: auto; flex: 1; }
-
-  .cast-table { width: 100%; border-collapse: collapse; }
-
-  .cast-table thead tr {
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-secondary);
-  }
-
-  .cast-table th {
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 8px 1.25rem;
-    text-align: left;
-  }
-
-  .cast-table td {
-    padding: 9px 1.25rem;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    vertical-align: middle;
-  }
-
-  .cast-table tr:last-child td { border-bottom: none; }
-
-  .cast-char-name {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-  }
-
-  .cast-voice {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    margin-top: 1px;
-  }
-
-  .cast-description {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    margin-top: 1px;
-    letter-spacing: 0.02em;
-  }
-
-  .cast-singer {
-    font-family: var(--serif);
-    font-size: 14px;
-    color: var(--text-main);
-    font-style: italic;
-  }
-
-  .cast-singer.empty {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    font-style: normal;
-    letter-spacing: 0.03em;
-  }
-
-  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
-  @media (hover: hover) {
-    .character-name[data-tooltip] {
-      position: relative;
-      cursor: default;
-    }
-    .character-name[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 0;
-      background: var(--color-background-primary, #fdfaf6);
-      border: 1px solid var(--color-border-primary);
-      border-radius: 3px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      font-family: var(--sans);
-      font-size: 10.5px;
-      color: var(--text-main);
-      white-space: nowrap;
-      padding: 5px 9px;
-      pointer-events: none;
-      z-index: 150;
-      letter-spacing: 0.02em;
-      line-height: 1.5;
-    }
-  }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
 
 <div class="app">
 
   <div class="context-bar" id="contextBar">
-    <div class="context-left" onclick="openDrawer()" title="Open index">
+    <div class="context-left" onclick="openIndex()" title="Open index">
       <span class="context-track" id="trackLabel">CD None · TNone</span>
       <span class="context-sep">&middot;</span>
       <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
@@ -622,6 +23,9 @@
       </div>
       <button class="cast-btn" onclick="openCast()">Cast</button>
     </div>
+    <button class="lang-filter-btn" id="mobileBtnIT" onclick="toggleLang('it')">IT</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
   </div>
 
   <div class="libretto-body">
@@ -638,6 +42,31 @@
       </div>
     </div>
     <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>(Galleria nel palazzo d'Argirio.)</span>
+        <span class="es">(Galería del palacio de Argirio)</span>
+      </div>
+      <div class="line-row"><span class="it"><strong>Scena Prima</strong></span><span class="es"><strong>Escena Primera</strong></span></div>
+      <div class="stage-direction">
+        <span>(Cavalieri sparsi per la scena, altri che arrivano</span>
+        <span class="es">(Sala con caballeros y otros más que van</span>
+        <span>introdotti da scudieri, che restano poi alle porte.</span>
+        <span class="es">llegando acompañados por sus escuderos,</span>
+        <span>Isaura e varie damigelle seco; due scudieri portano</span>
+        <span class="es">los cuales llevan en bandejas de plata bandas</span>
+        <span>due bacili d'argento, su' quali molte sciarpe bianche;</span>
+        <span class="es">blancas. Isaura está acompañada por sus</span>
+        <span>i cavalieri s'abbracciano, slacciano le loro sciarpe,</span>
+        <span class="es">damas. Los caballeros, unos con escarapelas</span>
+        <span>alcune bleu, altre rosse, che distinguevano i vari</span>
+        <span class="es">blancas y otros rosa, representando las distintas</span>
+        <span>partiti. Cantasi intanto in)</span>
+        <span class="es">facciones, se saludan unos a otros)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Coro</span>
+        <span class="character-name">Coro</span>
+      </div>
       <div class="line-row"><span class="it">Pace, onore, fede, amore</span><span class="es">La paz, el honor, la fe y el amor</span></div>
       <div class="line-row"><span class="it">Regni, splenda, ogn'alma accenda</span><span class="es">reinen espléndidos en nuestras almas.</span></div>
       <div class="line-row"><span class="it">Spento il rio civil furore</span><span class="es">Siracusa renacerá de entre las cenizas</span></div>
@@ -664,8 +93,6 @@
       <div class="stage-direction">
         <span>(Argirio, a mano con Orbazzano, cavalieri</span>
         <span class="es">(Argirio y Orbazzano se estrechan la mano.</span>
-      </div>
-      <div class="stage-direction">
         <span>con sciarpa bianca, scudieri)</span>
         <span class="es">Sus seguidores llevan escarapelas blancas)</span>
       </div>
@@ -847,8 +274,6 @@
       <div class="stage-direction">
         <span>(Amenaide, a suo tempo, preceduta da'</span>
         <span class="es">(Amenaida, a su tiempo, acompañada por</span>
-      </div>
-      <div class="stage-direction">
         <span>scudieri, accompagnata da damigelle)</span>
         <span class="es">un séquito de damas y escuderos)</span>
       </div>
@@ -1174,32 +599,18 @@
       <div class="stage-direction">
         <span>(Parco delizioso nel palazzo d'Argirio, di cui si vede</span>
         <span class="es">(Parque del palacio de Argirio junto al mar.</span>
-      </div>
-      <div class="stage-direction">
         <span>magnifica parte: nel prospetto una fiorita spiaggia</span>
         <span class="es">Al fondo, un embarcadero. Fuentes, verjas y</span>
-      </div>
-      <div class="stage-direction">
         <span>d'un seno di mare, che lambe le mura del palazzo.</span>
         <span class="es">estatuas adornan el delicioso conjunto. Atraca</span>
-      </div>
-      <div class="stage-direction">
         <span>Viali, statue, cancelli ecc. Approda uno schiffo: ne</span>
         <span class="es">una barca desde la que desembarca, primero,</span>
-      </div>
-      <div class="stage-direction">
         <span>scende Roggiero, che esplora, e poi Tancredi;</span>
         <span class="es">Roggiero, que explora los alrededores; luego,</span>
-      </div>
-      <div class="stage-direction">
         <span>quattro scudieri portano le insegne di Tancredi, la</span>
         <span class="es">lo hace Tancredo, protegido por una escolta de</span>
-      </div>
-      <div class="stage-direction">
         <span>lancia, lo scudo, su cui si vedono scritte le parole</span>
         <span class="es">cuatro soldados en cuyos escudos puede leerse</span>
-      </div>
-      <div class="stage-direction">
         <span>"Fede, Onore". Gli scudieri restano in disparte)</span>
         <span class="es">la divisa de Tancredo: "Fidelidad y Honor")</span>
       </div>
@@ -1329,8 +740,6 @@
       <div class="stage-direction">
         <span>(Argirio, Amenaide, scudieri d'Argirio; Tancredi,</span>
         <span class="es">(Entran Argirio, Amenaida, con séquito</span>
-      </div>
-      <div class="stage-direction">
         <span>che tratto tratto comparirà guardingo)</span>
         <span class="es">y soldados. Tancredo permanece oculto)</span>
       </div>
@@ -1813,16 +1222,10 @@
       <div class="stage-direction">
         <span>(Luogo pubblico, in vicinanza alle mura, che</span>
         <span class="es">(Plaza pública con las ruinas de un magnífico</span>
-      </div>
-      <div class="stage-direction">
         <span>corrisponde a piazzale di magnifico gotico tempio;</span>
         <span class="es">templo antiguo próximo a las murallas. Nobles,</span>
-      </div>
-      <div class="stage-direction">
         <span>monumenti antichi. Popolo che accorre alla festa</span>
         <span class="es">damas y pueblo corren para presenciar los</span>
-      </div>
-      <div class="stage-direction">
         <span>nuziale. Nobili che s'uniscono. Damigelle)</span>
         <span class="es">esponsales)</span>
       </div>
@@ -1848,8 +1251,6 @@
       <div class="stage-direction">
         <span>(Marcia di guerrieri e cavalieri, che sfilano e si</span>
         <span class="es">(Al son de una marcha militar,</span>
-      </div>
-      <div class="stage-direction">
         <span>dispongono poi nel prospetto)</span>
         <span class="es">desfilan guerreros y caballeros)</span>
       </div>
@@ -1884,8 +1285,6 @@
       <div class="stage-direction">
         <span>(Tancredi che avrà udita parte del coro,</span>
         <span class="es">(Tancredo, seguido de Roggiero, sale</span>
-      </div>
-      <div class="stage-direction">
         <span>fremente, desolato; Roggiero, che lo segue)</span>
         <span class="es">de entre la multitud)</span>
       </div>
@@ -1978,12 +1377,8 @@
       <div class="stage-direction">
         <span>(Scudieri, che precedono; paggi, damigella nobili,</span>
         <span class="es">(Cortejo formado por escuderos, pajes, damas,</span>
-      </div>
-      <div class="stage-direction">
         <span>cavalieri. In mezzo a questi Argirio, Amenaide,</span>
         <span class="es">nobles y caballeros. Luego Argirio, Amenaida,</span>
-      </div>
-      <div class="stage-direction">
         <span>Isaura. Tancredi e Roggiero (in disparte)</span>
         <span class="es">Isaura)</span>
       </div>
@@ -2194,8 +1589,6 @@
       <div class="stage-direction">
         <span>(Orbazzano che viene dal fondo e l'udì,</span>
         <span class="es">(Orbazzano, que lo ha oído todo, aparece</span>
-      </div>
-      <div class="stage-direction">
         <span>avanza fiero, e con tutto furore)</span>
         <span class="es">por el fondo furioso)</span>
       </div>
@@ -2296,8 +1689,6 @@
       <div class="stage-direction">
         <span>(Sorpresa, fremito, affanno, sdegno,</span>
         <span class="es">(Todos expresan diferentes sentimientos</span>
-      </div>
-      <div class="stage-direction">
         <span>relativo a' personaggi; quadro)</span>
         <span class="es">de sorpresa, horror e indignación)</span>
       </div>
@@ -2565,8 +1956,6 @@
       <div class="stage-direction">
         <span>(Galleria nel castello d'Argirio. Tavolino,</span>
         <span class="es">(Galería en el palacio de Argirio.</span>
-      </div>
-      <div class="stage-direction">
         <span>sedia ricca)</span>
         <span class="es">Una mesa y un magnífico sillón)</span>
       </div>
@@ -2575,8 +1964,6 @@
       <div class="stage-direction">
         <span>(Isaura dolentissima; Orbazzano fremente;</span>
         <span class="es">(Isaura destrozada de dolor. Orbazzano furioso.</span>
-      </div>
-      <div class="stage-direction">
         <span>cavaliere in van gruppi, di dolore e di sdegno)</span>
         <span class="es">Grupos de caballeros con actitud dolorida)</span>
       </div>
@@ -3445,8 +2832,6 @@
       <div class="stage-direction">
         <span>(Colpo lontano. Musica giuliva in lontananza,</span>
         <span class="es">(Música de júbilo que se va acercando</span>
-      </div>
-      <div class="stage-direction">
         <span>che viene avanzandosi)</span>
         <span class="es">poco a poco)</span>
       </div>
@@ -3559,24 +2944,14 @@
       <div class="stage-direction">
         <span>(Gran piazza di Siracusa. Popolo accorso. Nobili</span>
         <span class="es">(Gran plaza de Siracusa. Nobles, caballeros,</span>
-      </div>
-      <div class="stage-direction">
         <span>disposti. Marcia: soldati, scudieri, cavalieri che</span>
         <span class="es">pueblo, soldados preceden al carro triunfal sobre</span>
-      </div>
-      <div class="stage-direction">
         <span>precedono il carro trionfale su cui comparisce</span>
         <span class="es">el que marcha Tancredo. La armadura y armas</span>
-      </div>
-      <div class="stage-direction">
         <span>Tancredi. L'armatura d'Orbazzano n'è trofeo. Gli</span>
         <span class="es">de Orbazzano son llevadas por los escuderos</span>
-      </div>
-      <div class="stage-direction">
         <span>scudieri di Tancredi portano ai lati del carro le di</span>
         <span class="es">de Tancredo a ambos lados del carro. Roggiero</span>
-      </div>
-      <div class="stage-direction">
         <span>lui insegne. Roggiero collo scudo.)</span>
         <span class="es">sostiene el escudo de Orbazzano)</span>
       </div>
@@ -3868,12 +3243,8 @@
       <div class="stage-direction">
         <span>(Partono)</span>
         <span class="es">(Salen)</span>
-      </div>
-      <div class="stage-direction">
         <span>(Roggiero vuol seguir Tancredi che d'un</span>
         <span class="es">(Roggiero quiere seguir a Tancredo, pero éste,</span>
-      </div>
-      <div class="stage-direction">
         <span>cenno lo vieta)</span>
         <span class="es">con la mirada, se lo prohíbe)</span>
       </div>
@@ -3988,32 +3359,18 @@
       <div class="stage-direction">
         <span>(Catena di montagne, burroni scoscesi, torrenti che</span>
         <span class="es">(El sol se pone lentamente tras una cadena</span>
-      </div>
-      <div class="stage-direction">
         <span>precipitano e vanno a formare l'Aretusa. Selva che</span>
         <span class="es">montañosa a las afueras de Siracusa. Por</span>
-      </div>
-      <div class="stage-direction">
         <span>copre parte del piano e della montagna. L'Etna in</span>
         <span class="es">barrancos discurren torrentes que forman</span>
-      </div>
-      <div class="stage-direction">
         <span>lontananza. Il sole verso l'occidente, e riverbera sul</span>
         <span class="es">el Aretusa. A un lado de la escena paraje</span>
-      </div>
-      <div class="stage-direction">
         <span>mare alla parte opposta. Tende africane sparse sulle</span>
         <span class="es">boscoso. El Etna se distingue a lo lejos.</span>
-      </div>
-      <div class="stage-direction">
         <span>montagne. Qualche caverna. Durante il stornello si</span>
         <span class="es">Tiendas sarracenas por doquier. Aparece</span>
-      </div>
-      <div class="stage-direction">
         <span>vede Tancredi salire, indi scendere, concentrato</span>
         <span class="es">Tancredo, suspirando y pesaroso, perdido</span>
-      </div>
-      <div class="stage-direction">
         <span>cupamente; avanza sospiroso, s'arresta)</span>
         <span class="es">en sus pensamientos)</span>
       </div>
@@ -4056,16 +3413,10 @@
       <div class="stage-direction">
         <span>(S 'abbandona su d'un sasso all'ingresso d'una</span>
         <span class="es">(Se sienta sobre una roca a la entrada de</span>
-      </div>
-      <div class="stage-direction">
         <span>caverna. (Intanto da' burroni, dalla selva</span>
         <span class="es">una cueva. Mientras tanto, los sarracenos</span>
-      </div>
-      <div class="stage-direction">
         <span>compariscono gruppi di soldati saraceni, che</span>
         <span class="es">salen de sus tiendas para dirigirse al campo</span>
-      </div>
-      <div class="stage-direction">
         <span>s'avviano al campo)</span>
         <span class="es">de batalla)</span>
       </div>
@@ -4281,12 +3632,8 @@
       <div class="stage-direction">
         <span>(È per alzarla ed abbracciarla. In questo si ode da</span>
         <span class="es">(Cuando está a punto de levantarla, se oyen</span>
-      </div>
-      <div class="stage-direction">
         <span>lunge musica barbara marziale che viene avanzando.</span>
         <span class="es">las fanfarrias sarracenas que avanzan. Todos</span>
-      </div>
-      <div class="stage-direction">
         <span>Tutti ne restano colpiti))</span>
         <span class="es">quedan asombrados)</span>
       </div>
@@ -4311,8 +3658,6 @@
       <div class="stage-direction">
         <span>(Saraceni che portano un ramo d'olivo,</span>
         <span class="es">(Entran los sarracenos con ramas de olivo</span>
-      </div>
-      <div class="stage-direction">
         <span>e una corona, e detti)</span>
         <span class="es">y una corona de flores)</span>
       </div>
@@ -4417,8 +3762,6 @@
       <div class="stage-direction">
         <span>(I Saraceni partono. Tancredi alla testa de'</span>
         <span class="es">(Salen los sarracenos. Luego, Tancredo y</span>
-      </div>
-      <div class="stage-direction">
         <span>cavalieri parte seguito da Roggiero)</span>
         <span class="es">Roggiero a la cabeza de los caballeros)</span>
       </div>
@@ -4518,8 +3861,6 @@
       <div class="stage-direction">
         <span>(Amenaide, Argirio, Tancredi, Roggiero,</span>
         <span class="es">(Aparecen Tancredo, Argirio, soldados,</span>
-      </div>
-      <div class="stage-direction">
         <span>Saraceni, prigionieri, guerrieri, popolo)</span>
         <span class="es">prisioneros y pueblo)</span>
       </div>
@@ -4647,28 +3988,16 @@
       <div class="stage-direction">
         <span>(Catena di montagne, burroni scoscesi, torrenti che</span>
         <span class="es">(El sol se pone lentamente tras una cadena</span>
-      </div>
-      <div class="stage-direction">
         <span>precipitano e vanno a formare l'Aretusa. Selva che</span>
         <span class="es">montañosa a las afueras de Siracusa. Por</span>
-      </div>
-      <div class="stage-direction">
         <span>copre parte del piano e della montagna. L'Etna in</span>
         <span class="es">barrancos discurren torrentes que forman</span>
-      </div>
-      <div class="stage-direction">
         <span>lontananza. Il sole verso l'occidente, e riverbera sul</span>
         <span class="es">el Aretusa. A un lado de la escena paraje</span>
-      </div>
-      <div class="stage-direction">
         <span>mare alla parte opposta. Qualche caverna. Durante</span>
         <span class="es">boscoso. El Etna se distingue a lo lejos.</span>
-      </div>
-      <div class="stage-direction">
         <span>il stornello si vede Tancredi salire, indi scendere,</span>
         <span class="es">Aparece Tancredo, suspirando y pesaroso,</span>
-      </div>
-      <div class="stage-direction">
         <span>concentrato cupamente; avanza sospiroso, s'arresta)</span>
         <span class="es">perdido en sus pensamientos)</span>
       </div>
@@ -4694,12 +4023,8 @@
       <div class="stage-direction">
         <span>(S 'abbandona su d'un sasso all'ingresso d'una</span>
         <span class="es">(Se sienta sobre una roca a la entrada de</span>
-      </div>
-      <div class="stage-direction">
         <span>caverna. Intanto da' burroni, dalla selva</span>
         <span class="es">una cueva. Mientras tanto, grupos de</span>
-      </div>
-      <div class="stage-direction">
         <span>compariscono gruppi di cavalieri)</span>
         <span class="es">caballeros salen de la espesura del bosque)</span>
       </div>
@@ -5116,6 +4441,30 @@
   </div>
 </div>
 
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
 <div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
@@ -5184,6 +4533,14 @@
   let currentActiveId = "t1";
   let observer = null;
 
+  function openIndex() {
+    if (window.innerWidth <= 600) {
+      openBottomSheet();
+    } else {
+      openDrawer();
+    }
+  }
+
   function openDrawer() {
     closeCast();
     buildDrawer();
@@ -5216,6 +4573,7 @@
     if (e.key !== 'Escape') return;
     closeDrawer();
     closeCast();
+    closeCastSheet();
   });
 
   function toggleSwitcher(event) {
@@ -5333,6 +4691,7 @@
     const lbl = document.getElementById('recordingLabel');
     if (lbl) lbl.textContent = RECORDINGS[key].label;
     updateTrackTags();
+    buildMobileTrackMarkers();
     buildDrawer();
     buildSwitcherDropdown();
     const dd = document.getElementById('recDropdown');
@@ -5342,6 +4701,9 @@
     applyTooltips();
     if (document.getElementById('castOverlay').classList.contains('open')) {
       buildCast();
+    }
+    if (document.getElementById('castSheetOverlay').classList.contains('open')) {
+      buildCastSheet();
     }
   }
 
@@ -5374,9 +4736,130 @@
     });
   }
 
+  const mobileLangState = { it: true, es: true };
+
+  function toggleLang(lang) {
+    const langs = Object.keys(mobileLangState);
+    const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
+    if (mobileLangState[lang] && !hasOtherOn) return;
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('it-hidden', !mobileLangState.it);
+    document.getElementById('mobileBtnIT').classList.toggle('off', !mobileLangState.it);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  function buildMobileTrackMarkers() {
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of rec.tracks) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  function buildCastSheet() {
+    const cast = CAST[activeRecording];
+    const body = document.getElementById('castSheetBody');
+    body.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      const singerClass = singer ? 'cast-singer' : 'cast-singer empty';
+      const singerText = singer || '—';
+      return `<div class="cast-sheet-row">
+        <div class="cast-sheet-char">
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+        </div>
+        <div class="${singerClass}">${singerText}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCastSheet() {
+    buildCastSheet();
+    document.getElementById('castSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCastSheet() {
+    document.getElementById('castSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildSheetRecordingPicker() {
+    const picker = document.getElementById('sheetRecPicker');
+    if (!picker) return;
+    picker.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<button class="sheet-rec-btn${key === activeRecording ? ' active' : ''}" onclick="switchRecordingFromSheet('${key}')">${rec.short}</button>`
+    ).join('');
+  }
+
+  function switchRecordingFromSheet(key) {
+    if (key === activeRecording) return;
+    switchRecording(key);
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function buildBottomSheetBody() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function buildBottomSheet() {
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
   buildSwitcherDropdown();
   buildDrawer();
   rewireObserver();
   updateActive("t1");
   applyTooltips();
+  buildMobileTrackMarkers();
 </script>

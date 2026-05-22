@@ -1,781 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap');
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --serif: 'EB Garamond', Georgia, serif;
-    --sans: 'Jost', var(--font-sans);
-    --bar-h: 48px;
-    --gold: #8B6914;
-    --gold-light: #f5ede0;
-    --gold-mid: #c49a2a;
-    --gold-border: #d4a84b;
-    --col-gap: 1rem;
-    --col-left: 52px;
-    --text-dim: var(--color-text-secondary);
-    --text-main: var(--color-text-primary);
-    --text-max-width: 900px;
-    --bg: var(--color-background-primary);
-    --bg2: var(--color-background-secondary);
-  }
-
-  .app { display: flex; flex-direction: column; min-height: 600px; font-family: var(--serif); }
-
-  .context-bar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--color-background-primary, #fdfaf6);
-    border-bottom: 1px solid var(--color-border-secondary);
-    height: var(--bar-h);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    gap: 1rem;
-
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .context-left {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    border-radius: 3px;
-    padding: 4px 6px;
-    margin: -4px -6px;
-    transition: background 0.15s;
-  }
-  .context-left:hover { background: var(--bg2); }
-  .context-left:active { background: var(--gold-light); }
-
-  .context-sep { opacity: 0.3; }
-  .context-chevron { font-size: 8px; opacity: 0.4; flex-shrink: 0; }
-
-  .context-track {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--gold);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 2px 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .context-track-title {
-    font-size: 11px;
-    color: var(--text-dim);
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-family: var(--sans);
-  }
-
-  .context-right { display: flex; align-items: center; gap: 10px; }
-  .recording-switcher-wrap { position: relative; }
-
-  .recording-switcher {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 3px 8px;
-    background: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-  .recording-switcher:hover { background: var(--bg2); }
-
-  .switcher-chevron { font-size: 8px; opacity: 0.5; }
-
-  .recording-dropdown {
-    display: none;
-    position: absolute;
-    top: calc(100% + 4px);
-    right: 0;
-    background: var(--color-background-primary, #fdfaf6);
-    border: 1px solid var(--color-border-primary);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-    min-width: 220px;
-    z-index: 300;
-  }
-  .recording-dropdown.open { display: block; }
-
-  .recording-option {
-    font-family: var(--sans);
-    font-size: 12px;
-    padding: 10px 14px;
-    cursor: pointer;
-    color: var(--text-main);
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-  .recording-option:last-child { border-bottom: none; }
-  .recording-option:hover { background: var(--bg2); }
-  .recording-option.active {
-    background: var(--gold-light);
-    color: var(--gold);
-    font-weight: 500;
-  }
-
-
-  .libretto-body {
-    display: grid;
-    grid-template-columns: var(--col-left) 1fr;
-    padding-bottom: 4rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .act-heading {
-    grid-column: 1 / -1;
-    font-family: var(--sans);
-    font-size: 25px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 2rem 1.25rem 0.75rem calc(var(--col-left) + 1.25rem);
-    border-bottom: 1px solid var(--color-border-secondary);
-    margin-bottom: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .track-col {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-top: 1.6rem;
-    padding-right: 0;
-    position: relative;
-  }
-
-  .track-tag {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--gold-light);
-    border: 1px solid var(--gold-border);
-    border-radius: 3px;
-    padding: 4px 6px;
-    gap: 1px;
-    cursor: default;
-    width: 40px;
-  }
-
-  .track-tag-cd {
-    font-family: var(--sans);
-    font-size: 8px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--gold-mid);
-  }
-
-  .track-tag-num {
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--gold);
-    line-height: 1;
-  }
-
-  .text-col { 
-    padding: 0 1.25rem; 
-    scroll-margin-top: calc(var(--bar-h) + 0.5rem);
-    max-width: var(--text-max-width);
-  }
-
-  .musical-number {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin: 1.25rem 0 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .musical-number::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border-secondary);
-  }
-
-  .scene-heading {
-    font-family: var(--sans);
-    font-size: 11px;
-    color: var(--text-dim);
-    font-style: italic;
-    margin: 0.75rem 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    font-style: italic;
-    color: var(--text-dim);
-    margin: 0.6rem 0;
-    border-left: 2px solid var(--color-border-secondary);
-    line-height: 1.5;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-  }
-
-  .stage-direction .es { font-style: italic; }
-
-  .character-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.9rem 0 0.15rem;
-  }
-
-  .character-name {
-    font-family: var(--sans);
-    font-size: 16px;
-    font-weight: 550;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-  }
-
-  .line-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    align-items: baseline;
-  }
-
-  /* Inline stage direction — sits between character name and first sung line */
-  .inline-direction {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 var(--col-gap);
-    margin: 0.2rem 0 0.25rem;
-  }
-
-  .inline-direction span {
-    font-family: var(--serif);
-    font-size: 13px;
-    font-style: italic;
-    color: var(--text-dim);
-    line-height: 1.5;
-  }
-
-  .fr {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .es {
-    font-family: var(--serif);
-    font-size: 15.5px;
-    line-height: 1.65;
-    color: var(--text-main);
-  }
-
-  .spacer-row { grid-column: 1/-1; height: 2rem; }
-  .spacer-row-sm { grid-column: 1/-1; height: 1rem; }
-
-  .drawer-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 200;
-  }
-
-  .drawer-overlay.open { display: block; }
-
-  .drawer {
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-right: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .drawer-header-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Shared close button (used in both drawers) ── */
-  .drawer-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-family: var(--sans);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--text-dim);
-    line-height: 1;
-    padding: 4px 6px;
-    flex-shrink: 0;
-    border-radius: 3px;
-    transition: color 0.15s;
-  }
-  .drawer-close:hover { color: #c0392b; background: none; }
-
-  .drawer-body { overflow-y: auto; flex: 1; }
-
-  .drawer-cd-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 1.25rem 1.25rem 0.5rem;
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-tertiary);
-    border-top: 1px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 9px 1.25rem;
-    cursor: pointer;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-  }
-
-  .drawer-track:hover { background: var(--bg2); }
-  .drawer-track.active { background: var(--gold-light); border-left: 3px solid var(--gold-border); padding-left: calc(1.25rem - 3px); }
-
-  .drawer-track-num {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-dim);
-    width: 20px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .drawer-track.active .drawer-track-num { color: var(--gold); }
-
-  .drawer-track-info { display: flex; flex-direction: column; gap: 1px; flex: 1; }
-
-  .drawer-track-title {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-    line-height: 1.3;
-  }
-
-  .drawer-track.active .drawer-track-title { color: var(--gold); }
-
-  .drawer-track-act {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-  }
-
-  /* ── Cast button ── */
-  .cast-btn {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    background: none;
-    border: 1px solid var(--color-border-secondary);
-    border-radius: 3px;
-    padding: 5px 12px;
-    cursor: pointer;
-    color: var(--text-main);
-  }
-  .cast-btn:hover { background: var(--bg2); }
-
-  /* ── Cast drawer (mirrors index drawer) ── */
-  .cast-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: 250;
-  }
-  .cast-overlay.open { display: block; }
-
-  .cast-drawer {
-    position: absolute;
-    top: 0; right: 0; bottom: 0;
-    width: 340px;
-    background: var(--color-background-primary, #fdfaf6);
-    border-left: 1.5px solid var(--color-border-primary);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .cast-drawer-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.25rem;
-    height: var(--bar-h);
-    border-bottom: 1.5px solid var(--color-border-primary);
-    flex-shrink: 0;
-    background: var(--color-background-secondary, #f5ede0);
-  }
-
-  .cast-drawer-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-main);
-    letter-spacing: 0.04em;
-  }
-
-  .cast-drawer-body { overflow-y: auto; flex: 1; }
-
-  .cast-table { width: 100%; border-collapse: collapse; }
-
-  .cast-table thead tr {
-    background: var(--color-background-secondary, #f5ede0);
-    border-bottom: 1px solid var(--color-border-secondary);
-  }
-
-  .cast-table th {
-    font-family: var(--sans);
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    padding: 8px 1.25rem;
-    text-align: left;
-  }
-
-  .cast-table td {
-    padding: 9px 1.25rem;
-    border-bottom: 0.5px solid var(--color-border-tertiary);
-    vertical-align: middle;
-  }
-
-  .cast-table tr:last-child td { border-bottom: none; }
-
-  .cast-char-name {
-    font-family: var(--serif);
-    font-size: 15px;
-    color: var(--text-main);
-  }
-
-  .cast-voice {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 0.04em;
-    margin-top: 1px;
-  }
-
-  .cast-description {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    margin-top: 1px;
-    letter-spacing: 0.02em;
-  }
-
-  .cast-singer {
-    font-family: var(--serif);
-    font-size: 14px;
-    color: var(--text-main);
-    font-style: italic;
-  }
-
-  .cast-singer.empty {
-    font-family: var(--sans);
-    font-size: 10px;
-    color: var(--text-dim);
-    font-style: normal;
-    letter-spacing: 0.03em;
-  }
-
-  /* ── Character name tooltips (desktop only, progressive enhancement) ── */
-  @media (hover: hover) {
-    .character-name[data-tooltip] {
-      position: relative;
-      cursor: default;
-    }
-    .character-name[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      bottom: calc(100% + 6px);
-      left: 0;
-      background: var(--color-background-primary, #fdfaf6);
-      border: 1px solid var(--color-border-primary);
-      border-radius: 3px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-      font-family: var(--sans);
-      font-size: 10.5px;
-      color: var(--text-main);
-      white-space: nowrap;
-      padding: 5px 9px;
-      pointer-events: none;
-      z-index: 150;
-      letter-spacing: 0.02em;
-      line-height: 1.5;
-    }
-  }
-
-  /* ── Hide mobile-only elements on desktop ───────────────────────────────── */
-  @media (min-width: 601px) {
-    .lang-filter-btn,
-    .mobile-cast-btn,
-    .mobile-track-marker,
-    .bottom-sheet-overlay { display: none; }
-  }
-
-  /* ── Mobile layout (≤ 600px) ─────────────────────────────────────────────── */
-  /* Placed last so these rules always win over desktop declarations above.     */
-  @media (max-width: 600px) {
-
-    .context-bar {
-      padding: 0 0.75rem;
-      gap: 0.35rem;
-      justify-content: flex-start;
-    }
-
-    .context-sep,
-    .context-chevron,
-    .context-track-title,
-    .recording-switcher-wrap,
-    .cast-btn { display: none; }
-
-    .context-left {
-      flex: 1;
-      min-width: 0;
-      cursor: pointer;
-      gap: 0.4rem;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-    }
-    .context-left:active { background: var(--gold-light); }
-
-    #actLabel {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      min-width: 0;
-    }
-
-    .lang-filter-btn {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 600;
-      color: #8B6914;
-      background: var(--gold-light);
-      border: 1px solid var(--gold-border);
-      border-radius: 3px;
-      padding: 2px 6px;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      flex-shrink: 0;
-      transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-    .lang-filter-btn.off {
-      background: none;
-      color: var(--text-dim);
-      border-color: var(--color-border-secondary);
-    }
-
-    .libretto-body { grid-template-columns: 1fr; }
-
-    .track-col { display: none; }
-
-    .text-col { padding: 0 1rem; }
-
-    .act-heading {
-      grid-template-columns: 1fr;
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    .act-heading span:last-child { display: none; }
-
-    .scene-heading { grid-template-columns: 1fr; }
-    .scene-heading span:first-child { display: none; }
-
-    .stage-direction {
-      display: block;
-      border-left: none;
-      border-top: 0.5px solid var(--color-border-secondary);
-      border-bottom: 0.5px solid var(--color-border-secondary);
-      padding: 0.3rem 0;
-    }
-    .stage-direction span:first-child { display: none; }
-
-    .character-row { display: block; margin-top: 1rem; }
-    .character-row span:last-child { display: none; }
-
-    .inline-direction { display: block; }
-    .inline-direction span:first-child { display: none; }
-
-    .line-row { display: block; }
-    .line-row .fr { display: block; text-align: left; line-height: normal; }
-    .line-row .es { display: block; text-align: right; line-height: normal; }
-
-    .mobile-track-marker {
-      font-family: var(--sans);
-      font-size: 9px;
-      font-weight: 600;
-      color: var(--gold-mid);
-      letter-spacing: 0.08em;
-      opacity: 0.7;
-      margin: 0.6rem 0 0.1rem;
-      display: block;
-    }
-
-    .fr-hidden .line-row .fr { display: none; }
-    .es-hidden .line-row .es { display: none; }
-
-    .bottom-sheet-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 300;
-    }
-    .bottom-sheet-overlay.open { display: block; }
-
-    .bottom-sheet {
-      position: absolute;
-      left: 0; right: 0; bottom: 0;
-      height: 75%;
-      background: var(--color-background-primary, #fdfaf6);
-      border-radius: 16px 16px 0 0;
-      border-top: 1px solid var(--color-border-primary);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-
-    .bottom-sheet-handle {
-      width: 36px;
-      height: 4px;
-      background: var(--color-border-secondary);
-      border-radius: 2px;
-      margin: 10px auto 6px;
-      flex-shrink: 0;
-    }
-
-    .drawer-overlay { display: none !important; }
-    .cast-overlay { display: none !important; }
-
-    .mobile-cast-btn {
-      font-family: var(--sans);
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--gold);
-      background: var(--gold-light);
-      border: 1px solid var(--gold-border);
-      border-radius: 3px;
-      padding: 2px 6px;
-      letter-spacing: 0.05em;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .mobile-cast-btn:hover { background: var(--bg2); }
-
-    .sheet-recording-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 1.25rem 10px;
-      border-bottom: 1px solid var(--color-border-secondary);
-      margin-bottom: 2px;
-      gap: 8px;
-    }
-    .sheet-recording-label {
-      font-family: var(--sans);
-      font-size: 11px;
-      color: var(--text-dim);
-      letter-spacing: 0.04em;
-    }
-    .sheet-recording-picker { display: flex; gap: 6px; }
-    .sheet-rec-btn {
-      font-family: var(--sans);
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      border: 1px solid var(--color-border-secondary);
-      border-radius: 3px;
-      padding: 3px 9px;
-      background: none;
-      color: var(--text-dim);
-      cursor: pointer;
-      transition: background 0.12s, border-color 0.12s, color 0.12s;
-    }
-    .sheet-rec-btn.active {
-      background: var(--gold-light);
-      border-color: var(--gold-border);
-      color: var(--gold);
-    }
-
-    .cast-sheet-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 9px 1.25rem;
-      border-bottom: 0.5px solid var(--color-border-tertiary);
-    }
-    .cast-sheet-char { flex: 1; min-width: 0; }
-  }
-</style>
+<link rel="stylesheet" href="../libretto.css">
 
 <div class="app">
 
@@ -817,6 +42,49 @@
       </div>
     </div>
     <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>(Une place, à Séville. A droite, la porte</span>
+        <span class="es">(Una plaza pública de la ciudad de</span>
+        <span>de la manufacture de tabac. A gauche,</span>
+        <span class="es">Sevilla. A la derecha, la puerta de la</span>
+        <span>au premier plan, le corps de garde. Devant</span>
+        <span class="es">Fábrica de Tabaco. A la izquierda,</span>
+        <span>le corps de garde, exhaussée de deux ou</span>
+        <span class="es">el cuerpo de guardia donde, Morales</span>
+        <span>trois marches; près du corps de garde,</span>
+        <span class="es">y el resto de los soldados, descansan.</span>
+        <span>dans un râtelier, les lances des dragons</span>
+        <span class="es">Las lanzas de los dragones, están</span>
+        <span>avec leurs banderoles jaunes et rouges.)</span>
+        <span class="es">apoyadas en el muro.)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Première</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="line-row"><span class="fr"><strong>1. Introduction</strong></span><span class="es"><strong>1: Introducción</strong></span></div>
+      <div class="stage-direction">
+        <span>(Au lever du rideau, une quinzaine de</span>
+        <span class="es">(junto al telón, una quincena</span>
+        <span>soldats, Dragons du régiment d'Alcala,</span>
+        <span class="es">de soldados, dragones del regimiento</span>
+        <span>sont groupés devant le corps de garde.</span>
+        <span class="es">de Alcalá, están en grupos frente</span>
+        <span>Les uns assis et fumant, les autres accoudés</span>
+        <span class="es">al cuerpo de guardia; unos sentados</span>
+        <span>sur le balustrade de la galerie. Mouvement</span>
+        <span class="es">fumando, otros acodados en la</span>
+        <span>de passants sur la place. Des gens pressés,</span>
+        <span class="es">barandilla de la galería viendo</span>
+        <span>affairés, vont, viennent, se rencontrent, se</span>
+        <span class="es">pasear a la gente que va y viene</span>
+        <span>saluent, se bousculent, etc.)</span>
+        <span class="es">animadamente.)</span>
+      </div>
+      <div class="character-row">
+        <span class="character-name">Soldats</span>
+        <span class="character-name">Soldados</span>
+      </div>
       <div class="line-row"><span class="fr">Sur la place</span><span class="es">En la plaza,</span></div>
       <div class="line-row"><span class="fr">chacun passe,</span><span class="es">gente pasa,</span></div>
       <div class="line-row"><span class="fr">chacun vient, chacun va;</span><span class="es">unos vienen, otros van:</span></div>
@@ -845,12 +113,8 @@
       <div class="stage-direction">
         <span>(Micaëla est entrée, hésitante,</span>
         <span class="es">(Aparece Micaela; temerosa mira a</span>
-      </div>
-      <div class="stage-direction">
         <span>embarrassée, elle regarde les</span>
         <span class="es">los soldados y se aproxima a ellos,</span>
-      </div>
-      <div class="stage-direction">
         <span>soldats avance, recule, etc.)</span>
         <span class="es">pero arrepentida, da un paso atrás)</span>
       </div>
@@ -1056,32 +320,18 @@
       <div class="stage-direction">
         <span>(clairon de loin derrière la scène.</span>
         <span class="es">(clarín distante, al que contesta</span>
-      </div>
-      <div class="stage-direction">
         <span>Les passants forment un groupe</span>
         <span class="es">una trompeta desde la orquesta,</span>
-      </div>
-      <div class="stage-direction">
         <span>pour assister à la parade. De petits</span>
         <span class="es">anunciando la llegada del relevo.</span>
-      </div>
-      <div class="stage-direction">
         <span>gamins entrent en courant de tous</span>
         <span class="es">Los niños corren por todos lados.</span>
-      </div>
-      <div class="stage-direction">
         <span>les côtés. La garde montante paraît:</span>
         <span class="es">La guardia entrante llega a la plaza:</span>
-      </div>
-      <div class="stage-direction">
         <span>deux fifres et un clairon d'abord, puis</span>
         <span class="es">delante, dos flautines y un clarín,</span>
-      </div>
-      <div class="stage-direction">
         <span>Zuniga, Don José et les soldats de la</span>
         <span class="es">seguidos por Zúñiga, Don José y</span>
-      </div>
-      <div class="stage-direction">
         <span>garde montante)</span>
         <span class="es">los soldados.)</span>
       </div>
@@ -1117,8 +367,6 @@
       <div class="stage-direction">
         <span>(la garde montante va se ranger</span>
         <span class="es">(la guardia entrante forma</span>
-      </div>
-      <div class="stage-direction">
         <span>en face de la garde descendante)</span>
         <span class="es">frente a la saliente)</span>
       </div>
@@ -1178,8 +426,6 @@
       <div class="stage-direction">
         <span>(Les factionnaires sont relevés.</span>
         <span class="es">(Los centinelas han sido relevados</span>
-      </div>
-      <div class="stage-direction">
         <span>Départ de la garde descendante)</span>
         <span class="es">y la guardia saliente se retira)</span>
       </div>
@@ -1206,20 +452,12 @@
       <div class="stage-direction">
         <span>(Soldats, gamins, et curieux s'éloignent par</span>
         <span class="es">(gamines y público se alejan por el</span>
-      </div>
-      <div class="stage-direction">
         <span>le fond. Le lieutenant autorise ses soldats à</span>
         <span class="es">fondo. El teniente autoriza a romper</span>
-      </div>
-      <div class="stage-direction">
         <span>rompre les rangs; puis ils rentrent dans le</span>
         <span class="es">filas, los soldados entran en el cuerpo</span>
-      </div>
-      <div class="stage-direction">
         <span>corps de garde. Don José et Zuniga restent</span>
         <span class="es">de guardia. Quedan en escena</span>
-      </div>
-      <div class="stage-direction">
         <span>seuls en scène.)</span>
         <span class="es">solamente Zúñiga y Don José)</span>
       </div>
@@ -1305,8 +543,6 @@
       <div class="stage-direction">
         <span>(La cloche de la manufacture</span>
         <span class="es">(La campana de la Fábrica</span>
-      </div>
-      <div class="stage-direction">
         <span>se fait entendre.)</span>
         <span class="es">comienza a sonar)</span>
       </div>
@@ -1324,28 +560,16 @@
       <div class="stage-direction">
         <span>(La place se remplit de jeunes gens qui</span>
         <span class="es">(Un grupo de jóvenes muchachos</span>
-      </div>
-      <div class="stage-direction">
         <span>viennent se placer sur le passage des</span>
         <span class="es">entra en escena a esperar la salida</span>
-      </div>
-      <div class="stage-direction">
         <span>cigarières. Les soldats sortent du poste.</span>
         <span class="es">de las cigarreras. Los soldados</span>
-      </div>
-      <div class="stage-direction">
         <span>Don José s'assied sur une chaise, et reste</span>
         <span class="es">también salen del cuartel. Don José</span>
-      </div>
-      <div class="stage-direction">
         <span>là fort indiffèrent à toutes ces allées et</span>
         <span class="es">permanece sentado ocupándose de su</span>
-      </div>
-      <div class="stage-direction">
         <span>venues, travaillant à son épinglette. La</span>
         <span class="es">fusil e indiferente a todo lo demás. La</span>
-      </div>
-      <div class="stage-direction">
         <span>cloche cesse.)</span>
         <span class="es">campana deja de sonar)</span>
       </div>
@@ -1372,12 +596,8 @@
       <div class="stage-direction">
         <span>(A ce moment paraissent les cigarières, la</span>
         <span class="es">(Las cigarreras, muchas de ellas</span>
-      </div>
-      <div class="stage-direction">
         <span>cigarette aux lèvres. Elles passent sous le</span>
         <span class="es">fumando, salen de la fábrica y</span>
-      </div>
-      <div class="stage-direction">
         <span>pont et descendent lentement en scène.)</span>
         <span class="es">lentamente bajan a la plaza.)</span>
       </div>
@@ -1478,32 +698,18 @@
       <div class="stage-direction">
         <span>(Carmen a un bouquet de cassie à son</span>
         <span class="es">(Carmen lleva un ramo de flores</span>
-      </div>
-      <div class="stage-direction">
         <span>corsage et une fleur de cassie dans le</span>
         <span class="es">en su blusa y otra en la boca. Tres</span>
-      </div>
-      <div class="stage-direction">
         <span>coin de la bouche. Trois ou quatre jeunes</span>
         <span class="es">o cuatro jóvenes vienen con ella.</span>
-      </div>
-      <div class="stage-direction">
         <span>gens entrent avec Carmen. Ils la suivent,</span>
         <span class="es">Ellos la siguen, la rodean, le hablan.</span>
-      </div>
-      <div class="stage-direction">
         <span>l'entourent, lui parlent. Elle minaude et</span>
         <span class="es">Carmen coquetea con ellos. Don</span>
-      </div>
-      <div class="stage-direction">
         <span>caquette avec eux. Don José lève la tête. Il</span>
         <span class="es">José levante la cabeza, mira a</span>
-      </div>
-      <div class="stage-direction">
         <span>regarde Carmen, puis se remet à travailler</span>
         <span class="es">Carmen y continúa limpiando su</span>
-      </div>
-      <div class="stage-direction">
         <span>à son épinglette.</span>
         <span class="es">arma)</span>
       </div>
@@ -1594,32 +800,18 @@
       <div class="stage-direction">
         <span>(Moment de silence. Les jeunes gens</span>
         <span class="es">(Los jóvenes rodean a Carmen,</span>
-      </div>
-      <div class="stage-direction">
         <span>entourent Carmen, celle-ci les regarde</span>
         <span class="es">mientras ella mira a uno a uno,</span>
-      </div>
-      <div class="stage-direction">
         <span>l'un après l'autre, sort du cercle qu'ils</span>
         <span class="es">luego sale del círculo que forman</span>
-      </div>
-      <div class="stage-direction">
         <span>forment autour d'elle et s'en va droit à</span>
         <span class="es">los muchachos y se dirige hacia don</span>
-      </div>
-      <div class="stage-direction">
         <span>don José, qui est toujours occupé de son</span>
         <span class="es">José, que está ocupado en limpiar</span>
-      </div>
-      <div class="stage-direction">
         <span>épinglette. Elle arrache de son corsage</span>
         <span class="es">su arma. Carmen saca de su corpiño</span>
-      </div>
-      <div class="stage-direction">
         <span>la fleur de cassie et la lance à don José.</span>
         <span class="es">una flor que arroja a don José: este,</span>
-      </div>
-      <div class="stage-direction">
         <span>Il se lève brusquement.)</span>
         <span class="es">se levanta bruscamente)</span>
       </div>
@@ -1639,40 +831,22 @@
       <div class="stage-direction">
         <span>(Eclat de rire général; la cloche de</span>
         <span class="es">(estallido general de risas. La</span>
-      </div>
-      <div class="stage-direction">
         <span>la manufacture sonne une deuxième</span>
         <span class="es">campana de la Fábrica vuelve a</span>
-      </div>
-      <div class="stage-direction">
         <span>fois. Sortie des ouvrières. Carmen</span>
         <span class="es">sonar. Las cigarreras corren hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>sort la première en courant et elle</span>
         <span class="es">el interior de la misma, con Carmen</span>
-      </div>
-      <div class="stage-direction">
         <span>entre dans la manufacture. Les jeunes</span>
         <span class="es">a la cabeza. Los jóvenes también</span>
-      </div>
-      <div class="stage-direction">
         <span>gens sortent à droite et à gauche. Le</span>
         <span class="es">se han retirado de la escena. Los</span>
-      </div>
-      <div class="stage-direction">
         <span>lieutenant qui bavardait avec deux ou</span>
         <span class="es">soldados y Zúñiga regresan a sus</span>
-      </div>
-      <div class="stage-direction">
         <span>trois ouvrières, les quitte et rentre dans</span>
         <span class="es">puestos, mientras Don José,</span>
-      </div>
-      <div class="stage-direction">
         <span>le poste après que les soldats y sont</span>
         <span class="es">continúa asombrado por la flor que</span>
-      </div>
-      <div class="stage-direction">
         <span>rentrés. Don José reste seul.)</span>
         <span class="es">Carmen ha dejado caer a sus pies. )</span>
       </div>
@@ -1995,16 +1169,10 @@
       <div class="stage-direction">
         <span>(Au moment où il va arracher les fleurs</span>
         <span class="es">(cuando va a arrancarse las flores se</span>
-      </div>
-      <div class="stage-direction">
         <span>de sa veste, grande rumeur dans l'intérieur</span>
         <span class="es">oye un gran alboroto en el interior d</span>
-      </div>
-      <div class="stage-direction">
         <span>de la manufacture. Le lieutenant entre suivi</span>
         <span class="es">la Fábrica. Entra Zúñiga, seguido</span>
-      </div>
-      <div class="stage-direction">
         <span>des soldats)</span>
         <span class="es">por los soldados)</span>
       </div>
@@ -2146,8 +1314,6 @@
       <div class="stage-direction">
         <span>(Don José et les soldats</span>
         <span class="es">(Don José, entra a la Fábrica,</span>
-      </div>
-      <div class="stage-direction">
         <span>entrent dans la manufacture)</span>
         <span class="es">seguido de dos soldados)</span>
       </div>
@@ -2210,16 +1376,10 @@
       <div class="stage-direction">
         <span>(Les soldats font évacuer la place.</span>
         <span class="es">(Los soldados evacuan la plaza,</span>
-      </div>
-      <div class="stage-direction">
         <span>Carmen paraît sur la porte de la</span>
         <span class="es">Carmen aparece en la puerta de</span>
-      </div>
-      <div class="stage-direction">
         <span>manufacture amenée par don José</span>
         <span class="es">la Fábrica, seguida por Don José</span>
-      </div>
-      <div class="stage-direction">
         <span>et suivie par deux dragons.)</span>
         <span class="es">y los dos soldados)</span>
       </div>
@@ -2328,36 +1488,20 @@
       <div class="stage-direction">
         <span>(En ce moment, cinq ou six femmes</span>
         <span class="es">(Cinco o seis cigarreras rompen</span>
-      </div>
-      <div class="stage-direction">
         <span>à droite réussissent à forcer la ligne des</span>
         <span class="es">la barrera que los soldados</span>
-      </div>
-      <div class="stage-direction">
         <span>factionnaires et se précipitent sur la scène</span>
         <span class="es">formaron y entran en la plaza.</span>
-      </div>
-      <div class="stage-direction">
         <span>Une de ces femmes se trouve près de</span>
         <span class="es">Una de las mujeres se acerca</span>
-      </div>
-      <div class="stage-direction">
         <span>Carmen. Celle-ci lève la main et veut</span>
         <span class="es">a Carmen, quien alza la mano</span>
-      </div>
-      <div class="stage-direction">
         <span>se jeter sur la femme. Don José arrête</span>
         <span class="es">para tirarle el cuchillo. Don José</span>
-      </div>
-      <div class="stage-direction">
         <span>Carmen. Les soldats écartent les femmes et</span>
         <span class="es">la detiene, y los soldados separan</span>
-      </div>
-      <div class="stage-direction">
         <span>les repoussent cette fois tout à fait hors de</span>
         <span class="es">a las cigarreras, guiándolas hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>la scène)</span>
         <span class="es">la Fábrica.)</span>
       </div>
@@ -2399,8 +1543,6 @@
       <div class="stage-direction">
         <span>(Carmen, sans faire le moindre résistance,</span>
         <span class="es">(Carmen se deja atar las manos por</span>
-      </div>
-      <div class="stage-direction">
         <span>tend en souriant ses deux mains à don José)</span>
         <span class="es">don José, sin oponer resistencia)</span>
       </div>
@@ -2433,16 +1575,10 @@
       <div class="stage-direction">
         <span>(Un petit moment de silence. Carmen lève</span>
         <span class="es">(Momento de silencio. Carmen mira a</span>
-      </div>
-      <div class="stage-direction">
         <span>les yeux et regarde don José. Celui-ci se</span>
         <span class="es">don José. Él camina unos pasos hacia</span>
-      </div>
-      <div class="stage-direction">
         <span>détourne, s'éloigne de quelques pas, puis</span>
         <span class="es">afuera, luego, vuelve junto a Carmen,</span>
-      </div>
-      <div class="stage-direction">
         <span>revient à Carmen, qui le regarde toujours.)</span>
         <span class="es">quién aún continúa mirándolo.)</span>
       </div>
@@ -2520,8 +1656,6 @@
       <div class="stage-direction">
         <span>(avec intention en regardant souvent</span>
         <span class="es">(descaradamente mira a don José,</span>
-      </div>
-      <div class="stage-direction">
         <span>don José qui se rapproche peu à peu)</span>
         <span class="es">que gradualmente se aproxima a ella)</span>
       </div>
@@ -2633,8 +1767,6 @@
       <div class="stage-direction">
         <span>(délie la corde qui attache</span>
         <span class="es">(desata la cuerda que sujeta</span>
-      </div>
-      <div class="stage-direction">
         <span>les mains de Carmen)</span>
         <span class="es">las manos de Carmen)</span>
       </div>
@@ -2687,12 +1819,8 @@
       <div class="stage-direction">
         <span>(Carmen va se replacer sur son</span>
         <span class="es">(Carmen se sienta en un banco, y</span>
-      </div>
-      <div class="stage-direction">
         <span>escabeau, les mains derrière le dos.</span>
         <span class="es">pone sus manos detrás de su espalda,</span>
-      </div>
-      <div class="stage-direction">
         <span>Rentre le lieutenant.)</span>
         <span class="es">como si aún estuviera maniatada.)</span>
       </div>
@@ -2732,16 +1860,10 @@
       <div class="stage-direction">
         <span>(Elle se place entre les deux dragons. José</span>
         <span class="es">(Carmen se pone entre los dos</span>
-      </div>
-      <div class="stage-direction">
         <span>à côté d'elle. Les femmes et les bourgeois</span>
         <span class="es">dragones. Don José va a su lado.</span>
-      </div>
-      <div class="stage-direction">
         <span>sont rentrés en scène toujours maintenus à</span>
         <span class="es">Las cigarreras y los jóvenes entran</span>
-      </div>
-      <div class="stage-direction">
         <span>distance par les dragons...</span>
         <span class="es">nuevamente a la plaza poco a poco.)</span>
       </div>
@@ -2756,12 +1878,8 @@
       <div class="stage-direction">
         <span>(En arrivant à l'entrée du pont, Carmen</span>
         <span class="es">(al llegar al puente, Carmen</span>
-      </div>
-      <div class="stage-direction">
         <span>pousse José qui se laisse renverser.</span>
         <span class="es">empuja a don José y escapa</span>
-      </div>
-      <div class="stage-direction">
         <span>Confusion, désordre, Carmen s'enfuit</span>
         <span class="es">riendo a carcajadas)</span>
       </div>
@@ -2772,20 +1890,12 @@
       <div class="stage-direction">
         <span>(La taverne de Lillas Pastia. Carmen,</span>
         <span class="es">(Taberna de Lillas Pastia. Mercedes,</span>
-      </div>
-      <div class="stage-direction">
         <span>Mercédès, Frasquita, le lieutenant</span>
         <span class="es">Frasquita y Carmen, están sentadas a la</span>
-      </div>
-      <div class="stage-direction">
         <span>Zuniga, Moralès et un lieutenant. Deux</span>
         <span class="es">mesa, acompañadas de Zúñiga, Andrés y</span>
-      </div>
-      <div class="stage-direction">
         <span>bohémiennes, au milieu de la scène,</span>
         <span class="es">otros oficiales. Algunas jóvenes gitanas</span>
-      </div>
-      <div class="stage-direction">
         <span>dansent)</span>
         <span class="es">están bailando.)</span>
       </div>
@@ -2857,12 +1967,8 @@
       <div class="stage-direction">
         <span>(Carmen, Frasuita et Mercèdés dansent. Après</span>
         <span class="es">(Mercedes, Frasquita y Carmen se unen al</span>
-      </div>
-      <div class="stage-direction">
         <span>la danse, Lillas Pastia se met à tourner</span>
         <span class="es">baile de las gitanas. Lillas Pastia mira</span>
-      </div>
-      <div class="stage-direction">
         <span>autour des officiers d'un air embarrassé)</span>
         <span class="es">alrededor de los oficiales, desconcertado )</span>
       </div>
@@ -3257,8 +2363,6 @@
       <div class="stage-direction">
         <span>(Tout le monde sort, excepté Carmen,</span>
         <span class="es">(Todos se retiran menos Mercedes,</span>
-      </div>
-      <div class="stage-direction">
         <span>Frasquita, Mercédès et Lillas Pastia.)</span>
         <span class="es">Carmen, Frasquita y Lillas Pastia.)</span>
       </div>
@@ -3285,8 +2389,6 @@
       <div class="stage-direction">
         <span>(Entrent le Dancaïre et le Remendado.</span>
         <span class="es">(Dancaire y Remendado entran.</span>
-      </div>
-      <div class="stage-direction">
         <span>Pastia ferme les portes, met les volets, etc.)</span>
         <span class="es">Pastia cierra las puertas, ventanas...)</span>
       </div>
@@ -3703,8 +2805,6 @@
       <div class="stage-direction">
         <span>(On entend dans le lointain</span>
         <span class="es">(se oye a lo lejos</span>
-      </div>
-      <div class="stage-direction">
         <span>la voix de don José)</span>
         <span class="es">la voz de don José)</span>
       </div>
@@ -3745,12 +2845,8 @@
       <div class="stage-direction">
         <span>(Carmen, le Dancaïre, le Remendado,</span>
         <span class="es">(Carmen, Dancaïre, Remendado,</span>
-      </div>
-      <div class="stage-direction">
         <span>Mercédès et Frasquita, par les volets</span>
         <span class="es">Frasquita y Mercedes ven venir a</span>
-      </div>
-      <div class="stage-direction">
         <span>entr'ouverts, regardent venir don José.</span>
         <span class="es">don José)</span>
       </div>
@@ -3791,8 +2887,6 @@
       <div class="stage-direction">
         <span>(Remendado, Frasquita Mercédès et</span>
         <span class="es">(a una señal de Dancaire,</span>
-      </div>
-      <div class="stage-direction">
         <span>Dancaire sortent)</span>
         <span class="es">salen todos menos Carmen)</span>
       </div>
@@ -3942,16 +3036,10 @@
       <div class="stage-direction">
         <span>Carmen danse et s accompagne avec ses</span>
         <span class="es">(Comienza a bailar, haciendo sonar</span>
-      </div>
-      <div class="stage-direction">
         <span>castagnettes. Don José la dévore des yeux.</span>
         <span class="es">las castañuelas. Don José la mira</span>
-      </div>
-      <div class="stage-direction">
         <span>On entend au loin, des clairons qui sonnent</span>
         <span class="es">con éxtasis. Se oye el sonar de una</span>
-      </div>
-      <div class="stage-direction">
         <span>la retraite)</span>
         <span class="es">corneta lejana que toca retreta)</span>
       </div>
@@ -3999,28 +3087,16 @@
       <div class="stage-direction">
         <span>(Elle reprend sa chanson qui se rythme</span>
         <span class="es">(Ella baila y toca las castañuelas.</span>
-      </div>
-      <div class="stage-direction">
         <span>sur la retraite sonnée au dehors par les</span>
         <span class="es">Don José se sienta y sigue mirando a</span>
-      </div>
-      <div class="stage-direction">
         <span>clairons. Carmen se remet à danser et</span>
         <span class="es">Carmen. Las trompetas se oyen pasar</span>
-      </div>
-      <div class="stage-direction">
         <span>Don José se remet à regarder Carmen. La</span>
         <span class="es">por delante de la taberna y se alejan,</span>
-      </div>
-      <div class="stage-direction">
         <span>retraite approche... approche... approche...</span>
         <span class="es">haciendo que don José interrumpa su</span>
-      </div>
-      <div class="stage-direction">
         <span>passe sous les fenêtres de l'auberge... puis</span>
         <span class="es">contemplación, obligando a Carmen</span>
-      </div>
-      <div class="stage-direction">
         <span>s'éloigne...)</span>
         <span class="es">a detenerse.)</span>
       </div>
@@ -4123,20 +3199,12 @@
       <div class="stage-direction">
         <span>(De la main gauche, il a saisi brusquement</span>
         <span class="es">(José, toma a Carmen con su mano</span>
-      </div>
-      <div class="stage-direction">
         <span>le bras de Carmen; de la main droite, il va</span>
         <span class="es">izquierda, y con la derecha saca de</span>
-      </div>
-      <div class="stage-direction">
         <span>chercher sous sa veste d'uniforme la fleur</span>
         <span class="es">adentro de su camisa, la flor que</span>
-      </div>
-      <div class="stage-direction">
         <span>de cassie que Carmen lui a jetée au premier</span>
         <span class="es">Carmen le arrojo en el primer acto,</span>
-      </div>
-      <div class="stage-direction">
         <span>acte. Il montre cette fleur à Carmen)</span>
         <span class="es">y se la muestra.)</span>
       </div>
@@ -4369,12 +3437,8 @@
       <div class="stage-direction">
         <span>(Il va en courant vers la porte. Au moment</span>
         <span class="es">(Don José corre hacia la puerta.</span>
-      </div>
-      <div class="stage-direction">
         <span>il y arrive, on frappe. Don José s'arrête,</span>
         <span class="es">De repente, llaman a la puerta y</span>
-      </div>
-      <div class="stage-direction">
         <span>silence. On frappe encore.)</span>
         <span class="es">se detiene. Silencio. Otro golpe)</span>
       </div>
@@ -4483,20 +3547,12 @@
       <div class="stage-direction">
         <span>(Le Dancaïre, le Remendado, Mercédès,</span>
         <span class="es">(Dancaïre, Remendado, Mercedes,</span>
-      </div>
-      <div class="stage-direction">
         <span>Frasquita, les Bohémiens paraissent de</span>
         <span class="es">Frasquita, gitanos y gitanas entran</span>
-      </div>
-      <div class="stage-direction">
         <span>tous les côtés. Carmen d'un geste montre le</span>
         <span class="es">de todos lados. A un gesto de</span>
-      </div>
-      <div class="stage-direction">
         <span>lieutenant aux Bohémiens; le Dancaïre et le</span>
         <span class="es">Carmen, Dancaïre y Remendado</span>
-      </div>
-      <div class="stage-direction">
         <span>Remendado se jettent sur lui, le désarment)</span>
         <span class="es">desarman a Zúñiga)</span>
       </div>
@@ -4528,8 +3584,6 @@
       <div class="stage-direction">
         <span>(à Zuniga, le pistolet à la main,</span>
         <span class="es">(a Zúñiga pistola en mano</span>
-      </div>
-      <div class="stage-direction">
         <span>gracieusement]</span>
         <span class="es">y muy corteses)</span>
       </div>
@@ -4656,32 +3710,18 @@
       <div class="stage-direction">
         <span>(Le rideau se lève sur des rochers. Site</span>
         <span class="es">(Gran roquedal, sitio pintoresco</span>
-      </div>
-      <div class="stage-direction">
         <span>pittoresque et sauvage. Solitude complète</span>
         <span class="es">y salvaje. Completa soledad. Es</span>
-      </div>
-      <div class="stage-direction">
         <span>et nuit noire. Un contrebandier paraît au</span>
         <span class="es">de noche cerrada. En la cima del</span>
-      </div>
-      <div class="stage-direction">
         <span>haut des rochers, et sonne de la trompe,</span>
         <span class="es">risco un contrabandista aparece</span>
-      </div>
-      <div class="stage-direction">
         <span>puis un autre, puis deux autres, puis vingt</span>
         <span class="es">y haciendo una señal, avanza. Acto</span>
-      </div>
-      <div class="stage-direction">
         <span>autres ça et là, descendant et escaladant</span>
         <span class="es">seguido, numerosos contrabandistas</span>
-      </div>
-      <div class="stage-direction">
         <span>des rochers. Des hommes portent de gros</span>
         <span class="es">bajan de la cima con enormes cargas</span>
-      </div>
-      <div class="stage-direction">
         <span>ballots sur les épaules.)</span>
         <span class="es">sobre sus hombros.)</span>
       </div>
@@ -4760,12 +3800,8 @@
       <div class="stage-direction">
         <span>(quelques bohémiens allument un feu</span>
         <span class="es">(Algunos gitanos encienden una</span>
-      </div>
-      <div class="stage-direction">
         <span>près duquel Mercédès et Frasquita</span>
         <span class="es">hoguera donde Mercedes y Frasquita</span>
-      </div>
-      <div class="stage-direction">
         <span>viennent s'asseoir, les autres se couchent)</span>
         <span class="es">se sientan; los demás se acuestan)</span>
       </div>
@@ -4839,24 +3875,14 @@
       <div class="stage-direction">
         <span>(Elle tourne le dos à José et va s'asseoir près</span>
         <span class="es">(Carmen da la espalda a don José y se</span>
-      </div>
-      <div class="stage-direction">
         <span>de Mercédès et de Frasquita. Après un instant</span>
         <span class="es">sienta en una fogata, mientras mira</span>
-      </div>
-      <div class="stage-direction">
         <span>d'indécision, José s'éloigne à son tour et va</span>
         <span class="es">a Mercedes y Frasquita que, sentadas</span>
-      </div>
-      <div class="stage-direction">
         <span>s'étendre sur les rochers. Pendant les dernières</span>
         <span class="es">en el suelo, se agachan y sacan un</span>
-      </div>
-      <div class="stage-direction">
         <span>répliques de la scène, Mercédès et Frasquita ont</span>
         <span class="es">mazo de cartas, lo ponen a la luz.</span>
-      </div>
-      <div class="stage-direction">
         <span>étalé des cartes devant elles)</span>
         <span class="es">Don José se aleja entre el roquedal)</span>
       </div>
@@ -4958,8 +3984,6 @@
       <div class="stage-direction">
         <span>(Elles recommencent à</span>
         <span class="es">(Comienzan a consultar</span>
-      </div>
-      <div class="stage-direction">
         <span>consulter les cartes)</span>
         <span class="es">las cartas nuevamente)</span>
       </div>
@@ -5238,12 +4262,8 @@
       <div class="stage-direction">
         <span>(Tout le monde sort. On voit un homme</span>
         <span class="es">(Todos salen de escena. Se ve un</span>
-      </div>
-      <div class="stage-direction">
         <span>passer sa tête au-dessus du rocher.</span>
         <span class="es">hombre salir de detrás de la roca,</span>
-      </div>
-      <div class="stage-direction">
         <span>C'est un guide.)</span>
         <span class="es">es un guía)</span>
       </div>
@@ -5254,8 +4274,6 @@
       <div class="stage-direction">
         <span>(Le Guide s'avance avec précaution, puis</span>
         <span class="es">(el guía camina con precaución</span>
-      </div>
-      <div class="stage-direction">
         <span>fait un signe à Micaëla)</span>
         <span class="es">seguido por Micaela)</span>
       </div>
@@ -5358,8 +4376,6 @@
       <div class="stage-direction">
         <span>(elle disparaît derrière les rochers.</span>
         <span class="es">(desaparece tras de los peñascos.</span>
-      </div>
-      <div class="stage-direction">
         <span>Entre Escamillo)</span>
         <span class="es">Entra Escamillo)</span>
       </div>
@@ -5578,8 +4594,6 @@
       <div class="stage-direction">
         <span>(Ils se mettent en garde</span>
         <span class="es">(Se ponen en guardia a una cierta</span>
-      </div>
-      <div class="stage-direction">
         <span>à une certaine distance)</span>
         <span class="es">distancia uno del otro.)</span>
       </div>
@@ -5589,8 +4603,6 @@
       <div class="stage-direction">
         <span>(Sans répondre don José</span>
         <span class="es">(Sin contestar, Don José va</span>
-      </div>
-      <div class="stage-direction">
         <span>marche sur Escmillo)</span>
         <span class="es">hacia Escamillo)</span>
       </div>
@@ -5599,8 +4611,6 @@
       <div class="stage-direction">
         <span>(Combat. Le toréro très calme</span>
         <span class="es">(Comienza el combate. El torero, con</span>
-      </div>
-      <div class="stage-direction">
         <span>cherche seulement à se défendre)</span>
         <span class="es">calma, pelea solo defensivamente)</span>
       </div>
@@ -5623,12 +4633,8 @@
       <div class="stage-direction">
         <span>(Rapide et très-vif engagement corps</span>
         <span class="es">(Combate cuerpo a cuerpo. Don José se</span>
-      </div>
-      <div class="stage-direction">
         <span>à corps. José se trouve à la merci du</span>
         <span class="es">encuentra a merced del torero, pero</span>
-      </div>
-      <div class="stage-direction">
         <span>torero qui ne le frappe pas.)</span>
         <span class="es">este no quiere herirlo.)</span>
       </div>
@@ -5665,16 +4671,10 @@
       <div class="stage-direction">
         <span>(reprise du combat. Le torero glisse et</span>
         <span class="es">(Se reanuda el combate. El torero</span>
-      </div>
-      <div class="stage-direction">
         <span>tombe sur le gazon. Don José va le frapper.</span>
         <span class="es">resbala y cae al suelo. Don José va a</span>
-      </div>
-      <div class="stage-direction">
         <span>Entrent Carmen et le Dancaïre se</span>
         <span class="es">matarle, cuando Carmen y Dancaire</span>
-      </div>
-      <div class="stage-direction">
         <span>précipitent)</span>
         <span class="es">entran precipitadamente.)</span>
       </div>
@@ -5700,8 +4700,6 @@
       <div class="stage-direction">
         <span>(entre Remendado suivi de Frasquita,</span>
         <span class="es">(Entran Frasquita, Mercedes,</span>
-      </div>
-      <div class="stage-direction">
         <span>Mercédès et des contrebandiers)</span>
         <span class="es">Remendado y los contrabandistas.)</span>
       </div>
@@ -5767,8 +4765,6 @@
       <div class="stage-direction">
         <span>(À Don José qui fait</span>
         <span class="es">(a don José que hace</span>
-      </div>
-      <div class="stage-direction">
         <span>un geste de menace)</span>
         <span class="es">un gesto de amenaza)</span>
       </div>
@@ -5780,12 +4776,8 @@
       <div class="stage-direction">
         <span>(Le torero sort très-lentement. Don José</span>
         <span class="es">(Escamillo se retira lentamente.</span>
-      </div>
-      <div class="stage-direction">
         <span>veut s'élancer sur lui, Le Dancaïre et le</span>
         <span class="es">Don José quiere abalanzarse sobre él,</span>
-      </div>
-      <div class="stage-direction">
         <span>Remendado le retiennent)</span>
         <span class="es">Dancaïre y Remendado lo detienen.)</span>
       </div>
@@ -5796,8 +4788,6 @@
       <div class="stage-direction">
         <span>(à Carmen, menaçant,</span>
         <span class="es">(a Carmen, amenazador</span>
-      </div>
-      <div class="stage-direction">
         <span>mais contenu)</span>
         <span class="es">pero conteniéndose)</span>
       </div>
@@ -5806,8 +4796,6 @@
       <div class="stage-direction">
         <span>(Carmen lui répond par un léger mouvement</span>
         <span class="es">(Carmen le responde con ligero</span>
-      </div>
-      <div class="stage-direction">
         <span>d'épaules et s'éloigne de lui)</span>
         <span class="es">movimiento de hombros y se aleja)</span>
       </div>
@@ -6068,8 +5056,6 @@
       <div class="stage-direction">
         <span>(Les Bohémiens ont pris leurs</span>
         <span class="es">(Los gitanos recogen los cargamentos</span>
-      </div>
-      <div class="stage-direction">
         <span>ballots et se mettent en marche)</span>
         <span class="es">deprisa y reanudan su marcha.)</span>
       </div>
@@ -6080,16 +5066,10 @@
       <div class="stage-direction">
         <span>(Une place à Séville. L'entrée du cirque est</span>
         <span class="es">(plaza de toros de Sevilla, la entrada</span>
-      </div>
-      <div class="stage-direction">
         <span>fermée par un long velum. C'est le jour d'un</span>
         <span class="es">al ruedo está cerrada por un amplio</span>
-      </div>
-      <div class="stage-direction">
         <span>combat de taureaux. Grand mouvement sur</span>
         <span class="es">velo. Es el día de la corrida. Mucha</span>
-      </div>
-      <div class="stage-direction">
         <span>la place)</span>
         <span class="es">actividad.)</span>
       </div>
@@ -6111,8 +5091,6 @@
       <div class="stage-direction">
         <span>(Pendant le choeur, paraissent Zuniga</span>
         <span class="es">(Zúñiga y Andrés entran con</span>
-      </div>
-      <div class="stage-direction">
         <span>et Andrès avec Mercédès et Frasquita)</span>
         <span class="es">Mercedes y Frasquita.)</span>
       </div>
@@ -6253,8 +5231,6 @@
       <div class="stage-direction">
         <span>(Défilé de la quadrille. Entrée</span>
         <span class="es">(El paseillo comienza: abren</span>
-      </div>
-      <div class="stage-direction">
         <span>des alguazils)</span>
         <span class="es">la marcha los alguaciles)</span>
       </div>
@@ -6293,12 +5269,8 @@
       <div class="stage-direction">
         <span>(Paraît enfin Escamillo ayant près</span>
         <span class="es">(Escamillo aparece, acompañado</span>
-      </div>
-      <div class="stage-direction">
         <span>de lui Carmen radieuse et dans un</span>
         <span class="es">de Carmen, quien está radiante y</span>
-      </div>
-      <div class="stage-direction">
         <span>costume éclatant)</span>
         <span class="es">magníficamente vestida.)</span>
       </div>
@@ -6341,8 +5313,6 @@
       <div class="stage-direction">
         <span>(Paraissent deux trompettes</span>
         <span class="es">(aparecen dos trompetas</span>
-      </div>
-      <div class="stage-direction">
         <span>suivis de quatre alguazils)</span>
         <span class="es">seguidas de cuatro alguaciles)</span>
       </div>
@@ -6430,24 +5400,14 @@
       <div class="stage-direction">
         <span>(L'Alcade est entré dans le cirque. Derrière</span>
         <span class="es">(El alcalde entra a la plaza, detrás</span>
-      </div>
-      <div class="stage-direction">
         <span>l'alcade, le cortège de la quadrille reprend</span>
         <span class="es">de él, le sigue la cuadrilla que</span>
-      </div>
-      <div class="stage-direction">
         <span>sa marche et entre dans le cirque. Le</span>
         <span class="es">reanuda la marcha. La muchedumbre</span>
-      </div>
-      <div class="stage-direction">
         <span>populaire suit et la foule en se retirant</span>
         <span class="es">entra a la plaza, dejando ver a don</span>
-      </div>
-      <div class="stage-direction">
         <span>a dégagé don José. Carmen et don José</span>
         <span class="es">José. Solamente quedan en escena</span>
-      </div>
-      <div class="stage-direction">
         <span>restent seules, en présence l'un de l'autre.</span>
         <span class="es">don José y Carmen.)</span>
       </div>
@@ -6604,16 +5564,10 @@
       <div class="stage-direction">
         <span>(En entendant les cris de victoire, Carmen</span>
         <span class="es">(Al oír los gritos de victoria, Carmen</span>
-      </div>
-      <div class="stage-direction">
         <span>a laissé échapper un ``Ah!'' d'orgueil et de</span>
         <span class="es">lanza una exclamación de alegría.</span>
-      </div>
-      <div class="stage-direction">
         <span>joie. Don José ne perd pas Carmen de vue.</span>
         <span class="es">Don José no quita su vista de ella que</span>
-      </div>
-      <div class="stage-direction">
         <span>Carmen fait un pas du côté du cirque. )</span>
         <span class="es">da un paso en dirección a la plaza.)</span>
       </div>
@@ -6763,8 +5717,6 @@
       <div class="stage-direction">
         <span>(don José, éperdu, s'agenouille</span>
         <span class="es">(Don José se arroja hacia ella,</span>
-      </div>
-      <div class="stage-direction">
         <span>auprès d'elle)</span>
         <span class="es">arrodillándose en el suelo.)</span>
       </div>
@@ -6778,12 +5730,8 @@
       <div class="stage-direction">
         <span>(Le vélum s'ouvre; Escamillo</span>
         <span class="es">(el velo se descorre, Escamillo,</span>
-      </div>
-      <div class="stage-direction">
         <span>paraît entouré de la foule qui</span>
         <span class="es">aparece rodeado de la multitud</span>
-      </div>
-      <div class="stage-direction">
         <span>l'acclame)</span>
         <span class="es">que lo aclama)</span>
       </div>
