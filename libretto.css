@@ -227,9 +227,8 @@
 
   .scene-heading {
     font-family: var(--sans);
-    font-size: 11px;
+    font-size: 18px;
     color: var(--text-dim);
-    font-style: italic;
     margin: 0.75rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
