@@ -213,16 +213,9 @@
     text-transform: uppercase;
     color: var(--text-dim);
     margin: 1.25rem 0 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .musical-number::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--color-border-secondary);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 var(--col-gap);
   }
 
   .scene-heading {
@@ -630,7 +623,7 @@
       border-color: var(--color-border-secondary);
     }
 
-    .libretto-body { grid-template-columns: 1fr; }
+    .libretto-body { grid-template-columns: 1fr; width: 100%; }
 
     .track-col { display: none; }
 
@@ -643,6 +636,9 @@
     }
     .act-heading span:last-child { display: none; }
 
+    .musical-number { grid-template-columns: 1fr; }
+    .musical-number span:last-child { display: none; }
+
     .scene-heading { grid-template-columns: 1fr; }
     .scene-heading span:first-child { display: none; }
 
@@ -653,17 +649,22 @@
       border-bottom: 0.5px solid var(--color-border-secondary);
       padding: 0.3rem 0;
     }
-    .stage-direction span:first-child { display: none; }
+    .stage-direction span:not(.es) { display: none; }
+    .es-hidden .stage-direction span:not(.es) { display: block; }
+    .es-hidden .stage-direction span.es { display: none; }
 
     .character-row { display: block; margin-top: 1rem; }
-    .character-row span:last-child { display: none; }
+    .character-row > span:not(:first-child) { display: none; }
 
     .inline-direction { display: block; }
     .inline-direction span:first-child { display: none; }
 
-    .line-row { display: block; }
-    .line-row .fr { display: block; text-align: left; line-height: normal; }
-    .line-row .es { display: block; text-align: right; line-height: normal; }
+    .line-row { grid-template-columns: 1fr; }
+    .line-row .fr { text-align: left; line-height: normal; }
+    .line-row .it { text-align: left; line-height: normal; }
+    .line-row .ru { text-align: left; line-height: normal; }
+    .line-row .en { text-align: left; line-height: normal; }
+    .line-row .es { text-align: right; line-height: normal; }
 
     .mobile-track-marker {
       font-family: var(--sans);
@@ -677,6 +678,9 @@
     }
 
     .fr-hidden .line-row .fr { display: none; }
+    .it-hidden .line-row .it { display: none; }
+    .ru-hidden .line-row .ru { display: none; }
+    .en-hidden .line-row .en { display: none; }
     .es-hidden .line-row .es { display: none; }
 
     .bottom-sheet-overlay {

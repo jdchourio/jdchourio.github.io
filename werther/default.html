@@ -31,7 +31,7 @@
   <div class="libretto-body">
 
     <div class="act-heading" data-act="I">
-      <span>Premier Acte</span>
+      <span>Acte Premier</span>
       <span>Acto Primero</span>
     </div>
 
@@ -1664,7 +1664,7 @@
         <span class="es">mediodía del domingo)</span>
       </div>
       <div class="character-row">
-        <span><span class="character-name">Johann Et Schmidt</span></span>
+        <span><span class="character-name has-tooltip" data-character-id="johann">Johann</span>, <span class="character-name has-tooltip" data-character-id="schmidt">Schmidt</span></span>
         <span class="character-name">Johann, Schmidt</span>
       </div>
       <div class="stage-direction">
@@ -4933,7 +4933,7 @@
 };
 
   const ACT_DISPLAY = {
-    "Act I": "Premier I",
+    "Act I": "Acte I",
     "Act II": "Acte II",
     "Act III": "Acte III",
     "Act IV": "Acte IV"
@@ -5192,7 +5192,7 @@
   function buildMobileTrackMarkers() {
     document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
     const rec = RECORDINGS[activeRecording];
-    for (const t of rec.tracks) {
+    for (const t of [...rec.tracks].reverse()) {
       const col = document.getElementById(t.id);
       if (!col) continue;
       const marker = document.createElement('span');
