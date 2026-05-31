@@ -2725,8 +2725,15 @@
     const langs = Object.keys(mobileLangState);
     const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
     if (mobileLangState[lang] && !hasOtherOn) return;
+    const barBottom = document.getElementById('contextBar').getBoundingClientRect().bottom;
+    const anchor = [...document.querySelectorAll('.line-row, .character-row, .scene-heading, .musical-number')]
+      .find(el => el.getBoundingClientRect().top >= barBottom);
+    const anchorOffset = anchor ? anchor.getBoundingClientRect().top : null;
     mobileLangState[lang] = !mobileLangState[lang];
     applyLangFilter();
+    if (anchor !== undefined && anchorOffset !== null) {
+      window.scrollBy(0, anchor.getBoundingClientRect().top - anchorOffset);
+    }
   }
 
   function applyLangFilter() {

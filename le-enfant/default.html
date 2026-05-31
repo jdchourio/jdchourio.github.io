@@ -1,0 +1,2164 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Première I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">J'Ai Pas Envie De Faire Ma Page</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">L'Enfant et les Sortilèges · Maazel / Ogéas</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnFR" onclick="toggleLang('fr')">FR</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Première Partie</span>
+      <span>Primera Parte</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="line-row"><span class="fr"><strong>La Maison</strong></span><span class="es"><strong>La Casa</strong></span></div>
+      <div class="stage-direction">
+        <span>(Une pièce à la campagne plafond très bas, donnant</span>
+        <span class="es">(Habitación de techo bajo de una casa con</span>
+        <span>sur un jardin. Une maison normande, ancienne, ou</span>
+        <span class="es">jardín, una casa estilo normado, anticuada,</span>
+        <span>mieux: démodé; de grands fauteuils, houssés; une</span>
+        <span class="es">con grandes sillones tapizados, un reloj de pared</span>
+        <span>haute horloge à cadron fleuri. Une teinture à petits</span>
+        <span class="es">con tapa decorada de flores. Un tapiz con dibujos</span>
+        <span>personnages, bergerie. Une cage ronde à écureuil,</span>
+        <span class="es">de pastores. Una jaula redonda con una ardilla,</span>
+        <span>pendue près de la fenêtre. Grande cheminée à hotte,</span>
+        <span class="es">colgando cerca de la ventana. Un toldo frente</span>
+        <span>un reste de feu paisible, une bouilloire qui ronronne.</span>
+        <span class="es">a la gran chimenea, un fuego casi extinguido,</span>
+        <span>Le chat aussi. C'est l'après-midi. l'enfant, six ou sept</span>
+        <span class="es">una olla que ronronea. El gato también.</span>
+        <span>ans, est assis devant un devoir commencé. Il est en</span>
+        <span class="es">Atardecer. El niño, de seis o siete años, sentado</span>
+        <span>pleine crise de paresse, il mord son porte-plume, se</span>
+        <span class="es">frente a su tarea apenas comenzada. Muerde su</span>
+        <span>gratte la tête et chantonne à demi-voix.)</span>
+        <span class="es">portaplumas, se rasca la cabeza y canturrea)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">J'ai pas envie de faire ma page.</span><span class="es">No quiero hacer mi tarea.</span></div>
+      <div class="line-row"><span class="fr">J'ai envie d'aller me promener.</span><span class="es">Quiero salir a dar un paseo.</span></div>
+      <div class="line-row"><span class="fr">J'ai envie de manger tous les gâteaux.</span><span class="es">Quisiera comerme todos los pasteles.</span></div>
+      <div class="line-row"><span class="fr">J'ai envie de tirer la queue du chat</span><span class="es">Quisiera jalar al gato de la cola</span></div>
+      <div class="line-row"><span class="fr">et de couper celle de l'écureuil.</span><span class="es">y cortársela a la ardilla.</span></div>
+      <div class="line-row"><span class="fr">J'ai envie de gronder tout le monde!</span><span class="es">¡Quiero gritarle a todo el mundo!</span></div>
+      <div class="line-row"><span class="fr">J'ai envie de mettre Maman en pénitence...</span><span class="es">Quisiera castigar a mi mamá…</span></div>
+      <div class="stage-direction">
+        <span>(La porte s'ouvre. Entre maman.)</span>
+        <span class="es">(La puerta se abre. Entra la madre)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="maman">Maman</span></span>
+        <span class="character-name">Mamá</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="line-row"><span class="fr">Bébé e été sage?</span><span class="es">¿Se ha portado bien el bebé?</span></div>
+      <div class="line-row"><span class="fr">Il a fini sa page?</span><span class="es">¿Terminó con su tarea?</span></div>
+      <div class="stage-direction">
+        <span>(l'enfant ne répond rien et se laisse glisser,</span>
+        <span class="es">(El niño no responde y se desliza,</span>
+        <span>boudeur, en bas de sa chaise.)</span>
+        <span class="es">malhumorado, bajo la silla)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh! Tu n'as rien fait!</span><span class="es">¡Oh! ¡No has hecho nada!</span></div>
+      <div class="line-row"><span class="fr">Tu as éclaboussé d'encre le tapis!</span><span class="es">¡Manchaste de tinta la alfombra!</span></div>
+      <div class="line-row"><span class="fr">Regrettes-tu ta paresse?</span><span class="es">¿Te disculparás por tu pereza?</span></div>
+      <div class="stage-direction">
+        <span>(silence de l'enfant.)</span>
+        <span class="es">(El Niño guarda silencio)</span>
+      </div>
+      <div class="line-row"><span class="fr">Promettez-moi, Bébé, de travailler?</span><span class="es">¿Me prometes, bebé, que vas a trabajar?</span></div>
+      <div class="stage-direction">
+        <span>(Silence)</span>
+        <span class="es">(Silencio)</span>
+      </div>
+      <div class="line-row"><span class="fr">Voulez-vous me demander pardon?</span><span class="es">¿Vas a pedir perdón?</span></div>
+      <div class="stage-direction">
+        <span>(Pour toute réponse, Bébé lève la tête vers</span>
+        <span class="es">(Por única respuesta, el bebé levanta la cabeza</span>
+        <span>Maman et tire la langue.)</span>
+        <span class="es">y le saca la lengua a su madre.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh!...</span><span class="es">¡Oh!...</span></div>
+      <div class="stage-direction">
+        <span>(Sévère)</span>
+        <span class="es">(Con severidad)</span>
+      </div>
+      <div class="line-row"><span class="fr">Voici le goûter d'un méchant enfant:</span><span class="es">Aquí está la cena para un niño malo:</span></div>
+      <div class="line-row"><span class="fr">du thé sans sucre, du pain sec.</span><span class="es">té sin azúcar y pan seco.</span></div>
+      <div class="line-row"><span class="fr">Restez tout seul jusqu'au dîner!</span><span class="es">¡Tú solo te dejaste sin cena!</span></div>
+      <div class="line-row"><span class="fr">Et songez à votre faute!</span><span class="es">¡Y piensa en tus faltas!</span></div>
+      <div class="line-row"><span class="fr">Et songez à vous devoirs!</span><span class="es">¡Y piensa en tus deberes!</span></div>
+      <div class="line-row"><span class="fr">Songez, songez surtout</span><span class="es">¡Piensa, piensa especialmente</span></div>
+      <div class="line-row"><span class="fr">au chagrin de Maman!...</span><span class="es">que has entristecido a tu mamá!...</span></div>
+      <div class="stage-direction">
+        <span>(Maman s'en va. l'enfant, resté seul, est pris d'une</span>
+        <span class="es">(La madre se va. El niño queda solo, víctima de</span>
+        <span>frénésie de perversité. Il trépigne et crie à pleins</span>
+        <span class="es">un arrebato de perversa terquedad. Salta y grita</span>
+        <span>poumons vers la porte.)</span>
+        <span class="es">a todo pulmón hacia la puerta.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="fr">Ça m'est égal!</span><span class="es">¡No me importa!</span></div>
+      <div class="line-row"><span class="fr">Justement j'ai pas faim!</span><span class="es">¡De todas formas, no tengo hambre!</span></div>
+      <div class="line-row"><span class="fr">Justement j'aime beaucoup mieux rester tout seul !</span><span class="es">¡De todas formas prefiero quedarme solo!</span></div>
+      <div class="line-row"><span class="fr">Je n'aime personne!</span><span class="es">¡No quiero a nadie!</span></div>
+      <div class="line-row"><span class="fr">Je suis très méchant!</span><span class="es">¡Soy muy malo!</span></div>
+      <div class="line-row"><span class="fr">Méchant, méchant! Méchant!</span><span class="es">¡Malo, malo, malo!</span></div>
+      <div class="stage-direction">
+        <span>(Il balaie d'un revers de main la théière et la tasse, en</span>
+        <span class="es">(Tira de un manotazo la tetera y la taza que se</span>
+        <span>mille morceaux. Puis il grimpe sur la fenêtre, ouvre la</span>
+        <span class="es">rompen en mil pedazos. Luego trepa al alféizar</span>
+        <span>cage de l'Ecureuil et veut piquer la petite bête avec sa</span>
+        <span class="es">de la ventana, abre la jaula de la ardilla y la</span>
+        <span>plume de fer. L'Ecureuil, blessé, crie et s'enfuit par</span>
+        <span class="es">pincha con su estilográfica. La ardilla, herida</span>
+        <span>l'imposte ouverte de la croisée. L'Enfant saute à bas de</span>
+        <span class="es">escapa por una abertura de la ventana. El niño</span>
+        <span>la fenêtre et tire la queue du chat, qui jure et se cache</span>
+        <span class="es">salta de la ventana y le jala la cola al gato,</span>
+        <span>sous un fauteuil.)</span>
+        <span class="es">que maúlla y se esconde bajo un sillón.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(hors de lui)</span>
+        <span class="es">(fuera de sí)</span>
+      </div>
+      <div class="line-row"><span class="fr">Hourrah!</span><span class="es">¡Hurra!</span></div>
+      <div class="stage-direction">
+        <span>(Il brandit le tisonnier, fourgonne le Feu,</span>
+        <span class="es">(Blandiendo el atizador, hurga el fuego</span>
+        <span>y renverse la bouilloire.)</span>
+        <span class="es">y tira la olla)</span>
+      </div>
+      <div class="line-row"><span class="fr">Hourrah! Hourrah!</span><span class="es">¡Hurra! ¡Hurra!</span></div>
+      <div class="stage-direction">
+        <span>(Il se sert du tisonnier comme d'une épée</span>
+        <span class="es">(Blande el atizador cual espada para atacar</span>
+        <span>pour attaquer les petits personnages de la</span>
+        <span class="es">los personajes dibujados en el papel tapiz,</span>
+        <span>tenture, qu'il lacère: de grands lambeaux de</span>
+        <span class="es">que se desgarra. Grandes tiras de tapiz cuelgan</span>
+        <span>tenture se détachent du mur et pendent.)</span>
+        <span class="es">de la pared)</span>
+      </div>
+      <div class="line-row"><span class="fr">Hourrah!</span><span class="es">¡Hurra!</span></div>
+      <div class="stage-direction">
+        <span>(Il ouvre la boîte de la grande Horloge,</span>
+        <span class="es">(Abre la caja de reloj y se cuelga del péndulo,</span>
+        <span>se pend au balancier, qui lui reste entre les</span>
+        <span class="es">que se rompe entre sus manos. Luego, al ver</span>
+        <span>mains. Puis, avisant sur la table les cahiers et</span>
+        <span class="es">en la mesa los cuadernos y los libros, los</span>
+        <span>les livres, il les met en pièces en riant aux éclats.)</span>
+        <span class="es">desgarra mientras se carcajea.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Hourrah! Plus de leçons!</span><span class="es">¡Hurra! ¡Ya no habrá más lecciones!</span></div>
+      <div class="line-row"><span class="fr">Plus de devoirs!</span><span class="es">¡Ni más tareas!</span></div>
+      <div class="line-row"><span class="fr">Je suis libre, libre, méchant et libre!</span><span class="es">¡Soy libre, libre, malo y libre!</span></div>
+      <div class="stage-direction">
+        <span>(Saôul de dévastation, il va tomber ensoufflé</span>
+        <span class="es">(Saciado con la devastación, se deja caer</span>
+        <span>entre les bras d'un grand fauteuil couvert d'une</span>
+        <span class="es">sin aliento entre los brazos de un gran sillón</span>
+        <span>housse à fleurs. Mais, ô surprise! Les bras</span>
+        <span class="es">revestido de una funda estampada. Pero, ¡oh,</span>
+        <span>du fauteuil s'écartent, le siège se dérobe,</span>
+        <span class="es">sorpresa!,  los brazos del sillón se apartan, el</span>
+        <span>et le Fauteuil, clopinant lourdement comme</span>
+        <span class="es">asiento se retira y el sillón, cojeando</span>
+        <span>un énorme crapaud, s'éloigne.)</span>
+        <span class="es">pesadamente como un enorme sapo, se aparta.)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(saisi)</span>
+        <span class="es">(asustado)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah!</span><span class="es">¡Ah!</span></div>
+      <div class="stage-direction">
+        <span>(Ayant fait trois pas en arrière, le Fauteuil</span>
+        <span class="es">(Después de haber retrocedido tres pasos, el</span>
+        <span>revient, lourd et goguenard, et s'en va saluer</span>
+        <span class="es">sillón regresa, pesado y socarrón, y saluda a</span>
+        <span>une petite bergère Louis XV, qu'il emmène</span>
+        <span class="es">una pequeña butaca Luis XV, que lo invita</span>
+        <span>avec lui pour une danse compassé et grotesque.)</span>
+        <span class="es">a bailar una danza grotesca.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="fauteuil">Le Fauteuil</span></span>
+        <span class="character-name">El Sillón</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="fr">Votre serviteur humble, Bergère.</span><span class="es">Vuestro humilde servidor, butaca.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bergere">La Bergère</span></span>
+        <span class="character-name">La Butaca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(avec une révérence)</span>
+        <span class="es">(haciendo una reverencia)</span>
+      </div>
+      <div class="line-row"><span class="fr">Votre servant, Fauteuil.</span><span class="es">Vuestra servidora, sillón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="fauteuil">Le Fauteuil</span></span>
+        <span class="character-name">El Sillón</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous voilà donc débarrassés</span><span class="es">Ya es hora de librarnos</span></div>
+      <div class="line-row"><span class="fr">A jamais de cet Enfant</span><span class="es">para siempre de ese niño</span></div>
+      <div class="line-row"><span class="fr">Aux talons méchants.</span><span class="es">y de sus malvados talones.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bergere">La Bergère</span></span>
+        <span class="character-name">La Butaca</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous m'en voyez, vous m'en voyez'aise!</span><span class="es">¡Oh, qué alivio!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="fauteuil">Le Fauteuil</span></span>
+        <span class="character-name">El Sillón</span>
+      </div>
+      <div class="line-row"><span class="fr">Plus de coussins pour son sommeil,</span><span class="es">Nada de almohadones para su sueño.</span></div>
+      <div class="line-row"><span class="fr">Plus de sièges pour sa rêverie,</span><span class="es">Nada de asientos para sus ensueños,</span></div>
+      <div class="line-row"><span class="fr">Plus de repos pour lui que sur la terre nue.</span><span class="es">Nada de reposo... sólo el suelo desnudo.</span></div>
+      <div class="line-row"><span class="fr">Et encore... qui sait?</span><span class="es">Y otra cosa más... ¿Quién sabe?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bergere">La Bergère</span></span>
+        <span class="character-name">La Butaca</span>
+      </div>
+      <div class="line-row"><span class="fr">Et encore... qui sait?</span><span class="es">Y otra cosa más... ¿Quién sabe?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous Les Deux</span></span>
+        <span class="character-name">Los Dos</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous voilà donc débarrassés</span><span class="es">Ya es hora de librarnos</span></div>
+      <div class="line-row"><span class="fr">A jamais de cet Enfant</span><span class="es">para siempre de ese niño</span></div>
+      <div class="line-row"><span class="fr">Aux talons méchants.</span><span class="es">y de sus malvados talones.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="fauteuil">Le Fauteuil</span></span>
+        <span class="character-name">El Sillón</span>
+      </div>
+      <div class="line-row"><span class="fr">Le Banc, le Canapé, le Pouf…</span><span class="es">El banco, el sofá, el puf…</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bergere">La Bergère</span></span>
+        <span class="character-name">La Butaca</span>
+      </div>
+      <div class="line-row"><span class="fr">...et la Chaise de paille...</span><span class="es">... y la silla de mimbre...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="fauteuil">Le Fauteuil</span></span>
+        <span class="character-name">El Sillón</span>
+      </div>
+      <div class="line-row"><span class="fr">Ne voudront plus de l'enfant.</span><span class="es">No quieren al niño.</span></div>
+      <div class="stage-direction">
+        <span>(Les meubles que viennent de nommer le Fauteuil</span>
+        <span class="es">(Los muebles que acaban de mencionar el sillón</span>
+        <span>et la Bergère lèvent, qui les bras, qui les pieds,</span>
+        <span class="es">y la butaca se levantan, agitando los brazos</span>
+        <span>et répètent en chœur)</span>
+        <span class="es">y patas, y repiten a coro)</span>
+      </div>
+      <div class="line-row"><span class="fr">Plus de l'enfant.</span><span class="es">¡No más niño!</span></div>
+      <div class="stage-direction">
+        <span>(Immobile de stupeur, l'enfant,</span>
+        <span class="es">(Paralizado de estupor, el niño,</span>
+        <span>adossé au mur, écoute et regarde.)</span>
+        <span class="es">pegado a la pared, escucha y mira)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="horloge">L'Horloge Comtoise</span></span>
+        <span class="character-name">El Reloj De Pared</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="line-row"><span class="fr">Ding, ding, ding, ding, ding, ding!...</span><span class="es">¡Ding, ding, ding, ding, ding, ding!...</span></div>
+      <div class="line-row"><span class="fr">Et encore, ding, ding, ding!</span><span class="es">¡Y otra vez, ding, ding, ding!</span></div>
+      <div class="line-row"><span class="fr">Je ne peux plus m'arrêter de sonner!</span><span class="es">¡No puedo dejar de campanear!</span></div>
+      <div class="line-row"><span class="fr">Je ne sais plus l'heure qu'il est!</span><span class="es">¡No sé la hora que es!</span></div>
+      <div class="line-row"><span class="fr">Il m'a ôté mon balancier!</span><span class="es">¡Él ha quebrado mi péndulo!</span></div>
+      <div class="line-row"><span class="fr">J'ai d'affreuses douleurs de ventre!</span><span class="es">¡Tengo un terrible dolor de estómago!</span></div>
+      <div class="line-row"><span class="fr">J'ai un courant d'air dans mon centre!</span><span class="es">¡Siento el aire correr en mi interior!</span></div>
+      <div class="line-row"><span class="fr">Et je commence à divaguer!</span><span class="es">¡Y estoy comenzando a divagar!</span></div>
+      <div class="stage-direction">
+        <span>(Sur deux pieds, qui dépassent sous sa chemise</span>
+        <span class="es">(Sobre sus dos patas, que se asoman bajo la</span>
+        <span>de bois, l'Horloge avance. Elle a une ronde</span>
+        <span class="es">caja de madera, el reloj avanza. Tiene un</span>
+        <span>petite figure rose à la place de son cadran, et</span>
+        <span class="es">pequeño, redondo y rosado rostro y dos brazos</span>
+        <span>deux bras courts gesticulant.)</span>
+        <span class="es">cortos que gesticulan.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! L'Horloge marche.</span><span class="es">¡Ah! ¡El reloj camina!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="horloge">L'Horloge Comtoise</span></span>
+        <span class="character-name">El Reloj De Caja</span>
+      </div>
+      <div class="line-row"><span class="fr">Ding, ding, ding…</span><span class="es">Ding, ding, ding…</span></div>
+      <div class="line-row"><span class="fr">Laissez-moi au moins passer,</span><span class="es">¡Al menos déjame pasar!</span></div>
+      <div class="line-row"><span class="fr">Que j'aille cacher ma honte!</span><span class="es">¡Que pueda esconder mi vergüenza!</span></div>
+      <div class="line-row"><span class="fr">Sonner ainsi à mon âge!</span><span class="es">¡Sonar así, a mi edad!</span></div>
+      <div class="line-row"><span class="fr">Moi, moi qui sonnais de douces heures,</span><span class="es">Yo, yo que tan dulcemente daba las horas:</span></div>
+      <div class="line-row"><span class="fr">Heure de dormir, heure de veiller,</span><span class="es">hora de dormir, hora de levantarse,</span></div>
+      <div class="line-row"><span class="fr">Heure qui ramène celui qu'on attend,</span><span class="es">hora de que regrese aquel a quien se espera...</span></div>
+      <div class="line-row"><span class="fr">Heure bénie où naquit le méchant Enfant!</span><span class="es">¡La hora bendita en que nació el malvado niño!</span></div>
+      <div class="line-row"><span class="fr">Peut-être que, s'il ne m'eût mutilée,</span><span class="es">Quizás, si él no me hubiera mutilado,</span></div>
+      <div class="line-row"><span class="fr">Rien n'aurait jamais changé</span><span class="es">nada hubiera cambiado</span></div>
+      <div class="line-row"><span class="fr">Dans cette demeure</span><span class="es">en esta morada;</span></div>
+      <div class="line-row"><span class="fr">Peut-être qu'aucun n'y fût jamais mort…</span><span class="es">quizás, nadie hubiera muerto...</span></div>
+      <div class="line-row"><span class="fr">Si j'avais pareilles les unes aux autres,</span><span class="es">¡Si yo pudiera dar acompasadas, unas y otras,</span></div>
+      <div class="line-row"><span class="fr">Les heures!</span><span class="es">las horas!</span></div>
+      <div class="line-row"><span class="fr">Ah! Laissez-moi cacher ma honte et ma douleur</span><span class="es">¡Ah! ¡Dejadme esconder mi vergüenza y dolor</span></div>
+      <div class="line-row"><span class="fr">Le nez contre le mur!</span><span class="es">de cara contra la pared!</span></div>
+      <div class="stage-direction">
+        <span>(On entend deux voix nasillardes au ras du sol.)</span>
+        <span class="es">(Se escuchan dos voces gangosas a ras del suelo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="theiere">La Théière</span></span>
+        <span class="character-name">La Tetera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Wedgwood noire)</span>
+        <span class="es">(una Wedgwood negra)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="fr">How´s your mug?</span><span class="es">¿Cómo te encuentras?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="tasse-chinoise">La Tasse</span></span>
+        <span class="character-name">La Taza</span>
+      </div>
+      <div class="stage-direction">
+        <span>(chinoise)</span>
+        <span class="es">(china)</span>
+      </div>
+      <div class="line-row"><span class="fr">Rotten!</span><span class="es">¡Muy mal!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="theiere">La Théière</span></span>
+        <span class="character-name">La Tetera</span>
+      </div>
+      <div class="line-row"><span class="fr">...better had...</span><span class="es">Yo un poco mejor...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="tasse-chinoise">La Tasse</span></span>
+        <span class="character-name">La Taza</span>
+      </div>
+      <div class="line-row"><span class="fr">Come on!</span><span class="es">¡Vamos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="theiere">La Théière</span></span>
+        <span class="character-name">La Tetera</span>
+      </div>
+      <div class="line-row"><span class="fr">Black and costaud, Black and chic, jolly fellow,</span><span class="es">Black and costaud, Black and chic, jolly fellow,</span></div>
+      <div class="line-row"><span class="fr">I punch, Sir, I punch your nose.</span><span class="es">I punch, Sir, I punch your nose.</span></div>
+      <div class="line-row"><span class="fr">I knock out you, stupid choose!</span><span class="es">I knock out you, stupid choose!</span></div>
+      <div class="line-row"><span class="fr">Black and thick, and vrai beau gosse,</span><span class="es">Black and thick, and vrai beau gosse,</span></div>
+      <div class="line-row"><span class="fr">I box you, I marm´lade you...</span><span class="es">I box you, I marm´lade you…</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="tasse-chinoise">La Tasse</span></span>
+        <span class="character-name">La Taza</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="fr">Keng-ça-fou, Mah-jong,</span><span class="es">Keng-ça-fou, Mah-jong,</span></div>
+      <div class="line-row"><span class="fr">Keng-ça-fou, puis' -kong-kong-pran-pa,</span><span class="es">Keng-ça-fou, también kong-kong-pran-pa,</span></div>
+      <div class="line-row"><span class="fr">Ça-oh-râ, Ça-oh-râ…</span><span class="es">Ça-oh-râ, Ça-oh-râ…</span></div>
+      <div class="line-row"><span class="fr">Cas-ka-ra, harakiri, Sessue Hayakawa</span><span class="es">Cas-ka-ra, harakiri, Sessue Hayakawa</span></div>
+      <div class="line-row"><span class="fr">Hâ! Hâ! Ça-oh-râ toujours l'air chinoâ.</span><span class="es">Hâ! Hâ! Ça-oh-râ les parecen a ustedes chinos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="tasse-chinoise">La Tasse</span>, <span class="character-name has-tooltip" data-character-id="theiere">La Théière</span></span>
+        <span class="character-name">La Taza, La Tetera</span>
+      </div>
+      <div class="line-row"><span class="fr">Hâ! Ça-oh-râ toujours l'air chinoâ.</span><span class="es">Hâ! Ça-oh-râ toujours l'air chinoâ.</span></div>
+      <div class="line-row"><span class="fr">Ping, pong, ping…</span><span class="es">Ping, pong, ping…</span></div>
+      <div class="stage-direction">
+        <span>(La Théière et la Tasse disparaissent dansant.)</span>
+        <span class="es">(La taza y la tetera se alejan bailando)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(atterré)</span>
+        <span class="es">(asustado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="line-row"><span class="fr">Oh! Ma belle tasse chinoise!</span><span class="es">¡Oh! ¡Mi hermosa taza china!</span></div>
+      <div class="stage-direction">
+        <span>(Le soleil a baissé. Ses rayons horizontaux deviennent</span>
+        <span class="es">(El sol se está ocultando. Sus rayos rojizos caen</span>
+        <span>rouges. L'Enfant frissonne de peur et de solitude; il se</span>
+        <span class="es">horizontalmente. El Niño tiembla de miedo y de</span>
+        <span>rapproche du Feu, qui lui crache au visage une fusée</span>
+        <span class="es">soledad; se acerca al fuego, que le escupe a la</span>
+        <span>étincelante.)</span>
+        <span class="es">cara una chispa encendida.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="feu">Le Feu</span></span>
+        <span class="character-name">El Fuego</span>
+      </div>
+      <div class="stage-direction">
+        <span>(bondissant hors de la cheminée,</span>
+        <span class="es">(saltando fuera de la chimenea, delgado,</span>
+        <span>mince, pailleté, éblouissant)</span>
+        <span class="es">menudo, deslumbrante.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="fr">Arrière!</span><span class="es">¡Aléjate!</span></div>
+      <div class="line-row"><span class="fr">Je réchauffe les bons, mais je brûle les méchants!</span><span class="es">¡Caliento a los buenos, pero quemo a los malos!</span></div>
+      <div class="line-row"><span class="fr">Petit barbare imprudent, tu as insulté à tous</span><span class="es">¡Pequeño bárbaro imprudente, has insultado a</span></div>
+      <div class="line-row"><span class="fr">les Dieux bienveillants, qui tendaient entre</span><span class="es">todos los dioses benévolos que levantaron entre</span></div>
+      <div class="line-row"><span class="fr">le malheur et toi la fragile barrière!</span><span class="es">la desgracia y tú una frágil barrera!</span></div>
+      <div class="line-row"><span class="fr">Tu as brandi le tisonnier, renversé la bouilloire,</span><span class="es">¡Has blandido el atizador, volcado la olla y</span></div>
+      <div class="line-row"><span class="fr">éparpillé les allumettes, gare!</span><span class="es">esparcido las ascuas! ¡Ten cuidado!</span></div>
+      <div class="line-row"><span class="fr">Gare au feu dansant!</span><span class="es">¡Cuídate del ondulante fuego o te derretirás</span></div>
+      <div class="line-row"><span class="fr">Tu fondrais comme un flocon sur sa lange écarlate!</span><span class="es">como un copo en su lengua escarlata!</span></div>
+      <div class="stage-direction">
+        <span>(Le Feu s'élance, et poursuit d'abord l'enfant qui</span>
+        <span class="es">(El fuego avanza revoloteando y persigue al niño</span>
+        <span>s'abrite derrière les meubles. Derrière le Feu, née</span>
+        <span class="es">que se protege tras los muebles. Detrás del</span>
+        <span>sous ses pas, monte la Cendre. Elle est grise onduleuse,</span>
+        <span class="es">fuego, naciendo de sus pasos, se levanta la</span>
+        <span>muette, et le Feu ne la voit pas d'abord. Puis, l'ayant</span>
+        <span class="es">ceniza. Es gris, ondulante y callada. Al principio</span>
+        <span>vue, il joue avec elle. Elle joue avec lui. Elle tente,</span>
+        <span class="es">el fuego no la ve, luego, al avistarla, juega con</span>
+        <span>sous ses longs voiles gris, de maîtriser le Feu. Il rit,</span>
+        <span class="es">ella que intenta, con su velo gris dominarlo. Él</span>
+        <span>s'échappe, et danse. Le jeu continue jusqu'au moment</span>
+        <span class="es">ríe, escapa de ella y baila. El juego sigue hasta</span>
+        <span>où, las de lutter, le Feu se laisse étreindre. Il tente un</span>
+        <span class="es">que, cansado de pelear, el fuego se deja agarrar.</span>
+        <span>dernier sursaut pour se libérer, brille encore un instant,</span>
+        <span class="es">Intenta liberarse por última vez; brilla otra</span>
+        <span>puis s'endort, roulé dans les longs bras et les longs</span>
+        <span class="es">vez por un instante, luego se duerme. En ese</span>
+        <span>voiles. Au moment où il cesse de briller, l'ombre</span>
+        <span class="es">momento deja de arder, las sombras invaden la</span>
+        <span>envahit la chambre, le crépuscule est venu, il étoile</span>
+        <span class="es">habitación, el ocaso ha llegado, las estrellas se</span>
+        <span>déjà les vitres, et la couleur du ciel présage le lever</span>
+        <span class="es">ven por las ventanas y el color del cielo presagia</span>
+        <span>de la pleine lune.)</span>
+        <span class="es">la aparición de la luna llena.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(à demi-voix)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="fr">J'ai peur, j'ai peur...</span><span class="es">Tengo miedo, tengo miedo...</span></div>
+      <div class="stage-direction">
+        <span>(Des rires menus lui répondent. Il cherche, et voit se</span>
+        <span class="es">(Dos risitas le responden. Busca, y ve cómo se</span>
+        <span>soulever les lambeaux déchirés de la tenture. Tout un</span>
+        <span class="es">levantan las tiras desgarradas del tapiz. Todo</span>
+        <span>cortège des petits personnages peints sur le papier</span>
+        <span class="es">un cortejo con los pequeños personajes del</span>
+        <span>s'avance, un peu ridicules, et très touchant. Il y a</span>
+        <span class="es">papel avanza, un poco ridículos pero muy</span>
+        <span>pastourelle, le pâtre, les moutons, le chien, la chèvre,</span>
+        <span class="es">conmovedores, pastorcillas, pastores,</span>
+        <span>etc. Une musique naïve de pipeaux et de tambourins</span>
+        <span class="es">ovejas, perros, cabras, etc. Una música</span>
+        <span>les accompagne.)</span>
+        <span class="es">de chirimías y de tambores les acompaña.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span></span>
+        <span class="character-name">Los Pastores</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="line-row"><span class="fr">Adieu, pastourelles!</span><span class="es">¡Adiós, pastorcillas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pastourelles</span></span>
+        <span class="character-name">Las Pastorcillas</span>
+      </div>
+      <div class="line-row"><span class="fr">Pastoureaux, adieu!</span><span class="es">¡Pastores, adiós!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span>, <span class="character-name">Les Pastourelles</span></span>
+        <span class="character-name">Pastores, Pastorcillas</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous n'irons plus sur l'herbe mauve</span><span class="es">¡Ya no llevaremos nuestras ovejas</span></div>
+      <div class="line-row"><span class="fr">Paître nos verts moutons!</span><span class="es">a pastar a la hierba malva!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span></span>
+        <span class="character-name">Los Pastores</span>
+      </div>
+      <div class="line-row"><span class="fr">Las, notre chèvre amarante!</span><span class="es">¡Ay, nuestra cabra violeta!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pastourelles</span></span>
+        <span class="character-name">Las Pastorcillas</span>
+      </div>
+      <div class="line-row"><span class="fr">Las, nos agneaux roses tendres!</span><span class="es">¡Ay, nuestros tiernos corderos color rosa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span></span>
+        <span class="character-name">Los Pastores</span>
+      </div>
+      <div class="line-row"><span class="fr">Las, nos cerises zinzolin!</span><span class="es">¡Ay, nuestras cerezas escarlatas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span>, <span class="character-name">Les Pastourelles</span></span>
+        <span class="character-name">Pastores, Las Pastorcillas</span>
+      </div>
+      <div class="line-row"><span class="fr">Notre chien bleu!</span><span class="es">¡Nuestro perro azul!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span></span>
+        <span class="character-name">Los Pastores</span>
+      </div>
+      <div class="line-row"><span class="fr">Le bras tendu, pastourelles,</span><span class="es">Cuando estábamos abrazados, pastorcillas...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pastourelles</span></span>
+        <span class="character-name">Las Pastorcillas</span>
+      </div>
+      <div class="line-row"><span class="fr">La bouche en cœur, pastoureaux,</span><span class="es">Con los labios en el corazón, pastores...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pâtres</span></span>
+        <span class="character-name">Los Pastores</span>
+      </div>
+      <div class="line-row"><span class="fr">Nos amours semblaient éternelles.</span><span class="es">¡Nuestro amor parecía eterno!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Pastourelles</span></span>
+        <span class="character-name">Las Pastorcillas</span>
+      </div>
+      <div class="line-row"><span class="fr">Eternels semblaient nos pipeaux.</span><span class="es">¡Eternas parecían nuestras flautas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="patre">Un Pâtre</span></span>
+        <span class="character-name">Un Pastor</span>
+      </div>
+      <div class="line-row"><span class="fr">l'enfant méchant a déchiré</span><span class="es">El malvado niño ha desgarrado</span></div>
+      <div class="line-row"><span class="fr">Notre tendre histoire.</span><span class="es">nuestra tierna historia.</span></div>
+      <div class="line-row"><span class="fr">Pâtre de ci, pastourelle de là,</span><span class="es">Un pastor por aquí... una pastorcilla por allá...</span></div>
+      <div class="line-row"><span class="fr">l'enfant méchant qui nous doit</span><span class="es">El malvado niño, ¡a nosotros!</span></div>
+      <div class="line-row"><span class="fr">Son premier sourire.</span><span class="es">a quien debe su primera sonrisa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="patre">Un Pâtre</span>, <span class="character-name has-tooltip" data-character-id="pastourelle">Une Pastourelle</span></span>
+        <span class="character-name">Un Pastor, Una Pastorcilla</span>
+      </div>
+      <div class="line-row"><span class="fr">Pâtre de ci, pastourelle de là,</span><span class="es">Un pastor por aquí... una pastorcilla por allá...</span></div>
+      <div class="line-row"><span class="fr">l'enfant méchant qui nous doit</span><span class="es">El malvado niño, ¡a nosotros!</span></div>
+      <div class="line-row"><span class="fr">Son premier sourire.</span><span class="es">a quien debe su primera sonrisa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pastourelle">Une Pastourelle</span></span>
+        <span class="character-name">Una Pastorcilla</span>
+      </div>
+      <div class="line-row"><span class="fr">L'Enfant ingrat qui dormait sous la garde</span><span class="es">El ingrato niño, que dormía bajo el cuidado</span></div>
+      <div class="line-row"><span class="fr">De notre chien bleu.</span><span class="es">de nuestro perro azul...</span></div>
+      <div class="line-row"><span class="fr">Las, notre chèvre amarante!</span><span class="es">¡ay, y de nuestra cabra violeta!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="patre">Un Pâtre</span></span>
+        <span class="character-name">Un Pastor</span>
+      </div>
+      <div class="line-row"><span class="fr">Las, nos rosses et verts moutons!</span><span class="es">¡Ay, y de nuestras ovejas rosas y verdes!</span></div>
+      <div class="stage-direction">
+        <span>(Ballet des petits personnages, qui expriment, en</span>
+        <span class="es">(Ballet de los pequeños personajes, que expresan,</span>
+        <span>dansant, le chagrin de no pouvoir plus se joindre.</span>
+        <span class="es">mientras danzan, la tristeza de no poder estar</span>
+        <span>Ils s'en vont, et avec eux la musique de cornemuses</span>
+        <span class="es">juntos de nuevo. Se alejan, y con ellos la música</span>
+        <span>et de tambourins. L'Enfant s'est laissé glisser tout</span>
+        <span class="es">de cornamusas y tambores. El niño se ha</span>
+        <span>de songe long à terre, la figure sur ses bras croisés.</span>
+        <span class="es">tumbado en el suelo, con la cara entre sus brazos</span>
+        <span>Il pleure. Il est couché sur les feuilles lacérées de</span>
+        <span class="es">cruzados. Llora. Aprieta las hojas desgarradas</span>
+        <span>livres, et c'est l'un des grands feuillets, sur lequel</span>
+        <span class="es">de los libros, una de las grandes páginas, que él</span>
+        <span>il est étendu, qui se soulève comme une dalle pour</span>
+        <span class="es">había extendido se levanta como una losa, para</span>
+        <span>laisser passer d'abord une main langoureuse, puis</span>
+        <span class="es">dejar pasar primero una lánguida mano, luego</span>
+        <span>une chevelure d'or, puis toute une Princesse adorable</span>
+        <span class="es">una cabellera de oro, luego una princesa de</span>
+        <span>de conte de Fées, qui semble à peine éveillée, et étire</span>
+        <span class="es">cuento de hadas con sus brazos cargados de</span>
+        <span>ses bras chargés de joyaux.)</span>
+        <span class="es">joyas.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(émerveillé)</span>
+        <span class="es">(maravillado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="fr">Ah! C'est Elle! C'est Elle!</span><span class="es">¡Ah! ¡Es ella!... ¡Es ella!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princesse">La Princesse</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, c'est Elle, ta Princesse enchantée.</span><span class="es">Sí, soy yo, tu princesa encantada.</span></div>
+      <div class="line-row"><span class="fr">Celle que tu appelais dans ton songe,</span><span class="es">Ella, la que tú llamabas en sueños,</span></div>
+      <div class="line-row"><span class="fr">La nuit passée.</span><span class="es">la noche pasada.</span></div>
+      <div class="line-row"><span class="fr">Celle dont l'histoire, commencée hier,</span><span class="es">Ella, cuya historia, apenas ayer,</span></div>
+      <div class="line-row"><span class="fr">Te tint éveillé si longtemps.</span><span class="es">te mantuvo despierto por mucho tiempo.</span></div>
+      <div class="line-row"><span class="fr">Tu te chantais à toi-même: "Elle est blonde</span><span class="es">Te cantabas a ti mismo:</span></div>
+      <div class="line-row"><span class="fr">Avec des yeux couleur du temps".</span><span class="es">"Ella es rubia, de azules ojos color cielo".</span></div>
+      <div class="line-row"><span class="fr">Tu me cherchais dans le cœur de la rose</span><span class="es">Tú me buscaste en el corazón de la rosa</span></div>
+      <div class="line-row"><span class="fr">Et dans le parfum du lys blanc.</span><span class="es">y en el perfume del lirio blanco.</span></div>
+      <div class="line-row"><span class="fr">Tu me cherchais, tout petit amoureux,</span><span class="es">Tú me buscaste, pequeño enamorado,</span></div>
+      <div class="line-row"><span class="fr">Et j'étais, depuis hier, ta première bien-aimée!</span><span class="es">y fui, desde ayer, tu primer amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! C'est Elle! C'est Elle!</span><span class="es">¡Ah! ¡Es ella!... ¡Es ella!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princesse">La Princesse</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais tu as déchiré le livre,</span><span class="es">Pero rompiste el libro...</span></div>
+      <div class="line-row"><span class="fr">Que va-t-il arriver de moi?</span><span class="es">¿Qué sucederá conmigo?</span></div>
+      <div class="line-row"><span class="fr">Qui sait si le malin enchanteur</span><span class="es">¿Quién sabe si, el malvado hechicero</span></div>
+      <div class="line-row"><span class="fr">Ne va pas me rendre au sommeil de la mort,</span><span class="es">no me enviará al sueño de la muerte,</span></div>
+      <div class="line-row"><span class="fr">Ou bien me dissoudre en nuée?</span><span class="es">o acaso, me disolverá en una nube?</span></div>
+      <div class="line-row"><span class="fr">Dis, n'as-tu pas regret d'ignorer à jamais</span><span class="es">Dime, ¿no te lamentarás el no saber nunca</span></div>
+      <div class="line-row"><span class="fr">Le sort de ta première bien-aimé?...</span><span class="es">el destino de tu primer amor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(tremblant)</span>
+        <span class="es">(temblando)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh! Ne t'en va pas! Reste! Dis-moi…</span><span class="es">¡Oh! ¡No te vayas! ¡Quédate! Dime...</span></div>
+      <div class="line-row"><span class="fr">Et l'arbre où chantait l'oiseau bleu?</span><span class="es">¿Y el árbol donde cantaba el pájaro azul?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princesse">La Princesse</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(désignant les feuillets épars)</span>
+        <span class="es">(señalando las páginas arrancadas)</span>
+      </div>
+      <div class="line-row"><span class="fr">Vois ses branches, vois ses fruit, hélas…</span><span class="es">Mira sus ramas, mira sus frutos, ¡ay de mí!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(anxieux)</span>
+        <span class="es">(ansioso)</span>
+      </div>
+      <div class="line-row"><span class="fr">Et ton collier, ton collier magique?</span><span class="es">¿Y tu collar?...¿Tu collar mágico?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princesse">La Princesse</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(de même)</span>
+        <span class="es">(señalando de nuevo)</span>
+      </div>
+      <div class="line-row"><span class="fr">Vois ses anneaux rompus, hélas…</span><span class="es">Mira sus cuentas rotas, ¡ay de mí!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Ton Chevalier?</span><span class="es">¿Y tu caballero?</span></div>
+      <div class="line-row"><span class="fr">Le Prince au Cimier couleur d'aurore?</span><span class="es">¿El príncipe con el yelmo color del alba?</span></div>
+      <div class="line-row"><span class="fr">Qu'il vienne, avec son épée!</span><span class="es">¡Él debe venir! ¡Tiene una espada!</span></div>
+      <div class="line-row"><span class="fr">Si j'avais une épée! Une épée!</span><span class="es">¡Si yo tuviera una espada! ¡Ah!</span></div>
+      <div class="line-row"><span class="fr">Ah! Dans mes bras, dans mes bras!</span><span class="es">¡Una espada en mis manos!</span></div>
+      <div class="line-row"><span class="fr">Viens, je saurai te défendre!</span><span class="es">¡Yo sabría defenderte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princesse">La Princesse</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(se tordant les bras)</span>
+        <span class="es">(retorciendo sus manos)</span>
+      </div>
+      <div class="line-row"><span class="fr">Hélas, petit ami trop faible,</span><span class="es">¡Ay de mí! pequeño amigo mío.</span></div>
+      <div class="line-row"><span class="fr">Que peux-tu pour moi?</span><span class="es">¿Qué puedes hacer por mí?</span></div>
+      <div class="line-row"><span class="fr">Sait-on la durée d'un rêve?</span><span class="es">¿Sabes cuánto dura un sueño?</span></div>
+      <div class="line-row"><span class="fr">Mon songe était si long, si long,</span><span class="es">Mi sueño es tan largo, tan largo,</span></div>
+      <div class="line-row"><span class="fr">Que peut-être, à la fin du songe,</span><span class="es">que quizás, al final del sueño,</span></div>
+      <div class="line-row"><span class="fr">C'eût été toi, le Prince au Cimier d'aurore!...</span><span class="es">¡seas tú, el príncipe con el yelmo del alba!...</span></div>
+      <div class="stage-direction">
+        <span>(Le sol bouge et s'ouvre au-dessous d'elle.</span>
+        <span class="es">(El suelo se mueve y se abre a los pies de ella.</span>
+        <span>Elle appelle:)</span>
+        <span class="es">Ella grita)</span>
+      </div>
+      <div class="line-row"><span class="fr">A l'aide! A l'aide! Le Sommeil et la Nuit</span><span class="es">¡Auxilio! ¡Auxilio!...</span></div>
+      <div class="line-row"><span class="fr">veulent me reprendre! A l'aide!</span><span class="es">¡El sueño y la noche quieren llevarme! ¡Auxilio!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(la retenant en vain par sa chevelure d'or,</span>
+        <span class="es">(intenta sostenerla en vano por sus cabellos</span>
+        <span>par ses voiles, par ses longues mains blanches)</span>
+        <span class="es">dorados, por sus velos, por sus manos blancas.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon épée! Mon épée! Mon épée!</span><span class="es">¡Mi espada! ¡Mi espada! ¡Mi espada!</span></div>
+      <div class="stage-direction">
+        <span>(Mais une force invisible aspire la Princesse</span>
+        <span class="es">(Pero una fuerza invisible aspira a la princesa</span>
+        <span>qui disparaît sous la terre.)</span>
+        <span class="es">que desaparece bajo la tierra.)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(seul et désolé)</span>
+        <span class="es">(solo y desolado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="line-row"><span class="fr">Toi, le cœur de la rose,</span><span class="es">Tú, el corazón de la rosa.</span></div>
+      <div class="line-row"><span class="fr">Toi, le parfum du lys blanc,</span><span class="es">Tú, el perfume del lirio blanco.</span></div>
+      <div class="line-row"><span class="fr">Toi, tes mains et ta couronne,</span><span class="es">Tú, tus manos y tu corona,</span></div>
+      <div class="line-row"><span class="fr">Tes yeux bleus et tes joyaux...</span><span class="es">tus ojos azules y tus joyas...</span></div>
+      <div class="line-row"><span class="fr">Tu ne m'as laissé, comme un rayon de lune,</span><span class="es">Sólo me has dejado, cual rayo de luna,</span></div>
+      <div class="line-row"><span class="fr">Qu'un cheveu d'or sur mon épaule,</span><span class="es">un cabello de oro sobre mi hombro.</span></div>
+      <div class="line-row"><span class="fr">Un cheveu d'or… et les débris d'un rêve...</span><span class="es">Un cabello de oro... y el recuerdo de un sueño...</span></div>
+      <div class="stage-direction">
+        <span>(il se penche, et cherche parmi les feuillets épars</span>
+        <span class="es">(se inclina y busca entre las hojas desgarradas</span>
+        <span>la fin du conte de Fées, mais in vain. Il cherche)</span>
+        <span class="es">el fin del cuento de hadas, pero es en vano)</span>
+      </div>
+      <div class="line-row"><span class="fr">Rien... Tous ceux-ci sont des livres arides,</span><span class="es">Nada... Todos estos son libros áridos,</span></div>
+      <div class="line-row"><span class="fr">D'amères et sèches leçons.</span><span class="es">de frías y secas lecciones.</span></div>
+      <div class="stage-direction">
+        <span>(Il les pousse du pied. Mais de petites voix aigres</span>
+        <span class="es">(Los patea. Voces chillonas salen de entre las</span>
+        <span>sortent d'entre les pages, qui se soulèvent et laissent</span>
+        <span class="es">páginas que dejan ver a las gesticulantes</span>
+        <span>voir les malicieuses et grimaçantes petites figures des</span>
+        <span class="es">figuritas de los números. De un álbum abierto</span>
+        <span>chiffres. D'un grand album plié en forme de toit, sort</span>
+        <span class="es">como un techo, salta un viejecillo jorobado, de</span>
+        <span>un petit vieillard bossu, crochu, barbu, vêtu de chiffres,</span>
+        <span class="es">nariz ganchuda, barbado, vestido con números,</span>
+        <span>coiffé d'un " p", ceinturé d'un mètre de couturière et</span>
+        <span class="es">sombrero en forma de "p", ceñido con una cinta</span>
+        <span>arme d'une équerre. Il tient un livre de bois que claque</span>
+        <span class="es">métrica y armado con una regla. Sostiene un</span>
+        <span>en mesure, et il marche à tous petits pas dansés, en</span>
+        <span class="es">libro de madera que golpea cadenciosamente.</span>
+        <span>récitant des bribes de problèmes.)</span>
+        <span class="es">Baila mientras recita fragmentos de problemas.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="petit-vieillard">Le Petit Vieillard</span></span>
+        <span class="character-name">El Viejecillo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="fr">Deux robinets coulent dans un réservoir!</span><span class="es">¡Dos grifos de agua fluyen a un tanque!</span></div>
+      <div class="line-row"><span class="fr">Deux trains omnibus quittent une gare</span><span class="es">¡Dos ómnibus dejan una estación</span></div>
+      <div class="line-row"><span class="fr">A vingt minutes d'intervalle</span><span class="es">a veinte minutos de intervalo,</span></div>
+      <div class="line-row"><span class="fr">Valle, valle, valle!</span><span class="es">valo, valo, valo!</span></div>
+      <div class="line-row"><span class="fr">Une paysanne,</span><span class="es">¡Una campesina,</span></div>
+      <div class="line-row"><span class="fr">Zanne, zanne, zanne,</span><span class="es">sina, sina, sina,</span></div>
+      <div class="line-row"><span class="fr">Porte tous ses œufs au marché!</span><span class="es">lleva todos sus huevos al mercado!</span></div>
+      <div class="line-row"><span class="fr">Un marchand d'étoffe,</span><span class="es">¡Un mercader de telas,</span></div>
+      <div class="line-row"><span class="fr">Toffe, toffe, toffe,</span><span class="es">telas, telas, telas,</span></div>
+      <div class="line-row"><span class="fr">A vendu six mètres de drap!</span><span class="es">vende seis metros de trapo!</span></div>
+      <div class="stage-direction">
+        <span>(Il aperçoit l'enfant et se dirige vers</span>
+        <span class="es">(ve al niño y se le acerca de una</span>
+        <span>lui de plus malveillante manière.)</span>
+        <span class="es">manera malévola.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(affolé)</span>
+        <span class="es">(aterrado)</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon Dieu! C'est l'Arithmétique!</span><span class="es">¡Dios mío! ¡Es la Aritmética!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="petit-vieillard">Le Petit Vieillard</span>, <span class="character-name">Les Chiffres</span></span>
+        <span class="character-name">El Viejecillo, Los Números</span>
+      </div>
+      <div class="line-row"><span class="fr">Tique, tique, tique!</span><span class="es">¡Tica, tica, tica!</span></div>
+      <div class="stage-direction">
+        <span>(Il danse autour de l'enfant en multipliant les</span>
+        <span class="es">(Danzan alrededor del niño</span>
+        <span>passes maléfiques.)</span>
+        <span class="es">multiplicando sus maléficos pases.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Onze et six vingt-cinq,</span><span class="es">Once mas seis: ¡veinticinco!</span></div>
+      <div class="line-row"><span class="fr">Quatre et quat'dix-huit,</span><span class="es">Cuatro mas cuatro: ¡dieciocho!</span></div>
+      <div class="line-row"><span class="fr">Sept fois neuf trente-trois</span><span class="es">Siete por nueve: ¡treinta y tres!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(surpris)</span>
+        <span class="es">(sorprendido)</span>
+      </div>
+      <div class="line-row"><span class="fr">Sept fois neuf trente-trois?</span><span class="es">¿Siete por nueve, treinta y tres?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Chiffres</span></span>
+        <span class="character-name">Los Números</span>
+      </div>
+      <div class="stage-direction">
+        <span>(soulevant les feuillets et piaillant)</span>
+        <span class="es">(levantando las hojas y chillando)</span>
+      </div>
+      <div class="line-row"><span class="fr">Sept fois neuf trente-trois, etc.</span><span class="es">Siete por nueve: ¡treinta y tres! etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(exagérant résolument)</span>
+        <span class="es">(con audacia)</span>
+      </div>
+      <div class="line-row"><span class="fr">Trois fois neuf quat'cent!</span><span class="es">Tres por nueve: ¡cuatrocientos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="petit-vieillard">Le Petit Vieillard</span></span>
+        <span class="character-name">El Viejecillo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Il se balance pour prendre le mouvement de la ronde)</span>
+        <span class="es">(balanceándose para mantener el ritmo)</span>
+      </div>
+      <div class="line-row"><span class="fr">Millimètre,</span><span class="es">Milímetro,</span></div>
+      <div class="line-row"><span class="fr">Centimètre,</span><span class="es">centímetro,</span></div>
+      <div class="line-row"><span class="fr">Décimètre,</span><span class="es">decímetro,</span></div>
+      <div class="line-row"><span class="fr">Décamètre,</span><span class="es">decámetro,</span></div>
+      <div class="line-row"><span class="fr">Hectomètre,</span><span class="es">hectómetro,</span></div>
+      <div class="line-row"><span class="fr">Kilomètre,</span><span class="es">kilómetro,</span></div>
+      <div class="line-row"><span class="fr">Myriamètre,</span><span class="es">miriámetro.</span></div>
+      <div class="line-row"><span class="fr">Faut t'y mettre!</span><span class="es">¡Sin fallar!</span></div>
+      <div class="line-row"><span class="fr">Quelle fêtre!</span><span class="es">¡Qué felicidad!</span></div>
+      <div class="line-row"><span class="fr">Des millions,</span><span class="es">¡Millones,</span></div>
+      <div class="line-row"><span class="fr">Des billions,</span><span class="es">billones,</span></div>
+      <div class="line-row"><span class="fr">Des trillions,</span><span class="es">trillones,</span></div>
+      <div class="line-row"><span class="fr">et des frac-cillions!</span><span class="es">y fracciones!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Chiffres</span>, <span class="character-name has-tooltip" data-character-id="petit-vieillard">Le Petit Vieillard</span></span>
+        <span class="character-name">Los Números, El Viejecillo</span>
+      </div>
+      <div class="line-row"><span class="fr">Deux robinets coulent dans un réservoir! etc.</span><span class="es">¡Dos grifos de agua fluyen a un tanque! Etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Chiffres</span></span>
+        <span class="character-name">Los Números</span>
+      </div>
+      <div class="stage-direction">
+        <span>(entraînant l'enfant dans leur danse)</span>
+        <span class="es">(hacen bailar al niño con ellos)</span>
+      </div>
+      <div class="line-row"><span class="fr">Trois fois neuf trent'trois!</span><span class="es">Tres por nueve: ¡treinta y tres!</span></div>
+      <div class="line-row"><span class="fr">Deux fois six vingt-sept!</span><span class="es">Dos por seis: ¡veintisiete!</span></div>
+      <div class="line-row"><span class="fr">Quatre et quat'? Quatre et quat'?</span><span class="es">¿Cuatro mas cuatro?... ¿Cuatro mas cuatro?...</span></div>
+      <div class="line-row"><span class="fr">Quatre et sept cinquante-neuf?</span><span class="es">Cuatro por siete: ¿cincuenta y nueve?</span></div>
+      <div class="line-row"><span class="fr">Deux fois six trente et un!</span><span class="es">Dos por seis: ¡treinta y uno!</span></div>
+      <div class="line-row"><span class="fr">Cinq fois cinq quarante-trois!</span><span class="es">Cinco por cinco: ¡cuarenta y tres!</span></div>
+      <div class="line-row"><span class="fr">Sept et quat' cinquante-cinq! etc.</span><span class="es">Siete mas cuatro: ¡cincuenta y cinco!</span></div>
+      <div class="stage-direction">
+        <span>(Ronde folle. L'enfant tombe, étourdi, tout de son</span>
+        <span class="es">(Giran desenfrenadamente. El niño, aturdido,</span>
+        <span>long. Le Petit Vieillard et le chœur s'éloignent.)</span>
+        <span class="es">cae al suelo. El Viejecillo y el coro se retiran.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Quatre et quat'dix-huit!</span><span class="es">Cuatro mas cuatro: ¡dieciocho!</span></div>
+      <div class="line-row"><span class="fr">Onze et six vingt-cinq!</span><span class="es">Once mas seis: ¡veinticinco!</span></div>
+      <div class="stage-direction">
+        <span>(L'Enfant se relève péniblement sur son séant. La</span>
+        <span class="es">(El niño se sienta con dificultad. La luna ilumina</span>
+        <span>lune est levée, elle éclaire la pièce. Le Chat noir sort</span>
+        <span class="es">la habitación. El gato negro se desliza bajo el</span>
+        <span>lentement de dessous le fauteuil. Il s'étire, baîlle et</span>
+        <span class="es">sillón. Se estira, bosteza y se relame. El niño no</span>
+        <span>fait sa toilette. L'Enfant ne le voit pas d'abord et</span>
+        <span class="es">lo ve pues, cansado, tiene la cabeza apoyada en</span>
+        <span>s'étend, harassé, la tête sur un coussin de pieds. Le</span>
+        <span class="es">un taburete. El gato juega, haciendo rodar una</span>
+        <span>Chat joue, et roule une baille de laine. Il arrive auprès</span>
+        <span class="es">bola de estambre. Se acerca al niño e intenta</span>
+        <span>de l'enfant et veut jouer avec la tête blonde comme</span>
+        <span class="es">jugar con su cabeza rubia como si fuera una</span>
+        <span>avec une pelote.)</span>
+        <span class="es">pelota.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="line-row"><span class="fr">Oh! Ma tête! Ma tête!</span><span class="es">¡Oh! ¡Mi cabeza! ¡Mi cabeza!</span></div>
+      <div class="stage-direction">
+        <span>(Il se relève à demi et voit le Chat)</span>
+        <span class="es">(Se levanta y mira al gato)</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est toi, Chat? Que tu es grand et terrible!</span><span class="es">¿Eres tú, gato? ¡Qué grande y terrible eres!</span></div>
+      <div class="line-row"><span class="fr">Tu parles aussi, sans doute?</span><span class="es">¿Sin duda que tú también hablarás?</span></div>
+      <div class="stage-direction">
+        <span>(Le Chat fait signe que non, jure et se détourne de</span>
+        <span class="es">(El gato dice que no con la cabeza, maúlla y</span>
+        <span>l'enfant. Il joue avec sa pelota. La Chatte blanche</span>
+        <span class="es">se aleja del niño. La gata blanca aparece en</span>
+        <span>paraît dan le jardin. Le Chat interrompt son jeu.)</span>
+        <span class="es">el jardín. El gato deja de jugar.)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Deuxième Partie</span>
+      <span>Segunda Parte</span>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="fr"><strong>Le Jardin</strong></span><span class="es"><strong>El Jardín</strong></span></div>
+      <div class="stage-direction">
+        <span>(Le Chat va rejoindre la Chatte. l'enfant le suit</span>
+        <span class="es">(El gato persigue a la gata. El niño los sigue</span>
+        <span>peureusement, attiré par le jardin. A ce moment,</span>
+        <span class="es">tímidamente, hasta el jardín. En ese momento</span>
+        <span>les parois s'écartent, le plafond s'envole et l'enfant</span>
+        <span class="es">las paredes se apartan, el techo se eleva y el niño</span>
+        <span>se trouve, avec le Chat et la Chatte, transporté dans</span>
+        <span class="es">se encuentra, junto con el gato y la gata, en el</span>
+        <span>le jardin éclaire par la pleine lune et la lueur rose du</span>
+        <span class="es">jardín iluminado por la luna y los arreboles</span>
+        <span>couchant. Des arbres, des fleurs, une toute petite mare</span>
+        <span class="es">del ocaso. Árboles, flores, un pequeño estanque</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="stage-direction">
+        <span>verte, un gros tronc vêtu de lierre. Musique d'insectes,</span>
+        <span class="es">verde, un grueso tronco vestido de hiedra.</span>
+        <span>de rainettes, de crapauds, de rires de chouettes, de</span>
+        <span class="es">Música de insectos, de ranas, de sapos, de</span>
+        <span>murmures de brise, et de rossignols.)</span>
+        <span class="es">búhos y ruiseñores.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ouvrant les bras)</span>
+        <span class="es">(abriendo los brazos)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="fr">Ah! Quelle joie de te retrouver, Jardin!</span><span class="es">¡Ah! ¡Qué alegría encontrarte de nuevo, jardín!</span></div>
+      <div class="stage-direction">
+        <span>(Il s'appuie au gros tronc d'arbre que gémit.)</span>
+        <span class="es">(Se apoya en el tronco de un árbol, que gime)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Quoi?</span><span class="es">¿Qué?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="arbre">L'Arbre</span></span>
+        <span class="character-name">El Árbol</span>
+      </div>
+      <div class="stage-direction">
+        <span>(gémissant)</span>
+        <span class="es">(gimiendo)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ma blessure… Ma blessure...</span><span class="es">Mi herida… Mi herida...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Quelle blessure?</span><span class="es">¿Qué herida?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="arbre">L'Arbre</span></span>
+        <span class="character-name">El Árbol</span>
+      </div>
+      <div class="line-row"><span class="fr">Celle que tu fis aujourd'hui à mon flanc,</span><span class="es">Aquella que tú ocasionaste en mi costado</span></div>
+      <div class="line-row"><span class="fr">avec le couteau dérobé… Hélas!</span><span class="es">con el cuchillo… ¡Ay de mí!</span></div>
+      <div class="line-row"><span class="fr">Elle saigne encore de sève...</span><span class="es">Sangra nuevamente savia...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Autres Arbres</span></span>
+        <span class="character-name">Los Otros Árboles</span>
+      </div>
+      <div class="stage-direction">
+        <span>(gémissant et se balançant)</span>
+        <span class="es">(gimiendo y balanceándose)</span>
+      </div>
+      <div class="line-row"><span class="fr">Nos blessures... nos blessures... Elles sont fraîches,</span><span class="es">Nuestras heridas... Están recientes</span></div>
+      <div class="line-row"><span class="fr">et saignent encore de sève…ô méchant!</span><span class="es">y sangran savia nuevamente... ¡Oh, malvado!</span></div>
+      <div class="stage-direction">
+        <span>(L'Enfant apitoyé, appuie sa joue contre l'écorce</span>
+        <span class="es">(El niño apiadado, apoya su mejilla contra la</span>
+        <span>du gros Arbre. Une Libellule passe, grésillante, et</span>
+        <span class="es">corteza del grueso árbol. Una libélula pasa y</span>
+        <span>disparaît. Elle repasse, repasse encore. D'autres la</span>
+        <span class="es">desaparece. Vuelve a pasar. Otras la siguen.</span>
+        <span>suivent. Un Sphinx du laurier-rose l'imite. D'autres</span>
+        <span class="es">Una mariposa nocturna la imita. Otras</span>
+        <span>Sphinx, d'autres Libellules.)</span>
+        <span class="es">mariposas nocturnas, otras Libélulas.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="libellule">La Libellule</span></span>
+        <span class="character-name">La Libélula</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="line-row"><span class="fr">Où es-tu?</span><span class="es">¿Dónde estás?</span></div>
+      <div class="line-row"><span class="fr">Je te cherche…</span><span class="es">Estoy buscándote…</span></div>
+      <div class="line-row"><span class="fr">Le filet…</span><span class="es">La red…</span></div>
+      <div class="line-row"><span class="fr">Il t'a prise…</span><span class="es">Te atrapó…</span></div>
+      <div class="line-row"><span class="fr">O toi, chère,</span><span class="es">¡Oh tú, querida,</span></div>
+      <div class="line-row"><span class="fr">Longue et frêle,</span><span class="es">tan larga y frágil,</span></div>
+      <div class="line-row"><span class="fr">Tes turquoises,</span><span class="es">tus turquesas,</span></div>
+      <div class="line-row"><span class="fr">Tes topazes,</span><span class="es">tus topacios,</span></div>
+      <div class="line-row"><span class="fr">L'air qui t'aime</span><span class="es">el aire que amabas,</span></div>
+      <div class="line-row"><span class="fr">Les regrette</span><span class="es">los extraño menos</span></div>
+      <div class="line-row"><span class="fr">Moins que moi...</span><span class="es">de lo que te extraño a ti!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rossignol">Le Rossignol</span></span>
+        <span class="character-name">El Ruiseñor</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah!...</span><span class="es">¡Ah!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="libellule">La Libellule</span></span>
+        <span class="character-name">La Libélula</span>
+      </div>
+      <div class="line-row"><span class="fr">Seule, seule,</span><span class="es">Sola, sola...</span></div>
+      <div class="line-row"><span class="fr">Je languis…</span><span class="es">languidezco...</span></div>
+      <div class="line-row"><span class="fr">Je te cherche...</span><span class="es">te busco...</span></div>
+      <div class="stage-direction">
+        <span>(A l'enfant, en tournoyant au-dessus de sa tête)</span>
+        <span class="es">(Al niño, volando alrededor de su cabeza)</span>
+      </div>
+      <div class="line-row"><span class="fr">Rends-la moi!</span><span class="es">¡Devuélvemela!</span></div>
+      <div class="line-row"><span class="fr">Où est-elle?</span><span class="es">¿Dónde está?</span></div>
+      <div class="line-row"><span class="fr">Ma compagne,</span><span class="es">¡Mi compañera!</span></div>
+      <div class="line-row"><span class="fr">Rends-la moi!</span><span class="es">¡Devuélvemela!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Je ne peux pas! Je ne peux pas!</span><span class="es">¡No puedo! ¡No puedo!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="libellule">La Libellule</span></span>
+        <span class="character-name">La Libélula</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pressante)</span>
+        <span class="es">(insistiendo)</span>
+      </div>
+      <div class="line-row"><span class="fr">Où est-elle?</span><span class="es">¿Dónde está ella?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(se détournant)</span>
+        <span class="es">(volviéndose de espaldas)</span>
+      </div>
+      <div class="line-row"><span class="fr">Je ne puis...</span><span class="es">No puedo...</span></div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">La libellule que j'ai prise...</span><span class="es">La libélula que atrapé...</span></div>
+      <div class="line-row"><span class="fr">Percée d'une épingle...</span><span class="es">La pinché con un alfiler...</span></div>
+      <div class="line-row"><span class="fr">Contre le mur</span><span class="es">Contra la pared...</span></div>
+      <div class="stage-direction">
+        <span>(horrifié)</span>
+        <span class="es">(aterrado)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah!...</span><span class="es">¡Ah!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="chauve-souris">La Chauve-Souris</span></span>
+        <span class="character-name">El Murciélago</span>
+      </div>
+      <div class="stage-direction">
+        <span>(en l'air)</span>
+        <span class="es">(en el aire)</span>
+      </div>
+      <div class="line-row"><span class="fr">Rends-la moi... Tsk, tsk, Rends-la moi...</span><span class="es">Devuélvemela... Tsk, tsk, devuélvemela...</span></div>
+      <div class="line-row"><span class="fr">Tsk... Ma compagne…</span><span class="es">Tsk... mi compañera...</span></div>
+      <div class="line-row"><span class="fr">La Chauve-souris... tu sais?</span><span class="es">La murciélago... ¿Qué sabes de ella?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="stage-direction">
+        <span>(baissant la tête)</span>
+        <span class="es">(bajando la cabeza)</span>
+      </div>
+      <div class="line-row"><span class="fr">Je sais!</span><span class="es">¡Lo sé!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="chauve-souris">La Chauve-Souris</span></span>
+        <span class="character-name">El Murciélago</span>
+      </div>
+      <div class="stage-direction">
+        <span>(volant)</span>
+        <span class="es">(volando)</span>
+      </div>
+      <div class="line-row"><span class="fr">Le bâton... Tsk, tsk... la poursuite..</span><span class="es">El bastón... Tsk, tsk... la persecución...</span></div>
+      <div class="line-row"><span class="fr">hier soir... Tsk... Ta victoire...</span><span class="es">la noche anterior... Tsk... Tu victoria...</span></div>
+      <div class="line-row"><span class="fr">Et la petite bête, là, morte à tes pieds...</span><span class="es">Y el animalito, ahí, muerto a tus pies...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Grâce!</span><span class="es">¡Piedad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="chauve-souris">La Chauve-Souris</span></span>
+        <span class="character-name">El Murciélago</span>
+      </div>
+      <div class="line-row"><span class="fr">Le nid plein... Les petits... sans leur mère.</span><span class="es">El nido lleno... los pequeñitos... sin su madre.</span></div>
+      <div class="line-row"><span class="fr">El faut... Tsk, tsk, qu'on les nourrisse...</span><span class="es">Ellos necesitan... Tsk, tsk, ser alimentados...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Sans mère!</span><span class="es">¡Sin su mamá!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="chauve-souris">La Chauve-Souris</span></span>
+        <span class="character-name">El Murciélago</span>
+      </div>
+      <div class="line-row"><span class="fr">Alors, nous... Tsk, tsk...</span><span class="es">Ahora, nosotros... Tsk, tsk...</span></div>
+      <div class="line-row"><span class="fr">Nous volons. Nous chassons...</span><span class="es">Volamos. Cazamos...</span></div>
+      <div class="line-row"><span class="fr">Nous tournons... nous chassons</span><span class="es">Regresamos... cazamos...</span></div>
+      <div class="line-row"><span class="fr">Nous happons... Tsk... Tsk...</span><span class="es">Comemos...Tsk... Tsk...</span></div>
+      <div class="line-row"><span class="fr">C'est ta faute...</span><span class="es">Esa es tu culpa...</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="stage-direction">
+        <span>(Ronde de Chauves-souris. Au-dessous, une petite</span>
+        <span class="es">(Ronda de los Murciélagos. Debajo de ellos, una</span>
+        <span>Rainette émerge de la mare, s'appuie des deux mains</span>
+        <span class="es">pequeña ranita emerge de la charca, apoyándose</span>
+        <span>au bord. Une autre fait de même, puis une autre, et la</span>
+        <span class="es">con ambas manos en el borde. Otra hace lo</span>
+        <span>mare se trouve couronnée de Rainettes, bien serrées</span>
+        <span class="es">mismo, luego otra, la charca se encuentra coronada de ranitas</span>
+        <span>l'une contre l'autre. Elles sortent, et se mettent à jouer</span>
+        <span class="es">muy juntas las unas de las otras. Salen, y se ponen a jugar</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="stage-direction">
+        <span>à la manière des rainettes.</span>
+        <span class="es">a la manera de las ranitas.</span>
+        <span>L'une d'elles, ayant dansé, s'appuie</span>
+        <span class="es">Una de ellas, después de haber bailado, apoya</span>
+        <span>de la main au genou de l'enfant.)</span>
+        <span class="es">sus manos sobre la rodilla del niño.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ecureuil">L'Écureuil</span></span>
+        <span class="character-name">La Ardilla</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sèchement)</span>
+        <span class="es">(cortante a la rana)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="line-row"><span class="fr">Sauve-toi, sotte! Et la cage? La cage?</span><span class="es">¡Sálvate, tonta!... ¿Y la jaula? ¿La jaula?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rainette">La Rainette</span></span>
+        <span class="character-name">La Ranita</span>
+      </div>
+      <div class="line-row"><span class="fr">Kékékékékécekça?</span><span class="es">¿Kekekekeke de verdad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ecureuil">L'Écureuil</span></span>
+        <span class="character-name">La Ardilla</span>
+      </div>
+      <div class="stage-direction">
+        <span>(A la fourche de deux basses branches, et</span>
+        <span class="es">(ahogándose con sus dos manitas y</span>
+        <span>toussant à la manière des écureuils.)</span>
+        <span class="es">tosiendo como lo hacen las ardillas)</span>
+      </div>
+      <div class="line-row"><span class="fr">La prison… Heu, heu. La prison.</span><span class="es">La cárcel... Cof, cof. La cárcel.</span></div>
+      <div class="line-row"><span class="fr">Le fer qui pique, entre deux barreaux.</span><span class="es">La pluma que pica, entre dos barrotes.</span></div>
+      <div class="line-row"><span class="fr">Heu, heu. J'ai pu fuir, mais tes quatre</span><span class="es">Cof, cof. Yo puedo escapar, pero tus cuatro</span></div>
+      <div class="line-row"><span class="fr">petites mains mouillées ne valent pas les miennes.</span><span class="es">patitas húmedas no son tan buenas como las mías.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rainette">La Rainette</span></span>
+        <span class="character-name">La Ranita</span>
+      </div>
+      <div class="line-row"><span class="fr">Que-que-que-que-dis-tu?</span><span class="es">¿Qué-qué-qué-qué es lo que dices?</span></div>
+      <div class="line-row"><span class="fr">Je ne connais pas la cacacacage.</span><span class="es">No conozco la ja-ja-ja-jaula.</span></div>
+      <div class="line-row"><span class="fr">Je connais la mouche qu'on me jette.</span><span class="es">Conozco la mosca sobre mi cabeza.</span></div>
+      <div class="stage-direction">
+        <span>(Elle saute.)</span>
+        <span class="es">(Salta.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ploc! Et le chiffon rouge.</span><span class="es">¡Ploc! Y la red roja.</span></div>
+      <div class="stage-direction">
+        <span>(Elle saute.)</span>
+        <span class="es">(Salta.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ploc! L'appât vient, je bondis, on me prend,</span><span class="es">¡Ploc! El cebo viene, salto, me dejo atrapar,</span></div>
+      <div class="line-row"><span class="fr">je m'échappe, je reviens. Ploc!</span><span class="es">me escapo, regreso. ¡Ploc!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ecureuil">L'Écureuil</span></span>
+        <span class="character-name">La Ardilla</span>
+      </div>
+      <div class="line-row"><span class="fr">Sans-cervelle! Tu auras mon sort!</span><span class="es">¡Descerebrada! ¡Acabarás como yo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="line-row"><span class="fr">La cage, c'était pour mieux voir ta prestesse,</span><span class="es">La jaula, era para apreciar mejor tu agilidad,</span></div>
+      <div class="line-row"><span class="fr">Tes quatre petites mains, tes beaux yeux...</span><span class="es">tus cuatro patitas, tus hermosos ojos...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ecureuil">L'Écureuil</span></span>
+        <span class="character-name">La Ardilla</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sarcastique)</span>
+        <span class="es">(sarcástica)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, c'était pour mes beaux yeux!</span><span class="es">¡Sí, para apreciar mis hermosos ojos!</span></div>
+      <div class="line-row"><span class="fr">Sais-tu ce qu'ils reflétaient, mes beaux yeux?</span><span class="es">¿Sabes qué reflejan mis hermosos ojos?</span></div>
+      <div class="line-row"><span class="fr">Le ciel libre, le vent libre, mes libres frères,</span><span class="es">¡El cielo libre, el viento libre, mis hermanas</span></div>
+      <div class="line-row"><span class="fr">au bond sûr comme un vol!...</span><span class="es">libres, saltando como si volaran!...</span></div>
+      <div class="line-row"><span class="fr">Regarde donc ce qu'ils reflétaient,</span><span class="es">¡Mira lo que reflejan mis hermosos ojos,</span></div>
+      <div class="line-row"><span class="fr">mes beaux yeux tout miroitants de larmes!</span><span class="es">relucientes de lágrimas!</span></div>
+      <div class="stage-direction">
+        <span>(Pendant qu'il parle, le jardin se peuple d'écureuils</span>
+        <span class="es">(Mientras habla, el jardín se puebla de ardillas</span>
+        <span>bondissants. Leurs jeux, leurs caresses, suspendus en</span>
+        <span class="es">saltarinas. Juegan, se acarician y hacen</span>
+        <span>l'air, n'inquiètent pas ceux de Rainettes, au-dessous.</span>
+        <span class="es">cabriolas en el aire. Una pareja de libélulas,</span>
+        <span>Un couple de Libellules, enlacé, se disjoint, s'accole.</span>
+        <span class="es">abrazadas, se separan y se juntan. Un grupo</span>
+        <span>Un groupe de Sphinx du laurier-rose les imite.</span>
+        <span class="es">de mariposas nocturnas las imita. Otros grupos</span>
+        <span>D'autres groupes se nouent, se défont. Le jardin,</span>
+        <span class="es">se juntan y se separan. El jardín, palpitante de</span>
+        <span>palpitant d'aile, rutilant d'écureuils, est un paradis</span>
+        <span class="es">aleteos, brillante de ardillas, es un paraíso de</span>
+        <span>de tendresse et de joie animales.)</span>
+        <span class="es">ternura y de alegría silvestre.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Ils s'aiment... ils sont heureux...</span><span class="es">Se aman... son felices...</span></div>
+      <div class="line-row"><span class="fr">Ils m'oublient...</span><span class="es">Me han olvidado...</span></div>
+      <div class="stage-direction">
+        <span>(Le Chat noir et la Chatte blanche paraissent au faîte</span>
+        <span class="es">(El gato negro y la gata blanca aparecen en lo</span>
+        <span>du mur. Le Chat lèche amicalement les oreilles de la</span>
+        <span class="es">alto de la pared. El gato lame dulcemente las</span>
+        <span>Chatte, joue avec celle. Ils s'éloignent, l'un suivant</span>
+        <span class="es">orejas de la gata y juega con ella. Se mueven,</span>
+        <span>l'autre, sur le faîte étroit du mur.)</span>
+        <span class="es">uno sigue al otro a través del angosto muro.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Il s'aiment... ils m'oublient...</span><span class="es">Se aman... son felices...</span></div>
+      <div class="line-row"><span class="fr">Je suis seul...</span><span class="es">Me han olvidado...</span></div>
+      <div class="stage-direction">
+        <span>(Malgré lui il appelle:)</span>
+        <span class="es">(Enojado consigo mismo grita)</span>
+      </div>
+      <div class="line-row"><span class="fr">Maman!</span><span class="es">¡Mamá!</span></div>
+      <div class="stage-direction">
+        <span>(A ce cri, toutes les Bêtes se dressent, se séparent, les</span>
+        <span class="es">(Al grito, los animales se levantan, se separan,</span>
+        <span>unes fuient, les autres accourent menaçantes, mêlent</span>
+        <span class="es">unos vuelan, otros corren mezclando sus voces</span>
+        <span>leurs voix à celles des arbres, s'écrient:)</span>
+        <span class="es">con la de los árboles y gritan)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Les Bêtes</span>, <span class="character-name">Les Arbres</span></span>
+        <span class="character-name">Los Animales, Los Árboles</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="line-row"><span class="fr">Ah! C'est l'enfant au couteau!</span><span class="es">¡Ah! ¡Es el niño del cuchillo!</span></div>
+      <div class="line-row"><span class="fr">C'est l'enfant au bâton!</span><span class="es">¡Es el niño del bastón!</span></div>
+      <div class="line-row"><span class="fr">Le méchant à la cage!</span><span class="es">¡El malvado con la jaula!</span></div>
+      <div class="line-row"><span class="fr">Le méchant au filet!</span><span class="es">¡El malvado de la red!</span></div>
+      <div class="line-row"><span class="fr">Celui qui n'aime personne,</span><span class="es">¡El que no ama a nadie</span></div>
+      <div class="line-row"><span class="fr">Et que personne n'aime!</span><span class="es">y al que nadie quiere!</span></div>
+      <div class="line-row"><span class="fr">Faut-il fuir?</span><span class="es">¿Se escapará?</span></div>
+      <div class="line-row"><span class="fr">Non! Il faut châtier.</span><span class="es">¡No! Debe ser castigado.</span></div>
+      <div class="line-row"><span class="fr">J'ai mes griffes!</span><span class="es">¡Yo, mis garras!</span></div>
+      <div class="line-row"><span class="fr">J'ai mes dents!</span><span class="es">¡Yo, mis dientes!</span></div>
+      <div class="line-row"><span class="fr">J'ai mes ailes onglées!</span><span class="es">¡Yo, mis alas con garras!</span></div>
+      <div class="line-row"><span class="fr">Unissons-nous, unissons-nous!</span><span class="es">¡Unámonos, unámonos!</span></div>
+      <div class="stage-direction">
+        <span>(Toutes les bêtes fondent à la fois sur l'enfant le</span>
+        <span class="es">(Los animales caen sobre el niño. Un frenesí</span>
+        <span>cernent, le poussent, le tirent. C'est une frénésie qui</span>
+        <span class="es">que se convierte en lucha, cada animal quiere</span>
+        <span>devient lutte, car chaque bête veut être seule à châtier</span>
+        <span class="es">castigar al niño. Los animales comienzan a</span>
+        <span>l'enfant, et les bêtes commencement à s'entre-déchirer.</span>
+        <span class="es">pelearse entre ellos. El niño, ora atrapado ora</span>
+        <span>L'Enfant, pris, délivré, repris, passe de pattes en pattes.</span>
+        <span class="es">libre, ora vuelto a atrapar, pasa de pata en pata.</span>
+        <span>Au plus fort de la lutte, il est projeté dans un coin de</span>
+        <span class="es">En el clímax de la pelea, el niño se tira contra</span>
+        <span>la scène, et les bêtes l'oublient, dans leur ivresse de</span>
+        <span class="es">una esquina del escenario, olvidado por los</span>
+        <span>combattre. Presque en même temps, un petit écureuil,</span>
+        <span class="es">animales, que siguen peleando. Al mismo tiempo,</span>
+        <span>blessé, vient choir auprès de l'enfant avec un cri aigu.</span>
+        <span class="es">una pequeña ardilla, herida, cae junto al niño</span>
+        <span>Les Bêtes honteuses, s'immobilisent, se séparent,</span>
+        <span class="es">con un llanto agudo. Los animales avergonzados,</span>
+        <span>entourent de loin l'Ecureuil qu'elles ont meurtri.</span>
+        <span class="es">se detienen, se separan, rodean a la Ardilla que</span>
+        <span>Arrachant un ruban de son cou, l'enfant lie la patte</span>
+        <span class="es">hirieron. Con su pañuelo de cuello, el niño venda</span>
+        <span>blessé de l'Ecureuil, puis retombe sans force. Profond</span>
+        <span class="es">la pata herida de la ardilla, luego cae sin fuerzas.</span>
+        <span>silence, stupeur parmi les Bêtes.)</span>
+        <span class="es">Silencio, los Animales están sorprendidos.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Une Bête</span></span>
+        <span class="character-name">Un Animal</span>
+      </div>
+      <div class="stage-direction">
+        <span>(parmi le profond silence)</span>
+        <span class="es">(rompiendo el profundo silencio)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">24</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="line-row"><span class="fr">Il a pansé la plaie...</span><span class="es">Le curó la herida...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Une Autre Bête</span></span>
+        <span class="character-name">Otro Animal</span>
+      </div>
+      <div class="line-row"><span class="fr">Il a pansé la plaie... Il a lié la patte...</span><span class="es">Él le curó la herida... le vendó la pata...</span></div>
+      <div class="line-row"><span class="fr">Etanché le sang.</span><span class="es">Detuvo la sangre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Autres Animaux</span></span>
+        <span class="character-name">Los Otros Animales</span>
+      </div>
+      <div class="line-row"><span class="fr">Il souffre... Il est blessé... Il saigne...</span><span class="es">Él sufre... Está herido... Sangra...</span></div>
+      <div class="line-row"><span class="fr">Il a pansé la plaie... Il faut lier la main...</span><span class="es">Él le curó la herida... Hay que vendarle la mano.</span></div>
+      <div class="line-row"><span class="fr">Etancher le sang... Que faire?</span><span class="es">Detener la sangre... ¿Qué vamos a hacer?</span></div>
+      <div class="line-row"><span class="fr">Il sait, lui, guérir le mal... Que faire?</span><span class="es">Él sabe como curar una herida... ¿Qué haremos?</span></div>
+      <div class="line-row"><span class="fr">Nous l'avons blessé... Que faire?</span><span class="es">Nosotros lo lastimamos... ¿Qué vamos a hacer?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Une Bête</span></span>
+        <span class="character-name">Un Animal</span>
+      </div>
+      <div class="line-row"><span class="fr">Il appelait, tout à l'heure...</span><span class="es">Él llamó, hace un momento...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Animaux</span></span>
+        <span class="character-name">Los Animales</span>
+      </div>
+      <div class="line-row"><span class="fr">Il appelait...</span><span class="es">Él llamó...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Une Bête</span></span>
+        <span class="character-name">Un Animal</span>
+      </div>
+      <div class="line-row"><span class="fr">Il crié un mot, un seul mot: Maman!</span><span class="es">Él gritó una palabra, una sola palabra: ¡Mamá!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Animaux</span></span>
+        <span class="character-name">Los Animales</span>
+      </div>
+      <div class="line-row"><span class="fr">Maman...</span><span class="es">Mamá...</span></div>
+      <div class="stage-direction">
+        <span>(Elles se sont rapprochées, elles entourent l'enfant,</span>
+        <span class="es">(Todos se acercan al niño tirado en el suelo. Las</span>
+        <span>gisant. Les Ecureuils se suspendent aux branches au-</span>
+        <span class="es">ardillas se cuelgan con sus patas por encima de</span>
+        <span>dessus de lui, les Libellules l'éventent de leurs ailes.)</span>
+        <span class="es">él, las libélulas le abanican con sus alas.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Une Bête</span></span>
+        <span class="character-name">Un Animal</span>
+      </div>
+      <div class="line-row"><span class="fr">Il se tait... va-t-il mourir?</span><span class="es">Está muy callado... ¿Va a morirse?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Animaux</span></span>
+        <span class="character-name">Los Animales</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous ne savons pas lier la main...</span><span class="es">Nosotros no sabemos vendarle la mano...</span></div>
+      <div class="line-row"><span class="fr">Etancher le sang...</span><span class="es">Detener la sangre...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Une Bête</span></span>
+        <span class="character-name">Un Animal</span>
+      </div>
+      <div class="stage-direction">
+        <span>(désignant la maison)</span>
+        <span class="es">(señalando la casa)</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est là qu'est le secours!</span><span class="es">¡Ahí podemos encontrar ayuda!</span></div>
+      <div class="line-row"><span class="fr">Ramenons-le au nid!</span><span class="es">¡Llevémoslo al nido!</span></div>
+      <div class="line-row"><span class="fr">Il faut que l'on entende, là-bas,</span><span class="es">Es necesario que oigan allí</span></div>
+      <div class="line-row"><span class="fr">le mot qu'il crié tout à l'heure...</span><span class="es">la palabra que gritó hace un momento...</span></div>
+      <div class="line-row"><span class="fr">Essayons de crier le mot...</span><span class="es">Probemos a gritar esa palabra...</span></div>
+      <div class="stage-direction">
+        <span>(Les Bêtes, toutes ensemble, soulèvent l'enfant inerte</span>
+        <span class="es">(Los animales levantan al inerte y pálido niño</span>
+        <span>et pâle, et l'emportent, pas à pas, vers la maison.)</span>
+        <span class="es">y lo cargan, paso a paso, hacia la casa.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Les Animaux</span></span>
+        <span class="character-name">Los Animales</span>
+      </div>
+      <div class="stage-direction">
+        <span>(hésitant)</span>
+        <span class="es">(vacilantes)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ma... man...</span><span class="es">Ma... má...</span></div>
+      <div class="stage-direction">
+        <span>(plus haut)</span>
+        <span class="es">(más fuerte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ma... man!</span><span class="es">¡Ma... má!</span></div>
+      <div class="stage-direction">
+        <span>(L'Enfant ouvre les yeux, essaie de se tenir debout.</span>
+        <span class="es">(El Niño abre los ojos, intentando levantarse.</span>
+        <span>De la patte, de l'aile, de la tête, des reins, les Bêtes</span>
+        <span class="es">Con sus patas, sus alas, sus cabezas, sus lomos,</span>
+        <span>le soutiennent encore.)</span>
+        <span class="es">los animales lo sostienen.)</span>
+      </div>
+      <div class="line-row"><span class="fr">Maman!</span><span class="es">¡Mamá!</span></div>
+      <div class="stage-direction">
+        <span>(Une lumière paraît aux vitres, dans la maison. En</span>
+        <span class="es">(Una luz se enciende tras la ventana de la casa.</span>
+        <span>même temps, la lune, dévoilée, l'aube, rose et d'or,</span>
+        <span class="es">Al mismo tiempo, la luna, rosa y dorada, inunda</span>
+        <span>inondent le jardin d'une clarté pure. Les bêtes une à</span>
+        <span class="es">el jardín de claridad. Los animales, uno por uno,</span>
+        <span>une, retirent à l'enfant leur aide qui devient inutile,</span>
+        <span class="es">dejan de sostener al niño pues ya no es necesario,</span>
+        <span>défont harmonieusement, a regret, leur groupe serré</span>
+        <span class="es">retirándose cadenciosamente. El grupo que</span>
+        <span>contre l'enfant, mais elles l'escortent d'un peu plus loin,</span>
+        <span class="es">rodeaba al niño se aleja de él, batiendo las alas</span>
+        <span>le fêtant de battements d'ailes, de culbuttes de joie, puis</span>
+        <span class="es">y con saltos de alegría. Cuando las sombras de</span>
+        <span>limitant à l'ombre des arbres leur bienveillant cortège,</span>
+        <span class="es">los árboles cubren al cortejo, queda el niño solo,</span>
+        <span>laissent l'enfant seul, droit, lumineux et blond dans un</span>
+        <span class="es">erguido, iluminado por un halo de luna. Tiende</span>
+        <span>halo de lune et d'aube, et tendant ses bras vers celle</span>
+        <span class="es">sus brazos hacia aquella a quien los animales</span>
+        <span>que les bêtes ont appelée: "Maman".)</span>
+        <span class="es">llamaron "Mamá")</span>
+      </div>
+      <div class="line-row"><span class="fr">El est bon, l'enfant, il est sage, bien sage...</span><span class="es">Es bueno, el niño, es prudente, muy prudente...</span></div>
+      <div class="line-row"><span class="fr">Il a pansé la plaie, étanché le sang...</span><span class="es">Él sanó la herida y detuvo la sangre...</span></div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">25</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="line-row"><span class="fr">Il est sage... il est si doux...</span><span class="es">Él es bueno... es tan dulce...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="enfant">L'Enfant</span></span>
+        <span class="character-name">El Niño</span>
+      </div>
+      <div class="line-row"><span class="fr">Maman!</span><span class="es">¡Mamá!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  maazel_ogeas: {
+    label: "L'Enfant et les Sortil\u00e8ges \u00b7 Maazel / Og\u00e9as",
+    short: "Maazel / Og\u00e9as",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "J'Ai Pas Envie De Faire Ma Page", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 2, title: "B\u00e9b\u00e9 A \u00c9t\u00e9 Sage?", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 3, title: "\u00c7a M'Est \u00c9gal!", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 4, title: "Votre Serviteur Humble, Berg\u00e8re", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 5, title: "Ding, Ding, Ding, Ding", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 6, title: "How's Your Mug?", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 7, title: "Keng-\u00c7a-Fou, Mah-Jong", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 8, title: "Oh! Ma Belle Tasse Chinoise!", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 9, title: "Arri\u00e8re! Je R\u00e9chauffe Les Bons", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 10, title: "Adieu, Pastourelles!", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 11, title: "Ah! C'Est Elle! C'Est Elle!", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 12, title: "Toi, Le C\u0153ur De La Rose", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 13, title: "Deux Robinets Coulent Dans Un R\u00e9servoir!", act: "Act I", has_block: true },
+      { id: "t14", cd: 1, track: 14, title: "Oh! Ma T\u00eate!", act: "Act I", has_block: true },
+      { id: "t15", cd: 1, track: 15, title: "Duo Miaul\u00e9", act: "Act II", has_block: true },
+      { id: "t16", cd: 1, track: 16, title: "Musique D'Insectes, De Rainettes, Etc.", act: "Act II", has_block: true },
+      { id: "t17", cd: 1, track: 17, title: "Ah! Quelle Joie De Te Retrouver, Jardin!", act: "Act II", has_block: true },
+      { id: "t18", cd: 1, track: 18, title: "O\u00f9 Es-Tu? Je Te Cherche\u2026", act: "Act II", has_block: true },
+      { id: "t19", cd: 1, track: 19, title: "Ronde Des Chauves-Souris", act: "Act II", has_block: true },
+      { id: "t20", cd: 1, track: 20, title: "Danse Des Rainettes", act: "Act II", has_block: true },
+      { id: "t21", cd: 1, track: 21, title: "Sauve-Toi, Sotte! Et La Cage? La Cage?", act: "Act II", has_block: true },
+      { id: "t22", cd: 1, track: 22, title: "La Cage, C'\u00c9tait Pour Mieux Voir Ta Prestesse", act: "Act II", has_block: true },
+      { id: "t23", cd: 1, track: 23, title: "Ah! C'Est L'Enfant Au Couteau!", act: "Act II", has_block: true },
+      { id: "t24", cd: 1, track: 24, title: "Il A Pans\u00e9 La Plaie...", act: "Act II", has_block: true },
+      { id: "t25", cd: 1, track: 25, title: "Il Est Bon, L'Enfant, Il Est Sage", act: "Act II", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Premi\u00e8re I",
+    "Act II": "Deuxi\u00e8me II"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t15"
+  };
+
+  const CHARACTERS = [
+    { id: "enfant", name: "L'Enfant", voice: "Mezzo-soprano", description: "" },
+    { id: "maman", name: "Maman", voice: "Contralto", description: "" },
+    { id: "fauteuil", name: "Le Fauteuil", voice: "Soprano", description: "" },
+    { id: "tasse-chinoise", name: "La Tasse Chinoise", voice: "Mezzo-soprano", description: "" },
+    { id: "chatte", name: "La Chatte", voice: "Mezzo-soprano", description: "" },
+    { id: "libellule", name: "La Libellule", voice: "Mezzo-soprano", description: "" },
+    { id: "chauve-souris", name: "La Chauve-Souris", voice: "Soprano", description: "" },
+    { id: "ecureuil", name: "L'\u00c9cureuil", voice: "Mezzo-soprano", description: "" },
+    { id: "bergere", name: "La Berg\u00e8re", voice: "Soprano", description: "" },
+    { id: "horloge", name: "L'Horloge Comtoise", voice: "Baritone", description: "" },
+    { id: "theiere", name: "La Th\u00e9i\u00e8re", voice: "Tenor", description: "" },
+    { id: "petit-vieillard", name: "Le Petit Vieillard", voice: "Tenor", description: "" },
+    { id: "chat", name: "Le Chat", voice: "Baritone", description: "" },
+    { id: "arbre", name: "L'Arbre", voice: "Bass", description: "" },
+    { id: "rainette", name: "La Rainette", voice: "Tenor", description: "" },
+    { id: "feu", name: "Le Feu", voice: "Soprano", description: "" },
+    { id: "princesse", name: "La Princesse", voice: "Soprano", description: "" },
+    { id: "rossignol", name: "Le Rossignol", voice: "Soprano", description: "" },
+    { id: "chouette", name: "La Chouette", voice: "Soprano", description: "" },
+    { id: "pastourelle", name: "La Pastourelle", voice: "Soprano", description: "" },
+    { id: "patre", name: "Le P\u00e2tre", voice: "Soprano", description: "" }
+  ];
+
+  const CAST = {
+    maazel_ogeas: { "enfant": "Fran\u00e7oise Og\u00e9as", "maman": "Jeanine Collard", "tasse-chinoise": "Jeanine Collard", "libellule": "Jeanine Collard", "fauteuil": "Heinz Rehfuss", "arbre": "Heinz Rehfuss", "horloge": "Camille Maurane", "chat": "Camille Maurane", "bergere": "Jeanne Berbi\u00e9", "chatte": "Jeanne Berbi\u00e9", "ecureuil": "Jeanne Berbi\u00e9", "patre": "Jeanne Berbi\u00e9", "chauve-souris": "Colette Herzog", "chouette": "Colette Herzog", "pastourelle": "Colette Herzog", "feu": "Sylvaine Gilma", "princesse": "Sylvaine Gilma", "rossignol": "Sylvaine Gilma", "theiere": "Michel Senechal", "petit-vieillard": "Michel Senechal", "rainette": "Michel Senechal" }
+  };
+
+  let activeRecording = "maazel_ogeas";
+  let currentActiveId = "t1";
+  let observer = null;
+
+  function openIndex() {
+    if (window.innerWidth <= 600) {
+      openBottomSheet();
+    } else {
+      openDrawer();
+    }
+  }
+
+  function openDrawer() {
+    closeCast();
+    buildDrawer();
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function jumpTo(id) {
+    closeDrawer();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  function openCast() {
+    closeDrawer();
+    buildCast();
+    document.getElementById('castOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCast() {
+    document.getElementById('castOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeDrawer();
+    closeCast();
+    closeCastSheet();
+  });
+
+  function toggleSwitcher(event) {
+    event.stopPropagation();
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    if (dd.classList.contains('open')) {
+      dd.classList.remove('open');
+    } else {
+      dd.classList.add('open');
+      setTimeout(() => document.addEventListener('click', closeSwitcherOnOutside, { once: true }), 0);
+    }
+  }
+  function closeSwitcherOnOutside() {
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function buildSwitcherDropdown() {
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    dd.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<div class="recording-option${key === activeRecording ? ' active' : ''}" onclick="switchRecording('${key}')">${rec.label}</div>`
+    ).join('');
+  }
+
+  function buildDrawer() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('drawerBody');
+    let html = '';
+    let lastGroup = null;
+
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+
+    body.innerHTML = html;
+  }
+
+  function buildCast() {
+    const cast = CAST[activeRecording];
+    const tbody = document.getElementById('castTableBody');
+    tbody.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      return `<tr>
+        <td>
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+          <div class="cast-description">${ch.description}</div>
+        </td>
+        <td>
+          ${singer
+            ? `<div class="cast-singer">${singer}</div>`
+            : `<div class="cast-singer empty">—</div>`}
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function applyTooltips() {
+    const cast = CAST[activeRecording];
+    document.querySelectorAll('.character-name.has-tooltip').forEach(el => {
+      const id = el.dataset.characterId;
+      const ch = CHARACTERS.find(c => c.id === id);
+      if (!ch) return;
+      const singer = cast[id];
+      el.setAttribute('data-tooltip',
+        singer ? `${ch.voice}\u2002·\u2002${singer}` : ch.voice
+      );
+    });
+  }
+
+  function updateTrackTags() {
+    document.querySelectorAll('.track-tag').forEach(tag => { tag.style.visibility = 'hidden'; });
+    const rec = RECORDINGS[activeRecording];
+    const seen = new Set();
+    for (const t of rec.tracks) {
+      if (!t.has_block) continue;
+      const suffix = t.id.slice(1);
+      if (seen.has(suffix)) continue;
+      seen.add(suffix);
+      const tc = document.getElementById('tc' + suffix);
+      if (!tc) continue;
+      const tag = tc.querySelector('.track-tag');
+      if (!tag) continue;
+      tag.style.visibility = 'visible';
+      tag.innerHTML = `<span class="track-tag-cd">CD${t.cd}</span><span class="track-tag-num">${t.track}</span>`;
+    }
+  }
+
+  function scrollToCurrentAct() {
+    const rec = RECORDINGS[activeRecording];
+    const track = rec.tracks.find(t => t.id === currentActiveId);
+    if (!track) return;
+    const startId = ACT_STARTS[track.act];
+    if (!startId) return;
+    const el = document.getElementById(startId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function switchRecording(key) {
+    activeRecording = key;
+    const lbl = document.getElementById('recordingLabel');
+    if (lbl) lbl.textContent = RECORDINGS[key].label;
+    updateTrackTags();
+    buildMobileTrackMarkers();
+    buildDrawer();
+    buildSwitcherDropdown();
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+    scrollToCurrentAct();
+    updateActive(currentActiveId);
+    applyTooltips();
+    if (document.getElementById('castOverlay').classList.contains('open')) {
+      buildCast();
+    }
+    if (document.getElementById('castSheetOverlay').classList.contains('open')) {
+      buildCastSheet();
+    }
+  }
+
+  function updateActive(activeId) {
+    currentActiveId = activeId;
+    const rec = RECORDINGS[activeRecording];
+    const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
+    if (!t) return;
+    const trackLabel = document.getElementById('trackLabel');
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    const trackTitle = document.getElementById('trackTitle');
+    if (trackTitle) trackTitle.textContent = t.title;
+    const actLabel = document.getElementById('actLabel');
+    if (actLabel) actLabel.textContent = ACT_DISPLAY[t.act] || t.act;
+    document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
+    const idx = document.getElementById('idx-' + activeId);
+    if (idx) idx.classList.add('active');
+  }
+
+  function rewireObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+    }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+
+    const rec = RECORDINGS[activeRecording];
+    rec.tracks.forEach(t => {
+      const el = document.getElementById(t.id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  const mobileLangState = { fr: true, es: true };
+
+  function toggleLang(lang) {
+    const langs = Object.keys(mobileLangState);
+    const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
+    if (mobileLangState[lang] && !hasOtherOn) return;
+    const barBottom = document.getElementById('contextBar').getBoundingClientRect().bottom;
+    const anchor = [...document.querySelectorAll('.line-row, .character-row, .scene-heading, .musical-number')]
+      .find(el => el.getBoundingClientRect().top >= barBottom);
+    const anchorOffset = anchor ? anchor.getBoundingClientRect().top : null;
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+    if (anchor !== undefined && anchorOffset !== null) {
+      window.scrollBy(0, anchor.getBoundingClientRect().top - anchorOffset);
+    }
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('fr-hidden', !mobileLangState.fr);
+    document.getElementById('mobileBtnFR').classList.toggle('off', !mobileLangState.fr);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  function buildMobileTrackMarkers() {
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of [...rec.tracks].reverse()) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  function buildCastSheet() {
+    const cast = CAST[activeRecording];
+    const body = document.getElementById('castSheetBody');
+    body.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      const singerClass = singer ? 'cast-singer' : 'cast-singer empty';
+      const singerText = singer || '—';
+      return `<div class="cast-sheet-row">
+        <div class="cast-sheet-char">
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+        </div>
+        <div class="${singerClass}">${singerText}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCastSheet() {
+    buildCastSheet();
+    document.getElementById('castSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCastSheet() {
+    document.getElementById('castSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildSheetRecordingPicker() {
+    const picker = document.getElementById('sheetRecPicker');
+    if (!picker) return;
+    picker.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<button class="sheet-rec-btn${key === activeRecording ? ' active' : ''}" onclick="switchRecordingFromSheet('${key}')">${rec.short}</button>`
+    ).join('');
+  }
+
+  function switchRecordingFromSheet(key) {
+    if (key === activeRecording) return;
+    switchRecording(key);
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function buildBottomSheetBody() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function buildBottomSheet() {
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  buildSwitcherDropdown();
+  buildDrawer();
+  rewireObserver();
+  updateActive("t1");
+  applyTooltips();
+  buildMobileTrackMarkers();
+</script>
