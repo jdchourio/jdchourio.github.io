@@ -668,7 +668,7 @@
 
     .mobile-track-marker {
       font-family: var(--sans);
-      font-size: 9px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--gold-mid);
       letter-spacing: 0.08em;
