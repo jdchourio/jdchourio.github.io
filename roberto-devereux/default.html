@@ -1,0 +1,2880 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T2</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Atto I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Geme! ...pallor funereo</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Roberto Devereux · Mackerras / Sills</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnIT" onclick="toggleLang('it')">IT</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Atto Primo</span>
+      <span>Acto Primero</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Sala terrena nel palagio de Westminster)</span>
+        <span class="es">(Sala del Palacio de Westminster)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="line-row"><span class="it">Geme! ... pallor funereo</span><span class="es">¡Llora!... Una palidez mortal</span></div>
+      <div class="line-row"><span class="it">Le sta dipinto in volto!</span><span class="es">está pintada en su rostro.</span></div>
+      <div class="line-row"><span class="it">Un duolo, un duol terribile</span><span class="es">Un dolor, un dolor terrible</span></div>
+      <div class="line-row"><span class="it">Ha certo in cor sepolto.</span><span class="es">tiene, sin duda, encerrado en el corazón.</span></div>
+      <div class="stage-direction">
+        <span>(accostandosi ad essa)</span>
+        <span class="es">(acercándose a ella)</span>
+      </div>
+      <div class="line-row"><span class="it">Sara? Duchessa? Oh! Scuotiti...</span><span class="es">¿Sara? ¿Duquesa? Vuelve en ti.</span></div>
+      <div class="line-row"><span class="it">Onde la tua mestizia?</span><span class="es">¿Cuál es la causa de tu tristeza?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Mestizia in me!</span><span class="es">¿Tristeza, yo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="line-row"><span class="it">Non hai</span><span class="es">¿No están</span></div>
+      <div class="line-row"><span class="it">Bagnato il sen di lagrime?</span><span class="es">tus ojos bañados en lágrimas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! mi tradisce il core!</span><span class="es">¡Ah, el corazón me traicionó!</span></div>
+      <div class="stage-direction">
+        <span>(in alta vocce)</span>
+        <span class="es">(en voz alta)</span>
+      </div>
+      <div class="line-row"><span class="it">Lessi dolente istoria</span><span class="es">He leído una historia triste...</span></div>
+      <div class="line-row"><span class="it">Piangea... di Rosamonda...</span><span class="es">Lloraba... por Rosamunda.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="line-row"><span class="it">Chiudi la trista pagina</span><span class="es">Cierra la triste página</span></div>
+      <div class="line-row"><span class="it">Che il tuo dolor seconda.</span><span class="es">que aumenta tu dolor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Il mio dolor!...</span><span class="es">¡Mi dolor!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="line-row"><span class="it">Si! Versalo</span><span class="es">¡Sí! Deposítalo</span></div>
+      <div class="line-row"><span class="it">Dell'amistade in seno.</span><span class="es">en el seno de la amistad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Lady, e credete?...</span><span class="es">Damas, ¿y creéis?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! fidati.</span><span class="es">¡Ah, confía en nosotras!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Io?... No...</span><span class="es">¿Yo?...No...</span></div>
+      <div class="line-row"><span class="it">Son lieta appieno.</span><span class="es">Soy completamente feliz.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">È quel sorriso infausto</span><span class="es">Esa sonrisa es aún</span></div>
+      <div class="line-row"><span class="it">Più del suo pianto ancor.</span><span class="es">más triste que sus lágrimas.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="line-row"><span class="it">All'afflitto è dolce il pianto...</span><span class="es">Las lágrimas son dulces para el afligido...</span></div>
+      <div class="line-row"><span class="it">È la gioia che gli resta...</span><span class="es">es la única alegría que le queda...</span></div>
+      <div class="line-row"><span class="it">Una stella a me funesta</span><span class="es">Una triste estrella</span></div>
+      <div class="line-row"><span class="it">Anche il pianto mi vietò!</span><span class="es">me impide hasta el llanto.</span></div>
+      <div class="line-row"><span class="it">Della tua più cruda, oh quanto,</span><span class="es">¡Mi destino es mucho más cruel</span></div>
+      <div class="line-row"><span class="it">Rosamonda, è la mia sorte!</span><span class="es">que el tuyo, Rosamunda!</span></div>
+      <div class="line-row"><span class="it">Tu periste d'una morte...</span><span class="es">Tú moriste una vez...</span></div>
+      <div class="line-row"><span class="it">Io vivendo ognor morrò!</span><span class="es">la mía será una muerte en vida.</span></div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="it">Duchessa...</span><span class="es">Duquesa...</span></div>
+      <div class="line-row"><span class="it">Alle fervide preci</span><span class="es">Me rindo a los insistentes</span></div>
+      <div class="line-row"><span class="it">Del tuo consorte alfin m'arrendo; alfine</span><span class="es">ruegos de tu esposo.</span></div>
+      <div class="line-row"><span class="it">Il conte rivedrò...</span><span class="es">Volveré a ver al conde...</span></div>
+      <div class="line-row"><span class="it">Ma... Dio conceda</span><span class="es">Pero... Dios conceda</span></div>
+      <div class="line-row"><span class="it">Che per l'ultima volta io nol riveda,</span><span class="es">que no sea la última vez que lo vea,</span></div>
+      <div class="line-row"><span class="it">Ch'io non gli scerna in core</span><span class="es">que no perciba en su corazón</span></div>
+      <div class="line-row"><span class="it">Macchia di tradimento.</span><span class="es">ni un atisbo de traición.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Egli era sempre</span><span class="es">¿No ha sido él siempre</span></div>
+      <div class="line-row"><span class="it">Fido alla sua regina?</span><span class="es">fiel a su reina?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Fido alla sua regina?</span><span class="es">¿Fiel a su reina?</span></div>
+      <div class="line-row"><span class="it">E basta, o Sara?</span><span class="es">¿Y eso te basta, Sara?</span></div>
+      <div class="line-row"><span class="it">Uopo è che fido il trovi</span><span class="es">Es necesario que Isabel</span></div>
+      <div class="line-row"><span class="it">Elisabetta.</span><span class="es">lo encuentre fiel.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Io gelo!...</span><span class="es">¡Tiemblo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">A te svelai</span><span class="es">Te he abierto mi corazón...</span></div>
+      <div class="line-row"><span class="it">Tutto il mio cor... Un orrendo sospetto</span><span class="es">Alguien despertó en mí una horrible sospecha.</span></div>
+      <div class="line-row"><span class="it">Alcuno in me destò. D'Irlanda in riva</span><span class="es">A las costas de Irlanda lo llevó una orden mía</span></div>
+      <div class="line-row"><span class="it">Lo trasse un cenno mio, ché lungi il volli</span><span class="es">porque yo quería alejarlo de Londres...</span></div>
+      <div class="line-row"><span class="it">Da Londra... egli vi torna, ed accusato</span><span class="es">Ahora vuelve de allí acusado de traición;</span></div>
+      <div class="line-row"><span class="it">Di fellonia; ma d'altra colpa io temo</span><span class="es">pero yo temo encontrarle culpable</span></div>
+      <div class="line-row"><span class="it">Delinquente saperlo... Una rivale,</span><span class="es">de otro crimen...</span></div>
+      <div class="line-row"><span class="it">S'io discoprissi, ah! quale,</span><span class="es">Si descubriese una rival, ¡ah!</span></div>
+      <div class="line-row"><span class="it">Oh! Quanta non sarebbe</span><span class="es">¡Entonces mi venganza</span></div>
+      <div class="line-row"><span class="it">La mia vendetta.</span><span class="es">sería terrible!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ove m'ascondo!...</span><span class="es">¿Dónde me escondo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Il core togliermi di Roberto!...</span><span class="es">¡Robarme el corazón de Roberto!</span></div>
+      <div class="line-row"><span class="it">Men delitto saria togliermi il serto.</span><span class="es">Menos delito sería robarme la corona.</span></div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="it">L'amor suo mi fe' beata,</span><span class="es">Su amor me hizo feliz,</span></div>
+      <div class="line-row"><span class="it">Mi sembrò del cielo un dono,</span><span class="es">me pareció un regalo del cielo</span></div>
+      <div class="line-row"><span class="it">E a quest'alma innamorata</span><span class="es">y para mi alma enamorada</span></div>
+      <div class="line-row"><span class="it">Era un ben maggior del trono.</span><span class="es">era un bien mayor que el trono.</span></div>
+      <div class="line-row"><span class="it">Ah! Se fui, se fui tradita,</span><span class="es">¡Ah! ¡Si he sido, si he sido traicionada,</span></div>
+      <div class="line-row"><span class="it">Se quel cor più mio non è,</span><span class="es">si ese corazón ya no es mío,</span></div>
+      <div class="line-row"><span class="it">Le delizie della vita</span><span class="es">las delicias de la vida</span></div>
+      <div class="line-row"><span class="it">Lutto e pianto son per me!</span><span class="es">luto y llanto serán para mí!</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="line-row"><span class="it">Nunzio son del Parlamento.</span><span class="es">Soy un enviado del Parlamento.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(Para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Tremo!</span><span class="es">¡Tiemblo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Esponi!</span><span class="es">¡Habla!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ha sculto in fronte l'odio suo!</span><span class="es">¡El odio está grabado en su frente!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Di tradimento</span><span class="es">¡El conde de Essex</span></div>
+      <div class="line-row"><span class="it">Si macchiò d'Essex il Conte!</span><span class="es">es culpable de traición!</span></div>
+      <div class="line-row"><span class="it">Eccessiva in te clemenza</span><span class="es">Que tu excesiva clemencia</span></div>
+      <div class="line-row"><span class="it">Il giudizio ne sospende:</span><span class="es">no detenga el juicio.</span></div>
+      <div class="line-row"><span class="it">Profferir di lui sentenza</span><span class="es">Pronúnciese la sentencia</span></div>
+      <div class="line-row"><span class="it">E stornar sue trame orrende,</span><span class="es">y descúbranse sus criminales maquinaciones.</span></div>
+      <div class="line-row"><span class="it">Ben lo sai de' Pari è dritto.</span><span class="es">El derecho de los Pares del Reino así lo exige</span></div>
+      <div class="line-row"><span class="it">Questo dritto a te si chiede.</span><span class="es">y este derecho se te pide.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">D'altre prove il suo delitto,</span><span class="es">¡Su delito, lores,</span></div>
+      <div class="line-row"><span class="it">Lordi, ha d'uopo!</span><span class="es">requiere más pruebas!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="paggio">Paggio</span></span>
+        <span class="character-name">Paje</span>
+      </div>
+      <div class="line-row"><span class="it">Al regio piede</span><span class="es">Essex implora</span></div>
+      <div class="line-row"><span class="it">Di venire Essex implora.</span><span class="es">prosternarse a los pies de la reina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span>, <span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span>, <span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Cecil, Gualtiero, Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Egli!...</span><span class="es">¡Él!....</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span>, <span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span></span>
+        <span class="character-name">Cecil, Gualtiero</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(Para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ah, la rabbia mi divora!...</span><span class="es">¡Ah, me devora la ira!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Venga. Udirlo io vo'.</span><span class="es">¡Que venga! Quiero escucharle.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Come il cor mi palpitò!</span><span class="es">¡Cómo palpita mi corazón!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! Ritorna qual ti spero,</span><span class="es">¡Ah! Vuelve como te espero,</span></div>
+      <div class="line-row"><span class="it">Qual ne' giorni più felici,</span><span class="es">como en los días más felices,</span></div>
+      <div class="line-row"><span class="it">E cadranno i tuoi nemici</span><span class="es">y caerán tus enemigos</span></div>
+      <div class="line-row"><span class="it">Nella polve innanzi a te.</span><span class="es">en el polvo ante ti.</span></div>
+      <div class="line-row"><span class="it">Il mio regno, il mondo intero,</span><span class="es">Mi reino, el mundo entero,</span></div>
+      <div class="line-row"><span class="it">Reo di morte invan ti grida.</span><span class="es">te acusan como reo de muerte.</span></div>
+      <div class="line-row"><span class="it">Se al mio piede amor ti guida,</span><span class="es">¡Si el amor te guía a mis pies,</span></div>
+      <div class="line-row"><span class="it">Innocente sei per me!</span><span class="es">para mí eres inocente!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">A lui fausto il ciel sorrida,</span><span class="es">Que el cielo le sea favorable</span></div>
+      <div class="line-row"><span class="it">E funesto sia per me!</span><span class="es">aunque sea cruel para mí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span>, <span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span>, <span class="character-name">Coro</span></span>
+        <span class="character-name">Cecil, Gualtiero, Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">De' suoi giorni un astro e guida</span><span class="es">¡El astro que guía sus días</span></div>
+      <div class="line-row"><span class="it">Che al tramonto ancor non è!</span><span class="es">aún no ha llegado al ocaso!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Vieni, vieni, t'affretta.</span><span class="es">Ven, ven, apresúrate.</span></div>
+      <div class="line-row"><span class="it">Ah! Ritorna qual ti spero,</span><span class="es">¡Ah! Vuelve como te espero,</span></div>
+      <div class="line-row"><span class="it">Qual ne' giorni più felici,</span><span class="es">como en los días más felices,</span></div>
+      <div class="line-row"><span class="it">E cadranno i tuoi nemici</span><span class="es">y caerán tus enemigos</span></div>
+      <div class="line-row"><span class="it">Nella polve innanzi a te.</span><span class="es">en el polvo ante ti.</span></div>
+      <div class="line-row"><span class="it">Il mio regno, il mondo intero,</span><span class="es">Mi reino, el mundo entero,</span></div>
+      <div class="line-row"><span class="it">Reo di morte invan ti grida.</span><span class="es">te acusan como reo de muerte.</span></div>
+      <div class="line-row"><span class="it">Se al mio piede amor ti guida,</span><span class="es">¡Si el amor te guía a mis pies,</span></div>
+      <div class="line-row"><span class="it">Innocente sei per me!</span><span class="es">para mí eres inocente!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="it">Donna reale, a' piedi tuoi...</span><span class="es">Reina, a tus pies...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Roberto!...</span><span class="es">¡Roberto!</span></div>
+      <div class="line-row"><span class="it">Conte, sorgi, lo impongo!</span><span class="es">¡Conde, levántate, te lo ordeno!</span></div>
+      <div class="stage-direction">
+        <span>(a Cecil)</span>
+        <span class="es">(a Cecil)</span>
+      </div>
+      <div class="line-row"><span class="it">Il voler mio</span><span class="es">En breve os haré conocer mi voluntad.</span></div>
+      <div class="line-row"><span class="it">Noto in breve farò. Signori, addio.</span><span class="es">Señores, adiós.</span></div>
+      <div class="stage-direction">
+        <span>(Tutti si ritirano, tranne Roberto)</span>
+        <span class="es">(Todos se retiran, menos Roberto)</span>
+      </div>
+      <div class="line-row"><span class="it">In sembianze di reo tornaste dunque</span><span class="es">¡Llegas como culpable a mi presencia!</span></div>
+      <div class="line-row"><span class="it">Al mio cospetto! E me tradire osavi?</span><span class="es">¿Pretendías traicionarme</span></div>
+      <div class="line-row"><span class="it">E insidiar degli avi</span><span class="es">y despojar a esta cabeza</span></div>
+      <div class="line-row"><span class="it">A questa crine il serto?</span><span class="es">de la corona de sus antepasados?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Il petto mio</span><span class="es">Que mi pecho</span></div>
+      <div class="line-row"><span class="it">Pieno di cicatrici,</span><span class="es">lleno de cicatrices</span></div>
+      <div class="line-row"><span class="it">Che il brando vi lasciò de' tuoi nemici,</span><span class="es">marcadas por las espadas de tus enemigos</span></div>
+      <div class="line-row"><span class="it">Per me risponda.</span><span class="es">responda por mí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Ma l'accusa?...</span><span class="es">¿Pero la acusación?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">E quale?</span><span class="es">¿Cuál?</span></div>
+      <div class="line-row"><span class="it">Domata in campo la ribelle schiera,</span><span class="es">Vencidos en el campo de batalla los rebeldes,</span></div>
+      <div class="line-row"><span class="it">Col vinto usai clemenza: ecco la colpa</span><span class="es">fui clemente con los vencidos: ésta es mi culpa,</span></div>
+      <div class="line-row"><span class="it">Onde al suo duce innalza un palco infame</span><span class="es">por la que levanta un infame patíbulo</span></div>
+      <div class="line-row"><span class="it">D'Elisabetta il cenno.</span><span class="es">la orden de Isabel.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Il cenno mio</span><span class="es">Mi orden, ingrato,</span></div>
+      <div class="line-row"><span class="it">Differì, sconoscente,</span><span class="es">ha suspendido tu sentencia.</span></div>
+      <div class="line-row"><span class="it">La tua sentenza: Il cenno mio ti lascia</span><span class="es">Mi orden te vuelve a dejar en libertad.</span></div>
+      <div class="line-row"><span class="it">In libertade ancor. Ma che favelli</span><span class="es">¿Pero qué hablas de patíbulo?</span></div>
+      <div class="line-row"><span class="it">Di palco? A te giammai questa mia destra</span><span class="es">Mi mano nunca podrá</span></div>
+      <div class="line-row"><span class="it">Schiuder non può la tomba.</span><span class="es">arrojarte a la tumba.</span></div>
+      <div class="line-row"><span class="it">Quando chiamò la tromba</span><span class="es">Cuando la trompeta llamó a mis guerreros</span></div>
+      <div class="line-row"><span class="it">I miei guerrieri ad espugnar le torri</span><span class="es">a asaltar las torres</span></div>
+      <div class="line-row"><span class="it">Della superba Cadice, temesti</span><span class="es">de la soberbia Cádiz,</span></div>
+      <div class="line-row"><span class="it">Che la rovina macchinar potesse</span><span class="es">temiste que un odio envidioso e implacable</span></div>
+      <div class="line-row"><span class="it">Di te lontano, atroce, invidia rabbia.</span><span class="es">pudiese, en tu ausencia, maquinar tu ruina.</span></div>
+      <div class="stage-direction">
+        <span>(accennando una gemma che Roberto</span>
+        <span class="es">(señalando el anillo que lleva Roberto en un</span>
+        <span>ha in dito)</span>
+        <span class="es">dedo)</span>
+      </div>
+      <div class="line-row"><span class="it">Ti porsi questo anello, e ti parlai</span><span class="es">Te di ese anillo y te di mi palabra real</span></div>
+      <div class="line-row"><span class="it">La parola dei re, che ad ogni evento</span><span class="es">de que en cualquier ocasión</span></div>
+      <div class="line-row"><span class="it">Offrirlo agli occhi miei, di tua salvezza</span><span class="es">que lo ofrecieses a mis ojos, sería una garantía</span></div>
+      <div class="line-row"><span class="it">Pegno sarebbe... Col pensiero io torno</span><span class="es">de tu salvación... con el pensamiento</span></div>
+      <div class="line-row"><span class="it">A stagion più ridente:</span><span class="es">vuelo a una época más feliz.</span></div>
+      <div class="line-row"><span class="it">Allora i giorni miei</span><span class="es">¡Entonces mis días</span></div>
+      <div class="line-row"><span class="it">Scorrean soavi al par della speranza!</span><span class="es">discurrían dulces y esperanzadores!</span></div>
+      <div class="line-row"><span class="it">Oh giorni avventurati! Oh rimembranza.</span><span class="es">¡Oh, días afortunados! ¡Oh, recuerdos!</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="it">Un tenero core mi rese felice,</span><span class="es">Un tierno corazón me hizo feliz,</span></div>
+      <div class="line-row"><span class="it">Provai quel contento</span><span class="es">sentí una felicidad que no se puede expresar.</span></div>
+      <div class="line-row"><span class="it">Che labbro non dice...</span><span class="es">¡La vida me parecía un sueño de amor!</span></div>
+      <div class="line-row"><span class="it">Un sogno d'amore - la vita mi parve!</span><span class="es">¡Pero el sueño desapareció...</span></div>
+      <div class="line-row"><span class="it">Ma il sogno disparve, - disparve quel cor!</span><span class="es">pues desapareció aquel corazón!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Indarno la sorte - un trono m'addita;</span><span class="es">En vano la fortuna me ofrece un trono.</span></div>
+      <div class="line-row"><span class="it">Per me di speranze - non ride la vita.</span><span class="es">Para mí la vida no sonríe con esperanza.</span></div>
+      <div class="line-row"><span class="it">Per me l'universo - è muto, deserto:</span><span class="es">Para mí el universo es mudo y desierto</span></div>
+      <div class="line-row"><span class="it">Le gemme del serto</span><span class="es">y las joyas de la corona</span></div>
+      <div class="line-row"><span class="it">Non hanno splendor.</span><span class="es">no tienen resplandor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Muto resti</span><span class="es">¿Permaneces callado?</span></div>
+      <div class="stage-direction">
+        <span>(in tuono di rimprovero</span>
+        <span class="es">(en tono de reproche en el que se respira</span>
+        <span>in cui traspira tutta la tenerezza)</span>
+        <span class="es">toda su ternura)</span>
+      </div>
+      <div class="line-row"><span class="it">È dunque vero!</span><span class="es">¡Entonces es verdad!</span></div>
+      <div class="line-row"><span class="it">Sei cangiato?</span><span class="es">¡Has cambiado!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">No... che dici?</span><span class="es">No... ¿Qué dices?</span></div>
+      <div class="line-row"><span class="it">Parla un detto, ed il guerriero</span><span class="es">Una sola palabra y el guerrero se levantará</span></div>
+      <div class="line-row"><span class="it">Sorge, e fuga i tuoi nemici.</span><span class="es">y hará desaparecer a tus enemigos.</span></div>
+      <div class="line-row"><span class="it">D'obbedienza e di valore</span><span class="es">Prueba tendrás de obediencia</span></div>
+      <div class="line-row"><span class="it">Prova avrai.</span><span class="es">y de valor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ma non d'amore!</span><span class="es">¡Pero no de amor!</span></div>
+      <div class="stage-direction">
+        <span>(con simulata calma)</span>
+        <span class="es">(con calma disimulada)</span>
+      </div>
+      <div class="line-row"><span class="it">Vuoi pugnar! Ma di', non pensi</span><span class="es">¡Quieres luchar! Pero di,</span></div>
+      <div class="line-row"><span class="it">Che bagnar faresti un ciglio</span><span class="es">¿no piensas que harías bañar aquí unos ojos</span></div>
+      <div class="line-row"><span class="it">Qui di pianto?</span><span class="es">en lágrimas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ahimè, quai sensi?</span><span class="es">¡Ah, qué palabras!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Che l'idea del tuo periglio</span><span class="es">¿Que la sola idea de que estás en peligro</span></div>
+      <div class="line-row"><span class="it">Palpitar farebbe un cor?</span><span class="es">haría palpitar un corazón?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Palpitar?</span><span class="es">¿Palpitar?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Di tal, che amore</span><span class="es">Aquel al que el amor</span></div>
+      <div class="line-row"><span class="it">Teco strinse?</span><span class="es">unió al tuyo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! dunque sai?</span><span class="es">¡Ah! ¿Lo sabes entonces?</span></div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ciel, che dico!</span><span class="es">¡Cielos, qué he dicho!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Ebben? Finisci:</span><span class="es">¿Y bien?... Termina.</span></div>
+      <div class="line-row"><span class="it">L'alma tua mi svela ormai.</span><span class="es">Termina de abrirme tu alma.</span></div>
+      <div class="line-row"><span class="it">Che paventi?... Ardisci, ardisci:</span><span class="es">¿Qué temes?... Vamos, vamos.</span></div>
+      <div class="line-row"><span class="it">Noma pur la tua diletta...</span><span class="es">Nombra entonces a tu amada</span></div>
+      <div class="line-row"><span class="it">All'altar io vi trarrò.</span><span class="es">y yo la llevaré al altar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Mal t'apponi...</span><span class="es">Te engañas...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para mí)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh mia vendetta!</span><span class="es">¡Oh, venganza mía!</span></div>
+      <div class="stage-direction">
+        <span>(attegiandosi di terribile maestà)</span>
+        <span class="es">(con un tono de terrible grandeza)</span>
+      </div>
+      <div class="line-row"><span class="it">E non ami?</span><span class="es">¿Entonces no amas a nadie?</span></div>
+      <div class="line-row"><span class="it">Bada!</span><span class="es">¡Habla!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Io? No.</span><span class="es">¿Yo? No.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Un lampo, un lampo orribile</span><span class="es">¡Un relámpago, un relámpago terrible</span></div>
+      <div class="line-row"><span class="it">Agli occhi miei splendea!...</span><span class="es">ha estallado ante mis ojos!</span></div>
+      <div class="line-row"><span class="it">Dal mio sdegno vindice</span><span class="es">La pérfida no podrá escapar</span></div>
+      <div class="line-row"><span class="it">Fuggire non può la rea.</span><span class="es">a mi furia vengadora.</span></div>
+      <div class="line-row"><span class="it">Morrà l'infido, il perfido</span><span class="es">Morirá el infiel,</span></div>
+      <div class="line-row"><span class="it">Morrà di morte acerba,</span><span class="es">el traidor tendrá una muerte cruel</span></div>
+      <div class="line-row"><span class="it">E la rival superba</span><span class="es">y en él será castigada</span></div>
+      <div class="line-row"><span class="it">Punita in lui sarà.</span><span class="es">la soberbia rival.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Nascondi, frena i palpiti,</span><span class="es">Esconde, frena tus latidos,</span></div>
+      <div class="line-row"><span class="it">O misero mio core;</span><span class="es">¡oh, pobre corazón, mío!</span></div>
+      <div class="line-row"><span class="it">Ti pasci sol di lagrime</span><span class="es">te alimentas sólo de lágrimas,</span></div>
+      <div class="line-row"><span class="it">O sventurato amore.</span><span class="es">¡oh, desventurado amor!</span></div>
+      <div class="line-row"><span class="it">Ch'io cada solo vittima</span><span class="es">Que sólo yo caiga víctima</span></div>
+      <div class="line-row"><span class="it">Del suo fatal sospetto...</span><span class="es">de sus sospechas fatales...</span></div>
+      <div class="line-row"><span class="it">Con me l'arcano affetto</span><span class="es">Conmigo el amor secreto</span></div>
+      <div class="line-row"><span class="it">E morte e tomba avrà.</span><span class="es">encontrará la muerte y la tumba.</span></div>
+      <div class="stage-direction">
+        <span>(ad Elisabetta)</span>
+        <span class="es">(a Isabel)</span>
+      </div>
+      <div class="line-row"><span class="it">Regina!</span><span class="es">¡Reina!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Ebben? Finisci!</span><span class="es">¿Y bien?... ¡Termina!</span></div>
+      <div class="line-row"><span class="it">Conte!</span><span class="es">¡Conde!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Regina!</span><span class="es">¡Reina!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Non ami?</span><span class="es">¿No amas a nadie?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Non amo.</span><span class="es">No amo.</span></div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Nascondi, frena i palpiti,</span><span class="es">Esconde, frena tus latidos,</span></div>
+      <div class="line-row"><span class="it">O misero mio core;</span><span class="es">¡oh, pobre corazón, mío!</span></div>
+      <div class="line-row"><span class="it">Ti pasci sol di lagrime</span><span class="es">te alimentas sólo de lágrimas,</span></div>
+      <div class="line-row"><span class="it">O sventurato amore.</span><span class="es">¡oh, desventurado amor!</span></div>
+      <div class="line-row"><span class="it">Ch'io cada solo vittima</span><span class="es">Que sólo yo caiga víctima</span></div>
+      <div class="line-row"><span class="it">Del suo fatal sospetto...</span><span class="es">de sus sospechas fatales...</span></div>
+      <div class="line-row"><span class="it">Con me l'arcano affetto</span><span class="es">Conmigo el amor secreto</span></div>
+      <div class="line-row"><span class="it">E morte e tomba avrà.</span><span class="es">encontrará la muerte y la tumba.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Cadrà.</span><span class="es">Caerá.</span></div>
+      <div class="line-row"><span class="it">Sì, la rival superba</span><span class="es">Sí, en él será castigada</span></div>
+      <div class="line-row"><span class="it">Punita in lui sarà.</span><span class="es">la soberbia rival.</span></div>
+      <div class="stage-direction">
+        <span>(Elisabetta rientra ne' suoi appartamenti.)</span>
+        <span class="es">(Isabel entra en sus aposentos.)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Roberto!</span><span class="es">¡Roberto!</span></div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Che?... fra le tue braccia!...</span><span class="es">¿Qué? ¡A tus brazos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Estremo</span><span class="es">Una gran palidez cubre tu frente.</span></div>
+      <div class="line-row"><span class="it">pallor ti siede in fronte! Ah! Forse?...</span><span class="es">¡Ah! ¿Acaso?...</span></div>
+      <div class="line-row"><span class="it">D'interrogarti!</span><span class="es">¡Temo preguntarte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ancor la mia sentenza</span><span class="es">Ella todavía no pronunció</span></div>
+      <div class="line-row"><span class="it">Non profferì colei:</span><span class="es">mi sentencia,</span></div>
+      <div class="line-row"><span class="it">Ma nel tremendo sguardo</span><span class="es">pero en su terrible mirada</span></div>
+      <div class="line-row"><span class="it">Le vidi sfolgorar</span><span class="es">vi brillar</span></div>
+      <div class="line-row"><span class="it">La brama del sangue mio.</span><span class="es">el deseo de ver mi sangre derramada.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Non proseguir... D'ambascia</span><span class="es">No sigas...</span></div>
+      <div class="line-row"><span class="it">L'anima ho piena di spavento!</span><span class="es">¡Tengo el alma llena de angustia y terror!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! Lascia</span><span class="es">¡Ah! Deja que se cumpla mi destino</span></div>
+      <div class="line-row"><span class="it">Che il mio destin si compia, e nelle braccia</span><span class="es">y olvida a este infeliz</span></div>
+      <div class="line-row"><span class="it">Di cara sposa un infelice oblia.</span><span class="es">en los brazos de tu querida esposa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Che parli?... Ahi, fera sorte</span><span class="es">¿Qué dices?...</span></div>
+      <div class="line-row"><span class="it">Né amico, né consorte</span><span class="es">¡Tu cruel destino la aflige</span></div>
+      <div class="line-row"><span class="it">Lieto mi volle!</span><span class="es">tanto como amiga y como esposa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Narra!</span><span class="es">¡Oh, cuenta!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Un arcano martir di Sara attrista</span><span class="es">El sufrimiento secreto de Sara</span></div>
+      <div class="line-row"><span class="it">I giorni, e lentamente</span><span class="es">entristece sus días y, lentamente,</span></div>
+      <div class="line-row"><span class="it">la conduce alla tomba.</span><span class="es">la conduce a la tumba.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">E rea, ma sventurata!</span><span class="es">¡Es culpable, pero infeliz!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Ieri, taceva il giorno,</span><span class="es">Ayer, caía el día,</span></div>
+      <div class="line-row"><span class="it">Quando pria dell'usato, al mio soggiorno</span><span class="es">cuando me encaminé a mi morada</span></div>
+      <div class="line-row"><span class="it">Mi trassi, e nelle stanza</span><span class="es">antes de la hora acostumbrada,</span></div>
+      <div class="line-row"><span class="it">Ove solinga ella restar si piace,</span><span class="es">llegué a la estancia donde a ella le gusta estar...</span></div>
+      <div class="line-row"><span class="it">Mossi repente... Un suono</span><span class="es">El sonido de unos sollozos contenidos</span></div>
+      <div class="line-row"><span class="it">Di taciti singulti appo la soglia</span><span class="es">me detuvo junto a la puerta sin que ella</span></div>
+      <div class="line-row"><span class="it">M'arrestò non veduto: essa fregiava</span><span class="es">se diera cuenta.</span></div>
+      <div class="line-row"><span class="it">D'aurate fila una cerulea fascia,</span><span class="es">¡Bordaba con hilos dorados un chal azul,</span></div>
+      <div class="line-row"><span class="it">Ma spesso l'opra interrompea col pianto,</span><span class="es">pero los sollozos interrumpían a menudo su obra</span></div>
+      <div class="line-row"><span class="it">E invocava la morte! Io mi ritrassi;</span><span class="es">e invocaba a la muerte! Yo me retiré.</span></div>
+      <div class="line-row"><span class="it">Avea l'alma in tumulto... avea la mente</span><span class="es">Mi alma estaba agitada... mi mente</span></div>
+      <div class="line-row"><span class="it">Così turbata, che sembrai demente.</span><span class="es">tan turbada, que parecía un demente.</span></div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="it">Forse in qual cor sensibile</span><span class="es">Quizá se hizo natural el llanto</span></div>
+      <div class="line-row"><span class="it">Si fe' natura il pianto.</span><span class="es">en aquel corazón sensible.</span></div>
+      <div class="line-row"><span class="it">D'una fatal mestizia</span><span class="es">Pero yo también soy presa</span></div>
+      <div class="line-row"><span class="it">Anch'io son preda intanto.</span><span class="es">de una tristeza fatal.</span></div>
+      <div class="line-row"><span class="it">Ah! Ch'io mi struggo in lagrime...</span><span class="es">¡Ah! Me consumo en lágrimas...</span></div>
+      <div class="line-row"><span class="it">Ed il perché non so!</span><span class="es">¡Y no conozco la causa!</span></div>
+      <div class="line-row"><span class="it">Talor mi parla un dubbio,</span><span class="es">A veces me asalta una duda,</span></div>
+      <div class="line-row"><span class="it">Una gelosa voce;</span><span class="es">una celosa voz.</span></div>
+      <div class="line-row"><span class="it">Ma la ragion sollecita</span><span class="es">Pero la razón solícita</span></div>
+      <div class="line-row"><span class="it">Sperde il sospetto atroce.</span><span class="es">disipa la atroz sospecha.</span></div>
+      <div class="line-row"><span class="it">Ché mai nel cor degli angioli</span><span class="es">Porque la culpa no puede entrar</span></div>
+      <div class="line-row"><span class="it">La colpa entrar non può.</span><span class="es">en el corazón de los ángeles.</span></div>
+      <div class="scene-heading">
+        <span>Scena Settima</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="line-row"><span class="it">Duca, vieni! A conferenza</span><span class="es">¡Duque, ven! La reina</span></div>
+      <div class="line-row"><span class="it">La Regina i Pari invita.</span><span class="es">invita a los Pares a consejo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Che si vuole?</span><span class="es">¿Qué quiere?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Una sentenza</span><span class="es">Una sentencia</span></div>
+      <div class="line-row"><span class="it">Troppo a lungo differita.</span><span class="es">pospuesta por demasiado tiempo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Vengo. Amico!</span><span class="es">Voy.... ¡Amigo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sul tuo ciglio</span><span class="es">¿Una lágrima</span></div>
+      <div class="line-row"><span class="it">Una lagrima spuntò?</span><span class="es">ha salido de tus ojos?</span></div>
+      <div class="line-row"><span class="it">M'abbandona al mio periglio!</span><span class="es">¡Abandóname a mi suerte!</span></div>
+      <div class="line-row"><span class="it">Tu lo dei!</span><span class="es">¡Debes hacerlo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Vieni.</span><span class="es">Ven.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Salvar ti vo'!</span><span class="es">¡Quiero salvarte!</span></div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="it">Qui ribelle ognun ti chiama;</span><span class="es">Aquí todos te llaman rebelde;</span></div>
+      <div class="line-row"><span class="it">Ti sovrasta fato orrendo;</span><span class="es">te persigue un destino horrible;</span></div>
+      <div class="line-row"><span class="it">L'onor tuo sol io difendo,</span><span class="es">sólo yo defiendo tu honor.</span></div>
+      <div class="line-row"><span class="it">Terra e ciel m'ascolterà.</span><span class="es">La tierra y el cielo me escucharán.</span></div>
+      <div class="line-row"><span class="it">Ch'io gli serbi e vita e fama</span><span class="es">¡Concédeme, oh, gran Dios,</span></div>
+      <div class="line-row"><span class="it">Deh concedi, o sommo Iddio;</span><span class="es">salvar su vida y su honor!</span></div>
+      <div class="line-row"><span class="it">Parla tu sul labbro mio</span><span class="es">Habla tú por mi boca,</span></div>
+      <div class="line-row"><span class="it">Santa voce d'amistà.</span><span class="es">santa voz de la amistad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Lacerato al par del mio</span><span class="es">No existe en la tierra</span></div>
+      <div class="line-row"><span class="it">Sulla terra un cor non v'ha.</span><span class="es">un corazón más desgarrado que el mío.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(interno)</span>
+        <span class="es">(fuera de escena)</span>
+      </div>
+      <div class="line-row"><span class="it">Quel superbo il giusto fio</span><span class="es">Este soberbio pagará el justo castigo</span></div>
+      <div class="line-row"><span class="it">De' suoi falli pagherà.</span><span class="es">por sus crímenes.</span></div>
+      <div class="line-row"><span class="it">Vieni, o duca, vieni, vieni.</span><span class="es">¡Ven, oh duque, ven, ven!</span></div>
+      <div class="scene-heading">
+        <span>Scena Ottava</span>
+        <span>Escena Octava</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="line-row"><span class="it">Tutto è silenzio... Nel mio cor soltanto</span><span class="es">Todo está en silencio.</span></div>
+      <div class="line-row"><span class="it">Parla una voce. Un grido!</span><span class="es">En mi corazón sólo habla una voz. ¡Un grito!</span></div>
+      <div class="line-row"><span class="it">Qual di severo accusator! Ma rea</span><span class="es">¡El del acusador severo!</span></div>
+      <div class="line-row"><span class="it">Non son: Della pietade</span><span class="es">Pero yo no soy culpable,</span></div>
+      <div class="line-row"><span class="it">Io m'arrendo al consiglio,</span><span class="es">me rindo a los consejos de la piedad, no del amor.</span></div>
+      <div class="line-row"><span class="it">Non dell'amor. L'orribile periglio</span><span class="es">El horrible peligro que amenaza a Roberto</span></div>
+      <div class="line-row"><span class="it">Che Roberto minaccia,</span><span class="es">me hace olvidar el mío...</span></div>
+      <div class="line-row"><span class="it">Il mio scordar mi fe'... Chi giunge!</span><span class="es">¿Quién viene?</span></div>
+      <div class="scene-heading">
+        <span>Scena Nona</span>
+        <span>Escena Novena</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">È desso!</span><span class="es">¡Es él!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Una volta, o crudel, m'hai pur concesso</span><span class="es">¡Una vez, oh cruel, me has permitido venir a ti!</span></div>
+      <div class="line-row"><span class="it">Venirne a te! Spergiura! Traditrice!</span><span class="es">¡Perjura! ¡Traidora!</span></div>
+      <div class="line-row"><span class="it">Perfida! E qual v'ha nome</span><span class="es">¡Pérfida!</span></div>
+      <div class="line-row"><span class="it">D'oltraggio, di rampogna</span><span class="es">¿Y qué injurias y reproches</span></div>
+      <div class="line-row"><span class="it">Che tu non merti?</span><span class="es">no te mereces?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Ascolta! Eri già lunge</span><span class="es">¡Escucha! Lejos estabas</span></div>
+      <div class="line-row"><span class="it">Quando si schiuse la funerea pietra</span><span class="es">cuando se abrió la losa fúnebre</span></div>
+      <div class="line-row"><span class="it">Sul padre mio - Rimasta</span><span class="es">que recibió a mi padre</span></div>
+      <div class="line-row"><span class="it">Orfana e sola, "D'un appoggio hai d'uopo."</span><span class="es">"Necesitas protección"</span></div>
+      <div class="line-row"><span class="it">La regina mi disse: "A liete nozze</span><span class="es">la reina me dijo:</span></div>
+      <div class="line-row"><span class="it">Ti serbo..."</span><span class="es">"te prepararé una boda feliz..."</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">E tu?</span><span class="es">¿Y tú?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">M'opposi. Allor le chiesi,</span><span class="es">Me opuse.</span></div>
+      <div class="line-row"><span class="it">Ma indarno, il vel... fui tratta</span><span class="es">Entonces le pedí el velo mas, fue en vano...</span></div>
+      <div class="line-row"><span class="it">Al talamo... Che dico?</span><span class="es">Fui llevada al tálamo... ¿Qué digo?</span></div>
+      <div class="line-row"><span class="it">Al mio letto di morte!</span><span class="es">¡A mi lecho de muerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh ciel!</span><span class="es">¡Oh, cielos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Felice.</span><span class="es">Que el destino te haga</span></div>
+      <div class="line-row"><span class="it">Quant'io non son, fato miglior ti renda...</span><span class="es">tan feliz como yo no lo soy...</span></div>
+      <div class="line-row"><span class="it">Alla Regina il core</span><span class="es">Vuelve al corazón</span></div>
+      <div class="line-row"><span class="it">Volgi. Roberto.</span><span class="es">de la reina, Roberto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! taci...</span><span class="es">¡Ah, calla!...</span></div>
+      <div class="line-row"><span class="it">Spento all'amor son io.</span><span class="es">Estoy muerto para el amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">La gemma che in tua man risplende</span><span class="es">¿El anillo que luce en tu mano</span></div>
+      <div class="line-row"><span class="it">Era memoria e pegno</span><span class="es">es recuerdo y señal</span></div>
+      <div class="line-row"><span class="it">D'un affetto real?</span><span class="es">del amor de la reina?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Pegno d'affetto?</span><span class="es">¿Señal de amor?</span></div>
+      <div class="line-row"><span class="it">Non sai!... Pur si distrugga il tuo sospetto.</span><span class="es">¿No lo sabes?... ¡Que tus dudas se disipen!</span></div>
+      <div class="stage-direction">
+        <span>(getta l'anello sulla tavola)</span>
+        <span class="es">(arroja el anillo sobre la mesa)</span>
+      </div>
+      <div class="line-row"><span class="it">Mille volte per te darei la vita!</span><span class="es">¡Mil veces daría la vida por ti!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Roberto... ultimo accento</span><span class="es">Roberto...</span></div>
+      <div class="line-row"><span class="it">Sara ti parla, ed osa</span><span class="es">Sara te habla por última vez</span></div>
+      <div class="line-row"><span class="it">Una grazia pregar.</span><span class="es">y se atreve a pedirte una gracia.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Chiedimi il sangue...</span><span class="es">Pídeme la sangre...</span></div>
+      <div class="line-row"><span class="it">Tutto lo spargerò per te, mio bene!</span><span class="es">Toda la derramaré por ti, mi bien.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Viver devi e fuggir da queste arene.</span><span class="es">Debes huir de estas tierras.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Il vero intesi?... Ah parmi,</span><span class="es">¿He oído bien?...</span></div>
+      <div class="line-row"><span class="it">Parmi sognar!</span><span class="es">¡Ah, me pareció, me pareció soñar!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Se m'ami,</span><span class="es">Si me amas,</span></div>
+      <div class="line-row"><span class="it">Per sempre dei lasciarmi.</span><span class="es">debes dejarme para siempre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Per sempre!...</span><span class="es">¡Para siempre!</span></div>
+      <div class="line-row"><span class="it">Non credea cangiato</span><span class="es">¡No creía tan cambiado</span></div>
+      <div class="line-row"><span class="it">Tanto di Sara il cor!</span><span class="es">el corazón de Sara!</span></div>
+      <div class="line-row"><span class="it">Son l'odio tuo!...</span><span class="es">¡Tú me odias!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Spietato!</span><span class="es">¡Cruel!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ardo per te d'amor.</span><span class="es">Me consumo de amor por ti.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="it">Da che tornasti, ahi misero!</span><span class="es">Desde que volviste ¡ah, desdichado!</span></div>
+      <div class="line-row"><span class="it">In questo debil core</span><span class="es">en este débil corazón,</span></div>
+      <div class="line-row"><span class="it">Del mal sopito incendio</span><span class="es">se despertó el fuego</span></div>
+      <div class="line-row"><span class="it">Si ridestò l'ardore...</span><span class="es">del incendio mal apagado...</span></div>
+      <div class="line-row"><span class="it">Ah! parti, ah! vanne, ah! lasciami.</span><span class="es">¡Ah, huye, ah! ¡Vete, ah! ¡Déjame!.</span></div>
+      <div class="line-row"><span class="it">Credi alla sorte acerba...</span><span class="es">Confía en tu cruel suerte...</span></div>
+      <div class="line-row"><span class="it">A te la vita serba,</span><span class="es">¡Salva tu vida,</span></div>
+      <div class="line-row"><span class="it">Serba l'onor a me!</span><span class="es">salva mi honor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Dove son io?... quai smanie!...</span><span class="es">¿Dónde estoy?... ¡Qué locura!</span></div>
+      <div class="line-row"><span class="it">Fra vite e morte ondeggio!...</span><span class="es">¡Oscilo entre la vida y la muerte!...</span></div>
+      <div class="line-row"><span class="it">Tu m'ami e deggio perderti!...</span><span class="es">¡Me amas y debo perderte!...</span></div>
+      <div class="line-row"><span class="it">M'ami e lasciarti io deggio!</span><span class="es">¡Me amas y debo dejarte!</span></div>
+      <div class="line-row"><span class="it">Poter dell'amicizia</span><span class="es">¡Poder de la amistad,</span></div>
+      <div class="line-row"><span class="it">Prestami tu vigore;</span><span class="es">inspírame tu vigor,</span></div>
+      <div class="line-row"><span class="it">Ché d'un mortale in core</span><span class="es">que en el corazón de un mortal</span></div>
+      <div class="line-row"><span class="it">Tanta virtù non è.</span><span class="es">no existe tanta virtud!</span></div>
+      <div class="line-row"><span class="it">Tergi le amare lagrime...</span><span class="es">Seca tus amargas lágrimas.</span></div>
+      <div class="line-row"><span class="it">Sì, fuggirò.</span><span class="es">Sí, huiré.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Lo giura!</span><span class="es">¡Júralo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì.</span><span class="es">Sí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">E quando fuggirai?</span><span class="es">¿Y cuándo huirás?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Allor che tacita</span><span class="es">Tan pronto como la callada</span></div>
+      <div class="line-row"><span class="it">Avrà la notte oscura</span><span class="es">noche oscura</span></div>
+      <div class="line-row"><span class="it">Un'altra volta in cielo</span><span class="es">haya cubierto el cielo</span></div>
+      <div class="line-row"><span class="it">Disteso il tetro velo.</span><span class="es">con su sombrío velo.</span></div>
+      <div class="line-row"><span class="it">Or nol potrei, ché roseo</span><span class="es">Ahora no podría, puesto que ya salen</span></div>
+      <div class="line-row"><span class="it">Il primo albor già sorge...</span><span class="es">los primeros rayos rosados del día...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! qual periglio!... Involati...</span><span class="es">¡Ah! ¡Qué peligro!... ¡Huye!</span></div>
+      <div class="line-row"><span class="it">Se alcun uscir ti scorge!...</span><span class="es">¡Si alguien te ve escapar!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh fero istante!...</span><span class="es">¡Oh, momento cruel!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Un ultimo</span><span class="es">Una última señal</span></div>
+      <div class="line-row"><span class="it">Pegno d'infausto amore</span><span class="es">de mi desdichado amor.</span></div>
+      <div class="line-row"><span class="it">Con te ne venga...</span><span class="es">lleva contigo...</span></div>
+      <div class="stage-direction">
+        <span>(Leva dalla cesta una sciarpa)</span>
+        <span class="es">(Saca un pañuelo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! porgilo</span><span class="es">¡Ah, ponlo aquí,</span></div>
+      <div class="line-row"><span class="it">Qui, sul trafitto core!</span><span class="es">sobre mi corazón dolorido!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Vanne! - Di me rammentati</span><span class="es">¡Vete! Recuérdame</span></div>
+      <div class="line-row"><span class="it">Sol quando preghi il Ciel.</span><span class="es">sólo cuando reces al cielo.</span></div>
+      <div class="line-row"><span class="it">Addio!</span><span class="es">¡Adiós!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Per sempre!</span><span class="es">¡Para siempre!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Oh spasimo!...</span><span class="es">¡Oh, dolor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh rio destin crudel!</span><span class="es">¡Oh, horrible destino cruel!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span>, <span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Sara, Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Quest'addio, fatale, estremo</span><span class="es">Este adiós, fatal y último,</span></div>
+      <div class="line-row"><span class="it">È un abisso di tormenti...</span><span class="es">es un abismo de tormentos...</span></div>
+      <div class="line-row"><span class="it">Le mie lagrime cocenti</span><span class="es">Mis lágrimas ardientes bañan más</span></div>
+      <div class="line-row"><span class="it">Più del ciglio sparte il cor.</span><span class="es">al corazón que a los ojos.</span></div>
+      <div class="line-row"><span class="it">Ah! mai più non ci vedremo...</span><span class="es">¡Ah! No nos veremos nunca más...</span></div>
+      <div class="line-row"><span class="it">Ah! mai più! mancar mi sento!</span><span class="es">¡Ah, nunca más! ¡Me siento morir!</span></div>
+      <div class="line-row"><span class="it">Si racchiude in questo accento</span><span class="es">Una vida de dolor</span></div>
+      <div class="line-row"><span class="it">Una vita di dolor.</span><span class="es">se encierra en estas palabras.</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Atto Secondo</span>
+      <span>Acto Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Sala come nell'atto primo)</span>
+        <span class="es">(La misma sala del Acto Primero)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Lordi</span></span>
+        <span class="character-name">Lores</span>
+      </div>
+      <div class="line-row"><span class="it">L'ore trascorrono, - surse l'aurora,</span><span class="es">Las horas pasan, viene la aurora,</span></div>
+      <div class="line-row"><span class="it">Né il Parlamento - si scioglie ancora.</span><span class="es">y el Parlamento aún no se ha reunido.</span></div>
+      <div class="line-row"><span class="it">Senza l'aita - della regina,</span><span class="es">Sin la ayuda de la reina</span></div>
+      <div class="line-row"><span class="it">Pur troppo è certa - la sua rovina.</span><span class="es">es segura su ruina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="line-row"><span class="it">Tacete, o Lordi. Elisabetta</span><span class="es">¡Callad, oh lores! Isabel,</span></div>
+      <div class="line-row"><span class="it">Qual chi matura - una vendetta,</span><span class="es">como quien madura una venganza,</span></div>
+      <div class="line-row"><span class="it">Erra d'intorno - fremente e sola,</span><span class="es">vaga por los alrededores temblorosa y sola,</span></div>
+      <div class="line-row"><span class="it">Ne muove inchiesta, - ne fa parola.</span><span class="es">ni pregunta, ni dice palabra alguna.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tutti</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="it">Misero conte!</span><span class="es">¡Pobre conde!</span></div>
+      <div class="line-row"><span class="it">Il cielo irato</span><span class="es">¡El cielo irritado</span></div>
+      <div class="line-row"><span class="it">Di fosche nubi</span><span class="es">se ha cubierto</span></div>
+      <div class="line-row"><span class="it">Si circondò!</span><span class="es">de nubes oscuras!</span></div>
+      <div class="line-row"><span class="it">Il tuo supplizio</span><span class="es">Ya se ha firmado</span></div>
+      <div class="line-row"><span class="it">È già segnato:</span><span class="es">tu suplicio.</span></div>
+      <div class="line-row"><span class="it">In quel silenzio</span><span class="es">En tal silencio,</span></div>
+      <div class="line-row"><span class="it">Morte parlò.</span><span class="es">la muerte ha hablado.</span></div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="it">Ebben?</span><span class="es">¿Y bien?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Del reo le sorti</span><span class="es">La suerte del culpable</span></div>
+      <div class="line-row"><span class="it">Furo a lungo agitate;</span><span class="es">se ha demorado mucho tiempo.</span></div>
+      <div class="line-row"><span class="it">Più d'amistà che di ragion possente</span><span class="es">Más por amistad, que por razón justificada,</span></div>
+      <div class="line-row"><span class="it">Il duca vivamente</span><span class="es">el duque lo defendió ardientemente.</span></div>
+      <div class="line-row"><span class="it">Lo difese, ma invan. Recar ti deve</span><span class="es">Pero fue en vano,</span></div>
+      <div class="line-row"><span class="it">La sentenza egli stesso.</span><span class="es">él mismo debe entregarte la sentencia.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Ed era?</span><span class="es">¿Y es?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Morte!</span><span class="es">¡Muerte!</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span></span>
+        <span class="character-name">Gualtiero</span>
+      </div>
+      <div class="line-row"><span class="it">Regina...</span><span class="es">Reina...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Può la corte allontanarsi;</span><span class="es">Que la Corte se retire.</span></div>
+      <div class="line-row"><span class="it">richiamata in breve qui fia!</span><span class="es">¡Será llamada en breve!</span></div>
+      <div class="stage-direction">
+        <span>(Partono tutti, tranne Gualtiero.)</span>
+        <span class="es">(Se van todos menos Gualtiero.)</span>
+      </div>
+      <div class="line-row"><span class="it">Tanto indugiasti?</span><span class="es">¿Por qué habéis tardado tanto?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span></span>
+        <span class="character-name">Gualtiero</span>
+      </div>
+      <div class="line-row"><span class="it">Assente egli era,</span><span class="es">Él estaba ausente,</span></div>
+      <div class="line-row"><span class="it">Ed al palagio suo non fe' ritorno</span><span class="es">y no volvió a su palacio</span></div>
+      <div class="line-row"><span class="it">Che surto il nuovo giorno.</span><span class="es">hasta que nació el nuevo día.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="line-row"><span class="it">Segui!</span><span class="es">¡Sigue!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span></span>
+        <span class="character-name">Gualtiero</span>
+      </div>
+      <div class="line-row"><span class="it">Fu disarmato;</span><span class="es">Fue desarmado y al registrar sus ropas,</span></div>
+      <div class="line-row"><span class="it">e nel cercar se criminosi fogli</span><span class="es">por ver si escondía documentos criminales,</span></div>
+      <div class="line-row"><span class="it">Nelle vesti chiudesse, i miei seguaci</span><span class="es">mis hombres vieron que escondía en el pecho</span></div>
+      <div class="line-row"><span class="it">Vider che in sen celava</span><span class="es">un pañuelo de seda.</span></div>
+      <div class="line-row"><span class="it">Serica ciarpa. Comandai che tolta</span><span class="es">Ordené que se lo confiscaran.</span></div>
+      <div class="line-row"><span class="it">Gli fosse, d'ira temeraria e stolta</span><span class="es">Inflamándose con ira temeraria y estúpida:</span></div>
+      <div class="line-row"><span class="it">Egli avvampando: "Pria", gridò, "Strapparmi</span><span class="es">"Antes", gritó,</span></div>
+      <div class="line-row"><span class="it">Vi è d'uopo il cor dal petto!"...</span><span class="es">"tendréis que arrancarme el corazón del pecho!"</span></div>
+      <div class="line-row"><span class="it">Del conte la repulsa</span><span class="es">La resistencia del conde</span></div>
+      <div class="line-row"><span class="it">Fu vana...</span><span class="es">fue vana...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">E quella ciarpa?</span><span class="es">¿Y el pañuelo?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span></span>
+        <span class="character-name">Gualtiero</span>
+      </div>
+      <div class="line-row"><span class="it">Eccola.</span><span class="es">Aquí está.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh rabbia!...</span><span class="es">¡Estoy furiosa!</span></div>
+      <div class="line-row"><span class="it">Cifre d'amor qui veggio!...</span><span class="es">¡Veo las huellas del amor!</span></div>
+      <div class="stage-direction">
+        <span>(a Gualtiero)</span>
+        <span class="es">(a Gualtiero)</span>
+      </div>
+      <div class="line-row"><span class="it">Al mio cospetto</span><span class="es">Que se le traiga</span></div>
+      <div class="line-row"><span class="it">Colui si tragga.</span><span class="es">a mi presencia.</span></div>
+      <div class="line-row"><span class="it">Ho mille furie in petto!</span><span class="es">¡Tengo mil furias en el pecho!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="it">Non venni mai sì mesto</span><span class="es">Nunca vine tan triste</span></div>
+      <div class="line-row"><span class="it">Alla regal presenza.</span><span class="es">a la presencia de la reina.</span></div>
+      <div class="line-row"><span class="it">Compio un dover funesto.</span><span class="es">Cumplo un deber funesto.</span></div>
+      <div class="stage-direction">
+        <span>(Porge un foglio.)</span>
+        <span class="es">(Le entrega un papel)</span>
+      </div>
+      <div class="line-row"><span class="it">D'Essex è la sentenza.</span><span class="es">Es la sentencia de Essex.</span></div>
+      <div class="line-row"><span class="it">Tace il ministro, or parla</span><span class="es">Calla el ministro, ahora es el amigo</span></div>
+      <div class="line-row"><span class="it">L'amico in suo favore:</span><span class="es">el que habla en su favor:</span></div>
+      <div class="line-row"><span class="it">Grazia!</span><span class="es">¡Gracia!</span></div>
+      <div class="line-row"><span class="it">Potria negarla</span><span class="es">¿Podrá negarla</span></div>
+      <div class="line-row"><span class="it">D'Elisabetta il core?</span><span class="es">el corazón de Isabel?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">In questo core è sculta</span><span class="es">En este corazón está impresa</span></div>
+      <div class="line-row"><span class="it">La sua condanna.</span><span class="es">su condena.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Oh detto!...</span><span class="es">¡Qué palabras!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">D'una rivale occulta</span><span class="es">Hasta hace poco le dio techo</span></div>
+      <div class="line-row"><span class="it">Finor lo accolse il tetto...</span><span class="es">una rival desconocida...</span></div>
+      <div class="line-row"><span class="it">Sì, questa notte istessa</span><span class="es">Sí, él me ha traicionado</span></div>
+      <div class="line-row"><span class="it">Ei mi tradia...</span><span class="es">esta misma noche.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Che dici?...</span><span class="es">¿Qué dices?...</span></div>
+      <div class="line-row"><span class="it">Calunnia è questa...</span><span class="es">Eso es una calumnia...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Cessa</span><span class="es">¡Oh, calla!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Trama de' suoi nemici...</span><span class="es">Es una invención de sus enemigos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">No, dubitar non giova...</span><span class="es">No, es cierto...</span></div>
+      <div class="line-row"><span class="it">Al mancator fu tolta</span><span class="es">Al culpable se le encontró</span></div>
+      <div class="line-row"><span class="it">Irrefutabil prova...</span><span class="es">una prueba incontestable...</span></div>
+      <div class="stage-direction">
+        <span>(quindi è per firmare la sentenza)</span>
+        <span class="es">(yendo a firmar la sentencia)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Che fai!... sospendi... ascolta...</span><span class="es">¡Qué haces!... ¡Espera!... ¡Escucha!...</span></div>
+      <div class="line-row"><span class="it">Su lui non piombi il fulmine</span><span class="es">¡Que no caiga sobre él</span></div>
+      <div class="line-row"><span class="it">Dell'ira tua crudele!...</span><span class="es">el rayo de tu ira cruel!</span></div>
+      <div class="line-row"><span class="it">Se chieder lice un premio</span><span class="es">Si se me permite pedir un premio</span></div>
+      <div class="line-row"><span class="it">Del mio servir fedele,</span><span class="es">por mis leales servicios,</span></div>
+      <div class="line-row"><span class="it">Quest'uno io chiedo, in lagrime,</span><span class="es">os pido éste, con lágrimas en los ojos,</span></div>
+      <div class="line-row"><span class="it">Prostrato al regio pie'.</span><span class="es">postrado a los pies de la reina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Taci: pietade o grazia</span><span class="es">¡Calla! El infiel no merece</span></div>
+      <div class="line-row"><span class="it">No, l'infedel non merta.</span><span class="es">ni piedad, ni gracia.</span></div>
+      <div class="line-row"><span class="it">Il tradimento è orribile,</span><span class="es">La traición es horrible,</span></div>
+      <div class="line-row"><span class="it">La sua perfidia è certa...</span><span class="es">su perfidia es cierta.</span></div>
+      <div class="line-row"><span class="it">Muoia, e non sorga un gemito</span><span class="es">Muera, y que no se levante ni una voz</span></div>
+      <div class="line-row"><span class="it">A domandar merce'.</span><span class="es">para pedir piedad.</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="line-row"><span class="it">Ecco l'indegno!</span><span class="es">¡Aquí llega el indigno!</span></div>
+      <div class="stage-direction">
+        <span>(a Roberto)</span>
+        <span class="es">(A Roberto)</span>
+      </div>
+      <div class="line-row"><span class="it">Appressati.</span><span class="es">Acércate.</span></div>
+      <div class="line-row"><span class="it">Ergi l'altera fronte.</span><span class="es">Levanta tu frente altiva.</span></div>
+      <div class="line-row"><span class="it">Che dissi a te? Rammentalo.</span><span class="es">¿Qué te pregunté? Recuérdalo.</span></div>
+      <div class="line-row"><span class="it">Ami, ti dissi, o conte?</span><span class="es">¿Amas a alguien? te pregunté, ¡oh, conde!</span></div>
+      <div class="line-row"><span class="it">No: rispondesti... - Un perfido,</span><span class="es">No, respondiste...</span></div>
+      <div class="line-row"><span class="it">Un vile, un mentitore</span><span class="es">Eres un pérfido, un hombre vil, un mentiroso...</span></div>
+      <div class="line-row"><span class="it">Tu sei... Del tuo mendacio</span><span class="es">Contempla al mudo acusador</span></div>
+      <div class="line-row"><span class="it">Il muto accusatore</span><span class="es">de tu engaño,</span></div>
+      <div class="line-row"><span class="it">Guarda, e sul cor ti scenda</span><span class="es">y que el frío cruel de la muerte</span></div>
+      <div class="line-row"><span class="it">Fero di morte un gel</span><span class="es">penetre en tu corazón.</span></div>
+      <div class="stage-direction">
+        <span>(Gli mostra la sciarpa)</span>
+        <span class="es">(Le muestra el pañuelo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Che!...</span><span class="es">¡Qué!...</span></div>
+      <div class="stage-direction">
+        <span>(Riconoscendola)</span>
+        <span class="es">(Reconociendo el pañuelo de su esposa)</span>
+        <span>(fra sè)</span>
+        <span class="es">(Para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Orrenda</span><span class="es">¡Una luz horrenda</span></div>
+      <div class="line-row"><span class="it">Luce balena!... Sara...</span><span class="es">brilla en mis ojos! Sara...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Tremi alfine!</span><span class="es">¡Al fin tiemblas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(Para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh ciel!...</span><span class="es">¡Oh, Cielos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Alma infida, ingrato core,</span><span class="es">Alma infiel, ingrato corazón...</span></div>
+      <div class="line-row"><span class="it">Ti raggiunse il mio furore!</span><span class="es">¡Que te alcance mi furor!</span></div>
+      <div class="line-row"><span class="it">Pria che il sen di fiamma rea</span><span class="es">Antes de que un dios enemigo</span></div>
+      <div class="line-row"><span class="it">T'accendesse un Dio nemico,</span><span class="es">encendiese en tu pecho una llama culpable,</span></div>
+      <div class="line-row"><span class="it">Pria d'offender chi nascea</span><span class="es">antes de ofender a quien nació</span></div>
+      <div class="line-row"><span class="it">Dal tremendo ottavo Enrico,</span><span class="es">del temible Enrique VIII,</span></div>
+      <div class="line-row"><span class="it">Scender vivo nel sepolcro</span><span class="es">tú debías ¡oh, traidor!</span></div>
+      <div class="line-row"><span class="it">Tu dovevi, o traditor.</span><span class="es">haber descendido vivo al sepulcro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Non è ver... delirio è questo!...</span><span class="es">¡No es verdad... delirio es esto!</span></div>
+      <div class="line-row"><span class="it">Sogno orribile, funesto!</span><span class="es">¡Sueño horrible, funesto!</span></div>
+      <div class="line-row"><span class="it">No, giammai d'un uomo il core</span><span class="es">¡No, jamás el corazón de un hombre</span></div>
+      <div class="line-row"><span class="it">Tanto eccesso non accolse!...</span><span class="es">encerró tanta maldad!</span></div>
+      <div class="line-row"><span class="it">Pur... si covre di pallore!</span><span class="es">¡Y en cambio se cubre de palidez!</span></div>
+      <div class="line-row"><span class="it">Ahi! Che sguardo a me rivolse!</span><span class="es">¡Ah, qué mirada me dirige!</span></div>
+      <div class="line-row"><span class="it">Cento colpe a me disvela</span><span class="es">Cien culpas me desvelan</span></div>
+      <div class="line-row"><span class="it">Quello sguardo, quel pallor.</span><span class="es">esa mirada y esa palidez.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Mi sovrasta il fato estremo!</span><span class="es">¡Mi destino está cumplido!</span></div>
+      <div class="line-row"><span class="it">Pur di me, di me non tremo...</span><span class="es">Y no es por mí, no es por mí por quien temo.</span></div>
+      <div class="line-row"><span class="it">Della misera il periglio</span><span class="es">El peligro de la desdichada</span></div>
+      <div class="line-row"><span class="it">Tutto estinse in me il coraggio.</span><span class="es">ha extinguido en mí todo el valor.</span></div>
+      <div class="line-row"><span class="it">Di costui nel torvo ciglio</span><span class="es">En sus ojos amenazadores</span></div>
+      <div class="line-row"><span class="it">Balenò sanguigno raggio.</span><span class="es">brilla un rayo sanguinario.</span></div>
+      <div class="line-row"><span class="it">Ah, quel pegno sciagurato</span><span class="es">¡Ah, la infeliz prenda</span></div>
+      <div class="line-row"><span class="it">Fu di morte e non d'amor!</span><span class="es">fue de muerte y no de amor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="line-row"><span class="it">Scellerato!... Malvagio! E chiudevi</span><span class="es">¡Infame! ¡Malvado!</span></div>
+      <div class="line-row"><span class="it">Tal perfidia nel cuore sleale?</span><span class="es">¡Y guardabas tanta perfidia en tu corazón desleal!</span></div>
+      <div class="line-row"><span class="it">E tradir sì vilmente potevi...</span><span class="es">¿Y has podido traicionar tan vilmente</span></div>
+      <div class="line-row"><span class="it">La regina?</span><span class="es">a la reina?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Supplizio infernale...</span><span class="es">¡Suplicio infernal!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! la spada, la spada un istante</span><span class="es">¡Ah! ¡Que le den la espada,</span></div>
+      <div class="line-row"><span class="it">Al codardo, all'infame sia resa...</span><span class="es">al cobarde, al infame!..</span></div>
+      <div class="line-row"><span class="it">Ch'ei mi cada trafitto alle piante,</span><span class="es">Que caiga atravesado a mis pies,</span></div>
+      <div class="line-row"><span class="it">Ch'io nel sangue deterga l'offesa...</span><span class="es">que yo lave la ofensa en su sangre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">O mio fido, e tu fremi, tu pure</span><span class="es">¡Oh, mi hombre fiel!</span></div>
+      <div class="line-row"><span class="it">Dell'oltraggio che a me fu recato?</span><span class="es">¿Estás furioso por el ultraje que he recibido yo?</span></div>
+      <div class="stage-direction">
+        <span>(a Roberto)</span>
+        <span class="es">(a Roberto)</span>
+      </div>
+      <div class="line-row"><span class="it">Io favello: m'ascolta! La scure</span><span class="es">¡Escúchame!</span></div>
+      <div class="line-row"><span class="it">Già minaccia il tuo capo esecrato.</span><span class="es">El hacha amenaza ya tu execrable cabeza.</span></div>
+      <div class="line-row"><span class="it">Qual si noma l'ardita rivale</span><span class="es">Nombra a la osada rival,</span></div>
+      <div class="line-row"><span class="it">Di' soltanto, e, lo giuro, vivrai.</span><span class="es">di solo eso y, lo juro, vivirás.</span></div>
+      <div class="line-row"><span class="it">Parla, ah! Parla.</span><span class="es">¡Habla, ah, habla!</span></div>
+      <div class="stage-direction">
+        <span>(Un istante di silenzio)</span>
+        <span class="es">(Un instante de silencio)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Momento fatale!</span><span class="es">¡Momento fatal!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Pria la morte!</span><span class="es">¡Antes la muerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Ostinato!... l'avrai.</span><span class="es">¡Obstinado!... La tendrás.</span></div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Ad un cenno della Regina, la sala si riempie</span>
+        <span class="es">(A una señal de la reina, la sala se llena</span>
+        <span>di Cavalieri, Dame, Paggi, Guardie, ecc)</span>
+        <span class="es">de caballeros, damas, pajes, guardias, etc.)</span>
+      </div>
+      <div class="line-row"><span class="it">Tutti udite. Il consiglio de' Pari</span><span class="es">¡Oid todos! El Consejo de los Pares</span></div>
+      <div class="line-row"><span class="it">Di costui la condanna mi porse.</span><span class="es">me ha entregado la condena de Essex.</span></div>
+      <div class="line-row"><span class="it">Io la segno. - Ciascuno la impari:</span><span class="es">La firmo. Que todos lo sepan.</span></div>
+      <div class="line-row"><span class="it">Come il sole, che parte già corse</span><span class="es">Cuando el sol, que ya ha comenzado</span></div>
+      <div class="line-row"><span class="it">Del suo giro, al meriggio sia giunto,</span><span class="es">su recorrido, haya llegado a su cénit,</span></div>
+      <div class="line-row"><span class="it">S'oda un tuono del bronzo guerrier:</span><span class="es">al sonido del cañón guerrero,</span></div>
+      <div class="line-row"><span class="it">Lo percuota la scure in quel punto.</span><span class="es">que golpee el hacha.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Tristo giorno di morte forier!</span><span class="es">¡Triste día precursor de la muerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Va!</span><span class="es">¡Vete!</span></div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="line-row"><span class="it">Va, la morte sul capo ti pende,</span><span class="es">La muerte pende sobre tu cabeza,</span></div>
+      <div class="line-row"><span class="it">Sul tuo nome l'infamia discende;</span><span class="es">y el deshonor desciende a tu nombre.</span></div>
+      <div class="line-row"><span class="it">Tal sepolcro t'appresta il mio sdegno,</span><span class="es">Mi cólera te prepara tal sepulcro</span></div>
+      <div class="line-row"><span class="it">Che non fia chi di pianto lo scaldi:</span><span class="es">que no lo calentarás ni con lágrimas.</span></div>
+      <div class="line-row"><span class="it">Con la polve di vili ribaldi</span><span class="es">Tus cenizas se confundirán</span></div>
+      <div class="line-row"><span class="it">La tua polve confusa sarà.</span><span class="es">con las cenizas de los peores criminales.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Del mio sangue la scure bagnata</span><span class="es">El hacha manchada con mi sangre</span></div>
+      <div class="line-row"><span class="it">Più non fia d'ignominia macchiata.</span><span class="es">no será manchada por la ignominia.</span></div>
+      <div class="line-row"><span class="it">Il tuo crudo implacabile sdegno</span><span class="es">Tu furia cruel e implacable,</span></div>
+      <div class="line-row"><span class="it">Non la fama, la vita mi toglie:</span><span class="es">me quita la vida, no el honor.</span></div>
+      <div class="line-row"><span class="it">Ove giaccion le morte mie spoglie</span><span class="es">Donde yazcan mis restos mortales,</span></div>
+      <div class="line-row"><span class="it">Ivi un'ara di gloria sarà.</span><span class="es">allí habrá un altar de gloria.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">No, l'iniquo non muoia di spada,</span><span class="es">No, que el malvado no muera a espada,</span></div>
+      <div class="line-row"><span class="it">Sovra il palco, infamato, egli cada...</span><span class="es">que caiga humillado sobre el patíbulo.</span></div>
+      <div class="line-row"><span class="it">Né il supplizio serbato all'indegno</span><span class="es">Ni el suplicio reservado a este indigno será</span></div>
+      <div class="line-row"><span class="it">Basta all'ira che m'arde in seno.</span><span class="es">suficiente para la ira que me consume el pecho.</span></div>
+      <div class="line-row"><span class="it">A saziarla, ad estinguerla appieno</span><span class="es">¡Para saciarla, para extinguirla del todo,</span></div>
+      <div class="line-row"><span class="it">Altro sangue versato sarà!</span><span class="es">otra sangre será derramada!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span>, <span class="character-name has-tooltip" data-character-id="raleigh">Gualtiero</span></span>
+        <span class="character-name">Cecil, Gualtiero</span>
+      </div>
+      <div class="line-row"><span class="it">Sul tuo capo la scure già piomba...</span><span class="es">El hacha ya cae sobre tu cabeza...</span></div>
+      <div class="line-row"><span class="it">Maledetto il tuo nome sarà.</span><span class="es">Tu nombre será maldito.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Al reietto nemmeno la tomba</span><span class="es">Ni la tumba será un asilo</span></div>
+      <div class="line-row"><span class="it">Un asilo di pace sarà.</span><span class="es">de paz para el condenado.</span></div>
+      <div class="stage-direction">
+        <span>(Ad un cenno di Elisabetta, Roberto</span>
+        <span class="es">(A una señal de Isabel, Roberto</span>
+        <span>è circondato dalle guardie.)</span>
+        <span class="es">es rodeado por los guardias.)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Atto Terzo</span>
+      <span>Acto Tercero</span>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Sala terrena nel palagio Nottingham)</span>
+        <span class="es">(Sala en el Palacio de Nottingham)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Né riede ancor il mio consorte!...</span><span class="es">¡No ha llegado todavía mi marido!...</span></div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Familiare</span></span>
+        <span class="character-name">Criado</span>
+      </div>
+      <div class="line-row"><span class="it">Duchessa!</span><span class="es">¡Duquesa!</span></div>
+      <div class="line-row"><span class="it">Un di que' prodi, cui vegliar fu dato</span><span class="es">Un guerrero de los que custodian la Cámara Real</span></div>
+      <div class="line-row"><span class="it">La regia stanza, e già pugnaro a lato</span><span class="es">y que peleó al lado de Lord Essex,</span></div>
+      <div class="line-row"><span class="it">Del gran Roberto, qui giungea, recando</span><span class="es">viene trayendo un escrito.</span></div>
+      <div class="line-row"><span class="it">Non so qual foglio, che in tua man deporre</span><span class="es">Pide e implora</span></div>
+      <div class="line-row"><span class="it">E richiede e scongiura.</span><span class="es">depositarlo en tu mano.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Venga</span><span class="es">Que entre.</span></div>
+      <div class="stage-direction">
+        <span>(Il soldato viene introdotto: egli porge</span>
+        <span class="es">(el soldado entra y entrega una carta</span>
+        <span>alla Duchessa una lettera, quindi si ritira</span>
+        <span class="es">a la duquesa, luego se retira con el criado.</span>
+        <span>col domestico. Dopo letto)</span>
+        <span class="es">Sara dice después de leerla)</span>
+      </div>
+      <div class="line-row"><span class="it">Roberto scrisse!... Oh ria sciagura!</span><span class="es">¡Me escribe Roberto!... ¡Oh, destino cruel!</span></div>
+      <div class="line-row"><span class="it">Segnata è la condanna! Pur... qui lo</span><span class="es">¡La condena está firmada!</span></div>
+      <div class="line-row"><span class="it">Apprendo... questo anello è sacro</span><span class="es">¡Y es ahora cuando lo comprendo!...</span></div>
+      <div class="line-row"><span class="it">Mallevador de' giorni suoi... Che tardo?</span><span class="es">Este anillo es la salvaguarda de sus días...</span></div>
+      <div class="line-row"><span class="it">Corrasi a pie' d'Elisabetta...</span><span class="es">¿A qué espero? Corramos a los pies de Isabel.</span></div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Il duca!...</span><span class="es">¡El duque!...</span></div>
+      <div class="line-row"><span class="it">Qual torvo sguardo!...</span><span class="es">¡Qué mirada amenazadora!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Un foglio avesti?</span><span class="es">¿Tenías una carta?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh cielo!...</span><span class="es">¡Oh, cielos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Sara!... vederlo io voglio.</span><span class="es">¡Sara!... Quiero verla.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Sposo!...</span><span class="es">¡Esposo!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Sposo!... Lo impongo: a me quel foglio.</span><span class="es">Esposo... ¡Te lo ordeno, dame esa carta!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Perduta io son!...</span><span class="es">¡Estoy perdida!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Il duca legge)</span>
+        <span class="es">(El duque la lee)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu dunque</span><span class="es">¿Entonces tú puedes alejar el hacha de su cabeza?</span></div>
+      <div class="line-row"><span class="it">Puoi dal suo capo allontanar la scure?</span><span class="es">¡Un anillo te dio! ¿Cuándo?</span></div>
+      <div class="line-row"><span class="it">Una gemma ti die'! Quando? Fra l'ombre</span><span class="es">¿En la oscuridad de la noche pasada,</span></div>
+      <div class="line-row"><span class="it">Della trascorsa notte, allor che pegno</span><span class="es">cuando tus manos le pusieron sobre el pecho el</span></div>
+      <div class="line-row"><span class="it">D'amor sul petto la tua man gli pose</span><span class="es">pañuelo dorado como prenda de amor?</span></div>
+      <div class="line-row"><span class="it">Ciarpa d'oro contesta?</span><span class="es">¡Contesta!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Oh folgore tremenda, inaspettata!</span><span class="es">¡Oh, qué golpe tan terrible e inesperado!...</span></div>
+      <div class="line-row"><span class="it">Già tutto è noto a lui!...</span><span class="es">¡Ya lo sabes todo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Si, scellerata!</span><span class="es">¡Sí, pérfida!</span></div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="line-row"><span class="it">Non sai che un nume vindice</span><span class="es">¿No sabes que los traicionados</span></div>
+      <div class="line-row"><span class="it">Hanno i traditi in cielo?</span><span class="es">tienen en el cielo un dios vengador?</span></div>
+      <div class="line-row"><span class="it">Egli con man terribile</span><span class="es">¡Él, con su mano terrible</span></div>
+      <div class="line-row"><span class="it">Frange alle colpe il velo!</span><span class="es">desgarra el velo de las culpas!</span></div>
+      <div class="line-row"><span class="it">Spergiura, in me paventalo</span><span class="es">¡Perjura, teme en mí</span></div>
+      <div class="line-row"><span class="it">Quel dio vendicator.</span><span class="es">a ese dios vengador!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">M'uccidi.</span><span class="es">¡Mátame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Attendi, o perfida:</span><span class="es">¡Espera, oh, pérfida,</span></div>
+      <div class="line-row"><span class="it">Vive Roberto ancor.</span><span class="es">todavía vive Roberto!</span></div>
+      <div class="line-row"><span class="it">Io per l'amico in petto</span><span class="es">Yo sentía en el corazón</span></div>
+      <div class="line-row"><span class="it">Tenero amor serbava,</span><span class="es">un tierno amor por el amigo,</span></div>
+      <div class="line-row"><span class="it">Come celeste oggetto</span><span class="es">yo amaba a mi esposa</span></div>
+      <div class="line-row"><span class="it">Io la consorte amava.</span><span class="es">como a un cuerpo celeste.</span></div>
+      <div class="line-row"><span class="it">Avrei per loro impavido</span><span class="es">Habría desafiado, sin temor,</span></div>
+      <div class="line-row"><span class="it">Sfidato affanni e morte...</span><span class="es">al dolor y a la muerte por ellos.</span></div>
+      <div class="line-row"><span class="it">Chi mi tradisce? Ahi misero!</span><span class="es">¿Y quién me traiciona? ¡Oh, desgraciado de mí!</span></div>
+      <div class="line-row"><span class="it">L'amico e la consorte!</span><span class="es">¡El amigo y la esposa!</span></div>
+      <div class="line-row"><span class="it">Stolta! Che giova il piangere?</span><span class="es">¡Estúpida! ¿De qué sirve llorar?</span></div>
+      <div class="line-row"><span class="it">Sangue, non pianto io vo'.</span><span class="es">¡Sangre quiero, no lágrimas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Tanta il destin fremente</span><span class="es">¿Entonces, tanto poder tiene</span></div>
+      <div class="line-row"><span class="it">Dunque ha su noi possanza?</span><span class="es">el cruel destino sobre nosotros?</span></div>
+      <div class="line-row"><span class="it">Può dunque un innocente</span><span class="es">¿Puede entonces un inocente</span></div>
+      <div class="line-row"><span class="it">Di reo vestir sembianza?</span><span class="es">tener el aspecto de culpable?</span></div>
+      <div class="line-row"><span class="it">O tu, cui dato è leggere</span><span class="es">¡Oh, Tú, que puedes leer</span></div>
+      <div class="line-row"><span class="it">In questo cor pudico,</span><span class="es">en este casto corazón,</span></div>
+      <div class="line-row"><span class="it">Tu, Dio clemente, tu, Dio l'accerta</span><span class="es">Tú, Dios clemente, Tú, aclárale</span></div>
+      <div class="line-row"><span class="it">Ch'empio non è l'amico,</span><span class="es">que el amigo no es un malvado,</span></div>
+      <div class="line-row"><span class="it">Che d'un pensier, d'un palpito</span><span class="es">que jamás le he traicionado</span></div>
+      <div class="line-row"><span class="it">Tradito io mai non l'ho.</span><span class="es">por un pensamiento, por un suspiro!</span></div>
+      <div class="stage-direction">
+        <span>(Odesi lugubre marcia)</span>
+        <span class="es">(Se oye una marcha lúgubre)</span>
+      </div>
+      <div class="line-row"><span class="it">Non rimbomba un suon ferale?</span><span class="es">¿No resuena una música fúnebre?</span></div>
+      <div class="stage-direction">
+        <span>(accorrendo ai veroni, scorgessi Essex passar</span>
+        <span class="es">(acercándose al balcón, ve pasar de lejos</span>
+        <span>di lontano circondato dalle Guardie)</span>
+        <span class="es">a Essex rodeado de los guardias)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Lo traggono alla Torre.</span><span class="es">Lo llevan a La Torre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Fero brivido mortale</span><span class="es">¡Un terrible estremecimiento mortal</span></div>
+      <div class="line-row"><span class="it">Per le vene mi trascorre!...</span><span class="es">corre por mis venas!</span></div>
+      <div class="line-row"><span class="it">Il supplizio a lui s'appresta!</span><span class="es">¡Le espera el suplicio!</span></div>
+      <div class="line-row"><span class="it">L'ora... ahi! L'ora è già vicina!</span><span class="es">¡La hora, ah! ¡Ya ha llegado la hora!</span></div>
+      <div class="line-row"><span class="it">Dio, m'aita!...</span><span class="es">¡Dios mío, ayúdame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Iniqua! Arresta!...</span><span class="es">¡Pérfida! ¡Detente!</span></div>
+      <div class="line-row"><span class="it">Ove corri?</span><span class="es">¿Dónde vas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Alla regina.</span><span class="es">Ante los pies de la reina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Di salvarlo hai speme ancora?...</span><span class="es">¿Todavía esperas salvarlo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Lascia.</span><span class="es">¡Déjame!</span></div>
+      <div class="stage-direction">
+        <span>(cercando liberarsi)</span>
+        <span class="es">(tratando de soltarse)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Oh rabbia!... Ed osi!... -Olà!</span><span class="es">¡Oh, furia! ¡Y tú te atreves!... ¡Guardias!</span></div>
+      <div class="stage-direction">
+        <span>(Compariscono le guardie del palagio ducale.)</span>
+        <span class="es">(comparecen los guardias del Palacio Ducal)</span>
+      </div>
+      <div class="line-row"><span class="it">A costei la mia dimora sia prigione.</span><span class="es">¡Que esta casa sea su prisión!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Oh ciel!...</span><span class="es">¡Oh, Cielos!</span></div>
+      <div class="line-row"><span class="it">Pietà...</span><span class="es">Piedad...</span></div>
+      <div class="line-row"><span class="it">All'ambascia ond'io mi struggo</span><span class="es">¡En la angustia que me consume</span></div>
+      <div class="line-row"><span class="it">Dona, ah, dona un solo istante...</span><span class="es">dame, ah, un solo instante!...</span></div>
+      <div class="line-row"><span class="it">Io lo giuro, a te non fuggo.</span><span class="es">Te lo juro, no huyo de ti.</span></div>
+      <div class="line-row"><span class="it">Riedo in breve alle tue piante...</span><span class="es">Volveré pronto a tus pies...</span></div>
+      <div class="line-row"><span class="it">Cento volete allor se vuoi</span><span class="es">Mátame cien veces, si quieres.</span></div>
+      <div class="line-row"><span class="it">Me trafiggi: a¡ piedi tuoi</span><span class="es">A tus pies bendecir me oirás,</span></div>
+      <div class="line-row"><span class="it">Benedir m'udrai morente</span><span class="es">moribunda,</span></div>
+      <div class="line-row"><span class="it">Quella man che mi ferì.</span><span class="es">la mano que me ha herido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Più tremendo avvampa e rugge</span><span class="es">Mi honor herido por vosotros</span></div>
+      <div class="line-row"><span class="it">L'onor mio da voi trafitto:</span><span class="es">se consume y ruge con más fuerza.</span></div>
+      <div class="line-row"><span class="it">Ogni accento che ti sfugge,</span><span class="es">Cada palabra que deja escapar tu boca,</span></div>
+      <div class="line-row"><span class="it">Ogni lagrima è un delitto.</span><span class="es">cada lágrima, es un delito.</span></div>
+      <div class="line-row"><span class="it">Ah! Supplizio troppo breve</span><span class="es">¡Ah, la muerte que él recibe</span></div>
+      <div class="line-row"><span class="it">È la morte ch'ei riceve;</span><span class="es">es un suplicio demasiado breve!</span></div>
+      <div class="line-row"><span class="it">Dio! Punisci eternamente</span><span class="es">¡Dios, castigará eternamente</span></div>
+      <div class="line-row"><span class="it">L'alma rea che mi tradì</span><span class="es">el alma culpable que me traicionó!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Carcere nella Torre di Londra)</span>
+        <span class="es">(Cárcel de la Torre de Londres)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="line-row"><span class="it">Ed ancor la tremenda</span><span class="es">¿Y todavía no se abre la terrible puerta?</span></div>
+      <div class="line-row"><span class="it">Porta non si dischiude? Un rio presagio</span><span class="es">¡Un mal presagio me inunda de terror!</span></div>
+      <div class="line-row"><span class="it">Tutte m'ingombra di terror le vene!</span><span class="es">Pero el mensajero es fiel,</span></div>
+      <div class="line-row"><span class="it">Pur fido è il messo, e quella gemma è pegno</span><span class="es">y aquel anillo es prenda</span></div>
+      <div class="line-row"><span class="it">Securo a mi di scampo.</span><span class="es">de salvación segura.</span></div>
+      <div class="line-row"><span class="it">Uso a mirarla in campo</span><span class="es">Acostumbrado a ella en el campo de batalla,</span></div>
+      <div class="line-row"><span class="it">Io non temo la morte, io viver solo</span><span class="es">no temo a la muerte.</span></div>
+      <div class="line-row"><span class="it">Tanto desio, che la virtù di Sara</span><span class="es">Deseo vivir solo para lavar</span></div>
+      <div class="line-row"><span class="it">A discolpar mi basti...</span><span class="es">la virtud de Sara...</span></div>
+      <div class="line-row"><span class="it">O tu, che m'involasti</span><span class="es">¡Oh, tú, que me robaste aquella adorada mujer!</span></div>
+      <div class="line-row"><span class="it">Quell'adorata donna, i giorni miei</span><span class="es">Reservo mis días a tu espada,</span></div>
+      <div class="line-row"><span class="it">Serbo al tuo brando, tu svenar mi dei.</span><span class="es">mátame si quieres.</span></div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="line-row"><span class="it">A te dirò, negli ultimi</span><span class="es">Te diré en mis últimos momentos,</span></div>
+      <div class="line-row"><span class="it">Singhiozzi, in braccio a morte:</span><span class="es">en brazos de la muerte:</span></div>
+      <div class="line-row"><span class="it">Come uno spirto angelico</span><span class="es">que al igual que un espíritu angelical,</span></div>
+      <div class="line-row"><span class="it">Pura è la tua consorte.</span><span class="es">así de pura es tu esposa...</span></div>
+      <div class="line-row"><span class="it">Lo giuro, e il giuramento</span><span class="es">Lo juro, y el juramento</span></div>
+      <div class="line-row"><span class="it">Col sangue mio suggello...</span><span class="es">lo sello con mi sangre...</span></div>
+      <div class="line-row"><span class="it">Credi all'estremo accento</span><span class="es">Cree en las últimas palabras</span></div>
+      <div class="line-row"><span class="it">Che il labbro mio parlò.</span><span class="es">que pronunciarán mis labios.</span></div>
+      <div class="line-row"><span class="it">Chi scende nell'avello</span><span class="es">Sabes que quien baja al sepulcro</span></div>
+      <div class="line-row"><span class="it">Sai che mentir non può.</span><span class="es">no puede mentir.</span></div>
+      <div class="stage-direction">
+        <span>(Odesi un calpestio e sordo rumore</span>
+        <span class="es">(Se oyen pasos y un ruido sordo</span>
+        <span>di chiavistelli)</span>
+        <span class="es">de candados)</span>
+      </div>
+      <div class="line-row"><span class="it">Odo un suon per l'aria cieca...</span><span class="es">Oigo un sonido en la oscuridad...</span></div>
+      <div class="line-row"><span class="it">Si dischiudono le porte...</span><span class="es">Se abren las puertas...</span></div>
+      <div class="line-row"><span class="it">Ah! la grazia mi si reca...</span><span class="es">¡Ah, me traen el perdón!</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Guardie</span></span>
+        <span class="character-name">Guardias</span>
+      </div>
+      <div class="line-row"><span class="it">Vieni, o conte.</span><span class="es">¡Ven, oh, conde!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">Dove?</span><span class="es">¿Dónde?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Guardie</span></span>
+        <span class="character-name">Guardias</span>
+      </div>
+      <div class="line-row"><span class="it">A morte!</span><span class="es">¡A la muerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="roberto-devereux">Roberto</span></span>
+        <span class="character-name">Roberto</span>
+      </div>
+      <div class="line-row"><span class="it">A morte! a morte!</span><span class="es">¿A la muerte? ¡A la muerte!</span></div>
+      <div class="line-row"><span class="it">Ora in terra, o sventurata-</span><span class="es">Ya no debes esperar en esta tierra,</span></div>
+      <div class="line-row"><span class="it">Più sperar non dei pietà!...</span><span class="es">¡oh, desventurada! la piedad.</span></div>
+      <div class="line-row"><span class="it">Ma non resti abbandonata;</span><span class="es">Pero no te quedas sola,</span></div>
+      <div class="line-row"><span class="it">Havvi un giusto, ed ei m'udrà.</span><span class="es">existe un ser justo y Él me oirá.</span></div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="line-row"><span class="it">Bagnato il sen di lagrime,</span><span class="es">¡Bañado mi pecho en lágrimas,</span></div>
+      <div class="line-row"><span class="it">Tinto del sangue mio,</span><span class="es">teñido con mi sangre, corro,</span></div>
+      <div class="line-row"><span class="it">Io corro, io volo a chiedere</span><span class="es">vuelo a pedir socorro para ti</span></div>
+      <div class="line-row"><span class="it">Per te soccorso a Dio!</span><span class="es">ante Dios!</span></div>
+      <div class="line-row"><span class="it">Impietositi gli angeli</span><span class="es">¡Compadecidos los ángeles,</span></div>
+      <div class="line-row"><span class="it">Eco al mio duol faranno...</span><span class="es">se harán eco de mi dolor!...</span></div>
+      <div class="line-row"><span class="it">Si piangerà d'affanno</span><span class="es">¡Se llorará de tristeza</span></div>
+      <div class="line-row"><span class="it">La prima volta in ciel!</span><span class="es">por primera vez en el Cielo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Guardie</span></span>
+        <span class="character-name">Guardias</span>
+      </div>
+      <div class="line-row"><span class="it">Vieni... a subir preparati</span><span class="es">Ven... Prepárate para sufrir</span></div>
+      <div class="line-row"><span class="it">La morte più crudel.</span><span class="es">la muerte más cruel.</span></div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Gabinetto della Regina)</span>
+        <span class="es">(Gabinete de la reina)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="line-row"><span class="it">E Sara in questi orribili momenti</span><span class="es">¿Y Sara me abandona en estos momentos?</span></div>
+      <div class="line-row"><span class="it">Poté lasciarmi? - Al suo ducal palagio,</span><span class="es">En su Palacio Ducal</span></div>
+      <div class="line-row"><span class="it">Onde qui trarla s'affrettò Gualtiero,</span><span class="es">donde a buscarla se apresuró Gualtiero</span></div>
+      <div class="line-row"><span class="it">E ancor... De' suoi conforti</span><span class="es">no fue hallada...</span></div>
+      <div class="line-row"><span class="it">L'amistà mi sovvenga, io n'ho ben d'uopo...</span><span class="es">Que me ayude el consuelo de la amistad,</span></div>
+      <div class="line-row"><span class="it">Io sono donna alfine. - Il foco è spento</span><span class="es">no necesito más... al fin y al cabo soy mujer.</span></div>
+      <div class="line-row"><span class="it">Del mio furor...</span><span class="es">El fuego de mi ira se ha apagado...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Dame</span></span>
+        <span class="character-name">Damas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Stan nel turbato aspetto</span><span class="es">Huellas de gran sufrimiento</span></div>
+      <div class="line-row"><span class="it">d'alto martir le impronte.</span><span class="es">se ven en su turbado aspecto.</span></div>
+      <div class="line-row"><span class="it">Più non le brilla in fronte</span><span class="es">Ya no brilla en su frente</span></div>
+      <div class="line-row"><span class="it">L'usata maestà!...</span><span class="es">su acostumbrada grandeza.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Vana la speme</span><span class="es">Que mi esperanza no sea en vano...</span></div>
+      <div class="line-row"><span class="it">Non fia... presso a morir, l'augusta gemma</span><span class="es">cercano a la muerte, él me entregará</span></div>
+      <div class="line-row"><span class="it">Ei recar mi farà. - Pentito il veggo</span><span class="es">el augusto anillo...</span></div>
+      <div class="line-row"><span class="it">Alla presenza mia...</span><span class="es">Arrepentido le veo ante mi presencia...</span></div>
+      <div class="line-row"><span class="it">Pur... fugge il tempo...</span><span class="es">Y sin embargo... el tiempo se escapa.</span></div>
+      <div class="line-row"><span class="it">Vorrei fermar gl'istanti. - E se la morte,</span><span class="es">Quisiera parar el tiempo...</span></div>
+      <div class="line-row"><span class="it">Ond'esser fido alla rival, scegliesse?...</span><span class="es">¿Y si prefiriese morir para seguir fiel a mi rival?</span></div>
+      <div class="line-row"><span class="it">Oh truce idea funesta!</span><span class="es">¡Oh, atroz idea funesta!</span></div>
+      <div class="line-row"><span class="it">Se già s'appressa al palco?...</span><span class="es">¿Y si marchase ya hacia el patíbulo?...</span></div>
+      <div class="line-row"><span class="it">Ahi crudo!...arresta!</span><span class="es">¡Ah, cruel!... ¡Detente!</span></div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="line-row"><span class="it">Vivi, ingrato, a lei d'accanto,</span><span class="es">Vive, ingrato, a su lado,</span></div>
+      <div class="line-row"><span class="it">Il mio core a te perdona...</span><span class="es">mi corazón te perdona...</span></div>
+      <div class="line-row"><span class="it">Vivi, o crudo, e m'abbandona</span><span class="es">Vive, ¡oh, cruel! y abandóname</span></div>
+      <div class="line-row"><span class="it">In eterno a sospirar...</span><span class="es">para siempre a mis suspiros!...</span></div>
+      <div class="line-row"><span class="it">Ah! si celi questo pianto,</span><span class="es">¡Ah, escondamos estas lágrimas!</span></div>
+      <div class="line-row"><span class="it">Ah! non sia chi dica in terra:</span><span class="es">¡Ah, que no se diga en la tierra:</span></div>
+      <div class="line-row"><span class="it">La regina d'Inghilterra</span><span class="es">que a la reina de Inglaterra</span></div>
+      <div class="line-row"><span class="it">Ho veduto lagrimar.</span><span class="es">se la ha visto llorar!</span></div>
+      <div class="scene-heading">
+        <span>Scena Settima</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="line-row"><span class="it">Che m'apporti?</span><span class="es">¿Qué me traes?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Quell'indegno al supplizio s'incammina.</span><span class="es">El indigno ya se encamina al suplicio.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ciel!...</span><span class="es">¡Cielos!..</span></div>
+      <div class="stage-direction">
+        <span>(a Cecil)</span>
+        <span class="es">(a Cecil)</span>
+      </div>
+      <div class="line-row"><span class="it">Né diede qualche pegno</span><span class="es">¿No dio ninguna prenda</span></div>
+      <div class="line-row"><span class="it">Da recarsi alla regina?</span><span class="es">para entregar a la Reina?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">Nulla diede</span><span class="es">Nada dio.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sè)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ingrato!</span><span class="es">¡Ingrato!</span></div>
+      <div class="line-row"><span class="it">Alcun s'appressa.</span><span class="es">Alguien se acerca.</span></div>
+      <div class="line-row"><span class="it">Deh! si vegga...</span><span class="es">¡Dios! Veamos...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cecil">Cecil</span></span>
+        <span class="character-name">Cecil</span>
+      </div>
+      <div class="line-row"><span class="it">È la duchessa!...</span><span class="es">¡Es la duquesa!...</span></div>
+      <div class="scene-heading">
+        <span>Scena Ottava</span>
+        <span>Escena Octava</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Sara sporge verso la regina l'anello d'Essex)</span>
+        <span class="es">(Sara entrega a la reina el anillo de Essex)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Questa gemma d'onde avesti?</span><span class="es">¿Por qué tienes este anillo?</span></div>
+      <div class="line-row"><span class="it">Quali smanie! Quel pallore!</span><span class="es">¡Qué agitación! ¡Qué palidez!</span></div>
+      <div class="line-row"><span class="it">Oh sospetto!... E che, potresti?...</span><span class="es">¿Qué sospecha? ¿Has podido?...</span></div>
+      <div class="line-row"><span class="it">Forse?... Ah! parla.</span><span class="es">¿Acaso?... ¡Ah, habla!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Il mio terrore...</span><span class="es">Mi terror... lo dice... todo...</span></div>
+      <div class="line-row"><span class="it">Tutto... dice... io son!...</span><span class="es">Yo soy...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Finisci.</span><span class="es">Acaba.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Tua rivale...</span><span class="es">Tu rival...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Ah!...</span><span class="es">¡Ah!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sara">Sara</span></span>
+        <span class="character-name">Sara</span>
+      </div>
+      <div class="line-row"><span class="it">Me punisci, ma... del conte serba i giorni...</span><span class="es">Castígame pero asegura los días del conde...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ai cavalieri)</span>
+        <span class="es">(a sus Caballeros)</span>
+      </div>
+      <div class="line-row"><span class="it">Deh! Correte... deh! Volate...</span><span class="es">¡Ah, corred!... ¡Ah, volad!...</span></div>
+      <div class="line-row"><span class="it">Pur ch'ei vivo a me ritorni,</span><span class="es">¡Quien me lo traiga vivo</span></div>
+      <div class="line-row"><span class="it">Il mio serto domandate.</span><span class="es">suya será la corona!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Cavalieri</span></span>
+        <span class="character-name">Caballeros</span>
+      </div>
+      <div class="line-row"><span class="it">Ciel, ne arrida il tuo favore...</span><span class="es">¡Cielos, tu favor nos sonríe!...</span></div>
+      <div class="scene-heading">
+        <span>Scena Ultima</span>
+        <span>Escena Última</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Rimbomba un colpo di cannone)</span>
+        <span class="es">(Resuena un cañonazo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Egli è spento.</span><span class="es">Él ha muerto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Gli Altri</span></span>
+        <span class="character-name">Los Demás</span>
+      </div>
+      <div class="line-row"><span class="it">Qual terror!</span><span class="es">¡Qué horror!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(S'avvicina a Sara,</span>
+        <span class="es">(Se acerca a Sara,</span>
+        <span>convulsa di rabbia e affanno.)</span>
+        <span class="es">convulsa de ira y dolor)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu perversa... tu soltanto</span><span class="es">¡Tú, perversa!...</span></div>
+      <div class="line-row"><span class="it">Lo spingesti nell'avello!...</span><span class="es">¡Sólo tú lo empujaste a la tumba!</span></div>
+      <div class="line-row"><span class="it">Onde mai tardar cotanto</span><span class="es">¿Por qué has tardado tanto</span></div>
+      <div class="line-row"><span class="it">A recarmi questo anello?</span><span class="es">en entregarme este anillo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="nottingham">Nottingham</span></span>
+        <span class="character-name">Nottingham</span>
+      </div>
+      <div class="line-row"><span class="it">Io, regina, io fu soltanto.</span><span class="es">¡Yo he sido, reina, he sido yo!</span></div>
+      <div class="line-row"><span class="it">Fui trafitto nell'onor.</span><span class="es">Mi honor fue traicionado.</span></div>
+      <div class="line-row"><span class="it">Sangue volli, e sangue ottenni.</span><span class="es">Sangre quería y sangre conseguí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Sara)</span>
+        <span class="es">(a Sara)</span>
+      </div>
+      <div class="line-row"><span class="it">Alma rea!</span><span class="es">¡Alma culpable!</span></div>
+      <div class="stage-direction">
+        <span>(a Nottingham)</span>
+        <span class="es">(a Nottingham)</span>
+      </div>
+      <div class="line-row"><span class="it">Spietato cor!</span><span class="es">¡Corazón despiadado!</span></div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="line-row"><span class="it">Quel sangue versato - al cielo s'innalza,</span><span class="es">Esa sangre derramada sube al cielo</span></div>
+      <div class="line-row"><span class="it">Giustizia domanda, - reclama vendetta;</span><span class="es">y pide justicia y venganza.</span></div>
+      <div class="line-row"><span class="it">Già l'angiol di morte - fremente v'incalza,</span><span class="es">¡El ángel de la muerte, airado os perseguirá!</span></div>
+      <div class="line-row"><span class="it">Supplizio inaudito - entrambi v'aspetta;</span><span class="es">¡Suplicio inaudito os espera a ambos!</span></div>
+      <div class="line-row"><span class="it">Sì vil tradimento - delitto sì reo,</span><span class="es">¡Sí, traición tan vil, delito tan culpable,</span></div>
+      <div class="line-row"><span class="it">Clemenza non merta, - non merta pietà.</span><span class="es">no merece clemencia, no merece piedad!</span></div>
+      <div class="line-row"><span class="it">Nell'ultimo istante - volgetevi a Dio,</span><span class="es">En el último momento dirigiros a Dios,</span></div>
+      <div class="line-row"><span class="it">Ei forse perdono - conceder potrà.</span><span class="es">quizá Él pueda concederos el perdón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Ti calma, rammenta le cure del soglio:</span><span class="es">Cálmate, piensa en el consuelo del trono.</span></div>
+      <div class="line-row"><span class="it">Chi regna, lo sai, non vive per sé.</span><span class="es">Quien reina, lo sabes, no vive para sí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Tacete: non regno, non vivo.</span><span class="es">¡Callad; no reino, no vivo!</span></div>
+      <div class="line-row"><span class="it">Uscite...</span><span class="es">¡Dejadme sola!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="it">Regina!</span><span class="es">¡Reina!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="elisabetta">Elisabetta</span></span>
+        <span class="character-name">Isabel</span>
+      </div>
+      <div class="line-row"><span class="it">Tacete, mirate:</span><span class="es">¡Callad!</span></div>
+      <div class="stage-direction">
+        <span>(Come atterrita da spaventevole visione)</span>
+        <span class="es">(Como aterrorizada por visiones espantosas)</span>
+      </div>
+      <div class="line-row"><span class="it">Quel palco di sangue rosseggia,</span><span class="es">¡Mirad como ese patíbulo enrojece de sangre</span></div>
+      <div class="line-row"><span class="it">È tutto di sangue quel serto bagnato,</span><span class="es">y esta corona está toda bañada en sangre!</span></div>
+      <div class="line-row"><span class="it">Un orrido spettro percorre la reggia,</span><span class="es">¡Un espectro terrible recorre la corte</span></div>
+      <div class="line-row"><span class="it">Tenendo nel pugno il capo troncato,</span><span class="es">llevando en la mano su cabeza cortada!</span></div>
+      <div class="line-row"><span class="it">Di gemiti e grida il cielo rimbomba,</span><span class="es">¡Resuenan gemidos y gritos en el cielo!</span></div>
+      <div class="line-row"><span class="it">Pallente del giorno la luce si fe'.</span><span class="es">¡La luz del día empalidece!</span></div>
+      <div class="line-row"><span class="it">Ov'era il mio trono s'innalza una tomba!</span><span class="es">¡En el lugar del trono se erige una tumba!</span></div>
+      <div class="line-row"><span class="it">In quella discendo, fu schiusa per me.</span><span class="es">A ella desciendo, fue abierta para mí.</span></div>
+      <div class="line-row"><span class="it">Partite, lo voglio.</span><span class="es">¡Dejadme sola, os lo ordeno!</span></div>
+      <div class="line-row"><span class="it">Dell'anglica terra sia Giacomo il re.</span><span class="es">Que Jacobo sea el rey de Inglaterra.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  mackerras_sills: {
+    label: "Roberto Devereux \u00b7 Mackerras / Sills",
+    short: "Mackerras / Sills",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Overture", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Geme! ...pallor funereo", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 3, title: "All'afflito e dolce il pianto", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 4, title: "Duchessa, alle fervide preci", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 5, title: "L'amor suo mi f\u00e8 beata", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 6, title: "Nunzio son del Parlamento . . . Ah, ritorna qual ti spero", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 7, title: "Donna reale, a' piedi tuoi", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 8, title: "Un tenero core", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 9, title: "Roberto... Che? ...fra le tue braccia!", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 10, title: "Forse in quel cor sensibile", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 11, title: "Duca, vieni...", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 12, title: "Qui ribelle ognum ti chiama", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 13, title: "Tutto e silenzio", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 14, title: "Dacche tornasti, ahi misera!", act: "Act I", has_block: true },
+      { id: "t14", cd: 2, track: 1, title: "L'ore trascorrono", act: "Act II", has_block: true },
+      { id: "t15", cd: 2, track: 2, title: "Ebben?", act: "Act II", has_block: true },
+      { id: "t16", cd: 2, track: 3, title: "Segui!...", act: "Act II", has_block: true },
+      { id: "t17", cd: 2, track: 4, title: "Non venni mai si mesto", act: "Act II", has_block: true },
+      { id: "t18", cd: 2, track: 5, title: "Ecco l'indegno!...", act: "Act II", has_block: true },
+      { id: "t19", cd: 2, track: 6, title: "Scellerato!... Malvagio!...", act: "Act II", has_block: true },
+      { id: "t20", cd: 2, track: 7, title: "Va, la morte sul capo ti pende", act: "Act II", has_block: true },
+      { id: "t21", cd: 2, track: 8, title: "N\u00e8 riede ancora il mio consorte!", act: "Act III", has_block: true },
+      { id: "t22", cd: 2, track: 9, title: "Non sai che un nume vindice", act: "Act III", has_block: true },
+      { id: "t23", cd: 2, track: 10, title: "Ed ancor la tremenda porta", act: "Act III", has_block: true },
+      { id: "t24", cd: 2, track: 11, title: "A te diro' negli ultimi singhiozzi", act: "Act III", has_block: true },
+      { id: "t25", cd: 2, track: 12, title: "Bagnato il sen di lagrime", act: "Act III", has_block: true },
+      { id: "t26", cd: 2, track: 13, title: "E Sara in questi orribili momenti", act: "Act III", has_block: true },
+      { id: "t27", cd: 2, track: 14, title: "Vivi, ingrato, a lei d'accanto", act: "Act III", has_block: true },
+      { id: "t28", cd: 2, track: 15, title: "Che m'apporti?", act: "Act III", has_block: true },
+      { id: "t29", cd: 2, track: 16, title: "Quel sangue versato al ciel", act: "Act III", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Atto I",
+    "Act II": "Atto II",
+    "Act III": "Atto III"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t14",
+    "Act III": "t21"
+  };
+
+  const CHARACTERS = [
+    { id: "roberto-devereux", name: "Roberto Devereux", voice: "Tenor", description: "Conde de Essex" },
+    { id: "elisabetta", name: "Elisabetta", voice: "Soprano", description: "Reina de Inglaterra" },
+    { id: "sara", name: "Sara", voice: "Mezzo-soprano", description: "Amante de Roberto" },
+    { id: "nottingham", name: "Duca di Nottingham", voice: "Baritone", description: "Esposo de Sara" },
+    { id: "cecil", name: "Lord Cecil", voice: "Tenor", description: "Consejero Real" },
+    { id: "raleigh", name: "Sir Gualtiero Raleigh", voice: "Baritone", description: "Consejero Real" },
+    { id: "paggio", name: "Paggio", voice: "Soprano", description: "Paje" }
+  ];
+
+  const CAST = {
+    mackerras_sills: { "elisabetta": "Beverly Sills", "nottingham": "Peter Glossop", "sara": "Beverly Wolff", "roberto-devereux": "R\u00f3bert Ilosfalvy", "cecil": "Kenneth MacDonald", "raleigh": "Don Garrard", "paggio": "Gwynne Howell" }
+  };
+
+  let activeRecording = "mackerras_sills";
+  let currentActiveId = "t1";
+  let observer = null;
+
+  function openIndex() {
+    if (window.innerWidth <= 600) {
+      openBottomSheet();
+    } else {
+      openDrawer();
+    }
+  }
+
+  function openDrawer() {
+    closeCast();
+    buildDrawer();
+    document.getElementById('overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    document.getElementById('overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function jumpTo(id) {
+    closeDrawer();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  function openCast() {
+    closeDrawer();
+    buildCast();
+    document.getElementById('castOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCast() {
+    document.getElementById('castOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeDrawer();
+    closeCast();
+    closeCastSheet();
+  });
+
+  function toggleSwitcher(event) {
+    event.stopPropagation();
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    if (dd.classList.contains('open')) {
+      dd.classList.remove('open');
+    } else {
+      dd.classList.add('open');
+      setTimeout(() => document.addEventListener('click', closeSwitcherOnOutside, { once: true }), 0);
+    }
+  }
+  function closeSwitcherOnOutside() {
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function buildSwitcherDropdown() {
+    const dd = document.getElementById('recDropdown');
+    if (!dd) return;
+    dd.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<div class="recording-option${key === activeRecording ? ' active' : ''}" onclick="switchRecording('${key}')">${rec.label}</div>`
+    ).join('');
+  }
+
+  function buildDrawer() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('drawerBody');
+    let html = '';
+    let lastGroup = null;
+
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+
+    body.innerHTML = html;
+  }
+
+  function buildCast() {
+    const cast = CAST[activeRecording];
+    const tbody = document.getElementById('castTableBody');
+    tbody.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      return `<tr>
+        <td>
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+          <div class="cast-description">${ch.description}</div>
+        </td>
+        <td>
+          ${singer
+            ? `<div class="cast-singer">${singer}</div>`
+            : `<div class="cast-singer empty">—</div>`}
+        </td>
+      </tr>`;
+    }).join('');
+  }
+
+  function applyTooltips() {
+    const cast = CAST[activeRecording];
+    document.querySelectorAll('.character-name.has-tooltip').forEach(el => {
+      const id = el.dataset.characterId;
+      const ch = CHARACTERS.find(c => c.id === id);
+      if (!ch) return;
+      const singer = cast[id];
+      el.setAttribute('data-tooltip',
+        singer ? `${ch.voice}\u2002·\u2002${singer}` : ch.voice
+      );
+    });
+  }
+
+  function updateTrackTags() {
+    document.querySelectorAll('.track-tag').forEach(tag => { tag.style.visibility = 'hidden'; });
+    const rec = RECORDINGS[activeRecording];
+    const seen = new Set();
+    for (const t of rec.tracks) {
+      if (!t.has_block) continue;
+      const suffix = t.id.slice(1);
+      if (seen.has(suffix)) continue;
+      seen.add(suffix);
+      const tc = document.getElementById('tc' + suffix);
+      if (!tc) continue;
+      const tag = tc.querySelector('.track-tag');
+      if (!tag) continue;
+      tag.style.visibility = 'visible';
+      tag.innerHTML = `<span class="track-tag-cd">CD${t.cd}</span><span class="track-tag-num">${t.track}</span>`;
+    }
+  }
+
+  function scrollToCurrentAct() {
+    const rec = RECORDINGS[activeRecording];
+    const track = rec.tracks.find(t => t.id === currentActiveId);
+    if (!track) return;
+    const startId = ACT_STARTS[track.act];
+    if (!startId) return;
+    const el = document.getElementById(startId);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function switchRecording(key) {
+    activeRecording = key;
+    const lbl = document.getElementById('recordingLabel');
+    if (lbl) lbl.textContent = RECORDINGS[key].label;
+    updateTrackTags();
+    buildMobileTrackMarkers();
+    buildDrawer();
+    buildSwitcherDropdown();
+    const dd = document.getElementById('recDropdown');
+    if (dd) dd.classList.remove('open');
+    scrollToCurrentAct();
+    updateActive(currentActiveId);
+    applyTooltips();
+    if (document.getElementById('castOverlay').classList.contains('open')) {
+      buildCast();
+    }
+    if (document.getElementById('castSheetOverlay').classList.contains('open')) {
+      buildCastSheet();
+    }
+  }
+
+  function updateActive(activeId) {
+    currentActiveId = activeId;
+    const rec = RECORDINGS[activeRecording];
+    const t = rec.tracks.find(t => t.id === activeId) || rec.tracks[0];
+    if (!t) return;
+    const trackLabel = document.getElementById('trackLabel');
+    if (trackLabel) trackLabel.textContent = 'CD ' + t.cd + ' · T' + t.track;
+    const trackTitle = document.getElementById('trackTitle');
+    if (trackTitle) trackTitle.textContent = t.title;
+    const actLabel = document.getElementById('actLabel');
+    if (actLabel) actLabel.textContent = ACT_DISPLAY[t.act] || t.act;
+    document.querySelectorAll('.drawer-track').forEach(el => el.classList.remove('active'));
+    const idx = document.getElementById('idx-' + activeId);
+    if (idx) idx.classList.add('active');
+  }
+
+  function rewireObserver() {
+    if (observer) observer.disconnect();
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) updateActive(e.target.id); });
+    }, { rootMargin: '-5% 0px -85% 0px', threshold: 0 });
+
+    const rec = RECORDINGS[activeRecording];
+    rec.tracks.forEach(t => {
+      const el = document.getElementById(t.id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  const mobileLangState = { it: true, es: true };
+
+  function toggleLang(lang) {
+    const langs = Object.keys(mobileLangState);
+    const hasOtherOn = langs.some(l => l !== lang && mobileLangState[l]);
+    if (mobileLangState[lang] && !hasOtherOn) return;
+    const barBottom = document.getElementById('contextBar').getBoundingClientRect().bottom;
+    const anchor = [...document.querySelectorAll('.line-row, .character-row, .scene-heading, .musical-number')]
+      .find(el => el.getBoundingClientRect().top >= barBottom);
+    const anchorOffset = anchor ? anchor.getBoundingClientRect().top : null;
+    mobileLangState[lang] = !mobileLangState[lang];
+    applyLangFilter();
+    if (anchor !== undefined && anchorOffset !== null) {
+      window.scrollBy(0, anchor.getBoundingClientRect().top - anchorOffset);
+    }
+  }
+
+  function applyLangFilter() {
+    const body = document.querySelector('.libretto-body');
+    body.classList.toggle('it-hidden', !mobileLangState.it);
+    document.getElementById('mobileBtnIT').classList.toggle('off', !mobileLangState.it);
+    body.classList.toggle('es-hidden', !mobileLangState.es);
+    document.getElementById('mobileBtnES').classList.toggle('off', !mobileLangState.es);
+  }
+
+  function buildMobileTrackMarkers() {
+    document.querySelectorAll('.mobile-track-marker').forEach(el => el.remove());
+    const rec = RECORDINGS[activeRecording];
+    for (const t of [...rec.tracks].reverse()) {
+      const col = document.getElementById(t.id);
+      if (!col) continue;
+      const marker = document.createElement('span');
+      marker.className = 'mobile-track-marker';
+      marker.textContent = '· T' + t.track;
+      col.insertBefore(marker, col.firstChild);
+    }
+  }
+
+  function buildCastSheet() {
+    const cast = CAST[activeRecording];
+    const body = document.getElementById('castSheetBody');
+    body.innerHTML = CHARACTERS.map(ch => {
+      const singer = cast[ch.id];
+      const singerClass = singer ? 'cast-singer' : 'cast-singer empty';
+      const singerText = singer || '—';
+      return `<div class="cast-sheet-row">
+        <div class="cast-sheet-char">
+          <div class="cast-char-name">${ch.name}</div>
+          <div class="cast-voice">${ch.voice}</div>
+        </div>
+        <div class="${singerClass}">${singerText}</div>
+      </div>`;
+    }).join('');
+  }
+
+  function openCastSheet() {
+    buildCastSheet();
+    document.getElementById('castSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCastSheet() {
+    document.getElementById('castSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function buildSheetRecordingPicker() {
+    const picker = document.getElementById('sheetRecPicker');
+    if (!picker) return;
+    picker.innerHTML = Object.entries(RECORDINGS).map(([key, rec]) =>
+      `<button class="sheet-rec-btn${key === activeRecording ? ' active' : ''}" onclick="switchRecordingFromSheet('${key}')">${rec.short}</button>`
+    ).join('');
+  }
+
+  function switchRecordingFromSheet(key) {
+    if (key === activeRecording) return;
+    switchRecording(key);
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function buildBottomSheetBody() {
+    const rec = RECORDINGS[activeRecording];
+    const body = document.getElementById('bottomSheetBody');
+    let html = '';
+    let lastGroup = null;
+    for (const t of rec.tracks) {
+      const group = t.cd + '-' + t.act;
+      if (group !== lastGroup) {
+        html += `<div class="drawer-cd-label">Disc ${t.cd} — ${t.act}</div>`;
+        lastGroup = group;
+      }
+      const isActive = t.id === currentActiveId;
+      html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
+        <span class="drawer-track-num">${t.track}</span>
+        <div class="drawer-track-info">
+          <span class="drawer-track-title">${t.title}</span>
+          <span class="drawer-track-act">${t.act}</span>
+        </div>
+      </div>`;
+    }
+    body.innerHTML = html;
+  }
+
+  function buildBottomSheet() {
+    buildSheetRecordingPicker();
+    buildBottomSheetBody();
+  }
+
+  function openBottomSheet() {
+    buildBottomSheet();
+    document.getElementById('bottomSheetOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeBottomSheet() {
+    document.getElementById('bottomSheetOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function jumpToMobile(id) {
+    closeBottomSheet();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    updateActive(id);
+  }
+
+  buildSwitcherDropdown();
+  buildDrawer();
+  rewireObserver();
+  updateActive("t1");
+  applyTooltips();
+  buildMobileTrackMarkers();
+</script>
