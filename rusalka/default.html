@@ -1,0 +1,2382 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Jednání I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Prelude</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Rusalka · Mackerras / Fleming</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnCS" onclick="toggleLang('cs')">CS</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Jednání První</span>
+      <span>Acto Primero</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>(Palouk na kraji jezera. Kolem lesy, v nich</span>
+        <span class="es">(Un claro del bosque a orillas de un lago, donde</span>
+        <span>na břehu jezera chalupa Ježibaby. Měsíc</span>
+        <span class="es">se haya la choza de la hechicera. La luna brilla.</span>
+        <span>svítí. Na staré vrbě, jež se sklání k jezeru,</span>
+        <span class="es">Rusalka está sentada, pensativa y triste, sobre el</span>
+        <span>sedí Rusalka, smutně zamyšlena)</span>
+        <span class="es">viejo sauce llorón que se inclina sobre el lago)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Tři Lesní Žínky</span></span>
+        <span class="character-name">Las Tres Ninfas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(tančí na polouku)</span>
+        <span class="es">(Bailan en la pradera)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="line-row"><span class="cs">Hou, hou, hou</span><span class="es">¡Hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">stojí měsíc nad vodou!</span><span class="es">La luna brilla sobre el agua</span></div>
+      <div class="line-row"><span class="cs">Zvědavě se v hloubku dívá,</span><span class="es">y mira a las profundidades</span></div>
+      <div class="line-row"><span class="cs">po kameni ke dnu splývá,</span><span class="es">donde el Señor de las Aguas</span></div>
+      <div class="line-row"><span class="cs">hastrmánek hlavou kývá,</span><span class="es">mueve su cabeza.</span></div>
+      <div class="line-row"><span class="cs">hou, hou, hou,</span><span class="es">¡Hou, hou, hou,</span></div>
+      <div class="line-row"><span class="cs">starou hlavou zelenou.</span><span class="es">su vieja cabeza verde!</span></div>
+      <div class="line-row"><span class="cs">Hou, hou, bou,</span><span class="es">¡Hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">kdo to chodí nocí tou?</span><span class="es">¿Quién camina en la oscuridad?</span></div>
+      <div class="line-row"><span class="cs">Hastrmánku, měsíc stoupá,</span><span class="es">¡La luna sube, Hastrmán,</span></div>
+      <div class="line-row"><span class="cs">už se tobě v okně vloupá,</span><span class="es">y balanceándose en la ventana</span></div>
+      <div class="line-row"><span class="cs">ža chvíli se k tobě vloupá,</span><span class="es">en un instante entrará en tu casa!</span></div>
+      <div class="line-row"><span class="cs">hou, hou, hou,</span><span class="es">¡Hou, hou, hou,</span></div>
+      <div class="line-row"><span class="cs">ve tvou síňku stříbrmou!</span><span class="es">en tu habitación plateada!</span></div>
+      <div class="line-row"><span class="cs">Hou, bou, hou,</span><span class="es">¡Hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">měsíc bloudí nad vodou!</span><span class="es">Sobre los prados se desliza la luna,</span></div>
+      <div class="line-row"><span class="cs">Po jezeře tančí vánek,</span><span class="es">el viento acaricia la superficie del lago</span></div>
+      <div class="line-row"><span class="cs">probudil se hastrmánek,</span><span class="es">y el Señor de las Aguas se despierta.</span></div>
+      <div class="line-row"><span class="cs">hastrmánek, hastrmánek,</span><span class="es">Las burbujas ya suben desde el fondo,</span></div>
+      <div class="line-row"><span class="cs">hou, hou, hou,</span><span class="es">¡hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">bublinky už ze dna jdou.</span><span class="es">anunciando su presencia.</span></div>
+      <div class="stage-direction">
+        <span>(Vodník se vynoří</span>
+        <span class="es">(Lentamente, el Señor de las Aguas</span>
+        <span>a mne si oči)</span>
+        <span class="es">emerge frotándose los ojos).</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Lesní Žínky</span></span>
+        <span class="character-name">Las Ninfas</span>
+      </div>
+      <div class="line-row"><span class="cs">Hou, hou, hou,</span><span class="es">¡Hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">hastrmánek nad vodou!</span><span class="es">El Señor de las Aguas sale del agua.</span></div>
+      <div class="line-row"><span class="cs">Hastrmánek chce se ženit,</span><span class="es">Él quisiera casarse</span></div>
+      <div class="line-row"><span class="cs">která z vás chce vodu pěnit,</span><span class="es">con aquella de nosotras</span></div>
+      <div class="line-row"><span class="cs">dědka česat, lože změnit,</span><span class="es">que consintiera en peinar al viejo</span></div>
+      <div class="line-row"><span class="cs">hou, bou, hou,</span><span class="es">¡hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">s babkou hastrmanovou?</span><span class="es">y cambiar su cama por la de la vieja ondina.</span></div>
+      <div class="stage-direction">
+        <span>(Skotačí kolem</span>
+        <span class="es">(Bailan alrededor del viejo</span>
+        <span>Vodníka)</span>
+        <span class="es">mientras le hacen mil carantoñas)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="cs">I pěkně vítám z lesa k jezeru!</span><span class="es">¡Sed bienvenidas al bosque y al lago!</span></div>
+      <div class="line-row"><span class="cs">Jakž, je tam smutno bujným slečinkám?</span><span class="es">¿Os aburrís, juguetonas señoritas?</span></div>
+      <div class="line-row"><span class="cs">Mám dole na dnĕ samu nádheru</span><span class="es">¿Encontráis triste este bosque?</span></div>
+      <div class="line-row"><span class="cs">a zlatých rybek no pytle tam mám</span><span class="es">En el fondo del lago tengo mil y una maravillas,</span></div>
+      <div class="line-row"><span class="cs">rákosím se kmitnu,</span><span class="es">y cantidad de peces dorados.</span></div>
+      <div class="line-row"><span class="cs">ruku svou jen napnu,</span><span class="es">¡Veloz como un relámpago</span></div>
+      <div class="line-row"><span class="cs">po slečince chňapnu,</span><span class="es">alargaré mi hábil brazo</span></div>
+      <div class="line-row"><span class="cs">za nožky ji chytnu,</span><span class="es">y atraparé a una de vosotras</span></div>
+      <div class="line-row"><span class="cs">stáhnu si ji k nám!</span><span class="es">sumergiéndola hasta mi morada!</span></div>
+      <div class="stage-direction">
+        <span>(Lapá nemotorně po lesních žínkách)</span>
+        <span class="es">(Intenta torpemente atrapar a las ninfas)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Lesní Žínky</span></span>
+        <span class="character-name">Las Ninfas</span>
+      </div>
+      <div class="line-row"><span class="cs">Hastrmánku, heja hej,</span><span class="es">¡Hastrman, heya, hey,</span></div>
+      <div class="line-row"><span class="cs">tedy si nás nachytej!</span><span class="es">intenta atraparnos!</span></div>
+      <div class="line-row"><span class="cs">Hou, hou, hou</span><span class="es">¡Hou, hou, hou!</span></div>
+      <div class="line-row"><span class="cs">kterou chytíš, mužíčku,</span><span class="es">¡Aquella que atrapes, hombrecito,</span></div>
+      <div class="line-row"><span class="cs">da ti pěknou hubičku!</span><span class="es">te dará un dulce beso!</span></div>
+      <div class="line-row"><span class="cs">Ale žena, hahaha,</span><span class="es">¡Pero tu mujer, ha, ha, ha,</span></div>
+      <div class="line-row"><span class="cs">za uši ti vytahá!</span><span class="es">te tirará de las orejas!</span></div>
+      <div class="line-row"><span class="cs">Heja hej!</span><span class="es">¡Heya, hey!</span></div>
+      <div class="stage-direction">
+        <span>(Rozutekou se)</span>
+        <span class="es">(Escapan de él mientras ríen)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Uličnická havět!</span><span class="es">¡Chiquillas traviesas!</span></div>
+      <div class="line-row"><span class="cs">Kterak zbrkle pádí!</span><span class="es">¡Mirad cómo corren</span></div>
+      <div class="line-row"><span class="cs">Horem, dolem,</span><span class="es">por las colinas y los valles,</span></div>
+      <div class="line-row"><span class="cs">dolem, polem</span><span class="es">a través de los campos!...</span></div>
+      <div class="line-row"><span class="cs">inu, mládí, mládí!</span><span class="es">¡Oh, esta juventud, esta juventud!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="cs">Hastrmánku, tatíčku!</span><span class="es">¡Hastrmán, querido papá!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Kýho šlaka, dítĕ</span><span class="es">¿Por Dios, hija mía,</span></div>
+      <div class="line-row"><span class="cs">snad mi tady v měsíčku</span><span class="es">acaso quieres secar mis redes</span></div>
+      <div class="line-row"><span class="cs">nesušiš me sítĕ?</span><span class="es">a la luz de la luna?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Hastrmánku, tatíčku,</span><span class="es">¡Hastrmán, querido papá,</span></div>
+      <div class="line-row"><span class="cs">než se vody zpění,</span><span class="es">antes de sumergirte,</span></div>
+      <div class="line-row"><span class="cs">sečkej se mnou chviličku,</span><span class="es">quédate un momento aquí, conmigo,</span></div>
+      <div class="line-row"><span class="cs">af mi smutna není!</span><span class="es">para ahuyentar mi tristeza!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">I vida, smutno!</span><span class="es">¿Cómo? ¿Tú triste?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Všechno řeknu ti!</span><span class="es">¡Te lo contaré!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">A dole taky?</span><span class="es">¿Bajo las aguas también?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Smutno k zalknutí!</span><span class="es">¡Triste hasta casi morir!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Dole, kde je samý rej?</span><span class="es">¿Incluso abajo, donde reina la alegría?</span></div>
+      <div class="line-row"><span class="cs">Není možná! Povídej!</span><span class="es">¡No es posible! ¡Cuéntame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Chtěla bych od vás hlubin těch se zbýti,</span><span class="es">¡Quisiera irme, dejar estas profundidades,</span></div>
+      <div class="line-row"><span class="cs">člověkem být a v zlatém slunci žíti!</span><span class="es">convertirme en mujer y vivir bajo el dorado sol!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Mohu-liž věřit vlastním uším svým?</span><span class="es">¿Puedo creer lo que oyen mis oídos?</span></div>
+      <div class="line-row"><span class="cs">Člověkem býti? Tvorem smrtelným?</span><span class="es">¿Convertirte en mujer?... ¿En un ser mortal?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Sám vyprávěls ty zvěsti neznámé,</span><span class="es">¡Tú me has contado esas historias!</span></div>
+      <div class="line-row"><span class="cs">že mají duši, které nemáme,</span><span class="es">Nosotros no tenemos alma,</span></div>
+      <div class="line-row"><span class="cs">a duše lidí že jde nebi vstříc,</span><span class="es">pero ellos tienen una</span></div>
+      <div class="line-row"><span class="cs">když člověk zhyne a když znikne v nic!</span><span class="es">que va al cielo cuando mueren.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Dokud rodná kolébá tĕ vino,</span><span class="es">Mientras estés con los tuyos,</span></div>
+      <div class="line-row"><span class="cs">nechtěj duši,</span><span class="es">no te preocupes por su alma</span></div>
+      <div class="line-row"><span class="cs">ta je hříchu plna!</span><span class="es">pues ¡está llena de pecados!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">A pina lásky!</span><span class="es">¡Pero también de amor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Vodo pravěká</span><span class="es">¡Por Neptuno y nuestras aguas!</span></div>
+      <div class="line-row"><span class="cs">snad nemiluješ, dítĕ, člověka?</span><span class="es">¿No estarás enamorada de un hombre? ¡Dime!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="line-row"><span class="cs">Sem často přichází</span><span class="es">Él viene aquí a menudo</span></div>
+      <div class="line-row"><span class="cs">a v objetí mé stoupá,</span><span class="es">buscando mi abrazo;</span></div>
+      <div class="line-row"><span class="cs">šat shodí no hrázi</span><span class="es">deja su ropa en la orilla</span></div>
+      <div class="line-row"><span class="cs">a v loktech mých se koupá.</span><span class="es">y se baña en mis brazos.</span></div>
+      <div class="line-row"><span class="cs">Leč pouhou vlnou jsem,</span><span class="es">Pero yo no soy más que una ola</span></div>
+      <div class="line-row"><span class="cs">mou bytast nesmí zĭĭti,</span><span class="es">y no puede verme.</span></div>
+      <div class="line-row"><span class="cs">ó vím, že člověkem</span><span class="es">¡Sé que debería</span></div>
+      <div class="line-row"><span class="cs">dřív musila bych býti,</span><span class="es">convertirme en mujer</span></div>
+      <div class="line-row"><span class="cs">jak já jej objímám</span><span class="es">para que pudiera abrazarme</span></div>
+      <div class="line-row"><span class="cs">a vinu já jej v ruce,</span><span class="es">y besarme,</span></div>
+      <div class="line-row"><span class="cs">by on mne objal sám</span><span class="es">al igual que yo cuando</span></div>
+      <div class="line-row"><span class="cs">a zulíbal mne prudce!</span><span class="es">lo estrecho y rodeo con mis brazos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Dítĕ, dítĕ, z noci do noci</span><span class="es">¡Oh, hija mía, hija mía,</span></div>
+      <div class="line-row"><span class="cs">tvoje sestry budou pro tebe plakat</span><span class="es">tus hermanas van a llorar tu suerte,</span></div>
+      <div class="line-row"><span class="cs">už ti není pomoci,</span><span class="es">pues nadie podrá hacer nada por ti</span></div>
+      <div class="line-row"><span class="cs">člověk-li tĕ v svou moc doved' zlákat!</span><span class="es">si un hombre te atrapa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Hastrmánku, mužíčku,</span><span class="es">Hastrmán, Señor de las Aguas,</span></div>
+      <div class="line-row"><span class="cs">on mne musí zočit</span><span class="es">es preciso que él pueda verme.</span></div>
+      <div class="line-row"><span class="cs">pověz, pověz, tatíčku,</span><span class="es">Dime querido papá,</span></div>
+      <div class="line-row"><span class="cs">co mám, smutná, počít?</span><span class="es">¿qué puedo hacer en mi desesperación?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Ztracena, ztracena do věků,</span><span class="es">¡Estarás perdida, perdida para siempre,</span></div>
+      <div class="line-row"><span class="cs">prodána, prodána člověku!</span><span class="es">si te vendes a un hombre!</span></div>
+      <div class="line-row"><span class="cs">Marno je lákat tĕ dolů v rej</span><span class="es">Inútil persuadirte para que vuelvas.</span></div>
+      <div class="line-row"><span class="cs">Ježibabu si zavolej,</span><span class="es">¡Ve! ¡Llama pues a la hechicera,</span></div>
+      <div class="line-row"><span class="cs">ubohá Rusalko bledá!</span><span class="es">mi pobre y pequeña Rusalka!</span></div>
+      <div class="stage-direction">
+        <span>(Potápí se)</span>
+        <span class="es">(zambulléndose en el lago)</span>
+      </div>
+      <div class="line-row"><span class="cs">Běda! Běda! Běda!</span><span class="es">¡Qué desgracia!</span></div>
+      <div class="stage-direction">
+        <span>(Zmizí pod vodou)</span>
+        <span class="es">(Desaparece bajo el agua)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="cs">Měsíčku no nebi hlubokém,</span><span class="es">Luna, que con tu luz iluminas todo</span></div>
+      <div class="line-row"><span class="cs">světlo tvé daleko vidí,</span><span class="es">desde las profundidades del cielo</span></div>
+      <div class="line-row"><span class="cs">po světě bloudíš širokém,</span><span class="es">y vagas por la superficie de la tierra</span></div>
+      <div class="line-row"><span class="cs">díváš se v příbytky lidí.</span><span class="es">bañando con tu mirada el hogar de los hombres.</span></div>
+      <div class="line-row"><span class="cs">Měsíčku, postůj chvíli,</span><span class="es">¡Luna, detente un momento</span></div>
+      <div class="line-row"><span class="cs">řekni mi, kde je můj milý!</span><span class="es">y dime dónde se encuentra mi amor!</span></div>
+      <div class="line-row"><span class="cs">Řekni mu, stříbrný měsíčku,</span><span class="es">Dile, luna plateada,</span></div>
+      <div class="line-row"><span class="cs">mé že jej objímá rámě,</span><span class="es">que es mi brazo quien lo estrecha,</span></div>
+      <div class="line-row"><span class="cs">aby si alespoň chviličku</span><span class="es">para que se acuerde de mí</span></div>
+      <div class="line-row"><span class="cs">vzpomenul ve snění no mne.</span><span class="es">al menos un instante.</span></div>
+      <div class="line-row"><span class="cs">Zasvit mu do daleka,</span><span class="es">¡Búscalo por el vasto mundo</span></div>
+      <div class="line-row"><span class="cs">řekni mu, kdo tu naň čeká!</span><span class="es">y dile, dile que lo espero aquí!</span></div>
+      <div class="line-row"><span class="cs">O mně-li duše lidská sní,</span><span class="es">Y si soy yo con quien su alma sueña</span></div>
+      <div class="line-row"><span class="cs">af se tou vzpomínkou vzbudí!</span><span class="es">que este pensamiento lo despierte.</span></div>
+      <div class="line-row"><span class="cs">Měsíčku, nezhasni, nezhasni!</span><span class="es">¡Luna, no te vayas, no te vayas!</span></div>
+      <div class="stage-direction">
+        <span>(Měsíc zmizí v mracích)</span>
+        <span class="es">(La luna desaparece tras una nube)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="cs">Ta voda studí, ó studí!</span><span class="es">¡Qué fría está el agua!</span></div>
+      <div class="stage-direction">
+        <span>(Zachvěje se úzkostí.)</span>
+        <span class="es">(Se estremece de angustia)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ježibabo! Ježibabo!</span><span class="es">¡Hechicera! ¡Hechicera!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pod vodou)</span>
+        <span class="es">(Desde las profundidades)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ubohá Rusalko bledá!</span><span class="es">¡Mi pobre y pequeña Rusalka!</span></div>
+      <div class="line-row"><span class="cs">Běda! Běda! Běda!</span><span class="es">¡Qué desgracia!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(úpěnlivě)</span>
+        <span class="es">(Con insistencia)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ježibabo! Ježibabo!</span><span class="es">¡Hechicera! ¡Hechicera!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vyjde z chalupy a rozhlíží se)</span>
+        <span class="es">(Sale de su choza y mira a su alrededor)</span>
+      </div>
+      <div class="line-row"><span class="cs">Lkáním, štkáním, naříkáním</span><span class="es">¿Quién me despierta antes del alba</span></div>
+      <div class="line-row"><span class="cs">kdo mne budí před svítáním?</span><span class="es">con gemidos, sollozos y lágrimas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Ježibabo, léku dej mi,</span><span class="es">¡Hechicera, dame un remedio</span></div>
+      <div class="line-row"><span class="cs">vodní kouzlo se mne sejmi!</span><span class="es">para liberarme del poder del agua!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Slyším cosi, čichám cosi</span><span class="es">¡Oigo voces!</span></div>
+      <div class="line-row"><span class="cs">ozvi se a pověz, kdo jsi!</span><span class="es">¿Dime quién eres?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Rusalka jsem, vodní víla,</span><span class="es">Yo, Rusalka, el hada de las aguas.</span></div>
+      <div class="line-row"><span class="cs">dej mi léku, tetko milá!</span><span class="es">¡Dame un remedio, querida tía!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Jsi-li víla, zjev se hbitě,</span><span class="es">¡Si eres un hada, aparece,</span></div>
+      <div class="line-row"><span class="cs">ukaž se mi, krásné dítĕ!</span><span class="es">muéstrate, bella niña!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Vlnami jsem upoutána,</span><span class="es">Estoy prisionera en estas olas,</span></div>
+      <div class="line-row"><span class="cs">do leknínů zamotána.</span><span class="es">enredada entre los nenúfares.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Vytrhni se, cupy dupy,</span><span class="es">¡Suéltate enseguida,</span></div>
+      <div class="line-row"><span class="cs">pospěš ke mně do chalupa</span><span class="es">corre hacia mi choza!</span></div>
+      <div class="line-row"><span class="cs">pust ji, vlnko, pust ji ke mně,</span><span class="es">¡Ondas, dejadla partir,</span></div>
+      <div class="line-row"><span class="cs">af se nožky dotknou zemĕ!</span><span class="es">que sus pies toquen la tierra!</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka seskočí a namáhavě tape</span>
+        <span class="es">(Rusalka salta y con dificultad se aproxima</span>
+        <span>k Ježibabé)</span>
+        <span class="es">hasta la hechicera)</span>
+      </div>
+      <div class="line-row"><span class="cs">Nožičky, neste ji, Nožičky, držte ji</span><span class="es">¡Pequeños pies, sostenedla,</span></div>
+      <div class="line-row"><span class="cs">vida, jak nožičky chodit</span><span class="es">pequeños pies, llevadla!</span></div>
+      <div class="line-row"><span class="cs">už umějí!</span><span class="es">¡Sus pequeños pies ya saben caminar!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(klesne k nohám Ježibaby)</span>
+        <span class="es">(Postrada a los pies de la hechicera)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ježibabo, pomoz, pomoz!</span><span class="es">¡Hechicera! ¡Ayúdame!</span></div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="line-row"><span class="cs">Staletá moudrost tvá všechno vi,</span><span class="es">Tu sabiduría centenaria</span></div>
+      <div class="line-row"><span class="cs">proniklas přírody tajemství,</span><span class="es">conoce los secretos de la naturaleza.</span></div>
+      <div class="line-row"><span class="cs">za nací hlubokých o lidech sníš,</span><span class="es">Durante la noche sueñas con los hombres,</span></div>
+      <div class="line-row"><span class="cs">odvěkym živlům rozumíš,</span><span class="es">conoces los elementos eternos,</span></div>
+      <div class="line-row"><span class="cs">pozemské jedy, paprsky měsíce</span><span class="es">los venenos terrestres y los rayos de luna;</span></div>
+      <div class="line-row"><span class="cs">dovedeš svařit no léků tisíce,</span><span class="es">sabes preparar miles de pócimas,</span></div>
+      <div class="line-row"><span class="cs">dovedeš spojit, dovedeš bořit,</span><span class="es">sabes unir y separar, matar y crear,</span></div>
+      <div class="line-row"><span class="cs">dovedeš usmrtit, dovedeš stvořit</span><span class="es">tu sabiduría ancestral sabe transformar</span></div>
+      <div class="line-row"><span class="cs">člověka v příšeru, příšeru v člověka,</span><span class="es">al hombre en monstruo y al monstruo en hombre.</span></div>
+      <div class="line-row"><span class="cs">dovede proměnit moudrost tvá odvěká,</span><span class="es">Tus hechizos nocturnos asustan a las ninfas,</span></div>
+      <div class="line-row"><span class="cs">rusalky za noci hrozbou svou strašíš,</span><span class="es">consigues extraños remedios</span></div>
+      <div class="line-row"><span class="cs">pro lidské strasti divné léky snašíš,</span><span class="es">para nosotros y para los hombres;</span></div>
+      <div class="line-row"><span class="cs">pro nás i pro lidi ve světě dalekém</span><span class="es">y para ellos, representas a la vez</span></div>
+      <div class="line-row"><span class="cs">sama jsi živlem sama jsi člověkem,</span><span class="es">a los elementos y al ser humano.</span></div>
+      <div class="line-row"><span class="cs">se smrtí věčnost je věno tvé</span><span class="es">La muerte y la eternidad están en tu mano.</span></div>
+      <div class="line-row"><span class="cs">pomoz mi, pomoz mi, zázračná ženo!</span><span class="es">¡Ayúdame, ayúdame, tú que haces milagros!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">To já znám, to já znám,</span><span class="es">¡Sé todo acerca de eso</span></div>
+      <div class="line-row"><span class="cs">s takovou se chodí k nám!</span><span class="es">y por ello me alaban!</span></div>
+      <div class="line-row"><span class="cs">Ale slyš, pilně slyš,</span><span class="es">Pero escucha, escucha bien</span></div>
+      <div class="line-row"><span class="cs">nežli léku okusíš,</span><span class="es">antes de probar la poción,</span></div>
+      <div class="line-row"><span class="cs">perly máš, krásu máš,</span><span class="es">puesto que posees perlas y belleza...</span></div>
+      <div class="line-row"><span class="cs">pomohu-li, co mi dáš?</span><span class="es">¿Qué me darás si te ayudo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Vše, co mám, si vem,</span><span class="es">¡Toma todo lo que tengo,</span></div>
+      <div class="line-row"><span class="cs">ale udělej mne člověkem!</span><span class="es">pero haz de mí un ser humano!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">A nic víc? Pranic víc?</span><span class="es">¿Sólo eso?</span></div>
+      <div class="line-row"><span class="cs">Proto přišlas úpějíc?</span><span class="es">¿Y por eso has venido llorando?</span></div>
+      <div class="line-row"><span class="cs">Voda tĕ už omrzela,</span><span class="es">¿Acabas de dejar el agua</span></div>
+      <div class="line-row"><span class="cs">lidského jsi lačna těla,</span><span class="es">y deseas un cuerpo humano</span></div>
+      <div class="line-row"><span class="cs">milování, laškování,</span><span class="es">de amor y juegos,</span></div>
+      <div class="line-row"><span class="cs">hubiček a cukrování</span><span class="es">de besos y arrullos?</span></div>
+      <div class="line-row"><span class="cs">to já znám, to ja znám,</span><span class="es">¡Sé todo acerca de eso</span></div>
+      <div class="line-row"><span class="cs">s takovou se chodí k nám!</span><span class="es">y por ello me alaban!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="cs">Tvoje moudrost všechno tuší</span><span class="es">Tu sabiduría lo ha adivinado todo.</span></div>
+      <div class="line-row"><span class="cs">dej mi lidské tělo, lidskou duši!</span><span class="es">¡Dame un cuerpo y un alma humanos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Dám ti, dám,</span><span class="es">¡Te los daré</span></div>
+      <div class="line-row"><span class="cs">věz lo rarach sám!</span><span class="es">y que el diablo sirva de testigo!</span></div>
+      <div class="line-row"><span class="cs">Ale ty mi musíš dát</span><span class="es">Pero antes deberás darme</span></div>
+      <div class="line-row"><span class="cs">průsvitný svůj vodní šat</span><span class="es">tu vestido hecho de agua transparente</span></div>
+      <div class="line-row"><span class="cs">a když lásky neokusíš</span><span class="es">y si no encuentras el amor en la tierra,</span></div>
+      <div class="line-row"><span class="cs">no světě,</span><span class="es">deberás vivir repudiada y maldita</span></div>
+      <div class="line-row"><span class="cs">zavržena žití musíš</span><span class="es">en las profundidades.</span></div>
+      <div class="line-row"><span class="cs">v hlubinách zas prokletě!</span><span class="es">Si pierdes el amor al que aspira tu corazón,</span></div>
+      <div class="line-row"><span class="cs">Ztratíš-li tu lásku, po niž tvůj cit prahne,</span><span class="es">la maldición de los poderes del agua</span></div>
+      <div class="line-row"><span class="cs">kletba vodních mocí zas tĕ v hloubku stáhne,</span><span class="es">te arrastrará de nuevo al fondo del lago.</span></div>
+      <div class="line-row"><span class="cs">a než nabudeš ji, trpět budeš též,</span><span class="es">E incluso, si encuentras ese amor sufrirás,</span></div>
+      <div class="line-row"><span class="cs">pro všechen lidský sluch něma zůstaneš!</span><span class="es">pues para el oído humano ¡estarás muda!</span></div>
+      <div class="line-row"><span class="cs">Chceš být němá, chceš,</span><span class="es">¿Quieres estar muda</span></div>
+      <div class="line-row"><span class="cs">pro toho, jejž miluješ?</span><span class="es">para aquél a quien amas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Jeho-li lásku poznat smím,</span><span class="es">¡Si es para conseguir su amor</span></div>
+      <div class="line-row"><span class="cs">ráda, věř, pro něj oněmím!</span><span class="es">seré muda con placer!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Střez si ho, střez,</span><span class="es">¡Ten cuidado,</span></div>
+      <div class="line-row"><span class="cs">a věz to, věz,</span><span class="es">pues si regresas maldita</span></div>
+      <div class="line-row"><span class="cs">prokleta-li se vrátíš ve vodníkovu říš,</span><span class="es">al reino de las aguas,</span></div>
+      <div class="line-row"><span class="cs">miláčka svého také zahubíš!</span><span class="es">tu amado perecerá contigo!</span></div>
+      <div class="line-row"><span class="cs">Stane se navždy obětí</span><span class="es">¡Él será víctima de la maldición,</span></div>
+      <div class="line-row"><span class="cs">věčného tvého prokletí!</span><span class="es">eternamente!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Čistou duší, čistou lidskou duší</span><span class="es">¡Con un alma, con un alma humana pura,</span></div>
+      <div class="line-row"><span class="cs">moje láska všechna kouzla zruší!</span><span class="es">el amor vencerá todos los sortilegios!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Tedy pojd', honem pojd',</span><span class="es">¡Ven entonces, ven rápido,</span></div>
+      <div class="line-row"><span class="cs">do chaty mne vyprovod'!</span><span class="es">acompáñame hasta mi choza!</span></div>
+      <div class="line-row"><span class="cs">V krbu jedy navaříme,</span><span class="es">Allí prepararemos</span></div>
+      <div class="line-row"><span class="cs">rusalku tím napojíme.</span><span class="es">una poción para Rusalka.</span></div>
+      <div class="line-row"><span class="cs">Ale potom ani muk,</span><span class="es">Pero enseguida callarás.</span></div>
+      <div class="line-row"><span class="cs">čury mury fuk!</span><span class="es">¡Abracadabra!</span></div>
+      <div class="stage-direction">
+        <span>(Vejdou do chalupy, v jejímž okénku</span>
+        <span class="es">(Entran en la choza. En la pequeña ventana</span>
+        <span>zaplane červená záře. Proud jisker</span>
+        <span class="es">aparece un resplandor rojo. Centenares de</span>
+        <span>vyrazí komínem. Za chvíli lze slyšet</span>
+        <span class="es">chispas saltan de la chimenea. Se oye hervir</span>
+        <span>sykot v kotli. Do toho se mísí zaklínání</span>
+        <span class="es">el caldero y los encantamientos de la hechicera.</span>
+        <span>Ježibaby. Lesní žínky slyšíce to</span>
+        <span class="es">Esos sonidos atraen a las ninfas que salen del</span>
+        <span>vybíhají z lesa a postrašeny nahlížejí</span>
+        <span class="es">bosque curiosas, pero asustadas y miran a través</span>
+        <span>okénkem do chalupy)</span>
+        <span class="es">de la ventana).</span>
+      </div>
+      <div class="stage-direction">
+        <span>(v chalupě)</span>
+        <span class="es">(Desde el interior)</span>
+      </div>
+      <div class="line-row"><span class="cs">Čury mury fuk</span><span class="es">¡Abracadabra!</span></div>
+      <div class="line-row"><span class="cs">bílá pára vstává z luk!</span><span class="es">¡Una bruma blanca recorre los bosques!</span></div>
+      <div class="line-row"><span class="cs">Kapka krve dračí,</span><span class="es">¡Una gota de sangre de dragón,</span></div>
+      <div class="line-row"><span class="cs">deset kopek žlučí,</span><span class="es">dos gotas de bilis,</span></div>
+      <div class="line-row"><span class="cs">teplé srdce ptačí,</span><span class="es">un corazón de pájaro, caliente y aún palpitante!</span></div>
+      <div class="line-row"><span class="cs">už to z kofle hučí!</span><span class="es">¡Salta, gatito, salta y salta,</span></div>
+      <div class="line-row"><span class="cs">Skoč, můj mourku, skoč a skoč,</span><span class="es">mezcla esta poción en el caldero!</span></div>
+      <div class="line-row"><span class="cs">varem v kotli pozatoč!</span><span class="es">¡Salta, gatito, salta y salta,</span></div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="line-row"><span class="cs">Cury mury fuk,</span><span class="es">mezcla esta poción en el caldero!</span></div>
+      <div class="line-row"><span class="cs">nelekej se větších muk!</span><span class="es">¡Abracadabra!</span></div>
+      <div class="line-row"><span class="cs">Tot' tvé lidské věno,</span><span class="es">¡No tengas miedo a los sufrimientos más grandes!</span></div>
+      <div class="line-row"><span class="cs">a to musíš píti,</span><span class="es">¡Para alcanzar tu destino humano</span></div>
+      <div class="line-row"><span class="cs">tím, co uvařeno,</span><span class="es">deberás beber este potente filtro</span></div>
+      <div class="line-row"><span class="cs">jazyk zdřevění ti!</span><span class="es">que entumecerá tu lengua!</span></div>
+      <div class="line-row"><span class="cs">Skoč, můj mourku, hola hej,</span><span class="es">¡Salta, gatito, heya, hey,</span></div>
+      <div class="line-row"><span class="cs">v hrdlo jí tu šfávu vlej!</span><span class="es">vierte este filtro en su garganta!</span></div>
+      <div class="line-row"><span class="cs">Čury mury fuk,</span><span class="es">¡Abracadabra!</span></div>
+      <div class="line-row"><span class="cs">ale ted' už ani muk!</span><span class="es">Y ahora, ¡ni una palabra!</span></div>
+      <div class="stage-direction">
+        <span>(Divoký sykot v chalupě zvolna slábne.</span>
+        <span class="es">(El silbido de la bruma pierde fuerza poco</span>
+        <span>Lesní žínky se rozprchly. Obloha</span>
+        <span class="es">a poco. Las ninfas se dispersan. Amanece</span>
+        <span>se jasní, zdaleka znějí lovecké rohy)</span>
+        <span class="es">y se oyen a lo lejos unos cuernos de caza).</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(hluboko pod vodou)</span>
+        <span class="es">(Desde el fondo del agua)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ubohá Rusalko bledá!</span><span class="es">¡Pobre Rusalka!</span></div>
+      <div class="line-row"><span class="cs">Běda! Běda! Běda!</span><span class="es">¡Qué desgracia!</span></div>
+      <div class="stage-direction">
+        <span>(Lovecké rohy znějí stále</span>
+        <span class="es">(El sonido de los cuernos de caza se hace cada</span>
+        <span>zřetelněji, lovci se blíží. Je</span>
+        <span class="es">vez más fuerte. Los cazadores se acercan.</span>
+        <span>slyšet zpěv princova Lovce)</span>
+        <span class="es">Se oye cantar a un cazador del séquito)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="lovec">Lovec</span></span>
+        <span class="character-name">El Cazador</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zdaleka)</span>
+        <span class="es">(De lejos)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="cs">Jel mladý lovec, jel a jel,</span><span class="es">Un joven cazador caminaba y caminaba</span></div>
+      <div class="line-row"><span class="cs">laň bílou v lese uviděl.</span><span class="es">cuando de repente descubrió entre las ramas</span></div>
+      <div class="line-row"><span class="cs">Hluboké oči ta měla.</span><span class="es">a una cierva blanca de dulces ojos.</span></div>
+      <div class="line-row"><span class="cs">Zdali ji stihne má střela?</span><span class="es">- ¿Mi flecha la alcanzará? -</span></div>
+      <div class="line-row"><span class="cs">Ó, mladý lovče, dále spěj,</span><span class="es">¡Oh, joven cazador, sigue tu camino</span></div>
+      <div class="line-row"><span class="cs">tu bílou laňku nestřílej!</span><span class="es">y no tires sobre esta cierva blanca!</span></div>
+      <div class="line-row"><span class="cs">Varuj se jejího těla!</span><span class="es">¡Desconfía de su cuerpo blanco!</span></div>
+      <div class="line-row"><span class="cs">Zdali ji stihne má střela?</span><span class="es">- ¿Mi flecha la alcanzará? -</span></div>
+      <div class="stage-direction">
+        <span>(Lovecké rohy znovu znějí)</span>
+        <span class="es">(Los cuernos de caza resuenan de nuevo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vyrazí z lesa s kuší v ruce)</span>
+        <span class="es">(Sale del bosque con una ballesta en la mano)</span>
+      </div>
+      <div class="line-row"><span class="cs">Zde mihla se a zase zmizela!</span><span class="es">¡Ha desaparecido!</span></div>
+      <div class="line-row"><span class="cs">Horem a dolem, lesem a polem</span><span class="es">A través de colinas, valles, campos y bosques</span></div>
+      <div class="line-row"><span class="cs">podivná zvěř ta míhá se kolem</span><span class="es">una extraña criatura gira a mi alrededor.</span></div>
+      <div class="line-row"><span class="cs">a tady stopa znikla docela!</span><span class="es">Las huellas desaparecen aquí.</span></div>
+      <div class="line-row"><span class="cs">A tajemným vlněním potají</span><span class="es">Con sus ondas misteriosas</span></div>
+      <div class="line-row"><span class="cs">ty vody mne v lokty své lákají,</span><span class="es">esas aguas intentan atraerme,</span></div>
+      <div class="line-row"><span class="cs">jak bych měl divoký lovu cit</span><span class="es">como si quisieran con sus frescos brazos</span></div>
+      <div class="line-row"><span class="cs">v objetí jejich zas ochladit.</span><span class="es">apagar mi deseo de cazar.</span></div>
+      <div class="line-row"><span class="cs">Krok vázne mi, stesk cítím neznámý,</span><span class="es">Mi andar es pesado, el cansancio me vence</span></div>
+      <div class="line-row"><span class="cs">zbraň z unavené ruky padá mi,</span><span class="es">y mi arma cae de mi debilitada mano.</span></div>
+      <div class="line-row"><span class="cs">sotva lov začal, unavil mne vráz,</span><span class="es">¡Desde el comienzo de la caza sentí</span></div>
+      <div class="line-row"><span class="cs">divné to kouzlo zajalo mne zas!</span><span class="es">que una extraña magia se apoderaba de mí!</span></div>
+      <div class="stage-direction">
+        <span>(Lovci se blíží)</span>
+        <span class="es">(Los cazadores se acercan)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="lovec">Lovec</span></span>
+        <span class="character-name">El Cazazdor</span>
+      </div>
+      <div class="line-row"><span class="cs">Laň nebyla to lovče, stůj!</span><span class="es">¡No es una cierva, cazador, espera!</span></div>
+      <div class="line-row"><span class="cs">Bůh tvoji duši opatruj!</span><span class="es">¡Que Dios guarde y proteja tu alma!</span></div>
+      <div class="line-row"><span class="cs">Srdce tvé smutno le zcela!</span><span class="es">¡Estás atrapado!</span></div>
+      <div class="line-row"><span class="cs">Koho to stihla tvá střela!</span><span class="es">¿A quién ha alcanzado tu flecha?</span></div>
+      <div class="stage-direction">
+        <span>(Lovci vyjdou z lesa)</span>
+        <span class="es">(Algunos cazadores entran en escena)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="line-row"><span class="cs">Ustaňte v lovu, no hrad vrat'te se,</span><span class="es">¡Dejad la caza y volved al castillo!</span></div>
+      <div class="line-row"><span class="cs">podivné čáry bloudí po lese,</span><span class="es">Una magia extraña vaga por el bosque</span></div>
+      <div class="line-row"><span class="cs">divnější čáry v duši mám</span><span class="es">y otra, aún más extraña, invade mi alma.</span></div>
+      <div class="line-row"><span class="cs">domů vrat'te se, chci býti sám!</span><span class="es">¡Volved, deseo quedarme solo!</span></div>
+      <div class="stage-direction">
+        <span>(Lovci odcházejí. Princ usedne na</span>
+        <span class="es">(Los cazadores se van. El Príncipe se sienta al</span>
+        <span>břehu jezera, ale když vzhlédne,</span>
+        <span class="es">borde del lago, pero cuando levanta los ojos,</span>
+        <span>spatří Rusalku. Rusalka vyšla z</span>
+        <span class="es">ve ante él a Rusalka con apariencia humana.</span>
+        <span>chalupy. Je basa, v popelavých</span>
+        <span class="es">Ha salido de la choza de la hechicera descalza,</span>
+        <span>šatech nuzného dítěte. Krásné</span>
+        <span class="es">con una simple túnica, gris como la ceniza.</span>
+        <span>její zlaté vlasy hluboko splývají.</span>
+        <span class="es">Parece una niña. Sus bellos cabellos le caen</span>
+        <span>Je němá)</span>
+        <span class="es">sobre los hombros. Pero está muda)</span>
+        <span>(vyskočí)</span>
+        <span class="es">(Sobresaltado)</span>
+      </div>
+      <div class="line-row"><span class="cs">Vidino divná, přesladká,</span><span class="es">¡Oh, qué extraña y dulce visión!</span></div>
+      <div class="line-row"><span class="cs">jsi-li ty člověk nebo pohádka?</span><span class="es">¿Eres una mujer o un hada?</span></div>
+      <div class="line-row"><span class="cs">Přišla jsi chránit vzácné zvěři,</span><span class="es">¿Has venido a proteger a la extraña criatura</span></div>
+      <div class="line-row"><span class="cs">kterou jsem zahléd' v lesa šeři?</span><span class="es">que vi entre las sombras del bosque?</span></div>
+      <div class="line-row"><span class="cs">Přišla-lis prosit za ni,</span><span class="es">¿Has venido a interceder por ella,</span></div>
+      <div class="line-row"><span class="cs">sestřičko bílých laní?</span><span class="es">por la pequeña cierva blanca?</span></div>
+      <div class="line-row"><span class="cs">Anebo sama, jak vstříč mi jdeš</span><span class="es">¿O viniendo a mi encuentro</span></div>
+      <div class="line-row"><span class="cs">kořistí lovcovou býti chceš?</span><span class="es">quieres ofrecerte en botín al cazador?</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka vztáhne k němu němě ruce)</span>
+        <span class="es">(Rusalka, sin hablar, tiende sus brazos hacia él)</span>
+      </div>
+      <div class="line-row"><span class="cs">Svírá ti ústa tajemství,</span><span class="es">¿Es que un secreto ha cosido tu boca?</span></div>
+      <div class="line-row"><span class="cs">či navždy jazyk tvůj ztich'?</span><span class="es">¿Acaso tu lengua está muda para la eternidad?</span></div>
+      <div class="line-row"><span class="cs">Něma-li ústa tvá, Bůh to ví,</span><span class="es">¡Por Dios! ¡Si tu boca permanece muda</span></div>
+      <div class="line-row"><span class="cs">vylíbám odpověd' z nich!</span><span class="es">tendré que obtener la respuesta</span></div>
+      <div class="line-row"><span class="cs">Odpověd' záhadám, jež mne sem lákaly,</span><span class="es">con la ayuda de tus besos!</span></div>
+      <div class="line-row"><span class="cs">jež mne sem volaly přes tmí, přes skály,</span><span class="es">Descubre el misterio que me ha traído hasta aquí</span></div>
+      <div class="line-row"><span class="cs">abych tu konečně v blažený dnešní den,</span><span class="es">a través de espinas y rocas,</span></div>
+      <div class="line-row"><span class="cs">dítĕ, tvým pohledem náhle byl okouzlen!</span><span class="es">en este feliz día</span></div>
+      <div class="line-row"><span class="cs">Co v srdci tvém jest ukryto,</span><span class="es">¡en que he sufrido el embrujo de tus ojos!</span></div>
+      <div class="line-row"><span class="cs">máš-li mne ráda,</span><span class="es">¡Si me amas, revélame lo que escondes</span></div>
+      <div class="line-row"><span class="cs">zjev mi to!</span><span class="es">en tu corazón!</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka mu padne do náručí)</span>
+        <span class="es">(Rusalka se arroja en sus brazos)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Rusalky</span></span>
+        <span class="character-name">Hermanas De Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pod vodou)</span>
+        <span class="es">(Desde el fondo de las aguas)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="cs">Sestry, jedna schází z nás!</span><span class="es">¡Hermanas, una de nosotras ha desaparecido!</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka polekána se vzchopí a naslouchá)</span>
+        <span class="es">(Rusalka, asustada, se levanta y escucha)</span>
+      </div>
+      <div class="line-row"><span class="cs">Sestřičko, kam odešlas?</span><span class="es">¿Hermanita dónde estás?</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka se chvěje nerozhodností a bázní)</span>
+        <span class="es">(Rusalka tiembla de indecisión y pena)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pod vodou)</span>
+        <span class="es">(Hablando desde el fondo del lago)</span>
+      </div>
+      <div class="line-row"><span class="cs">Přes hory, doly a lesy!</span><span class="es">¡Por montañas, valles y bosques!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Rusalky</span></span>
+        <span class="character-name">Hermanas De Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Sestřičko, sestřičko, kde jsi?</span><span class="es">¿Hermanita dónde estás?</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka se stulí ve svrchované úzkosti</span>
+        <span class="es">(Angustiada, Rusalka apoya su cabeza</span>
+        <span>v princovu náruč)</span>
+        <span class="es">en el pecho del Príncipe)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="line-row"><span class="cs">Vím, že jsi kouzlo, které mine</span><span class="es">Sé que no eres más que un espejismo</span></div>
+      <div class="line-row"><span class="cs">a rozplyne se v mlžný rej</span><span class="es">que desaparecerá con la bruma,</span></div>
+      <div class="line-row"><span class="cs">leč dokud čas náš neuplyne,</span><span class="es">pero mientras llega ese momento,</span></div>
+      <div class="line-row"><span class="cs">ó pohádko má, neprchej!</span><span class="es">hada, ¡no te desvanezcas!</span></div>
+      <div class="line-row"><span class="cs">Můj skončen lov nač myslit naň?</span><span class="es">La caza ha terminado</span></div>
+      <div class="line-row"><span class="cs">Tys nejvzácnější moje laň.</span><span class="es">y tú eres mi más hermosa cierva,</span></div>
+      <div class="line-row"><span class="cs">Tys hvězdička zlatá v noc temnou</span><span class="es">mi estrella dorada en la noche sombría.</span></div>
+      <div class="line-row"><span class="cs">pohádko má, pojd' se mnou!</span><span class="es">¡Oh, ninfa mía, ven conmigo!</span></div>
+      <div class="stage-direction">
+        <span>(Odvádí Rusalku)</span>
+        <span class="es">(El Príncipe se lleva a Rusalka)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Jednání Druhé</span>
+      <span>Acto Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="stage-direction">
+        <span>(Sad na zámku princově. V pozadí</span>
+        <span class="es">(El castillo del Príncipe. El decorado representa</span>
+        <span>sloupořadí a slavnostní síň hodovní.</span>
+        <span class="es">un gran jardín. Al fondo una columnata y</span>
+        <span>V popředí pod starými stromy rybník.</span>
+        <span class="es">una sala de baile. Delante, bajo unos árboles, se</span>
+        <span>Odpoledně chýlí se zvolna k več eru a pak v noc)</span>
+        <span class="es">encuentra el lago. El día se acaba y cae la noche)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="stage-direction">
+        <span>(přichází s Kuchtíkem)</span>
+        <span class="es">(Llega acompañado de un pinche de cocina)</span>
+      </div>
+      <div class="line-row"><span class="cs">Jářku, jářku, klouče milé,</span><span class="es">¡Vamos, mi querido joven,</span></div>
+      <div class="line-row"><span class="cs">dopověz, dopověz,</span><span class="es">acaba tu narración!</span></div>
+      <div class="line-row"><span class="cs">jakáže to kratochvíle</span><span class="es">Dime, ¿qué clase de festejo</span></div>
+      <div class="line-row"><span class="cs">no zámku se strojí dnes?</span><span class="es">preparan hoy en el castillo?</span></div>
+      <div class="line-row"><span class="cs">To je hostí no síni,</span><span class="es">¡Tantos invitados en la sala,</span></div>
+      <div class="line-row"><span class="cs">to je práce v kuchyni,</span><span class="es">tanto trabajo en la cocina</span></div>
+      <div class="line-row"><span class="cs">no stolích a no policích</span><span class="es">y en las mesas y en los estantes</span></div>
+      <div class="line-row"><span class="cs">podivného náčiní!</span><span class="es">tantos utensilios extraños!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="line-row"><span class="cs">Máme ti ted' sháňku,</span><span class="es">En esta casa siempre vamos con prisa,</span></div>
+      <div class="line-row"><span class="cs">milý strýče Vaňku,</span><span class="es">querido tío Vanek;</span></div>
+      <div class="line-row"><span class="cs">do večera od svítání</span><span class="es">de la mañana a la noche</span></div>
+      <div class="line-row"><span class="cs">neustanem v práci ani!</span><span class="es">el trabajo no cesa un instante.</span></div>
+      <div class="line-row"><span class="cs">Pomysli si, pomysli si,</span><span class="es">Imagina, imagínate,</span></div>
+      <div class="line-row"><span class="cs">zdas to, strýčku, slyšel kdysi:</span><span class="es">escucha esto:</span></div>
+      <div class="line-row"><span class="cs">Princ ti našel v lese</span><span class="es">El Príncipe ha encontrado en el bosque</span></div>
+      <div class="line-row"><span class="cs">divné stvoření</span><span class="es">una extraña criatura</span></div>
+      <div class="line-row"><span class="cs">a s ním, podivme se,</span><span class="es">y, más extraño aún,</span></div>
+      <div class="line-row"><span class="cs">snad se ožení!</span><span class="es">¡quiere casarse con ella!</span></div>
+      <div class="line-row"><span class="cs">Našel prý ji v lesích tvých,</span><span class="es">La ha encontrado en tus bosques,</span></div>
+      <div class="line-row"><span class="cs">ve tvých lesích hlubokých</span><span class="es">en tus espesos bosques,</span></div>
+      <div class="line-row"><span class="cs">ale at' ji vzal, kde vzal,</span><span class="es">pero poco importa dónde la haya encontrado,</span></div>
+      <div class="line-row"><span class="cs">já bych se jí, strýčku, bál!</span><span class="es">yo, tío, ¡tendría miedo de ella!</span></div>
+      <div class="line-row"><span class="cs">Holka je ti němá,</span><span class="es">La chica es muda,</span></div>
+      <div class="line-row"><span class="cs">kapky krve nemá,</span><span class="es">ni una gota de sangre corre por sus venas,</span></div>
+      <div class="line-row"><span class="cs">chodí jako vyjevená</span><span class="es">camina como perdida,</span></div>
+      <div class="line-row"><span class="cs">to by byla čistá žena!</span><span class="es">¡será una extraña esposa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Je to pravda vskutku,</span><span class="es">Entonces ¿es verdad</span></div>
+      <div class="line-row"><span class="cs">co se mluví všude?</span><span class="es">lo que se cuenta por ahí?</span></div>
+      <div class="line-row"><span class="cs">Můj ty milý smutku,</span><span class="es">Yo creo que debe ser cierto.</span></div>
+      <div class="line-row"><span class="cs">už to takhle bude!</span><span class="es">¡Que Dios nos proteja!</span></div>
+      <div class="line-row"><span class="cs">At' nás Pánbůh chrání,</span><span class="es">No soy más que un viejo cazador,</span></div>
+      <div class="line-row"><span class="cs">myslivec jsem starý,</span><span class="es">pero veo que tras ese amor</span></div>
+      <div class="line-row"><span class="cs">že v tom milování</span><span class="es">se oculta la magia.</span></div>
+      <div class="line-row"><span class="cs">vězí divné čáry!</span><span class="es">Nuestro bosque es frecuentado</span></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="cs">U nás v lese straší</span><span class="es">por fuerzas malignas</span></div>
+      <div class="line-row"><span class="cs">šlakovité moci,</span><span class="es">y personajes extraños</span></div>
+      <div class="line-row"><span class="cs">lesem divní braši</span><span class="es">que vagan por él</span></div>
+      <div class="line-row"><span class="cs">chodí o půlnoci.</span><span class="es">a medianoche.</span></div>
+      <div class="line-row"><span class="cs">Je-li v těle duše slabá,</span><span class="es">Y si el alma de un hombre es débil</span></div>
+      <div class="line-row"><span class="cs">uhrane ji Ježibaba,</span><span class="es">será embrujada por la hechicera</span></div>
+      <div class="line-row"><span class="cs">pode hrází tuze snadno</span><span class="es">muy fácilmente</span></div>
+      <div class="line-row"><span class="cs">hastrman tĕ stáhne no dno.</span><span class="es">y Hastrmán la arrastrará hasta el fondo.</span></div>
+      <div class="line-row"><span class="cs">A kdo vidí lesní žínky</span><span class="es">El que vea desnudas</span></div>
+      <div class="line-row"><span class="cs">bez košilky, bez sukýnky,</span><span class="es">a las ninfas del bosque</span></div>
+      <div class="line-row"><span class="cs">omámí ho lásky chtíč</span><span class="es">será embrujado por el deseo.</span></div>
+      <div class="line-row"><span class="cs">Pánbůh s námi a zlé pryč!</span><span class="es">¡Qué Dios nos proteja del mal!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(s úzkosti)</span>
+        <span class="es">(Angustiado)</span>
+      </div>
+      <div class="line-row"><span class="cs">Strýčku, já se bojím!</span><span class="es">¡Tío, tengo miedo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Inu, není div,</span><span class="es">¡No me extraña!</span></div>
+      <div class="line-row"><span class="cs">Pánbůh hříchům tvojím</span><span class="es">¡Que Dios sea indulgente</span></div>
+      <div class="line-row"><span class="cs">budiž milostiv!</span><span class="es">con tus pecados!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="line-row"><span class="cs">Náš Princ vždy tak švarný byl,</span><span class="es">¡Nuestro Príncipe, siempre tan feliz,</span></div>
+      <div class="line-row"><span class="cs">kterak se ted' proměnil!</span><span class="es">ha cambiado mucho!</span></div>
+      <div class="line-row"><span class="cs">Není, jaký býval, není,</span><span class="es">No es el mismo de antes,</span></div>
+      <div class="line-row"><span class="cs">bloudí jako omámen,</span><span class="es">pues vaga como un alma en pena.</span></div>
+      <div class="line-row"><span class="cs">stará Háta no modlení</span><span class="es">La vieja Háta, día tras día,</span></div>
+      <div class="line-row"><span class="cs">dává za něj den co den.</span><span class="es">ruega por él en sus oraciones.</span></div>
+      <div class="line-row"><span class="cs">A pan farář, jak to slyšel,</span><span class="es">¡Y el sacerdote, enterado de lo ocurrido,</span></div>
+      <div class="line-row"><span class="cs">varovat ti Prince přišel,</span><span class="es">ha venido para advertirlo!</span></div>
+      <div class="line-row"><span class="cs">ale Princ ne a ne.</span><span class="es">Pero él le responde:</span></div>
+      <div class="line-row"><span class="cs">Holka prý tu zůstane!</span><span class="es">¡no y no, la chica se queda donde está!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Proto jsou tu hosté již!</span><span class="es">¡Eso explica que hayan venido tantos invitados!</span></div>
+      <div class="line-row"><span class="cs">Proto se tak prázdní spíž!</span><span class="es">¡Por eso las bodegas están vacías!</span></div>
+      <div class="line-row"><span class="cs">Proto jsem honem vlek'</span><span class="es">¡Por eso he tenido que traer</span></div>
+      <div class="line-row"><span class="cs">pino zvěře no zámek!</span><span class="es">tanta caza al Príncipe!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="line-row"><span class="cs">Naštěstí, jak zdá se,</span><span class="es">¡Afortunadamente,</span></div>
+      <div class="line-row"><span class="cs">nemělo to být,</span><span class="es">parece que no pasará nada,</span></div>
+      <div class="line-row"><span class="cs">všechno může zase</span><span class="es">puesto que viene otra</span></div>
+      <div class="line-row"><span class="cs">jiná pokazit!</span><span class="es">que puede echarlo todo a perder!</span></div>
+      <div class="line-row"><span class="cs">Stará Háta vypráví,</span><span class="es">La vieja Háta cuenta</span></div>
+      <div class="line-row"><span class="cs">jak prý je Princ vrtkavý,</span><span class="es">que el Príncipe es inconstante,</span></div>
+      <div class="line-row"><span class="cs">už prý jeho láska mizí,</span><span class="es">que su amor ya se difumina,</span></div>
+      <div class="line-row"><span class="cs">jinou prý zas v mysli má,</span><span class="es">que ya ama a otra,</span></div>
+      <div class="line-row"><span class="cs">po jakési Kněžně cizí</span><span class="es">que tiene ya en la cabeza</span></div>
+      <div class="line-row"><span class="cs">hází prý už očima!</span><span class="es">a una bella princesa extrajera.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Pánbůh dej, Pánbůh dej,</span><span class="es">¡Que Dios guarde</span></div>
+      <div class="line-row"><span class="cs">ve zdraví ha zachovej!</span><span class="es">y proteja su alma!</span></div>
+      <div class="line-row"><span class="cs">Já být Princem, bez okolků</span><span class="es">Si yo estuviera en su lugar, sin vacilar,</span></div>
+      <div class="line-row"><span class="cs">vyhnal bych tu cizí holku,</span><span class="es">echaría a esa extraña mujer,</span></div>
+      <div class="line-row"><span class="cs">než mne v peklo zamotá,</span><span class="es">antes de que ella me arrastrara al infierno.</span></div>
+      <div class="line-row"><span class="cs">at' se klidí, žebrota!</span><span class="es">¡Qué se vaya ese pájaro de mal agüero!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(náhle)</span>
+        <span class="es">(De repente)</span>
+      </div>
+      <div class="line-row"><span class="cs">Hu, tam si vede Princ tu obludu!</span><span class="es">¡Ahí está el Príncipe con su monstruo!</span></div>
+      <div class="stage-direction">
+        <span>(Uteče)</span>
+        <span class="es">(Se va)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Já no ni taky čekat nebudu!</span><span class="es">¡Ah, yo tampoco quiero esperarlo!</span></div>
+      <div class="stage-direction">
+        <span>(Uteče jinudy. Rusalka krásnĕ oděna,</span>
+        <span class="es">(Sale en otra dirección. El Príncipe llega con</span>
+        <span>ale stále smutná a bledá, přichází s</span>
+        <span class="es">Rusalka que lleva un suntuoso vestido, pero</span>
+        <span>Princem)</span>
+        <span class="es">está tan pálida y triste como siempre)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="line-row"><span class="cs">Již týden dlíš mi po boku,</span><span class="es">Hace una semana que estás junto a mí.</span></div>
+      <div class="line-row"><span class="cs">jak z báje zjev dlíš přede mnou,</span><span class="es">Eres como una aparición</span></div>
+      <div class="line-row"><span class="cs">a mamĕ v očí hluboku</span><span class="es">y busco en vano tu misterio</span></div>
+      <div class="line-row"><span class="cs">tvou bytost hledám tajemnou!</span><span class="es">en el fondo de tus ojos.</span></div>
+      <div class="line-row"><span class="cs">Má sňatek dát mi teprve,</span><span class="es">¿Me dará el matrimonio</span></div>
+      <div class="line-row"><span class="cs">co láska dávno chtěla,</span><span class="es">lo que mi amor tanto desea?</span></div>
+      <div class="line-row"><span class="cs">by rozhořela jsi do krve</span><span class="es">¿Se encenderá tu sangre</span></div>
+      <div class="line-row"><span class="cs">a byla ženou mou zcela?</span><span class="es">cuando te conviertas en mi mujer?</span></div>
+      <div class="line-row"><span class="cs">Proč chladí tvoje objetí,</span><span class="es">¿Por qué este abrazo helado?</span></div>
+      <div class="line-row"><span class="cs">vzplát vášní proč se bojí?</span><span class="es">¿Tienes miedo de arder de pasión?</span></div>
+      <div class="line-row"><span class="cs">Proč úzkostí jen zachvěti</span><span class="es">¿Por qué cuando estoy en tus brazos</span></div>
+      <div class="line-row"><span class="cs">mám v náruči se tvojí?</span><span class="es">me estremezco de angustia?</span></div>
+      <div class="line-row"><span class="cs">A marně, marně dusím smutný cit,</span><span class="es">En vano sofoco este triste sentimiento.</span></div>
+      <div class="line-row"><span class="cs">z náruče tvé se nelze vyprostit</span><span class="es">¡No puedo liberarme de tus abrazos,</span></div>
+      <div class="line-row"><span class="cs">byt' stok rát byla jsi chladná, nesmělá,</span><span class="es">incluso aunque fueras cien veces más fría,</span></div>
+      <div class="line-row"><span class="cs">mít musím tebe, musím docela!</span><span class="es">deberías de ser mía, totalmente mía!.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa Extranjera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(přichází sloupořadím,</span>
+        <span class="es">(Entrando por la columnata</span>
+        <span>spatříc Prince a Rusalku)</span>
+        <span class="es">ve al Príncipe y a Rusalka)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ne, není to láska, hněvivý je to cit,</span><span class="es">No es amor lo que siento, sino cólera</span></div>
+      <div class="line-row"><span class="cs">že jiná dlí, kde já jsem chtěla být</span><span class="es">de ver a otra donde quiero estar yo.</span></div>
+      <div class="line-row"><span class="cs">a že jsem jeho míti neměla,</span><span class="es">¡Si no soy para él</span></div>
+      <div class="line-row"><span class="cs">at' štěstí obou zhyne docela!</span><span class="es">que se destruya su alegría!</span></div>
+      <div class="stage-direction">
+        <span>(Jde v popředí)</span>
+        <span class="es">(Pasa a primer plano)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="cs">Zda no chvíli Princ vzpomene si přec,</span><span class="es">¿Recordará el Príncipe que también un amante</span></div>
+      <div class="line-row"><span class="cs">že hostitelem je též milenec!</span><span class="es">tiene deberes como anfitrión?</span></div>
+      <div class="stage-direction">
+        <span>(Svůdně)</span>
+        <span class="es">(Con voz seductora)</span>
+      </div>
+      <div class="line-row"><span class="cs">Má na to štěstí, jímž vás blaží svět,</span><span class="es">¿Debo tristemente contemplar esa alegría</span></div>
+      <div class="line-row"><span class="cs">též cizí host jen němě pohlížet?</span><span class="es">con la que os ha colmado el destino?</span></div>
+      <div class="stage-direction">
+        <span>(Stane mezi Princem a Rusalkou)</span>
+        <span class="es">(Se coloca entre el Príncipe y Rusalka.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vzruší se, sotvaže spatřil Kněžnu)</span>
+        <span class="es">(Turbado al ver a la Princesa)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ach, výčitka to věru včasná</span><span class="es">Es un reproche justo y oportuno</span></div>
+      <div class="line-row"><span class="cs">a s vašich rtíků rád ji snáším,</span><span class="es">y de vos lo acepto encantado.</span></div>
+      <div class="line-row"><span class="cs">i ženich věru, Kněžno krásná,</span><span class="es">¡Incluso prometido, bella Princesa,</span></div>
+      <div class="line-row"><span class="cs">je především jen sluhou vaším!</span><span class="es">soy ante todo vuestro servidor!.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pohlédne no Rusalku)</span>
+        <span class="es">(Mirando a Rusalka)</span>
+      </div>
+      <div class="line-row"><span class="cs">A vaše kráska, citů vašich paní,</span><span class="es">Y vuestra prometida, reina de vuestro corazón,</span></div>
+      <div class="line-row"><span class="cs">vás nepokárá za to slovem ani?</span><span class="es">¿no encontrará una palabra para regañaros?</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka na ni pohlédne s hněvnou bolestí)</span>
+        <span class="es">(Rusalka la mira llena de cólera y dolor)</span>
+        <span>(jízlivě)</span>
+        <span class="es">(Con ironía)</span>
+      </div>
+      <div class="line-row"><span class="cs">Či v pohledu svém tolik něhy má,</span><span class="es">¿Tan dulce es su mirada</span></div>
+      <div class="line-row"><span class="cs">že mluví s vámi pouze očima?</span><span class="es">que sus ojos os lo dicen todo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(v rozpacích)</span>
+        <span class="es">(Un poco molesto)</span>
+      </div>
+      <div class="line-row"><span class="cs">Leč oči její říci zapomněly,</span><span class="es">Lo que sus ojos dicen</span></div>
+      <div class="line-row"><span class="cs">že hostitel se nepozorným stal.</span><span class="es">es que soy un anfitrión poco galante</span></div>
+      <div class="line-row"><span class="cs">Necht' nahradí ted' rychle, svolíte-li,</span><span class="es">que debe compensar, si me lo permitís,</span></div>
+      <div class="line-row"><span class="cs">co roztržit jen chvíli zanedbal.</span><span class="es">lo que distraído, he descuidado un instante.</span></div>
+      <div class="stage-direction">
+        <span>(Podává kněžně ruku. Rusalka pokročí</span>
+        <span class="es">(Ofrece su brazo a la Princesa. Rusalka da un</span>
+        <span>a křečovitě se chytne ruky Princovy)</span>
+        <span class="es">paso y se coge, molesta, a la mano del Príncipe).</span>
+      </div>
+      <div class="line-row"><span class="cs">Nač rozpaky tvoje? A proč se tolik chvěješ?</span><span class="es">¿Por qué esta turbación? ¿Por qué tiemblas?</span></div>
+      <div class="line-row"><span class="cs">V svou komnatu pospěš a stroj se k plesu již!</span><span class="es">¡Vuelve al castillo y prepárate para el baile!</span></div>
+      <div class="stage-direction">
+        <span>(Odvádí Kněžnu)</span>
+        <span class="es">(Él sale con la Princesa)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(odchází k Rusalce)</span>
+        <span class="es">(Saliendo, se vuelve hacia Rusalka)</span>
+      </div>
+      <div class="line-row"><span class="cs">O, vystrojte se v šaty přebohaté,</span><span class="es">¡Ah, adornaos con vuestro más bello vestido,</span></div>
+      <div class="line-row"><span class="cs">mám dvornost jeho, vy však srdce máte!</span><span class="es">pues si yo tengo su favor, vos tenéis su corazón!</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka strnule hledí za nimi, jako by</span>
+        <span class="es">(Rusalka lo sigue con la mirada fija y lánguida</span>
+        <span>pohledem chtěla Prince zadržet, ale pak</span>
+        <span class="es">como si quisiera retener al Príncipe; pero</span>
+        <span>smutna a zlomena odchází suma sloupořadím.</span>
+        <span class="es">enseguida, triste y destrozada, sale por la</span>
+        <span>Zatím se stále šeří, večer hasne a později</span>
+        <span class="es">columnata. Mientras tanto, termina el día y poco</span>
+        <span>zasvitne měsíc. V síni zazní slavnostní</span>
+        <span class="es">a poco sale la luna. Se encienden las luces en la</span>
+        <span>hudba a zaplanou světla. V pozadí je vidět</span>
+        <span class="es">sala de baile y se escucha la música. La fiesta</span>
+        <span>slavnostní ruch, hosté se scházejí a tvoří</span>
+        <span class="es">comienza, llegan los invitados y se forman</span>
+        <span>skupiny. Později zpěv a tanec)</span>
+        <span class="es">grupos. Seguidamente se oye cantar y bailar)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="musical-number">
+        <span>Slavnostní Hudba</span>
+        <span>Música Solemne (Ballet)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vynoří se z rybníka a dívá se do síně,</span>
+        <span class="es">(El Señor de las Aguas emerge del lago</span>
+        <span>kde viří veselí)</span>
+        <span class="es">y contempla la sala de baile)</span>
+      </div>
+      <div class="line-row"><span class="cs">Běda! Běda!</span><span class="es">¡Qué desgracia! ¡Qué desgracia!</span></div>
+      <div class="line-row"><span class="cs">Ubohá Rusalko bledá,</span><span class="es">¡Mi pobre Rusalka, embrujada</span></div>
+      <div class="line-row"><span class="cs">v nádheru světa zakletá!</span><span class="es">por el resplandor del mundo!</span></div>
+      <div class="line-row"><span class="cs">Běda! Běda!</span><span class="es">¡Qué desgracia! ¡Qué desgracia!</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="line-row"><span class="cs">Celý svět nedá ti, nedá,</span><span class="es">¡El mundo entero no podrá ofrecerte nunca</span></div>
+      <div class="line-row"><span class="cs">vodní čím říše rozkvétá!</span><span class="es">lo que en abundancia te da el reino de las aguas!</span></div>
+      <div class="line-row"><span class="cs">Stokrát bys byla člověkem,</span><span class="es">¡Aunque fueses cien veces humana</span></div>
+      <div class="line-row"><span class="cs">ve jhu jsi spjatá odvěkém,</span><span class="es">seguirías atada por ancestrales cadenas!</span></div>
+      <div class="line-row"><span class="cs">byt' měl tĕ člověk stokrát rád,</span><span class="es">¡Aunque un hombre te amara cien veces,</span></div>
+      <div class="line-row"><span class="cs">navždy ho nemůžeš upoutat!</span><span class="es">no sería tuyo eternamente!</span></div>
+      <div class="line-row"><span class="cs">Ubohá Rusalko bledá</span><span class="es">¡Mi pobre Rusalka, cautiva del amor humano!</span></div>
+      <div class="line-row"><span class="cs">zajatá v kouzlo lidských pout!</span><span class="es">¡El mundo de las aguas te reclama,</span></div>
+      <div class="line-row"><span class="cs">Až se zas vrátíš k družkám svým,</span><span class="es">pero en vano espera tu regreso!</span></div>
+      <div class="line-row"><span class="cs">budeš jen živlem smrtícím,</span><span class="es">¡Y si volvieras con tus hermanas</span></div>
+      <div class="line-row"><span class="cs">vrátíš se žitím uvadlá,</span><span class="es">convertida en mortal, te marchitarías para siempre</span></div>
+      <div class="line-row"><span class="cs">prokletí živlů jsi propadla!</span><span class="es">y serías maldita por todos los elementos!</span></div>
+      <div class="line-row"><span class="cs">Ubohá Rusalko bledá,</span><span class="es">¡Mi pobre Rusalka, embrujada</span></div>
+      <div class="line-row"><span class="cs">v nádheru světa zakletá!</span><span class="es">por el resplandor del mundo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Sbor</span></span>
+        <span class="character-name">Los Invitados</span>
+      </div>
+      <div class="stage-direction">
+        <span>(v síni)</span>
+        <span class="es">(Cantan en la sala)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="line-row"><span class="cs">Květiny bílé po cestě,</span><span class="es">Las flores blancas florecen en sus tallos</span></div>
+      <div class="line-row"><span class="cs">po cestě všude kvetly,</span><span class="es">a lo largo de la carretera.</span></div>
+      <div class="line-row"><span class="cs">hoch jel a jel k své nevěstě</span><span class="es">Un chico se dirige a casa de su novia</span></div>
+      <div class="line-row"><span class="cs">a den se smál tak světlý.</span><span class="es">pues el día se presenta prometedor.</span></div>
+      <div class="line-row"><span class="cs">Nemeškej hochu, k milé spěš,</span><span class="es">Date prisa, chico, ve a casa de tu amor,</span></div>
+      <div class="line-row"><span class="cs">dorosteš záhy v muže,</span><span class="es">pronto serás un hombre</span></div>
+      <div class="line-row"><span class="cs">zpátky až tudy pojedeš,</span><span class="es">y cuando tomes el camino de regreso</span></div>
+      <div class="line-row"><span class="cs">pokvetou rudé růže.</span><span class="es">las rosas rojas habrán florecido.</span></div>
+      <div class="line-row"><span class="cs">Květiny bílé nejdříve</span><span class="es">Las flores blancas perecerán</span></div>
+      <div class="line-row"><span class="cs">úpalem slunce zašly,</span><span class="es">bajo el ardor de los rayos del sol,</span></div>
+      <div class="line-row"><span class="cs">ale ty růže ohnivé</span><span class="es">pero las bellas rosas rojas</span></div>
+      <div class="line-row"><span class="cs">svatební lože krášlí.</span><span class="es">adornarán tu lecho nupcial.</span></div>
+      <div class="stage-direction">
+        <span>(Princ se objeví chvílemi uslavnostním</span>
+        <span class="es">(De vez en cuando, el Príncipe aparece en</span>
+        <span>ruchu, jenž víří sálem, a dvoří se okázale</span>
+        <span class="es">la sala que está muy animada y corteja a la</span>
+        <span>Cizí kněžně, nevšímaje si Rusalky)</span>
+        <span class="es">Princesa Extranjera sin preocuparse de Rusalka)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Ubohá Rusalko bledá</span><span class="es">¡Mi pobre Rusalka, embrujada</span></div>
+      <div class="line-row"><span class="cs">v nádheru světa zakletá!</span><span class="es">por el resplandor del mundo!</span></div>
+      <div class="line-row"><span class="cs">Běda, běda!</span><span class="es">¡Qué desgracia! ¡Qué desgracia!</span></div>
+      <div class="line-row"><span class="cs">No vodách bílý leknín sní,</span><span class="es">¡El blanco nenúfar</span></div>
+      <div class="line-row"><span class="cs">smutným ti druhem bude</span><span class="es">te hará compañía sobre las aguas,</span></div>
+      <div class="line-row"><span class="cs">pro tvoje lože svatební</span><span class="es">puesto que las rosas rojas no florecerán</span></div>
+      <div class="line-row"><span class="cs">nekvetou růže rudé!</span><span class="es">para tu lecho nupcial!</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka vyběhne zoufalá ze síně</span>
+        <span class="es">(Rusalka, desesperada, abandona la sala de</span>
+        <span>a prchá sadem k rybníku)</span>
+        <span class="es">baile y corre por el jardín hacia el lago)</span>
+      </div>
+      <div class="stage-direction">
+        <span>(překvapen)</span>
+        <span class="es">(Sorprendido)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="line-row"><span class="cs">Rusalko, znáš mne, znáš?</span><span class="es">Rusalka, ¿me reconoces?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(náhle nabyvši řeči, vykřikne)</span>
+        <span class="es">(que sí puede hablar con sus semejantes)</span>
+      </div>
+      <div class="line-row"><span class="cs">Vodníku, tatíčku drahý!</span><span class="es">¡Hastrmán, querido papá!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Proto jsem přišel v zámek váš,</span><span class="es">¿He tenido que venir hasta el castillo</span></div>
+      <div class="line-row"><span class="cs">bych zřel tĕ truchlit tak záhy?</span><span class="es">para verte sufrir así?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Tatíčku, Vodníčku, spas mne, spas,</span><span class="es">¡Querido papá, Señor de las Aguas, sálvame,</span></div>
+      <div class="line-row"><span class="cs">úzkost mne pojala hrozná!</span><span class="es">una terrible angustia me asalta!</span></div>
+      <div class="line-row"><span class="cs">Běda, že chtěla jsem zradit vas,</span><span class="es">¡Oh, qué desgracia!</span></div>
+      <div class="line-row"><span class="cs">běda, kdo člověka pozná!</span><span class="es">¡Os he traicionado amando a un hombre!</span></div>
+      <div class="line-row"><span class="cs">Běda! Běda!</span><span class="es">¡Qué desgracia! ¡Qué desgracia!</span></div>
+      <div class="line-row"><span class="cs">Jiná jej krásou jala vráz,</span><span class="es">Ahora, otra lo ha seducido</span></div>
+      <div class="line-row"><span class="cs">divokou lidskou krásou</span><span class="es">con su belleza salvaje y humana;</span></div>
+      <div class="line-row"><span class="cs">a mne už nezná, nezná zas</span><span class="es">y él ya no se acuerda</span></div>
+      <div class="line-row"><span class="cs">Rusalku prostovlasou!</span><span class="es">de su Rusalka de largos cabellos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">On že tĕ zavrh', jenž měl tĕ rád?</span><span class="es">¿Rechazada por el que tanto te amaba?</span></div>
+      <div class="line-row"><span class="cs">Musíš ted', musíš vytrvat!</span><span class="es">¡Ahora, debes ser fuerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Ó marno, marno, marno to je</span><span class="es">¡Todo ha sido en vano, en vano,</span></div>
+      <div class="line-row"><span class="cs">a prázdnota je v srdci mém,</span><span class="es">y en mi corazón reina el vacío!</span></div>
+      <div class="line-row"><span class="cs">jsou marny všechny vděky moje,</span><span class="es">¡Todos mis atractivos son inútiles</span></div>
+      <div class="line-row"><span class="cs">když zpola jsem jen člověkem!</span><span class="es">puesto que no soy una mujer completa!</span></div>
+      <div class="line-row"><span class="cs">Ó marno, mne už nezná zas.</span><span class="es">¡Él ya no se acuerda de mí,</span></div>
+      <div class="line-row"><span class="cs">Rusalku prostovlasou.</span><span class="es">de su Rusalka de largos cabellos!</span></div>
+      <div class="line-row"><span class="cs">Jí hoří v očích vášně síla,</span><span class="es">En sus ojos brilla la pasión,</span></div>
+      <div class="line-row"><span class="cs">té lidské vášně prokleté,</span><span class="es">¡esa maldita pasión humana!</span></div>
+      <div class="line-row"><span class="cs">mne voda chladná porodila</span><span class="es">¡Yo he nacido en las frías aguas</span></div>
+      <div class="line-row"><span class="cs">a nemám, nemám vášně té!</span><span class="es">y no puedo arder con esa pasión!</span></div>
+      <div class="line-row"><span class="cs">Prokleta vámi, pro něj ztracena,</span><span class="es">¡Maldita por vosotros y abandonada por él,</span></div>
+      <div class="line-row"><span class="cs">odvěkých živlů hluchá ozvěna,</span><span class="es">condenada por los elementos</span></div>
+      <div class="line-row"><span class="cs">ženou ni vílou nemohu být,</span><span class="es">ya no soy ni hada, ni mujer,</span></div>
+      <div class="line-row"><span class="cs">nemohu zemřít, nemohu žít!</span><span class="es">no me está permitido ni vivir ni morir!</span></div>
+      <div class="stage-direction">
+        <span>(Princ přichází s Kněžnou z hodovní síně</span>
+        <span class="es">(El Príncipe y la Princesa salen de la sala</span>
+        <span>do sadu)</span>
+        <span class="es">y pasean por el jardín)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="line-row"><span class="cs">Vidíš je, vidíš? Jsou tu zas</span><span class="es">¿Los ves? Vuelven aquí.</span></div>
+      <div class="line-row"><span class="cs">tatíčku, tatíčku,</span><span class="es">¡Oh, querido papá, querido papá!</span></div>
+      <div class="line-row"><span class="cs">spas mne, spas!</span><span class="es">¡Libérame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Princem provázena)</span>
+        <span class="es">(Acompañada por el Príncipe)</span>
+      </div>
+      <div class="line-row"><span class="cs">Vám v očích divný žár se zračí</span><span class="es">Una extraña llama arde en vuestros ojos</span></div>
+      <div class="line-row"><span class="cs">a naslouchám vám zmámena,</span><span class="es">y os escucho turbada.</span></div>
+      <div class="line-row"><span class="cs">jste stále vřelejší a sladší</span><span class="es">Estáis dulce y cariñoso,</span></div>
+      <div class="line-row"><span class="cs">ó Princi, co te znamená?</span><span class="es">Príncipe, ¿qué significa esto?</span></div>
+      <div class="line-row"><span class="cs">Kam prchla vaše vyvolená,</span><span class="es">¿Dónde está vuestra elegida,</span></div>
+      <div class="line-row"><span class="cs">ta bez řečí a beze jména?</span><span class="es">la que no tiene ni voz, ni nombre?</span></div>
+      <div class="line-row"><span class="cs">Kam prchla, aby viděla,</span><span class="es">¿Acaso se ha escondido para no ver</span></div>
+      <div class="line-row"><span class="cs">že Princ je změněn docela!</span><span class="es">cuánto ha cambiado su Príncipe?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="line-row"><span class="cs">Kam prchla! Milý Bůh te ví!</span><span class="es">¡Sólo Dios sabe dónde estará!</span></div>
+      <div class="line-row"><span class="cs">leč změnou tou jste sama vinna</span><span class="es">En cuanto a mí, sois vos quien me ha cambiado.</span></div>
+      <div class="line-row"><span class="cs">a letní noc te nepoví,</span><span class="es">¡Esta noche de verano no diré</span></div>
+      <div class="line-row"><span class="cs">že zajala mne kouzla jiná.</span><span class="es">que me siento atraído por otros encantos!</span></div>
+      <div class="line-row"><span class="cs">Ó nazvete to rozmarem,</span><span class="es">¡Oh, llamadlo capricho momentáneo,</span></div>
+      <div class="line-row"><span class="cs">že miloval jsem jinou chvíli,</span><span class="es">pero lo cierto es que</span></div>
+      <div class="line-row"><span class="cs">a bud'te žhavým požárem,</span><span class="es">surge un fuego ardiente</span></div>
+      <div class="line-row"><span class="cs">kde dosud luny svit plál bílý!</span><span class="es">donde antes brillaba la fría luna!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="line-row"><span class="cs">Až požár můj vas popálí</span><span class="es">Cuando mi fuego os queme,</span></div>
+      <div class="line-row"><span class="cs">a všechny vaše vášně zděsí,</span><span class="es">las demás pasiones os parecerán frías.</span></div>
+      <div class="line-row"><span class="cs">až odejdu vám do dáli</span><span class="es">Cuando me vaya lejos de vos</span></div>
+      <div class="line-row"><span class="cs">co s leskem luny počnete si?</span><span class="es">¿qué haréis con ese rayo lunar?</span></div>
+      <div class="line-row"><span class="cs">Až obejmou vas lokty sličné</span><span class="es">Cuando os encontréis en los brazos</span></div>
+      <div class="line-row"><span class="cs">té němé krásky náměsíčné -</span><span class="es">de esa belleza sonámbula y muda</span></div>
+      <div class="line-row"><span class="cs">čím k vášni hřát se budete?</span><span class="es">¿quién hará arder vuestras pasiones?</span></div>
+      <div class="line-row"><span class="cs">Ó, škoda, škoda vášně té!</span><span class="es">¡Oh, qué desperdicio de pasión!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(rozvášněn)</span>
+        <span class="es">(con pasión)</span>
+      </div>
+      <div class="line-row"><span class="cs">A kdyby celý svět</span><span class="es">¡Incluso si el mundo</span></div>
+      <div class="line-row"><span class="cs">chtěl klnout mojí touze</span><span class="es">condenara este amor,</span></div>
+      <div class="line-row"><span class="cs">vy jste ten žhavý květ,</span><span class="es">vos seguiríais siendo aquella roja flor</span></div>
+      <div class="line-row"><span class="cs">byt` kvetl chvíli pouze!</span><span class="es">que arderá de pasión en un instante!</span></div>
+      <div class="line-row"><span class="cs">Ted' teprve to vím,</span><span class="es">¡Ahora sé</span></div>
+      <div class="line-row"><span class="cs">čím mřelo moje tělo,</span><span class="es">lo que mi cuerpo desea,</span></div>
+      <div class="line-row"><span class="cs">když lásky tajemstvím</span><span class="es">y no el tormento</span></div>
+      <div class="line-row"><span class="cs">se uzdraviti chtělo!</span><span class="es">de un amor misterioso!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="line-row"><span class="cs">Ó, teprve ted' poznávám,</span><span class="es">Ahora comprendo por qué de repente</span></div>
+      <div class="line-row"><span class="cs">že námluvy mi náhle kynou</span><span class="es">os mostráis así conmigo,</span></div>
+      <div class="line-row"><span class="cs">pan ženich, zdá se, neví sám,</span><span class="es">pero aún no os habéis decidido</span></div>
+      <div class="line-row"><span class="cs">zda namlouvá si mne či jinou!</span><span class="es">por ninguna de las dos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(náhle obejme Kněžnu)</span>
+        <span class="es">(Abrazando a la Princesa)</span>
+      </div>
+      <div class="line-row"><span class="cs">Co zbude z oné lásky,</span><span class="es">¿Qué queda de ese amor</span></div>
+      <div class="line-row"><span class="cs">jíž v osidla jsem pad'?</span><span class="es">que no era más que una sombra?</span></div>
+      <div class="line-row"><span class="cs">Rád strhám všecky svazky,</span><span class="es">¡Ya estoy liberado</span></div>
+      <div class="line-row"><span class="cs">bych vás moh' milovat!</span><span class="es">y deseo poder amaros!</span></div>
+      <div class="stage-direction">
+        <span>(Rusalka zoufalá vyběhne z ústraní</span>
+        <span class="es">(Rusalka, desesperada se separa del señor de</span>
+        <span>a vrhne se v náruč Princovu)</span>
+        <span class="es">las aguas y se arroja a los brazos del Príncipe)</span>
+        <span>(no smrt poděšen)</span>
+        <span class="es">(El Príncipe, asustado)</span>
+      </div>
+      <div class="line-row"><span class="cs">Mrazí mne tvoje ramena,</span><span class="es">Tus brazos están helados...</span></div>
+      <div class="line-row"><span class="cs">bílá ty kráso studená!</span><span class="es">¡Sólo eres una belleza fría y pálida!</span></div>
+      <div class="stage-direction">
+        <span>(Odstrčí Rusalku)</span>
+        <span class="es">(Rechaza a Rusalka)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zjeví se v plném světle měsíčním</span>
+        <span class="es">(Aparece bajo la luz intensa de la luna,</span>
+        <span>nad rybníkem; příšerným hlasem)</span>
+        <span class="es">sobre el lago)</span>
+      </div>
+      <div class="line-row"><span class="cs">V jinou spěš náruč, spěš a spěš!</span><span class="es">¡Podrás ir a los brazos de otra,</span></div>
+      <div class="line-row"><span class="cs">Objetí jejímu neujdeš!</span><span class="es">pero de los abrazos de Rusalka no escaparás!</span></div>
+      <div class="stage-direction">
+        <span>(Strhne Rusalku do rybníca)</span>
+        <span class="es">(Arrastra a Rusalka al lago)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Principe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(omráčen a nic nechápaje)</span>
+        <span class="es">(Sobresaltado, abraza a la Princesa)</span>
+      </div>
+      <div class="line-row"><span class="cs">Z objetí moci tajemné</span><span class="es">¡Sálvame, sálvame, sálvame</span></div>
+      <div class="line-row"><span class="cs">spaste mne, spaste mne, spaste mne!</span><span class="es">una fuerza misteriosa me abraza!</span></div>
+      <div class="stage-direction">
+        <span>(Vrhá se Kněžné k nohám)</span>
+        <span class="es">(Cae desmayada a los pies de la Princesa)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="knezna">Kněžna</span></span>
+        <span class="character-name">La Princesa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(s divým smíchem)</span>
+        <span class="es">(Con una risa cruel)</span>
+      </div>
+      <div class="line-row"><span class="cs">V hlubinu pekla bezejmennou</span><span class="es">¡Ve rápido a reunirte con tu elegida</span></div>
+      <div class="line-row"><span class="cs">pospěšte za svou vyvolenou!</span><span class="es">a las profundidades infernales!</span></div>
+      <div class="stage-direction">
+        <span>(Odchází)</span>
+        <span class="es">(Se va)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Jednání Třetí</span>
+      <span>Acto Tercero</span>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="stage-direction">
+        <span>(Palouk na pokraji jezera, jako</span>
+        <span class="es">(Igual decorado que en el primer acto. El cielo se</span>
+        <span>poprvé. Chýlí se k večeru, obloha je</span>
+        <span class="es">cubre de nubes rojizas al ponerse el sol y aparece</span>
+        <span>pod mrakem, ale později zaplanou</span>
+        <span class="es">al fin la luna radiante. Como en el primer acto</span>
+        <span>červánky a konečně nastane měsíční</span>
+        <span class="es">Rusalka está sentada junto al lago. Está pálida</span>
+        <span>noc. Rusalka sedí nad jezerem. Všecka</span>
+        <span class="es">y blanca. Sus cabellos son grises del color de la</span>
+        <span>je bílá a bledá)</span>
+        <span class="es">ceniza. El resplandor de sus ojos se ha apagado)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Necitelná vodní moci,</span><span class="es">¡Me has arrastrado hasta el fondo,</span></div>
+      <div class="line-row"><span class="cs">stáhlas mne zas v hlubinu</span><span class="es">cruel poder de las aguas,</span></div>
+      <div class="line-row"><span class="cs">proč v tom chladu bez pomoci</span><span class="es">y sin embargo bien sabes que</span></div>
+      <div class="line-row"><span class="cs">nezhynu, ach, nezhynu?</span><span class="es">en tu frío seno no puedo perecer!</span></div>
+      <div class="line-row"><span class="cs">Mladosti své pozbavena,</span><span class="es">Privada de mi juventud</span></div>
+      <div class="line-row"><span class="cs">bez radosti sester svých,</span><span class="es">y sin la alegría de mis hermanas;</span></div>
+      <div class="line-row"><span class="cs">pro svou lásku odsouzena</span><span class="es">condenada por el amor,</span></div>
+      <div class="line-row"><span class="cs">teskním v proudech studených.</span><span class="es">languidezco en estas frías aguas.</span></div>
+      <div class="line-row"><span class="cs">Ztrativši svůj půvab sladký,</span><span class="es">Desprovista de mis encantos</span></div>
+      <div class="line-row"><span class="cs">miláčkem svým prokleta,</span><span class="es">y rechazada por mi amado,</span></div>
+      <div class="line-row"><span class="cs">marně toužím k sestrám zpátky,</span><span class="es">deseo en vano regresar</span></div>
+      <div class="line-row"><span class="cs">marně toužím do světa.</span><span class="es">o con mis hermanas o con el mundo.</span></div>
+      <div class="line-row"><span class="cs">Kde jste, kouzla letních nocí</span><span class="es">¿Dónde está la magia de las noches de verano</span></div>
+      <div class="line-row"><span class="cs">nad kalichy leknínů?</span><span class="es">cuando permanecía adormecida</span></div>
+      <div class="line-row"><span class="cs">Proč v tom chladu bez pomoci</span><span class="es">sobre los nenúfares?</span></div>
+      <div class="line-row"><span class="cs">nezhynu, ach nezhynu?</span><span class="es">¿Por qué no puedo perecer en tus frías ondas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vyjde z chalupy)</span>
+        <span class="es">(Sale de la choza)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="line-row"><span class="cs">Aj, aj? Už jsi se navrátila!</span><span class="es">¡Ay! ¡Ay!... ¡Has regresado!</span></div>
+      <div class="line-row"><span class="cs">No, tos tam dlouho nepobyla!</span><span class="es">¡Tu estancia en la tierra fue corta!</span></div>
+      <div class="line-row"><span class="cs">A jak máš bledé tvářičky,</span><span class="es">¡Qué pálidas están tus mejillas</span></div>
+      <div class="line-row"><span class="cs">a jak tu truchlíš o samotě!</span><span class="es">y cómo lloras tu soledad!</span></div>
+      <div class="line-row"><span class="cs">Což nechutnaly hubičky</span><span class="es">¿No te han gustado los besos humanos?</span></div>
+      <div class="line-row"><span class="cs">a lidské lože nehřálo tĕ?</span><span class="es">¿Su cama no te ha calentado?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Ach, běda, běda, tetko rozmilá,</span><span class="es">¡Oh, qué desgracia, qué desgracia, querida tía!</span></div>
+      <div class="line-row"><span class="cs">vše zradilo mne, vše jsem ztratila!</span><span class="es">¡Todo me ha traicionado! ¡Lo he perdido todo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Krátké bylo milování,</span><span class="es">¡Corto fue tu amor</span></div>
+      <div class="line-row"><span class="cs">dlouhé bude naříkání,</span><span class="es">y largo será tu sufrimiento!</span></div>
+      <div class="line-row"><span class="cs">po hubičkách mužských úst</span><span class="es">Después de sus besos</span></div>
+      <div class="line-row"><span class="cs">nekonečný, věčný půst!</span><span class="es">vendrá el ayuno eterno.</span></div>
+      <div class="line-row"><span class="cs">Člověk je člověk, živlů vyvrhel,</span><span class="es">El hombre es un ser egoísta,</span></div>
+      <div class="line-row"><span class="cs">z kořenů zemĕ dávno vyvrácen,</span><span class="es">un deshecho de la naturaleza.</span></div>
+      <div class="line-row"><span class="cs">běda, kdo jeho lásku poznat chtěl,</span><span class="es">¡Desgraciada de aquella, que amándolo,</span></div>
+      <div class="line-row"><span class="cs">jeho kdo zradou je ted' zatracen!</span><span class="es">esté maldita por su traición!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Tetko má moudrá, tetko, rci,</span><span class="es">¡Oh, mi sabia tía!</span></div>
+      <div class="line-row"><span class="cs">není mi, není pomoci?</span><span class="es">Dime, ¿podrás hacer algo por mí?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Miláček tĕ zavrh', přestal tě mít rád</span><span class="es">¿Tu amado ha dejado de amarte</span></div>
+      <div class="line-row"><span class="cs">a te d' Ježibaba má zas pomáhat?</span><span class="es">y ahora la hechicera debe ayudarte de nuevo?</span></div>
+      <div class="line-row"><span class="cs">Po záletech světských, dcerko rozmilá,</span><span class="es">Querida niña, después de esta triste historia,</span></div>
+      <div class="line-row"><span class="cs">bys ted' k sestrám ráda se zas vrátila?</span><span class="es">¿te gustaría regresar con tus hermanas?</span></div>
+      <div class="line-row"><span class="cs">Inu, mám já radu, dobrou radu mám</span><span class="es">Te daré un remedio para tus males,</span></div>
+      <div class="line-row"><span class="cs">ale poslechneš-li, ví to rarach sám!</span><span class="es">un remedio que sólo el diablo conoce.</span></div>
+      <div class="line-row"><span class="cs">Lidskou krví musíš smýti</span><span class="es">Puesto que has querido conocer el amor</span></div>
+      <div class="line-row"><span class="cs">živlů prokletí</span><span class="es">en los brazos de un hombre,</span></div>
+      <div class="line-row"><span class="cs">za lásku, již chtělas míti</span><span class="es">deberás borrar la maldición</span></div>
+      <div class="line-row"><span class="cs">v lidském objetí!</span><span class="es">con sangre humana.</span></div>
+      <div class="line-row"><span class="cs">Budeš zas, číms byla prve,</span><span class="es">Volverás a ser la de siempre,</span></div>
+      <div class="line-row"><span class="cs">než tĕ zklamal svět</span><span class="es">la que eras antes</span></div>
+      <div class="line-row"><span class="cs">ale horkem lidské krve</span><span class="es">de ser engañada por el mundo,</span></div>
+      <div class="line-row"><span class="cs">lze jen ozdravět.</span><span class="es">pero sólo el calor de la sangre humana,</span></div>
+      <div class="line-row"><span class="cs">Opustí tě všechna muka,</span><span class="es">podrá salvarte.</span></div>
+      <div class="line-row"><span class="cs">budeš šfastna hned,</span><span class="es">Todos los sufrimientos desaparecerán</span></div>
+      <div class="line-row"><span class="cs">zahubí-li tvoje ruka</span><span class="es">y serás feliz al instante</span></div>
+      <div class="line-row"><span class="cs">toho, jenž tě oklamal,</span><span class="es">si por tu propia mano</span></div>
+      <div class="line-row"><span class="cs">toho, jenž tě sved!</span><span class="es">¡perece el que te ha seducido!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zděšena)</span>
+        <span class="es">(Asustada)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ježibabo, běda, co to chceš?</span><span class="es">Hechicera, ¿qué me pides?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(podává jí nůž ze záňadří)</span>
+        <span class="es">(Sale con un cuchillo y se lo da a Rusalka)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ten vezmi nůž a slib, že poslechneš!</span><span class="es">¡Toma este cuchillo y promete obedecerme!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zahodí nůž do jezera)</span>
+        <span class="es">(Lo coge y lo arroja al lago)</span>
+      </div>
+      <div class="line-row"><span class="cs">Jde z tebe hrůza, nech mne, nech!</span><span class="es">¡Me das miedo, déjame!</span></div>
+      <div class="line-row"><span class="cs">Chci věčně trpět v úzkostech,</span><span class="es">Prefiero sufrir en la angustia,</span></div>
+      <div class="line-row"><span class="cs">chci věčně cítit kletbu svou,</span><span class="es">estar maldita eternamente,</span></div>
+      <div class="line-row"><span class="cs">svou celou lásku zhrzenou,</span><span class="es">vivir mi amor rechazado,</span></div>
+      <div class="line-row"><span class="cs">svou beznaděj chci všechnu zřít</span><span class="es">soportar toda mi desesperación,</span></div>
+      <div class="line-row"><span class="cs">leč on, on musí št'asten být!</span><span class="es">pero él, ¡él debe ser feliz!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(rozchechtá se)</span>
+        <span class="es">(Con sarcasmo)</span>
+      </div>
+      <div class="line-row"><span class="cs">V lidský život potměšilý</span><span class="es">¿Te has dejado cegar</span></div>
+      <div class="line-row"><span class="cs">touha tvá tĕ vábila</span><span class="es">por la voluptuosidad de la vida humana</span></div>
+      <div class="line-row"><span class="cs">a ted' nemáš tolik síly,</span><span class="es">y ahora te faltan las fuerzas</span></div>
+      <div class="line-row"><span class="cs">bys krev lidskou prolila?</span><span class="es">para verter un poco de sangre?</span></div>
+      <div class="line-row"><span class="cs">Člověk je člověkem teprve,</span><span class="es">El hombre se convierte en un hombre</span></div>
+      <div class="line-row"><span class="cs">v cizí krev ruku když stopil,</span><span class="es">sólo cuando ha mojado su mano en la sangre,</span></div>
+      <div class="line-row"><span class="cs">zbrocen když vášní do krve</span><span class="es">cuando se deja arrastrar por la pasión,</span></div>
+      <div class="line-row"><span class="cs">bližního krví se opil.</span><span class="es">cuando ha matado a su prójimo.</span></div>
+      <div class="line-row"><span class="cs">Pak žes chtěla člověkem být</span><span class="es">¿Y tú has querido ser mujer</span></div>
+      <div class="line-row"><span class="cs">a člověka vášní omámit?</span><span class="es">para seducir al hombre por amor?</span></div>
+      <div class="line-row"><span class="cs">Prázdná ty vodní bublinečko,</span><span class="es">¡No eres más que una pequeña burbuja de agua,</span></div>
+      <div class="line-row"><span class="cs">měsíční bledá zahalečko!</span><span class="es">ociosa, lunar, sin ninguna pretensión!</span></div>
+      <div class="line-row"><span class="cs">Jdi, trp, trp si z věků do věků</span><span class="es">¡Vete y sufre, sufre eternamente,</span></div>
+      <div class="line-row"><span class="cs">a seschni touhou po svém člověku!</span><span class="es">muere de deseo por tu amante!</span></div>
+      <div class="stage-direction">
+        <span>(Odbelhá se do chalupy)</span>
+        <span class="es">(Se aleja cojeando hacia su choza)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="line-row"><span class="cs">Vyrvána životu,</span><span class="es">Despojada de la vida</span></div>
+      <div class="line-row"><span class="cs">v hlubokou samotu</span><span class="es">debo bajar</span></div>
+      <div class="line-row"><span class="cs">bez družek, bez sester mám se brát</span><span class="es">hasta el abismo de la soledad.</span></div>
+      <div class="line-row"><span class="cs">miláčku, vím lo, vím,</span><span class="es">Sin compañía y sin hermanas debo vivir.</span></div>
+      <div class="line-row"><span class="cs">nikdy víc tĕ nespatřím,</span><span class="es">Amor mío, sé que nunca te volveré a ver.</span></div>
+      <div class="line-row"><span class="cs">ó běda, běda nastokrát!</span><span class="es">¡Qué desgraciada soy!</span></div>
+      <div class="stage-direction">
+        <span>(Ponoří se do jezera)</span>
+        <span class="es">(Se sumerge en el lago)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Rusalky</span></span>
+        <span class="character-name">Hermanas De Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pod vodou)</span>
+        <span class="es">(Desde el agua)</span>
+      </div>
+      <div class="line-row"><span class="cs">Odešla jsi do světa,</span><span class="es">Te fuiste al mundo,</span></div>
+      <div class="line-row"><span class="cs">uprchla jsi našim hrám</span><span class="es">dejaste nuestros juegos,</span></div>
+      <div class="line-row"><span class="cs">sestřičko ty prokletá,</span><span class="es">¡oh, maldita hermana,</span></div>
+      <div class="line-row"><span class="cs">nesestupuj k nám!</span><span class="es">no te acerques a nosotras!</span></div>
+      <div class="line-row"><span class="cs">V naše tance nesmí sem,</span><span class="es">¡Nuestras danzas están prohibidas</span></div>
+      <div class="line-row"><span class="cs">koho člověk objal již,</span><span class="es">para la que ha abrazado a un hombre!</span></div>
+      <div class="line-row"><span class="cs">rozprchnem se, rozprchnem,</span><span class="es">¡Si te acercas a nosotras, huiremos!</span></div>
+      <div class="line-row"><span class="cs">jak se přiblížíš!</span><span class="es">Tu tristeza nos asusta</span></div>
+      <div class="line-row"><span class="cs">Z tvého smutku vane strach</span><span class="es">y turba nuestras alegres danzas.</span></div>
+      <div class="line-row"><span class="cs">v radostný náš hravý rej,</span><span class="es">¡La noche con sus fuegos fatuos</span></div>
+      <div class="line-row"><span class="cs">s bludičkami v bažinách</span><span class="es">juega en las ciénagas</span></div>
+      <div class="line-row"><span class="cs">za nocí si hrej!</span><span class="es">y puede confundir a los hombres!</span></div>
+      <div class="line-row"><span class="cs">Lákej lidi svitem svým,</span><span class="es">¡Embrújalos con tu resplandor,</span></div>
+      <div class="line-row"><span class="cs">no rozcestích těkej ted',</span><span class="es">pasea tu luz por los caminos,</span></div>
+      <div class="line-row"><span class="cs">světýlkem svým modravým</span><span class="es">llévalos a la tumba</span></div>
+      <div class="line-row"><span class="cs">do hrobu jim svět'!</span><span class="es">con tu azulada luz!</span></div>
+      <div class="line-row"><span class="cs">No hrobech a rozcestích</span><span class="es">¡Sobre tumbas y cruces</span></div>
+      <div class="line-row"><span class="cs">jiných sester najdeš rej,</span><span class="es">encontrarás otras compañías,</span></div>
+      <div class="line-row"><span class="cs">v reje vodních sester svých</span><span class="es">pero con las del fondo del agua</span></div>
+      <div class="line-row"><span class="cs">už se nevracej!</span><span class="es">no intentes regresar!</span></div>
+      <div class="stage-direction">
+        <span>(Ticho. No západě rudnou červánky)</span>
+        <span class="es">(Silencio. Al oeste, las nubes enrojecen el cielo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="stage-direction">
+        <span>(přivádí Kuchtíka)</span>
+        <span class="es">(Acompañado del Pinche de Cocina)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="line-row"><span class="cs">Že se bojíš? Třesky, plesky,</span><span class="es">¿De qué tienes miedo?</span></div>
+      <div class="line-row"><span class="cs">však tu jiní bývávali!</span><span class="es">¡Qué importa! ¡Es muy normal!</span></div>
+      <div class="line-row"><span class="cs">Zaklepej a pověz hezky,</span><span class="es">¡Llama a la puerta y transmite bien</span></div>
+      <div class="line-row"><span class="cs">co ti doma přikázali:</span><span class="es">lo que te han encargado decir!</span></div>
+      <div class="line-row"><span class="cs">Princ že nosí těžkou dumu,</span><span class="es">¡Di que el Príncipe está melancólico,</span></div>
+      <div class="line-row"><span class="cs">že se poplef no rozumu,</span><span class="es">que ha perdido la razón,</span></div>
+      <div class="line-row"><span class="cs">jakás pekla stvůra klatá</span><span class="es">que una criatura infernal</span></div>
+      <div class="line-row"><span class="cs">že k nám přišla do hradu,</span><span class="es">vino al castillo</span></div>
+      <div class="line-row"><span class="cs">a že prosí stará Háta</span><span class="es">y que la vieja Háta pide</span></div>
+      <div class="line-row"><span class="cs">Ježibabu o radu!</span><span class="es">consejo a la hechicera!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(se vzpouzí)</span>
+        <span class="es">(Intentando eludir la orden)</span>
+      </div>
+      <div class="line-row"><span class="cs">Mně už chromne noha,</span><span class="es">¡No siento las piernas,</span></div>
+      <div class="line-row"><span class="cs">vlčí mlhu mám</span><span class="es">tengo una nube en los ojos!</span></div>
+      <div class="line-row"><span class="cs">pro živého Boha,</span><span class="es">¡Tío, por el amor de Dios,</span></div>
+      <div class="line-row"><span class="cs">strýčku, jdi tam sám!</span><span class="es">ve tú solo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Kolikrát jsem tudy šel,</span><span class="es">¡He pasado por aquí cientos de veces</span></div>
+      <div class="line-row"><span class="cs">temno leckdy bývalo již</span><span class="es">al oscurecer y nada me ha sucedido!</span></div>
+      <div class="line-row"><span class="cs">tys mi čistý strašpytel,</span><span class="es">¡Es de cobardes</span></div>
+      <div class="line-row"><span class="cs">že se staré babky bojíš!</span><span class="es">tener miedo de una vieja!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="line-row"><span class="cs">Ondy, když jsi u nás byl,</span><span class="es">¡Querido tío, el otro día</span></div>
+      <div class="line-row"><span class="cs">sáms mne, strýčku, postrašil,</span><span class="es">tú mismo me asustaste,</span></div>
+      <div class="line-row"><span class="cs">nediv se ted', milý brachu,</span><span class="es">no te extrañe que ahora</span></div>
+      <div class="line-row"><span class="cs">že mám v lese plno strachu!</span><span class="es">tenga miedo de penetrar en el bosque!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Řeči sem, řeči tam</span><span class="es">¡Todo eso no son más que cuentos,</span></div>
+      <div class="line-row"><span class="cs">to tale někdy přidávám!</span><span class="es">exageras demasiado!</span></div>
+      <div class="line-row"><span class="cs">Ale ted' honem hled'</span><span class="es">No lo pienses más y procura</span></div>
+      <div class="line-row"><span class="cs">vyzvěděti odpověd'!</span><span class="es">obtener rápido una respuesta.</span></div>
+      <div class="line-row"><span class="cs">Vzmuž se, hej, zaklepej,</span><span class="es">¡Ten valor, llama a la puerta</span></div>
+      <div class="line-row"><span class="cs">no radu se babky ptej!</span><span class="es">y pide consejo a la vieja!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="line-row"><span class="cs">Já bych jistě brebtal,</span><span class="es">¡Tengo tanto miedo</span></div>
+      <div class="line-row"><span class="cs">jakou úzkost mám</span><span class="es">que tartamudearé,</span></div>
+      <div class="line-row"><span class="cs">abys tedy zeptal</span><span class="es">mejor sería que tú</span></div>
+      <div class="line-row"><span class="cs">se jí no te sám!</span><span class="es">te dirigieras a la vieja!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Styděl bych se, styděl,</span><span class="es">¡Vergüenza, vergüenza me daría</span></div>
+      <div class="line-row"><span class="cs">být já otcem tvým!</span><span class="es">si yo fuese tu padre!</span></div>
+      <div class="line-row"><span class="cs">Ale abys viděl,</span><span class="es">Te demostraré</span></div>
+      <div class="line-row"><span class="cs">že se nebojím!</span><span class="es">que no tengo miedo:</span></div>
+      <div class="line-row"><span class="cs">Ježibabo! Hola hola!</span><span class="es">¡Eh, hechicera, eh!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vyjde z chalupy)</span>
+        <span class="es">(Saliendo de su choza)</span>
+      </div>
+      <div class="line-row"><span class="cs">Kdo te hlučí? Kdo te volá?</span><span class="es">¡Cuánto alboroto!... ¿Quién me llama?</span></div>
+      <div class="stage-direction">
+        <span>(kuchtík se skrývá za Hajného)</span>
+        <span class="es">(El Pinche de Cocina se esconde detrás de su tío)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="line-row"><span class="cs">Stará Háta k tobě posílá,</span><span class="es">¡Hechicera, la vieja Háta me envía</span></div>
+      <div class="line-row"><span class="cs">abys, Ježibabo, radila!</span><span class="es">en busca de consejo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Za tu radu, za rozumu špetku,</span><span class="es">¿Por un consejo, por un grano de mi sabiduría,</span></div>
+      <div class="line-row"><span class="cs">tohle vyžle posílá mi k snědku?</span><span class="es">me envía a este chiquillo para cenar?</span></div>
+      <div class="stage-direction">
+        <span>(Sáhne no kuchtíka)</span>
+        <span class="es">(Atrapa al Pinche de Cocina y lo palpa)</span>
+      </div>
+      <div class="line-row"><span class="cs">Jen co vykrmí se, chudinka,</span><span class="es">¡Habrá que engordarlo enseguida</span></div>
+      <div class="line-row"><span class="cs">bude z něho pěkná pečínka!</span><span class="es">para hacer un buen asado!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zoufale se brání)</span>
+        <span class="es">(Intentando huir desesperadamente)</span>
+      </div>
+      <div class="line-row"><span class="cs">Pust' mne! Pust' mne!</span><span class="es">¡Déjame!... ¡Suéltame!...</span></div>
+      <div class="line-row"><span class="cs">Pust' mne z těchto míst!</span><span class="es">¡Déjame irme de este lugar!</span></div>
+      <div class="line-row"><span class="cs">Strýčku, strýčku, ona mne chce sníst!</span><span class="es">¡Tío, tío, me quiere comer!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(chechtá se)</span>
+        <span class="es">(Riendo)</span>
+      </div>
+      <div class="line-row"><span class="cs">Ha, ha, ha, ha,</span><span class="es">¡Ja, ja, ja, ja!</span></div>
+      <div class="line-row"><span class="cs">ha, ty malý zmetku,</span><span class="es">¡Tú, grano de polvo,</span></div>
+      <div class="line-row"><span class="cs">hloupé stvoření,</span><span class="es">criatura ingenua,</span></div>
+      <div class="line-row"><span class="cs">te bych měla k snědku</span><span class="es">pobre negocio</span></div>
+      <div class="line-row"><span class="cs">čistou pečeni!</span><span class="es">iba yo a hacer</span></div>
+      <div class="line-row"><span class="cs">Pro peklo at' roste</span><span class="es">con tus huesos!</span></div>
+      <div class="line-row"><span class="cs">prokletý rod váš!</span><span class="es">¡Que se vaya al diablo</span></div>
+      <div class="line-row"><span class="cs">A ted' pověz honem,</span><span class="es">vuestra especie maldita!</span></div>
+      <div class="line-row"><span class="cs">co mi říci máš!</span><span class="es">Ahora, dime lo que te ha traído aquí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(s úzkostí)</span>
+        <span class="es">(Angustiado)</span>
+      </div>
+      <div class="line-row"><span class="cs">Náš Princ těžce stůně, převelice,</span><span class="es">¡Nuestro Príncipe está gravemente enfermo,</span></div>
+      <div class="line-row"><span class="cs">uhranula srdce jeho jakás kouzelnice!</span><span class="es">una maga ha hechizado su corazón!</span></div>
+      <div class="line-row"><span class="cs">Přivez si ji na hrad, vše jí dal,</span><span class="es">La invitó al castillo, le ofreció de todo</span></div>
+      <div class="line-row"><span class="cs">jako vlastní život sám ji miloval.</span><span class="es">y la amaba como a su propia vida.</span></div>
+      <div class="line-row"><span class="cs">Jeho ženou byla by se stala</span><span class="es">Se habría convertido en su esposa</span></div>
+      <div class="line-row"><span class="cs">ale krásná kouzelnice svatby nedočkala.</span><span class="es">pero la bella maga no se presentó a la boda.</span></div>
+      <div class="line-row"><span class="cs">Prince když už zmátla docela,</span><span class="es">Tras embrujarlo desapareció.</span></div>
+      <div class="line-row"><span class="cs">nevěrná ta kouzelnice zmizela.</span><span class="es">Bajo su hechizo ha quedado el castillo.</span></div>
+      <div class="line-row"><span class="cs">Celý hrad je kouzlem zmámen podnes</span><span class="es">¡Seguramente el diablo</span></div>
+      <div class="line-row"><span class="cs">d'ábel sám tu kouzelnici do pekla si odnes'!</span><span class="es">se la habrá llevado al infierno!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vynoří se rázem z jezera)</span>
+        <span class="es">(Saliendo bruscamente del agua)</span>
+      </div>
+      <div class="line-row"><span class="cs">Kdo že ji odnes'?</span><span class="es">¿Quién se la ha llevado?</span></div>
+      <div class="line-row"><span class="cs">Koho že zradila?</span><span class="es">¿A quién ha traicionado ella?</span></div>
+      <div class="line-row"><span class="cs">Prokleté plémě,</span><span class="es">¡Maldita especie la que te envía aquí!</span></div>
+      <div class="line-row"><span class="cs">jež vás sem posílá,</span><span class="es">Miserables humanos,</span></div>
+      <div class="line-row"><span class="cs">tvorové bídní,</span><span class="es">especie mentirosa</span></div>
+      <div class="line-row"><span class="cs">on sám ji zradil,</span><span class="es">¡él fue quien la traicionó!</span></div>
+      <div class="line-row"><span class="cs">uvrh' ji v prokletí!</span><span class="es">¡Por su culpa está maldita!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="hajny">Hajný</span></span>
+        <span class="character-name">El Guardabosques</span>
+      </div>
+      <div class="stage-direction">
+        <span>(o překot utíká)</span>
+        <span class="es">(Corriendo)</span>
+      </div>
+      <div class="line-row"><span class="cs">Hastrman! Hastrman!</span><span class="es">¡Hastrmán! ¡Hastrmán!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="kuchik">Kuchtík</span></span>
+        <span class="character-name">El Pinche De Cocina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(utíká za ním)</span>
+        <span class="es">(Corriendo detrás del guardabosques)</span>
+      </div>
+      <div class="line-row"><span class="cs">Strýčku! Strýčku! Proboha, strýčku!</span><span class="es">¡Tío, tío! ¡Por el amor de Dios!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(příšerným hlasem)</span>
+        <span class="es">(Con voz siniestra)</span>
+      </div>
+      <div class="line-row"><span class="cs">Pomstím se, pomstím, kam říš má dosahá!</span><span class="es">¡Mi venganza será terrible!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jezibaba">Ježibaba</span></span>
+        <span class="character-name">La Hechicera</span>
+      </div>
+      <div class="line-row"><span class="cs">Ha, ha, ha, ha! Ha, ha, ha, ha!</span><span class="es">¡Ja, ja, ja, ja!</span></div>
+      <div class="stage-direction">
+        <span>(Odbelhá se do chalupy. Zatím zhasly již červánky</span>
+        <span class="es">(Se va cojeando a su choza. Las últimas luces del</span>
+        <span>na západě, setmělo se a záhy vyjde měsíc.</span>
+        <span class="es">atardecer se apagan. Cae la noche y sale la luna.</span>
+        <span>Na palouku sbíhají se lesní žínky)</span>
+        <span class="es">Las ninfas acuden a la pradera)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="prvni-lesni-zinka">První Lesní Žínka</span></span>
+        <span class="character-name">La Primera Ninfa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(tančíc)</span>
+        <span class="es">(Bailando)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="line-row"><span class="cs">Mám, zlaté vlásky mám,</span><span class="es">Tengo los cabellos de oro</span></div>
+      <div class="line-row"><span class="cs">svatojánské mušky slétají se k nim,</span><span class="es">y a mi alrededor bailan las luciérnagas;</span></div>
+      <div class="line-row"><span class="cs">ruka moje bílá vlásky rozpustila,</span><span class="es">con mi blanca mano los suelto</span></div>
+      <div class="line-row"><span class="cs">měsíček je češe svitem stříbrným.</span><span class="es">para que la luna los peine con sus rayos de plata.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="druha-lesni-zinka">Druhá Žínka</span></span>
+        <span class="character-name">La Segunda Ninfa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(tančíc)</span>
+        <span class="es">(Bailando)</span>
+      </div>
+      <div class="line-row"><span class="cs">Mám, bílé nožky mám,</span><span class="es">Tengo los pies blancos,</span></div>
+      <div class="line-row"><span class="cs">proběhla jsem palouk celičký,</span><span class="es">con ellos he recorrido todo el claro.</span></div>
+      <div class="line-row"><span class="cs">proběhla jsem basa, umyla je rosa,</span><span class="es">El fresco rocío los ha lavado</span></div>
+      <div class="line-row"><span class="cs">měsíček je obul v zlaté střevíčky.</span><span class="es">y la luna les ha puesto zapatos de oro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="treti-lesni-zinka">Třetí Žínka</span></span>
+        <span class="character-name">La Tercera Ninfa</span>
+      </div>
+      <div class="stage-direction">
+        <span>(tančí spolu s ostatními)</span>
+        <span class="es">(Bailando)</span>
+      </div>
+      <div class="line-row"><span class="cs">Mám, krásné tílko mám,</span><span class="es">Tengo un bonito cuerpo</span></div>
+      <div class="line-row"><span class="cs">no palouku v noci svítí jeho vděk,</span><span class="es">y la luz de la luna ilumina mis blancos miembros.</span></div>
+      <div class="line-row"><span class="cs">kudy běžím, všudy moje bílé údy</span><span class="es">Allá donde voy, la luna cubre mi cuerpo</span></div>
+      <div class="line-row"><span class="cs">do stříbra a zlata šatí měsíček.</span><span class="es">con vestidos de plata y oro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Lesní Žínky</span></span>
+        <span class="character-name">Las Ninfas</span>
+      </div>
+      <div class="line-row"><span class="cs">Do kola, sestříčky, do kola,</span><span class="es">¡Bailemos, hermanas, bailemos,</span></div>
+      <div class="line-row"><span class="cs">v lehounký noční vánek!</span><span class="es">con la brisa ligera de la noche,</span></div>
+      <div class="line-row"><span class="cs">Za chvíli z rákosí zavolá</span><span class="es">pues pronto nos llamará Hastrmán</span></div>
+      <div class="line-row"><span class="cs">zelený hastrmánek!</span><span class="es">desde las cañas!</span></div>
+      <div class="stage-direction">
+        <span>(Vidouce Vodníka)</span>
+        <span class="es">(Viendo de repente al Señor de las Aguas)</span>
+      </div>
+      <div class="line-row"><span class="cs">Už tu je, už tu je, už si sítě spravuje!</span><span class="es">¡Ahí está! ¡Ya prepara sus redes!</span></div>
+      <div class="stage-direction">
+        <span>(Tančíce kolem něho)</span>
+        <span class="es">(Bailando a su alrededor)</span>
+      </div>
+      <div class="line-row"><span class="cs">Hastrmánku, heja hej,</span><span class="es">¡Hastrman, heya, hey,</span></div>
+      <div class="line-row"><span class="cs">honem si nás nachytej!</span><span class="es">intenta atraparnos!</span></div>
+      <div class="line-row"><span class="cs">Kterou chytíš, mužíčku,</span><span class="es">Hou, hou, hou,</span></div>
+      <div class="line-row"><span class="cs">dá ti pěknou hubičku.</span><span class="es">¡Aquella que atrapes, hombrecito,</span></div>
+      <div class="line-row"><span class="cs">Ale žena, hahaha,</span><span class="es">te dará un dulce beso!</span></div>
+      <div class="line-row"><span class="cs">hastrmánku, hahaha,</span><span class="es">¡Pero tu mujer, ja, ja, ja,</span></div>
+      <div class="line-row"><span class="cs">za uši ti vytahá!</span><span class="es">te tirará de las orejas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(smutně)</span>
+        <span class="es">(Con tristeza)</span>
+      </div>
+      <div class="line-row"><span class="cs">Nelaškujte plaše,</span><span class="es">Dejad vuestros locos juegos,</span></div>
+      <div class="line-row"><span class="cs">děti zlatovlasé</span><span class="es">niñas de cabellos dorados,</span></div>
+      <div class="line-row"><span class="cs">rodná voda naše</span><span class="es">nuestro reino ha sido turbado</span></div>
+      <div class="line-row"><span class="cs">lidským rmutem zkalila se.</span><span class="es">por una pena de amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Lesní Žínky</span></span>
+        <span class="character-name">Las Ninfas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(stanou)</span>
+        <span class="es">(Con extrañeza)</span>
+      </div>
+      <div class="line-row"><span class="cs">Cože nám ruší veselý rej?</span><span class="es">¿Quién turba nuestra alegre danza?</span></div>
+      <div class="line-row"><span class="cs">P, mužíčku, povídej!</span><span class="es">¡Cuéntanos, hombrecito, cuéntanos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="line-row"><span class="cs">Hluboko na dnĕ sténá,</span><span class="es">¡Desde las profundidades gime,</span></div>
+      <div class="line-row"><span class="cs">sestrami zavržená,</span><span class="es">repudiada por sus hermanas,</span></div>
+      <div class="line-row"><span class="cs">ubohá Rusalka bledá!</span><span class="es">la pobre Rusalka!</span></div>
+      <div class="line-row"><span class="cs">Běda! Ó běda! Ó běda!</span><span class="es">¡Oh, qué desgracia!</span></div>
+      <div class="stage-direction">
+        <span>(Ponoří se do jezera. Mě síc zajde v mraky)</span>
+        <span class="es">(Oscurece. La luna desaparece tras las nubes)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="prvni-lesni-zinka">První Lesní Žínka</span></span>
+        <span class="character-name">La Primera Ninfa</span>
+      </div>
+      <div class="line-row"><span class="cs">Cítím slzu ve zraku,</span><span class="es">Mis ojos se han llenado de lágrimas,</span></div>
+      <div class="line-row"><span class="cs">chlad mne náhle ovál.</span><span class="es">el frío me ha sobrecogido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="druha-lesni-zinka">Druhá Žínka</span></span>
+        <span class="character-name">La Segunda Ninfa</span>
+      </div>
+      <div class="line-row"><span class="cs">Do šedivýchoblaků</span><span class="es">La luna se esconde</span></div>
+      <div class="line-row"><span class="cs">měsíček se schoval.</span><span class="es">tras las oscuras nubes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="treti-lesni-zinka">Třetí Žínka</span></span>
+        <span class="character-name">La Tercera Ninfa</span>
+      </div>
+      <div class="line-row"><span class="cs">Tma se tiskne v skráně mé,</span><span class="es">Las tinieblas oprimen mi alma,</span></div>
+      <div class="line-row"><span class="cs">sestry, sestry, prchněme!</span><span class="es">¡hermanas, hermanas!</span></div>
+      <div class="stage-direction">
+        <span>(Rozprchnou se)</span>
+        <span class="es">(Se dispersan corriendo)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(vyběhne pomaten z lesa)</span>
+        <span class="es">(Turbado, sale bruscamente del bosque)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="line-row"><span class="cs">Bílá moje lani! Bílá moje lani!</span><span class="es">¿Dónde estás, mi cierva blanca?</span></div>
+      <div class="line-row"><span class="cs">Pohádko! Němý přelude!</span><span class="es">¡Hada mía! ¡Muda visión!</span></div>
+      <div class="line-row"><span class="cs">Mému naříkání, spěchu bez ustání</span><span class="es">¿Veré alguna vez el final de mis tormentos?</span></div>
+      <div class="line-row"><span class="cs">konec už nikdy nebude?</span><span class="es">Día tras día, sin aliento,</span></div>
+      <div class="line-row"><span class="cs">Ode dne ke dni touhou štván</span><span class="es">acosado por mi deseo,</span></div>
+      <div class="line-row"><span class="cs">hledám tĕ v lesích udýchán,</span><span class="es">te busco por los bosques.</span></div>
+      <div class="line-row"><span class="cs">noc-li se blíží, tuším tĕ v ní,</span><span class="es">La noche se acerca y te presiento en ella,</span></div>
+      <div class="line-row"><span class="cs">chytám tĕ v mlze měsíční,</span><span class="es">quiero encontrarte en la bruma lunar.</span></div>
+      <div class="line-row"><span class="cs">hledám tĕ širé po zemi</span><span class="es">Te busco por todas partes,</span></div>
+      <div class="line-row"><span class="cs">pohádko, pohádko, vrat' se mi!</span><span class="es">¿Hada mía, hada mía, dónde estás?</span></div>
+      <div class="stage-direction">
+        <span>(Zastaví se)</span>
+        <span class="es">(Se detiene)</span>
+      </div>
+      <div class="line-row"><span class="cs">Tady lo bylo! Mluvte, němé lesy!</span><span class="es">¡Era aquí! ¡Bosques mudos, hablad!</span></div>
+      <div class="line-row"><span class="cs">Vidino sladká, milenko má, kde jsi?</span><span class="es">¿Oh, amor mío, dónde estás?</span></div>
+      <div class="line-row"><span class="cs">Bílá moje lani! Kde jsi?</span><span class="es">¿Dónde estás, mi cierva blanca?</span></div>
+      <div class="line-row"><span class="cs">Při všem, co v mrtvém srdci mám,</span><span class="es">Por lo que aún queda en mi muerto corazón,</span></div>
+      <div class="line-row"><span class="cs">nebe i zemi zaklínám,</span><span class="es">yo os conjuro cielo y tierra,</span></div>
+      <div class="line-row"><span class="cs">zaklínám Boha i běsy</span><span class="es">yo os imploro, dioses y demonios,</span></div>
+      <div class="line-row"><span class="cs">ozvi se, ozvi, kde jsi!</span><span class="es">decidme, decidme: ¿dónde está?</span></div>
+      <div class="line-row"><span class="cs">Milenko má!</span><span class="es">¡Oh, amor mío!</span></div>
+      <div class="stage-direction">
+        <span>(Mě síc vyjde z mraků)</span>
+        <span class="es">(La luna sale de entre las nubes)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zjeví se v mě síčním svitu nad jezerem)</span>
+        <span class="es">(Aparece en un claro de luna, sobre el lago)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="line-row"><span class="cs">Miláčku, znáš mne, znáš?</span><span class="es">¿Amor mío, me reconoces?</span></div>
+      <div class="line-row"><span class="cs">Miláčku, ještě vzpomínáš?</span><span class="es">¿Amor mío, te acuerdas de mí?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Príncipe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(užasne)</span>
+        <span class="es">(Asombrado)</span>
+      </div>
+      <div class="line-row"><span class="cs">Mrtva-lis dávno, znič mne vráz!</span><span class="es">¡Si estás muerta, llévame contigo!</span></div>
+      <div class="line-row"><span class="cs">Živa-lis ještě, spas mne, spas!</span><span class="es">¡Si estás viva, sálvame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Živa ni mrtva, žena ni víla,</span><span class="es">¡Ni viva ni muerta, ni hada ni mujer,</span></div>
+      <div class="line-row"><span class="cs">prokleta bloudím mátohou!</span><span class="es">maldita vago por las tinieblas!</span></div>
+      <div class="line-row"><span class="cs">Marně jsem chvíli v loktech tvých snila</span><span class="es">Por un instante soñé</span></div>
+      <div class="line-row"><span class="cs">ubohou lásku, lásku svou</span><span class="es">con estar entre tus brazos.</span></div>
+      <div class="line-row"><span class="cs">milenkou tvojí kdysi jsem byla,</span><span class="es">¡Amor mío, si antes fui tu amor,</span></div>
+      <div class="line-row"><span class="cs">ale ted' jsem jen smrtí tvou!</span><span class="es">ahora sólo puedo ser tu muerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Principe</span>
+      </div>
+      <div class="line-row"><span class="cs">Bez tebe nikde nelze žít</span><span class="es">¡No sabría vivir sin ti!</span></div>
+      <div class="line-row"><span class="cs">můžeš mi, můžeš odpustit?</span><span class="es">¿Podrás perdonarme?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">Proč volal jsi mne v náruč svou,</span><span class="es">¿Por qué me llamas a tus brazos</span></div>
+      <div class="line-row"><span class="cs">proč ústa tvoje lhala?</span><span class="es">si me has engañado?</span></div>
+      <div class="line-row"><span class="cs">Ted' měsíční jsem vidinou</span><span class="es">Ya no soy más que el hada lunar</span></div>
+      <div class="line-row"><span class="cs">v tvá muka neskonalá.</span><span class="es">de tus suplicios sin fin.</span></div>
+      <div class="line-row"><span class="cs">Ted' tebe šálím v nočních tmách,</span><span class="es">Ahora seré yo, a mi pesar, quien te confunda</span></div>
+      <div class="line-row"><span class="cs">je zneuděn můj klín</span><span class="es">y quien te guíe hacia la tumba</span></div>
+      <div class="line-row"><span class="cs">a s bludičkami no vodách</span><span class="es">entre los fuegos fatuos de las aguas.</span></div>
+      <div class="line-row"><span class="cs">tě svedu do hlubin.</span><span class="es">Buscabas una pasión</span></div>
+      <div class="line-row"><span class="cs">Tys hledal vášeň, vím to, vím,</span><span class="es">de la que yo carecía,</span></div>
+      <div class="line-row"><span class="cs">již já jsem neměla</span><span class="es">pero si ahora beso tu boca</span></div>
+      <div class="line-row"><span class="cs">a ted'-li tĕ políbím, jsi ztracen docela.</span><span class="es">estarás perdido para siempre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Principe</span>
+      </div>
+      <div class="stage-direction">
+        <span>(potácí se k ní)</span>
+        <span class="es">(Titubeando)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="line-row"><span class="cs">Líbej mne, líbej, mír mi přej,</span><span class="es">Ya no volveré al mundo.</span></div>
+      <div class="line-row"><span class="cs">nechci se vrátit ve světa rej,</span><span class="es">¡Ofréceme al fin la paz!</span></div>
+      <div class="line-row"><span class="cs">do smrti třeba mne ulíbej!</span><span class="es">¡Abrázame hasta morir!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="line-row"><span class="cs">A tys mi, hochu můj, tolik dal</span><span class="es">Tú, que me has dado tanto...</span></div>
+      <div class="line-row"><span class="cs">proč jsi mne, hochu můj, oklamal?</span><span class="es">¿por qué me engañaste?</span></div>
+      <div class="line-row"><span class="cs">Zda lo víš, hochu, zda to víš,</span><span class="es">Debes saber, amor mío,</span></div>
+      <div class="line-row"><span class="cs">z loktů mých že se nevrátíš,</span><span class="es">que de mis brazos ya no podrás regresar,</span></div>
+      <div class="line-row"><span class="cs">že zkázou to v loktech mých zaplatíš?</span><span class="es">que mi abrazo ¡te quitará la vida!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Principe</span>
+      </div>
+      <div class="line-row"><span class="cs">Všechno chci ti, všechno chci ti dát</span><span class="es">¡Quiero amarte como antes!</span></div>
+      <div class="line-row"><span class="cs">líbej mne, líbej, mír mi přej!</span><span class="es">¡No dudes, no dudes, abrázame!</span></div>
+      <div class="line-row"><span class="cs">Nechci se vrátit, zemru rád,</span><span class="es">¡Prefiero la muerte al regreso,</span></div>
+      <div class="line-row"><span class="cs">líbej mne, líbej, mír mi přej,</span><span class="es">abrázame, ofréceme la paz,</span></div>
+      <div class="line-row"><span class="cs">nemyslím, nemyslím na návrat!</span><span class="es">no pienso en otra cosa, no quiero regresar!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(jej obejme a líbá)</span>
+        <span class="es">(Cubriéndolo de besos)</span>
+      </div>
+      <div class="line-row"><span class="cs">Láska má zmrazí všechen cit</span><span class="es">¡Amor mío, calma tus sufrimientos,</span></div>
+      <div class="line-row"><span class="cs">musím tĕ, musím zahubit,</span><span class="es">debo estrecharte entre mis brazos</span></div>
+      <div class="line-row"><span class="cs">musím tĕ v lednou náruč vzít!</span><span class="es">y en ese frío abrazo morirás!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="princ">Princ</span></span>
+        <span class="character-name">El Principe</span>
+      </div>
+      <div class="line-row"><span class="cs">Líbej mne, líbej, mír mi přej!</span><span class="es">¡Abrázame, ofréceme la paz!</span></div>
+      <div class="line-row"><span class="cs">Polibky tvoje hřích můj posvětí</span><span class="es">¡Tus besos redimirán mis pecados!</span></div>
+      <div class="line-row"><span class="cs">umírám št'asten ve tvém objetí!</span><span class="es">¡Ahora muero feliz en tus brazos!</span></div>
+      <div class="stage-direction">
+        <span>(Zemře)</span>
+        <span class="es">(Muere)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vodnik">Vodník</span></span>
+        <span class="character-name">El Señor De Las Aguas</span>
+      </div>
+      <div class="stage-direction">
+        <span>(hluboko pod vodou)</span>
+        <span class="es">(Desde las profundidades de las aguas)</span>
+      </div>
+      <div class="line-row"><span class="cs">Nadarme v loktech zemře ti,</span><span class="es">¡En vano ha muerto en tus brazos</span></div>
+      <div class="line-row"><span class="cs">marny jsou všechny oběti,</span><span class="es">y son en vano todos tus sacrificios!</span></div>
+      <div class="line-row"><span class="cs">ubohá Rusalko bledá!</span><span class="es">¡Pobre Rusalka!</span></div>
+      <div class="line-row"><span class="cs">Běda! Běda! Běda!</span><span class="es">¡Qué desgracia! ¡Qué desgracia!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rusalka">Rusalka</span></span>
+        <span class="character-name">Rusalka</span>
+      </div>
+      <div class="stage-direction">
+        <span>(políbí naposled mrtvého Prince)</span>
+        <span class="es">(Dando al Príncipe un último beso)</span>
+      </div>
+      <div class="line-row"><span class="cs">Za tvou lásku, za tu krásu tvou,</span><span class="es">Por tu amor, por tu dulce amor,</span></div>
+      <div class="line-row"><span class="cs">za tvou lidskou vášeň nestálou,</span><span class="es">por tu pasión breve e inconstante,</span></div>
+      <div class="line-row"><span class="cs">za všechno, čím klet jest osud můj</span><span class="es">por todo lo que me ha hecho maldita,</span></div>
+      <div class="line-row"><span class="cs">lidská duše, Bůh tĕ pomiluj!</span><span class="es">¡que Dios tenga piedad de ti!</span></div>
+      <div class="stage-direction">
+        <span>(Ponoří se do jezer)</span>
+        <span class="es">(Se sumerge en las aguas)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  mackerras_fleming: {
+    label: "Rusalka \u00b7 Mackerras / Fleming",
+    short: "Mackerras / Fleming",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Prelude", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 2, title: "Hou, Hou, Hou, Stoj\u00ed Mes\u00edc Nad Vodou!", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 3, title: "I Pekne V\u00edt\u00e1m, Pekne V\u00edt\u00e1m", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 4, title: "Hastrm\u00e1nku, Tat\u00edcku", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 5, title: "Sem Casto Prich\u00e1z\u00ed A V Objet\u00ed M\u00e9 Stoup\u00e1", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 6, title: "M\u00e9s\u00edcku Na Nebi Hlubok\u00e9m", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 7, title: "Ta Voda Stud\u00ed, Stud\u00ed! Je\u017eibabo! Je\u017eibabo!", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 8, title: "Stalet\u00e1 Moudrost Tv\u00e1 V\u0161echno Tu\u0161\u00ed", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 9, title: "Tvoje Moudrost V\u0161echno Tu\u0161\u00ed", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 10, title: "Cury Mury Fuk", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 11, title: "Jel Mlad\u00fd Lovec, Jel A Jel", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 12, title: "Ustante V Lovu, Na Hrad Vratte Se", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 13, title: "Sestry, Jedna Sch\u00e1zi Z N\u00e1s!", act: "Act I", has_block: true },
+      { id: "t14", cd: 2, track: 1, title: "J\u00e1rku, J\u00e1rku, Klouce Mil\u00e9", act: "Act II", has_block: true },
+      { id: "t15", cd: 2, track: 2, title: "U N\u00e1s V Lese Stra\u0161\u00ed", act: "Act II", has_block: true },
+      { id: "t16", cd: 2, track: 3, title: "Ji\u017e T\u00fdden Dl\u00ed\u0161 Po Boku", act: "Act II", has_block: true },
+      { id: "t17", cd: 2, track: 4, title: "Zda Na Chv\u00edli Princ Vzpomene Si Prec", act: "Act II", has_block: true },
+      { id: "t18", cd: 2, track: 5, title: "Slavnostn\u00ed Hudba; Balet", act: "Act II", has_block: true },
+      { id: "t19", cd: 2, track: 6, title: "Cel\u00fd Svet Ned\u00e1 Ti, Ned\u00e1", act: "Act II", has_block: true },
+      { id: "t20", cd: 2, track: 7, title: "Kvetiny B\u00edl\u00e9 Po Ceste", act: "Act II", has_block: true },
+      { id: "t21", cd: 2, track: 8, title: "Rusalko, Zn\u00e1\u0161 Mne, Zn\u00e1\u0161?", act: "Act II", has_block: true },
+      { id: "t22", cd: 2, track: 9, title: "Vid\u00ed\u0161 Je, Vid\u00ed\u0161? Jsou Tu Zas", act: "Act II", has_block: true },
+      { id: "t23", cd: 3, track: 1, title: "Neciteln\u00e1 Vodn\u00ed Moci", act: "Act III", has_block: true },
+      { id: "t24", cd: 3, track: 2, title: "Aj, Aj? U\u017e Jsi Se Navr\u00e1tila?", act: "Act III", has_block: true },
+      { id: "t25", cd: 3, track: 3, title: "Vyrv\u00e1na \u017divotu V Hlubokou Samotu", act: "Act III", has_block: true },
+      { id: "t26", cd: 3, track: 4, title: "\u017de Se Boj\u00ed\u0161? Tresky, Plesky", act: "Act III", has_block: true },
+      { id: "t27", cd: 3, track: 5, title: "M\u00e1m, Zlat\u00e9 Vl\u00e1sky M\u00e1m", act: "Act III", has_block: true },
+      { id: "t28", cd: 3, track: 6, title: "B\u00edl\u00e1 Moje Lani! B\u00edl\u00e1 Moje Lani!", act: "Act III", has_block: true },
+      { id: "t29", cd: 3, track: 7, title: "Mil\u00e1cku, Zn\u00e1\u0161 Mne, Zn\u00e1\u0161?", act: "Act III", has_block: true },
+      { id: "t30", cd: 3, track: 8, title: "L\u00edbej Mne, L\u00edbej, M\u00edr Mi Prej", act: "Act III", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Jedn\u00e1n\u00ed I",
+    "Act II": "Jedn\u00e1n\u00ed II",
+    "Act III": "Jedn\u00e1n\u00ed III"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t14",
+    "Act III": "t23"
+  };
+
+  const CHARACTERS = [
+    { id: "rusalka", name: "Rusalka", voice: "Soprano", description: "N\u00e1yade" },
+    { id: "princ", name: "Princ", voice: "Tenor", description: "Del que se enamora Rusalka" },
+    { id: "jezibaba", name: "Je\u017eibaba", voice: "Mezzo-soprano", description: "Bruja" },
+    { id: "vodnik", name: "Vodn\u00edk", voice: "Bass", description: "Nomo acu\u00e1tico" },
+    { id: "knezna", name: "Kn\u011b\u017ena", voice: "Soprano", description: "Princesa extranjera" },
+    { id: "hajny", name: "Hajn\u00fd", voice: "Tenor", description: "Guardabosques del pr\u00edncipe" },
+    { id: "lovec", name: "Lovec", voice: "Tenor", description: "Cazador del s\u00e9quito del pr\u00edncipe" },
+    { id: "prvni-lesni-zinka", name: "Prvn\u00ed lesn\u00ed \u017e\u00ednka", voice: "Soprano", description: "Primera ninfa del bosque" },
+    { id: "druha-lesni-zinka", name: "Druh\u00e1 \u017e\u00ednka", voice: "Soprano", description: "Segunda ninfa del bosque" },
+    { id: "treti-lesni-zinka", name: "T\u0159et\u00ed \u017e\u00ednka", voice: "Contralto", description: "Tercera ninfa del bosque" },
+    { id: "kuchik", name: "Kucht\u00edk", voice: "Soprano", description: "Pinche de cocina" }
+  ];
+
+  const CAST = {
+    mackerras_fleming: { "rusalka": "Ren\u00e9e Fleming", "princ": "Ben Heppner", "jezibaba": "Dolora Zajick", "vodnik": "Franz Hawlata", "knezna": "Eva Urbanov\u00e1", "lovec": "Iv\u00e1n Kusnjer", "prvni-lesni-zinka": "L\u00edvia \u00c1ghov\u00e1", "druha-lesni-zinka": "Dana Buresov\u00e1", "treti-lesni-zinka": "Hannah Esther Minutillo", "kuchik": "Zdena Kloubov\u00e1" }
+  };
+
+  let activeRecording = "mackerras_fleming";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { cs: true, es: true };
+</script>
+<script src="../libretto.js"></script>
