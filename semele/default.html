@@ -1,0 +1,2268 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T2</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Act I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Behold! Auspicious Flashes Rise!</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Semele · Nelson / Battle</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnEN" onclick="toggleLang('en')">EN</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Act One</span>
+      <span>Primer Acto</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="line-row"><span class="en"><strong>No. 1 - Overture</strong></span><span class="es"><strong>No. 1 - Obertura</strong></span></div>
+      <div class="scene-heading">
+        <span>Scene 1</span>
+        <span>Escena 1</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Cadmus, Athamas, Semele, Ino and Chorus of Priests.</span>
+        <span class="es">(Templo de Juno. Cadmo, Athamas, Sémele,</span>
+        <span>The scene is the temple of Juno. Near the altar is a</span>
+        <span class="es">Ino y sacerdotes. Cerca del altar hay una</span>
+        <span>golden image of the goddess. The Priests are in their</span>
+        <span class="es">imagen dorada de la diosa. Los sacerdotes,</span>
+        <span>solemnities, as after a sacrifice newly offered: flames</span>
+        <span class="es">con solemnidad, ofrendan el sacrificio. El</span>
+        <span>arise from the altar and the statue of Juno is seen to</span>
+        <span class="es">humo de las llamas del altar envuelve la</span>
+        <span>bow)</span>
+        <span class="es">estatua de Juno)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 2 - Accompagnato</strong></span><span class="es"><strong>No. 2 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priest</span></span>
+        <span class="character-name">Sumo Sacerdote</span>
+      </div>
+      <div class="line-row"><span class="en">Behold! Auspicious flashes rise,</span><span class="es">¡Mirad! ¡Prósperos destellos se alzan!</span></div>
+      <div class="line-row"><span class="en">Juno accepts our sacrifice;</span><span class="es">¡Juno acepta nuestro sacrificio!</span></div>
+      <div class="line-row"><span class="en">The grateful odour swift ascends,</span><span class="es">El agradable olor asciende raudo,</span></div>
+      <div class="line-row"><span class="en">And see, the golden image bends!</span><span class="es">¡Ved, la dorada imagen se transfigura?</span></div>
+      <div class="line-row"><span class="en"><strong>No. 3 - Chorus</strong></span><span class="es"><strong>No. 3 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span></span>
+        <span class="character-name">Sacerdotes</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="line-row"><span class="en">Lucky omens bless our rites,</span><span class="es">Buenos presagios bendicen nuestros ritos</span></div>
+      <div class="line-row"><span class="en">And sure success shall crown your loves;</span><span class="es">y su amor será coronado por la prosperidad.</span></div>
+      <div class="line-row"><span class="en">Peaceful days and fruitful nights</span><span class="es">Días sosegados y noches fructíferas</span></div>
+      <div class="line-row"><span class="en">Attend the pair that she approves.</span><span class="es">acompañarán a esta pareja que la diosa bendice.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 4 - Recitative, arioso and duet</strong></span><span class="es"><strong>No. 4 - Recitativo, aria y dúo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="en">Daughter, obey,</span><span class="es">Hija, obedece,</span></div>
+      <div class="line-row"><span class="en">Hear and obey!</span><span class="es">¡escucha y obedece!</span></div>
+      <div class="line-row"><span class="en">With kind consenting</span><span class="es">Consiente amablemente</span></div>
+      <div class="line-row"><span class="en">Ease a parent's care;</span><span class="es">y no preocupes a tu padre.</span></div>
+      <div class="line-row"><span class="en">Invent no new delay,</span><span class="es">No causes demoras</span></div>
+      <div class="line-row"><span class="en">On this auspicious day.</span><span class="es">en este próspero día.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">Oh, hear a faithful lover's prayer!</span><span class="es">¡Ah, oye la oración de fiel amante!</span></div>
+      <div class="line-row"><span class="en">On this auspicious day</span><span class="es">En este próspero día</span></div>
+      <div class="line-row"><span class="en">Invent no new delay.</span><span class="es">no causes demoras.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 5 - Accompagnato</strong></span><span class="es"><strong>No. 5 - Acompañamiento</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apart)</span>
+        <span class="es">(aparte)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="en">Ah me!</span><span class="es">¡Oh, no!</span></div>
+      <div class="line-row"><span class="en">What refuge now is left me?</span><span class="es">¿Qué refugio me queda?</span></div>
+      <div class="line-row"><span class="en">How various, how tormenting</span><span class="es">¡Cuántas y cuán atormentadas</span></div>
+      <div class="line-row"><span class="en">Are my miseries!</span><span class="es">son mis tristezas!</span></div>
+      <div class="line-row"><span class="en">O Jove, assist me!</span><span class="es">¡Oh, Júpiter, ayúdame!</span></div>
+      <div class="line-row"><span class="en">Can Semele forego thy love,</span><span class="es">¿Puede Sémele renunciar a tu amor</span></div>
+      <div class="line-row"><span class="en">And to a mortal's passion yield?</span><span class="es">y rendirse a la pasión de un mortal?</span></div>
+      <div class="line-row"><span class="en">Thy vengeance will o'ertake such perfidy.</span><span class="es">Tu venganza podrá con tal perfidia.</span></div>
+      <div class="line-row"><span class="en">If I deny, my father's wrath I fear.</span><span class="es">Si no acepto, temo la ira de mi padre.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 6 - Air</strong></span><span class="es"><strong>No. 6 - Aria</strong></span></div>
+      <div class="line-row"><span class="en">O Jove! In pity teach me which to choose,</span><span class="es">¡Oh, Júpiter! ¿Compadécete y ayúdame a elegir?</span></div>
+      <div class="line-row"><span class="en">Incline me to comply, or help me to refuse!</span><span class="es">Inclíname a aceptar, ¡o ayúdame a negar!</span></div>
+      <div class="line-row"><span class="en">Teach me which to choose,</span><span class="es">Dime qué elegir,</span></div>
+      <div class="line-row"><span class="en">Or help me to refuse!</span><span class="es">¡o ayúdame a negar!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 7 - Air</strong></span><span class="es"><strong>No. 7 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="line-row"><span class="en">The morning lark to mine accords his note,</span><span class="es">La inquietud matinal afina sus notas con las mías,</span></div>
+      <div class="line-row"><span class="en">And tunes to my distress his warbling throat.</span><span class="es">al son de la angustia, mi garganta tiembla.</span></div>
+      <div class="line-row"><span class="en">Each setting and each rising sun I mourn,</span><span class="es">Me lamento a cada salida y puesta de sol,</span></div>
+      <div class="line-row"><span class="en">Wailing alike his absence and return.</span><span class="es">y tanto de su ausencia como de su vuelta.</span></div>
+      <div class="line-row"><span class="en">The morning lark …</span><span class="es">La inquietud matinal...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 8 - Recitative</strong></span><span class="es"><strong>No 8. - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="en">See, she blushing turns her eyes;</span><span class="es">¡Mira, sonrojada esconde la mirada!</span></div>
+      <div class="line-row"><span class="en">See, with sighs her bosom panting!</span><span class="es">¡Mira, su seno rebosa suspiros!</span></div>
+      <div class="line-row"><span class="en">If from love those sighs arise,</span><span class="es">Si del amor surgen esos suspiros,</span></div>
+      <div class="line-row"><span class="en">Nothing to my bliss is wanting.</span><span class="es">nada me puede hacer más feliz.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 9 - Air</strong></span><span class="es"><strong>No. 9 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="en">Hymen, haste, thy torch prepare,</span><span class="es">¡Himeneo, aprisa, prepara tu antorcha!</span></div>
+      <div class="line-row"><span class="en">Love already his has lighted!</span><span class="es">¡El amor ya encendió la suya!</span></div>
+      <div class="line-row"><span class="en">One soft sigh has cur'd despair,</span><span class="es">Un suave suspiro me ha curado la desesperación,</span></div>
+      <div class="line-row"><span class="en">And more than my past pains requited.</span><span class="es">y compensado por mis pasadas penas.</span></div>
+      <div class="line-row"><span class="en">Hymen, haste …</span><span class="es">¡Himeneo, aprisa...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 10 - Recitative</strong></span><span class="es"><strong>No. 10 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="line-row"><span class="en">Alas, she yields,</span><span class="es">¡Maldición, ella cede,</span></div>
+      <div class="line-row"><span class="en">And has undone me!</span><span class="es">y yo me derrumbo!</span></div>
+      <div class="line-row"><span class="en">I cannot longer hide my passion,</span><span class="es">Ya no puedo esconder más mi pasión.</span></div>
+      <div class="line-row"><span class="en">It must have vent,</span><span class="es">Debo extirparla,</span></div>
+      <div class="line-row"><span class="en">Or inward burning</span><span class="es">o las llamas interiores</span></div>
+      <div class="line-row"><span class="en">Will consume me.</span><span class="es">me consumirán.</span></div>
+      <div class="line-row"><span class="en">O Athamas,</span><span class="es">¡Oh, Athamas!</span></div>
+      <div class="line-row"><span class="en">I cannot utter it!</span><span class="es">¡No puedo soportarlo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">On me fair Ino calls</span><span class="es">Ino viene a mí,</span></div>
+      <div class="line-row"><span class="en">With mournful accent,</span><span class="es">triste el rostro</span></div>
+      <div class="line-row"><span class="en">Her colour fading,</span><span class="es">y marchito su color.</span></div>
+      <div class="line-row"><span class="en">And her eyes o'erflowing!</span><span class="es">¡Sus ojos se desbordan!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+      <div class="line-row"><span class="en">O Semele!</span><span class="es">¡Oh, Sémele!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">On me she calls,</span><span class="es">A mí viene,</span></div>
+      <div class="line-row"><span class="en">Yet seems to shun me!</span><span class="es">¡aunque parece evitarme!</span></div>
+      <div class="line-row"><span class="en">What would my sister?</span><span class="es">¿Qué sucede hermana?</span></div>
+      <div class="line-row"><span class="en">Speak!</span><span class="es">¡Habla!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+      <div class="line-row"><span class="en">Thou hast undone me!</span><span class="es">¡Me has destrozado!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 11 - Quartet</strong></span><span class="es"><strong>No. 11 - Cuarteto</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="en">Why dost thou thus untimely grieve,</span><span class="es">¿Por qué esa inoportuna aflicción</span></div>
+      <div class="line-row"><span class="en">And all our solemn rites profane?</span><span class="es">que mancillan nuestros solemnes ritos?</span></div>
+      <div class="line-row"><span class="en">Can he, or she thy woes relieve,</span><span class="es">¿Pueden él, o ella, aliviar vuestras tristezas?</span></div>
+      <div class="line-row"><span class="en">Or I? Of whom dost thou complain?</span><span class="es">¿Quizá, yo? ¿De quién os quejáis?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+      <div class="line-row"><span class="en">Of all! But all, I fear, in vain.</span><span class="es">¡De todos! Pero a todos, en vano, temo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">Can I thy woes relieve?</span><span class="es">¿Puedo yo aliviar vuestras tristezas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Can I assuage thy pain?</span><span class="es">¿Puedo yo disolver tu dolor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span>, <span class="character-name has-tooltip" data-character-id="athamas">Athamas</span>, <span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Cadmo, Athamas, Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Of whom dost thou complain?</span><span class="es">¿De quién os quejáis?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+      <div class="line-row"><span class="en">Of all! but all, I fear, in vain.</span><span class="es">¡De todos! Pero a todos, en vano, temo.</span></div>
+      <div class="stage-direction">
+        <span>(Thunder is heard at a distance and</span>
+        <span class="es">(Se oyen truenos en la distancia</span>
+        <span>the fire is extinguished on the altar)</span>
+        <span class="es">y el fuego del altar se extingue)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 12 - Chorus</strong></span><span class="es"><strong>No. 12 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span></span>
+        <span class="character-name">Sacerdotes</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="line-row"><span class="en">Avert these omens, all ye pow'rs!</span><span class="es">¡Libradnos de estos presagios! ¡Oh, poderosos!</span></div>
+      <div class="line-row"><span class="en">Some god averse our holy rites controls;</span><span class="es">Un dios enemigo se opone a nuestros ritos.</span></div>
+      <div class="line-row"><span class="en">O'erwhelm'd with sudden night the day expires,</span><span class="es">El día expira, abrumado por la súbita noche;</span></div>
+      <div class="line-row"><span class="en">Ill-boding thunder on the right hand rolls,</span><span class="es">un trueno de mal agüero retumba a la derecha,</span></div>
+      <div class="line-row"><span class="en">And Jove himself descends in show'rs</span><span class="es">y el mismo Júpiter se transforma en tormenta</span></div>
+      <div class="line-row"><span class="en">To quench our late propitious fires.</span><span class="es">para extinguir nuestros fuegos propiciatorios.</span></div>
+      <div class="stage-direction">
+        <span>(Flames are rekindled on the altar)</span>
+        <span class="es">(Las llamas del altar se reavivan)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 13 - Accompagnato</strong></span><span class="es"><strong>No. 13 - Acompañamiento</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="en">Again auspicious flashes rise,</span><span class="es">De nuevo, prósperos destellos se alzan.</span></div>
+      <div class="line-row"><span class="en">Juno accepts our sacrifice.</span><span class="es">Juno acepta nuestro sacrificio.</span></div>
+      <div class="stage-direction">
+        <span>(The fire is again extinguished)</span>
+        <span class="es">(El fuego es extinguido nuevamente)</span>
+      </div>
+      <div class="line-row"><span class="en">Again the sickly flame decaying dies:</span><span class="es">De nuevo, la enfermiza llama muere:</span></div>
+      <div class="line-row"><span class="en">Juno assents, but angry Jove denies.</span><span class="es">Juno asiente, pero Júpiter disiente enojado.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 14 - Recitative</strong></span><span class="es"><strong>No. 14 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="line-row"><span class="en">Thy aid, pronubial Juno, Athamas implores!</span><span class="es">¡Ayuda, Juno, Athamas te implora!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apart)</span>
+        <span class="es">(aparte)</span>
+      </div>
+      <div class="line-row"><span class="en">Thee, Jove, and thee alone, thy Semele adores!</span><span class="es">¡A ti Júpiter, y sólo a ti, Sémele adora!</span></div>
+      <div class="stage-direction">
+        <span>(A loud clap of thunder; the altar sinks)</span>
+        <span class="es">(Un potente trueno y el altar se hunde)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 15 - Chorus</strong></span><span class="es"><strong>No. 15 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span></span>
+        <span class="character-name">Sacerdotes</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="en">Cease, cease your vows, 'tis impious to proceed,</span><span class="es">¡Cesad, cesad vuestros juramentos!</span></div>
+      <div class="line-row"><span class="en">Begone, and fly this holy place with speed!</span><span class="es">¡Fuera, marchad inmediatamente de este bendito lugar!</span></div>
+      <div class="line-row"><span class="en">This dreadful conflict is of dire presage,</span><span class="es">Este nefasto conflicto es un terrible presagio.</span></div>
+      <div class="line-row"><span class="en">Begone, and fly from Jove's impending rage!</span><span class="es">¡Fuera, y escapad de la inminente ira de Júpiter!</span></div>
+      <div class="stage-direction">
+        <span>(Exeunt)</span>
+        <span class="es">(Abandonan el escenario)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 2</span>
+        <span>Escena 2</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Athamas and Ino)</span>
+        <span class="es">(Athamas e Ino)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 16 - Recitative</strong></span><span class="es"><strong>No. 16 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="line-row"><span class="en">O Athamas, what torture hast thou borne,</span><span class="es">¡Oh, Athamas! ¿Qué tortura soportas?</span></div>
+      <div class="line-row"><span class="en">And oh, what hast thou yet to bear?</span><span class="es">¿Y cuánta te queda aún por soportar?</span></div>
+      <div class="line-row"><span class="en">From love, from hope, from near possession torn,</span><span class="es">Desgarrado por amor y desesperanza,</span></div>
+      <div class="line-row"><span class="en">And plung'd at once in deep despair!</span><span class="es">¡sumido en una profunda desesperación!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 17 - Air</strong></span><span class="es"><strong>No. 17 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="en">Turn, hopeless lover, turn thy eyes,</span><span class="es">Vuelve tus ojos, amante desesperado,</span></div>
+      <div class="line-row"><span class="en">And see a maid bemoan,</span><span class="es">y mira el lamento de una joven.</span></div>
+      <div class="line-row"><span class="en">In flowing tears and aching sighs,</span><span class="es">Con torrentes de lágrimas y suspiros de dolor,</span></div>
+      <div class="line-row"><span class="en">Thy woes too like her own.</span><span class="es">tu aflicción toma ella como propia.</span></div>
+      <div class="line-row"><span class="en">Turn, hopeless lover...</span><span class="es">Vuelve tus ojos, amante desesperado...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 18 - Recitative</strong></span><span class="es"><strong>No. 18 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="line-row"><span class="en">She weeps!</span><span class="es">¡Llora!</span></div>
+      <div class="line-row"><span class="en">The gentle maid, in tender pity,</span><span class="es">La frágil joven, con tierna misericordia,</span></div>
+      <div class="line-row"><span class="en">Weeps to behold my misery!</span><span class="es">¡llora por mi tristeza!</span></div>
+      <div class="line-row"><span class="en">So Semele would melt</span><span class="es">Así se derretiría Sémele</span></div>
+      <div class="line-row"><span class="en">To see ano</span><span class="es">al ver un lamento</span></div>
+      <div class="line-row"><span class="en">ther mourn.</span><span class="es">Ajeno al suyo.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 19 - Air</strong></span><span class="es"><strong>No. 19 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="en">Your tuneful voice my tale would tell,</span><span class="es">Tu melodiosa voz mi historia contaría,</span></div>
+      <div class="line-row"><span class="en">In pity of my sad despair;</span><span class="es">compadecida de mi triste desesperación;</span></div>
+      <div class="line-row"><span class="en">And with sweet melody compel</span><span class="es">y con dulce melodía,</span></div>
+      <div class="line-row"><span class="en">Attention from the flying fair.</span><span class="es">captaría la atención del hada voladora.</span></div>
+      <div class="line-row"><span class="en">Your tuneful voice…</span><span class="es">Tu melodiosa voz...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 20 - Recitative</strong></span><span class="es"><strong>No. 20 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="line-row"><span class="en">Too well I see,</span><span class="es">Veo claramente,</span></div>
+      <div class="line-row"><span class="en">Thou wilt not understand me.</span><span class="es">que no me comprendes.</span></div>
+      <div class="line-row"><span class="en">Whence could proceed such tenderness?</span><span class="es">¿De dónde crees que procede tal ternura?</span></div>
+      <div class="line-row"><span class="en">Whence such compassion?</span><span class="es">¿De dónde tal compasión?</span></div>
+      <div class="line-row"><span class="en">Insensible, ingrate,</span><span class="es">Insensible, ingrato,</span></div>
+      <div class="line-row"><span class="en">Ah no, I cannot blame thee!</span><span class="es">¡oh no, no te puedo culpar!</span></div>
+      <div class="line-row"><span class="en">For by effects, unknown before,</span><span class="es">¿Por qué efectos desconocidos,</span></div>
+      <div class="line-row"><span class="en">Who could the hidden cause explore,</span><span class="es">quién podría entender las extrañas causas,</span></div>
+      <div class="line-row"><span class="en">Or think that love could act so strange a part,</span><span class="es">o creer que el amor pudiera ser tan extraño,</span></div>
+      <div class="line-row"><span class="en">To plead for pity in a rival's heart?</span><span class="es">como para pedir ayuda al corazón de un rival?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">Ah me, what have I heard,</span><span class="es">¡Por dios, que he comprendido,</span></div>
+      <div class="line-row"><span class="en">She does her passion own!</span><span class="es">haces propia tu pasión!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 21 - Duet</strong></span><span class="es"><strong>No. 21 - Dúo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="line-row"><span class="en">You've undone me,</span><span class="es">Me has avergonzado.</span></div>
+      <div class="line-row"><span class="en">Look not on me!</span><span class="es">¡No me mires!</span></div>
+      <div class="line-row"><span class="en">Guilt upbraiding,</span><span class="es">La culpa se apodera de mí,</span></div>
+      <div class="line-row"><span class="en">Shame invading,</span><span class="es">la vergüenza me invade,</span></div>
+      <div class="line-row"><span class="en">You've undone me,</span><span class="es">me has avergonzado.</span></div>
+      <div class="line-row"><span class="en">Look not on me!</span><span class="es">¡No me mires!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">With my life I would atone</span><span class="es">Con mi vida pagaré</span></div>
+      <div class="line-row"><span class="en">Pains you've borne,</span><span class="es">la aflicción que te he acarreado</span></div>
+      <div class="line-row"><span class="en">To me unknown.</span><span class="es">y que yo desconocía.</span></div>
+      <div class="line-row"><span class="en">Cease to shun me.</span><span class="es">No me evites.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Both</span></span>
+        <span class="character-name">Ambos</span>
+      </div>
+      <div class="line-row"><span class="en">Love alone</span><span class="es">El amor</span></div>
+      <div class="line-row"><span class="en">Has both undone!</span><span class="es">¡Derrumbó a los dos!</span></div>
+      <div class="scene-heading">
+        <span>Scene 3</span>
+        <span>Escena 3</span>
+      </div>
+      <div class="stage-direction">
+        <span>(To them Enter Cadmus, attended)</span>
+        <span class="es">(Entra Cadmo)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 22 - Recitative</strong></span><span class="es"><strong>No. 22 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="line-row"><span class="en">Ah, wretched prince, doom'd to disastrous love!</span><span class="es">¡Oh, desgraciado príncipe de amor desdichado!</span></div>
+      <div class="line-row"><span class="en">Ah me, of parents most forlorn!</span><span class="es">Y yo, ¡padre abandonado!</span></div>
+      <div class="line-row"><span class="en">Prepare, O Athamas, to prove</span><span class="es">Preparaos ¡oh, Athamas! para sentir las punzadas</span></div>
+      <div class="line-row"><span class="en">The sharpest pangs that e'er were borne,</span><span class="es">más afiladas que jamás se hayan soportado.</span></div>
+      <div class="line-row"><span class="en">Prepare with me our common loss to mourn!</span><span class="es">¡Lamentémonos de nuestra común pérdida!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">Can fate, or Semele, invent</span><span class="es">¿Puede el destino, o Sémele,</span></div>
+      <div class="line-row"><span class="en">Another, yet another punishment?</span><span class="es">causar otro, otro castigo más?</span></div>
+      <div class="line-row"><span class="en"><strong>No. 23 - Accompagnato</strong></span><span class="es"><strong>No. 23 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+      <div class="line-row"><span class="en">Wing'd with our fears and pious haste,</span><span class="es">Empujados por el terror</span></div>
+      <div class="line-row"><span class="en">From Juno's fane we fled.</span><span class="es">del templo de Juno huimos.</span></div>
+      <div class="line-row"><span class="en">Scarce we the brazen gates had pass'd,</span><span class="es">Ya habíamos traspasado las doradas puertas,</span></div>
+      <div class="line-row"><span class="en">When Semele around her head</span><span class="es">cuando Sémele, alrededor de su cabeza,</span></div>
+      <div class="line-row"><span class="en">With azure flames was grac'd,</span><span class="es">fue adornada con azuladas llamas</span></div>
+      <div class="line-row"><span class="en">Whose lambent glories in her tresses play'd.</span><span class="es">que luminosas jugueteaban con sus trenzas.</span></div>
+      <div class="line-row"><span class="en">While this we saw with dread surprise,</span><span class="es">Mientras esto observábamos perplejos,</span></div>
+      <div class="line-row"><span class="en">Swifter than lightning downward tending,</span><span class="es">un águila de poderoso tamaño</span></div>
+      <div class="line-row"><span class="en">An eagle stoop'd, of mighty size,</span><span class="es">y más veloz que el relámpago,</span></div>
+      <div class="line-row"><span class="en">On purple wings descending,</span><span class="es">con sus alas púrpura descendió en picado.</span></div>
+      <div class="line-row"><span class="en">Like gold his beak, like stars shone forth his eyes,</span><span class="es">Como oro su pico, como estrellas sus ojos,</span></div>
+      <div class="line-row"><span class="en">His silver plumy breast with snow contending.</span><span class="es">y las plumas del pecho plateadas como nieve.</span></div>
+      <div class="line-row"><span class="en">Sudden he snatch'd the trembling maid,</span><span class="es">Súbitamente se apoderó de la temblorosa joven.</span></div>
+      <div class="line-row"><span class="en">And soaring from our sight convey'd,</span><span class="es">Se la llevó, elevándose más allá de nuestra vista,</span></div>
+      <div class="line-row"><span class="en">Diffusing ever as he less'ning flew</span><span class="es">dejando un rastro en su vuelo,</span></div>
+      <div class="line-row"><span class="en">Celestial odour and ambrosial dew.</span><span class="es">de olor celestial y ambrosía de rocío.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 24 - Recitative</strong></span><span class="es"><strong>No. 24 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">Oh prodigy, to me of dire portent!</span><span class="es">¡Oh prodigio, de extremo portento!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+      <div class="line-row"><span class="en">To me I hope, of fortunate event!</span><span class="es">¡Aún espero suerte y fortuna!</span></div>
+      <div class="scene-heading">
+        <span>Scene 4</span>
+        <span>Escena 4</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Enter to them Chorus of Priests and Augurs)</span>
+        <span class="es">(Entran los sacerdotes y augures)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+      <div class="line-row"><span class="en">See, see, Jove's Priests and holy Augurs come,</span><span class="es">¡Ahí llegan los sacerdotes y augures de Júpiter!</span></div>
+      <div class="line-row"><span class="en">Speak, speak of Semele, and me declare the doom!</span><span class="es">¡Habladle de Sémele, y yo narraré el infortunio!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 25 - Chorus</strong></span><span class="es"><strong>No. 25 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span>, <span class="character-name">Augurs</span></span>
+        <span class="character-name">Sacerdotes, Augures</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="line-row"><span class="en">Hail Cadmus, hail!</span><span class="es">¡Alabad Cadmo, alabad!</span></div>
+      <div class="line-row"><span class="en">Jove salutes the Theban king!</span><span class="es">¡Júpiter saluda al rey de Tebas!</span></div>
+      <div class="line-row"><span class="en">Cease your mourning,</span><span class="es">Que cesen tus lamentos,</span></div>
+      <div class="line-row"><span class="en">Joys returning,</span><span class="es">que la alegría regrese.</span></div>
+      <div class="line-row"><span class="en">Songs of mirth and triumph sing!</span><span class="es">¡Entonad canciones de felicidad y triunfo!</span></div>
+      <div class="line-row"><span class="en">Hail Cadmus, hail!</span><span class="es">¡Alabad Cadmo, alabad!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 26 - Air and Chorus</strong></span><span class="es"><strong>No. 26 - Aria y Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="line-row"><span class="en">Endless pleasure, endless love,</span><span class="es">Placer sin fin, amor sin fin,</span></div>
+      <div class="line-row"><span class="en">Semele enjoys above!</span><span class="es">¡Sémele es feliz en las alturas!</span></div>
+      <div class="line-row"><span class="en">On her bosom Jove reclining,</span><span class="es">Sobre mis pechos, Júpiter reclinado.</span></div>
+      <div class="line-row"><span class="en">Useless now his thunder lies;</span><span class="es">Su trueno, yace inerme;</span></div>
+      <div class="line-row"><span class="en">To her arms his bolts resigning,</span><span class="es">sus rayos, conciliados con mis abrazos;</span></div>
+      <div class="line-row"><span class="en">And his lightning to her eyes.</span><span class="es">sus relámpagos, apagados con mis ojos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span>, <span class="character-name">Augurs</span></span>
+        <span class="character-name">Sacerdotes, Augures</span>
+      </div>
+      <div class="line-row"><span class="en">Endless pleasure, endless love</span><span class="es">Placer sin fin, amor sin fin,</span></div>
+      <div class="line-row"><span class="en">Semele enjoys above!</span><span class="es">¡Sémele es feliz en las alturas!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Act Two</span>
+      <span>Acto Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="line-row"><span class="en"><strong>No. 27 - Symphony</strong></span><span class="es"><strong>No. 27 - Sinfonía</strong></span></div>
+      <div class="scene-heading">
+        <span>Scene 1</span>
+        <span>Escena 1</span>
+      </div>
+      <div class="stage-direction">
+        <span>(A pleasant country, the prospect terminated by</span>
+        <span class="es">(Paisaje agradable con montañas, bosques y</span>
+        <span>a beautiful mountain adorn'd with woods and</span>
+        <span class="es">cascadas. Juno e Iris descienden por partes</span>
+        <span>waterfalls. Juno and Iris descend in different</span>
+        <span class="es">diferentes. Juno sobre un carro tirado por un</span>
+        <span>machines. Juno in a chariot drawn by peacocks;</span>
+        <span class="es">pavo real; Iris sobre un arco iris; se iluminan</span>
+        <span>Iris on a rainbow; they alight and meet)</span>
+        <span class="es">y se encuentran)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 28 - Recitative</strong></span><span class="es"><strong>No. 28 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="line-row"><span class="en">Iris, impatient of thy stay,</span><span class="es">Iris, impaciente por vuestro aviso,</span></div>
+      <div class="line-row"><span class="en">From Samos have I wing'd my way</span><span class="es">desde Samos he volado rauda, y vos,</span></div>
+      <div class="line-row"><span class="en">To meet thy slow return.</span><span class="es">¡qué despacio venís!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="iris">Iris</span></span>
+        <span class="character-name">Iris</span>
+      </div>
+      <div class="line-row"><span class="en">With all his speed not yet the sun</span><span class="es">El sol, en su veloz vuelo,</span></div>
+      <div class="line-row"><span class="en">Through half his race has run,</span><span class="es">no ha completado aún la mitad de su trayecto</span></div>
+      <div class="line-row"><span class="en">Since I, to execute thy dread command,</span><span class="es">desde que yo, para atender vuestras órdenes,</span></div>
+      <div class="line-row"><span class="en">Have thrice encompass'd sea and land.</span><span class="es">por tres veces tomé mar y tierra.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="line-row"><span class="en">Say, where is Semele's abode?</span><span class="es">Decidme, ¿dónde se halla Sémele?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="iris">Iris</span></span>
+        <span class="character-name">Iris</span>
+      </div>
+      <div class="line-row"><span class="en">Look, where Cithaeron proudly stands,</span><span class="es">Mirad allí, donde se alza el orgulloso Citarea,</span></div>
+      <div class="line-row"><span class="en">Bœotia parting from Cecropian lands.</span><span class="es">en Beocia, tierras cecropianas...</span></div>
+      <div class="line-row"><span class="en">High on the summit of that hill,</span><span class="es">Arriba, en la cumbre de la montaña,</span></div>
+      <div class="line-row"><span class="en">Beyond the reach of mortal eyes,</span><span class="es">mas allá del alcance de ojos mortales...</span></div>
+      <div class="line-row"><span class="en">By Jove's command and Vulcan's skill,</span><span class="es">Por orden de Júpiter y obra de Vulcano,</span></div>
+      <div class="line-row"><span class="en">Behold a new-erected palace rise!</span><span class="es">¡veréis el palacio recién construido!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 29 - Air</strong></span><span class="es"><strong>No. 29 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="line-row"><span class="en">There, from mortal cares retiring,</span><span class="es">Allí, apartada de ocupaciones mortales,</span></div>
+      <div class="line-row"><span class="en">She resides in sweet retreat.</span><span class="es">reside ella en dulce retiro.</span></div>
+      <div class="line-row"><span class="en">On her pleasure, Jove requiring,</span><span class="es">Para su placer, en compañía de Júpiter,</span></div>
+      <div class="line-row"><span class="en">All the Loves and Graces wait.</span><span class="es">los Amores y las Gracias la sirven.</span></div>
+      <div class="line-row"><span class="en">There...</span><span class="es">Allí...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 30 - Recitative</strong></span><span class="es"><strong>No. 30 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="line-row"><span class="en">No more, I'll hear no more!</span><span class="es">¡No, no quiero escuchar más!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 31 - Accompagnato</strong></span><span class="es"><strong>No. 31 - Acompañado</strong></span></div>
+      <div class="line-row"><span class="en">Awake, Saturnia, from thy lethargy!</span><span class="es">¡Despierta, Saturno, de tu letargo!</span></div>
+      <div class="line-row"><span class="en">Seize, destroy the cursed Semele!</span><span class="es">¡Ataca y destruye a la maldita Sémele!</span></div>
+      <div class="line-row"><span class="en">Scale proud Cithaeron's top,</span><span class="es">¡Sube a la cima de Citarea</span></div>
+      <div class="line-row"><span class="en">Snatch her, tear her in thy fury,</span><span class="es">y desgárrala con tu furia!</span></div>
+      <div class="line-row"><span class="en">And down to the flood of Acheron</span><span class="es">Y abajo, en las aguas de Aqueronte,</span></div>
+      <div class="line-row"><span class="en">Let her fall, let her fall, fall, fall,</span><span class="es">déjala caer, déjala caer, caer, rodando,</span></div>
+      <div class="line-row"><span class="en">Rolling down the depths of night,</span><span class="es">en la profundidad de la noche.</span></div>
+      <div class="line-row"><span class="en">Never more to behold the light.</span><span class="es">¡Que nunca vuelva a ver la luz!</span></div>
+      <div class="line-row"><span class="en">If I th'imperial scepter sway, I swear</span><span class="es">Si mi cetro imperial es mancillado,</span></div>
+      <div class="line-row"><span class="en">By hell!</span><span class="es">¡juro por el infierno que no dejaré con vida...</span></div>
+      <div class="stage-direction">
+        <span>(Herself)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="en">Tremble, thou universe, this oath to hear!</span><span class="es">¡Tiembla, universo, al oír este juramento!</span></div>
+      <div class="stage-direction">
+        <span>(To Iris)</span>
+        <span class="es">(A Iris)</span>
+      </div>
+      <div class="line-row"><span class="en">Not one of curst Agenor's race to spare.</span><span class="es">ni a un solo descendiente de Agenor!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 32 - Recitative</strong></span><span class="es"><strong>No. 32 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="iris">Iris</span></span>
+        <span class="character-name">Iris</span>
+      </div>
+      <div class="line-row"><span class="en">Hear, mighty queen, while I recount</span><span class="es">Escuchad, poderosa reina, y os relataré</span></div>
+      <div class="line-row"><span class="en">What obstacles you must surmount.</span><span class="es">los obstáculos que deberéis superar.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 33 - Accompagnato</strong></span><span class="es"><strong>No. 33 - Acompañado</strong></span></div>
+      <div class="line-row"><span class="en">With adamant the gates are barr'd,</span><span class="es">Las puertas están bloqueadas con gruesas barras.</span></div>
+      <div class="line-row"><span class="en">Whose entrance two fierce dragons guard.</span><span class="es">La entrada la guardan dos fieros dragones que</span></div>
+      <div class="line-row"><span class="en">At each approach they lash their forky stings</span><span class="es">atacan con sus afiladas púas a quien se acerca.</span></div>
+      <div class="line-row"><span class="en">And clap their brazen wings;</span><span class="es">Cuando agitan sus gruesas alas</span></div>
+      <div class="line-row"><span class="en">And as their scaly horrors rise,</span><span class="es">y levantan sus horrendas escamas,</span></div>
+      <div class="line-row"><span class="en">They all at once disclose</span><span class="es">descubren a la vez</span></div>
+      <div class="line-row"><span class="en">A thousand fiery eyes</span><span class="es">mil ardientes ojos</span></div>
+      <div class="line-row"><span class="en">Which never know repose.</span><span class="es">que no conocen el descanso.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 34 - Air</strong></span><span class="es"><strong>No. 34 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="line-row"><span class="en">Hence, Iris, hence away,</span><span class="es">¡Marchemos, Iris, alejémonos del reino del día!</span></div>
+      <div class="line-row"><span class="en">Far from the realms of day!</span><span class="es">¡Hacia el lago Metona, en las montañas Scytas,</span></div>
+      <div class="line-row"><span class="en">O'er Scythian hills to the Maeotian lake</span><span class="es">volaremos rápidamente!</span></div>
+      <div class="line-row"><span class="en">A speedy flight we'll take!</span><span class="es">Allí ordenaré a Sueño que abandone</span></div>
+      <div class="line-row"><span class="en">There Somnus I'll compel</span><span class="es">su cama de plumas y su silencioso aposento.</span></div>
+      <div class="line-row"><span class="en">His downy bed to leave, and silent cell;</span><span class="es">Con ruido y luz perturbaré su paz para que</span></div>
+      <div class="line-row"><span class="en">With noise and light I will his peace molest,</span><span class="es">no vuelva a caer en placentero descanso</span></div>
+      <div class="line-row"><span class="en">Nor shall he sink again to pleasing rest,</span><span class="es">hasta que conceda ayuda a mi jurada venganza</span></div>
+      <div class="line-row"><span class="en">Till to my vow'd revenge he grants supplies,</span><span class="es">y selle con legañas</span></div>
+      <div class="line-row"><span class="en">And seals with sleep the wakeful dragons' eyes.</span><span class="es">los despiertos ojos de los dragones.</span></div>
+      <div class="line-row"><span class="en">Hence...</span><span class="es">¡Marchemos...</span></div>
+      <div class="stage-direction">
+        <span>(Exeunt)</span>
+        <span class="es">(Abandonan el escenario)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 2</span>
+        <span>Escena 2</span>
+      </div>
+      <div class="stage-direction">
+        <span>(An apartment in the palace of Semele.</span>
+        <span class="es">(Una sala en el palacio de Sémele.</span>
+        <span>She is sleeping, Loves and Zephyrs waiting)</span>
+        <span class="es">Ella duerme, Cupido y Céfiro esperan)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>Air</strong></span><span class="es"><strong>Aria</strong></span></div>
+      <div class="stage-direction">
+        <span>(probably cut before the first performance)</span>
+        <span class="es">(probablemente eliminada antes del estreno)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cupid">Cupid</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="en">Come, Zephyrs, come, while Cupid sings,</span><span class="es">¡Ven, Céfiro, ven, mientras Cupido canta!</span></div>
+      <div class="line-row"><span class="en">Fan her with your silky wings!</span><span class="es">¡Abanícala con tus alas de seda!</span></div>
+      <div class="line-row"><span class="en">New desire I'll inspire,</span><span class="es">Un nuevo deseo le inspiraré</span></div>
+      <div class="line-row"><span class="en">And revive the dying flames.</span><span class="es">y reavivaré en ella las apagadas llamas.</span></div>
+      <div class="line-row"><span class="en">Dance around her</span><span class="es">Baila a su alrededor</span></div>
+      <div class="line-row"><span class="en">While I wound her,</span><span class="es">mientras yo aumento su deseo</span></div>
+      <div class="line-row"><span class="en">And with pleasure</span><span class="es">y de placer,</span></div>
+      <div class="line-row"><span class="en">Fill her dreams.</span><span class="es">lleno sus sueños.</span></div>
+      <div class="line-row"><span class="en">Come, Zephyrs, come …</span><span class="es">¡Ven, Céfiro, ven...</span></div>
+      <div class="stage-direction">
+        <span>(Semele awakes and rises)</span>
+        <span class="es">(Sémele se despierta e incorpora)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 35 - Air</strong></span><span class="es"><strong>No. 35 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="line-row"><span class="en">O sleep, why dost thou leave me,</span><span class="es">¡Oh, sueño! ¿Por qué me abandonaste?,</span></div>
+      <div class="line-row"><span class="en">Why thy visionary joys remove?</span><span class="es">¿Por qué te llevaste las visiones de placer?</span></div>
+      <div class="line-row"><span class="en">O sleep, again deceive me,</span><span class="es">¡Oh sueño, engáñame de nuevo!</span></div>
+      <div class="line-row"><span class="en">To my arms restore my wand'ring love!</span><span class="es">¡Que vuelva a vagar el amor entre mis brazos!</span></div>
+      <div class="scene-heading">
+        <span>Scene 3</span>
+        <span>Escena 3</span>
+      </div>
+      <div class="stage-direction">
+        <span>(To them enter Jupiter)</span>
+        <span class="es">(Entra Júpiter)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 36 - Recitative</strong></span><span class="es"><strong>No. 36 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="line-row"><span class="en">Let me not another moment</span><span class="es">No dejes ni por un momento</span></div>
+      <div class="line-row"><span class="en">Bear the pangs of absence;</span><span class="es">que vuelva a soportar las punzadas de la ausencia.</span></div>
+      <div class="line-row"><span class="en">Since you have form'd my soul for loving,</span><span class="es">Puesto que enseñaste a mi alma a amar,</span></div>
+      <div class="line-row"><span class="en">No more afflict me</span><span class="es">¡no me aflijas más</span></div>
+      <div class="line-row"><span class="en">With doubts and fears and cruel jealousy!</span><span class="es">con dudas, temores y crueles celos!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 37 - Air</strong></span><span class="es"><strong>No. 37 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="line-row"><span class="en">Lay your doubts and fears aside,</span><span class="es">Echad a un lado tus dudas y temores</span></div>
+      <div class="line-row"><span class="en">And for joys alone provide.</span><span class="es">y haz hueco sólo para alegrías.</span></div>
+      <div class="line-row"><span class="en">Though this human form I wear,</span><span class="es">Aunque he tomado esta forma humana,</span></div>
+      <div class="line-row"><span class="en">Think not I man's falsehood bear.</span><span class="es">no creas que acarreo la falsedad del hombre.</span></div>
+      <div class="line-row"><span class="en">Lay your doubts …</span><span class="es">Echa a un lado tus dudas...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 38 - Recitative</strong></span><span class="es"><strong>No. 38 - Recitativo</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="line-row"><span class="en">You are mortal and require</span><span class="es">Eres mortal y necesitas tiempo</span></div>
+      <div class="line-row"><span class="en">Time to rest and to repose.</span><span class="es">para el descanso y reposo.</span></div>
+      <div class="line-row"><span class="en">I was not absent,</span><span class="es">No estaba ausente</span></div>
+      <div class="line-row"><span class="en">While Love was with thee</span><span class="es">mientras Amor estaba contigo;</span></div>
+      <div class="line-row"><span class="en">I was present:</span><span class="es">muy al contrario, estaba presente,</span></div>
+      <div class="line-row"><span class="en">Love and I are one.</span><span class="es">pues Amor y yo somos el mismo.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 39 - Air</strong></span><span class="es"><strong>No. 39 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc31">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t31">
+      <div class="line-row"><span class="en">With fond desiring,</span><span class="es">Ardiente deseo,</span></div>
+      <div class="line-row"><span class="en">With bliss expiring,</span><span class="es">viva felicidad,</span></div>
+      <div class="line-row"><span class="en">Panting,</span><span class="es">suspiros,</span></div>
+      <div class="line-row"><span class="en">Fainting,</span><span class="es">embriaguez,</span></div>
+      <div class="line-row"><span class="en">If this be Love, not you alone,</span><span class="es">eso es el amor,</span></div>
+      <div class="line-row"><span class="en">But Love and I are one.</span><span class="es">amor y yo somos uno.</span></div>
+      <div class="line-row"><span class="en">Causeless doubting,</span><span class="es">Dudas sin causa,</span></div>
+      <div class="line-row"><span class="en">Or despairing,</span><span class="es">desesperación,</span></div>
+      <div class="line-row"><span class="en">Rashly trusting,</span><span class="es">confianza precipitada,</span></div>
+      <div class="line-row"><span class="en">Idly fearing,</span><span class="es">temor sin razón,</span></div>
+      <div class="line-row"><span class="en">If this be Love, not you alone,</span><span class="es">eso es el amor,</span></div>
+      <div class="line-row"><span class="en">But Love and I are one</span><span class="es">amor y yo somos uno.</span></div>
+      <div class="line-row"><span class="en">With fond …</span><span class="es">Con ardiente...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 40 - Chorus</strong></span><span class="es"><strong>No. 40 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Loves And Zephyrs</span></span>
+        <span class="character-name">Amor, Céfiro</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc32">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t32">
+      <div class="line-row"><span class="en">How engaging, how endearing,</span><span class="es">¡Qué prometedor, qué agradable,</span></div>
+      <div class="line-row"><span class="en">Is a lover's pain and care!</span><span class="es">es el dolor de un amante!</span></div>
+      <div class="line-row"><span class="en">And what joy the nymph's appearing</span><span class="es">¡Y cómo se torna en felicidad</span></div>
+      <div class="line-row"><span class="en">After absence or despair!</span><span class="es">tras la ausencia o desesperación!</span></div>
+      <div class="line-row"><span class="en">How engaging …</span><span class="es">Que prometedor...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 41 - Recitative</strong></span><span class="es"><strong>No. 41 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Ah me!</span><span class="es">¡Ay!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc33">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t33">
+      <div class="line-row"><span class="en">Why sighs my Semele?</span><span class="es">¿Por qué suspira mi Sémele?</span></div>
+      <div class="line-row"><span class="en">What gentle sorrow</span><span class="es">¿Qué suaves penas</span></div>
+      <div class="line-row"><span class="en">Swells thy soft bosom?</span><span class="es">llenan tu delicado seno?</span></div>
+      <div class="line-row"><span class="en">Why tremble those fair eyes</span><span class="es">¿Por qué tiemblan esos ojos</span></div>
+      <div class="line-row"><span class="en">With interrupted light,</span><span class="es">con luz entrecortada,</span></div>
+      <div class="line-row"><span class="en">Where hov'ring for a vent,</span><span class="es">que buscando un escape,</span></div>
+      <div class="line-row"><span class="en">Amidst their humid fires,</span><span class="es">entre sus húmedos fuegos</span></div>
+      <div class="line-row"><span class="en">Some new-form'd wish appears?</span><span class="es">ven aparecer un nuevo deseo?</span></div>
+      <div class="line-row"><span class="en">Speak, and obtain!</span><span class="es">¡Habla, y vence!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">At my own happiness</span><span class="es">Por mi propia felicidad</span></div>
+      <div class="line-row"><span class="en">I sigh and tremble,</span><span class="es">suspiro y tiemblo,</span></div>
+      <div class="line-row"><span class="en">For I am mortal,</span><span class="es">puesto que soy mortal,</span></div>
+      <div class="line-row"><span class="en">Still a woman;</span><span class="es">simplemente una mujer.</span></div>
+      <div class="line-row"><span class="en">And ever when you leave me,</span><span class="es">E incluso cuando me abandonas,</span></div>
+      <div class="line-row"><span class="en">Though compass'd round with deities</span><span class="es">aún estando rodeada de deidades,</span></div>
+      <div class="line-row"><span class="en">Of Loves and Graces,</span><span class="es">de amores y gracias,</span></div>
+      <div class="line-row"><span class="en">A fear invades me,</span><span class="es">un temor me invade,</span></div>
+      <div class="line-row"><span class="en">And conscious of a nature</span><span class="es">y consciente de una naturaleza</span></div>
+      <div class="line-row"><span class="en">Far inferior,</span><span class="es">muy inferior,</span></div>
+      <div class="line-row"><span class="en">I seek for solitude</span><span class="es">busco la soledad</span></div>
+      <div class="line-row"><span class="en">And shun society.</span><span class="es">y evito a los demás.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apart)</span>
+        <span class="es">(aparte)</span>
+      </div>
+      <div class="line-row"><span class="en">Too well I read her meaning,</span><span class="es">Lo comprendo perfectamente,</span></div>
+      <div class="line-row"><span class="en">But must not understand her:</span><span class="es">pero debo fingir que no.</span></div>
+      <div class="line-row"><span class="en">Aiming at immortality</span><span class="es">Ella busca la inmortalidad</span></div>
+      <div class="line-row"><span class="en">With dangerous ambition.</span><span class="es">con peligrosa ambición.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 42 - Air</strong></span><span class="es"><strong>No. 42 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc34">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t34">
+      <div class="line-row"><span class="en">I must with speed amuse her</span><span class="es">Debo entretenerla raudo</span></div>
+      <div class="line-row"><span class="en">Lest she too much explain.</span><span class="es">y evitar explicaciones.</span></div>
+      <div class="line-row"><span class="en">It gives the lover double pain</span><span class="es">Le duele doblemente al amante que</span></div>
+      <div class="line-row"><span class="en">Who hears his nymph complain,</span><span class="es">aun oyendo a su ninfa quejarse,</span></div>
+      <div class="line-row"><span class="en">And hearing, must refuse her.</span><span class="es">fingir debe que no la escucha.</span></div>
+      <div class="line-row"><span class="en">I must...</span><span class="es">Debo...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 43 - Chorus</strong></span><span class="es"><strong>No. 43 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Loves And Zephyrs</span></span>
+        <span class="character-name">Cupido, Céfiro</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc35">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t35">
+      <div class="line-row"><span class="en">Now Love that everlasting boy invites</span><span class="es">Y ahora, Amor, el joven eterno,</span></div>
+      <div class="line-row"><span class="en">To revel while you may in soft delights.</span><span class="es">os invita a regocijaros en tiernos deleites.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 44 - Recitative</strong></span><span class="es"><strong>No. 44 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc36">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t36">
+      <div class="line-row"><span class="en">By my command</span><span class="es">Ordeno,</span></div>
+      <div class="line-row"><span class="en">Now at this instant</span><span class="es">en este mismo instante,</span></div>
+      <div class="line-row"><span class="en">Two winged Zephyrs</span><span class="es">a dos céfiros alados</span></div>
+      <div class="line-row"><span class="en">From her downy bed</span><span class="es">que saquen a su amada Ino</span></div>
+      <div class="line-row"><span class="en">Thy much lov'd Ino bear,</span><span class="es">de su delicada cama.</span></div>
+      <div class="line-row"><span class="en">And both together</span><span class="es">Y ambos juntos,</span></div>
+      <div class="line-row"><span class="en">Waft her hither,</span><span class="es">la transporten flotando,</span></div>
+      <div class="line-row"><span class="en">Through the balmy air.</span><span class="es">por el cálido aire.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Shall I my sister see,</span><span class="es">¿Podré ver a mi hermana,</span></div>
+      <div class="line-row"><span class="en">The dear companion</span><span class="es">la querida compañera</span></div>
+      <div class="line-row"><span class="en">Of my tender years?</span><span class="es">de mis tiernos años?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+      <div class="line-row"><span class="en">See, she appears,</span><span class="es">Mira, aquí aparece,</span></div>
+      <div class="line-row"><span class="en">But sees not me;</span><span class="es">pero ella no pude verme</span></div>
+      <div class="line-row"><span class="en">For I am visible</span><span class="es">puesto que soy visible</span></div>
+      <div class="line-row"><span class="en">Alone to thee.</span><span class="es">sólo para ti.</span></div>
+      <div class="line-row"><span class="en">While I retire, rise and meet her,</span><span class="es">Mientras yo me retiro, ve y salúdala,</span></div>
+      <div class="line-row"><span class="en">And with welcomes greet her.</span><span class="es">dale la bienvenida.</span></div>
+      <div class="line-row"><span class="en">Now all this scene shall to Arcadia turn,</span><span class="es">Ahora, este lugar deberá tornarse en Arcadia,</span></div>
+      <div class="line-row"><span class="en">The seat of happy nymphs and swains;</span><span class="es">un lugar de jóvenes amantes y ninfas,</span></div>
+      <div class="line-row"><span class="en">There without the rage of jealousy they burn,</span><span class="es">que arden sin la ira de los celos</span></div>
+      <div class="line-row"><span class="en">And taste the sweets of love without its pains.</span><span class="es">y gozan de los deleites del amor sin sufrir.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 45 - Air</strong></span><span class="es"><strong>No. 45 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc37">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t37">
+      <div class="line-row"><span class="en">Where'er you walk, cool gales shall fan the glade;</span><span class="es">Allí donde camines, los huracanes serán frescos.</span></div>
+      <div class="line-row"><span class="en">Trees, where you sit, shall crowd into a shade.</span><span class="es">Allí donde te sientes, los árboles harán sombra.</span></div>
+      <div class="line-row"><span class="en">Where'er you tread, the blushing flow'rs shall rise,</span><span class="es">Allí donde pises, las flores crecerán,</span></div>
+      <div class="line-row"><span class="en">And all things flourish where'er you turn your eyes.</span><span class="es">y todo florecerá allí donde tus ojos se posen.</span></div>
+      <div class="line-row"><span class="en">Where'er...</span><span class="es">Allí donde...</span></div>
+      <div class="stage-direction">
+        <span>(Exit)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 4</span>
+        <span>Escena 4</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Semele and Ino meet and embrace. Chorus</span>
+        <span class="es">(Sémele e Ino se encuentran y abrazan.</span>
+        <span>of Nymphs and Swains)</span>
+        <span class="es">Coro de ninfas y jóvenes)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 46 - Recitative</strong></span><span class="es"><strong>No. 46 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc38">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t38">
+      <div class="line-row"><span class="en">Dear sister, how was your passage hither?</span><span class="es">Querida hermana, ¿cómo ha sido tu viaje?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+      <div class="line-row"><span class="en">O'er many states and peopled towns we pass'd,</span><span class="es">Sobre muchas tierras y gentes pasamos.</span></div>
+      <div class="line-row"><span class="en">O'er hills and valleys, and o'er deserts waste;</span><span class="es">Sobre montañas, valles y desiertos;</span></div>
+      <div class="line-row"><span class="en">O'er barren moors, and o'er unwholesome fens,</span><span class="es">sobre estériles páramos y barrizales,</span></div>
+      <div class="line-row"><span class="en">And woods where beasts inhabit dreadful dens.</span><span class="es">y bosques donde las bestias habitan en cuevas.</span></div>
+      <div class="line-row"><span class="en">Through all which pathless way our speed was such,</span><span class="es">Nuestra velocidad era tal, en el viaje sin sendero,</span></div>
+      <div class="line-row"><span class="en">We stopp'd not once the face of earth to touch.</span><span class="es">que no nos detuvimos ni una vez a tocar tierra.</span></div>
+      <div class="line-row"><span class="en">Meantime they told me, while through air we fled,</span><span class="es">Me dijeron, mientras volábamos,</span></div>
+      <div class="line-row"><span class="en">That Jove did thus ordain.</span><span class="es">que fue todo por orden de Júpiter.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 47 - Air</strong></span><span class="es"><strong>No. 47 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc39">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t39">
+      <div class="line-row"><span class="en">But hark, the heav'nly sphere turns round,</span><span class="es">Pero escucha, la esfera celestial gira,</span></div>
+      <div class="line-row"><span class="en">And silence now is drown'd</span><span class="es">y el silencio está ahora ahogado</span></div>
+      <div class="line-row"><span class="en">In ecstasy of sound.</span><span class="es">en un éxtasis de sonido.</span></div>
+      <div class="line-row"><span class="en">How on a sudden the still air is charm'd</span><span class="es">Mira como de repente, el aire está encantado</span></div>
+      <div class="line-row"><span class="en">As if all harmony were just alarm'd!</span><span class="es">¡como si toda armonía estuviese exaltada!</span></div>
+      <div class="line-row"><span class="en">And ev'ry soul with transport fill'd,</span><span class="es">Y las almas transportadas,</span></div>
+      <div class="line-row"><span class="en">Alternately is thaw'd and chill'd.</span><span class="es">y todo alternara entre el frío y el calor.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 48 - Duet</strong></span><span class="es"><strong>No. 48 - Dúo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span>, <span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Sémele, Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc40">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t40">
+      <div class="line-row"><span class="en">Prepare then, ye immortal choir,</span><span class="es">Preparaos, coro inmortal.</span></div>
+      <div class="line-row"><span class="en">Each sacred minstrel tune his lyre,</span><span class="es">Que los músicos afinen sus liras.</span></div>
+      <div class="line-row"><span class="en">And all in chorus join!</span><span class="es">¡Unámonos todos a coro!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 49 - Chorus</strong></span><span class="es"><strong>No. 49 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Nymphs And Swains</span></span>
+        <span class="character-name">Ninfas Y Jóvenes</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc41">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t41">
+      <div class="line-row"><span class="en">Bless the glad earth with heav'nly lays,</span><span class="es">Bendigamos la tierra con cánticos celestiales</span></div>
+      <div class="line-row"><span class="en">And to that pitch th'eternal accents raise,</span><span class="es">que alcancen un tono eterno.</span></div>
+      <div class="line-row"><span class="en">That all appear divine!</span><span class="es">¡Que todo sea divino!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Act Three</span>
+      <span>Acto Tercero</span>
+    </div>
+
+    <div class="track-col" id="tc42">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t42">
+      <div class="scene-heading">
+        <span>Scene 1</span>
+        <span>Escena 1</span>
+      </div>
+      <div class="stage-direction">
+        <span>(The Cave of Sleep. The God of Sleep lying</span>
+        <span class="es">(La Cueva del Sueño. El Dios del Sueño yace</span>
+        <span>on his bed. Juno and Iris appear)</span>
+        <span class="es">en su lecho. Juno e Iris aparecen)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 50 - Symphony </strong></span><span class="es"><strong>No. 50 - Sinfonía</strong></span></div>
+      <div class="line-row"><span class="en"><strong>No. 51 - Accompagnato </strong></span><span class="es"><strong>No. 51 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="line-row"><span class="en">Somnus, awake,</span><span class="es">¡Somnus, despierta!</span></div>
+      <div class="line-row"><span class="en">Raise thy reclining head!</span><span class="es">¡Incorpórate!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="iris">Iris</span></span>
+        <span class="character-name">Iris</span>
+      </div>
+      <div class="line-row"><span class="en">Thyself forsake,</span><span class="es">¡Atiende!</span></div>
+      <div class="line-row"><span class="en">And lift up thy heavy lids of lead!</span><span class="es">¡Levanta tus pesados párpados!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 52 - Air </strong></span><span class="es"><strong>No. 52 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="somnus">Somnus</span></span>
+        <span class="character-name">Somnus</span>
+      </div>
+      <div class="stage-direction">
+        <span>(waking)</span>
+        <span class="es">(despertando)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc43">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t43">
+      <div class="line-row"><span class="en">Leave me, loathsome light,</span><span class="es">¡Déjame, odiosa luz!</span></div>
+      <div class="line-row"><span class="en">Receive me, silent night!</span><span class="es">¡Recíbeme, silenciosa noche!</span></div>
+      <div class="line-row"><span class="en">Lethe, why does thy ling'ring current cease?</span><span class="es">Lete, ¿por qué cesa el murmullo de tu arroyo?</span></div>
+      <div class="line-row"><span class="en">Oh, murmur, murmur me again to peace!</span><span class="es">¡Oh, continuad con vuestros sones de paz!</span></div>
+      <div class="stage-direction">
+        <span>(Sleeps again)</span>
+        <span class="es">(Se duerme de nuevo)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 53 - Recitative </strong></span><span class="es"><strong>No. 53 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="iris">Iris</span></span>
+        <span class="character-name">Iris</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc44">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t44">
+      <div class="line-row"><span class="en">Dull God, canst thou attend the water's fall,</span><span class="es">Torpe dios, ¿acaso escuchas el agua correr</span></div>
+      <div class="line-row"><span class="en">And not hear Saturnia call?</span><span class="es">y no la llamada de Saturno?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="line-row"><span class="en">Peace, Iris, peace! I know how to charm him:</span><span class="es">¡Paz, Iris, paz! Yo sé cómo hechizarle.</span></div>
+      <div class="line-row"><span class="en">Pasithea's name alone can warm him.</span><span class="es">El solo nombre de Pasítea le llena de calor.</span></div>
+      <div class="stage-direction">
+        <span>(To Somnus)</span>
+        <span class="es">(A Somnus)</span>
+      </div>
+      <div class="line-row"><span class="en">Somnus, arise!</span><span class="es">¡Somnus, levántate!</span></div>
+      <div class="line-row"><span class="en">Disclose thy tender eyes;</span><span class="es">Muéstranos tus tiernos ojos</span></div>
+      <div class="line-row"><span class="en">For Pasithea's sight</span><span class="es">y así verás a Pasítea.</span></div>
+      <div class="line-row"><span class="en">Endure the light.</span><span class="es">Ábrelos a la luz.</span></div>
+      <div class="line-row"><span class="en">Somnus, arise!</span><span class="es">¡Somnus, levántate!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 54 - Air </strong></span><span class="es"><strong>No. 54 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="somnus">Somnus</span></span>
+        <span class="character-name">Somnus</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc45">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t45">
+      <div class="line-row"><span class="en">More sweet is that name</span><span class="es">Más dulce es ese nombre</span></div>
+      <div class="line-row"><span class="en">Than a soft purling stream.</span><span class="es">que un suave arroyo.</span></div>
+      <div class="line-row"><span class="en">With pleasure repose I'll forsake,</span><span class="es">Con placer abandonaré mi reposo,</span></div>
+      <div class="line-row"><span class="en">If you'll grant me but her to soothe me awake.</span><span class="es">si de verdad es ella quien me despierta.</span></div>
+      <div class="line-row"><span class="en">More sweet...</span><span class="es">Más dulce...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 55 - Recitative </strong></span><span class="es"><strong>No. 55 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc46">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t46">
+      <div class="line-row"><span class="en">My will obey,</span><span class="es">Obedece a mi voluntad</span></div>
+      <div class="line-row"><span class="en">She shall be thine.</span><span class="es">y ella será tuya.</span></div>
+      <div class="line-row"><span class="en">Thou, with thy softer pow'rs,</span><span class="es">Tú, con tu enorme poder,</span></div>
+      <div class="line-row"><span class="en">First Jove shalt captivate.</span><span class="es">debes cautivar primero a Júpiter.</span></div>
+      <div class="line-row"><span class="en">To Morpheus then give order,</span><span class="es">Luego, ordenarás a Morfeo,</span></div>
+      <div class="line-row"><span class="en">Thy various minister,</span><span class="es">tu pastor,</span></div>
+      <div class="line-row"><span class="en">That with a dream in shape of Semele,</span><span class="es">que infunda a la durmiente deidad</span></div>
+      <div class="line-row"><span class="en">But far more beautiful</span><span class="es">un sueño en forma de Sémele,</span></div>
+      <div class="line-row"><span class="en">And more alluring,</span><span class="es">pero mucho más bella y más tentadora.</span></div>
+      <div class="line-row"><span class="en">He may invade the sleeping deity;</span><span class="es">Deberá agitar de tal manera su fuego,</span></div>
+      <div class="line-row"><span class="en">And more to agitate his kindling fire</span><span class="es">el sueño deberá de parecerle tan real,</span></div>
+      <div class="line-row"><span class="en">Still let the phantom seem to fly before him,</span><span class="es">que se habrá de despertar poseído</span></div>
+      <div class="line-row"><span class="en">That he may wake impetuous, furious in desire,</span><span class="es">por un deseo irrefrenable e impetuoso,</span></div>
+      <div class="line-row"><span class="en">Unable to refuse whatever boon</span><span class="es">que le haga incapaz de negarse</span></div>
+      <div class="line-row"><span class="en">Her coyness shall require.</span><span class="es">a cualquier petición que ella le pidiera.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="somnus">Somnus</span></span>
+        <span class="character-name">Somnus</span>
+      </div>
+      <div class="line-row"><span class="en">I tremble to comply.</span><span class="es">Haré tal y como me pides.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="line-row"><span class="en">To me thy leaden rod resign,</span><span class="es">Dame tu cetro</span></div>
+      <div class="line-row"><span class="en">To charm the sentinels</span><span class="es">para encantar a los centinelas</span></div>
+      <div class="line-row"><span class="en">On mount Cithaeron.</span><span class="es">del monte Cithaeron.</span></div>
+      <div class="line-row"><span class="en">Then cast a sleep on mortal Ino,</span><span class="es">Luego, hechizaré en un sueño a la mortal Ino,</span></div>
+      <div class="line-row"><span class="en">That I may seem her form to wear,</span><span class="es">para poder yo adoptar su forma</span></div>
+      <div class="line-row"><span class="en">When I to Semele appear.</span><span class="es">y aparecerme a Sémele.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 56 - Duet </strong></span><span class="es"><strong>No. 56 - Dúo</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc47">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t47">
+      <div class="line-row"><span class="en">Obey my will, thy rod resign,</span><span class="es">Obedece a mi voluntad, dame tu cetro,</span></div>
+      <div class="line-row"><span class="en">And Pasithea shall be thine.</span><span class="es">y Pasítea será tuya.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="somnus">Somnus</span></span>
+        <span class="character-name">Somnus</span>
+      </div>
+      <div class="line-row"><span class="en">All I must grant, for all is due</span><span class="es">Me aseguraré de que todo se cumpla,</span></div>
+      <div class="line-row"><span class="en">To Pasithea, love and you.</span><span class="es">por Pasítea, el amor y tú.</span></div>
+      <div class="stage-direction">
+        <span>(Exeunt)</span>
+        <span class="es">(Abandonan el escenario)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 2</span>
+        <span>Escena 2</span>
+      </div>
+      <div class="stage-direction">
+        <span>(An Apartment. Semele alone)</span>
+        <span class="es">(Una sala. Sémele sola)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 57 - Air</strong></span><span class="es"><strong>No. 57 Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc48">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t48">
+      <div class="line-row"><span class="en">My racking thoughts by no kind slumbers freed,</span><span class="es">No me libero de mis pensamientos</span></div>
+      <div class="line-row"><span class="en">But painful nights to joyful days succeed.</span><span class="es">y la dolorosa noche puede más que el alegre día.</span></div>
+      <div class="scene-heading">
+        <span>Scene 3</span>
+        <span>Escena 3</span>
+      </div>
+      <div class="stage-direction">
+        <span>(To her Enter Juno as Ino, with a mirror in her hand)</span>
+        <span class="es">(Entra Juno bajo forma de Ino, con un espejo)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 58 - Recitative</strong></span><span class="es"><strong>No. 58 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apart)</span>
+        <span class="es">(para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc49">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t49">
+      <div class="line-row"><span class="en">Thus shap'd like Ino,</span><span class="es">Convertida en Ino,</span></div>
+      <div class="line-row"><span class="en">With ease I shall deceive her,</span><span class="es">fácilmente la engañaré,</span></div>
+      <div class="line-row"><span class="en">And in this mirror she shall see</span><span class="es">y en este espejo se verá</span></div>
+      <div class="line-row"><span class="en">Herself as much transform'd as me.</span><span class="es">a sí misma transformada en mí.</span></div>
+      <div class="stage-direction">
+        <span>(to Semele)</span>
+        <span class="es">(a Sémele)</span>
+      </div>
+      <div class="line-row"><span class="en">Do I some goddess see,</span><span class="es">¿Veo a una diosa,</span></div>
+      <div class="line-row"><span class="en">Or is it Semele!</span><span class="es">o eres Sémele?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Dear sister, speak,</span><span class="es">Hermana, dime,</span></div>
+      <div class="line-row"><span class="en">Whence this astonishment?</span><span class="es">¿por qué este asombro?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="line-row"><span class="en">Your charms improving</span><span class="es">Tus encantos están alcanzando</span></div>
+      <div class="line-row"><span class="en">To divine perfection,</span><span class="es">la divina perfección,</span></div>
+      <div class="line-row"><span class="en">Show you were late admitted</span><span class="es">como si hubieras sido admitida</span></div>
+      <div class="line-row"><span class="en">Amongst celestial beauties.</span><span class="es">entre las bellezas celestiales.</span></div>
+      <div class="line-row"><span class="en">Has Jove consented,</span><span class="es">¿Ha consentido Júpiter,</span></div>
+      <div class="line-row"><span class="en">And are you made immortal?</span><span class="es">y te ha hecho inmortal?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Ah no! I still am mortal;</span><span class="es">¡No, aún soy mortal!</span></div>
+      <div class="line-row"><span class="en">Nor am I sensible</span><span class="es">Y no soy consciente que ningún cambio</span></div>
+      <div class="line-row"><span class="en">Of any change or new perfection.</span><span class="es">se haya opera en mí.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 59 - Air</strong></span><span class="es"><strong>No. 59 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="stage-direction">
+        <span>giving her the glass</span>
+        <span class="es">(dándole el espejo)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc50">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t50">
+      <div class="line-row"><span class="en">Behold in this mirror</span><span class="es">¡Mírate en este espejo y sabrás</span></div>
+      <div class="line-row"><span class="en">Whence comes my surprise!</span><span class="es">el por qué de mi sorpresa!</span></div>
+      <div class="line-row"><span class="en">Such lustre and terror</span><span class="es">Gloria y terror en tan gran medida</span></div>
+      <div class="line-row"><span class="en">Unite in your eyes,</span><span class="es">se unen en tus ojos,</span></div>
+      <div class="line-row"><span class="en">That mine cannot fix on a radiance so bright,</span><span class="es">que no puedo aguantar semejante resplandor</span></div>
+      <div class="line-row"><span class="en">'Tis unsafe for the sense and too slipp'ry for sight.</span><span class="es">pues ataca a todos los sentidos.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 60 - Recitative</strong></span><span class="es"><strong>No. 60 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc51">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t51">
+      <div class="line-row"><span class="en">Oh, ecstasy of happiness!</span><span class="es">¡Oh, éxtasis de felicidad!</span></div>
+      <div class="line-row"><span class="en">Celestial graces</span><span class="es">¡Gracias celestiales</span></div>
+      <div class="line-row"><span class="en">I discover in each feature!</span><span class="es">descubro en cada rasgo!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 61 - Air</strong></span><span class="es"><strong>No. 61 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc52">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t52">
+      <div class="line-row"><span class="en">Myself I shall adore,</span><span class="es">Me adoraré a mí misma,</span></div>
+      <div class="line-row"><span class="en">If I persist in gazing.</span><span class="es">si continúo mirando.</span></div>
+      <div class="line-row"><span class="en">No object sure before</span><span class="es">No había visto nunca nada</span></div>
+      <div class="line-row"><span class="en">Was ever half so pleasing.</span><span class="es">ni la mitad de agradable.</span></div>
+      <div class="line-row"><span class="en">Myself...</span><span class="es">Me adoraré...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 62 - Recitative</strong></span><span class="es"><strong>No. 62 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc53">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t53">
+      <div class="line-row"><span class="en">Be wise, as you are beautiful,</span><span class="es">Como eres tan lista como bella,</span></div>
+      <div class="line-row"><span class="en">Nor lose this opportunity.</span><span class="es">no debes perder esta oportunidad.</span></div>
+      <div class="line-row"><span class="en">When Jove appears,</span><span class="es">Cuando Júpiter aparezca,</span></div>
+      <div class="line-row"><span class="en">All ardent with desire,</span><span class="es">inflamado de deseo,</span></div>
+      <div class="line-row"><span class="en">Refuse his proffer'd flame</span><span class="es">rechaza la llama que te ofrezca</span></div>
+      <div class="line-row"><span class="en">Till you obtain a boon without a name.</span><span class="es">hasta que obtengas un favor sin igual.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Can that avail me? But how shall I attain</span><span class="es">¿Es eso posible?</span></div>
+      <div class="line-row"><span class="en">To immortality?</span><span class="es">Pero ¿cómo conseguir la inmortalidad?</span></div>
+      <div class="line-row"><span class="en"><strong>No. 63 - Accompagnato</strong></span><span class="es"><strong>No. 63 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc54">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t54">
+      <div class="line-row"><span class="en">Conjure him by his oath</span><span class="es">Haz que te jure</span></div>
+      <div class="line-row"><span class="en">Not to approach your bed</span><span class="es">que no se acercará a tu lecho</span></div>
+      <div class="line-row"><span class="en">In likeness of a mortal,</span><span class="es">en forma de mortal,</span></div>
+      <div class="line-row"><span class="en">But like himself, the mighty thunderer,</span><span class="es">sino tal cual es, un poderoso trueno,</span></div>
+      <div class="line-row"><span class="en">In pomp of majesty</span><span class="es">en toda su majestuosidad</span></div>
+      <div class="line-row"><span class="en">And heav'nly attire,</span><span class="es">y atavío celestial,</span></div>
+      <div class="line-row"><span class="en">As when he proud Saturnia charms,</span><span class="es">tal como hechiza a Saturno.</span></div>
+      <div class="line-row"><span class="en">And with ineffable delights</span><span class="es">Con inefables delicias</span></div>
+      <div class="line-row"><span class="en">Fills her encircling arms,</span><span class="es">llena sus amorosos brazos</span></div>
+      <div class="line-row"><span class="en">And pays the nuptial rites.</span><span class="es">y consuma los ritos nupciales.</span></div>
+      <div class="line-row"><span class="en">You shall partake then of immortality,</span><span class="es">Entonces disfrutarás de la inmortalidad</span></div>
+      <div class="line-row"><span class="en">And thenceforth leave this mortal state</span><span class="es">y abandonarás este estado mortal</span></div>
+      <div class="line-row"><span class="en">To reign above,</span><span class="es">para reinar en las alturas,</span></div>
+      <div class="line-row"><span class="en">Ador'd by Jove,</span><span class="es">adorada por Júpiter,</span></div>
+      <div class="line-row"><span class="en">In spite of jealous Juno's hate.</span><span class="es">a pesar de los celos de la odiosa Juno.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 64 - Air</strong></span><span class="es"><strong>No. 64 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc55">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t55">
+      <div class="line-row"><span class="en">Thus let my thanks be paid,</span><span class="es">Déjame agradecerte,</span></div>
+      <div class="line-row"><span class="en">Thus let my arms embrace thee,</span><span class="es">déjame abrazarte,</span></div>
+      <div class="line-row"><span class="en">And when I'm a goddess made,</span><span class="es">y cuando en diosa me convierta,</span></div>
+      <div class="line-row"><span class="en">With charms like mine I'll grace thee.</span><span class="es">con dones como el mío te honraré.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 65 - Recitative</strong></span><span class="es"><strong>No. 65 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc56">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t56">
+      <div class="line-row"><span class="en">Rich odours fill the fragrant air,</span><span class="es">Ricos olores llenan el aire.</span></div>
+      <div class="line-row"><span class="en">And Jove's approach declare.</span><span class="es">¡Júpiter se acerca!</span></div>
+      <div class="line-row"><span class="en">I must retire.</span><span class="es">Debo retirarme.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Adieu, your counsel I'll pursue.</span><span class="es">¡Adiós, seguiré tu consejo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+      <div class="stage-direction">
+        <span>(apart)</span>
+        <span class="es">(aparte)</span>
+      </div>
+      <div class="line-row"><span class="en">And sure destruction will ensue,</span><span class="es">Y tu destrucción procurarás...</span></div>
+      <div class="line-row"><span class="en">Vain wretched fool, adieu!</span><span class="es">¡Miserable y vana engreída, adiós!</span></div>
+      <div class="stage-direction">
+        <span>(Exit)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 4</span>
+        <span>Escena 4</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Jupiter enters, offers to embrace Semele; she</span>
+        <span class="es">(Júpiter entra y ofrece un abrazo a Sémele;</span>
+        <span>looks kindly on him, but retires a little from him)</span>
+        <span class="es">ella le mira amablemente, pero se retira un poco)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 66 - Air</strong></span><span class="es"><strong>No. 66 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc57">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t57">
+      <div class="line-row"><span class="en">Come to my arms, my lovely fair,</span><span class="es">¡Ven a mis brazos, mi querida hada!</span></div>
+      <div class="line-row"><span class="en">Soothe my uneasy care.</span><span class="es">Déjate querer.</span></div>
+      <div class="line-row"><span class="en">In my dream late I woo'd thee,</span><span class="es">En mi sueño te cortejaba,</span></div>
+      <div class="line-row"><span class="en">And in vain I pursued thee,</span><span class="es">y en vano te perseguía,</span></div>
+      <div class="line-row"><span class="en">For you fled from my prayer,</span><span class="es">porque al huir de mis palabras,</span></div>
+      <div class="line-row"><span class="en">And bid me despair.</span><span class="es">alimentabas mi desesperación.</span></div>
+      <div class="line-row"><span class="en">Come to my arms, my lovely fair.</span><span class="es">¡Ven a mis brazos, mi querida hada!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 67 - Recitative</strong></span><span class="es"><strong>No. 67 - Recitativo</strong></span></div>
+      <div class="line-row"><span class="en">O Semele!</span><span class="es">¡Oh, Sémele!</span></div>
+    </div>
+
+    <div class="track-col" id="tc58">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t58">
+      <div class="line-row"><span class="en">Why art thou thus insensible?</span><span class="es">¿Por qué eres tan insensible?</span></div>
+      <div class="line-row"><span class="en"><strong>No. 68 - Air</strong></span><span class="es"><strong>No. 68 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">I ever am granting,</span><span class="es">Yo siempre concedo,</span></div>
+      <div class="line-row"><span class="en">You always complain.</span><span class="es">tú siempre te quejas.</span></div>
+      <div class="line-row"><span class="en">I always am wanting,</span><span class="es">Yo siempre quiero,</span></div>
+      <div class="line-row"><span class="en">Yet never obtain.</span><span class="es">y aún así nunca obtengo.</span></div>
+      <div class="line-row"><span class="en">I ever am granting,</span><span class="es">Yo siempre concedo,</span></div>
+      <div class="line-row"><span class="en">You always complain.</span><span class="es">tú siempre te quejas.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 69 - Recitative</strong></span><span class="es"><strong>No. 69 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc59">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t59">
+      <div class="line-row"><span class="en">Speak, speak your desire,</span><span class="es">¿Cuéntame, dime cuál es tu deseo?</span></div>
+      <div class="line-row"><span class="en">Say what you require,</span><span class="es">Pide lo que quieras</span></div>
+      <div class="line-row"><span class="en">I'll grant it.</span><span class="es">y yo te lo concederé.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Swear by the Stygian lake!</span><span class="es">¡Júralo por la laguna Estigia!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 70 - Accompagnato</strong></span><span class="es"><strong>No. 70 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc60">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t60">
+      <div class="line-row"><span class="en">By that tremendous flood, I swear.</span><span class="es">¡Por ese inmenso lago, yo lo juro!</span></div>
+      <div class="line-row"><span class="en">Ye Stygian waters, hear,</span><span class="es">¡Aguas estigias, oíd!</span></div>
+      <div class="line-row"><span class="en">And thou, Olympus, shake,</span><span class="es">¡Y tú, Olimpo, tiembla!</span></div>
+      <div class="line-row"><span class="en">In witness to the oath I take!</span><span class="es">¡Ésta es la prenda de mi juramento!</span></div>
+      <div class="stage-direction">
+        <span>(Thunder is heard at a distance and underneath)</span>
+        <span class="es">(Se oyen truenos en la distancia)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 71 - Recitative</strong></span><span class="es"><strong>No. 71 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc61">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t61">
+      <div class="line-row"><span class="en">You'll grant what I require?</span><span class="es">¿Me concederás lo que te pida?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+      <div class="line-row"><span class="en">I'll grant what you require.</span><span class="es">Te concederé lo que me pidas.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 72 - Accompagnato</strong></span><span class="es"><strong>No. 72 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+      <div class="line-row"><span class="en">Then cast off this human shape which you wear,</span><span class="es">Deshazte de tu forma humana y,</span></div>
+      <div class="line-row"><span class="en">And Jove since you are, like Jove too appear!</span><span class="es">puesto que eres Júpiter, ¡como tal aparece!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 73 - Air</strong></span><span class="es"><strong>No. 73 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc62">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t62">
+      <div class="line-row"><span class="en">Ah, take heed what you press,</span><span class="es">¡Ah, ten cuidado con lo que pides!,</span></div>
+      <div class="line-row"><span class="en">For, beyond all redress,</span><span class="es">Pues, irremediablemente,</span></div>
+      <div class="line-row"><span class="en">Should I grant your request, I shall harm you.</span><span class="es">si te concedo te heriré.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 74 - Air</strong></span><span class="es"><strong>No. 74 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc63">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t63">
+      <div class="line-row"><span class="en">No, no, I'll take no less,</span><span class="es">¡No, no me conformaré con menos!</span></div>
+      <div class="line-row"><span class="en">Than all in full excess!</span><span class="es">¡Que así se cumpla!</span></div>
+      <div class="line-row"><span class="en">Your oath it may alarm you.</span><span class="es">Tu juramento te alarma.</span></div>
+      <div class="line-row"><span class="en">Yet haste and prepare,</span><span class="es">Date prisa y preséntate</span></div>
+      <div class="line-row"><span class="en">For I'll know what you are,</span><span class="es">con todo tu poder,</span></div>
+      <div class="line-row"><span class="en">With all your powers arm you.</span><span class="es">así verdaderamente sabré quien eres.</span></div>
+      <div class="line-row"><span class="en">No, no...</span><span class="es">No, no...</span></div>
+      <div class="stage-direction">
+        <span>(Exit)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 5</span>
+        <span>Escena 5</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 75 - Accompagnato</strong></span><span class="es"><strong>No. 75 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="jupiter">Jupiter</span></span>
+        <span class="character-name">Júpiter</span>
+      </div>
+      <div class="stage-direction">
+        <span>(pensive and dejected)</span>
+        <span class="es">(pensativo y desanimado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc64">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">24</span>
+      </div>
+    </div>
+    <div class="text-col" id="t64">
+      <div class="line-row"><span class="en">Ah, whither is she gone! unhappy fair?</span><span class="es">¡Ah, hasta dónde ha llegado! Pobre hada.</span></div>
+      <div class="line-row"><span class="en">Why did she wish, why did I rashly swear?</span><span class="es">¿Por qué pidió, por qué juré tan rápido?</span></div>
+      <div class="line-row"><span class="en">'Tis past, 'tis past recall,</span><span class="es">Si vas más allá,</span></div>
+      <div class="line-row"><span class="en">She must a victim fall.</span><span class="es">en víctima se convertirá.</span></div>
+      <div class="line-row"><span class="en">Anon when I appear</span><span class="es">En cuanto nazca</span></div>
+      <div class="line-row"><span class="en">The mighty thunderer,</span><span class="es">el poderoso trueno,</span></div>
+      <div class="line-row"><span class="en">Arm'd with inevitable fire,</span><span class="es">armado con contundente fuego,</span></div>
+      <div class="line-row"><span class="en">She needs must instantly expire.</span><span class="es">morirá al momento.</span></div>
+      <div class="line-row"><span class="en">'Tis past, 'tis past recall,</span><span class="es">Si vas más allá,</span></div>
+      <div class="line-row"><span class="en">She must a victim fall.</span><span class="es">en víctima se convertirá.</span></div>
+      <div class="line-row"><span class="en">My softest lightning yet I'll try,</span><span class="es">Probaré con mi relámpago más suave</span></div>
+      <div class="line-row"><span class="en">And mildest melting bolt apply;</span><span class="es">y aplicaré el rayo más ligero...</span></div>
+      <div class="line-row"><span class="en">In vain, for she was fram'd to prove</span><span class="es">Mas será en vano, pues nació para soportar sólo</span></div>
+      <div class="line-row"><span class="en">None but the lambent flames of love.</span><span class="es">las más débiles llamas del amor.</span></div>
+      <div class="line-row"><span class="en">'Tis past, 'tis past recall,</span><span class="es">Si vas más allá,</span></div>
+      <div class="line-row"><span class="en">She must a victim fall.</span><span class="es">en víctima se convertirá.</span></div>
+      <div class="scene-heading">
+        <span>Scene 6</span>
+        <span>Escena 6</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Juno, alone)</span>
+        <span class="es">(Juno, sola)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 76 - Air</strong></span><span class="es"><strong>No. 76 - Aria</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juno">Juno</span></span>
+        <span class="character-name">Juno</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc65">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">25</span>
+      </div>
+    </div>
+    <div class="text-col" id="t65">
+      <div class="line-row"><span class="en">Above measure</span><span class="es">Enorme es el placer</span></div>
+      <div class="line-row"><span class="en">Is the pleasure,</span><span class="es">que proporciona la venganza.</span></div>
+      <div class="line-row"><span class="en">Which my revenge supplies.</span><span class="es">El amor es una burbuja,</span></div>
+      <div class="line-row"><span class="en">Love's a bubble,</span><span class="es">hinchada con problemas</span></div>
+      <div class="line-row"><span class="en">Gain'd with trouble,</span><span class="es">y muerta por la posesión.</span></div>
+      <div class="line-row"><span class="en">And in possessing dies.</span><span class="es">¡Con qué placer me desprendo de los cielos!</span></div>
+      <div class="line-row"><span class="en">With what joy shall I mount to my heav'n again,</span><span class="es">¡Al fin liberada de mi rival y de los celos!</span></div>
+      <div class="line-row"><span class="en">At once from my rival and jealousy freed!</span><span class="es">Por la dulzura de la venganza</span></div>
+      <div class="line-row"><span class="en">The sweets of revenge make it worth while to reign,</span><span class="es">ya vale la pena reinar.</span></div>
+      <div class="line-row"><span class="en">And heav'n will hereafter be heav'n indeed.</span><span class="es">El cielo, desde ahora, volverá a ser cielo.</span></div>
+      <div class="line-row"><span class="en">Above measure...</span><span class="es">Enorme...</span></div>
+      <div class="scene-heading">
+        <span>Scene 7</span>
+        <span>Escena 7</span>
+      </div>
+      <div class="stage-direction">
+        <span>(The scene discovers Semele under a canopy,</span>
+        <span class="es">(Sémele, pensativa, bajo un dosel mientras</span>
+        <span>leaning pensively, while a mournful symphony is</span>
+        <span class="es">suena una triste sinfonía. Mira hacia arriba</span>
+        <span>playing. She looks up and sees Jupiter descending</span>
+        <span class="es">y ve a Júpiter descendiendo en una nube;</span>
+        <span>in a cloud; flashes of lightning issue from either</span>
+        <span class="es">destellos de relámpagos salen por ambos</span>
+        <span>side, and thunder is heard grumbling in the air)</span>
+        <span class="es">lados, y se oyen truenos en el aire)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 77 - Accompagnato</strong></span><span class="es"><strong>No. 77 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="semele">Semele</span></span>
+        <span class="character-name">Sémele</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc66">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">26</span>
+      </div>
+    </div>
+    <div class="text-col" id="t66">
+      <div class="line-row"><span class="en">Ah me! Too late I now repent</span><span class="es">¡Oh, no, demasiado tarde!</span></div>
+      <div class="line-row"><span class="en">My pride and impious vanity.</span><span class="es">Me arrepiento de mi orgullo e impía vanidad.</span></div>
+      <div class="line-row"><span class="en">He comes! Far off his lightnings scorch me,</span><span class="es">¡Aún lejos, y sus relámpagos ya me queman,</span></div>
+      <div class="line-row"><span class="en">Ah, I feel my life consuming:</span><span class="es">¡Ah, siento mi vida consumirse!</span></div>
+      <div class="line-row"><span class="en">I burn, I burn, I faint, for pity I implore,</span><span class="es">¡Me quemo, me desmayo, imploro piedad!</span></div>
+      <div class="line-row"><span class="en">Oh help, oh help, I can no more!</span><span class="es">¡Oh socorro, oh socorro, no aguanto más!</span></div>
+      <div class="stage-direction">
+        <span>(She dies. The cloud bursts, and Semele</span>
+        <span class="es">(Muere. La nube estalla y Sémele desaparece</span>
+        <span>with the palace instantly disappears)</span>
+        <span class="es">al instante junto con su palacio)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scene 8</span>
+        <span>Escena 8</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Cadmus, Athamas, Ino and Chorus of Priests)</span>
+        <span class="es">(Cadmo, Athamas, Ino y sacerdotes)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 78 - Recitative</strong></span><span class="es"><strong>No. 78 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc67">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">27</span>
+      </div>
+    </div>
+    <div class="text-col" id="t67">
+      <div class="line-row"><span class="en">Of my ill-boding dream</span><span class="es">¡Mi sueño fue un mal presagio!</span></div>
+      <div class="line-row"><span class="en">Behold the dire event!</span><span class="es">¡Mirad el horrible suceso!</span></div>
+      <div class="line-row"><span class="en"><strong>No. 79 - Chorus</strong></span><span class="es"><strong>No. 79 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span></span>
+        <span class="character-name">Sacerdotes</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc68">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">28</span>
+      </div>
+    </div>
+    <div class="text-col" id="t68">
+      <div class="line-row"><span class="en">Oh, terror and astonishment!</span><span class="es">¡Oh, terror y asombro!</span></div>
+      <div class="line-row"><span class="en">Nature to each allots his proper sphere,</span><span class="es">La naturaleza nos asigna nuestro lugar,</span></div>
+      <div class="line-row"><span class="en">But that forsaken we like meteors err:</span><span class="es">pero lo olvidamos, y como meteoros erramos.</span></div>
+      <div class="line-row"><span class="en">Toss'd through the void,</span><span class="es">Empujados por el vacío,</span></div>
+      <div class="line-row"><span class="en">By some rude shock we're broke,</span><span class="es">en algún choque nos rompemos,</span></div>
+      <div class="line-row"><span class="en">And all our boasted fire is lost in smoke.</span><span class="es">y todo nuestro fuego se pierde en humo.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 80 - Recitative</strong></span><span class="es"><strong>No. 80 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ino">Ino</span></span>
+        <span class="character-name">Ino</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc69">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">29</span>
+      </div>
+    </div>
+    <div class="text-col" id="t69">
+      <div class="line-row"><span class="en">How I was hence remov'd,</span><span class="es">¡Cómo fui transportada,</span></div>
+      <div class="line-row"><span class="en">Or hither how return'd, I know not:</span><span class="es">y cómo devuelta, no lo sé!</span></div>
+      <div class="line-row"><span class="en">So long a trance withheld me.</span><span class="es">Un trance se apoderó de mí.</span></div>
+      <div class="line-row"><span class="en">But Hermes in a vision told me,</span><span class="es">Pero Hermes me dijo en sueños,</span></div>
+      <div class="line-row"><span class="en">As I have now related,</span><span class="es">como ya he relatado, el destino de Sémele.</span></div>
+      <div class="line-row"><span class="en">The fate of Semele;</span><span class="es">Y añadió, mientras se marchaba,</span></div>
+      <div class="line-row"><span class="en">And added, as from me he fled,</span><span class="es">que Júpiter ordenó</span></div>
+      <div class="line-row"><span class="en">That Jove ordain'd I Athamas should wed.</span><span class="es">que Athamas y yo nos casemos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+      <div class="line-row"><span class="en">Be Jove in ev'rything obey'd.</span><span class="es">¡Obedecemos en todo, Júpiter!</span></div>
+      <div class="stage-direction">
+        <span>(Joins their hands)</span>
+        <span class="es">(Unen sus manos)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="athamas">Athamas</span></span>
+        <span class="character-name">Athamas</span>
+      </div>
+      <div class="line-row"><span class="en">Unworthy of your charms myself I yield,</span><span class="es">Sin merecerlo, a tus encantos me rindo.</span></div>
+      <div class="line-row"><span class="en">Be Jove's commands and yours fulfill'd.</span><span class="es">Que se cumpla tu deseo y los de Júpiter.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 81 - Air</strong></span><span class="es"><strong>No. 81 - Aria</strong></span></div>
+    </div>
+
+    <div class="track-col" id="tc70">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">30</span>
+      </div>
+    </div>
+    <div class="text-col" id="t70">
+      <div class="line-row"><span class="en">Despair no more shall wound me,</span><span class="es">La desesperación ya no me herirá,</span></div>
+      <div class="line-row"><span class="en">Since you so kind do prove.</span><span class="es">puesto que tú me has aceptado.</span></div>
+      <div class="line-row"><span class="en">All joy and bliss surround me,</span><span class="es">La felicidad me rodea</span></div>
+      <div class="line-row"><span class="en">My soul is tun'd to love.</span><span class="es">y mi alma se funde con el amor.</span></div>
+      <div class="line-row"><span class="en">Despair no more...</span><span class="es">La desesperación ya no...</span></div>
+      <div class="line-row"><span class="en"><strong>No. 82 - Recitative</strong></span><span class="es"><strong>No. 82 - Recitativo</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="cadmus">Cadmus</span></span>
+        <span class="character-name">Cadmo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc71">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">31</span>
+      </div>
+    </div>
+    <div class="text-col" id="t71">
+      <div class="line-row"><span class="en">See from above the bellying clouds descend,</span><span class="es">¡Ved como las nubes descienden desde la altura</span></div>
+      <div class="line-row"><span class="en">And big with some new wonder this way tend.</span><span class="es">trayendo nuevas felicidades!</span></div>
+      <div class="scene-heading">
+        <span>Scene The Last</span>
+        <span>Última Escena</span>
+      </div>
+      <div class="stage-direction">
+        <span>(A bright cloud descends and rests upon Mount</span>
+        <span class="es">(Una brillante nube desciende y yace sobre el</span>
+        <span>Cithaeron, which, opening, discovers Apollo</span>
+        <span class="es">Monte Cithaeron, el cual, abriéndose, descubre</span>
+        <span>seated in it as the God of Prophecy)</span>
+        <span class="es">al dios de la profecía, Apolo)</span>
+      </div>
+      <div class="line-row"><span class="en"><strong>No. 83 - Symphony</strong></span><span class="es"><strong>No. 83 - Sinfonía</strong></span></div>
+      <div class="line-row"><span class="en"><strong>No. 84 - Accompagnato</strong></span><span class="es"><strong>No. 84 - Acompañado</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="apollo">Apollo</span></span>
+        <span class="character-name">Apolo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc72">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">33</span>
+      </div>
+    </div>
+    <div class="text-col" id="t72">
+      <div class="line-row"><span class="en">Apollo comes, to relieve your care,</span><span class="es">Apolo viene a aliviar vuestras preocupaciones</span></div>
+      <div class="line-row"><span class="en">And future happiness declare.</span><span class="es">y a declarar futura felicidad.</span></div>
+      <div class="line-row"><span class="en">From Semele's ashes a phœnix shall rise,</span><span class="es">De las cenizas de Sémele resurgirá un fénix,</span></div>
+      <div class="line-row"><span class="en">The joy of this earth, and delight of the skies:</span><span class="es">alegría en la tierra y delicia en los cielos.</span></div>
+      <div class="line-row"><span class="en">A God he shall prove</span><span class="es">Un nuevo dios que detentará</span></div>
+      <div class="line-row"><span class="en">More mighty than Love,</span><span class="es">más poder que Amor,</span></div>
+      <div class="line-row"><span class="en">And sighing and sorrow for ever prevent.</span><span class="es">y aliviará por siempre los suspiros y dolor.</span></div>
+      <div class="line-row"><span class="en"><strong>No. 85 - Chorus</strong></span><span class="es"><strong>No. 85 - Coro</strong></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Priests</span></span>
+        <span class="character-name">Sacerdotes</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc73">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">34</span>
+      </div>
+    </div>
+    <div class="text-col" id="t73">
+      <div class="line-row"><span class="en">Happy, happy shall we be,</span><span class="es">¡Felices, felices seremos,</span></div>
+      <div class="line-row"><span class="en">Free from care, from sorrow free.</span><span class="es">libres de preocupaciones y dolor!</span></div>
+      <div class="line-row"><span class="en">Guiltless pleasures we'll enjoy,</span><span class="es">¡Placeres sin culpa disfrutaremos,</span></div>
+      <div class="line-row"><span class="en">Virtuous love will never cloy;</span><span class="es">y el amor virtuoso nunca cesará!</span></div>
+      <div class="line-row"><span class="en">All that's good and just we'll prove,</span><span class="es">¡Tendremos todo lo bueno y justo,</span></div>
+      <div class="line-row"><span class="en">And Bacchus crown the joys of love.</span><span class="es">pues Baco coronará las alegrías del amor!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  nelsson_battle: {
+    label: "Semele \u00b7 Nelson / Battle",
+    short: "Nelson / Battle",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Overture", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Behold! Auspicious Flashes Rise!", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 3, title: "Lucky Omens Bless Our Rites", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 4, title: "Daughter, Obey, Hear & Obey!", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 5, title: "Ah Me!...O Jove! In Pity Teach Me Which To Choose", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 6, title: "The Morning Lark To Mine Accords His Note", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 7, title: "See, She Blushing Turns Her Eyes", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 8, title: "Hymen, Haste, Thy Torch Prepare", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 9, title: "Alas! She Yields, & Has Undone Me", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 10, title: "Why Dost Thou Thus Untimely Grieve", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 11, title: "Avert These Omens, All Ye Powers!", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 12, title: "Again Auspicious Flashes Rise", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 13, title: "Thy Aid, Pronubial Juno, Athamas Implores!", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 14, title: "Cease, Cease Your Vows, 'Tis Impious To Proceed", act: "Act I", has_block: true },
+      { id: "t14", cd: 1, track: 15, title: "O Athamas, What Torture Hast Thou Borne!", act: "Act I", has_block: true },
+      { id: "t15", cd: 1, track: 16, title: "Turn, Hopeless Lover, Turn Thy Eyes", act: "Act I", has_block: true },
+      { id: "t16", cd: 1, track: 17, title: "She Weeps!", act: "Act I", has_block: true },
+      { id: "t17", cd: 1, track: 18, title: "Your Tuneful Voice My Tale Would Tell", act: "Act I", has_block: true },
+      { id: "t18", cd: 1, track: 19, title: "Too Well I See, Thou Wilt Not Understand Me", act: "Act I", has_block: true },
+      { id: "t19", cd: 1, track: 20, title: "You'Ve Undone Me", act: "Act I", has_block: true },
+      { id: "t20", cd: 1, track: 21, title: "Ah, Wretched Prince, Domm'd To Disastrous Love!", act: "Act I", has_block: true },
+      { id: "t21", cd: 1, track: 22, title: "Hail Cadmus, Hail!", act: "Act I", has_block: true },
+      { id: "t22", cd: 1, track: 23, title: "Endless Pleasure, Endless Love", act: "Act I", has_block: true },
+      { id: "t23", cd: 2, track: 1, title: "Sinfonia", act: "Act II", has_block: false },
+      { id: "t23", cd: 2, track: 2, title: "Iris, Impatient Of Thy Stay", act: "Act II", has_block: true },
+      { id: "t24", cd: 2, track: 3, title: "There From Mortal Cares Retiring", act: "Act II", has_block: true },
+      { id: "t25", cd: 2, track: 4, title: "No More, I'll Hear No More!", act: "Act II", has_block: true },
+      { id: "t26", cd: 2, track: 5, title: "Hence, Iris, Hence Away", act: "Act II", has_block: true },
+      { id: "t27", cd: 2, track: 6, title: "O Sleep, Why Dost Thou Leave Me?", act: "Act II", has_block: true },
+      { id: "t28", cd: 2, track: 7, title: "Let Me Not Another Moment Bear The Pangs Of Absence", act: "Act II", has_block: true },
+      { id: "t29", cd: 2, track: 8, title: "Lay Your Doubts & Fears Aside", act: "Act II", has_block: true },
+      { id: "t30", cd: 2, track: 9, title: "You Are Mortal & Require Time To Rest", act: "Act II", has_block: true },
+      { id: "t31", cd: 2, track: 10, title: "With Fond Desiring", act: "Act II", has_block: true },
+      { id: "t32", cd: 2, track: 11, title: "How Engaging, How Endearing", act: "Act II", has_block: true },
+      { id: "t33", cd: 2, track: 12, title: "Ah Me! Why Sighs My Semele?", act: "Act II", has_block: true },
+      { id: "t34", cd: 2, track: 13, title: "I Must With Speed Amuse Her", act: "Act II", has_block: true },
+      { id: "t35", cd: 2, track: 14, title: "Now Love That Everlasting Boy Invites", act: "Act II", has_block: true },
+      { id: "t36", cd: 2, track: 15, title: "By My Command", act: "Act II", has_block: true },
+      { id: "t37", cd: 2, track: 16, title: "Where'er You Walk", act: "Act II", has_block: true },
+      { id: "t38", cd: 2, track: 17, title: "Dear Sister, How Was Your Passage Hither?", act: "Act II", has_block: true },
+      { id: "t39", cd: 2, track: 18, title: "But Hark! The Heav'nly Sphere Turns Round", act: "Act II", has_block: true },
+      { id: "t40", cd: 2, track: 19, title: "Prepare Then, Ye Immortal Choir", act: "Act II", has_block: true },
+      { id: "t41", cd: 2, track: 20, title: "Bless The Glad Earth With Heav'nly Lays", act: "Act II", has_block: true },
+      { id: "t42", cd: 3, track: 1, title: "Sinfonia", act: "Act III", has_block: false },
+      { id: "t42", cd: 3, track: 2, title: "Somnus, Awake, Raise Thy Reclining Head!", act: "Act III", has_block: true },
+      { id: "t43", cd: 3, track: 3, title: "Leave Me, Loathsome Light", act: "Act III", has_block: true },
+      { id: "t44", cd: 3, track: 4, title: "Dull God, Canst Thou Attend The Water's Fall", act: "Act III", has_block: true },
+      { id: "t45", cd: 3, track: 5, title: "More Sweet Is That Name", act: "Act III", has_block: true },
+      { id: "t46", cd: 3, track: 6, title: "My Will Obey, She Shall Be Thine", act: "Act III", has_block: true },
+      { id: "t47", cd: 3, track: 7, title: "Obey My Will All I Must Grant", act: "Act III", has_block: true },
+      { id: "t48", cd: 3, track: 8, title: "My Racking Thoughts By No Kind Slumbers Freed", act: "Act III", has_block: true },
+      { id: "t49", cd: 3, track: 9, title: "Thus Shap'd Like Ino", act: "Act III", has_block: true },
+      { id: "t50", cd: 3, track: 10, title: "Behold In This Mirror", act: "Act III", has_block: true },
+      { id: "t51", cd: 3, track: 11, title: "O Ecstasy Of Happiness", act: "Act III", has_block: true },
+      { id: "t52", cd: 3, track: 12, title: "Myself I Shall Adore", act: "Act III", has_block: true },
+      { id: "t53", cd: 3, track: 13, title: "Be Wise, As You Are Beautiful", act: "Act III", has_block: true },
+      { id: "t54", cd: 3, track: 14, title: "Conjure Him By His Oath", act: "Act III", has_block: true },
+      { id: "t55", cd: 3, track: 15, title: "Thus Let My Thanks Be Paid", act: "Act III", has_block: true },
+      { id: "t56", cd: 3, track: 16, title: "Rich Odours Fill The Fragrant Air", act: "Act III", has_block: true },
+      { id: "t57", cd: 3, track: 17, title: "Come To My Arms, My Lovely Fair", act: "Act III", has_block: true },
+      { id: "t58", cd: 3, track: 18, title: "O Semele! Why Art Thou Thus Insensible?; I Ever Am Granting", act: "Act III", has_block: true },
+      { id: "t59", cd: 3, track: 19, title: "Speak, Speak Your Desire", act: "Act III", has_block: true },
+      { id: "t60", cd: 3, track: 20, title: "By That Tremondous Flood, I Swear", act: "Act III", has_block: true },
+      { id: "t61", cd: 3, track: 21, title: "You'Ll Grant What I Require?", act: "Act III", has_block: true },
+      { id: "t62", cd: 3, track: 22, title: "Ah, Take Heed What You Press", act: "Act III", has_block: true },
+      { id: "t63", cd: 3, track: 23, title: "No, No! I'll Take No Less", act: "Act III", has_block: true },
+      { id: "t64", cd: 3, track: 24, title: "Ah! Whither Is She Gone!", act: "Act III", has_block: true },
+      { id: "t65", cd: 3, track: 25, title: "Above Measure Is The Pleasure", act: "Act III", has_block: true },
+      { id: "t66", cd: 3, track: 26, title: "Ah Me! Too Late I Now Repent", act: "Act III", has_block: true },
+      { id: "t67", cd: 3, track: 27, title: "Of My Ill Boding Dream", act: "Act III", has_block: true },
+      { id: "t68", cd: 3, track: 28, title: "Oh, Terror & Astonishment!", act: "Act III", has_block: true },
+      { id: "t69", cd: 3, track: 29, title: "How I Was Hence Remov'D", act: "Act III", has_block: true },
+      { id: "t70", cd: 3, track: 30, title: "Despair No More Shall Wound Me", act: "Act III", has_block: true },
+      { id: "t71", cd: 3, track: 31, title: "See From Above The Bellying Clouds Descend", act: "Act III", has_block: true },
+      { id: "t72", cd: 3, track: 32, title: "Final Sinfonia", act: "Act III", has_block: false },
+      { id: "t72", cd: 3, track: 33, title: "Apollo Comes, To Relieve Your Care", act: "Act III", has_block: true },
+      { id: "t73", cd: 3, track: 34, title: "Happy, Happy Shall We Be", act: "Act III", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Act I",
+    "Act II": "Act II",
+    "Act III": "Act III"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t23",
+    "Act III": "t42"
+  };
+
+  const CHARACTERS = [
+    { id: "jupiter", name: "Jupiter", voice: "Tenor", description: "Rey del Olimpo" },
+    { id: "juno", name: "Juno", voice: "Contralto", description: "Esposa de J\u00fapiter" },
+    { id: "semele", name: "Semele", voice: "Soprano", description: "Bella Muchacha" },
+    { id: "ino", name: "Ino", voice: "Contralto", description: "Hermana de S\u00e9mele" },
+    { id: "iris", name: "Iris", voice: "Soprano", description: "Madre de S\u00e9mele e Ino" },
+    { id: "cadmus", name: "Cadmus", voice: "Tenor", description: "Padre de S\u00e9mele e Ino" },
+    { id: "athamas", name: "Athamas", voice: "Countertenor", description: "Pr\u00edncipe de Beocia" },
+    { id: "somnus", name: "Somnus", voice: "Bass", description: "Dios del Sue\u00f1o" },
+    { id: "apollo", name: "Apollo", voice: "Tenor", description: "Dios de la profec\u00eda" },
+    { id: "cupid", name: "Cupid", voice: "Soprano", description: "Dios del amor" }
+  ];
+
+  const CAST = {
+    nelsson_battle: { "semele": "Kathleen Battle", "juno": "Marilyn Horne", "jupiter": "John Aler", "athamas": "Michael Chance", "cadmus": "Samuel Ramey", "apollo": "Neil Mackie", "iris": "Sylvia McNair", "ino": "Marilyn Horne", "somnus": "Samuel Ramey" }
+  };
+
+  let activeRecording = "nelsson_battle";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { en: true, es: true };
+</script>
+<script src="../libretto.js"></script>
