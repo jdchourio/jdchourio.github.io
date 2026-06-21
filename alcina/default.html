@@ -1,0 +1,3011 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T4</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Atto I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Oh Dei! quivi non scorgo alcun sentiero!</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Alcina · Christie / Fleming</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnIT" onclick="toggleLang('it')">IT</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Atto I</span>
+      <span>Acto I</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Luogo deserto chiuso da alti e scoscesi monti, a piedi</span>
+        <span class="es">(Lugar desierto rodeado de escarpadas</span>
+        <span>de' quali è cavato un picciolo antro. Bradamante in</span>
+        <span class="es">montañas, a cuyo pie se ve una pequeña cueva.</span>
+        <span>abito virile guerriero, Melisso pure in abito guerriero)</span>
+        <span class="es">Bradamante y Melisso vestidos de guerreros)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">O Dei! quivi non scorgo alcun sentiero!</span><span class="es">¡Ay Dios! ¡No distingo ningún sendero!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Taci! Da quello speco donna, mi sembra,</span><span class="es">¡Calla! En aquella cueva me parece distinguir</span></div>
+      <div class="line-row"><span class="it">ad incontrar ne viene.</span><span class="es">a una mujer que viene hacia nosotros.</span></div>
+      <div class="stage-direction">
+        <span>(Entra Morgana)</span>
+        <span class="es">(Morgana entra)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Qual felice ventura, animosi guerrieri, a noi vi reca?</span><span class="es">¿Qué hado os trae hasta aquí, osados guerreros?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Il mar turbato, il vento qui ne sospinse.</span><span class="es">El mar y el viento hasta aquí nos empujaron.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">E a chi è 'l felice suolo?</span><span class="es">¿Y a quien pertenecen estos agradables campos?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Della possente Alcina il regno è questo.</span><span class="es">Este es el reino de la poderosa Alcina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! noi felici!</span><span class="es">¡Oh, qué afortunados!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Intesi il suo poter, la sua beltà.</span><span class="es">Su poder y belleza nos son bien conocidos.</span></div>
+      <div class="line-row"><span class="it">Ma dinne, lice a noi d'inchinar l'a alta regina?</span><span class="es">Pero dinos ¿nos estará permitido verla?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sé, guardando teneramente Bradamante)</span>
+        <span class="es">(para sí, mirando tiernamente a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Per te, nobil guerriero, un dolce amore</span><span class="es">Noto que en mi alma nace un dulce amor hacia</span></div>
+      <div class="line-row"><span class="it">mi si desta nell'alma.</span><span class="es">este apuesto guerrero...</span></div>
+      <div class="stage-direction">
+        <span>(a Bradamante e Melisso)</span>
+        <span class="es">(en voz alta)</span>
+      </div>
+      <div class="line-row"><span class="it">In questo loco attendetela sì: verrà fra poco.</span><span class="es">Sí, esperadla aquí pues vendrá dentro de poco.</span></div>
+      <div class="stage-direction">
+        <span>(fra sé)</span>
+        <span class="es">(para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="line-row"><span class="it">O s'apre al riso, o parla, o tace,</span><span class="es">Tanto si sonríe, habla o calla,</span></div>
+      <div class="line-row"><span class="it">ha un non so che il tuo bel viso,</span><span class="es">su rostro es demasiado bello</span></div>
+      <div class="line-row"><span class="it">che troppo piace caro al mio cor.</span><span class="es">como para que mi corazón pueda rechazarlo.</span></div>
+      <div class="line-row"><span class="it">Il primo sguardo che in voi fissai, provar mi fè,</span><span class="es">A la primera mirada que en él fijé,</span></div>
+      <div class="line-row"><span class="it">vezzosi rai, quanto e col dardo possente amor.</span><span class="es">quedé herida por la flecha del poderoso Amor.</span></div>
+      <div class="line-row"><span class="it">O s'apre, ecc.</span><span class="es">Tanto si sonríe, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Appare la deliziosa reggia di Alcina, d'ond'ella in atto</span>
+        <span class="es">(Palacio de Alcina. Ésta sentada engalanándose.</span>
+        <span>di adornarsi siede presso a Ruggiero, che le sostiene</span>
+        <span class="es">A su lado Ruggiero, le sostiene un espejo. El</span>
+        <span>al volto uno specchio. Il giovinetto Oberto si tiene da</span>
+        <span class="es">joven Oberto permanece al otro lado, mientras</span>
+        <span>un canto, paggi, e damigelle, che le apprestano vari</span>
+        <span class="es">sus sirvientas le preparan el vestuario. Otros</span>
+        <span>abbigliamenti. Altri giovani cavalieri, e dame coronati</span>
+        <span class="es">jóvenes caballeros y damas coronadas de flores</span>
+        <span>di fiori formano il coro)</span>
+        <span class="es">forman el coro)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="it">Questo è il cielo de' contenti,</span><span class="es">Aquí se respira felicidad,</span></div>
+      <div class="line-row"><span class="it">questo è il centro del goder;</span><span class="es">aquí el corazón se llena de placer;</span></div>
+      <div class="line-row"><span class="it">qui è l'Eliso de vivienti,</span><span class="es">aquí se encuentra el Elíseo terrenal,</span></div>
+      <div class="line-row"><span class="it">qui l'eroi forma il piacer.</span><span class="es">donde los héroes disfrutan del placer.</span></div>
+      <div class="stage-direction">
+        <span>(Bradamante e Melisso si arrestano alquanto</span>
+        <span class="es">(Bradamante y Melisso se detienen admirados</span>
+        <span>ammirare la magnificenza del luogo, e delle feste)</span>
+        <span class="es">de la magnificencia del lugar)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce).</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="it">Ecco l'infido</span><span class="es">¡Aquí está el traidor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce).</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">Taci.</span><span class="es">¡Calla!</span></div>
+      <div class="stage-direction">
+        <span>(avanzando verso Alcina)</span>
+        <span class="es">(avanzando hacia Alcina)</span>
+      </div>
+      <div class="line-row"><span class="it">Alta regina, con Riccardo guerriero,</span><span class="es">Gran reina, Melisso y el valeroso Ricardo,</span></div>
+      <div class="line-row"><span class="it">Melisso appiedi tuoi umil s'inchina.</span><span class="es">humildemente, se postran a tus pies.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Fu vostra sorte, amici, al mio regno approdar.</span><span class="es">Bienvenidos seáis, amigos, a este mi reino.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Diam lodi al cielo.</span><span class="es">¡Damos por ello gracias al cielo!</span></div>
+      <div class="line-row"><span class="it">Ti preghiam che pietosa,</span><span class="es">Te suplicamos que nos permitas permanecer aquí</span></div>
+      <div class="line-row"><span class="it">sin che'l mar sia placato ne permetta restar.</span><span class="es">hasta que la furia del mar se haya apaciguado.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Tanto mi è grato.</span><span class="es">Será un placer.</span></div>
+      <div class="line-row"><span class="it">E tu, odi Ruggiero, anima mia,</span><span class="es">Ruggiero, mi amor, muéstrales</span></div>
+      <div class="line-row"><span class="it">mostra lor la mia reggia, e caccie, e fonti.</span><span class="es">el palacio, los bosques y las fuentes.</span></div>
+      <div class="line-row"><span class="it">Vegan dove scropimmo all'ombra amica</span><span class="es">Que vean donde, bajo una amable sombra,</span></div>
+      <div class="line-row"><span class="it">d'un scambievole amor fiamma pudica.</span><span class="es">descubrimos la casta llama de un recíproco amor.</span></div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="line-row"><span class="it">Di', cor mio, quanto t'amai, mostra il bosco, il fonte,</span><span class="es">Enséñales el bosque y el manantial donde callé</span></div>
+      <div class="line-row"><span class="it">il rio, dove tacqui e sospirai pria di chiederti mercè.</span><span class="es">y suspiré antes de entregarte mi corazón;</span></div>
+      <div class="line-row"><span class="it">Dove fisso ne' miei rai, sospirando al sospir mio,</span><span class="es">donde suspirando en mi suspiro,</span></div>
+      <div class="line-row"><span class="it">mi dicesti con un sguardo:</span><span class="es">tu mirada me dijo:</span></div>
+      <div class="line-row"><span class="it">"Peno, ed ardo al par di te"</span><span class="es">"Padezco y ardo tanto como tú"</span></div>
+      <div class="line-row"><span class="it">Di' cor mio, ecc.</span><span class="es">Enséñales el bosque, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="it">Generosi guerrier, deh! per pietade</span><span class="es">¡Nobles guerreros, por piedad! Decidme,</span></div>
+      <div class="line-row"><span class="it">udiste mai del Paladino Astolfo?</span><span class="es">¿tenéis noticia del valeroso Astolfo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Astolfo?</span><span class="es">¿Astolfo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Del cugin?</span><span class="es">¿Mi primo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Perchè?</span><span class="es">¿Por qué?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">È mio padre.</span><span class="es">Es mi padre.</span></div>
+      <div class="line-row"><span class="it">Dal naufragio scampati il genitor ed io</span><span class="es">Al naufragar nuestro barco,</span></div>
+      <div class="line-row"><span class="it">quivi approdammo;</span><span class="es">mi padre y yo desembarcamos aquí,</span></div>
+      <div class="line-row"><span class="it">e la clemente Alcina generosa ne accolse,</span><span class="es">siendo recibidos por la generosa Alcina</span></div>
+      <div class="line-row"><span class="it">anzi d'onori colmo il mio genitor.</span><span class="es">que colmó a mi padre de honores.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Che arrivò poi?</span><span class="es">¿Y qué sucedió luego?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce, a Melisso)</span>
+        <span class="es">(en voz baja, a Melisso)</span>
+      </div>
+      <div class="line-row"><span class="it">Sarà con gli altri in fera.</span><span class="es">Lo habrá convertido en una fiera, como a otros...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Più non lo trovo, e l'alma mia dispera.</span><span class="es">Él desapareció y desde entonces vivo angustiado.</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="it">Chi m'insegna il caro padre?</span><span class="es">¿Quién me dirá dónde se encuentra?</span></div>
+      <div class="line-row"><span class="it">Che mi rende il genitor,</span><span class="es">¿Quién me lo devolverá</span></div>
+      <div class="line-row"><span class="it">per far lieto questo cor?</span><span class="es">para que mi corazón sea feliz de nuevo?</span></div>
+      <div class="line-row"><span class="it">Mi abbandona la speranza;</span><span class="es">Me abandona la esperanza</span></div>
+      <div class="line-row"><span class="it">langue in me bella costanza;</span><span class="es">y la fidelidad vacila en mi pecho.</span></div>
+      <div class="line-row"><span class="it">agitato è in me l'amor.</span><span class="es">Angustiado está en mí el amor.</span></div>
+      <div class="line-row"><span class="it">Chi m'insegna, ecc.</span><span class="es">¿Quién me dirá... etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="line-row"><span class="it">Mi ravvisi, Ruggiero, dimmi?</span><span class="es">Dime, Rugiero, ¿sabes quién soy?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Il tuo volto di Riccardo rassembra.</span><span class="es">Os parecéis a Ricardo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Io pur son quello, germano alla tua cara Bradamante.</span><span class="es">Así es, soy hermano de tu querida Bradamante.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Mia? No: t'inganni. Io son d'Alcina amante.</span><span class="es">¿No me engañas?... Yo estoy cautivo de Alcina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Signor, tu senza il brando, e senza scudo?</span><span class="es">Señor ¿estás sin espada y sin escudo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Servo ad amor, che va senz'arme, e nudo.</span><span class="es">Sirvo al amor, desarmado y desnudo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Della tua prima fama nulla curi?</span><span class="es">¿Y el honor de tu nombre?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">E la fede, Che alla germana mia di sposo desti?</span><span class="es">¿Y la promesa de matrimonio a mi hermana?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="stage-direction">
+        <span>(guardando all'intorno, e sotto voce)</span>
+        <span class="es">(mirando a su alrededor, y en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">E Alcina mia non vien ?</span><span class="es">¿Por qué no viene Alcina?</span></div>
+      <div class="stage-direction">
+        <span>(a Bradamante e Melisso)</span>
+        <span class="es">(a Bradamante y Melisso)</span>
+      </div>
+      <div class="line-row"><span class="it">Siete molesti.</span><span class="es">Vuestra presencia me molesta.</span></div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="it">Di te mi rido, semplice stolto.</span><span class="es">Tú, me inspiras risa, necio.</span></div>
+      <div class="stage-direction">
+        <span>(a Melisso)</span>
+        <span class="es">(a Melisso)</span>
+      </div>
+      <div class="line-row"><span class="it">Sieguo Cupido, amo un bel volto,</span><span class="es">Sirvo a Cupido amando a un bello rostro,</span></div>
+      <div class="line-row"><span class="it">nè so mancar di fè.</span><span class="es">al que nunca le seré infiel.</span></div>
+      <div class="line-row"><span class="it">Il caro bene, che m'innamora, a me non viene?</span><span class="es">El tesoro que me enamora,</span></div>
+      <div class="line-row"><span class="it">Non torna ancora? Che fa? Dov'e?</span><span class="es">¿No viene a mí? ¿Qué hace? ¿Dónde está?</span></div>
+      <div class="line-row"><span class="it">Di te mi rido, ecc.</span><span class="es">Tú me inspiras... etc.</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="line-row"><span class="it">Qua dunque ne veniste</span><span class="es">¿Así que habéis venido a robarme</span></div>
+      <div class="line-row"><span class="it">d'una donna incostante a involarmi l'amor?</span><span class="es">el amor de una mujer infiel?</span></div>
+      <div class="line-row"><span class="it">Grave è l'offesa.</span><span class="es">Ésa es una grave ofensa que</span></div>
+      <div class="line-row"><span class="it">Decida il brando sol la ria contesa.</span><span class="es">únicamente mi espada puede limpiar.</span></div>
+      <div class="stage-direction">
+        <span>(Tira la spada)</span>
+        <span class="es">(Desenvaina la espada)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Qual ingiuria, qual onta recivesti da noi?</span><span class="es">¿Qué injuria, qué ofensa recibiste de nosotros?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">La spada il dica.</span><span class="es">¡Mi espada te lo dirá!</span></div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Morgana)</span>
+        <span class="es">(Entra Morgana)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Io sono tua difesa.</span><span class="es">¡Yo seré tu defensora...</span></div>
+      <div class="stage-direction">
+        <span>(ad Oronte)</span>
+        <span class="es">(a Oronte)</span>
+      </div>
+      <div class="line-row"><span class="it">Io tua nemica.</span><span class="es">... y tu enemiga!</span></div>
+      <div class="line-row"><span class="it">Ospite, nol curare.</span><span class="es">¡Él es mi invitado!...</span></div>
+      <div class="line-row"><span class="it">E tu superbo! La reggina offendesti.</span><span class="es">¡Y tú, soberbio, ofendiste a la reina!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Volgiamo altrove il piè...</span><span class="es">¡Vayámonos de aquí!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Caro, non voglio, che di Oronte punir saprò l'orgoglio.</span><span class="es">No querido. Yo castigaré el orgullo de Oronte.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ad Oronte)</span>
+        <span class="es">(a Oronte)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="it">È gelosia,</span><span class="es">Los celos...</span></div>
+      <div class="stage-direction">
+        <span>(a Morgana)</span>
+        <span class="es">(a Morgana)</span>
+      </div>
+      <div class="line-row"><span class="it">Forza è d'amore,</span><span class="es">y mal de amores,</span></div>
+      <div class="stage-direction">
+        <span>(ad Oronte)</span>
+        <span class="es">(a Oronte)</span>
+      </div>
+      <div class="line-row"><span class="it">Ch'il sen t'affanna,</span><span class="es">son los que afligen tu corazón,</span></div>
+      <div class="stage-direction">
+        <span>(a Morgana)</span>
+        <span class="es">(a Morgana)</span>
+      </div>
+      <div class="line-row"><span class="it">Che senti al core.</span><span class="es">los que tú sientes en el pecho,</span></div>
+      <div class="stage-direction">
+        <span>(ad Oronte)</span>
+        <span class="es">(a Oronte)</span>
+      </div>
+      <div class="line-row"><span class="it">Ma quest'è ancora la pena mia,</span><span class="es">Pero aún es mi pena,</span></div>
+      <div class="stage-direction">
+        <span>(a Morgana)</span>
+        <span class="es">(a Morgana)</span>
+      </div>
+      <div class="line-row"><span class="it">Ma pur tiranna la provo in sen.</span><span class="es">pues siento su tiranía en mi corazón.</span></div>
+      <div class="stage-direction">
+        <span>(ad Oronte)</span>
+        <span class="es">(a Oronte)</span>
+      </div>
+      <div class="line-row"><span class="it">Per un bel volto, che ne vien tolto, tu mesto gemi;</span><span class="es">Gimes por un bello rostro que has perdido...</span></div>
+      <div class="stage-direction">
+        <span>(a Morgana)</span>
+        <span class="es">(a Morgana)</span>
+      </div>
+      <div class="line-row"><span class="it">Noi ci sdegniamo,</span><span class="es">No os hemos ofendido</span></div>
+      <div class="line-row"><span class="it">e tutti amiamo senza mercè.</span><span class="es">y todos nosotros amamos sin esperanza.</span></div>
+      <div class="line-row"><span class="it">È gelosia, ecc.</span><span class="es">Los celos... etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte con Melisso)</span>
+        <span class="es">(Sale con Melisso)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Settima</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Io dunque...</span><span class="es">¿Y yo?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="line-row"><span class="it">Audace Oronte, in te ritorna,</span><span class="es">Osado Oronte, vuelve en ti y distingue</span></div>
+      <div class="line-row"><span class="it">e riconosci omai qual mi son, chi tu sei.</span><span class="es">quien soy yo y quién eres tú.</span></div>
+      <div class="line-row"><span class="it">Voglio, e non voglio seguir quel che mi piace;</span><span class="es">Yo quiero seguir a quien me plazca;</span></div>
+      <div class="line-row"><span class="it">puoi tu forse vietarmi? Oronte audace!</span><span class="es">¿puedes acaso tú prohibírmelo? ¡Audaz Oronte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">La fè del giuramento?</span><span class="es">¿Y nuestro solemne juramento?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">La portò seco via rapido il vento.</span><span class="es">Se lo llevó consigo el viento...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Ma cara, la mia doglia?</span><span class="es">Pero, ¿y mi sufrimiento?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Amar e disamar, questa è mia voglia.</span><span class="es">Amar y desamar, ése es mi deseo...</span></div>
+      <div class="line-row"><span class="it">Men vado, Oronte, addio.</span><span class="es">¡Me voy, Oronte, adiós!</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Ti arresta; odi, crudele idolo mio.</span><span class="es">¡Detente, escúchame, cruel ídolo mío!</span></div>
+      <div class="stage-direction">
+        <span>(Oronte la segue)</span>
+        <span class="es">(Oronte la sigue)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Ottava</span>
+        <span>Escena Octava</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="it">La cerco in vano, e la crudel non torna.</span><span class="es">La busco en vano y la cruel no aparece...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">Nuovo inganno si trovi:</span><span class="es">He aquí un oportunidad:</span></div>
+      <div class="line-row"><span class="it">un geloso amator all'altro giovi.</span><span class="es">un celoso amante favorece al otro.</span></div>
+      <div class="line-row"><span class="it">Senti, Ruggiero, senti:</span><span class="es">Escucha, Ruggiero: ¿aun crees en las miradas</span></div>
+      <div class="line-row"><span class="it">E credi ai sguardi, alla mentita frode d'Alcina tua?</span><span class="es">y en las falsas mentiras de tu Alcina?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Così favella Oronte?</span><span class="es">¿Es Oronte quien habla de este modo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Così.</span><span class="es">Así es. ¿Acaso tú eres el único que no sabe</span></div>
+      <div class="line-row"><span class="it">Tu sol non sai che chiudon queste selve</span><span class="es">que en estas selvas se ocultan</span></div>
+      <div class="line-row"><span class="it">mille amanti infelici conversi in onda,</span><span class="es">mil desdichados amantes convertidos</span></div>
+      <div class="line-row"><span class="it">in fredde rupi, in belve?</span><span class="es">en olas, en frías rocas o en animales?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Io so ben di quai lacci per me la strinse amore.</span><span class="es">Yo sé bien con qué lazos el amor la ató a mí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Il laccio è sciolto.</span><span class="es">¡Los lazos se han desatado!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Me sol ama e desia.</span><span class="es">¡Ella me ama y me desea únicamente a mí!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Va, che sei stolto; Riccardo è l'idol suo.</span><span class="es">Eres un necio ¡a Ricardo es al único que adora!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Già di lui s'invaghì?</span><span class="es">¿Sólo le ama a él?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Lui solo adora; e per lui</span><span class="es">Sólo a él adora y por él es capaz de</span></div>
+      <div class="line-row"><span class="it">cangeratti in belva ancora.</span><span class="es">transformarte en una bestia.</span></div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag" style="visibility:hidden">
+        <span class="track-tag-cd"></span>
+        <span class="track-tag-num"></span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="line-row"><span class="it">Semplicetto! A donna credi?</span><span class="es">¡Eres un joven inexperto!... ¿Creer a una mujer?</span></div>
+      <div class="line-row"><span class="it">Se la vedi, che ti mira, che sospira, pensa e di':</span><span class="es">Si ves que te mira, que suspira por ti,</span></div>
+      <div class="line-row"><span class="it">ingannar potrebbe ancor.</span><span class="es">piensa que es seguro que ella te engaña.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Nona</span>
+        <span>Escena Novena</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Ruggiero ed Alcina)</span>
+        <span class="es">(Entran Ruggiero y Alcina)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="it">Ah, infedele, infedel! Questo è l'amore?</span><span class="es">¡Ah, eres falsa e infiel! ¿Es éste tu amor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Mio tesoro, mio ben, anima mia!</span><span class="es">¡Mi tesoro, mi bien, alma mía!</span></div>
+      <div class="line-row"><span class="it">Chiami Alcina infedele!</span><span class="es">¿Llamas infiel a Alcina?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Si, che lo sei, crudele. Va; Riccardo t'attendete.</span><span class="es">Sí, porque lo eres, cruel. Ve, Ricardo te espera.</span></div>
+      <div class="line-row"><span class="it">Egli a' tuoi prieghi qui volse il piè: quivi per te dimora.</span><span class="es">Vino a tu llamada y permanece aquí por ti.</span></div>
+      <div class="scene-heading">
+        <span>Scena Decima</span>
+        <span>Escena Décima</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Alla costanza mia, così favella il tuo cuore crudele?</span><span class="es">¿Así responde tu cruel corazón a mi fidelidad?</span></div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="line-row"><span class="it">E pur ti son fedel, e pur son quella. Sì; son quella!</span><span class="es">Sin embargo, te soy fiel, no he cambiado.</span></div>
+      <div class="line-row"><span class="it">Non più bella, non più cara agli occhi tuoi;</span><span class="es">¡Sí, soy la misma! Ni más bella, ni más querida...</span></div>
+      <div class="line-row"><span class="it">Ma se amar tu non mi vuoi, infedel, deh! Non mi odiar.</span><span class="es">Pero si no me amas, infiel, al menos no me odies.</span></div>
+      <div class="line-row"><span class="it">Chiedi al guardo, alla favella, se son quella,</span><span class="es">Pídeme miradas, palabras... no he cambiado.</span></div>
+      <div class="line-row"><span class="it">dillo ingrato al tuo cuore mentitore,</span><span class="es">Ingrato, ¡pregúntale a tu artero corazón</span></div>
+      <div class="line-row"><span class="it">che mi vuole rinfacciar.</span><span class="es">qué tiene que reprocharme!</span></div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag" style="visibility:hidden">
+        <span class="track-tag-cd"></span>
+        <span class="track-tag-num"></span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="it">Sì: son quella, ecc.</span><span class="es">¡Sí, soy la misma!...</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Undicesima</span>
+        <span>Escena Undécima</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="line-row"><span class="it">Se nemico mi fossi, potresti peggio far?</span><span class="es">Si fuera tu enemigo te habría hecho daño.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Rival mi sei, t'odio Riccardo.</span><span class="es">Tú eres mi rival, te odio Ricardo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Odii il german diletto della tua Bradamante?</span><span class="es">¿Odias al querido hermano de tu Bradamante?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">E perciò t'odio ancor.</span><span class="es">Por esa razón, te odio aún más.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Perfido amante; tu così mi dispregi?</span><span class="es">Pérfido amante, ¿tanto me desprecias?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Forse d'amor vaneggi?</span><span class="es">¿Quizás de amor deliras?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Indegno amante!</span><span class="es">¡Indigno amante!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Che favelli? ed a chi?</span><span class="es">¿Qué hablas?... ¿A quién te diriges?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Mirami, altero:</span><span class="es">¡Mírame, altanero!</span></div>
+      <div class="line-row"><span class="it">Bradamante così parla a Ruggiero.</span><span class="es">Así es como Bradamante le habla a Ruggiero.</span></div>
+      <div class="scene-heading">
+        <span>Scena Dodicesima</span>
+        <span>Escena Decimosegunda</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Melisso)</span>
+        <span class="es">(Entra Melisso)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Bradamante favella? Bradamante in tal arme?</span><span class="es">¿Oigo a Bradamante? ¿Bradamante armada?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Eh! non è quella.</span><span class="es">¡Eh, no es ella!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Sì: va della tua maga a espormi all'ira.</span><span class="es">¡Sí, lo soy! ¡Libérame del furor de tu magia!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Ruggier, non l'ascoltar.</span><span class="es">¡Ruggiero, no la escuches!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">So che delira.</span><span class="es">¡Está delirando!</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="line-row"><span class="it">La bocca vaga, quell'occhio nero, lo so,</span><span class="es">Su bella boca y sus ojos negros, te atrapan, lo sé;</span></div>
+      <div class="line-row"><span class="it">t'impiaga; ma è fida ancora; chi t'innamora per te non è.</span><span class="es">pero ésa que te enamora, para ti no es.</span></div>
+      <div class="line-row"><span class="it">Va, che sei stolto; cangia pensiero!</span><span class="es">¡Ah, necio, renuncia a esa idea!</span></div>
+      <div class="line-row"><span class="it">Piace quel volto, ma datti pace, non è per te.</span><span class="es">Te gusta su rostro, pero no es para ti.</span></div>
+      <div class="line-row"><span class="it">La bocca vaga, ecc.</span><span class="es">Su bella boca, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Partono Ruggiero e Melisso)</span>
+        <span class="es">(Ruggiero y Melisso salen)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Tredicesima</span>
+        <span>Escena Decimotercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Morgana)</span>
+        <span class="es">(Entra Morgana)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="line-row"><span class="it">Fuggi, cor mio, ti affretta!</span><span class="es">¡Huye, corazón mío, aprisa!</span></div>
+      <div class="line-row"><span class="it">Al geloso Ruggiero concesse al fin</span><span class="es">Para contentar al celoso Ruggiero, tu enamorada</span></div>
+      <div class="line-row"><span class="it">l'innamorata maga in belva di cangiarti.</span><span class="es">Alcina ha decidido convertirte en una bestia.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Va, lo ritrova, e digli che Alcina non desio,</span><span class="es">Ve, a su encuentro y dile que no deseo a Alcina,</span></div>
+      <div class="line-row"><span class="it">che amarla non saprei: che ardo per altro volto.</span><span class="es">que amarla no podría, pues ardo por otro rostro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">È forse il mio?</span><span class="es">¿Es quizás el mío?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Sì</span><span class="es">Sí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Me beata!</span><span class="es">¡Qué feliz soy!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">E vanne ad Alcina, co' prieghi fa</span><span class="es">Suplícale a Alcina que consienta</span></div>
+      <div class="line-row"><span class="it">ch'un si fido amante a te non nieghi.</span><span class="es">en que seas mi amante.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">A lei rivolgo il piede: e sarai mio?</span><span class="es">Volveré... ¿serás mío?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Tel giuro. Ecco la fede.</span><span class="es">Te lo juro...</span></div>
+      <div class="stage-direction">
+        <span>(Le dà la mano, e poi parte)</span>
+        <span class="es">(Le estrecha la mano y luego sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quattordicesima</span>
+        <span>Escena Decimocuarta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="line-row"><span class="it">Tornami a vagheggiar,</span><span class="es">¡Vuelvo a estar enamorada!</span></div>
+      <div class="line-row"><span class="it">te solo vuol amar quest'anima fedel, caro mio bene.</span><span class="es">¡Mi alma sólo te desea a ti, amado mío!</span></div>
+      <div class="line-row"><span class="it">Già ti donai il mio cor, fido sarà il mio amor;</span><span class="es">Te daré todo mi corazón y mi amor te será fiel,</span></div>
+      <div class="line-row"><span class="it">mai ti sarò crudel, cara mia speme.</span><span class="es">querida esperanza mía.</span></div>
+      <div class="line-row"><span class="it">Tornami, ecc.</span><span class="es">Vuélveme a... etc.</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Atto Ii</span>
+      <span>Acto Ii</span>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Rica e maestosa sala del palazzo incantato di Alcina)</span>
+        <span class="es">(Lujosa sala del palacio encantado de Alcina)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Col celarvi a chi v'ama un momento,</span><span class="es">¡Cueles y queridos ojos,</span></div>
+      <div class="line-row"><span class="it">care luci, crudele voi siete!</span><span class="es">que os escondéis a mi mirada!</span></div>
+      <div class="line-row"><span class="it">Io vi cerco, e pur voi mi togliete il contento,</span><span class="es">Os busco y me negáis incluso</span></div>
+      <div class="line-row"><span class="it">la speme d'un sguardo.</span><span class="es">la esperanza de vuestra mirada.</span></div>
+      <div class="line-row"><span class="it">Col celarvi, ecc.</span><span class="es">¡Crueles y queridos... etc.</span></div>
+      <div class="stage-direction">
+        <span>(Entra Melisso nella forma di Atlante,</span>
+        <span class="es">(Entra Melisso disfrazado de Atalas,</span>
+        <span>che aveva educato Ruggiero)</span>
+        <span class="es">anterior tutor de Ruggiero)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="line-row"><span class="it">Taci, taci, codardo. Molle, infame Ruggiero.</span><span class="es">¡Calla, calla, cobarde y débil Ruggiero!</span></div>
+      <div class="line-row"><span class="it">Così tu corrispondi a tanti miei per te sofferti affanni?.</span><span class="es">¿Así correspondes a mis desvelos?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Amor...Dovere...</span><span class="es">El amor... el deber...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">E poi?</span><span class="es">¿Y?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Cortesia...di...gentil...</span><span class="es">La cortesía... de un caballero...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Segui.</span><span class="es">Continúa...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Pietate...</span><span class="es">Piedad...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Ti arresti, e ti confondi? D'amor vile guerriero:</span><span class="es">¿Callas y te confundes?... ¡Vil guerrero del amor!</span></div>
+      <div class="line-row"><span class="it">È questo della gloria il bel sentiero?.</span><span class="es">¿Es éste el noble camino de la gloria?</span></div>
+      <div class="stage-direction">
+        <span>(Li dà un anello)</span>
+        <span class="es">(Le entrega un anillo)</span>
+      </div>
+      <div class="line-row"><span class="it">E se più a me non credi, mira, Ruggiero,</span><span class="es">Y si no me crees, mira Ruggiero,</span></div>
+      <div class="line-row"><span class="it">e la tua infamia vedi.</span><span class="es">contempla tu infamia.</span></div>
+      <div class="stage-direction">
+        <span>(Non così tosto Melisso porge a Ruggiero l'anello stato</span>
+        <span class="es">(El anillo mágico, en otro tiempo propiedad</span>
+        <span>già di Angelica, che la sala tutta si cangia in loco</span>
+        <span class="es">de Angélica, transforma la sala en un lugar</span>
+        <span>orrido e deserto. Melisso intanto riprende la sua prima</span>
+        <span class="es">horrible y desértico. Melisso mientras tanto</span>
+        <span>forma)</span>
+        <span class="es">retoma su anterior apariencia)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag" style="visibility:hidden">
+        <span class="track-tag-cd"></span>
+        <span class="track-tag-num"></span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="line-row"><span class="it">Qual portento mi richiama la mia mente a rischiarar?</span><span class="es">¿Qué prodigio ha devuelto la luz a mi mente?</span></div>
+      <div class="line-row"><span class="it">Ah! Bradamante!</span><span class="es">¡Oh, Bradamante!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="line-row"><span class="it">A te appunto mi manda...</span><span class="es">Por ella precisamente, es por quien esto aquí...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! de' primi anni dei miei fedele educator...</span><span class="es">¡Oh, fiel educador de mi juventud!</span></div>
+      <div class="line-row"><span class="it">Or vane ad Alcina: dille pur, che Ruggiero</span><span class="es">Ve a Alcina y dile que</span></div>
+      <div class="line-row"><span class="it">più non l'ama, che 'l mio cuore ha tradito,</span><span class="es">Ruggiero ya no la ama,</span></div>
+      <div class="line-row"><span class="it">e la mia fama.</span><span class="es">pues ha traicionado mi corazón y mi honor</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Il tuo sdegno sia caro a Bradamante.</span><span class="es">Tú desdén agradará a Bradamante.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Di' a questa, che l'adoro... che bramo...</span><span class="es">Dile que la adoro... qué suspiro por ella...</span></div>
+      <div class="line-row"><span class="it">e che far degg'io?</span><span class="es">pero, ¿cómo deberé actuar?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Ora rivesti tutte prisa l'arme usate; ma taci con Alcina,</span><span class="es">En primer lugar, ponte tu armadura.</span></div>
+      <div class="line-row"><span class="it">e fingi il primo amore, il primo volto.</span><span class="es">No te descubras ante Alcina,</span></div>
+      <div class="line-row"><span class="it">Mostra desio di caccia, così fuga,</span><span class="es">finge tu antiguo amor, no cambies el semblante.</span></div>
+      <div class="line-row"><span class="it">e salute a te procaccia. Ruggiero!</span><span class="es">Dile que vas de caza... ¡así podrás huir, Ruggiero!</span></div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="line-row"><span class="it">Pensa a chi geme d'amor piagata,</span><span class="es">Piensa que Bradamante llora tu amor perdido,</span></div>
+      <div class="line-row"><span class="it">e sempre teme abbandonata, crudel, da te.</span><span class="es">que está abatida por tu cruel abandono.</span></div>
+      <div class="line-row"><span class="it">Torna ad amarla, e la consola,</span><span class="es">Regresa junto a ella a y consuélala,</span></div>
+      <div class="line-row"><span class="it">nè mesta e sola così lasciarla senza mercè.</span><span class="es">no la dejes más tiempo triste y sin esperanza.</span></div>
+      <div class="line-row"><span class="it">Pensa a chi, ecc.</span><span class="es">Piensa que Bradamante llora... etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="line-row"><span class="it">Qual odio ingiusto contro me?</span><span class="es">¿Cuál es la razón de este odio injusto contra mí?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Perdona; vinse la mia ragion forza d'incanto.</span><span class="es">Perdona, pues un hechizo venció mi razón.</span></div>
+      <div class="line-row"><span class="it">Fin ora vaneggiai: ecco, a me torno;</span><span class="es">Hasta ahora deliré, pero ya soy un hombre nuevo.</span></div>
+      <div class="line-row"><span class="it">rompo l'indegno laccio, e se rival mi sei,</span><span class="es">Rompo el indigno lazo y aunque fueras mi rival,</span></div>
+      <div class="line-row"><span class="it">il tuo crudel destin piango, e t'abbraccio.</span><span class="es">me apiado de tu destino, y te abrazo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Ed è ver, mi rammembri?</span><span class="es">¿Y es verdad que me recuerdas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Si. Ah! fosse teco ancora l'adorata mi sposa,</span><span class="es">Sí. ¡Ah, si mi adorada esposa, tu hermana,</span></div>
+      <div class="line-row"><span class="it">tua sorella.</span><span class="es">estuviera aquí ahora!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Ruggier, non mi conosci?</span><span class="es">Ruggiero, ¿no me reconoces?</span></div>
+      <div class="line-row"><span class="it">e pur son quella.</span><span class="es">¡Soy ella misma, en persona!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Numi! è ver? Bradamante!</span><span class="es">¡Dioses! ¡Es verdad, Bradamante!</span></div>
+      <div class="line-row"><span class="it">Ma Bradamante? e come?</span><span class="es">Pero... Bradamante ¿cómo es posible?</span></div>
+      <div class="line-row"><span class="it">Un nuovo incanto sì, che d'Alcina è questo.</span><span class="es">Sí, un nuevo hechizo de Alcina...</span></div>
+      <div class="line-row"><span class="it">Non l'avria no taciuto chi m'offerse il bel dono.</span><span class="es">Si fueras quien dices ser,</span></div>
+      <div class="line-row"><span class="it">Va, insidiosa maga,</span><span class="es">no habrías permanecido callada.</span></div>
+      <div class="line-row"><span class="it">della mia donna amata tu mentir voi la forma,</span><span class="es">¡Fuera, insidiosa bruja, que pretendes imitar</span></div>
+      <div class="line-row"><span class="it">e la favella.</span><span class="es">la apariencia y la voz de mi mujer!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Crudel, tu mi discacci, e pur son quella.</span><span class="es">Cruel, ¿me rechazas?... ¡Yo soy ella!</span></div>
+      <div class="line-row"><span class="it">Vorremi vendicarmi del perfido cor,</span><span class="es">Quisiera vengarme de tu malvado corazón.</span></div>
+      <div class="line-row"><span class="it">amor dammi l'armi m'appresta il furor.</span><span class="es">¡Amor dame las armas y la furia!</span></div>
+      <div class="line-row"><span class="it">Sei barbaro, ingrato, ver chi per te langue;</span><span class="es">Eres ingrato con quien languidece por ti...</span></div>
+      <div class="line-row"><span class="it">ma prendi, spietato, se vuoi anche il mio sangue.</span><span class="es">Despiadado, si lo deseas toma mi sangre.</span></div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="line-row"><span class="it">Vorrei vendicarmi, ecc.</span><span class="es">Quisiera vengarme, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Part)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="line-row"><span class="it">Chi scopre al mio pensiero,</span><span class="es">¿Quién puede decirme</span></div>
+      <div class="line-row"><span class="it">se tradito pur son, o s'odo il vero?</span><span class="es">si soy engañado o si escucho la verdad?</span></div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="line-row"><span class="it">Mi lusinga il dolce affetto con l'aspetto del mio bene.</span><span class="es">Estoy ofuscado por a aquella a quien amo.</span></div>
+      <div class="line-row"><span class="it">Pur chi sa?</span><span class="es">Por tanto, ¿cómo puedo estar seguro?</span></div>
+      <div class="line-row"><span class="it">Temer conviene, che m'inganni amando ancor.</span><span class="es">Debo cuidarme de que el amor no me engañe...</span></div>
+      <div class="line-row"><span class="it">Ma se quella fosse mai che adorai, l'abbandono;</span><span class="es">Pero si ella probara ser la mujer que adoro</span></div>
+      <div class="line-row"><span class="it">infedele, ingrato io sono, son crudele e traditor.</span><span class="es">y la abandono, yo sería cruel, ingrato y traidor.</span></div>
+      <div class="line-row"><span class="it">Mi lusinga, ecc.</span><span class="es">Mi tierna pasión, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Loco che conduce ai giardini reali, con statua</span>
+        <span class="es">(Lugar que conduce a los jardines reales, con</span>
+        <span>di Circe nel mezzo, che cangia gli uomini in fiere.</span>
+        <span class="es">estatua de Circe en el medio, que transforma a</span>
+        <span>Alcina, sola)</span>
+        <span class="es">los hombres en fieras. Alcina, sola)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc31">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t31">
+      <div class="line-row"><span class="it">S'acquieti il rio sospetto, che tormenta il mio ben.</span><span class="es">¡Que se disipen las sospechas de mi amado!</span></div>
+      <div class="line-row"><span class="it">Vesta Riccardo ferina spoglia.</span><span class="es">¡Que Ricardo sea transformado en bestia!</span></div>
+      <div class="line-row"><span class="it">O voi termute larve, al noto imper scendete.</span><span class="es">¡Oh sombras espantosas, descended a mi orden!</span></div>
+      <div class="line-row"><span class="it">A te, figlia del sole, porgo i miei prieghi usati.</span><span class="es">¡Oh hija del sol, a ti dirijo mis plegarias!</span></div>
+      <div class="stage-direction">
+        <span>(Entra Morgana)</span>
+        <span class="es">(Entra Morgana)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Ancor per poco sospendi il suon di magiche parole!</span><span class="es">¡Suspende las palabras del hechizo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Importuna: mi arresti?</span><span class="es">¡Inoportuna!... ¿Por qué me detienes?</span></div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Ruggiero)</span>
+        <span class="es">(Entra Ruggiero)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+      <div class="line-row"><span class="it">E la tua pace, con tanta crudeltà comprar si deve?</span><span class="es">¿Tu paz a cambio de tanta crueldad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Caro, ti vuò appagar.</span><span class="es">Querido, quiero tranquilizarte...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Ciò basta, Alcina. Più non chiede il mio amor.</span><span class="es">¡Basta ya, Alcina, mi amor no necesita más!</span></div>
+      <div class="line-row"><span class="it">Veggo a tai segni che Riccardo non ami.</span><span class="es">Puedo ver que tú no amas a Ricardo.</span></div>
+      <div class="line-row"><span class="it">Or pago sono, e se fu mio rivale, io gli perdono.</span><span class="es">Si una vez fue mi rival, ahora yo le perdono.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc32">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t32">
+      <div class="line-row"><span class="it">Ama, sospira, ma non ti offende;</span><span class="es">Ama, suspira, pero no te ofende...</span></div>
+      <div class="stage-direction">
+        <span>(ad Alcina)</span>
+        <span class="es">(a Alcina)</span>
+      </div>
+      <div class="line-row"><span class="it">D'amor si accende, ma non per te.</span><span class="es">De amor se enciende, pero no por ti.</span></div>
+      <div class="line-row"><span class="it">Pena, ma chiede da me conforto, pace da me.</span><span class="es">Él sufre, pero solicita de mí consuelo y paz.</span></div>
+      <div class="line-row"><span class="it">Ama, sospira, ecc.</span><span class="es">Ama, suspira... etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc33">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t33">
+      <div class="line-row"><span class="it">Non scorgo nel tuo viso il contento di pria.</span><span class="es">No veo en tu rostro la felicidad de otro tiempo.</span></div>
+      <div class="line-row"><span class="it">Di' che ti offende?</span><span class="es">Dime, ¿qué te aflige?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Una oziosa virtute or mi riprende.</span><span class="es">Mi adormecido valor vuelve a renacer en mí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Pensa a goder...</span><span class="es">Piensa en el placer...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Concedimi, o regina, almen,</span><span class="es">Permite, oh reina, que con mi armadura</span></div>
+      <div class="line-row"><span class="it">che nel mio usbergo faccia guerra alle fiere,</span><span class="es">vaya a la caza de las fieras salvajes,</span></div>
+      <div class="line-row"><span class="it">per ravvivar lo spirto mio languente.</span><span class="es">para reavivar así mi desfallecido espíritu.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Al tuo voler sempre s'uni mia mente.</span><span class="es">A tu deseo siempre se une mi mente.</span></div>
+      <div class="line-row"><span class="it">Vanne, ma sia per poco: ma pensa al mio martiro.</span><span class="es">Ve, pero sea por poco tiempo, piensa que sufro.</span></div>
+      <div class="line-row"><span class="it">Temo; partir te lascio, e ne sospiro.</span><span class="es">Tengo miedo, te dejo partir, pero suspiro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc34">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t34">
+      <div class="line-row"><span class="it">Mio bel tesoro, fedel son'io, al ben, che adoro,</span><span class="es">A mi lindo tesoro, al bien que adoro,</span></div>
+      <div class="line-row"><span class="it">all' idol mio prometto fè (ma non a te).</span><span class="es">a mi ídolo, prometo serle fiel (pero no a ti).</span></div>
+      <div class="line-row"><span class="it">Il caro amante non segue il piede,</span><span class="es">El fiel amante no se extravía</span></div>
+      <div class="line-row"><span class="it">e fido resta (ma no con te),</span><span class="es">y permanece fiel (pero no a ti)</span></div>
+      <div class="line-row"><span class="it">con chi li chiede costante e mesta pace e mercè.</span><span class="es">a aquella que le solicita cariño y comprensión.</span></div>
+      <div class="line-row"><span class="it">Mio bel tesoro, ecc.</span><span class="es">A mi lindo tesoro, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Settima</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Oberto)</span>
+        <span class="es">(Entra Oberto)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc35">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t35">
+      <div class="line-row"><span class="it">Regina: io cerco in vano l'amato genitore!</span><span class="es">Reina ¡he buscado en vano a mi querido padre!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Spera, Oberto, e sta lieto.</span><span class="es">Espera, Oberto, pronto estarás alegre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh, Dei! non posso.</span><span class="es">¡Oh dioses, no puedo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Il riso, il brio, la gioia qui t'invita a goder.</span><span class="es">La risa, la alegría y la felicidad te invitan a gozar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Tutto mi annoia.</span><span class="es">Todo me aburre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Dispon de' miei tesori.</span><span class="es">Mis tesoros están a tu disposición.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Io non li curo.</span><span class="es">No los deseo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Al mio materno amore così mal corrisponde?</span><span class="es">¿Así correspondes a mi maternal amor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sempre grato ti sarò,</span><span class="es">Te estaré eternamente agradecido</span></div>
+      <div class="line-row"><span class="it">se m'insegni il genitore.</span><span class="es">si me dices dónde está mi padre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">Mi fa pietate; or si lusinghi.</span><span class="es">Me da lástima... seguiré con el engaño.</span></div>
+      <div class="stage-direction">
+        <span>(ad Oberto)</span>
+        <span class="es">(a Oberto)</span>
+      </div>
+      <div class="line-row"><span class="it">Ascolta: vedrai in breve il tuo padre, io tel prometto.</span><span class="es">Escucha: pronto verás a tu padre, te lo prometo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Comincia a respirar l'anima in petto.</span><span class="es">Mi alma empieza a respirar.</span></div>
+    </div>
+
+    <div class="track-col" id="tc36">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t36">
+      <div class="line-row"><span class="it">Tra speme e timore mi palpita il core,</span><span class="es">Mi corazón palpita entre la esperanza y el temor,</span></div>
+      <div class="line-row"><span class="it">nè so ben ancora s'è gioia o dolor.</span><span class="es">se debate entre la alegría y el dolor.</span></div>
+      <div class="line-row"><span class="it">Spuntar la mia stella già parmi più bella;</span><span class="es">Por fin parece que mi estrella despunta</span></div>
+      <div class="line-row"><span class="it">mi mostra l'aurora del giorno il splendor.</span><span class="es">y la aurora me muestra el esplendor del día.</span></div>
+      <div class="line-row"><span class="it">Tra speme, ecc.</span><span class="es">Mi corazón palpita, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Ottava</span>
+        <span>Escena Octava</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Oronte)</span>
+        <span class="es">(Entra Oronte)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc37">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t37">
+      <div class="line-row"><span class="it">Regina, sei tradita. Con segreto consiglio</span><span class="es">¡Reina, te han traicionado!</span></div>
+      <div class="line-row"><span class="it">degli ospiti malvagi, a fuggir s'apparecchia</span><span class="es">Con la complicidad de los arteros invitados,</span></div>
+      <div class="line-row"><span class="it">il tuo Ruggiero.</span><span class="es">Ruggiero se prepara para huir.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Numi! che intendo, Oronte! e questo è vero?</span><span class="es">¡Dioses! ¡Qué oigo, Oronte! ¿Es eso cierto?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Purtroppo: ed...</span><span class="es">¡Ay de mí, sí! Y...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Or intendo perché l'arme vesti;</span><span class="es">¡Ahora entiendo por qué vistió armadura!</span></div>
+      <div class="line-row"><span class="it">crudel, spergiuro!</span><span class="es">¡Cruel, perjuro! De todos me vengaré, ¡lo juro!</span></div>
+      <div class="line-row"><span class="it">Di lui, di lor, farne vendetta io giuro.</span><span class="es">¡Ah, mi corazón está escarnecido!</span></div>
+    </div>
+
+    <div class="track-col" id="tc38">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t38">
+      <div class="line-row"><span class="it">Ah! mio cor! schernito sei!</span><span class="es">¡Estrellas, dioses, dios del amor!...</span></div>
+      <div class="line-row"><span class="it">Stelle, dei! Nume d'amore!</span><span class="es">¡Es un traidor, pero... le amo tanto!</span></div>
+      <div class="line-row"><span class="it">Traditore! t'amo tanto;</span><span class="es">¡Me abandona entre lágrimas, ay!</span></div>
+      <div class="line-row"><span class="it">puoi lasciarmi sola in pianto.</span><span class="es">¡Oh, dioses!... ¿Por qué?</span></div>
+      <div class="line-row"><span class="it">Oh! Dei perché?</span><span class="es">Pero, ¿qué hace Alcina gimiendo?</span></div>
+      <div class="line-row"><span class="it">Ma, che fa gemendo Alcina?</span><span class="es">Soy la reina... aún estoy a tiempo...</span></div>
+      <div class="line-row"><span class="it">Son regina, è tempo ancora: resti,</span><span class="es">¡Quédate o muere!...</span></div>
+      <div class="line-row"><span class="it">o mora, peni sempre, o torni a me.</span><span class="es">¡Padece eternamente o regresa a mí!...</span></div>
+      <div class="line-row"><span class="it">Ah! mio cor, ecc.</span><span class="es">¡Ah, mi corazón etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Nona</span>
+        <span>Escena Novena</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Morgana)</span>
+        <span class="es">(Entra Morgana)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc39">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t39">
+      <div class="line-row"><span class="it">Or, che dici, Morgana?</span><span class="es">¿Qué dices, Morgana?</span></div>
+      <div class="line-row"><span class="it">Il tuo novello amante con perfidia ed inganno</span><span class="es">Tu joven amante con perfidia y engaño</span></div>
+      <div class="line-row"><span class="it">ti abbandona; lo sai?</span><span class="es">se apresta a abandonarte... ¿lo sabías?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Nol credo, Oronte. La gelosia ti sprona:</span><span class="es">No lo creo, Oronte, los celos te corroen.</span></div>
+      <div class="line-row"><span class="it">ma più gli affetti miei per te non sono.</span><span class="es">No siento cariño alguno hacia ti.</span></div>
+      <div class="line-row"><span class="it">Libera son, nè chieggo a te perdono.</span><span class="es">Soy libre y no necesito tu perdón.</span></div>
+      <div class="stage-direction">
+        <span>(Parte sorridendo, e facendogli una gran riverenza)</span>
+        <span class="es">(sale haciéndole una gran reverencia)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Decima</span>
+        <span>Escena Décima</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">All'offesa, il disprezzo giunge l'ingrata?</span><span class="es">¿Podría esa ingrata ser aún mas ofensiva?</span></div>
+      <div class="line-row"><span class="it">Su: coraggio, Oronte, scaccia costei dall'alma;</span><span class="es">¡Valor y ánimo, Oronte, arráncala de tu alma!</span></div>
+      <div class="line-row"><span class="it">e se mai torna pentita a riamarti,</span><span class="es">Si no regresa arrepentida,</span></div>
+      <div class="line-row"><span class="it">deludi l'arti sue con l'istessarti.</span><span class="es">haré que sus artimañas fracasen.</span></div>
+    </div>
+
+    <div class="track-col" id="tc40">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t40">
+      <div class="line-row"><span class="it">È un folle, è un ville affetto, non è la sua beltà,</span><span class="es">No es la belleza, sino un loco hechizo</span></div>
+      <div class="line-row"><span class="it">che trionfar la fa superba del mio cor.</span><span class="es">lo que la hace triunfar en mi corazón.</span></div>
+      <div class="line-row"><span class="it">Vieni, sul labbro e al ciglio,</span><span class="es">¡Acude a mis labios y a mi alma,</span></div>
+      <div class="line-row"><span class="it">sdegno, che nutro il petto,</span><span class="es">oh desdén, hijo del amor ultrajado,</span></div>
+      <div class="line-row"><span class="it">figlio d'offeso amor.</span><span class="es">que anidas en mi pecho!</span></div>
+      <div class="line-row"><span class="it">È un folle, ecc.</span><span class="es">No es la belleza, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Undicesima</span>
+        <span>Escena Undécima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Ruggiero e Bradamante)</span>
+        <span class="es">(Ruggiero y Bradamante entran)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc41">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t41">
+      <div class="line-row"><span class="it">Eccomi a' piedi tuoi, generosa donzella,</span><span class="es">Me postro a tus pies, generosa doncella.</span></div>
+      <div class="line-row"><span class="it">doppio error me fa reo...</span><span class="es">Soy doblemente culpable...</span></div>
+      <div class="stage-direction">
+        <span>(Vuole inginocchiarsi)</span>
+        <span class="es">(Quiere arrodillarse)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Sorgi, Ruggiero!</span><span class="es">¡Levanta, Ruggiero!</span></div>
+      <div class="line-row"><span class="it">Serbiamo a miglior uso tu le discolpe, io le querele.</span><span class="es">Reprimamos tus disculpas y mis reproches.</span></div>
+      <div class="line-row"><span class="it">Andiamo: temo sempre dovunque il guardo volga,</span><span class="es">¡Vamos!... En cualquier momento puede venir</span></div>
+      <div class="line-row"><span class="it">vedere Alcina ria, che mi ti tolga.</span><span class="es">la malvada Alcina para separarte de mí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="stage-direction">
+        <span>(si abbracciano)</span>
+        <span class="es">(se abrazan)</span>
+      </div>
+      <div class="line-row"><span class="it">Bradamante, cor mio!</span><span class="es">¡Bradamante, corazón mío!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Ruggiero amato, fuggiam l'infame loco.</span><span class="es">Ruggiero querido, ¡huyamos de este odioso lugar!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="stage-direction">
+        <span>(che ha tutto ascoltato in disparte;</span>
+        <span class="es">(que oculta ha escuchado todo,</span>
+        <span>si presenta loro infuriata. A Bradamante)</span>
+        <span class="es">se presenta enfurecida. A Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Mentitrice, che vuoi?</span><span class="es">¡Mentirosa! ¿Qué quieres?</span></div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+      <div class="line-row"><span class="it">Che pensi, ingrato? Alcina vi darà giusta mercede,</span><span class="es">¿Qué esperas, ingrato? ¡Alcina hará justicia!</span></div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Ospite ingannatrice,</span><span class="es">¡Artero invitado!</span></div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+      <div class="line-row"><span class="it">Uom' senza fede!</span><span class="es">¡Infiel!</span></div>
+      <div class="stage-direction">
+        <span>(Parte sdegnata)</span>
+        <span class="es">(Sale indignada)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc42">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t42">
+      <div class="line-row"><span class="it">Verdi prati, selve amene, perderete la beltà.</span><span class="es">¡Los verdes valles y bosques, perderán su color!</span></div>
+      <div class="line-row"><span class="it">Vaghi fior, correnti rivi, la vaghezza,</span><span class="es">¡Las dulces flores y corrientes, su aroma!</span></div>
+      <div class="line-row"><span class="it">la bellezza presto in voi se cangerà.</span><span class="es">¡Pronto toda belleza desaparecerá!</span></div>
+      <div class="line-row"><span class="it">Verdi prati, selve amene, perderete la beltà.</span><span class="es">Perderán su color los prados, los bosques,</span></div>
+      <div class="line-row"><span class="it">E cangiato il vago oggetto all'orror del primo aspetto,</span><span class="es">y todo en ellos retornará</span></div>
+      <div class="line-row"><span class="it">tutto in voi ritornerà.</span><span class="es">al horror ancestral.</span></div>
+      <div class="line-row"><span class="it">Verdi prati, selve amene, perderete la beltà.</span><span class="es">¡Los verdes valles y bosques, perderán su color!</span></div>
+      <div class="scene-heading">
+        <span>Scena Dodicesima</span>
+        <span>Escena Duodécima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Stanza sotterranea delle magie, con varie figure</span>
+        <span class="es">(Habitación subterránea para la práctica</span>
+        <span>e strumenti, che appartengono a quest'uso)</span>
+        <span class="es">de la magia, con figuras e instrumentos)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc43">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t43">
+      <div class="line-row"><span class="it">Ah! Ruggiero crudel, tu non mi amasti!</span><span class="es">¡Ay, cruel Ruggiero, nunca me quisiste!</span></div>
+      <div class="line-row"><span class="it">Ah! che fingesti amor, e m'ingannasti!</span><span class="es">¡Ay, fingiste amor y me engañaste!</span></div>
+      <div class="line-row"><span class="it">E pur ti adora ancor fido mio core.</span><span class="es">Pero incluso aún mi corazón te adora...</span></div>
+      <div class="line-row"><span class="it">Ah! Ruggiero crudel, sei traditore!</span><span class="es">¡Ay, cruel Ruggiero, me traicionaste!</span></div>
+      <div class="line-row"><span class="it">Del pallido Acheronte spiriti abitatore,</span><span class="es">¡Venid espíritus sombríos del Aqueronte!</span></div>
+      <div class="line-row"><span class="it">e de la notte ministri di vendetta cieche figlie crudeli,</span><span class="es">¡Y vosotras, crueles y ciegas hijas de la noche!</span></div>
+      <div class="line-row"><span class="it">a mi venite!</span><span class="es">¡Ministras de la venganza! ¡Yo os convoco!</span></div>
+      <div class="line-row"><span class="it">Secondate i miei voti,</span><span class="es">¡Ayudadme a conseguir mi deseo!</span></div>
+      <div class="line-row"><span class="it">perchè Ruggiero amato non fugga de me ingrato.</span><span class="es">¡Que mi amado Ruggiero no huya de mí!</span></div>
+      <div class="stage-direction">
+        <span>(guarda d'intorno, e sospesa)</span>
+        <span class="es">(mira alrededor expectante)</span>
+      </div>
+      <div class="line-row"><span class="it">Ma, ohimè! Misera! E quale insolita tardanza?</span><span class="es">Pero, ¡ay de mí!... ¿Por qué esta insólita tardanza?</span></div>
+      <div class="line-row"><span class="it">Eh! non m'udite?</span><span class="es">¡Eh!... ¿No me oís?... ¿Os llamo y os escondéis?</span></div>
+      <div class="line-row"><span class="it">Vi cerco, e vi ascondete?</span><span class="es">¿Os convoca y calláis?... ¿Me engañáis?...</span></div>
+      <div class="line-row"><span class="it">Vi comando, e tacete?</span><span class="es">¿No tengo poder?...</span></div>
+      <div class="line-row"><span class="it">Evvi inganno ? Evvi frode?</span><span class="es">¿Ha perdido mi cetro mágico su poder fatal?</span></div>
+      <div class="line-row"><span class="it">La mia verga fatal non ha possanza?</span><span class="es">Vencida y engañada... Alcina... ¿qué te queda?</span></div>
+      <div class="line-row"><span class="it">Vinta, delusa Alcina, e che ti avanza?</span><span class="es">¡Siniestra sombras, sé que me oís!</span></div>
+    </div>
+
+    <div class="track-col" id="tc44">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t44">
+      <div class="line-row"><span class="it">Ombre pallide, io so, mi udite; d'intorno errate,</span><span class="es">Flotáis a mi alrededor</span></div>
+      <div class="line-row"><span class="it">e vi celate, sorde da me: perchè? perchè?.</span><span class="es">y os escondéis sordas a mis palabras... ¿Por qué?</span></div>
+      <div class="line-row"><span class="it">Fugge il mio bene; voi lo fermate deh!</span><span class="es">Mi amado huye de mí... ¡detenedle, por piedad!</span></div>
+      <div class="line-row"><span class="it">Per pietate, se in questa verga, ch'ora disprezzo,</span><span class="es">Aborrezco este cetro y quiero romperlo,</span></div>
+      <div class="line-row"><span class="it">e voglio frangere forza non è.</span><span class="es">pues ha perdido su poder.</span></div>
+      <div class="line-row"><span class="it">Ombre pallide, ecc.</span><span class="es">Sombras pálidas, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte con impeto agitando via la verga magica)</span>
+        <span class="es">(Sale bruscamente agitando su cetro mágico)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Atto Iii</span>
+      <span>Acto Iii</span>
+    </div>
+
+    <div class="track-col" id="tc45">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t45">
+      <div class="scene-heading">
+        <span>Scena Prima</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Atrio del palagio)</span>
+        <span class="es">(Sala de entrada del palacio)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Voglio amar e disamar, così mi piace.</span><span class="es">¡Quiero amar y desamar, ése es mi deseo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">La tua costanza?</span><span class="es">¿Y tu fidelidad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">È persa.</span><span class="es">Se ha perdido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">La tua promessa fede? E il giuramento?</span><span class="es">¿Y tu promesa? ¿Y el juramento?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Questi portolli via rapido il vento.</span><span class="es">Se los llevó el viento.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Vendicarti tu vuoi d'un innocente inganno,</span><span class="es">Tú quieres vengarte de un inocente engaño,</span></div>
+      <div class="line-row"><span class="it">e pur t'adoro, Oronte, anima mia.</span><span class="es">y aún te adoro, Oronte, alma mía.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Per altra io moro.</span><span class="es">Yo languidezco por el amor de otra.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Credi, ch'uno straniero poteva mai?</span><span class="es">¿Crees que un extranjero pudo alguna vez?...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">E pur l'amasti, ingrata.</span><span class="es">E incluso tú lo quisiste, ingrata.</span></div>
+      <div class="line-row"><span class="it">Ma più gli affetti miei per te non sono.</span><span class="es">Pero ya no siento cariño por ti.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Se t'offesi mio ben, chiedo perdono.</span><span class="es">Si te ofendí, amor mío, te pido perdón.</span></div>
+    </div>
+
+    <div class="track-col" id="tc46">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t46">
+      <div class="line-row"><span class="it">Credete al mio dolore, luci tiranne, e care!</span><span class="es">¡Creed en mi dolor, crueles y queridos ojos!</span></div>
+      <div class="line-row"><span class="it">Languo per voi d'amore, bramo da voi pietà!</span><span class="es">¡De amor lloro por vosotros! ¡Tened piedad!</span></div>
+      <div class="line-row"><span class="it">Se pianger mi vedete, se mio tesor vi chiamo,</span><span class="es">Si me veis llorar... si os llamo mi tesoro...</span></div>
+      <div class="line-row"><span class="it">e dite, che non v'amo, è troppa crudeltà.</span><span class="es">y aún así me rechazáis... ¡sois crueles en demasía!</span></div>
+      <div class="line-row"><span class="it">Credete al mio dolore, ecc.</span><span class="es">Creed en mi dolor, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra sé)</span>
+        <span class="es">(para sí)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc47">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t47">
+      <div class="line-row"><span class="it">M'inganna, me n'avvengo,</span><span class="es">Me engaña, lo sé, pero aún así la adoro...</span></div>
+      <div class="line-row"><span class="it">e pur ancor l'adoro...</span><span class="es">Me fue infiel, pero ella es mi tesoro.</span></div>
+      <div class="line-row"><span class="it">Se ben mi fu infedel, è 'l mio tesoro.</span><span class="es">Un solo momento de felicidad devuelve</span></div>
+    </div>
+
+    <div class="track-col" id="tc48">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t48">
+      <div class="line-row"><span class="it">Un momento di contento dolce rende</span><span class="es">a un amante fiel todo el llanto que vertió.</span></div>
+      <div class="line-row"><span class="it">a un fido amante tutto pianto che versò.</span><span class="es">El amor acostumbra a extraer del dolor</span></div>
+      <div class="line-row"><span class="it">Suol' amore, dal dolore tirar balsamo alle pene,</span><span class="es">un bálsamo para sus penas</span></div>
+      <div class="line-row"><span class="it">e sanar, chi pria piagò.</span><span class="es">y cicatrizar así las heridas que infringió.</span></div>
+      <div class="line-row"><span class="it">Un momento, ecc.</span><span class="es">Un solo momento, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Seconda</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc49">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t49">
+      <div class="line-row"><span class="it">Molestissimo incontro!</span><span class="es">¡Inoportuno encuentro!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ahimè!</span><span class="es">¡Ay de mí!</span></div>
+      <div class="line-row"><span class="it">Ruggiero, è ver che m'abbandoni?</span><span class="es">Ruggiero, ¿es verdad que me abandonas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">M'invita la virtute, che langue nell'amore.</span><span class="es">Me llama el ardor guerrero, muerto por el amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">E non pensi, mio caro, al mio dolore?</span><span class="es">¿Y no piensas, amor mío, en mi dolor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Il passato suo inganno rimira con orrore</span><span class="es">Un alma noble no vuelve la vista atrás</span></div>
+      <div class="line-row"><span class="it">un'alma grande.</span><span class="es">recordando sus errores.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! che sei mentitore!</span><span class="es">¡Ay, qué mentiroso eres!</span></div>
+      <div class="line-row"><span class="it">Fuggi da me, per darti a un'altra amante.</span><span class="es">¡Huyes de mí para entregarte a otra amante!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Quella è mia sposa.</span><span class="es">Sí, ella es mi esposa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Dei!</span><span class="es">¡Oh, dioses!</span></div>
+      <div class="line-row"><span class="it">E scordar tu mi puoi, mia cara speme?</span><span class="es">Y tú, esperanza mía ¿podrás olvidarme?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Dover, amor, virtù pugnano insieme.</span><span class="es">El deber, el amor y el honor deben luchar juntos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Per questi sospir miei...</span><span class="es">Mis suspiros demuestran...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Li spargi al vento.</span><span class="es">Espárcelos al viento...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ti fui sempre fedel...</span><span class="es">... que te fui siempre fiel...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Scorda il passato.</span><span class="es">Olvida el pasado...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ti adoro ancor.</span><span class="es">... y que aún te adoro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Non è più tempo.</span><span class="es">Se acabó el tiempo...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ingrato!</span><span class="es">¡Ingrato!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Mi richiama la gloria.</span><span class="es">La gloria me llama.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">È un van pretesto.</span><span class="es">Eso es un mero pretexto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Mi stimola l'onore.</span><span class="es">El honor me lo exige.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Va: m'oltraggiasti assai. Va, traditore.</span><span class="es">¡Vete, ya me has vejado bastante! ¡Vete, traidor!</span></div>
+    </div>
+
+    <div class="track-col" id="tc50">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t50">
+      <div class="line-row"><span class="it">Ma quando tornerai di lacci avvinto il piè,</span><span class="es">Pero cuando regreses con cadenas en los pies,</span></div>
+      <div class="line-row"><span class="it">attendi pur da me rigore e crudeltà.</span><span class="es">sólo encontrarás en mí rigor y crueldad.</span></div>
+      <div class="line-row"><span class="it">E pur, perché t'amai, ho ancor di te pietà.</span><span class="es">Sin embargo, porque te quise, aún siento piedad.</span></div>
+      <div class="line-row"><span class="it">Ancor placar mi puoi, mio ben, cor mio; non vuoi?</span><span class="es">Todavía puedes apaciguarme, amor mío.</span></div>
+      <div class="line-row"><span class="it">Mi lascia, infido, e va.</span><span class="es">¿No quieres?... ¡Traidor, me dejas y te vas!</span></div>
+      <div class="line-row"><span class="it">Ma quando tornerai, ecc.</span><span class="es">Pero cuando regreses, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Terza</span>
+        <span>Escena Tercera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Melisso e Bradamante)</span>
+        <span class="es">(Melisso y Bradamante entran)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc51">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t51">
+      <div class="line-row"><span class="it">Tutta d'armata squadre l'isola è cinta,</span><span class="es">¡Toda la isla está rodeada de barcos armados</span></div>
+      <div class="line-row"><span class="it">e d'incantati mostri.</span><span class="es">y de monstruos encantados!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Mio farò via col braccio.</span><span class="es">Me abriré paso con mi brazo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">E colla spada.</span><span class="es">¡Y yo con la espada!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="line-row"><span class="it">Non basta umana forza.</span><span class="es">Pero no basta humana fuerza.</span></div>
+      <div class="line-row"><span class="it">Prendi di fede lo scudo,</span><span class="es">Toma el escudo de la fidelidad</span></div>
+      <div class="line-row"><span class="it">poi di virtute il brando, ed or li usa.</span><span class="es">y la espada de la virtud y úsalos ahora.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Partir da te, mio ben, l'alma funesta.</span><span class="es">Abandonarte, amor mío, entristece mi alma.</span></div>
+    </div>
+
+    <div class="track-col" id="tc52">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t52">
+      <div class="line-row"><span class="it">Sta nell'Ircana pietrosa tanta tigre sdegnosa,</span><span class="es">Una tigresa, en su guarida de Ircania,</span></div>
+      <div class="line-row"><span class="it">e incerta pende, se parte, o attende il cacciator.</span><span class="es">duda si huir o esperar al cazador.</span></div>
+      <div class="line-row"><span class="it">Dal teso strale guardar si vuole;</span><span class="es">Quiere eludir la flecha,</span></div>
+      <div class="line-row"><span class="it">ma poi la prole lascie in periglio.</span><span class="es">pero no dejar desamparados a sus hijos.</span></div>
+      <div class="line-row"><span class="it">Freme, e l'assale desio di sangue,</span><span class="es">Se agita ansiosa de sangre, y a la vez,</span></div>
+      <div class="line-row"><span class="it">pietà del figlio; poi vince amor.</span><span class="es">teme por sus hijos... finalmente vence el amor.</span></div>
+      <div class="line-row"><span class="it">Sta nell'Ircana, ecc.</span><span class="es">Una tigresa, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quarta</span>
+        <span>Escena Cuarta</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc53">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t53">
+      <div class="line-row"><span class="it">Vanne tu seco ancora: dove fa seno il mare,</span><span class="es">Ve con él, a la ensenada donde se oculta</span></div>
+      <div class="line-row"><span class="it">ed è la nave ascosa, ambo vi attendo.</span><span class="es">nuestro barco. Allí me reuniré con vosotros.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Non partirò, se pria, sciolto ogni infame incanto,</span><span class="es">No hasta que halla roto el infame hechizo</span></div>
+      <div class="line-row"><span class="it">a chi privo ne stà vita non rendo.</span><span class="es">y devuelva la vida a todos.</span></div>
+      <div class="stage-direction">
+        <span>(Melisso parte)</span>
+        <span class="es">(Melisso sale)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc54">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t54">
+      <div class="line-row"><span class="it">All'alma fedel amore placato,</span><span class="es">El tierno amor, el cielo y el destino,</span></div>
+      <div class="line-row"><span class="it">il fato ed il ciel promette pietà.</span><span class="es">siempre socorren a un alma fiel.</span></div>
+      <div class="line-row"><span class="it">In mezzo ai martiri la gioia ravviso,</span><span class="es">Al final de mis penas, llagará la alegría</span></div>
+      <div class="line-row"><span class="it">e dopo i sospiri il riso verrà.</span><span class="es">y después de los suspiros vendrá la felicidad.</span></div>
+      <div class="line-row"><span class="it">All'alma fedel, ecc.</span><span class="es">El tierno amor, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Quinta</span>
+        <span>Escena Quinta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Oronte ed Alcina)</span>
+        <span class="es">(Oronte y Alcina entran)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc55">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t55">
+      <div class="line-row"><span class="it">Niuna forza lo arresta.</span><span class="es">Ninguna fuerza pudo detenerlo.</span></div>
+      <div class="line-row"><span class="it">Vinse Ruggiero.</span><span class="es">¡Ruggiero venció!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ahimè! perfide stelle!</span><span class="es">¡Ay de mí! ¡Pérfidas estrellas!</span></div>
+      <div class="line-row"><span class="it">Ma i miei guerrier?</span><span class="es">Pero... ¿y mis soldados?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Giaccion dispersi al suolo.</span><span class="es">Derrotados.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">E quell'ingrato dunque fuggi?</span><span class="es">Y entonces... ¿el ingrato huyó?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">No. L'isola minaccia.</span><span class="es">No. Él se dispone a atacar la isla.</span></div>
+      <div class="stage-direction">
+        <span>(sotto voce)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">Rende amore a costei giusta mercede:</span><span class="es">Amor, dale su justa recompensa por las lágrimas</span></div>
+      <div class="line-row"><span class="it">di tanti ch'oltraggiò miseri amanti,</span><span class="es">de los miles de amantes que ella sedujo.</span></div>
+      <div class="line-row"><span class="it">val questa pena sua tutti i lor pianti.</span><span class="es">Ver su tormento es suficiente recompensa.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc56">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t56">
+      <div class="line-row"><span class="it">Mi restano le lagrime.</span><span class="es">Sólo me queda llorar.</span></div>
+      <div class="line-row"><span class="it">Direi dell'alma i voti; ma i dèi resi ho implacabili,</span><span class="es">Pero aunque llorara de corazón, sería inútil,</span></div>
+      <div class="line-row"><span class="it">e non m'ascolta il ciel.</span><span class="es">pues los dioses se han vuelto crueles y sordos.</span></div>
+      <div class="line-row"><span class="it">Potessi in onda limpida sottrarmi al sole, al dì;</span><span class="es">Si tan solo pudiera huir del sol, del día,</span></div>
+      <div class="line-row"><span class="it">potessi in sasso volgermi,</span><span class="es">esconderme bajo las aguas del mar...</span></div>
+      <div class="line-row"><span class="it">che finirei così la pena mia crudel.</span><span class="es">Si me convirtiese en piedra, mis penas acabarían.</span></div>
+      <div class="line-row"><span class="it">Mi restano le lagrime, ecc.</span><span class="es">Sólo me queda llorar, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte)</span>
+        <span class="es">(Sale)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Sesta</span>
+        <span>Escena Sexta</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Prospetto della regia meravigliosa di Alcina,</span>
+        <span class="es">(Fachada del palacio de Alcina, rodeado de</span>
+        <span>attorniata di alberi, di statue, di obelischi, e di</span>
+        <span class="es">árboles, estatuas, obeliscos y trofeos; con jaulas</span>
+        <span>trofei, con serragli di fieri, che vanno girando:</span>
+        <span class="es">de fieras salvajes, que van girando. En el centro</span>
+        <span>ed urna rilevata nel mezzo, che racchiude la</span>
+        <span class="es">se alza una urna que encierra el poder de la</span>
+        <span>forza di tutto l'incanto. Entra Oberto)</span>
+        <span class="es">magia de Alcina. Oberto entra)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc57">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t57">
+      <div class="line-row"><span class="it">Già vicino è il momento di cangiar</span><span class="es">Se avecina el momento de cambiar</span></div>
+      <div class="line-row"><span class="it">il mio duol tutto in contento;</span><span class="es">todo mi dolor en alegría</span></div>
+      <div class="stage-direction">
+        <span>(Alcina ascolta a parte)</span>
+        <span class="es">(Alcina escucha escondida)</span>
+      </div>
+      <div class="line-row"><span class="it">e parmi già con amoroso core di stringer</span><span class="es">y ya creo abrazar a mi padre</span></div>
+      <div class="line-row"><span class="it">al mio seno il genitore.</span><span class="es">en mi amoroso pecho.</span></div>
+      <div class="stage-direction">
+        <span>(Alcina gli si presenta, con dardo alla mano)</span>
+        <span class="es">(Alcina se presenta con una flecha en la mano)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Come lo sai?</span><span class="es">¿Cómo lo sabes?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Perchè il destin ... i pianti...il dover...</span><span class="es">Porque el destino... mis llantos... el deber...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ti confondi?</span><span class="es">¿No te equivocas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Alta regina: io ben lo so;</span><span class="es">Gran reina, bien lo sé,</span></div>
+      <div class="line-row"><span class="it">me lo promise Alcina.</span><span class="es">pues me lo prometió Alcina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! che ancora costui pensa a' miei danni.</span><span class="es">¡Ah!... ¿Pretende aumentar mi sufrimiento?</span></div>
+      <div class="line-row"><span class="it">Ingrato! or proverai gli estremi affanni.</span><span class="es">¡Ingrato, ahora probarás mis tormentos!</span></div>
+      <div class="stage-direction">
+        <span>(Alcina se volge verso il serraglio delle fiere, e</span>
+        <span class="es">(Alcina se vuelve hacia la jaula de las</span>
+        <span>mormorando qualche parola, si avanza un lione</span>
+        <span class="es">ferias y al murmurar unas palabras, un</span>
+        <span>mansueto verso Oberto, quando Alcina dà suo</span>
+        <span class="es">león manso avanza hacia Oberto. Alcina</span>
+        <span>dardo al medesimo, dicendogli)</span>
+        <span class="es">da a Oberto su dardo)</span>
+      </div>
+      <div class="line-row"><span class="it">Prendi il mio dardo, Oberto, e ti difendi da quella fiera.</span><span class="es">¡Toma Oberto y defiéndete de esta fiera!</span></div>
+      <div class="stage-direction">
+        <span>(Il lione si corica vicino ad Oberto, e gli va</span>
+        <span class="es">(El león se acuesta cerca de Oberto</span>
+        <span>lambendo i piedi)</span>
+        <span class="es">y lame sus pies)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! non ho core.</span><span class="es">¡Ah, no puedo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ubbidisci il comando.</span><span class="es">¡Obedece mi orden!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sotto voce)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! ch'io ben riconosco il genitore.</span><span class="es">¡Ay, qué bien reconozco a mi padre!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Rendimi 'l dardo; io ferirolla appieno.</span><span class="es">¡Devuélveme el dardo y yo lo mataré!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oberto">Oberto</span></span>
+        <span class="character-name">Oberto</span>
+      </div>
+      <div class="line-row"><span class="it">Crudel; l'immergerò pria nel tuo seno.</span><span class="es">¡Cruel, antes lo clavaría en tu pecho!</span></div>
+      <div class="stage-direction">
+        <span>(Oberto ritirandosi volge il dardo contro Alcina,</span>
+        <span class="es">(Oberto apartándose vuelve el dardo contra</span>
+        <span>mentre il lione ritorna nel serraglio)</span>
+        <span class="es">Alcina, mientras que el león vuelve a la jaula)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc58">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t58">
+      <div class="line-row"><span class="it">Barbara! Io ben lo so è quello il genitor,</span><span class="es">¡Cruel, bien sé que ése es mi padre!</span></div>
+      <div class="line-row"><span class="it">che l'empio tuo furor cangiato ha in fera.</span><span class="es">Tu impío furor lo tiene transformado en fiera.</span></div>
+      <div class="line-row"><span class="it">Ma presto ti vedrò errar per la foresta,</span><span class="es">Pero muy pronto te veré errar por la selva,</span></div>
+      <div class="line-row"><span class="it">vinta, confusa e mesta, e non più altera.</span><span class="es">vencida, despreciada y mísera... menos soberbia.</span></div>
+      <div class="line-row"><span class="it">Barbara! io ben lo so, ecc.</span><span class="es">¡Cruel, bien sé que etc.</span></div>
+      <div class="stage-direction">
+        <span>(Parte, portando via il dardo di Alcina)</span>
+        <span class="es">(Sale, llevándose la flecha de Alcina)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Settima</span>
+        <span>Escena Séptima</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Bradamante e Ruggiero)</span>
+        <span class="es">(Bradamante y Ruggiero entran)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc59">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t59">
+      <div class="line-row"><span class="it">Le lusinghe, gl'inganni, non udir più,</span><span class="es">Amado esposo,</span></div>
+      <div class="line-row"><span class="it">mio caro sposo amado.</span><span class="es">¡no escuches más sus lisonjas y engaños!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Che inganni? Anzi ho pietà; piango il suo fato.</span><span class="es">¿Qué engaños? Más bien lloro por su destino...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Non l'ascoltar.</span><span class="es">¡No la escuches!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Detesto le sue offerte, e gli auguri.</span><span class="es">¡Aborrezco sus bellas palabras!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+      <div class="line-row"><span class="it">Per questa cara destra...</span><span class="es">Por esta querida mano...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Ormai mi lascia.</span><span class="es">¡Déjame en paz!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Bradamante, ai tuoi piedi...</span><span class="es">Bradamante... a tus pies...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">A me t'invola.</span><span class="es">¡Desaparece de mi vista!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">A morir tu ten vai.</span><span class="es">Caminas hacia la muerte.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Cura è del cielo.</span><span class="es">Eso está en manos del cielo...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu, vedova dolente lo piangerai.</span><span class="es">Te convertirás en una doliente viuda...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Non l'ascoltar, che mente.</span><span class="es">¡No la escuches, miente!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc60">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t60">
+      <div class="line-row"><span class="it">Non è amor, nè gelosia... è pietà.</span><span class="es">No es amor ni celos... es piedad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Che ascose frodi!</span><span class="es">¡Qué mentira piadosa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">È desio, che lieta godi.</span><span class="es">Deseo vuestra felicidad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Che fallaci infidi accenti!</span><span class="es">¡Qué falsas y arteras palabras!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Bradamante)</span>
+        <span class="es">(a Bradamante)</span>
+      </div>
+      <div class="line-row"><span class="it">Non t'offendo.</span><span class="es">No te ofendo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Indegna, taci!</span><span class="es">¡Indigna, calla!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+      <div class="line-row"><span class="it">Non t'inganno!</span><span class="es">¡No te engaño!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Iniqua, menti!</span><span class="es">¡Malvada, mientes!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Cruda donna! rio tiranno!</span><span class="es">¡Mujer cruel! ¡Déspota malvado!</span></div>
+      <div class="line-row"><span class="it">Non vogl'io da voi mercè.</span><span class="es">No necesito vuestra piedad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Non sperar da noi mercè.</span><span class="es">Ni la esperes...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Non sperar da noi mercè.</span><span class="es">Ni la esperes...</span></div>
+      <div class="line-row"><span class="it">Caro sposo!</span><span class="es">¡Querido esposo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Anima mia!</span><span class="es">¡Alma mía!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Solo affanni, e solo pene...</span><span class="es">Sólo tormentos y penas...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Solo gioie, e solo bene...</span><span class="es">Sólo alegrías y bondad...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Solo gioie, e solo bene...</span><span class="es">Sólo alegrías y bondad...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">...Premio fian di vostra fè.</span><span class="es">... serán los frutos de vuestro amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">...Premio fian di nostra fè.</span><span class="es">... serán los frutos de nuestro amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">... Premio fian de nostra fè.</span><span class="es">... serán los frutos de nuestro amor.</span></div>
+      <div class="stage-direction">
+        <span>(Partono, Alcina per una parte e Bradamante</span>
+        <span class="es">(Salen. Alcina por una parte y Bradamante</span>
+        <span>per un'altra)</span>
+        <span class="es">por otra)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Ottava</span>
+        <span>Escena Octava</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Oronte, a cui Ruggiero rende la spada.</span>
+        <span class="es">(Oronte entra y Ruggiero le devuelve la espada.</span>
+        <span>Ruggiero si avanza per rompere l'urna coll'anello</span>
+        <span class="es">Ruggiero avanza para romper la urna con el</span>
+        <span>incantato; ed Alcina frettolosa lo trattiene)</span>
+        <span class="es">anillo encantado y Alcina lo detiene apresurada)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc61">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t61">
+      <div class="line-row"><span class="it">Ah! mio Ruggier, che tenti?</span><span class="es">¡Ah, Ruggiero! ¿Qué intentas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Voglio la libertade degl'infelici, che qui chiudi.</span><span class="es">Quiero liberar a los infelices que encierras aquí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Ed io lo farò...</span><span class="es">Yo misma lo haré...</span></div>
+      <div class="stage-direction">
+        <span>(Entra Bradamante)</span>
+        <span class="es">(Entra Bradamante)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Non fidarti; Lascia, che faccia il colpo il braccio mio.</span><span class="es">¡No te confíes! Deja que lo haga mi brazo.</span></div>
+      <div class="stage-direction">
+        <span>(Va per spezzar l'urna)</span>
+        <span class="es">(Va a romper la urna)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scena Nona</span>
+        <span>Escena Novena</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entra Morgana)</span>
+        <span class="es">(Entra Morgana)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span></span>
+        <span class="character-name">Alcina</span>
+      </div>
+      <div class="line-row"><span class="it">Misera, ah, no!</span><span class="es">¡Miserable, ah, no!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">Per quella vita, che t'ei serbai, lascia...</span><span class="es">¡Por aquella vida que te salvé, detente!...</span></div>
+      <div class="scene-heading">
+        <span>Scena Ultima</span>
+        <span>Escena Final</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Entrano Melisso ed Oberto)</span>
+        <span class="es">(Melisso y Oberto entran)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span></span>
+        <span class="character-name">Melisso</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Ruggiero)</span>
+        <span class="es">(a Ruggiero)</span>
+      </div>
+      <div class="line-row"><span class="it">A che tardi?</span><span class="es">¿A qué aguardas?</span></div>
+      <div class="line-row"><span class="it">Struggi l'infame nido: rendi altrui la salute!</span><span class="es">¡Destruye este nido y devuelve la vida a todos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ruggiero">Ruggiero</span></span>
+        <span class="character-name">Ruggiero</span>
+      </div>
+      <div class="line-row"><span class="it">Sì</span><span class="es">Sí</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="oronte">Oronte</span></span>
+        <span class="character-name">Oronte</span>
+      </div>
+      <div class="line-row"><span class="it">Sì</span><span class="es">Sí</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="melisso">Melisso</span>, <span class="character-name has-tooltip" data-character-id="bradamante">Bradamante</span></span>
+        <span class="character-name">Melisso, Bradamante</span>
+      </div>
+      <div class="line-row"><span class="it">Spezza, Ruggiero!</span><span class="es">¡Rómpela, Ruggiero!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="alcina">Alcina</span>, <span class="character-name has-tooltip" data-character-id="morgana">Morgana</span></span>
+        <span class="character-name">Alcina, Morgana</span>
+      </div>
+      <div class="line-row"><span class="it">O noi perdute!</span><span class="es">¡Estamos perdidas!</span></div>
+      <div class="stage-direction">
+        <span>(Si ritirano)</span>
+        <span class="es">(Se retiran)</span>
+        <span>(Ruggiero spezza l'urna, e subitamente precipita, e si</span>
+        <span class="es">(Ruggiero parte la urna y súbitamente el palacio</span>
+        <span>dilegua tutto ciò, che appariva all'intorno, sorgendo</span>
+        <span class="es">de Alcina se desploma y desaparece, surgiendo</span>
+        <span>su quelle ruine il mare, che si vede da una vasta, e</span>
+        <span class="es">sobre aquellas ruinas el mar, que se ve desde una</span>
+        <span>sotterranea caverna, dove molti sassi si cangiano in</span>
+        <span class="es">vasta y subterránea cueva, donde muchas piedras</span>
+        <span>uomini, tra i quali è Astolfo, che abbraccia Oberto:</span>
+        <span class="es">se transforman en hombres, entre los que está</span>
+        <span>che formano il coro, ed il ballo)</span>
+        <span class="es">Astolfo, que Oberto abraza)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Coro</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc62">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t62">
+      <div class="line-row"><span class="it">Dall'orror di notte cieca, chi ne reca colla vita</span><span class="es">¿Quién nos ha liberado del horror de la oscura</span></div>
+      <div class="line-row"><span class="it">la smarrita libertà?</span><span class="es">noche y nos ha devuelto la vida y libertad?</span></div>
+      <div class="line-row"><span class="it">Io fui belva, io sasso,</span><span class="es">Yo fui fiera, yo piedra,</span></div>
+      <div class="line-row"><span class="it">io fronda, io qui sciolto erravo in onda:</span><span class="es">yo árbol, yo aquí erré como una ola...</span></div>
+      <div class="line-row"><span class="it">chi ne ha resa umana voglia?</span><span class="es">¿Quién nos ha devuelto nuestra humanidad?</span></div>
+      <div class="line-row"><span class="it">Che ni spoglia la già appresa ferità?</span><span class="es">¿Quien nos ha liberado de las salvajes formas?</span></div>
+    </div>
+
+    <div class="track-col" id="tc63">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD3</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t63">
+      <div class="line-row"><span class="it">Dopo tante amare pene, già proviam conforto all'alma;</span><span class="es">Después de tan amargas penas, nuestro espíritu se</span></div>
+      <div class="line-row"><span class="it">ogni mal si cangia in bene, ed al fin trionfa amor.</span><span class="es">consuela y todo lo malo se transforma en alegría,</span></div>
+      <div class="line-row"><span class="it">Fortunato è questo giorno, che ne reca bella calma,</span><span class="es">pues al final triunfa el amor. Dichoso sea este día,</span></div>
+      <div class="line-row"><span class="it">dell'inganno e insidie a scorno</span><span class="es">que nos trae la paz despreciando las intrigas y</span></div>
+      <div class="line-row"><span class="it">già festeggia il nostro cor.</span><span class="es">mentiras. Nuestros corazones están de fiesta.</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  christie_fleming: {
+    label: "Alcina \u00b7 Christie / Fleming",
+    short: "Christie / Fleming",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Sinfonia", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Minuet", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 3, title: "Musette", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 4, title: "Oh Dei! quivi non scorgo alcun sentiero!", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 5, title: "O s'apre al riso", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 6, title: "Questo e il cielo de' contenti", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 7, title: "Ecco l'infido", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 8, title: "Di', cor mio, quanto t'amai", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 9, title: "Generosi guerrier", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 10, title: "Chi m'insegna iil caro padre?", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 11, title: "Mi ravvisi, Ruggier, dimmi?", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 12, title: "Di te mi rido", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 13, title: "Qua dunque ne veniste", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 14, title: "\u00c8 gelosia. Forza \u00e8 d'amore", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 15, title: "Io dunque... Audace Oronte", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 16, title: "La cerco in vano... Semplicetto!", act: "Act I", has_block: true },
+      { id: "t15", cd: 1, track: 17, title: "Ah, infedele, infedel!", act: "Act I", has_block: true },
+      { id: "t16", cd: 1, track: 18, title: "Si, con quella!", act: "Act I", has_block: true },
+      { id: "t18", cd: 1, track: 19, title: "Se nemico mi fossi", act: "Act I", has_block: true },
+      { id: "t19", cd: 1, track: 20, title: "Bradamante favella?... La bocca vaga", act: "Act I", has_block: true },
+      { id: "t20", cd: 1, track: 21, title: "Fuggi cor mio", act: "Act I", has_block: true },
+      { id: "t21", cd: 1, track: 22, title: "Tornami a vagheggiar", act: "Act I", has_block: true },
+      { id: "t22", cd: 2, track: 1, title: "Col celarvi a chi v'ama", act: "Act II", has_block: true },
+      { id: "t23", cd: 2, track: 2, title: "Taci, taci, codardo... Qual portento", act: "Act II", has_block: true },
+      { id: "t25", cd: 2, track: 3, title: "Ah, Bradamante!... A te appunto", act: "Act II", has_block: true },
+      { id: "t26", cd: 2, track: 4, title: "Pensa a chi geme d'amor", act: "Act II", has_block: true },
+      { id: "t27", cd: 2, track: 5, title: "Qual adio ingiusto contro me?", act: "Act II", has_block: true },
+      { id: "t28", cd: 2, track: 6, title: "Vorrei vendicarmi", act: "Act II", has_block: true },
+      { id: "t29", cd: 2, track: 7, title: "Chi scopre al mio pensiero", act: "Act II", has_block: true },
+      { id: "t30", cd: 2, track: 8, title: "Mi lusinga il dolce affetto", act: "Act II", has_block: true },
+      { id: "t31", cd: 2, track: 9, title: "S'acquieti il rio sospetto", act: "Act II", has_block: true },
+      { id: "t32", cd: 2, track: 10, title: "Ama, sospira, ma non ti offende", act: "Act II", has_block: true },
+      { id: "t33", cd: 2, track: 11, title: "Non scorgo nel tuo viso... Ama, sospira", act: "Act II", has_block: true },
+      { id: "t34", cd: 2, track: 12, title: "Mio bel tesoro", act: "Act II", has_block: true },
+      { id: "t35", cd: 2, track: 13, title: "Regina, io cerco in vano", act: "Act II", has_block: true },
+      { id: "t36", cd: 2, track: 14, title: "Tra speme e timore", act: "Act II", has_block: true },
+      { id: "t37", cd: 2, track: 15, title: "Regina, sei tradita", act: "Act II", has_block: true },
+      { id: "t38", cd: 2, track: 16, title: "Ah! mio cor!", act: "Act II", has_block: true },
+      { id: "t39", cd: 2, track: 17, title: "Or, che dici, Morgana?", act: "Act II", has_block: true },
+      { id: "t40", cd: 2, track: 18, title: "E un folle", act: "Act II", has_block: true },
+      { id: "t41", cd: 2, track: 19, title: "Eccomi a' piedi tuoi", act: "Act II", has_block: true },
+      { id: "t42", cd: 2, track: 20, title: "Verdi prati", act: "Act II", has_block: true },
+      { id: "t43", cd: 2, track: 21, title: "Ah! Ruggiero crude!", act: "Act II", has_block: true },
+      { id: "t44", cd: 2, track: 22, title: "Ombre pallide", act: "Act II", has_block: true },
+      { id: "t45", cd: 3, track: 1, title: "Sinfonia", act: "Act III", has_block: false },
+      { id: "t45", cd: 3, track: 2, title: "Voglio amar e disamar", act: "Act III", has_block: true },
+      { id: "t46", cd: 3, track: 3, title: "Credete el mio dolore", act: "Act III", has_block: true },
+      { id: "t47", cd: 3, track: 4, title: "M'inganna, me n'avveggo", act: "Act III", has_block: true },
+      { id: "t48", cd: 3, track: 5, title: "Un momento di contento", act: "Act III", has_block: true },
+      { id: "t49", cd: 3, track: 6, title: "Molestissimo incontro!", act: "Act III", has_block: true },
+      { id: "t50", cd: 3, track: 7, title: "Ma quando tornerai", act: "Act III", has_block: true },
+      { id: "t51", cd: 3, track: 8, title: "Tutta d'armate squadre", act: "Act III", has_block: true },
+      { id: "t52", cd: 3, track: 9, title: "Sta nell'lrcana", act: "Act III", has_block: true },
+      { id: "t53", cd: 3, track: 10, title: "Vanne tu seco ancora", act: "Act III", has_block: true },
+      { id: "t54", cd: 3, track: 11, title: "All'alma fedel", act: "Act III", has_block: true },
+      { id: "t55", cd: 3, track: 12, title: "Niuna forza lo arresta", act: "Act III", has_block: true },
+      { id: "t56", cd: 3, track: 13, title: "Mi restano le lagrime", act: "Act III", has_block: true },
+      { id: "t57", cd: 3, track: 14, title: "Gia vicino e il momento", act: "Act III", has_block: true },
+      { id: "t58", cd: 3, track: 15, title: "Barbara! Io ben lo so", act: "Act III", has_block: true },
+      { id: "t59", cd: 3, track: 16, title: "Le lusinghe", act: "Act III", has_block: true },
+      { id: "t60", cd: 3, track: 17, title: "Non e amor, ne gelosia", act: "Act III", has_block: true },
+      { id: "t61", cd: 3, track: 18, title: "Ah mio Ruggier, che tenti?", act: "Act III", has_block: true },
+      { id: "t62", cd: 3, track: 19, title: "Dall'orror di notte cieca", act: "Act III", has_block: true },
+      { id: "t63", cd: 3, track: 20, title: "Entr\u00e9e", act: "Act III", has_block: false },
+      { id: "t63", cd: 3, track: 21, title: "Tamburino", act: "Act III", has_block: false },
+      { id: "t63", cd: 3, track: 22, title: "Dopo tante amare pene", act: "Act III", has_block: true }
+    ]
+  },
+  bonynge_sutherland: {
+    label: "Alcina \u00b7 Bonynge / Sutherland",
+    short: "Bonynge / Sutherland",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Sinfonia ... Oh Dei!", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 2, title: "O S\u00b4apre Al Riso", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 3, title: "Questo \u00c8 Il Cielo De\u00b4contenti", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 4, title: "Di\u00b4, Cor Mio, Quanto T\u00b4amai", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 5, title: "Sin Per Le Vie Del Sole", act: "Act I", has_block: false },
+      { id: "t9", cd: 1, track: 6, title: "Di Te Mi Rido, Semplice Stolto", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 7, title: "Chi M\u00b4insegna Il Caro Padre?", act: "Act I", has_block: false },
+      { id: "t11", cd: 1, track: 8, title: "E Gelosia, Forza \u00c8 Amore", act: "Act I", has_block: true },
+      { id: "t14", cd: 1, track: 9, title: "Bramo Di Trionfar", act: "Act I", has_block: false },
+      { id: "t14", cd: 1, track: 10, title: "Semplicetto! A Donna Credi?", act: "Act I", has_block: true },
+      { id: "t17", cd: 1, track: 11, title: "S\u00ec, Son Quella, Non Pi\u00f9 Bella", act: "Act I", has_block: true },
+      { id: "t19", cd: 1, track: 12, title: "La Bocca Vaga", act: "Act I", has_block: true },
+      { id: "t21", cd: 1, track: 13, title: "Tornami A Vagheggiar", act: "Act I", has_block: true },
+      { id: "t22", cd: 1, track: 14, title: "Gavotte, Sarabande, Etc.", act: "Act II", has_block: false },
+      { id: "t22", cd: 1, track: 15, title: "Musette, Menuet", act: "Act II", has_block: false },
+      { id: "t22", cd: 1, track: 16, title: "Col Celarvi A Chi V'Ama Un Momento", act: "Act II", has_block: true },
+      { id: "t24", cd: 1, track: 17, title: "Qual Portento Mi Richiama La Mia Mente A Rischiarar?", act: "Act II", has_block: true },
+      { id: "t26", cd: 1, track: 18, title: "Pensa A Chi Geme", act: "Act II", has_block: true },
+      { id: "t28", cd: 1, track: 19, title: "Vorrei Vendicarmi", act: "Act II", has_block: true },
+      { id: "t30", cd: 1, track: 20, title: "Mi Lusinga Il Dolce Affetto", act: "Act II", has_block: true },
+      { id: "t31", cd: 2, track: 1, title: "S'Acquieti Il Rio Sospetto", act: "Act II", has_block: true },
+      { id: "t32", cd: 2, track: 2, title: "Ama, Sospira, Ma Non Ti Offende", act: "Act II", has_block: true },
+      { id: "t33", cd: 2, track: 3, title: "Non Scorgo Nel Tuo Viso Il Contento Di Pria.", act: "Act II", has_block: true },
+      { id: "t34", cd: 2, track: 4, title: "Mio Bel Tresoro", act: "Act II", has_block: true },
+      { id: "t38", cd: 2, track: 5, title: "Ah! Mio Cor! Schernito Sei!", act: "Act II", has_block: true },
+      { id: "t40", cd: 2, track: 6, title: "E Un Folle, E Un Vile Affetto", act: "Act II", has_block: true },
+      { id: "t42", cd: 2, track: 7, title: "Verdi Prati, Selve Amene", act: "Act II", has_block: true },
+      { id: "t43", cd: 2, track: 8, title: "Ah! Ruggiero Crudel, Tu Non Mi Amasti!", act: "Act II", has_block: true },
+      { id: "t44", cd: 2, track: 9, title: "Ombre Pallide, Lo So, Mi Udite", act: "Act II", has_block: true },
+      { id: "t45", cd: 2, track: 10, title: "Ballet", act: "Act III", has_block: false },
+      { id: "t45", cd: 2, track: 11, title: "Sinfonia ... Voglio Amar E Disamar", act: "Act III", has_block: true },
+      { id: "t46", cd: 2, track: 12, title: "Credete Al Mio Dolore", act: "Act III", has_block: true },
+      { id: "t48", cd: 2, track: 13, title: "Un Momento Di Contento", act: "Act III", has_block: true },
+      { id: "t50", cd: 2, track: 14, title: "Ma Quando Tornerai", act: "Act III", has_block: true },
+      { id: "t52", cd: 2, track: 15, title: "Sta Nell\u00b4ircana Pietrosa Tana", act: "Act III", has_block: true },
+      { id: "t53", cd: 3, track: 1, title: "Vanne Tu Seco Ancora", act: "Act III", has_block: true },
+      { id: "t56", cd: 3, track: 2, title: "Mi Restanto Le Lagrime", act: "Act III", has_block: true },
+      { id: "t58", cd: 3, track: 3, title: "Barbara! Io Ben Lo So", act: "Act III", has_block: true },
+      { id: "t60", cd: 3, track: 4, title: "Non \u00c8 Amor", act: "Act III", has_block: true },
+      { id: "t63", cd: 3, track: 5, title: "Prendi, E Vivi", act: "Act III", has_block: false },
+      { id: "t63", cd: 3, track: 6, title: "Dopo Tante Amare Pene", act: "Act III", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Atto I",
+    "Act II": "Atto II",
+    "Act III": "Atto III"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t22",
+    "Act III": "t45"
+  };
+
+  const CHARACTERS = [
+    { id: "alcina", name: "Alcina", voice: "Soprano", description: "Maga, Enamorada de Ruggiero" },
+    { id: "ruggiero", name: "Ruggiero", voice: "Mezzo-soprano", description: "Caballero Cautivo de Alcina" },
+    { id: "bradamante", name: "Bradamante", voice: "Mezzo-soprano", description: "Esposa de Ruggiero" },
+    { id: "morgana", name: "Morgana", voice: "Soprano", description: "Hermana de Alcina, Enamorada de Oronte" },
+    { id: "oronte", name: "Oronte", voice: "Tenor", description: "General de Alcina" },
+    { id: "oberto", name: "Oberto", voice: "Soprano", description: "Hijo de Astolfo, Antiguo Cautivo de Alcina" },
+    { id: "melisso", name: "Melisso", voice: "Bass", description: "Consejero de Bradamante" }
+  ];
+
+  const CAST = {
+    christie_fleming: { "alcina": "Ren\u00e9e Fleming", "ruggiero": "Susan Graham", "bradamante": "Kathleen Kuhlmann", "oronte": "Timothy Robinson", "morgana": "Natalie Dessay", "oberto": "Juanita Lascarro", "melisso": "Laurent Naouri" },
+    bonynge_sutherland: { "alcina": "Joan Sutherland", "ruggiero": "Teresa Berganza", "bradamante": "Monica Sinclair", "oronte": "Luigi Alva", "morgana": "Graziella Sciutti", "oberto": "Mirella Freni", "melisso": "Ezio Flagello" }
+  };
+
+  let activeRecording = "christie_fleming";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { it: true, es: true };
+</script>
+<script src="../libretto.js"></script>
