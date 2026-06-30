@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Elisabetta — Masini / Caballé — Index</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --serif: 'EB Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+    --gold: #8B6914;
+    --gold-light: #f5ede0;
+    --gold-mid: #c49a2a;
+    --gold-border: #d4a84b;
+    --bg: #fdfaf6;
+    --bg2: #f6f1e8;
+    --text-main: #2a2620;
+    --text-dim: #8a8275;
+    --border-soft: #e8e1d2;
+    --border-mid: #d8cfb8;
+    --spotify-green: #1DB954;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: var(--serif);
+    color: var(--text-main);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .header {
+    padding: 1rem 1.1rem 0.8rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .header-eyebrow {
+    font-family: var(--sans); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 2px;
+  }
+  .header-title { font-family: var(--serif); font-size: 19px; }
+  .header-recording { font-family: var(--sans); font-size: 11.5px; color: var(--text-dim); margin-top: 2px; }
+
+  .disc-heading {
+    font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.07em; text-transform: uppercase;
+    color: var(--text-dim); padding: 0.9rem 1.1rem 0.4rem;
+  }
+
+  .track-list { }
+  .track-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.7rem 1.1rem;
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .track-num-badge {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--gold-light); border: 1px solid var(--gold-border);
+    color: var(--gold); font-family: var(--sans); font-size: 12px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .track-info { flex: 1; min-width: 0; }
+  .track-title-row { font-family: var(--serif); font-size: 14.5px; color: var(--text-main); }
+  .track-meta { font-family: var(--sans); font-size: 10px; color: var(--text-dim); margin-top: 1px; }
+
+  .play-spotify-btn {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--spotify-green); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; border: none; cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.1s;
+  }
+  .play-spotify-btn:active { transform: scale(0.92); }
+  .play-spotify-btn svg { width: 14px; height: 14px; }
+
+  .play-spotify-btn.disabled {
+    background: var(--border-mid);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .no-uri-tag {
+    font-family: var(--sans); font-size: 9px; color: var(--text-dim);
+    border: 1px solid var(--border-mid); border-radius: 3px; padding: 2px 6px;
+    flex-shrink: 0; white-space: nowrap;
+  }
+
+  .footnote {
+    font-family: var(--sans); font-size: 11px; line-height: 1.6; color: var(--text-dim);
+    padding: 1rem 1.1rem 2rem;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="header-eyebrow">Disc 1 · Act I</div>
+    <div class="header-title">Elisabetta, regina d'Inghilterra</div>
+    <div class="header-recording">Masini / Caballé</div>
+  </div>
+
+  <div class="disc-heading">Disc 1 — Act I</div>
+  <div class="track-list" id="trackList"></div>
+
+  <div class="footnote">
+    This is a standalone test page, not yet wired into the real Libretto v2 pipeline. Track numbers and titles are hardcoded; only tracks 3–6 have real Spotify links from pasted URIs. Tap the green button to confirm the deep link opens the Spotify app (or web player) directly on that track.
+  </div>
+
+<script>
+  const TRACKS = [
+    { num: 1, title: "Sinfonia", uri: null },
+    { num: 2, title: "\u201CPi\u00f9 lieta, pi\u00f9 bella\u201D (Coro)", uri: null },
+    { num: 3, title: "\u201COh voci funeste\u201D (Norfolk, Coro)", uri: "https://open.spotify.com/track/01L6xMNg2HH9cShOdyViOI" },
+    { num: 4, title: "\u201CNel giubilo comun, signor, tu solo\u201D \u2014 \u201CEsulta, Elisa, omai\u201D", uri: "https://open.spotify.com/track/5hdxVvjGNGq0o1mhql7EqO" },
+    { num: 5, title: "Quant\u2019\u00e8 grato all\u2019alma mia", uri: "https://open.spotify.com/track/1kgIa6lWEKzQoJvfuMacPL" },
+    { num: 6, title: "Questo cor ben lo comprende", uri: "https://open.spotify.com/track/307vK1VAVi7xF5bBx3rppT" },
+  ];
+
+  const PLAY_ICON = '<svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg>';
+
+  const listEl = document.getElementById('trackList');
+
+  TRACKS.forEach(t => {
+    const row = document.createElement('div');
+    row.className = 'track-row';
+
+    const badge = document.createElement('div');
+    badge.className = 'track-num-badge';
+    badge.textContent = t.num;
+
+    const info = document.createElement('div');
+    info.className = 'track-info';
+    info.innerHTML = `
+      <div class="track-title-row">${t.title}</div>
+      <div class="track-meta">Act I &middot; Masini / Caball&eacute;</div>
+    `;
+
+    row.appendChild(badge);
+    row.appendChild(info);
+
+    if (t.uri) {
+      const btn = document.createElement('a');
+      btn.className = 'play-spotify-btn';
+      btn.href = t.uri;
+      btn.target = '_blank';
+      btn.rel = 'noopener';
+      btn.innerHTML = PLAY_ICON;
+      row.appendChild(btn);
+    } else {
+      const tag = document.createElement('span');
+      tag.className = 'no-uri-tag';
+      tag.textContent = 'no link yet';
+      row.appendChild(tag);
+    }
+
+    listEl.appendChild(row);
+  });
+</script>
+
+</body>
+</html>
