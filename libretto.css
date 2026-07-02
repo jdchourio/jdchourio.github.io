@@ -413,6 +413,24 @@
     letter-spacing: 0.04em;
   }
 
+  /* ── Spotify play button (Block 3c links, optional per track) ── */
+  .drawer-track-spotify {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #1DB954;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .drawer-track-spotify:hover { opacity: 0.85; }
+  .drawer-track-spotify:active { transform: scale(0.93); }
+  .drawer-track-spotify svg { width: 12px; height: 12px; }
+
   /* ── Cast button ── */
   .cast-btn {
     font-family: var(--sans);
@@ -558,6 +576,19 @@
       z-index: 150;
       letter-spacing: 0.02em;
       line-height: 1.5;
+    }
+  }
+
+  /* ── Ensemble brackets (simultaneous singing) — desktop only ─────────────── */
+  /* border-left is split into longhands so an unresolved --text-dim only        */
+  /* invalidates the color, not the style/width (shorthand failure resets all).  */
+  @media (min-width: 601px) {
+    .ensemble-block {
+      border-left-width: 1.5px;
+      border-left-style: solid;
+      border-left-color: var(--text-dim, #888);
+      padding-left: 0.85rem;
+      margin-left: -0.85rem;
     }
   }
 

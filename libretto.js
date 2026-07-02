@@ -80,12 +80,16 @@
         lastGroup = group;
       }
       const isActive = activeTrack && t.id === activeTrack.id;
+      const spotifyBtn = t.spotify_uri
+        ? `<a class="drawer-track-spotify" href="${t.spotify_uri}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></a>`
+        : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
         <span class="drawer-track-num">${t.track}</span>
         <div class="drawer-track-info">
           <span class="drawer-track-title">${t.title}</span>
           <span class="drawer-track-act">${t.act}</span>
         </div>
+        ${spotifyBtn}
       </div>`;
     }
 
@@ -157,6 +161,7 @@
 
   function switchRecording(key) {
     activeRecording = key;
+    document.title = RECORDINGS[key].label;
     const lbl = document.getElementById('recordingLabel');
     if (lbl) lbl.textContent = RECORDINGS[key].label;
     updateTrackTags();
@@ -298,12 +303,16 @@
         lastGroup = group;
       }
       const isActive = activeTrack && t.id === activeTrack.id;
+      const spotifyBtn = t.spotify_uri
+        ? `<a class="drawer-track-spotify" href="${t.spotify_uri}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></a>`
+        : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
         <span class="drawer-track-num">${t.track}</span>
         <div class="drawer-track-info">
           <span class="drawer-track-title">${t.title}</span>
           <span class="drawer-track-act">${t.act}</span>
         </div>
+        ${spotifyBtn}
       </div>`;
     }
     body.innerHTML = html;
