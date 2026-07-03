@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Playback Prototype</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #121212;
+      color: #e0e0e0;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    h1 { font-size: 1.4rem; color: #1db954; margin-bottom: 24px; }
+    h2 { font-size: 0.85rem; color: #888; text-transform: uppercase;
+         letter-spacing: 0.08em; margin-bottom: 12px; margin-top: 24px; }
+    .section { margin-bottom: 20px; }
+    button {
+      display: inline-block; padding: 10px 20px; border: none; border-radius: 4px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer; margin-right: 10px;
+      margin-bottom: 8px;
+    }
+    .btn-primary { background: #1db954; color: #000; }
+    .btn-primary:hover { background: #1ed760; }
+    .btn-secondary { background: #333; color: #e0e0e0; }
+    .btn-secondary:hover { background: #444; }
+    .btn-danger { background: #c0392b; color: #fff; }
+    .btn-danger:hover { background: #e74c3c; }
+    #status-area {
+      background: #1e1e1e; border: 1px solid #333; border-radius: 4px;
+      padding: 12px; margin-top: 12px; font-size: 0.9rem; line-height: 1.5;
+    }
+    #status-area.success { border-color: #1db954; color: #1db954; }
+    #status-area.error { border-color: #c0392b; color: #ff6b6b; }
+    #status-area.info { border-color: #555; color: #ccc; }
+    .user-info { font-size: 1rem; color: #e0e0e0; margin-bottom: 16px; }
+    .user-info span { color: #1db954; font-weight: 600; }
+    #debug-log {
+      background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 4px;
+      padding: 10px; height: 260px; overflow-y: auto; font-family: monospace;
+      font-size: 0.75rem; color: #888; margin-top: 8px;
+    }
+    .log-line { margin-bottom: 2px; }
+    .log-line .ts { color: #555; margin-right: 8px; }
+    .log-line.ok .msg { color: #1db954; }
+    .log-line.err .msg { color: #ff6b6b; }
+    .log-line.warn .msg { color: #f39c12; }
+    .log-line .msg { }
+  </style>
+</head>
+<body>
+
+<h1>Spotify Playback Prototype</h1>
+
+<!-- ─── CONSTANTS — edit these before deploying ───────────────────────── -->
+<script>
+const CLIENT_ID    = '0fe4d9f573b545c2b8292c1edeef745b';
+const REDIRECT_URI = 'https://jdchourio.github.io/spotify_prototype.html';
+
+// Test values — replace with a real album + track from your Spotify library
+const TEST_ALBUM_ID = '7g9fErIncnOC83WFa0HQO8';   // ~22-char base62
+const TEST_TRACK_ID = '4Vr3fZstVYz4lE0jCv2m2E';   // ~22-char base62
+</script>
+<!-- ──────────────────────────────────────────────────────────────────────── -->
+
+<div id="view-signed-out" class="section" style="display:none">
+  <button class="btn-primary" onclick="signIn()">Sign in with Spotify</button>
+</div>
+
+<div id="view-signed-in" class="section" style="display:none">
+  <p class="user-info">Signed in as <span id="display-name"></span></p>
+  <button class="btn-primary" onclick="playTrack()">Play test track</button>
+  <button class="btn-danger" onclick="signOut()">Sign out</button>
+  <div id="status-area" class="info" style="display:none"></div>
+</div>
+
+<h2>Debug log</h2>
+<div id="debug-log"></div>
+
+<script>
+// ── Storage keys ────────────────────────────────────────────────────────────
+const KEY_VERIFIER     = 'spotify_pkce_verifier';
+const KEY_ACCESS       = 'spotify_access_token';
+const KEY_REFRESH      = 'spotify_refresh_token';
+const KEY_EXPIRES_AT   = 'spotify_expires_at';
+const KEY_DISPLAY_NAME = 'spotify_display_name';
+
+// ── Debug log ───────────────────────────────────────────────────────────────
+function log(msg, level = '') {
+  const el = document.getElementById('debug-log');
+  const now = new Date();
+  const ts = now.toTimeString().slice(0, 8);
+  const line = document.createElement('div');
+  line.className = 'log-line' + (level ? ' ' + level : '');
+  line.innerHTML = `<span class="ts">${ts}</span><span class="msg">${escHtml(msg)}</span>`;
+  el.appendChild(line);
+  el.scrollTop = el.scrollHeight;
+}
+function logOk(msg)   { log(msg, 'ok'); }
+function logErr(msg)  { log(msg, 'err'); }
+function logWarn(msg) { log(msg, 'warn'); }
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// ── UI helpers ───────────────────────────────────────────────────────────────
+function showStatus(msg, type = 'info') {
+  const el = document.getElementById('status-area');
+  el.textContent = msg;
+  el.className = type;
+  el.style.display = 'block';
+}
+
+function renderUI() {
+  const signedIn = !!localStorage.getItem(KEY_ACCESS);
+  document.getElementById('view-signed-out').style.display = signedIn ? 'none' : 'block';
+  document.getElementById('view-signed-in').style.display  = signedIn ? 'block' : 'none';
+  if (signedIn) {
+    document.getElementById('display-name').textContent =
+      localStorage.getItem(KEY_DISPLAY_NAME) || '(unknown)';
+  }
+}
+
+// ── PKCE helpers ─────────────────────────────────────────────────────────────
+function randomString(len) {
+  const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~';
+  const arr = new Uint8Array(len);
+  crypto.getRandomValues(arr);
+  return Array.from(arr).map(b => charset[b % charset.length]).join('');
+}
+
+async function sha256(plain) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(plain);
+  return crypto.subtle.digest('SHA-256', data);
+}
+
+function base64url(buffer) {
+  const bytes = new Uint8Array(buffer);
+  let str = '';
+  for (const b of bytes) str += String.fromCharCode(b);
+  return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+// ── sessionStorage with localStorage fallback (iOS Safari) ──────────────────
+function storeVerifier(v) {
+  try {
+    sessionStorage.setItem(KEY_VERIFIER, v);
+    // Write to localStorage as fallback in case sessionStorage doesn't survive redirect
+    localStorage.setItem(KEY_VERIFIER + '_fb', v);
+  } catch (e) {
+    localStorage.setItem(KEY_VERIFIER + '_fb', v);
+    logWarn('sessionStorage write failed, using localStorage fallback for verifier');
+  }
+}
+
+function retrieveVerifier() {
+  let v = null;
+  try { v = sessionStorage.getItem(KEY_VERIFIER); } catch (_) {}
+  if (!v) {
+    v = localStorage.getItem(KEY_VERIFIER + '_fb');
+    if (v) logWarn('code_verifier retrieved from localStorage fallback (sessionStorage was empty)');
+  }
+  return v;
+}
+
+function clearVerifier() {
+  try { sessionStorage.removeItem(KEY_VERIFIER); } catch (_) {}
+  localStorage.removeItem(KEY_VERIFIER + '_fb');
+}
+
+// ── Sign in ──────────────────────────────────────────────────────────────────
+async function signIn() {
+  const verifier = randomString(96);
+  log(`PKCE verifier generated (length=${verifier.length})`);
+
+  storeVerifier(verifier);
+
+  const hash = await sha256(verifier);
+  const challenge = base64url(hash);
+
+  const params = new URLSearchParams({
+    client_id:             CLIENT_ID,
+    response_type:         'code',
+    redirect_uri:          REDIRECT_URI,
+    code_challenge_method: 'S256',
+    code_challenge:        challenge,
+    scope:                 'user-modify-playback-state user-read-playback-state',
+  });
+
+  const url = `https://accounts.spotify.com/authorize?${params}`;
+  log(`Redirecting to Spotify authorize...`);
+  window.location.href = url;
+}
+
+// ── Handle callback ──────────────────────────────────────────────────────────
+async function handleCallback(code) {
+  log(`Callback received (code prefix: ${code.slice(0, 8)}…)`);
+
+  const verifier = retrieveVerifier();
+  if (!verifier) {
+    logErr('code_verifier missing from storage — cannot complete token exchange');
+    showStatus('Auth error: code_verifier lost during redirect. Try signing in again.', 'error');
+    renderUI();
+    return;
+  }
+
+  log('Token exchange request sent');
+  let resp;
+  try {
+    resp = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type:    'authorization_code',
+        code,
+        redirect_uri:  REDIRECT_URI,
+        client_id:     CLIENT_ID,
+        code_verifier: verifier,
+      }),
+    });
+  } catch (e) {
+    logErr(`Token exchange network error: ${e}`);
+    renderUI();
+    return;
+  }
+
+  const body = await resp.json();
+
+  if (!resp.ok) {
+    logErr(`Token exchange failed: ${resp.status} — ${JSON.stringify(body)}`);
+    showStatus(`Sign-in failed (${resp.status}): ${body.error_description || body.error}`, 'error');
+    renderUI();
+    return;
+  }
+
+  const expiresAt = Date.now() + body.expires_in * 1000;
+  localStorage.setItem(KEY_ACCESS,    body.access_token);
+  localStorage.setItem(KEY_REFRESH,   body.refresh_token);
+  localStorage.setItem(KEY_EXPIRES_AT, String(expiresAt));
+  clearVerifier();
+
+  logOk(`Token exchange success — expires at ${new Date(expiresAt).toLocaleTimeString()}`);
+
+  // Clean the URL before fetching profile
+  history.replaceState({}, '', REDIRECT_URI);
+
+  await fetchUserProfile(body.access_token);
+  renderUI();
+}
+
+// ── User profile ─────────────────────────────────────────────────────────────
+async function fetchUserProfile(token) {
+  try {
+    const resp = await fetch('https://api.spotify.com/v1/me', {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      localStorage.setItem(KEY_DISPLAY_NAME, data.display_name || data.id);
+      logOk(`User profile: ${data.display_name || data.id}`);
+    } else {
+      logWarn(`Could not fetch user profile: ${resp.status}`);
+    }
+  } catch (e) {
+    logWarn(`User profile fetch error: ${e}`);
+  }
+}
+
+// ── Token refresh ─────────────────────────────────────────────────────────────
+async function refreshTokenIfNeeded() {
+  const expiresAt = parseInt(localStorage.getItem(KEY_EXPIRES_AT) || '0', 10);
+  if (Date.now() < expiresAt - 60_000) return true;  // still valid
+
+  log('Token expiring soon — refreshing...');
+  const refreshToken = localStorage.getItem(KEY_REFRESH);
+  if (!refreshToken) {
+    logErr('No refresh token stored');
+    return false;
+  }
+
+  let resp;
+  try {
+    resp = await fetch('https://accounts.spotify.com/api/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({
+        grant_type:    'refresh_token',
+        refresh_token: refreshToken,
+        client_id:     CLIENT_ID,
+      }),
+    });
+  } catch (e) {
+    logErr(`Refresh network error: ${e}`);
+    return false;
+  }
+
+  const body = await resp.json();
+
+  if (!resp.ok) {
+    logErr(`Refresh failed: ${resp.status} — ${JSON.stringify(body)}`);
+    signOut();
+    return false;
+  }
+
+  const expiresAt2 = Date.now() + body.expires_in * 1000;
+  localStorage.setItem(KEY_ACCESS,    body.access_token);
+  localStorage.setItem(KEY_EXPIRES_AT, String(expiresAt2));
+  if (body.refresh_token) localStorage.setItem(KEY_REFRESH, body.refresh_token);
+
+  logOk(`Refresh success — expires at ${new Date(expiresAt2).toLocaleTimeString()}`);
+  return true;
+}
+
+// ── Play call ─────────────────────────────────────────────────────────────────
+async function playTrack(isRetry = false) {
+  const ok = await refreshTokenIfNeeded();
+  if (!ok) {
+    showStatus('Session expired. Please sign in again.', 'error');
+    renderUI();
+    return;
+  }
+
+  const token = localStorage.getItem(KEY_ACCESS);
+  const payload = {
+    context_uri: `spotify:album:${TEST_ALBUM_ID}`,
+    offset:      { uri: `spotify:track:${TEST_TRACK_ID}` },
+    position_ms: 0,
+  };
+
+  log(`Play request sent — album:${TEST_ALBUM_ID} track:${TEST_TRACK_ID}`);
+
+  let resp;
+  try {
+    resp = await fetch('https://api.spotify.com/v1/me/player/play', {
+      method: 'PUT',
+      headers: {
+        Authorization:  `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    logErr(`Play network error: ${e}`);
+    showStatus(`Network error: ${e}`, 'error');
+    return;
+  }
+
+  log(`Play response: ${resp.status}`);
+
+  if (resp.status === 204) {
+    logOk('204 No Content — playback started');
+    showStatus('Playing! Track should now be audible on your active Spotify device.', 'success');
+    return;
+  }
+
+  let bodyText = '';
+  try { bodyText = await resp.text(); } catch (_) {}
+  logErr(`Play error ${resp.status}: ${bodyText}`);
+
+  if (resp.status === 401) {
+    if (!isRetry) {
+      log('401 — attempting token refresh then retry');
+      localStorage.setItem(KEY_EXPIRES_AT, '0');  // force refresh
+      const refreshed = await refreshTokenIfNeeded();
+      if (refreshed) { playTrack(true); return; }
+    }
+    logErr('Still 401 after refresh — signing out');
+    showStatus('Session invalid. Please sign in again.', 'error');
+    signOut();
+    return;
+  }
+
+  if (resp.status === 404) {
+    showStatus(
+      'No active Spotify device found. Open Spotify on any device (phone, Mac, HomePod) ' +
+      'and press play on something, then try again.',
+      'error'
+    );
+    return;
+  }
+
+  if (resp.status === 403) {
+    let parsed = {};
+    try { parsed = JSON.parse(bodyText); } catch (_) {}
+    const reason = parsed?.error?.reason || '';
+    if (reason === 'PREMIUM_REQUIRED') {
+      showStatus('Spotify Premium is required for playback control via the Web API.', 'error');
+    } else {
+      showStatus(`403 Forbidden: ${reason || bodyText}`, 'error');
+    }
+    return;
+  }
+
+  showStatus(`Unexpected error (${resp.status}). See debug log for details.`, 'error');
+}
+
+// ── Sign out ──────────────────────────────────────────────────────────────────
+function signOut() {
+  log('Sign-out clicked — clearing tokens from localStorage');
+  [KEY_ACCESS, KEY_REFRESH, KEY_EXPIRES_AT, KEY_DISPLAY_NAME].forEach(k =>
+    localStorage.removeItem(k)
+  );
+  clearVerifier();
+  document.getElementById('status-area').style.display = 'none';
+  renderUI();
+  logOk('Signed out');
+}
+
+// ── Boot ──────────────────────────────────────────────────────────────────────
+(async function boot() {
+  log('Page loaded');
+
+  const params = new URLSearchParams(window.location.search);
+  const code   = params.get('code');
+  const error  = params.get('error');
+
+  if (error) {
+    logErr(`OAuth error from Spotify: ${error}`);
+    history.replaceState({}, '', REDIRECT_URI);
+    renderUI();
+    return;
+  }
+
+  if (code) {
+    await handleCallback(code);
+    return;
+  }
+
+  // Normal load — just render based on stored tokens
+  if (localStorage.getItem(KEY_ACCESS)) {
+    logOk(`Session restored — expires ${new Date(
+      parseInt(localStorage.getItem(KEY_EXPIRES_AT) || '0', 10)
+    ).toLocaleTimeString()}`);
+  } else {
+    log('No stored session — showing sign-in');
+  }
+  renderUI();
+})();
+</script>
+
+</body>
+</html>
