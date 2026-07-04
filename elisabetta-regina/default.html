@@ -3142,6 +3142,7 @@
     <div class="bottom-sheet-handle"></div>
     <div class="drawer-header">
       <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
       <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
     </div>
     <div class="sheet-recording-row">
@@ -3165,6 +3166,7 @@
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
       <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
       <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
     </div>
     <div class="drawer-body" id="drawerBody"></div>
@@ -3240,54 +3242,55 @@
   carella_larmore: {
     label: "Elisabetta, regina d'Inghilterra \u00b7 Carella / Larmore",
     short: "Carella / Larmore",
+    spotify_album_id: "4VPwlIB0HILRVHtp8PP1j8",
     tracks: [
-      { id: "t1", cd: 1, track: 1, title: "Sinfonia", act: "Act I", has_block: false, spotify_uri: "https://open.spotify.com/track/59aHud9PQNDLI8n1EGT3CX" },
-      { id: "t1", cd: 1, track: 2, title: "Piu lieta, piu bella", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/03Jap9wpTppSDdFkAIy5wZ" },
-      { id: "t2", cd: 1, track: 3, title: "Oh voci funeste", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/2Dt8DBBJMPxk02PJddnnrK" },
-      { id: "t3", cd: 1, track: 4, title: "Nel giubilo comun, signor, tu solo", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/6yMVJz7OmpuevnfS8qWjUa" },
-      { id: "t4", cd: 1, track: 5, title: "Esulta, elisa, omai", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/6b73ksZkeU049o6SKDLboe" },
-      { id: "t5", cd: 1, track: 6, title: "Quant'e grato all'alma mia", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/3V3ZfoEnh6jzie4DfgT3vh" },
-      { id: "t6", cd: 1, track: 7, title: "Questo cor ben lo comprende", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/0f0bvGKsFFebvubdD8aXyG" },
-      { id: "t7", cd: 1, track: 8, title: "Grandi del regno, e questo", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/7DK1WgjbG18mMMp2zD3cSQ" },
-      { id: "t8", cd: 1, track: 9, title: "Vieni, o prode, e qui tergi i sudori", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/5J5fQGtEJkGBTdEhsUXqrO" },
-      { id: "t9", cd: 1, track: 10, title: "Alta regina, invan", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/0KeLXygDK1aXtcorNpYtWf" },
-      { id: "t10", cd: 1, track: 11, title: "Incauta! Che festi!", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/4hNRjEwIOFsAjzCtLDokb8" },
-      { id: "t11", cd: 1, track: 12, title: "Che palpito io sento!", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/71BTaHYV6XO0gQxoAYkdXd" },
-      { id: "t12", cd: 1, track: 13, title: "Sconsigliata!", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/4Z5DRhLQwUpqteaoJUfJdq" },
-      { id: "t13", cd: 1, track: 14, title: "Sento un'interna voce", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/36h2tYC0j8kJAQzP4ZSDJX" },
-      { id: "t14", cd: 1, track: 15, title: "Ah! Se tolto un sol momento", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/1zfT9NVIA5N1ae9o6l6GOK" },
-      { id: "t16", cd: 2, track: 1, title: "Infelice! Pur troppo", act: "Act I", has_block: false, spotify_uri: "https://open.spotify.com/track/2HQFJIAticVa3bN5uLTDpt" },
-      { id: "t16", cd: 2, track: 2, title: "Colmo di duol", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/6lzUdjLzL60JEVrMOM8etr" },
-      { id: "t17", cd: 2, track: 3, title: "Perche mai, destin crudele", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/6towShi1XiSRsM0TZyHKVA" },
-      { id: "t18", cd: 2, track: 4, title: "Misera! A quale stato", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/6SDNzhYKrAu2Ef86ireGEn" },
-      { id: "t19", cd: 2, track: 5, title: "Quell'alma perfida", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/769PX3oGZ2C86jdxsAccsq" },
-      { id: "t21", cd: 2, track: 6, title: "Che fia? Smarrita in volto", act: "Act I", has_block: false, spotify_uri: "https://open.spotify.com/track/7bfEKpJSVv2HT4RlOKAdwt" },
-      { id: "t21", cd: 2, track: 7, title: "Che penso, desolata regina? ...", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/60qXHFVbY7YAbj6kQWnSO1" },
-      { id: "t22", cd: 2, track: 8, title: "Se mi serbasti il soglio", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/3yJXAMoid5dzm7htBdzYrY" },
-      { id: "t23", cd: 2, track: 9, title: "Qual colpo inaspettato", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/3EAYnXH4kvRdsTR2vF8R78" },
-      { id: "t24", cd: 2, track: 10, title: "Duce, in tal guisa accogli", act: "Act I", has_block: true, spotify_uri: "https://open.spotify.com/track/4zFfqoShHLX5HZM4tLpz7W" },
-      { id: "t25", cd: 3, track: 1, title: "Perche tremi, o mio cor!", act: "Act II", has_block: false, spotify_uri: "https://open.spotify.com/track/5NkhhHhbrQgP1cEM0WN0ie" },
-      { id: "t25", cd: 3, track: 2, title: "Dov'e matilde?", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/5fWq2PD6Qd3l4GdnlPbuAH" },
-      { id: "t26", cd: 3, track: 3, title: "Pensa che sol per poco", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/5Kr4EV0HmsHvbCOdjG8nXV" },
-      { id: "t27", cd: 3, track: 4, title: "Non bastan quelle lagrime", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/3HZKbkQsjL58FD4fLBQPdo" },
-      { id: "t28", cd: 3, track: 5, title: "Misero me! ... la sposa", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/4OFDGYJah7auV5KtY5TYkb" },
-      { id: "t29", cd: 3, track: 6, title: "L'avverso mio destino", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/3y7hNFLcnpOWJVGMNxUXLM" },
-      { id: "t30", cd: 3, track: 7, title: "Ah! Fra poco, in faccia a morte", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/1CTzIj5K8d3yXqD3u0HhqN" },
-      { id: "t32", cd: 3, track: 8, title: "Pago sarai, cor mio?", act: "Act II", has_block: false, spotify_uri: "https://open.spotify.com/track/6BSicP1EWGwo6LZlIPaJX4" },
-      { id: "t32", cd: 3, track: 9, title: "Qui soffermiamo il pie ...", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/51PpfPzfXemGy8QiulMS4D" },
-      { id: "t33", cd: 3, track: 10, title: "Che intesi! ...", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/7nTVMnmFqKZwfCMyRvc2Xv" },
-      { id: "t34", cd: 3, track: 11, title: "Deh! Troncate i ceppi suoi", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/5Acp0kR3nXQhHldvpKvXuU" },
-      { id: "t35", cd: 3, track: 12, title: "Non ha core chi non sente", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/24YBEHUuy51qCgdnNDmBF1" },
-      { id: "t36", cd: 3, track: 13, title: "Della cieca fortuna un tristo esempio", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/2GtvNNn2aDkqfSXGiEBQ6Z" },
-      { id: "t37", cd: 3, track: 14, title: "Sposa amata ... respira ...", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/762yZf9cwJyBcoa4zpTkj8" },
-      { id: "t38", cd: 3, track: 15, title: "Saziati, o sorte ingrata", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/4lVxkGMo9zENEZkINk13C1" },
-      { id: "t39", cd: 3, track: 16, title: "E l'adorata sposa", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/2hOO7u1aO4UnkD2xpkyzt3" },
-      { id: "t40", cd: 3, track: 17, title: "Deh! Scusa i trasporti!", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/39nxCve9e1DPenRnsdXI7v" },
-      { id: "t41", cd: 3, track: 18, title: "Tu, regina! ...", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/4CjBCWOT7Mu0u9Yuvyuy8p" },
-      { id: "t42", cd: 3, track: 19, title: "Fellon, la pena avrai", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/0Yc9qXz3O7bdP2xeDfjabk" },
-      { id: "t43", cd: 3, track: 20, title: "Bell'alme generose", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/36Oln4clTt2dm5YcQwdxGn" },
-      { id: "t44", cd: 3, track: 21, title: "Leicester! ... leicester! ...", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/1TxSekzxyaW6dHUztHLUqr" },
-      { id: "t45", cd: 3, track: 22, title: "Fuggi amor da questo seno", act: "Act II", has_block: true, spotify_uri: "https://open.spotify.com/track/6SzeCtdFrF2jPb6ANJBAL3" }
+      { id: "t1", cd: 1, track: 1, title: "Sinfonia", act: "Act I", has_block: false, spotify_track_id: "59aHud9PQNDLI8n1EGT3CX" },
+      { id: "t1", cd: 1, track: 2, title: "Piu lieta, piu bella", act: "Act I", has_block: true, spotify_track_id: "03Jap9wpTppSDdFkAIy5wZ" },
+      { id: "t2", cd: 1, track: 3, title: "Oh voci funeste", act: "Act I", has_block: true, spotify_track_id: "2Dt8DBBJMPxk02PJddnnrK" },
+      { id: "t3", cd: 1, track: 4, title: "Nel giubilo comun, signor, tu solo", act: "Act I", has_block: true, spotify_track_id: "6yMVJz7OmpuevnfS8qWjUa" },
+      { id: "t4", cd: 1, track: 5, title: "Esulta, elisa, omai", act: "Act I", has_block: true, spotify_track_id: "6b73ksZkeU049o6SKDLboe" },
+      { id: "t5", cd: 1, track: 6, title: "Quant'e grato all'alma mia", act: "Act I", has_block: true, spotify_track_id: "3V3ZfoEnh6jzie4DfgT3vh" },
+      { id: "t6", cd: 1, track: 7, title: "Questo cor ben lo comprende", act: "Act I", has_block: true, spotify_track_id: "0f0bvGKsFFebvubdD8aXyG" },
+      { id: "t7", cd: 1, track: 8, title: "Grandi del regno, e questo", act: "Act I", has_block: true, spotify_track_id: "7DK1WgjbG18mMMp2zD3cSQ" },
+      { id: "t8", cd: 1, track: 9, title: "Vieni, o prode, e qui tergi i sudori", act: "Act I", has_block: true, spotify_track_id: "5J5fQGtEJkGBTdEhsUXqrO" },
+      { id: "t9", cd: 1, track: 10, title: "Alta regina, invan", act: "Act I", has_block: true, spotify_track_id: "0KeLXygDK1aXtcorNpYtWf" },
+      { id: "t10", cd: 1, track: 11, title: "Incauta! Che festi!", act: "Act I", has_block: true, spotify_track_id: "4hNRjEwIOFsAjzCtLDokb8" },
+      { id: "t11", cd: 1, track: 12, title: "Che palpito io sento!", act: "Act I", has_block: true, spotify_track_id: "71BTaHYV6XO0gQxoAYkdXd" },
+      { id: "t12", cd: 1, track: 13, title: "Sconsigliata!", act: "Act I", has_block: true, spotify_track_id: "4Z5DRhLQwUpqteaoJUfJdq" },
+      { id: "t13", cd: 1, track: 14, title: "Sento un'interna voce", act: "Act I", has_block: true, spotify_track_id: "36h2tYC0j8kJAQzP4ZSDJX" },
+      { id: "t14", cd: 1, track: 15, title: "Ah! Se tolto un sol momento", act: "Act I", has_block: true, spotify_track_id: "1zfT9NVIA5N1ae9o6l6GOK" },
+      { id: "t16", cd: 2, track: 1, title: "Infelice! Pur troppo", act: "Act I", has_block: false, spotify_track_id: "2HQFJIAticVa3bN5uLTDpt" },
+      { id: "t16", cd: 2, track: 2, title: "Colmo di duol", act: "Act I", has_block: true, spotify_track_id: "6lzUdjLzL60JEVrMOM8etr" },
+      { id: "t17", cd: 2, track: 3, title: "Perche mai, destin crudele", act: "Act I", has_block: true, spotify_track_id: "6towShi1XiSRsM0TZyHKVA" },
+      { id: "t18", cd: 2, track: 4, title: "Misera! A quale stato", act: "Act I", has_block: true, spotify_track_id: "6SDNzhYKrAu2Ef86ireGEn" },
+      { id: "t19", cd: 2, track: 5, title: "Quell'alma perfida", act: "Act I", has_block: true, spotify_track_id: "769PX3oGZ2C86jdxsAccsq" },
+      { id: "t21", cd: 2, track: 6, title: "Che fia? Smarrita in volto", act: "Act I", has_block: false, spotify_track_id: "7bfEKpJSVv2HT4RlOKAdwt" },
+      { id: "t21", cd: 2, track: 7, title: "Che penso, desolata regina? ...", act: "Act I", has_block: true, spotify_track_id: "60qXHFVbY7YAbj6kQWnSO1" },
+      { id: "t22", cd: 2, track: 8, title: "Se mi serbasti il soglio", act: "Act I", has_block: true, spotify_track_id: "3yJXAMoid5dzm7htBdzYrY" },
+      { id: "t23", cd: 2, track: 9, title: "Qual colpo inaspettato", act: "Act I", has_block: true, spotify_track_id: "3EAYnXH4kvRdsTR2vF8R78" },
+      { id: "t24", cd: 2, track: 10, title: "Duce, in tal guisa accogli", act: "Act I", has_block: true, spotify_track_id: "4zFfqoShHLX5HZM4tLpz7W" },
+      { id: "t25", cd: 3, track: 1, title: "Perche tremi, o mio cor!", act: "Act II", has_block: false, spotify_track_id: "5NkhhHhbrQgP1cEM0WN0ie" },
+      { id: "t25", cd: 3, track: 2, title: "Dov'e matilde?", act: "Act II", has_block: true, spotify_track_id: "5fWq2PD6Qd3l4GdnlPbuAH" },
+      { id: "t26", cd: 3, track: 3, title: "Pensa che sol per poco", act: "Act II", has_block: true, spotify_track_id: "5Kr4EV0HmsHvbCOdjG8nXV" },
+      { id: "t27", cd: 3, track: 4, title: "Non bastan quelle lagrime", act: "Act II", has_block: true, spotify_track_id: "3HZKbkQsjL58FD4fLBQPdo" },
+      { id: "t28", cd: 3, track: 5, title: "Misero me! ... la sposa", act: "Act II", has_block: true, spotify_track_id: "4OFDGYJah7auV5KtY5TYkb" },
+      { id: "t29", cd: 3, track: 6, title: "L'avverso mio destino", act: "Act II", has_block: true, spotify_track_id: "3y7hNFLcnpOWJVGMNxUXLM" },
+      { id: "t30", cd: 3, track: 7, title: "Ah! Fra poco, in faccia a morte", act: "Act II", has_block: true, spotify_track_id: "1CTzIj5K8d3yXqD3u0HhqN" },
+      { id: "t32", cd: 3, track: 8, title: "Pago sarai, cor mio?", act: "Act II", has_block: false, spotify_track_id: "6BSicP1EWGwo6LZlIPaJX4" },
+      { id: "t32", cd: 3, track: 9, title: "Qui soffermiamo il pie ...", act: "Act II", has_block: true, spotify_track_id: "51PpfPzfXemGy8QiulMS4D" },
+      { id: "t33", cd: 3, track: 10, title: "Che intesi! ...", act: "Act II", has_block: true, spotify_track_id: "7nTVMnmFqKZwfCMyRvc2Xv" },
+      { id: "t34", cd: 3, track: 11, title: "Deh! Troncate i ceppi suoi", act: "Act II", has_block: true, spotify_track_id: "5Acp0kR3nXQhHldvpKvXuU" },
+      { id: "t35", cd: 3, track: 12, title: "Non ha core chi non sente", act: "Act II", has_block: true, spotify_track_id: "24YBEHUuy51qCgdnNDmBF1" },
+      { id: "t36", cd: 3, track: 13, title: "Della cieca fortuna un tristo esempio", act: "Act II", has_block: true, spotify_track_id: "2GtvNNn2aDkqfSXGiEBQ6Z" },
+      { id: "t37", cd: 3, track: 14, title: "Sposa amata ... respira ...", act: "Act II", has_block: true, spotify_track_id: "762yZf9cwJyBcoa4zpTkj8" },
+      { id: "t38", cd: 3, track: 15, title: "Saziati, o sorte ingrata", act: "Act II", has_block: true, spotify_track_id: "4lVxkGMo9zENEZkINk13C1" },
+      { id: "t39", cd: 3, track: 16, title: "E l'adorata sposa", act: "Act II", has_block: true, spotify_track_id: "2hOO7u1aO4UnkD2xpkyzt3" },
+      { id: "t40", cd: 3, track: 17, title: "Deh! Scusa i trasporti!", act: "Act II", has_block: true, spotify_track_id: "39nxCve9e1DPenRnsdXI7v" },
+      { id: "t41", cd: 3, track: 18, title: "Tu, regina! ...", act: "Act II", has_block: true, spotify_track_id: "4CjBCWOT7Mu0u9Yuvyuy8p" },
+      { id: "t42", cd: 3, track: 19, title: "Fellon, la pena avrai", act: "Act II", has_block: true, spotify_track_id: "0Yc9qXz3O7bdP2xeDfjabk" },
+      { id: "t43", cd: 3, track: 20, title: "Bell'alme generose", act: "Act II", has_block: true, spotify_track_id: "36Oln4clTt2dm5YcQwdxGn" },
+      { id: "t44", cd: 3, track: 21, title: "Leicester! ... leicester! ...", act: "Act II", has_block: true, spotify_track_id: "1TxSekzxyaW6dHUztHLUqr" },
+      { id: "t45", cd: 3, track: 22, title: "Fuggi amor da questo seno", act: "Act II", has_block: true, spotify_track_id: "6SzeCtdFrF2jPb6ANJBAL3" }
     ]
   }
 };
@@ -3321,4 +3324,5 @@
   let observer = null;
   const mobileLangState = { it: true, es: true };
 </script>
+<script src="../libretto_spotify.js"></script>
 <script src="../libretto.js"></script>

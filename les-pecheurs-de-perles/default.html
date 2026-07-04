@@ -2638,6 +2638,7 @@
     <div class="bottom-sheet-handle"></div>
     <div class="drawer-header">
       <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
       <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
     </div>
     <div class="sheet-recording-row">
@@ -2661,6 +2662,7 @@
   <div class="drawer" onclick="event.stopPropagation()">
     <div class="drawer-header">
       <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
       <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
     </div>
     <div class="drawer-body" id="drawerBody"></div>
@@ -2751,4 +2753,5 @@
   let observer = null;
   const mobileLangState = { fr: true, es: true };
 </script>
+<script src="../libretto_spotify.js"></script>
 <script src="../libretto.js"></script>

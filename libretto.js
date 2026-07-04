@@ -66,12 +66,23 @@
     ).join('');
   }
 
+  function _spotifyPillHtml(rec) {
+    if (!rec.spotify_album_id) return '';
+    const isAuth = window.LibrettoSpotify?.isAuthenticated?.() ?? false;
+    return isAuth
+      ? `<button class="spotify-connect-pill connected" onclick="disconnectSpotify()">Spotify ✓</button>`
+      : `<button class="spotify-connect-pill" onclick="window.LibrettoSpotify?.connect()">Connect Spotify</button>`;
+  }
+
   function buildDrawer() {
     const rec = RECORDINGS[activeRecording];
     const body = document.getElementById('drawerBody');
+    const pill = document.getElementById('drawerSpotifyPill');
+    if (pill) pill.innerHTML = _spotifyPillHtml(rec);
     let html = '';
     let lastGroup = null;
     const activeTrack = findBestTrack(rec, currentActiveId);
+    const isAuth = window.LibrettoSpotify?.isAuthenticated?.() ?? false;
 
     for (const t of rec.tracks) {
       const group = t.cd + '-' + t.act;
@@ -80,8 +91,8 @@
         lastGroup = group;
       }
       const isActive = activeTrack && t.id === activeTrack.id;
-      const spotifyBtn = t.spotify_uri
-        ? `<a class="drawer-track-spotify" href="${t.spotify_uri}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></a>`
+      const spotifyBtn = (t.spotify_track_id && rec.spotify_album_id)
+        ? `<button class="drawer-track-spotify${isAuth ? '' : ' dimmed'}" onclick="event.stopPropagation(); handleSpotifyPlay(this)" data-album-id="${rec.spotify_album_id}" data-track-id="${t.spotify_track_id}" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></button>`
         : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
         <span class="drawer-track-num">${t.track}</span>
@@ -293,9 +304,12 @@
   function buildBottomSheetBody() {
     const rec = RECORDINGS[activeRecording];
     const body = document.getElementById('bottomSheetBody');
+    const pill = document.getElementById('sheetSpotifyPill');
+    if (pill) pill.innerHTML = _spotifyPillHtml(rec);
     let html = '';
     let lastGroup = null;
     const activeTrack = findBestTrack(rec, currentActiveId);
+    const isAuth = window.LibrettoSpotify?.isAuthenticated?.() ?? false;
     for (const t of rec.tracks) {
       const group = t.cd + '-' + t.act;
       if (group !== lastGroup) {
@@ -303,8 +317,8 @@
         lastGroup = group;
       }
       const isActive = activeTrack && t.id === activeTrack.id;
-      const spotifyBtn = t.spotify_uri
-        ? `<a class="drawer-track-spotify" href="${t.spotify_uri}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></a>`
+      const spotifyBtn = (t.spotify_track_id && rec.spotify_album_id)
+        ? `<button class="drawer-track-spotify${isAuth ? '' : ' dimmed'}" onclick="event.stopPropagation(); handleSpotifyPlay(this)" data-album-id="${rec.spotify_album_id}" data-track-id="${t.spotify_track_id}" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></button>`
         : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
         <span class="drawer-track-num">${t.track}</span>
@@ -347,3 +361,44 @@
   updateActive(currentActiveId);
   applyTooltips();
   buildMobileTrackMarkers();
+
+  if (window.LibrettoSpotify) {
+    window.LibrettoSpotify.onAuthChange(() => {
+      buildDrawer();
+      buildBottomSheetBody();
+    });
+  }
+
+  async function handleSpotifyPlay(el) {
+    const albumId = el.dataset.albumId;
+    const trackId = el.dataset.trackId;
+    try {
+      await window.LibrettoSpotify.play(albumId, trackId);
+    } catch (code) {
+      const msgs = {
+        NO_ACTIVE_DEVICE: 'Open Spotify on any device to enable playback.',
+        PREMIUM_REQUIRED: 'Spotify Premium is required for playback.',
+        AUTH_FAILED:      'Spotify session expired. Connect again to play.',
+        NETWORK_ERROR:    "Couldn't reach Spotify. Try again.",
+      };
+      showToast(msgs[code] ?? 'Playback failed.');
+    }
+  }
+
+  function disconnectSpotify() {
+    if (confirm('Disconnect from Spotify?')) {
+      window.LibrettoSpotify.disconnect();
+    }
+  }
+
+  function showToast(msg) {
+    const el = document.createElement('div');
+    el.className = 'toast-notification';
+    el.textContent = msg;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('visible'));
+    setTimeout(() => {
+      el.classList.remove('visible');
+      el.addEventListener('transitionend', () => el.remove(), { once: true });
+    }, 4000);
+  }
