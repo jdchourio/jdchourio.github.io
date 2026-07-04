@@ -2,9 +2,35 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>My Web Page</title>
+    <style>
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+        .site-header h1 { margin: 0; }
+        .spotify-pill {
+            border: none;
+            border-radius: 20px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.15s;
+        }
+        .spotify-pill--connected { background: #555; color: #fff; }
+        .spotify-pill--disconnected { background: #1DB954; color: #fff; }
+        .spotify-pill:hover { opacity: 0.85; }
+    </style>
 </head>
 <body>
-    <h1>Librettos on steroids</h1>
+    <div class="site-header">
+        <h1>Librettos on steroids</h1>
+        <button id="spotify-pill" class="spotify-pill spotify-pill--disconnected">Connect Spotify</button>
+    </div>
 
     <h2>Ludwig van Beethoven</h2>
     <ul>
@@ -233,5 +259,25 @@
          site root, so the authorization code lands here. This script exchanges
          it for a token and bounces back to the opera page the user came from. -->
     <script src="libretto_spotify.js"></script>
+    <script>
+        (function () {
+            const pill = document.getElementById('spotify-pill');
+            function updatePill() {
+                if (LibrettoSpotify.isAuthenticated()) {
+                    pill.textContent = 'Spotify ✓';
+                    pill.className = 'spotify-pill spotify-pill--connected';
+                    pill.onclick = function () {
+                        if (confirm('Disconnect from Spotify?')) LibrettoSpotify.disconnect();
+                    };
+                } else {
+                    pill.textContent = 'Connect Spotify';
+                    pill.className = 'spotify-pill spotify-pill--disconnected';
+                    pill.onclick = function () { LibrettoSpotify.connect(); };
+                }
+            }
+            LibrettoSpotify.onAuthChange(updatePill);
+            updatePill();
+        })();
+    </script>
 </body>
 </html>
