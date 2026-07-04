@@ -447,6 +447,15 @@
     const trackId = el.dataset.trackId;
     try {
       await window.LibrettoSpotify.play(albumId, trackId);
+      // Optimistically update highlight immediately — don't wait for next poll tick
+      const rec = RECORDINGS[activeRecording];
+      const match = rec.tracks.find(t => t.spotify_track_id === trackId) ?? null;
+      if (match) {
+        _setNowPlayingRow(match.id);
+        if (_nowPlayingPollId === null && window.LibrettoSpotify?.isAuthenticated?.()) {
+          _nowPlayingPollId = setInterval(_pollNowPlaying, 5000);
+        }
+      }
     } catch (code) {
       const msgs = {
         NO_ACTIVE_DEVICE: 'Open Spotify on any device to enable playback.',
