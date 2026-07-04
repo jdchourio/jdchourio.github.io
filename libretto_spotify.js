@@ -264,7 +264,30 @@
     _authCallbacks.push(cb);
   }
 
-  window.LibrettoSpotify = { isAuthenticated, connect, disconnect, play, onAuthChange };
+  async function fetchCurrentTrackId() {
+    try {
+      const ok = await _refreshTokenIfNeeded();
+      if (!ok) return null;
+      const token = localStorage.getItem(KEY_ACCESS);
+      let resp;
+      try {
+        resp = await fetch('https://api.spotify.com/v1/me/player', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      } catch (_) {
+        return null;
+      }
+      if (resp.status === 204) return null;
+      if (resp.status !== 200) return null;
+      const body = await resp.json();
+      if (!body.item || !body.is_playing) return null;
+      return body.item.id ?? null;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  window.LibrettoSpotify = { isAuthenticated, connect, disconnect, play, onAuthChange, fetchCurrentTrackId };
 
   // ── Boot: handle OAuth callback or error on page load ───────────────────────
   (async function boot() {

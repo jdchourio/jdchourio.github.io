@@ -433,6 +433,27 @@
   .drawer-track-spotify svg { width: 12px; height: 12px; }
   .drawer-track-spotify.dimmed { opacity: 0.4; pointer-events: none; cursor: default; }
 
+  /* ── Now-playing: hide/show the two button icons ── */
+  .drawer-track .btn-play-icon { display: block; }
+  .drawer-track .btn-eq-icon   { display: none; align-items: flex-end; gap: 1.5px; }
+
+  .drawer-track.now-playing .btn-play-icon { display: none; }
+  .drawer-track.now-playing .btn-eq-icon   { display: flex; }
+
+  /* ── Equalizer bar animation ── */
+  @keyframes eq-bounce {
+    0%, 100% { transform: scaleY(0.25); }
+    50%       { transform: scaleY(1); }
+  }
+
+  .eq-b {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: eq-bounce 0.7s ease-in-out infinite;
+  }
+  .eq-b2 { animation-duration: 0.55s; animation-delay: 0.12s; }
+  .eq-b3 { animation-duration: 0.65s; animation-delay: 0.25s; }
+
   /* ── Spotify connect pill (drawer / sheet header) ── */
   .spotify-connect-pill {
     font-family: var(--sans);

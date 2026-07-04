@@ -1,4 +1,44 @@
 
+  let _nowPlayingPollId  = null;
+  let _nowPlayingTrackId = null;
+
+  function _setNowPlayingRow(trackRowId) {
+    if (trackRowId === _nowPlayingTrackId) return;
+    _nowPlayingTrackId = trackRowId;
+    document.querySelectorAll('.drawer-track').forEach(el => {
+      el.classList.toggle('now-playing', el.id === 'idx-' + trackRowId);
+    });
+  }
+
+  async function _pollNowPlaying() {
+    const trackId = await window.LibrettoSpotify.fetchCurrentTrackId();
+    const rec = RECORDINGS[activeRecording];
+    const match = trackId
+      ? rec.tracks.find(t => t.spotify_track_id === trackId) ?? null
+      : null;
+    if (!match) {
+      _setNowPlayingRow(null);
+      _stopNowPlayingPoll();
+      return;
+    }
+    _setNowPlayingRow(match.id);
+  }
+
+  function _startNowPlayingPoll() {
+    if (_nowPlayingPollId !== null) return;
+    if (!window.LibrettoSpotify?.isAuthenticated?.()) return;
+    _nowPlayingPollId = setInterval(_pollNowPlaying, 5000);
+    _pollNowPlaying();
+  }
+
+  function _stopNowPlayingPoll() {
+    if (_nowPlayingPollId !== null) {
+      clearInterval(_nowPlayingPollId);
+      _nowPlayingPollId = null;
+    }
+    _setNowPlayingRow(null);
+  }
+
   function openIndex() {
     if (window.innerWidth <= 600) {
       openBottomSheet();
@@ -12,10 +52,12 @@
     buildDrawer();
     document.getElementById('overlay').classList.add('open');
     document.body.style.overflow = 'hidden';
+    _startNowPlayingPoll();
   }
   function closeDrawer() {
     document.getElementById('overlay').classList.remove('open');
     document.body.style.overflow = '';
+    _stopNowPlayingPoll();
   }
   function jumpTo(id) {
     closeDrawer();
@@ -91,8 +133,21 @@
         lastGroup = group;
       }
       const isActive = activeTrack && t.id === activeTrack.id;
-      const spotifyBtn = (t.spotify_track_id && rec.spotify_album_id)
-        ? `<button class="drawer-track-spotify${isAuth ? '' : ' dimmed'}" onclick="event.stopPropagation(); handleSpotifyPlay(this)" data-album-id="${rec.spotify_album_id}" data-track-id="${t.spotify_track_id}" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></button>`
+      const spotifyBtn = (rec.spotify_album_id && t.spotify_track_id)
+        ? `<button class="drawer-track-spotify${isAuth ? '' : ' dimmed'}"
+                   onclick="event.stopPropagation(); handleSpotifyPlay(this)"
+                   data-album-id="${rec.spotify_album_id}"
+                   data-track-id="${t.spotify_track_id}"
+                   aria-label="Play on Spotify">
+             <svg class="btn-play-icon" viewBox="0 0 24 24" fill="none">
+               <path d="M8 5v14l11-7L8 5Z" fill="white"/>
+             </svg>
+             <svg class="btn-eq-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+               <rect class="eq-b eq-b1" x="1" y="3" width="2" height="9" rx="1" fill="white"/>
+               <rect class="eq-b eq-b2" x="5" y="3" width="2" height="9" rx="1" fill="white"/>
+               <rect class="eq-b eq-b3" x="9" y="3" width="2" height="9" rx="1" fill="white"/>
+             </svg>
+           </button>`
         : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
         <span class="drawer-track-num">${t.track}</span>
@@ -317,8 +372,21 @@
         lastGroup = group;
       }
       const isActive = activeTrack && t.id === activeTrack.id;
-      const spotifyBtn = (t.spotify_track_id && rec.spotify_album_id)
-        ? `<button class="drawer-track-spotify${isAuth ? '' : ' dimmed'}" onclick="event.stopPropagation(); handleSpotifyPlay(this)" data-album-id="${rec.spotify_album_id}" data-track-id="${t.spotify_track_id}" aria-label="Play on Spotify"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7L8 5Z" fill="white"/></svg></button>`
+      const spotifyBtn = (rec.spotify_album_id && t.spotify_track_id)
+        ? `<button class="drawer-track-spotify${isAuth ? '' : ' dimmed'}"
+                   onclick="event.stopPropagation(); handleSpotifyPlay(this)"
+                   data-album-id="${rec.spotify_album_id}"
+                   data-track-id="${t.spotify_track_id}"
+                   aria-label="Play on Spotify">
+             <svg class="btn-play-icon" viewBox="0 0 24 24" fill="none">
+               <path d="M8 5v14l11-7L8 5Z" fill="white"/>
+             </svg>
+             <svg class="btn-eq-icon" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+               <rect class="eq-b eq-b1" x="1" y="3" width="2" height="9" rx="1" fill="white"/>
+               <rect class="eq-b eq-b2" x="5" y="3" width="2" height="9" rx="1" fill="white"/>
+               <rect class="eq-b eq-b3" x="9" y="3" width="2" height="9" rx="1" fill="white"/>
+             </svg>
+           </button>`
         : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
         <span class="drawer-track-num">${t.track}</span>
@@ -341,11 +409,13 @@
     buildBottomSheet();
     document.getElementById('bottomSheetOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
+    _startNowPlayingPoll();
   }
 
   function closeBottomSheet() {
     document.getElementById('bottomSheetOverlay').classList.remove('open');
     document.body.style.overflow = '';
+    _stopNowPlayingPoll();
   }
 
   function jumpToMobile(id) {
@@ -366,6 +436,9 @@
     window.LibrettoSpotify.onAuthChange(() => {
       buildDrawer();
       buildBottomSheetBody();
+      if (!window.LibrettoSpotify.isAuthenticated()) {
+        _stopNowPlayingPoll();
+      }
     });
   }
 
