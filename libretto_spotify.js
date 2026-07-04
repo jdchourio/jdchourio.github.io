@@ -34,6 +34,7 @@
   const KEY_ACCESS      = 'libretto_spotify_access';
   const KEY_REFRESH     = 'libretto_spotify_refresh';
   const KEY_EXPIRES_AT  = 'libretto_spotify_expires_at';
+  const KEY_RETURN      = 'libretto_spotify_return';       // page to return to after OAuth
 
   // ── Auth change callbacks ────────────────────────────────────────────────────
   const _authCallbacks = [];
@@ -151,6 +152,17 @@
     localStorage.setItem(KEY_EXPIRES_AT, String(expiresAt));
     _clearVerifier();
 
+    // The registered REDIRECT_URI is the site root, so Spotify always lands us
+    // there. If a return URL was saved before connect(), bounce back to the page
+    // the user actually started from (the token now lives in shared localStorage).
+    let returnUrl = null;
+    try { returnUrl = localStorage.getItem(KEY_RETURN); } catch (_) {}
+    localStorage.removeItem(KEY_RETURN);
+    if (returnUrl && returnUrl !== location.href) {
+      location.replace(returnUrl);
+      return;
+    }
+
     history.replaceState({}, '', location.pathname);
     _fireAuthChange();
   }
@@ -165,6 +177,10 @@
     const hash      = await _sha256(verifier);
     const challenge = _base64url(hash);
     _storeVerifier(verifier);
+
+    // Remember where we are so _handleCallback() can return here after the
+    // redirect lands on the site root (the single registered REDIRECT_URI).
+    try { localStorage.setItem(KEY_RETURN, location.href); } catch (_) {}
 
     const params = new URLSearchParams({
       client_id:             CLIENT_ID,
