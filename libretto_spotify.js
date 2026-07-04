@@ -23,19 +23,10 @@
  *   'UNKNOWN'           — any other non-204 response
  */
 (function () {
-  // ── Configuration ────────────────────────────────────────────────────────────
-  const CLIENT_ID = '0fe4d9f573b545c2b8292c1edeef745b';
-  const SCOPE     = 'user-modify-playback-state user-read-playback-state';
-
-  // Redirect URI is the current page — Spotify sends the user back here after
-  // auth. Works for any opera page, locally or in production, as long as the
-  // URL is registered in your Spotify Developer Dashboard app.
-  // For local testing: serve output/ with `python -m http.server 8080` and
-  // register http://127.0.0.1:8080/<opera>/default.html in the Dashboard.
-  // Spotify allows http://127.0.0.1 without HTTPS for development.
-  function _redirectUri() {
-    return location.origin + location.pathname;
-  }
+  // ── Configuration — fill in CLIENT_ID from your Spotify Developer Dashboard ──
+  const CLIENT_ID    = '0fe4d9f573b545c2b8292c1edeef745b';
+  const REDIRECT_URI = 'https://jdchourio.github.io';
+  const SCOPE        = 'user-modify-playback-state user-read-playback-state';
 
   // ── Storage keys (namespaced to avoid collisions) ───────────────────────────
   const KEY_VERIFIER    = 'libretto_spotify_pkce_verifier';
@@ -142,7 +133,7 @@
         body: new URLSearchParams({
           grant_type:    'authorization_code',
           code,
-          redirect_uri:  _redirectUri(),
+          redirect_uri:  REDIRECT_URI,
           client_id:     CLIENT_ID,
           code_verifier: verifier,
         }),
@@ -178,7 +169,7 @@
     const params = new URLSearchParams({
       client_id:             CLIENT_ID,
       response_type:         'code',
-      redirect_uri:          _redirectUri(),
+      redirect_uri:          REDIRECT_URI,
       code_challenge_method: 'S256',
       code_challenge:        challenge,
       scope:                 SCOPE,
