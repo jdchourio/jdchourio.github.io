@@ -406,6 +406,16 @@
 
   .drawer-track.active .drawer-track-title { color: var(--gold); }
 
+  .track-notable-star {
+    font-size: 10px;
+    color: var(--text-dim);
+    margin-right: 2px;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  .drawer-track.active .track-notable-star { color: var(--gold); }
+
   .drawer-track-act {
     font-family: var(--sans);
     font-size: 10px;

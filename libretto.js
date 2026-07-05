@@ -149,8 +149,11 @@
              </svg>
            </button>`
         : '';
+      const notableStar = t.notable
+        ? `<span class="track-notable-star"${t.notable_name ? ` title="${t.notable_name}"` : ''}>★</span>`
+        : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" id="idx-${t.id}" onclick="jumpTo('${t.id}')">
-        <span class="drawer-track-num">${t.track}</span>
+        <span class="drawer-track-num">${notableStar}${t.track}</span>
         <div class="drawer-track-info">
           <span class="drawer-track-title">${t.title}</span>
           <span class="drawer-track-act">${t.act}</span>
@@ -388,8 +391,11 @@
              </svg>
            </button>`
         : '';
+      const notableStar = t.notable
+        ? `<span class="track-notable-star"${t.notable_name ? ` title="${t.notable_name}"` : ''}>★</span>`
+        : '';
       html += `<div class="drawer-track${isActive ? ' active' : ''}" onclick="jumpToMobile('${t.id}')">
-        <span class="drawer-track-num">${t.track}</span>
+        <span class="drawer-track-num">${notableStar}${t.track}</span>
         <div class="drawer-track-info">
           <span class="drawer-track-title">${t.title}</span>
           <span class="drawer-track-act">${t.act}</span>
