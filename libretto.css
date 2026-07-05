@@ -266,6 +266,11 @@
     align-items: baseline;
   }
 
+  .line-row.line-notable { color: #EF9F27; }
+  @media (prefers-color-scheme: dark) {
+    .line-row.line-notable { color: #FAC775; }
+  }
+
   /* Inline stage direction — sits between character name and first sung line */
   .inline-direction {
     display: grid;
