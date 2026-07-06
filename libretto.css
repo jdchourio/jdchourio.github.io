@@ -266,9 +266,23 @@
     align-items: baseline;
   }
 
-  .line-row.line-notable { color: #EF9F27; }
+  .line-row.line-notable,
+  .character-row.line-notable,
+  .stage-direction.line-notable { background-color: #FBF7EE; }
   @media (prefers-color-scheme: dark) {
-    .line-row.line-notable { color: #FAC775; }
+    .line-row.line-notable,
+    .character-row.line-notable,
+    .stage-direction.line-notable { background-color: #221A0C; }
+  }
+
+  /* Collapse margins → padding so the background tint is unbroken across rows */
+  .character-row.line-notable {
+    margin: 0;
+    padding: 0.9rem 0 0.15rem;
+  }
+  .stage-direction.line-notable {
+    margin: 0;
+    padding: 0.6rem 0;
   }
 
   /* Inline stage direction — sits between character name and first sung line */
