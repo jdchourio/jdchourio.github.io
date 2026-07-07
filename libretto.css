@@ -218,6 +218,15 @@
     gap: 0 var(--col-gap);
   }
 
+  /* Pre-Act-1 prelude / instrumental section: a light heading that sits above
+     the first act divider. Slightly larger and more spaced than a musical
+     number so it reads as a leading section marker. */
+  .musical-number.instrumental {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    margin: 0.5rem 0 1rem;
+  }
+
   .scene-heading {
     font-family: var(--sans);
     font-size: 18px;
