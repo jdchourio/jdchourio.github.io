@@ -1,0 +1,1474 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Juditha Triumphans · De Marchi / Kozená</title>
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T3</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Pars I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Arma, caedes, vindicta, furores (Aria, Chorus)</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Juditha Triumphans · De Marchi / Kozená</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnLA" onclick="toggleLang('la')">LA</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Pars Prior</span>
+      <span>Primera Parte</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="character-row">
+        <span><span class="character-name">Chorus</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(militum pugnantium in acie cum timpano bellico)</span>
+        <span class="es">(soldados luchando al son de un tambor)</span>
+      </div>
+      <div class="line-row"><span class="la">Arma, caedes, vindictae, furores,</span><span class="es">Que las armas, la matanza, la venganza, la furia,</span></div>
+      <div class="line-row"><span class="la">Angustiae, timores</span><span class="es">la angustia y el temor</span></div>
+      <div class="line-row"><span class="la">Precedite nos.</span><span class="es">marchen ante nosotros.</span></div>
+      <div class="line-row"><span class="la">Pugnate</span><span class="es">Rodeadnos</span></div>
+      <div class="line-row"><span class="la">O bellicae sortes,</span><span class="es">y luchad,</span></div>
+      <div class="line-row"><span class="la">Mille plagas,</span><span class="es">¡oh, suerte bélica!</span></div>
+      <div class="line-row"><span class="la">Mille mortes</span><span class="es">Infringid mil heridas</span></div>
+      <div class="line-row"><span class="la">Adducite vos.</span><span class="es">y miles de muertes.</span></div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Felix en fausta dies</span><span class="es">He aquí un día feliz y bendito,</span></div>
+      <div class="line-row"><span class="la">O Magnanimi Eroes en fortunati:</span><span class="es">¡oh nobles héroes, favorecidos por los dioses!</span></div>
+      <div class="line-row"><span class="la">Prospera vobis sors, sydera, caelum:</span><span class="es">La suerte, las estrellas y los cielos</span></div>
+      <div class="line-row"><span class="la">En post saecula tandem</span><span class="es">apoyan vuestra causa.</span></div>
+      <div class="line-row"><span class="la">Venit optata lux, lux suspirata,</span><span class="es">Mirad como, luego de tantos años,</span></div>
+      <div class="line-row"><span class="la">Qua magni in vestro Duce,</span><span class="es">ha llegado la anhelada luz con la que</span></div>
+      <div class="line-row"><span class="la">Qua Dux Magnus in vobis:</span><span class="es">seréis grandes gracias a vuestro caudillo,</span></div>
+      <div class="line-row"><span class="la">Cunctis aequa</span><span class="es">y con la que él será grande a través de vosotros.</span></div>
+      <div class="line-row"><span class="la">Erit tandem Victoria,</span><span class="es">Todos habréis de alcanzar la victoria,</span></div>
+      <div class="line-row"><span class="la">Et vestro invicto Regi</span><span class="es">y que vuestro rey invicto</span></div>
+      <div class="line-row"><span class="la">Honor, et gloria.</span><span class="es">alcance el honor y la gloria.</span></div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="la">Nil arma, nil bella,</span><span class="es">Las armas, las batallas,</span></div>
+      <div class="line-row"><span class="la">Nil fiamma furoris</span><span class="es">la ira que quema no son nada</span></div>
+      <div class="line-row"><span class="la">Si cor bellatoris</span><span class="es">si el corazón del guerrero</span></div>
+      <div class="line-row"><span class="la">Est cadens in se.</span><span class="es">ha caído dentro de sí.</span></div>
+      <div class="line-row"><span class="la">Si pugnat sperando,</span><span class="es">Si lucha con esperanza,</span></div>
+      <div class="line-row"><span class="la">Iam virtus pugnando</span><span class="es">entonces esa esperanza lo fortalecerá</span></div>
+      <div class="line-row"><span class="la">Vigescit in spe.</span><span class="es">para seguir en la batalla.</span></div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Mi Dux, Domine mi...</span><span class="es">Comandante, mi señor...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Et quid ne petis?</span><span class="es">¿Qué quieres?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Felicitatis tuae Nuncius accedo.</span><span class="es">Vengo a traeros nuevas de buena fortuna.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Quidne fausti tu refers?</span><span class="es">¿Qué auspicios nuevos traes?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Nil nisi Gloriae tuae grande incrementum,</span><span class="es">Ninguno que no se pueda añadir a vuestra gloria.</span></div>
+      <div class="line-row"><span class="la">Et vere oculis tuis dulce portentum.</span><span class="es">Un verdadero dulce portento para vuestros ojos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Dic.</span><span class="es">Habla.</span></div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Matrona inimica</span><span class="es">Una dama enemiga ha llegado hasta nosotros</span></div>
+      <div class="line-row"><span class="la">Te quaerit ad arma</span><span class="es">preguntando por vos,</span></div>
+      <div class="line-row"><span class="la">Dux magne Holofernes.</span><span class="es">gran señor Holofernes,</span></div>
+      <div class="line-row"><span class="la">Et cito deh, credas,</span><span class="es">y pronto, creedme,</span></div>
+      <div class="line-row"><span class="la">Tibi erit amica</span><span class="es">será vuestra amiga,</span></div>
+      <div class="line-row"><span class="la">Si lumina cernes.</span><span class="es">sólo debéis poner vuestros ojos en ella.</span></div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Huc accedat Matrona,</span><span class="es">Dejad que la dama se acerque,</span></div>
+      <div class="line-row"><span class="la">Et sit armorum Marti ebrea Bellona.</span><span class="es">sea ella la Bellona hebrea</span></div>
+      <div class="line-row"><span class="la">In Bethulia vilescunt</span><span class="es">para los ejércitos de Marte.</span></div>
+      <div class="line-row"><span class="la">Hostes miseri Egeni: undique luctus</span><span class="es">En Betulia nuestros enemigos</span></div>
+      <div class="line-row"><span class="la">Saevus undique clamor.</span><span class="es">son cada vez más débiles,</span></div>
+      <div class="line-row"><span class="la">Hic anhelat,</span><span class="es">están en la miseria y la necesidad:</span></div>
+      <div class="line-row"><span class="la">Hic gemit, ille plorat,</span><span class="es">todo alrededor es un solo grito cruel.</span></div>
+      <div class="line-row"><span class="la">Dolent omnes;</span><span class="es">Uno jadea, otro gime; otro llora, todos sufren.</span></div>
+      <div class="line-row"><span class="la">Nil nisi timor, nil nisi maerentium</span><span class="es">Sólo hay miedo, sólo hay dolor,</span></div>
+      <div class="line-row"><span class="la">Ignavia, desperatio, afflictio, inopia,</span><span class="es">desaliento, desesperación, aflicción,</span></div>
+      <div class="line-row"><span class="la">Et lacrimarum copia.</span><span class="es">pobreza y ríos de lágrimas.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Veni Foemina illustris,</span><span class="es">Venid, ilustre dama,</span></div>
+      <div class="line-row"><span class="la">Pulcra Bellatrix huc,</span><span class="es">hermosa guerrera, acercaos.</span></div>
+      <div class="line-row"><span class="la">Lumine, et pede</span><span class="es">Vuestra mirada, vuestro porte,</span></div>
+      <div class="line-row"><span class="la">Videntes feri,</span><span class="es">hacen que todos se postren al veros.</span></div>
+      <div class="line-row"><span class="la">Et generosa accede.</span><span class="es">¡Acercaos, noble dama!</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Quocum Patriae me ducit amore</span><span class="es">Donde sea que voy me guía el amor a mi patria</span></div>
+      <div class="line-row"><span class="la">Libertatis dulcissima spes,</span><span class="es">y la dulcísima esperanza de la libertad.</span></div>
+      <div class="line-row"><span class="la">Summo ductus a caeli fulgore</span><span class="es">Guiada por los más altos fulgores del cielo,</span></div>
+      <div class="line-row"><span class="la">Tuto pergat per classica pes.</span><span class="es">he de andar con seguridad entre estos soldados.</span></div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="abra">Abra</span></span>
+        <span class="character-name">Abra</span>
+      </div>
+      <div class="line-row"><span class="la">Ne timeas non, laetare</span><span class="es">No temáis, regocijaos, viuda casta y estimada,</span></div>
+      <div class="line-row"><span class="la">Casta Vidua dilecta</span><span class="es">seguro que recibiréis</span></div>
+      <div class="line-row"><span class="la">Certa virtutis tuae munera expecta.</span><span class="es">una recompensa por vuestra virtud.</span></div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="la">Vultus tui vago splendori</span><span class="es">Ante el deslumbrante esplendor de vuestro rostro</span></div>
+      <div class="line-row"><span class="la">Cedit ira ridet amor.</span><span class="es">se desvanece la ira y sonríe el amor.</span></div>
+      <div class="line-row"><span class="la">Ac tui numinis honori</span><span class="es">En honor de vuestro noble espíritu</span></div>
+      <div class="line-row"><span class="la">Laetus plaudit omnium clamor</span><span class="es">todos dan voces de alegría.</span></div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="line-row"><span class="la">Vide, humilis prostrata</span><span class="es">Mirad como este pueblo, a pesar de estar armado,</span></div>
+      <div class="line-row"><span class="la">In vultus tui nitore,</span><span class="es">se postra ante vos con toda humildad</span></div>
+      <div class="line-row"><span class="la">Quam estatica sit gens tanta armata.</span><span class="es">sobrecogido con la gloria de vuestro rostro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Nil morae. Ad Holofernem</span><span class="es">Por bondad, llevadme sin demora</span></div>
+      <div class="line-row"><span class="la">Me ducite benigni</span><span class="es">a Holofernes,</span></div>
+      <div class="line-row"><span class="la">Duces bellici honoris,</span><span class="es">valientes guerreros.</span></div>
+      <div class="line-row"><span class="la">Pacis en nuntia venio, et non furoris.</span><span class="es">Vengo como mensajera de paz, no de guerra.</span></div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span>, <span class="character-name">Chorus</span></span>
+        <span class="character-name">Bagoas, Coro</span>
+      </div>
+      <div class="line-row"><span class="la">O quam vaga, venusta, o quam decora,</span><span class="es">¡Oh, qué bella, qué hermosa, qué graciosa sois,</span></div>
+      <div class="line-row"><span class="la">Ospes nostrae victoriae unica, et vera.</span><span class="es">huésped única y verdadera de nuestra victoria!</span></div>
+      <div class="line-row"><span class="la">Tentoria vultu tuo ducis honora</span><span class="es">Vuestra presencia honra la tienda de nuestro líder,</span></div>
+      <div class="line-row"><span class="la">Et cuncta ab Holoferne attende, et spera.</span><span class="es">poned vuestra fe en Holofernes, tened esperanza.</span></div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Quem vides prope, aspectu</span><span class="es">El hombre que cerca veis,</span></div>
+      <div class="line-row"><span class="la">Terribili, et suavi,</span><span class="es">que luce terrible y al mismo tiempo dulce.</span></div>
+      <div class="line-row"><span class="la">Quem quaeris, ipse hic est: amore, et fide,</span><span class="es">Con amor y fidelidad poned vuestra confianza</span></div>
+      <div class="line-row"><span class="la">In ipso pulcra Sion spera, et confide.</span><span class="es">en él, bella judía, tened esperanza.</span></div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="la">Quamvis ferro, et ense gravis</span><span class="es">Aunque su espada es hierro pesado,</span></div>
+      <div class="line-row"><span class="la">Dulcis tamen et suavis</span><span class="es">él será para vos un suave y amable señor,</span></div>
+      <div class="line-row"><span class="la">Pro te Dux erit, o bella.</span><span class="es">¡oh bella dama!</span></div>
+      <div class="line-row"><span class="la">Tibi tua tu sors et fatum,</span><span class="es">Vuestra suerte y destino están en vuestras manos.</span></div>
+      <div class="line-row"><span class="la">Nec per te fremit iratum,</span><span class="es">Él no se estremecerá de cólera al veros,</span></div>
+      <div class="line-row"><span class="la">Tua pupilla fit tua stella.</span><span class="es">vuestros ojos serán la estrella que ha de guiaros.</span></div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Quid cerno! Oculi mei</span><span class="es">¡Qué veo ante mí! Deslumbrados ojos míos,</span></div>
+      <div class="line-row"><span class="la">Stupidi quid videtis!</span><span class="es">¿qué es lo que estáis viendo?</span></div>
+      <div class="line-row"><span class="la">Solis, an caeli splendor!</span><span class="es">¡Ciertamente es el sol, el resplandor del cielo!</span></div>
+      <div class="line-row"><span class="la">Ah summae prolis</span><span class="es">¡Ah, el más exaltado de los seres,</span></div>
+      <div class="line-row"><span class="la">Vincunt lumina sua lumina solis.</span><span class="es">de ojos más brillantes que los rayos del sol!</span></div>
+      <div class="line-row"><span class="la">Sistite, viatrici</span><span class="es">¡Deteneos, viajeros, preparad tributos,</span></div>
+      <div class="line-row"><span class="la">Preparate Trophea, spargite flores,</span><span class="es">esparcid flores a sus pies, y que los tiernos</span></div>
+      <div class="line-row"><span class="la">Et obvient Dive suae teneri Amores.</span><span class="es">Amores salgan al encuentro de su diosa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Summe Rex, strenue miles,</span><span class="es">Rey supremo, valiente soldado,</span></div>
+      <div class="line-row"><span class="la">Nabuc Regis cor, cuius in manu</span><span class="es">corazón del rey Nabucodonosor,</span></div>
+      <div class="line-row"><span class="la">Stat suprema potestas, nutui cuius</span><span class="es">en cuya mano reside la suprema potestad.</span></div>
+      <div class="line-row"><span class="la">Fortuna, et sors obedit,</span><span class="es">La fortuna y la suerte os obedecen</span></div>
+      <div class="line-row"><span class="la">Et cuncta iura sua gloria concedit.</span><span class="es">y vuestra gloria asegura la justicia.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">O quam pulcrior in pulcro</span><span class="es">¡Qué adorable es la belleza</span></div>
+      <div class="line-row"><span class="la">Virtus est ore sonans! Quidnam petis,</span><span class="es">cuando la virtud allí resuena!</span></div>
+      <div class="line-row"><span class="la">Suavissima supplex?</span><span class="es">¿Qué pedís vos, encantadora suplicante?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Non mihi, Patriae meae</span><span class="es">No para mí, sino para mi patria,</span></div>
+      <div class="line-row"><span class="la">Spem salutis exoro,</span><span class="es">ruego por la esperanza de la salvación,</span></div>
+      <div class="line-row"><span class="la">Et sic Bethuliae a te pacem imploro.</span><span class="es">y por tanto os imploro la paz para Betulia.</span></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="la">Quanto magis generosa,</span><span class="es">Cuanto más generoso,</span></div>
+      <div class="line-row"><span class="la">Plus victori gloriosa</span><span class="es">más glorioso es el vencedor</span></div>
+      <div class="line-row"><span class="la">Venia victo magis cara.</span><span class="es">y más querido el perdón por los vencidos.</span></div>
+      <div class="line-row"><span class="la">O quam pulcra tua potentia</span><span class="es">¡Qué hermoso sería vuestro poder</span></div>
+      <div class="line-row"><span class="la">Illustrata tua clementia!</span><span class="es">si fuera iluminado por vuestra clemencia!</span></div>
+      <div class="line-row"><span class="la">Parce Dux, ac tolle amara.</span><span class="es">Perdonad, señor, y acabad con nuestra amargura.</span></div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Magna, o foemina petis,</span><span class="es">Pedís mucho, mujer,</span></div>
+      <div class="line-row"><span class="la">Quae maxima, si dentur!</span><span class="es">¡y os concedería más, si vos lo pidieseis!</span></div>
+      <div class="line-row"><span class="la">Majora sed a me tibi debentur.</span><span class="es">Yo soy quien está en deuda con vos.</span></div>
+      <div class="line-row"><span class="la">O timpana silete,</span><span class="es">¡Oh, tambores, callad! ¡Batallones, retroceded!</span></div>
+      <div class="line-row"><span class="la">Recedite o Phalanges,</span><span class="es">¡Abrid paso para mi amor,</span></div>
+      <div class="line-row"><span class="la">Cedite amori meo, cedite invictae</span><span class="es">abrid paso a esta mujer invicta!</span></div>
+      <div class="line-row"><span class="la">Faces, tela, sagittae,</span><span class="es">Que las antorchas, lanzas y flechas,</span></div>
+      <div class="line-row"><span class="la">Et vos bellica in campo impia tormenta</span><span class="es">y los arduos tormentos del campo de guerra</span></div>
+      <div class="line-row"><span class="la">Estote in gaudio meo nova contenta.</span><span class="es">encuentren dicha en mi alegría.</span></div>
+      <div class="line-row"><span class="la">Hic sede amica mea.</span><span class="es">Tomad asiento aquí, amiga mía.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Non tantus honor</span><span class="es">No deberíais dar</span></div>
+      <div class="line-row"><span class="la">Tuae famulae donetur.</span><span class="es">tanto honor a vuestra sierva.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Tu me honoras.</span><span class="es">Sois vos quien me honra.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Te colo.</span><span class="es">Os reverencio.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Sedeas hic.</span><span class="es">Tomad asiento aquí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Non debeo, non.</span><span class="es">No debo, no.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Sic jubeo, et volo.</span><span class="es">Es mi orden y deseo.</span></div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">19</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="la">Sede, o cara,</span><span class="es">Tomad asiento ¡oh, querida!</span></div>
+      <div class="line-row"><span class="la">Dilecta speciosa</span><span class="es">adorada, preciosa.</span></div>
+      <div class="line-row"><span class="la">Mea vivida rosa,</span><span class="es">Mi viva rosa,</span></div>
+      <div class="line-row"><span class="la">Mea fulgida fax.</span><span class="es">mi brillante flama.</span></div>
+      <div class="line-row"><span class="la">Tu Marti triumphanti,</span><span class="es">Para Marte triunfante,</span></div>
+      <div class="line-row"><span class="la">Tu bellico amanti</span><span class="es">vuestro guerrero amante,</span></div>
+      <div class="line-row"><span class="la">Pulcherrima Pax.</span><span class="es">sois la más bella paz.</span></div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Tu Judex es, tu Dominus, tu potens</span><span class="es">Sois juez, señor y jefe de tan grandioso ejército.</span></div>
+      <div class="line-row"><span class="la">In exercitu tanto, et tuae dextrae victrici</span><span class="es">Las estrellas están alineadas para bendecir</span></div>
+      <div class="line-row"><span class="la">Semper aspectu sint astra felici.</span><span class="es">por siempre la victoria de vuestra diestra.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Felix per te,</span><span class="es">Gracias a vos he encontrado la felicidad,</span></div>
+      <div class="line-row"><span class="la">Magisque felix ero,</span><span class="es">y seré aún más feliz si mientras</span></div>
+      <div class="line-row"><span class="la">Si dum sepulta manet</span><span class="es">la luz de Apolo permanece sepultada</span></div>
+      <div class="line-row"><span class="la">Lux Apollinis unda,</span><span class="es">bajo las olas</span></div>
+      <div class="line-row"><span class="la">Me te dignum</span><span class="es">me hacéis digno de ti</span></div>
+      <div class="line-row"><span class="la">In convivio tu reddas,</span><span class="es">y festejáis conmigo, como invitada.</span></div>
+      <div class="line-row"><span class="la">Ut melius pacis nostrae amatae, et carae,</span><span class="es">Así, mas tarde, oportunamente podamos celebrar</span></div>
+      <div class="line-row"><span class="la">Solemnia tecum possim celebrare.</span><span class="es">la consagración de nuestra cara y amada paz.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Inter convivia, et dapes</span><span class="es">Mis labios se paralizan</span></div>
+      <div class="line-row"><span class="la">Torpescent labia mea</span><span class="es">ante festines y banquetes,</span></div>
+      <div class="line-row"><span class="la">In jeiunio assueta:</span><span class="es">pues acostumbrados están a ayunar.</span></div>
+      <div class="line-row"><span class="la">Tristis, nec unquam laeta</span><span class="es">Por la tristeza no encuentro deleite</span></div>
+      <div class="line-row"><span class="la">In eduliis astricta</span><span class="es">en la comida,</span></div>
+      <div class="line-row"><span class="la">Nescia est delitiae tantae anima afflicta.</span><span class="es">mi alma afligida no conoce de placeres.</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">21</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="line-row"><span class="la">Agitata infido flatu</span><span class="es">Sacudida por el viento caprichoso,</span></div>
+      <div class="line-row"><span class="la">Diu volatu</span><span class="es">la golondrina vagabunda</span></div>
+      <div class="line-row"><span class="la">Vagabundo</span><span class="es">sufre y solloza</span></div>
+      <div class="line-row"><span class="la">Maesta hirundo</span><span class="es">en su largo vuelo</span></div>
+      <div class="line-row"><span class="la">It plorando</span><span class="es">por las cosas buenas</span></div>
+      <div class="line-row"><span class="la">Boni ignara.</span><span class="es">que nunca conoció.</span></div>
+      <div class="line-row"><span class="la">Sed impulsu aurae serenae</span><span class="es">Mas llevada por una brisa serena</span></div>
+      <div class="line-row"><span class="la">Tantae cito oblita poenae</span><span class="es">pronto olvida sus penas.</span></div>
+      <div class="line-row"><span class="la">In dilecta</span><span class="es">En la comodidad</span></div>
+      <div class="line-row"><span class="la">Dulcia tecta</span><span class="es">del suave nido</span></div>
+      <div class="line-row"><span class="la">Gaudii ridet haud avara.</span><span class="es">ríe de alegría, sin desear nada más.</span></div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">In tentorio supernae</span><span class="es">Que en la tienda principal</span></div>
+      <div class="line-row"><span class="la">Sint in ordine coenae.</span><span class="es">se sirva la cena.</span></div>
+      <div class="line-row"><span class="la">Quid, quid natat in Ponto,</span><span class="es">Que cualquier cosa que nade en el Ponto,</span></div>
+      <div class="line-row"><span class="la">Quid, quid in Caelo,</span><span class="es">que cualquier cosa que vuele en los cielos</span></div>
+      <div class="line-row"><span class="la">et terra nutrit</span><span class="es">y que la tierra nutra</span></div>
+      <div class="line-row"><span class="la">Ne sit legere grave.</span><span class="es">no sea difícil de obtener.</span></div>
+      <div class="line-row"><span class="la">Hinc nostrae Reginae,</span><span class="es">Que a nuestra reina,</span></div>
+      <div class="line-row"><span class="la">Cui Vagae, tu deservies,</span><span class="es">a quien tú, Bagoas, debes servir,</span></div>
+      <div class="line-row"><span class="la">Sit cretensis Lyei donum suave.</span><span class="es">le sea dada la dulce dádiva del cretense Baco.</span></div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">O servi volate,</span><span class="es">Siervos, apresuraos</span></div>
+      <div class="line-row"><span class="la">Et Domino meo</span><span class="es">y preparad la mesa</span></div>
+      <div class="line-row"><span class="la">Vos mensas parate</span><span class="es">para mi señor,</span></div>
+      <div class="line-row"><span class="la">Si proxima nox.</span><span class="es">pues se aproxima la noche.</span></div>
+      <div class="line-row"><span class="la">Invicto Holoferni</span><span class="es">Cantemos en coro</span></div>
+      <div class="line-row"><span class="la">Cantemus alterni,</span><span class="es">al invicto Holofernes,</span></div>
+      <div class="line-row"><span class="la">Honoris, amoris</span><span class="es">que nuestras voces se aúnen</span></div>
+      <div class="line-row"><span class="la">Sit consona nox [vox].</span><span class="es">para el honor y el amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Chorus</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="la">Honoris, amoris,</span><span class="es">Que nuestras voces se aúnen</span></div>
+      <div class="line-row"><span class="la">Sit consona nox [vox].</span><span class="es">para el honor y el amor.</span></div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">24</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Tu quoque hebraica ancilla</span><span class="es">Vos también, sierva hebrea,</span></div>
+      <div class="line-row"><span class="la">In nostro gaudio tanto</span><span class="es">compartid nuestro festín.</span></div>
+      <div class="line-row"><span class="la">Eris in corde tuo laeta, et tranquilla.</span><span class="es">Estad feliz y tranquila de corazón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="abra">Abra</span></span>
+        <span class="character-name">Abra</span>
+      </div>
+      <div class="line-row"><span class="la">Quam audacter discurrit</span><span class="es">¡Cómo se mantiene firme el valeroso siervo</span></div>
+      <div class="line-row"><span class="la">Non minus servus suo Domino nequam.</span><span class="es">sin humillarse bajo su señor!</span></div>
+      <div class="line-row"><span class="la">Properemus Juditha: ubique semper</span><span class="es">Démonos prisa, Judith,</span></div>
+      <div class="line-row"><span class="la">Tecum sperans in Caelis</span><span class="es">y tengamos esperanza pues el cielo</span></div>
+      <div class="line-row"><span class="la">Ero Dominae meae socia fidelis.</span><span class="es">siempre nos acompañará como un amigo fiel.</span></div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">25</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Veni, veni, me sequere fida</span><span class="es">¡Ven, ven, sígueme!</span></div>
+      <div class="line-row"><span class="la">Abra amata,</span><span class="es">Abra querida y fiel,</span></div>
+      <div class="line-row"><span class="la">Sponso orbata.</span><span class="es">privada de tu esposo.</span></div>
+      <div class="line-row"><span class="la">Turtur gemo ac spiro in te.</span><span class="es">Como tú, también yo me lamento como la tórtola.</span></div>
+      <div class="line-row"><span class="la">Dirae sortis tu socia confida</span><span class="es">En este terrible destino,</span></div>
+      <div class="line-row"><span class="la">Debellata</span><span class="es">eres mi fiel compañera.</span></div>
+      <div class="line-row"><span class="la">Sorte ingrata,</span><span class="es">Cuando cumplamos con nuestro destino ingrato,</span></div>
+      <div class="line-row"><span class="la">Sociam laetae habebis me.</span><span class="es">me tendrás como compañera en la alegría.</span></div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">26</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="abra">Abra</span></span>
+        <span class="character-name">Abra</span>
+      </div>
+      <div class="line-row"><span class="la">Venio Juditha, venio: animo fave,</span><span class="es">Con vos estoy, Judith, tened valor.</span></div>
+      <div class="line-row"><span class="la">Amori crede tuo nil erit grave.</span><span class="es">Creedme, vuestro amor no será herido.</span></div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">27</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="line-row"><span class="la">Fulgeat sol frontis decorae,</span><span class="es">Que vuestro rostro brille en la justicia como el sol</span></div>
+      <div class="line-row"><span class="la">Et afflictae abeat Aurorae</span><span class="es">y que el triste rocío de la aurora</span></div>
+      <div class="line-row"><span class="la">Rosa vaga tua pupilla.</span><span class="es">desaparezca de vuestros ojos.</span></div>
+      <div class="line-row"><span class="la">Ama, langue, finge ardere</span><span class="es">Amadlo, languideced por él, fingid cariño,</span></div>
+      <div class="line-row"><span class="la">Nostrae sorti si favore</span><span class="es">una sola chispa procedente de vos</span></div>
+      <div class="line-row"><span class="la">Potest una tua favilla.</span><span class="es">hará que avance nuestro destino.</span></div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">28</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="line-row"><span class="la">In Urbe interim pia</span><span class="es">Mientras tanto, en nuestra ciudad sagrada,</span></div>
+      <div class="line-row"><span class="la">Incertas audi voces, aura levis</span><span class="es">oigo voces confusas,</span></div>
+      <div class="line-row"><span class="la">Fert murmur voti</span><span class="es">una brisa leve trae el rumor de la oración,</span></div>
+      <div class="line-row"><span class="la">Et gloriae, credo, tuae.</span><span class="es">y, según creo, de vuestra gloria.</span></div>
+      <div class="line-row"><span class="la">Gemunt et orant una</span><span class="es">Con una sola voz las doncellas de Judá</span></div>
+      <div class="line-row"><span class="la">Virgines Juda, incertae sortis suae.</span><span class="es">gimen y oran, sin saber lo que sucederá.</span></div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">29</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="character-row">
+        <span><span class="character-name">Chorus</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Virginum psalentium in Bethulia)</span>
+        <span class="es">(Las doncellas en Betulia cantan un salmo)</span>
+      </div>
+      <div class="line-row"><span class="la">Mundi Rector de Caelo micanti</span><span class="es">Jefe del mundo y del resplandeciente cielo,</span></div>
+      <div class="line-row"><span class="la">Audi preces, et suscipe vota</span><span class="es">recibe nuestras súplicas y oraciones</span></div>
+      <div class="line-row"><span class="la">Quae de corde pro te dimicanti</span><span class="es">ofrecidas con devoción</span></div>
+      <div class="line-row"><span class="la">Sunt pietatis in sinu devota.</span><span class="es">a favor de un corazón fiel a tu causa.</span></div>
+      <div class="line-row"><span class="la">In Juditha tuae legi dicata</span><span class="es">Que en Judit, consagrada a tu ley,</span></div>
+      <div class="line-row"><span class="la">Flammas dulcis tui amoris accende</span><span class="es">se encienda la dulce flama de tu amor</span></div>
+      <div class="line-row"><span class="la">Feritatis sic hostis domata</span><span class="es">para que la barbarie del enemigo pueda ser domada</span></div>
+      <div class="line-row"><span class="la">In Bethuliae spem pacis intende.</span><span class="es">y la esperanza de la paz llegue a Betulia.</span></div>
+      <div class="line-row"><span class="la">Redi, redi iam Victrix pugnando</span><span class="es">Regresa victoriosa de la batalla,</span></div>
+      <div class="line-row"><span class="la">In cilicio in prece revive</span><span class="es">Toma fuerza en la penitencia y la oración</span></div>
+      <div class="line-row"><span class="la">De Holoferne sic hodie triumphando</span><span class="es">y así, triunfando hoy sobre Holofernes,</span></div>
+      <div class="line-row"><span class="la">Pia Juditha per saecula vive.</span><span class="es">vivirás eternamente, piadosa Judit.</span></div>
+      <div class="stage-direction">
+        <span>(Finis prioris partis)</span>
+        <span class="es">(Fin de la primera parte)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Pars Altera</span>
+      <span>Segunda Parte</span>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">30</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ozias">Ozias</span></span>
+        <span class="character-name">Ozías</span>
+      </div>
+      <div class="line-row"><span class="la">Summi Regis in mente</span><span class="es">Conozco los más altos misterios del sumo rey,</span></div>
+      <div class="line-row"><span class="la">Mihi sunt alta arcana: hostis Tyranni,</span><span class="es">el enemigo tirano,</span></div>
+      <div class="line-row"><span class="la">Bellatoris iniqui</span><span class="es">el guerrero inicuo,</span></div>
+      <div class="line-row"><span class="la">Prope, caelo favente,</span><span class="es">el que por la gracia de los cielos</span></div>
+      <div class="line-row"><span class="la">Fata extrema prevideo.</span><span class="es">pronto encontrará su sino.</span></div>
+      <div class="line-row"><span class="la">Deus Abraam</span><span class="es">Dios de Abraham,</span></div>
+      <div class="line-row"><span class="la">Exercitum Deus es, potens in bello,</span><span class="es">Dios de los ejércitos, poderoso en la batalla;</span></div>
+      <div class="line-row"><span class="la">Tuo nomini inimicam</span><span class="es">por tu nombre y tu diestra virtuosa</span></div>
+      <div class="line-row"><span class="la">Virtute dexterae tuae dissipa Gentem.</span><span class="es">disipa al enemigo.</span></div>
+      <div class="line-row"><span class="la">Te supplices precamur:</span><span class="es">Humildemente te rogamos</span></div>
+      <div class="line-row"><span class="la">Tibi gloria</span><span class="es">que la futura victoria de tu devoto pueblo</span></div>
+      <div class="line-row"><span class="la">Sit diligentium te nova victoria.</span><span class="es">sea para mayor gloria tuya.</span></div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">31</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="line-row"><span class="la">O Sydera, o stellae,</span><span class="es">¡Oh, astros! ¡Oh, estrellas!</span></div>
+      <div class="line-row"><span class="la">Cum luna cadenti</span><span class="es">Sed en el menguante de la luna</span></div>
+      <div class="line-row"><span class="la">Estote facellae</span><span class="es">antorchas fúnebres</span></div>
+      <div class="line-row"><span class="la">In hostem ferales.</span><span class="es">para nuestro enemigo.</span></div>
+      <div class="line-row"><span class="la">Cum nocte felici</span><span class="es">Que en esta noche de gozo</span></div>
+      <div class="line-row"><span class="la">Ruant impii inimici,</span><span class="es">los enemigos impíos sean destruidos</span></div>
+      <div class="line-row"><span class="la">Et sole surgenti</span><span class="es">y que al sol naciente</span></div>
+      <div class="line-row"><span class="la">Sint luces mortales.</span><span class="es">haya luces funerarias.</span></div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">32</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="line-row"><span class="la">Jam saevientis in hostem</span><span class="es">Ya las oraciones de nuestra casta Judith,</span></div>
+      <div class="line-row"><span class="la">Castae nostrae Judithae</span><span class="es">que lucha en feroz combate contra el enemigo,</span></div>
+      <div class="line-row"><span class="la">Gratae sunt Caelo preces, triumphando</span><span class="es">han sido aceptadas por los cielos.</span></div>
+      <div class="line-row"><span class="la">Ad nos cito redibit,</span><span class="es">Pronto volverá a nosotros triunfante y,</span></div>
+      <div class="line-row"><span class="la">Et Duce ablato ria gens peribit.</span><span class="es">privada de su amo, la raza pecadora perecerá.</span></div>
+    </div>
+
+    <div class="track-col" id="tc31">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">33</span>
+      </div>
+    </div>
+    <div class="text-col" id="t31">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Nox in umbra dum surgit,</span><span class="es">Aparecen las sombras de la noche</span></div>
+      <div class="line-row"><span class="la">Radiante in mare sol lumino cadit;</span><span class="es">y el sol radiante hunde sus rayos en el mar,</span></div>
+      <div class="line-row"><span class="la">Sed tu pulcra Juditha</span><span class="es">mas vos, hermosa Judith,</span></div>
+      <div class="line-row"><span class="la">Luminose mi sol in caeco orrore</span><span class="es">sol brillante entre los horrores de la ciega noche,</span></div>
+      <div class="line-row"><span class="la">Resurgis coram me vivido ardore.</span><span class="es">surgiréis ante mí con el más fuerte ardor.</span></div>
+    </div>
+
+    <div class="track-col" id="tc32">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">34</span>
+      </div>
+    </div>
+    <div class="text-col" id="t32">
+      <div class="line-row"><span class="la">Nox obscura tenebrosa</span><span class="es">Por vos la noche oscura y sombría</span></div>
+      <div class="line-row"><span class="la">Per te ridet luminosa</span><span class="es">resplandece sonriente</span></div>
+      <div class="line-row"><span class="la">Miro fulgida splendore.</span><span class="es">con un milagroso y brillante fulgor.</span></div>
+      <div class="line-row"><span class="la">Neque lucis novae Aurora</span><span class="es">Por bella y ufana</span></div>
+      <div class="line-row"><span class="la">Tam superba tam decora</span><span class="es">que sea la luz de la naciente aurora</span></div>
+      <div class="line-row"><span class="la">Victa tuo surget splendore.</span><span class="es">no podrá eclipsar vuestro esplendor.</span></div>
+    </div>
+
+    <div class="track-col" id="tc33">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">35</span>
+      </div>
+    </div>
+    <div class="text-col" id="t33">
+      <div class="line-row"><span class="la">Belligerae meae sorti,</span><span class="es">¡Oh, querida mía, ruego perdonéis</span></div>
+      <div class="line-row"><span class="la">Quaeso, o cara condona:</span><span class="es">mis modales de guerrero!</span></div>
+      <div class="line-row"><span class="la">Haec numine conviva</span><span class="es">Estos platos no son dignos</span></div>
+      <div class="line-row"><span class="la">Non sunt fercula digna.</span><span class="es">para quien es compañera de los dioses.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Magnitudinis tuae bene sunt signa.</span><span class="es">Son muestra de vuestra grandeza.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Magnum meum cor tu reddis,</span><span class="es">Haréis que mi corazón se hinche</span></div>
+      <div class="line-row"><span class="la">Si amantem vultus tui iure me credis.</span><span class="es">si me creéis con derecho de amar vuestro rostro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Nil nisi sui Factoris</span><span class="es">Ninguna imagen, salvo la del Creador,</span></div>
+      <div class="line-row"><span class="la">In orbe a creatura</span><span class="es">deberá ser alabada</span></div>
+      <div class="line-row"><span class="la">Est conservanda Imago.</span><span class="es">por criatura alguna sobre la tierra.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Ad tantum cogis me vultu tuo vago.</span><span class="es">Es vuestra presencia la que me torna atrevido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Quid, quid splendet in ore</span><span class="es">Cualquier belleza que resplandece en un rostro</span></div>
+      <div class="line-row"><span class="la">Est pulvis, umbra, nihil.</span><span class="es">es polvo, es sombra, es nada.</span></div>
+    </div>
+
+    <div class="track-col" id="tc34">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">36</span>
+      </div>
+    </div>
+    <div class="text-col" id="t34">
+      <div class="line-row"><span class="la">Transit aetas,</span><span class="es">Transcurren las edades,</span></div>
+      <div class="line-row"><span class="la">Volant anni,</span><span class="es">vuelan los años;</span></div>
+      <div class="line-row"><span class="la">Nostri damni</span><span class="es">somos la causa</span></div>
+      <div class="line-row"><span class="la">Causa sumus.</span><span class="es">de nuestra propia desgracia.</span></div>
+      <div class="line-row"><span class="la">Vivit anima immortalis</span><span class="es">El alma inmortal pervive</span></div>
+      <div class="line-row"><span class="la">Si vitalis</span><span class="es">mientras el fogoso amor vital</span></div>
+      <div class="line-row"><span class="la">Amor, ignis, cuncta fumus.</span><span class="es">se consume como humo.</span></div>
+    </div>
+
+    <div class="track-col" id="tc35">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">37</span>
+      </div>
+    </div>
+    <div class="text-col" id="t35">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Haec in crastinum serva: Ah, nimis vere</span><span class="es">¡Dejad eso para luego!</span></div>
+      <div class="line-row"><span class="la">Esse ignem sentio amorem,</span><span class="es">Bien sé que el amor es verdaderamente fuego,</span></div>
+      <div class="line-row"><span class="la">Si nimis sentio in me viscera ardere.</span><span class="es">pues lo siento arder dentro de mí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Tanti caloris aestum</span><span class="es">Luchad para calmar ese ardor.</span></div>
+      <div class="line-row"><span class="la">Tempera strenue Dux, flammas evita...</span><span class="es">¡Señor, huid de las flamas!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Uror...</span><span class="es">Ardo en amores...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Longe ibo...</span><span class="es">Me debo alejar...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">No, cara Juditha.</span><span class="es">No, querida Judith.</span></div>
+    </div>
+
+    <div class="track-col" id="tc36">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">38</span>
+      </div>
+    </div>
+    <div class="text-col" id="t36">
+      <div class="line-row"><span class="la">Noli o cara te adorantis</span><span class="es">¡Oh amada, no rechacéis</span></div>
+      <div class="line-row"><span class="la">Voto Ducis non favere,</span><span class="es">las súplicas de un caudillo que os adora!</span></div>
+      <div class="line-row"><span class="la">Et suspiria animae amantis</span><span class="es">O por lo menos no temáis</span></div>
+      <div class="line-row"><span class="la">Saltem disce non horrere.</span><span class="es">ante los suspiros de un alma amante.</span></div>
+    </div>
+
+    <div class="track-col" id="tc37">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">39</span>
+      </div>
+    </div>
+    <div class="text-col" id="t37">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Tibi dona salutis</span><span class="es">Ruego al Señor del cielo</span></div>
+      <div class="line-row"><span class="la">Precor e Caelo Dux.</span><span class="es">que os dé la salvación, comandante.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Prosit: bibendo</span><span class="es">¡Brindemos!</span></div>
+      <div class="line-row"><span class="la">A te salutem spero,</span><span class="es">Bebiendo espero la salvación en vos;</span></div>
+      <div class="line-row"><span class="la">Et si tu amabis me,</span><span class="es">y si me llegáis a amar,</span></div>
+      <div class="line-row"><span class="la">Tua salus ero.</span><span class="es">yo seré vuestra salvación</span></div>
+    </div>
+
+    <div class="track-col" id="tc38">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">40</span>
+      </div>
+    </div>
+    <div class="text-col" id="t38">
+      <div class="character-row">
+        <span><span class="character-name">Chorus</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="line-row"><span class="la">Plena nectare non mero</span><span class="es">No con vino puro sino con néctar</span></div>
+      <div class="line-row"><span class="la">Aurea pocula almi amores</span><span class="es">están las copas de oro llenas.</span></div>
+      <div class="line-row"><span class="la">Myrto et rosis coronate.</span><span class="es">Amables amorcillos, coronadlas de mirto y rosas,</span></div>
+      <div class="line-row"><span class="la">Et in mutuo gaudio vero</span><span class="es">y que con el deleite de vuestra dulce flama</span></div>
+      <div class="line-row"><span class="la">Horum numinum ardores</span><span class="es">sea alimentado el ardor mutuo</span></div>
+      <div class="line-row"><span class="la">Dulci flamma prosperate.</span><span class="es">de estos seres divinos.</span></div>
+    </div>
+
+    <div class="track-col" id="tc39">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">41</span>
+      </div>
+    </div>
+    <div class="text-col" id="t39">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="holofernes">Holofernes</span></span>
+        <span class="character-name">Holofernes</span>
+      </div>
+      <div class="line-row"><span class="la">Tormenta mentis tuae fugiant a corde,</span><span class="es">Que los tormentos de vuestro corazón se disipen.</span></div>
+      <div class="line-row"><span class="la">Et calicem sumendo</span><span class="es">Levanto mi cáliz a la gloria de Judith,</span></div>
+      <div class="line-row"><span class="la">Vivat gloria Judithae, et belli face</span><span class="es">y una vez las antorchas de guerra estén apagadas,</span></div>
+      <div class="line-row"><span class="la">Extincta, amor per te vivat in pace.</span><span class="es">mi amor por vos será en paz.</span></div>
+    </div>
+
+    <div class="track-col" id="tc40">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">42</span>
+      </div>
+    </div>
+    <div class="text-col" id="t40">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Vivat in pace, et pax regnet sincera,</span><span class="es">Que sea en paz, y que la paz reine por siempre,</span></div>
+      <div class="line-row"><span class="la">Et in Bethulia fax surgat amoris.</span><span class="es">y que en Betulia la antorcha del amor se encienda.</span></div>
+      <div class="line-row"><span class="la">In pace semper stat laetitia vera,</span><span class="es">La verdadera felicidad se encuentra en la paz,</span></div>
+      <div class="line-row"><span class="la">Nec amplius bella sint causa doloris.</span><span class="es">que la guerra no sea nunca la causa de los pesares.</span></div>
+      <div class="line-row"><span class="la">In pace anima mea tu cuncta spera.</span><span class="es">Mi alma espera de vos la paz,</span></div>
+      <div class="line-row"><span class="la">Si pax solatium est nostri moeroris.</span><span class="es">pues es la paz la que alivia nuestros sufrimientos.</span></div>
+      <div class="line-row"><span class="la">In pace bone Deus cuncta tu facis,</span><span class="es">Dios de bondad, que las obras se realicen en paz,</span></div>
+      <div class="line-row"><span class="la">Et cara tibi sunt munera pacis.</span><span class="es">y los frutos de la paz sean queridos por Vos.</span></div>
+    </div>
+
+    <div class="track-col" id="tc41">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">43</span>
+      </div>
+    </div>
+    <div class="text-col" id="t41">
+      <div class="line-row"><span class="la">Sic in Pace inter hostes</span><span class="es">Así, habiendo paz entre los enemigos,</span></div>
+      <div class="line-row"><span class="la">Sit mea Patria inofensa.</span><span class="es">mi país permanecerá protegido.</span></div>
+      <div class="line-row"><span class="la">Sed quid video! Holofernes</span><span class="es">Pero, ¿qué es esto que veo?</span></div>
+      <div class="line-row"><span class="la">Holofernes Accensus mero suo dormit in mensa!</span><span class="es">¡Holofernes, ebrio, yace dormido en la mesa!</span></div>
+      <div class="line-row"><span class="la">Consurgam. Vestro Duci</span><span class="es">¡Pongámonos de pie!</span></div>
+      <div class="line-row"><span class="la">Huc accurrite, o servi: huc Abra veni,</span><span class="es">¡Sirvientes, venid para ayudar a vuestro amo!</span></div>
+      <div class="line-row"><span class="la">Abra, come here, Hic in tentorio stantes,</span><span class="es">¡Abra, ven, aguardaremos en la tienda!</span></div>
+      <div class="line-row"><span class="la">Dum dormit inimicus</span><span class="es">Mientras el enemigo duerme, guardemos vigilia</span></div>
+      <div class="line-row"><span class="la">Precemur vere Deum nos vigilantes.</span><span class="es">y ofreceremos oraciones oportunas a Dios.</span></div>
+    </div>
+
+    <div class="track-col" id="tc42">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">44</span>
+      </div>
+    </div>
+    <div class="text-col" id="t42">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Umbrae carae, aurae adoratae</span><span class="es">Caras sombras, brisas adoradas,</span></div>
+      <div class="line-row"><span class="la">Deh gratae</span><span class="es">¡oh, cuán gratas sois,</span></div>
+      <div class="line-row"><span class="la">Spirate;</span><span class="es">soplad!</span></div>
+      <div class="line-row"><span class="la">Si Dominus dormit</span><span class="es">Si el señor duerme,</span></div>
+      <div class="line-row"><span class="la">Stet tacita gens.</span><span class="es">que la gente se acalle.</span></div>
+      <div class="line-row"><span class="la">A cura tam gravi</span><span class="es">Sus cuidados son tan delicados,</span></div>
+      <div class="line-row"><span class="la">in somno suavi</span><span class="es">que un sueño suave</span></div>
+      <div class="line-row"><span class="la">Sit placida mens.</span><span class="es">alivian su mente.</span></div>
+    </div>
+
+    <div class="track-col" id="tc43">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">45</span>
+      </div>
+    </div>
+    <div class="text-col" id="t43">
+      <div class="line-row"><span class="la">Quae fortunata es tu vaga Matrona,</span><span class="es">Qué afortunada sois, bella dama,</span></div>
+      <div class="line-row"><span class="la">Quae de tam strenuo Duce triumphasti,</span><span class="es">habéis triunfado sobre tan poderoso amo</span></div>
+      <div class="line-row"><span class="la">Et hostium domatorem tu domasti.</span><span class="es">y conquistado al conquistador enemigo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Faxit de Caelo Rex,</span><span class="es">Esto es obra del Rey del Cielo,</span></div>
+      <div class="line-row"><span class="la">Reges qui regit,</span><span class="es">Rey de Reyes.</span></div>
+      <div class="line-row"><span class="la">Et cordi mei devota</span><span class="es">Dios, en su misericordia, has escuchado</span></div>
+      <div class="line-row"><span class="la">Exaudiat pietas Dei suspiria et vota.</span><span class="es">los suspiros y ruegos de mi piadoso corazón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Bene in thalamo quiescat,</span><span class="es">Mientras él descansa en su aposento,</span></div>
+      <div class="line-row"><span class="la">Mensas tollo,</span><span class="es">limpiaré las mesas,</span></div>
+      <div class="line-row"><span class="la">Et hic pulcra Juditha</span><span class="es">y aquí, bella Judith,</span></div>
+      <div class="line-row"><span class="la">Potes cum Duce tuo sola laetari,</span><span class="es">podréis disfrutar a solas con vuestro jefe</span></div>
+      <div class="line-row"><span class="la">Et poenas cordis tui tu consolari,</span><span class="es">y calmar las penas de vuestro corazón.</span></div>
+      <div class="line-row"><span class="la">Sed huc ancilla venit,</span><span class="es">Por aquí viene vuestra sierva,</span></div>
+      <div class="line-row"><span class="la">Jam festinans discedo,</span><span class="es">os dejaré prontamente</span></div>
+      <div class="line-row"><span class="la">Et sic amori tuo locum concedo.</span><span class="es">y así tendréis lugar para vuestro amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Bene venisti, o fida,</span><span class="es">Sois más que bienvenida ¡oh, sierva fiel!</span></div>
+      <div class="line-row"><span class="la">En tempus nostrae gloriae,</span><span class="es">Este es nuestro momento de gloria,</span></div>
+      <div class="line-row"><span class="la">Et suspirata tandem hora victoriae.</span><span class="es">la tan largamente anhelada hora de la victoria.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="abra">Abra</span></span>
+        <span class="character-name">Abra</span>
+      </div>
+      <div class="line-row"><span class="la">Cuncta fauste succedant,</span><span class="es">Que todos vuestros esfuerzos</span></div>
+      <div class="line-row"><span class="la">Et tibi, o mea Juditha</span><span class="es">sean coronados con el éxito</span></div>
+      <div class="line-row"><span class="la">Eris, et Patriae tuae,</span><span class="es">y que vos ¡oh, mi Judith! y vuestra patria,</span></div>
+      <div class="line-row"><span class="la">Salus et vita.</span><span class="es">seáis coronadas con la salvación y vida.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Nil ultra: claude fores,</span><span class="es">¡Es suficiente! ¡Cerrad, y que no entre nadie!</span></div>
+      <div class="line-row"><span class="la">Impedi viatores,</span><span class="es">Que el fervor celestial encienda mi corazón.</span></div>
+      <div class="line-row"><span class="la">Et caelesti fervore cor accende,</span><span class="es">Regresaré pronto victoriosa.</span></div>
+      <div class="line-row"><span class="la">Et mox victricem me tacita attende.</span><span class="es">¡Aguardadme aquí silenciosos!</span></div>
+    </div>
+
+    <div class="track-col" id="tc44">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">46</span>
+      </div>
+    </div>
+    <div class="text-col" id="t44">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="abra">Abra</span></span>
+        <span class="character-name">Abra</span>
+      </div>
+      <div class="line-row"><span class="la">Non ita reducem</span><span class="es">El hijo</span></div>
+      <div class="line-row"><span class="la">Progeniem noto</span><span class="es">que retorna al hogar</span></div>
+      <div class="line-row"><span class="la">Raptam a gelido</span><span class="es">a través de la cruel tormenta,</span></div>
+      <div class="line-row"><span class="la">Mater expectat,</span><span class="es">no es aguardado por su madre</span></div>
+      <div class="line-row"><span class="la">Ut ego fervida</span><span class="es">con la misma ansiedad</span></div>
+      <div class="line-row"><span class="la">Expecto te.</span><span class="es">con la que yo os aguardaré.</span></div>
+      <div class="line-row"><span class="la">Sed poena barbarae,</span><span class="es">Empero la pena de una breve</span></div>
+      <div class="line-row"><span class="la">Et brevis morae</span><span class="es">mas cruel demora,</span></div>
+      <div class="line-row"><span class="la">Animam nimium</span><span class="es">atormenta el alma</span></div>
+      <div class="line-row"><span class="la">Vexat amantem</span><span class="es">de quien ama mucho</span></div>
+      <div class="line-row"><span class="la">Timore, et spe.</span><span class="es">con temor y esperanza.</span></div>
+    </div>
+
+    <div class="track-col" id="tc45">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">47</span>
+      </div>
+    </div>
+    <div class="text-col" id="t45">
+      <div class="line-row"><span class="la">Jam pergo, postes claudo,</span><span class="es">Ahora iré y cerraré la puerta.</span></div>
+      <div class="line-row"><span class="la">Et te nostra Eroina expecto et laudo.</span><span class="es">Y a vos, heroína nuestra, espero y alabo.</span></div>
+    </div>
+
+    <div class="track-col" id="tc46">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">48</span>
+      </div>
+    </div>
+    <div class="text-col" id="t46">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juditha">Juditha</span></span>
+        <span class="character-name">Judit</span>
+      </div>
+      <div class="line-row"><span class="la">Summe Astrorum Creator,</span><span class="es">Soberano Creador de las estrellas,</span></div>
+      <div class="line-row"><span class="la">Qui de nihilo jam cuncta eduxisti,</span><span class="es">que de la nada creastes todo lo que existe</span></div>
+      <div class="line-row"><span class="la">Et tibi ut servi essemus</span><span class="es">y para que te sirviéramos,</span></div>
+      <div class="line-row"><span class="la">Ad imaginem tuam tu nos fecisti,</span><span class="es">nos hicistes a tu imagen.</span></div>
+      <div class="line-row"><span class="la">Clemens in Caelo Pater,</span><span class="es">Padre misericordioso en el cielo,</span></div>
+      <div class="line-row"><span class="la">Potens in Mundo Deus,</span><span class="es">poderoso Dios sobre la tierra,</span></div>
+      <div class="line-row"><span class="la">Qui Jaheli victrici,</span><span class="es">que le distes fuerza a la victoriosa Jael</span></div>
+      <div class="line-row"><span class="la">Qui Deborae pugnanti vim dedisti,</span><span class="es">y a la beligerante Débora,</span></div>
+      <div class="line-row"><span class="la">Adiuva nos in prece, et culpas tolle,</span><span class="es">escucha mis oraciones, perdona mis culpas,</span></div>
+      <div class="line-row"><span class="la">Et de forti tua dextra</span><span class="es">y con el poder de tu diestra</span></div>
+      <div class="line-row"><span class="la">Imbelli dextrae meae robur extolle.</span><span class="es">llena la mía de fortaleza para luchar.</span></div>
+    </div>
+
+    <div class="track-col" id="tc47">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">49</span>
+      </div>
+    </div>
+    <div class="text-col" id="t47">
+      <div class="line-row"><span class="la">In somno profundo</span><span class="es">En un sueño profundo</span></div>
+      <div class="line-row"><span class="la">Si jacet immersus</span><span class="es">yace él sumergido.</span></div>
+      <div class="line-row"><span class="la">Non amplius sit vigil</span><span class="es">Aquel que duerme en Ti</span></div>
+      <div class="line-row"><span class="la">Qui dormit in te.</span><span class="es">no puede hacer guardia.</span></div>
+      <div class="line-row"><span class="la">Quiescat exanguis,</span><span class="es">Que el que duerme</span></div>
+      <div class="line-row"><span class="la">Et sanguis</span><span class="es">se desangre,</span></div>
+      <div class="line-row"><span class="la">Sic exeat</span><span class="es">y que en aquella sangre</span></div>
+      <div class="line-row"><span class="la">Superbus in me.</span><span class="es">encuentre yo la gloria.</span></div>
+    </div>
+
+    <div class="track-col" id="tc48">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">50</span>
+      </div>
+    </div>
+    <div class="text-col" id="t48">
+      <div class="line-row"><span class="la">Impii, indigni Tiranni</span><span class="es">La espada del impío e indigno tirano</span></div>
+      <div class="line-row"><span class="la">Conopeo hic apensum</span><span class="es">cuelga aquí, bajo el dosel de su cama.</span></div>
+      <div class="line-row"><span class="la">Denudo ferrum, ictus tendo, infelicem</span><span class="es">En tu nombre ¡oh, Dios! desnudo la espada</span></div>
+      <div class="line-row"><span class="la">Ab Holofernis busto</span><span class="es">y desprendo del cuerpo de Holofernes</span></div>
+      <div class="line-row"><span class="la">Deus in nomine tuo scindo cervicem.</span><span class="es">la infeliz cabeza.</span></div>
+      <div class="line-row"><span class="la">Salvete o pia tentoria</span><span class="es">¡Saludos, oh buena tienda!</span></div>
+      <div class="line-row"><span class="la">In vobis semper clara</span><span class="es">Que la noble victoria alcanzada dentro de ti</span></div>
+      <div class="line-row"><span class="la">Et caelo, et mundo sit alta victoria.</span><span class="es">resplandezca por siempre en el cielo y en la tierra.</span></div>
+    </div>
+
+    <div class="track-col" id="tc49">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">51</span>
+      </div>
+    </div>
+    <div class="text-col" id="t49">
+      <div class="line-row"><span class="la">Abra, Abra, accipe munus,</span><span class="es">¡Abra, Abra, toma esto!</span></div>
+      <div class="line-row"><span class="la">In saculum repone, et fida ancilla</span><span class="es">Ponlo en el saco y, fiel esclava, sígueme veloz,</span></div>
+      <div class="line-row"><span class="la">Me sequere, festina,</span><span class="es">que de la diestra</span></div>
+      <div class="line-row"><span class="la">Et clemens extra castra</span><span class="es">clemente y misericordiosa de Dios</span></div>
+      <div class="line-row"><span class="la">Tuto perducat nos dextra divina.</span><span class="es">nos llevará con seguridad fuera del campo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="abra">Abra</span></span>
+        <span class="character-name">Abra</span>
+      </div>
+      <div class="line-row"><span class="la">Quid mihi? Oh mira res! Diro Draconi</span><span class="es">¿Qué me dais? ¡Oh, milagro!</span></div>
+      <div class="line-row"><span class="la">Tu caput obtruncasti,</span><span class="es">Habéis decapitado al horrible dragón, y a la vez</span></div>
+      <div class="line-row"><span class="la">Et simul una in uno omnes domasti.</span><span class="es">habéis vencido a todos por tu propia cuenta.</span></div>
+      <div class="line-row"><span class="la">Eamus cito eamus,</span><span class="es">¡Vámonos pronto, vámonos</span></div>
+      <div class="line-row"><span class="la">Et mille mille Deo gratias agamus.</span><span class="es">y demos mil y mil gracias a Dios!</span></div>
+    </div>
+
+    <div class="track-col" id="tc50">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">52</span>
+      </div>
+    </div>
+    <div class="text-col" id="t50">
+      <div class="line-row"><span class="la">Si fulgida per te</span><span class="es">Si a través tuya</span></div>
+      <div class="line-row"><span class="la">Propitia caeli fax</span><span class="es">la propicia flama celeste ha brillado con fuerza,</span></div>
+      <div class="line-row"><span class="la">Si dulci animae spe</span><span class="es">si amablemente la paz resplandece de gloria</span></div>
+      <div class="line-row"><span class="la">Refulsit alma pax,</span><span class="es">como el reflejo de la dulce esperanza de tu alma,</span></div>
+      <div class="line-row"><span class="la">Solum beato</span><span class="es">entonces, sólo a nuestro bendito Amo,</span></div>
+      <div class="line-row"><span class="la">Duci increato</span><span class="es">a aquel increado</span></div>
+      <div class="line-row"><span class="la">Debetur nostra pax,</span><span class="es">debemos nuestra paz</span></div>
+      <div class="line-row"><span class="la">Et nostra gloria.</span><span class="es">y nuestra gloria.</span></div>
+      <div class="line-row"><span class="la">Dat illo cordi ardorem,</span><span class="es">Es Él quien ha encendido nuestros corazones</span></div>
+      <div class="line-row"><span class="la">Ille dextrae vigorem,</span><span class="es">y quien fortalece nuestra diestra.</span></div>
+      <div class="line-row"><span class="la">Et manus donum suae</span><span class="es">Nuestra victoria</span></div>
+      <div class="line-row"><span class="la">Nostra victoria.</span><span class="es">es una dádiva de su mano.</span></div>
+    </div>
+
+    <div class="track-col" id="tc51">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">53</span>
+      </div>
+    </div>
+    <div class="text-col" id="t51">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="vagaus">Vagaus</span></span>
+        <span class="character-name">Bagoas</span>
+      </div>
+      <div class="line-row"><span class="la">Jam non procul ab axe</span><span class="es">Dentro de poco despuntará la aurora.</span></div>
+      <div class="line-row"><span class="la">It is not long now until</span><span class="es">Repartidas por todo el cielo,</span></div>
+      <div class="line-row"><span class="la">Est ascendens Aurora, undique rara</span><span class="es">las estrellas brillan extrañamente.</span></div>
+      <div class="line-row"><span class="la">Caelo sydera micant: in tentorio</span><span class="es">En la tienda palidece una luz parpadeante,</span></div>
+      <div class="line-row"><span class="la">Pallet incerta lux: patet ingressus,</span><span class="es">la entrada está abierta. No veo a nadie.</span></div>
+      <div class="line-row"><span class="la">Neminem video.</span><span class="es">Mas, ¡ay, ay! ¿qué veo? ¡Sangre en todas partes!</span></div>
+      <div class="line-row"><span class="la">Sed heu, heu, quid cerno?</span><span class="es">¡Ay, qué escena tan terrible!</span></div>
+      <div class="line-row"><span class="la">Fusus undique sanguis!</span><span class="es">El cuerpo decapitado de mi señor</span></div>
+      <div class="line-row"><span class="la">Heu, quam horrendum visu!</span><span class="es">yace desangrado.</span></div>
+      <div class="line-row"><span class="la">Truncus Domini mei jacet exanguis.</span><span class="es">¡Soldados, venid!</span></div>
+      <div class="line-row"><span class="la">Milites huc venite,</span><span class="es">¡Levantaos, oh siervos! ¡Guardias, despertad!</span></div>
+      <div class="line-row"><span class="la">Surgite, o servi, excubiae non dormite.</span><span class="es">Estamos completamente perdidos.</span></div>
+      <div class="line-row"><span class="la">Omnes perditi sumus:</span><span class="es">Betulia escapó de nuestras manos</span></div>
+      <div class="line-row"><span class="la">Bethulia amissa, et Holofernes extincto.</span><span class="es">y Holofernes murió.</span></div>
+      <div class="line-row"><span class="la">Heu cuncti, cuncti miseri ploremus,</span><span class="es">¡Ay, lloremos todas nuestras miserias,</span></div>
+      <div class="line-row"><span class="la">Et ducis nostri funus vindicemus.</span><span class="es">y venguemos la muerte de nuestro jefe!</span></div>
+    </div>
+
+    <div class="track-col" id="tc52">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">54</span>
+      </div>
+    </div>
+    <div class="text-col" id="t52">
+      <div class="line-row"><span class="la">Armatae face et anguibus</span><span class="es">Armadas con antorchas y sierpes,</span></div>
+      <div class="line-row"><span class="la">A caeco regno squallido</span><span class="es">llegan de su reino ciego y sucio</span></div>
+      <div class="line-row"><span class="la">Furoris sociae barbari</span><span class="es">las arpías del salvaje furor.</span></div>
+      <div class="line-row"><span class="la">Furiae venite ad nos.</span><span class="es">¡Furias, venid a nosotros!</span></div>
+      <div class="line-row"><span class="la">Morte, flagello, stragibus</span><span class="es">En la muerte, la flagelación y la masacre</span></div>
+      <div class="line-row"><span class="la">Vindictam tanti funeris</span><span class="es">os seguiremos.</span></div>
+      <div class="line-row"><span class="la">Irata nostra pectora</span><span class="es">Generales, enfureced el corazón</span></div>
+      <div class="line-row"><span class="la">Duces docete vos.</span><span class="es">para vengar a nuestro jefe.</span></div>
+    </div>
+
+    <div class="track-col" id="tc53">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">55</span>
+      </div>
+    </div>
+    <div class="text-col" id="t53">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="ozias">Ozias</span></span>
+        <span class="character-name">Ozias</span>
+      </div>
+      <div class="line-row"><span class="la">Quam insolita luce</span><span class="es">Con qué insólita luz</span></div>
+      <div class="line-row"><span class="la">Eois surgit ab oris</span><span class="es">surge la aurora de la boca de Eos,</span></div>
+      <div class="line-row"><span class="la">Floribus cincta suis roscida</span><span class="es">junto con flores cubiertas de rocío.</span></div>
+      <div class="line-row"><span class="la">Aurora! O quam ridet serena</span><span class="es">¡Oh, día! ¡Qué sereno sonríes!</span></div>
+      <div class="line-row"><span class="la">Jucundo nobis dies lumine plena!</span><span class="es">¡Qué deleite para nosotros este día lleno de luz!</span></div>
+      <div class="line-row"><span class="la">En venit tandem venit</span><span class="es">¡Allí viene, al fin, allí viene,</span></div>
+      <div class="line-row"><span class="la">Eam a longe prospicio, ad eam curramus</span><span class="es">la veo a lo lejos, corramos a ella!</span></div>
+      <div class="line-row"><span class="la">Venit Juditha venit,</span><span class="es">¡Judith viene, Judith viene, y ha triunfado!</span></div>
+      <div class="line-row"><span class="la">Et Juditha triumphans. Filia electa</span><span class="es">Hija elegida con cuánta alegría te abrazo.</span></div>
+      <div class="line-row"><span class="la">Quanto gaudio te amplector: Summe Deus</span><span class="es">Soberano Dios,</span></div>
+      <div class="line-row"><span class="la">Exultat ecce in te spiritus meus.</span><span class="es">mira cómo mi espíritu te exalta.</span></div>
+    </div>
+
+    <div class="track-col" id="tc54">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">56</span>
+      </div>
+    </div>
+    <div class="text-col" id="t54">
+      <div class="line-row"><span class="la">Gaude felix</span><span class="es">¡Oh, dichosa ciudad de Betulia,</span></div>
+      <div class="line-row"><span class="la">Bethulia letare</span><span class="es">regocíjate, alégrate, serénate!</span></div>
+      <div class="line-row"><span class="la">Consolare</span><span class="es">Tú que fuisteis amargamente afligida.</span></div>
+      <div class="line-row"><span class="la">Urbs nimis afflicta.</span><span class="es">Amada del cielo,</span></div>
+      <div class="line-row"><span class="la">Caelo amata</span><span class="es">estás bendecida,</span></div>
+      <div class="line-row"><span class="la">Es fortunata</span><span class="es">pues entre tus enemigos</span></div>
+      <div class="line-row"><span class="la">Inter hostes semper invicta.</span><span class="es">serás siempre invicta.</span></div>
+    </div>
+
+    <div class="track-col" id="tc55">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">57</span>
+      </div>
+    </div>
+    <div class="text-col" id="t55">
+      <div class="line-row"><span class="la">Ita decreto aeterno</span><span class="es">Así, por decreto eterno,</span></div>
+      <div class="line-row"><span class="la">Veneti Maris Urbem</span><span class="es">declaro que la ciudad marítima de Venecia</span></div>
+      <div class="line-row"><span class="la">Inviolatam discerno,</span><span class="es">permanecerá invicta</span></div>
+      <div class="line-row"><span class="la">Sic in Asia Holoferni impio tiranno</span><span class="es">al igual que la Ciudad Virgen de Asia</span></div>
+      <div class="line-row"><span class="la">Urbs Virgo gratia Dei semper munita</span><span class="es">siempre protegida por la gracia de Dios</span></div>
+      <div class="line-row"><span class="la">Erit nova Juditha,</span><span class="es">contra el impío tirano Holofernes.</span></div>
+      <div class="line-row"><span class="la">Et pro popolo suo Pastor orabit,</span><span class="es">Habrá una nueva Judith,</span></div>
+      <div class="line-row"><span class="la">Et fidelis Ozias</span><span class="es">y un Pastor orará por su pueblo,</span></div>
+      <div class="line-row"><span class="la">Veram Bethuliae suae fidem servabit.</span><span class="es">y un fiel Ozias</span></div>
+      <div class="line-row"><span class="la">Eja Virgines Sion</span><span class="es">velará por la verdadera fe de su Betulia.</span></div>
+      <div class="line-row"><span class="la">Festinate cum gloria</span><span class="es">¡Venid ahora, doncellas de Sion,</span></div>
+      <div class="line-row"><span class="la">In sperata victoria</span><span class="es">daos prisa para celebrar con gloria</span></div>
+      <div class="line-row"><span class="la">Et pietatis in sinu</span><span class="es">la anhelada victoria!</span></div>
+      <div class="line-row"><span class="la">Cum Psalterio sonanti</span><span class="es">Con devoción, al sonar del salterio</span></div>
+      <div class="line-row"><span class="la">Applaudite Judithae Triumphanti.</span><span class="es">cantad alabanzas a Judith trunfante.</span></div>
+    </div>
+
+    <div class="track-col" id="tc56">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">58</span>
+      </div>
+    </div>
+    <div class="text-col" id="t56">
+      <div class="character-row">
+        <span><span class="character-name">Chorus</span></span>
+        <span class="character-name">Coro</span>
+      </div>
+      <div class="stage-direction">
+        <span>(exultantium Virginum pro Judithae triumpho)</span>
+        <span class="es">(doncellas felices por el triunfo de Judith)</span>
+      </div>
+      <div class="line-row"><span class="la">Salve invicta Juditha formosa</span><span class="es">¡Salve, hermosa Judith invicta,</span></div>
+      <div class="line-row"><span class="la">Patriae splendor spes nostrae salutis.</span><span class="es">esplendor y esperanza de nuestra patria!</span></div>
+      <div class="line-row"><span class="la">Summae norma tu vere virtutis</span><span class="es">Serás por siempre gloriosa para el mundo</span></div>
+      <div class="line-row"><span class="la">Eris semper in mundo gloriosa.</span><span class="es">y el sumo modelo de verdadera virtud.</span></div>
+      <div class="line-row"><span class="la">Debellato sic barbaro Trace</span><span class="es">Así, el bárbaro tracio ha sido vencido.</span></div>
+      <div class="line-row"><span class="la">Triumphatrix sit Maris Regina.</span><span class="es">Que la reina del mar sea vencedora</span></div>
+      <div class="line-row"><span class="la">Et placata sic ira divina</span><span class="es">y de este modo sea aplacada la ira divina.</span></div>
+      <div class="line-row"><span class="la">Adria vivat, et regnet in pace.</span><span class="es">¡Que viva Adria y que reine en paz!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  demarchi_kozena: {
+    label: "Juditha Triumphans \u00b7 De Marchi / Kozen\u00e1",
+    short: "De Marchi / Kozen\u00e1",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Sinfonia: Allegro", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Sinfonia: Grave", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 3, title: "Arma, caedes, vindicta, furores (Aria, Chorus)", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 4, title: "Felix en fausta dies (Recitativo)", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 5, title: "Nil arma, nil bella (Aria, Holofernes)", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 6, title: "Mi Dux, Domine mi... (Recitativo)", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 7, title: "Matrona inimica (Aria, Vagaus)", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 8, title: "Huc accedat Matrona (Recitativo)", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 9, title: "Quocum Patriae me ducit amore (Aria, Juditha)", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 10, title: "Ne timeas non, laetare (Recitativo)", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 11, title: "Vultus tui vago splendori (Aria, Abra)", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 12, title: "Vide, humilis prostrata (Recitativo)", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 13, title: "O quam vaga, venusta, o quam decora (Aria, Chorus, Vagaus)", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 14, title: "Quem vides prope, aspectu (Recitativo)", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 15, title: "Quamvis ferro, et ense gravis (Aria, Vagaus)", act: "Act I", has_block: true },
+      { id: "t14", cd: 1, track: 16, title: "Quid cerno ! Oculi mei (Recitativo)", act: "Act I", has_block: true },
+      { id: "t15", cd: 1, track: 17, title: "Quanto magis generosa (Aria, Juditha)", act: "Act I", has_block: true },
+      { id: "t16", cd: 1, track: 18, title: "Magna, \u00d4 foemina petis (Recitativo)", act: "Act I", has_block: true },
+      { id: "t17", cd: 1, track: 19, title: "Sede, o cara (Aria, Holofernes)", act: "Act I", has_block: true },
+      { id: "t18", cd: 1, track: 20, title: "Tu Judex es, tu Dominus, tu potens (Recitativo)", act: "Act I", has_block: true },
+      { id: "t19", cd: 1, track: 21, title: "Agitata infido flatu (Aria, Juditha)", act: "Act I", has_block: true },
+      { id: "t20", cd: 1, track: 22, title: "In tentorio supernae (Recitativo)", act: "Act I", has_block: true },
+      { id: "t21", cd: 1, track: 23, title: "O servi, volate (Aria, Chorus, Vagaus)", act: "Act I", has_block: true },
+      { id: "t22", cd: 1, track: 24, title: "Tu quoque hebraica ancilla (Recitativo)", act: "Act I", has_block: true },
+      { id: "t23", cd: 1, track: 25, title: "Veni, me sequere fida (Aria, Juditha)", act: "Act I", has_block: true },
+      { id: "t24", cd: 1, track: 26, title: "Venio Juditha, venio animo fave (Recitativo)", act: "Act I", has_block: true },
+      { id: "t25", cd: 1, track: 27, title: "Fulgeat sol frontis decorae (Aria, Abra)", act: "Act I", has_block: true },
+      { id: "t26", cd: 1, track: 28, title: "In Urbe interim pia (Recitativo)", act: "Act I", has_block: true },
+      { id: "t27", cd: 1, track: 29, title: "Mundi Rector de Caelo micanti (Aria, Chorus)", act: "Act I", has_block: true },
+      { id: "t28", cd: 1, track: 30, title: "Summi Regis in mente (Recitativo)", act: "Act II", has_block: true },
+      { id: "t29", cd: 1, track: 31, title: "O Sydera, o stellae (Aria, Ozias)", act: "Act II", has_block: true },
+      { id: "t30", cd: 1, track: 32, title: "Jam servientis in hostem (Recitativo)", act: "Act II", has_block: true },
+      { id: "t31", cd: 1, track: 33, title: "Nox in umbra dum surgit (Recitativo)", act: "Act II", has_block: true },
+      { id: "t32", cd: 1, track: 34, title: "Nox oscura tenebrosa (Aria, Holofernes)", act: "Act II", has_block: true },
+      { id: "t33", cd: 1, track: 35, title: "Belligerae, meae sorti (Recitativo)", act: "Act II", has_block: true },
+      { id: "t34", cd: 1, track: 36, title: "Transit \u00e6tas (Aria, Juditha)", act: "Act II", has_block: true },
+      { id: "t35", cd: 1, track: 37, title: "Haec in crastinum serva: Ah, nimis vere (Recitativo)", act: "Act II", has_block: true },
+      { id: "t36", cd: 1, track: 38, title: "Noli o cara te adorantis (Aria, Holofernes)", act: "Act II", has_block: true },
+      { id: "t37", cd: 1, track: 39, title: "Tibi dona salutis (Recitativo)", act: "Act II", has_block: true },
+      { id: "t38", cd: 1, track: 40, title: "Plena nectare non mero (Aria, Chorus)", act: "Act II", has_block: true },
+      { id: "t39", cd: 1, track: 41, title: "Tormenta mentis tuae fugiant a corde (Recitativo)", act: "Act II", has_block: true },
+      { id: "t40", cd: 1, track: 42, title: "Vivat in pace, et pax regnet sincera (Aria, Juditha)", act: "Act II", has_block: true },
+      { id: "t41", cd: 1, track: 43, title: "Sic in Pace inter hostes (Recitativo)", act: "Act II", has_block: true },
+      { id: "t42", cd: 1, track: 44, title: "Umbrae carae, aurae adoratae (Aria, Vagaus)", act: "Act II", has_block: true },
+      { id: "t43", cd: 1, track: 45, title: "Quae fortunata es tu vaga Matrona (Recitativo)", act: "Act II", has_block: true },
+      { id: "t44", cd: 1, track: 46, title: "Non ita reducem (Aria, Abra)", act: "Act II", has_block: true },
+      { id: "t45", cd: 1, track: 47, title: "Jam pergo, postes claudo (Recitativo)", act: "Act II", has_block: true },
+      { id: "t46", cd: 1, track: 48, title: "Summe Astrorum Creator (Recitativo)", act: "Act II", has_block: true },
+      { id: "t47", cd: 1, track: 49, title: "In somno profundo (Aria, Juditha)", act: "Act II", has_block: true },
+      { id: "t48", cd: 1, track: 50, title: "Impii, indigni Tiranni (Recitativo)", act: "Act II", has_block: true },
+      { id: "t49", cd: 1, track: 51, title: "Abra accipe munus (Recitativo)", act: "Act II", has_block: true },
+      { id: "t50", cd: 1, track: 52, title: "Si fulgida per te (Aria, Abra)", act: "Act II", has_block: true },
+      { id: "t51", cd: 1, track: 53, title: "Jam non procul ab axe (Recitativo)", act: "Act II", has_block: true },
+      { id: "t52", cd: 1, track: 54, title: "Armatae face, et anguibus (Aria, Vagaus)", act: "Act II", has_block: true },
+      { id: "t53", cd: 1, track: 55, title: "Quam insolita luce (Recitativo)", act: "Act II", has_block: true },
+      { id: "t54", cd: 1, track: 56, title: "Gaude felix (Aria, Ozias)", act: "Act II", has_block: true },
+      { id: "t55", cd: 1, track: 57, title: "Ita decreto deterno (Recitativo)", act: "Act II", has_block: true },
+      { id: "t56", cd: 1, track: 58, title: "Salve invicta Juditha formosa (Aria, Chorus)", act: "Act II", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Pars I",
+    "Act II": "Pars II"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t28"
+  };
+
+  const CHARACTERS = [
+    { id: "juditha", name: "Juditha", voice: "Contralto", description: "joven viuda de Betulia" },
+    { id: "holofernes", name: "Holofernes", voice: "Contralto", description: "general asirio" },
+    { id: "vagaus", name: "Vagaus", voice: "Soprano", description: "eunuco, escudero de Holofernes" },
+    { id: "abra", name: "Abra", voice: "Soprano", description: "doncella de Juditha" },
+    { id: "ozias", name: "Ozias", voice: "Contralto", description: "sumo sacerdote de Betulia" }
+  ];
+
+  const CAST = {
+    demarchi_kozena: { "juditha": "Magdalena Kozen\u00e1", "holofernes": "Maria Jos\u00e9 Trullu", "vagaus": "Marina Comparato", "ozias": "Tiziana Carraro", "abra": "Anke Herrmann" }
+  };
+
+  let activeRecording = "demarchi_kozena";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { la: true, es: true };
+</script>
+<script src="../libretto_spotify.js"></script>
+<script src="../libretto.js"></script>
