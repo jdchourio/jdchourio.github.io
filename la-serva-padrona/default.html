@@ -1,0 +1,1829 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>La Serva Padrona · Fasano / Scotto</title>
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Intermezzo I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Aspettare E Non Venire</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">La Serva Padrona · Fasano / Scotto</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnIT" onclick="toggleLang('it')">IT</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Intermezzo Primo</span>
+      <span>Intermedio Primero</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>(Camera. Uberto non interamente</span>
+        <span class="es">(Dormitorio. Uberto, todavía sin</span>
+        <span>vestito, e Vespone di lui servo,</span>
+        <span class="es">vestir y Vespone, su criado;</span>
+        <span>poi Serpina)</span>
+        <span class="es">después Serpina)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Aspettare e non venire,</span><span class="es">Esperar y que venga,</span></div>
+      <div class="line-row"><span class="it">stare a letto e non dormire,</span><span class="es">estar en la cama y no dormir,</span></div>
+      <div class="line-row"><span class="it">ben servire</span><span class="es">hacer el bien</span></div>
+      <div class="line-row"><span class="it">e non gradire,</span><span class="es">y que no lo agradezcan,</span></div>
+      <div class="line-row"><span class="it">son tre cose da morire.</span><span class="es">son tres cosas que me matan.</span></div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="line-row"><span class="it">Questa è per me disgrazia!</span><span class="es">¡Esto es una desgracia!</span></div>
+      <div class="line-row"><span class="it">Son tre ore che aspetto,</span><span class="es">Ya llevo tres horas esperando,</span></div>
+      <div class="line-row"><span class="it">e la mia serva portarmi</span><span class="es">y mi criada no tiene a bien</span></div>
+      <div class="line-row"><span class="it">il cioccolatte non fa grazia,</span><span class="es">traerme el chocolate,</span></div>
+      <div class="line-row"><span class="it">ed io d'uscire ho fretta.</span><span class="es">y yo tengo prisa por salir.</span></div>
+      <div class="line-row"><span class="it">O flemma benedetta!</span><span class="es">¡Ay, bendita flema!</span></div>
+      <div class="line-row"><span class="it">Or sì, che vedo</span><span class="es">Ahora sí que veo</span></div>
+      <div class="line-row"><span class="it">che per esser sì buono con costei,</span><span class="es">que el ser bueno con ella</span></div>
+      <div class="line-row"><span class="it">la causa son di tutti i mali miei.</span><span class="es">es la causa de todos mis males.</span></div>
+      <div class="stage-direction">
+        <span>(chiama Serpina)</span>
+        <span class="es">(llama a Serpina)</span>
+      </div>
+      <div class="line-row"><span class="it">Serpina... Vien domani.</span><span class="es">¡Serpina!... ¡Vendrá mañana!</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">E tu altro che fai?</span><span class="es">Y tú ¿qué haces?</span></div>
+      <div class="line-row"><span class="it">A che quieto ne stai</span><span class="es">¡Estás quieto aquí</span></div>
+      <div class="line-row"><span class="it">come un balocco?</span><span class="es">como un tentetieso?</span></div>
+      <div class="line-row"><span class="it">Come? che dici? eh sciocco!</span><span class="es">¿Cómo? ¿qué dices? ¡eh, necio!</span></div>
+      <div class="line-row"><span class="it">Vanne, rompiti presto il collo.</span><span class="es">Vete, y que te rompas el cuello.</span></div>
+      <div class="line-row"><span class="it">Sollecita; vedi che fa.</span><span class="es">Apresúrate; mira qué hace.</span></div>
+      <div class="line-row"><span class="it">Gran fatto! Io m'ho cresciuta</span><span class="es">¡Vaya suerte! Yo he cuidado</span></div>
+      <div class="line-row"><span class="it">questa serva piccina.</span><span class="es">a esta criada desde pequeña.</span></div>
+      <div class="line-row"><span class="it">L'ho fatta di carezze, l'ho tenuta</span><span class="es">Le hice caricias, la cuidé,</span></div>
+      <div class="line-row"><span class="it">come mia figlia fosse!</span><span class="es">¡como a una hija!</span></div>
+      <div class="line-row"><span class="it">Or ella ha preso</span><span class="es">Es por eso que ella</span></div>
+      <div class="line-row"><span class="it">perciò tanta arroganza,</span><span class="es">ahora tiene tanta arrogancia,</span></div>
+      <div class="line-row"><span class="it">fatta è sì superbona,</span><span class="es">su suerte es tan buena,</span></div>
+      <div class="line-row"><span class="it">che alfin di serva diverrà padrona.</span><span class="es">que de criada pasará a ser patrona.</span></div>
+      <div class="line-row"><span class="it">Ma bisogna risolvermi</span><span class="es">Pues debo decidirme</span></div>
+      <div class="line-row"><span class="it">in buon'ora...</span><span class="es">que ya es hora...</span></div>
+      <div class="line-row"><span class="it">E quest'altro babbuino</span><span class="es">y este otro bobalicón</span></div>
+      <div class="line-row"><span class="it">ci è morto ancora.</span><span class="es">se ha muerto ahora.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">L'hai finita?</span><span class="es">¿Ya has terminado?</span></div>
+      <div class="line-row"><span class="it">Ho bisogno che tu mi sgridi?</span><span class="es">¿Y es necesario que me grites?</span></div>
+      <div class="line-row"><span class="it">E pure</span><span class="es">Pues bien,</span></div>
+      <div class="line-row"><span class="it">Io non sto comoda, ti dissi.</span><span class="es">ya te dije que no estoy a gusto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Brava!</span><span class="es">¡Valentona!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">E torna! Se il padrone</span><span class="es">¡Ya puedes volver! Si el patrón</span></div>
+      <div class="line-row"><span class="it">Ha fretta, non l'ho io,</span><span class="es">tiene prisa, yo no la tengo,</span></div>
+      <div class="line-row"><span class="it">il sai?</span><span class="es">¿sabes?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Bravissima.</span><span class="es">¡Valentonísima!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Di nuovo! Oh tu da senno</span><span class="es">¡Otra vez! Estás consiguiendo</span></div>
+      <div class="line-row"><span class="it">vai stuzzicando la pazienza mia,</span><span class="es">acabar con mi paciencia,</span></div>
+      <div class="line-row"><span class="it">e vuoi che un par</span><span class="es">y parece que al fin quieras</span></div>
+      <div class="line-row"><span class="it">di schiaffi alfin ti dia.</span><span class="es">un par de bofetadas.</span></div>
+      <div class="stage-direction">
+        <span>(batte Vespone)</span>
+        <span class="es">(abofetea a Vespone)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Olà, dove si sta?</span><span class="es">¡Ey! ¿dónde estáis?</span></div>
+      <div class="line-row"><span class="it">Olà, Serpina! Non ti vuoi fermare?</span><span class="es">¡Ey! ¡Serpina! ¿Quieres dejarlo ya?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Lasciatemi insegnare</span><span class="es">Dejadme enseñar</span></div>
+      <div class="line-row"><span class="it">La creanza a quel birbo.</span><span class="es">educación a este bribón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ma in presenza del padrone?</span><span class="es">¿En presencia del patrón?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Adunque, perch'io son serva,</span><span class="es">Entonces, ¿como soy criada,</span></div>
+      <div class="line-row"><span class="it">ho da esser sopraffatta,</span><span class="es">debo ser atropellada,</span></div>
+      <div class="line-row"><span class="it">ho da essere maltrattata?</span><span class="es">debo ser maltratada?</span></div>
+      <div class="line-row"><span class="it">No signore,</span><span class="es">No señor,</span></div>
+      <div class="line-row"><span class="it">voglio esser rispettata,</span><span class="es">quiero ser respetada,</span></div>
+      <div class="line-row"><span class="it">voglio esser riverita</span><span class="es">quiero ser reverenciada</span></div>
+      <div class="line-row"><span class="it">come fossi padrona,</span><span class="es">como si fuera la patrona,</span></div>
+      <div class="line-row"><span class="it">arcipadrona, padronissima.</span><span class="es">archipatrona, patronisima.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Che diavol ha</span><span class="es">¿Qué diablos le pasa</span></div>
+      <div class="line-row"><span class="it">vossignoria illustrissima?</span><span class="es">a vuestra señoría ilustrísima?</span></div>
+      <div class="line-row"><span class="it">Sentiam, che fu?</span><span class="es">Escuchemos, ¿qué fue?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Cotesto impertinente...</span><span class="es">Que este impertinente...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Questo? tu...</span><span class="es">¡Quieto tú!</span></div>
+      <div class="stage-direction">
+        <span>(accennando a Vespone)</span>
+        <span class="es">(señalando a Vespone)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Venne a me...</span><span class="es">...llegó hasta mí...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Questo, t'ho detto?</span><span class="es">¡Quieto te he dicho!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E con modi sì impropri...</span><span class="es">...y con modales impropios...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Questo, questo...</span><span class="es">¡Quieto! ¡Quieto!</span></div>
+      <div class="line-row"><span class="it">Che tu sii maledetto.</span><span class="es">¡Maldito seas!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ma me la pagherai.</span><span class="es">Pero me las pagarás.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Io costui t'inviai...</span><span class="es">A éste te envié...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ed a che fare?</span><span class="es">¿Para qué?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">A che far?</span><span class="es">¿Para qué?</span></div>
+      <div class="line-row"><span class="it">Non ti ho chiesto</span><span class="es">¿No te he pedido</span></div>
+      <div class="line-row"><span class="it">il cioccolatte, io?</span><span class="es">yo el chocolate?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ben, e per questo?</span><span class="es">Bien, ¿y por eso?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">E m'ha da uscir</span><span class="es">¿Y se me ha de salir</span></div>
+      <div class="line-row"><span class="it">l'anima aspettando che mi si porti?</span><span class="es">el alma esperando que se me traiga?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E quando voi prenderlo dovete?</span><span class="es">¿Y cuando queréis tomarlo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Adesso. Quando?</span><span class="es">Ahora. ¿Cuando va a ser?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E vi par ora questa?</span><span class="es">¿Y os parece que es ésta la hora?</span></div>
+      <div class="line-row"><span class="it">è tempo ormai di dover desinare.</span><span class="es">Es la hora de comer.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Adunque?</span><span class="es">¿Y entonces?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Adunque? Io già nol preparai.</span><span class="es">¿Y entonces? Yo ya no lo preparo.</span></div>
+      <div class="line-row"><span class="it">Voi di men ne fareste,</span><span class="es">Vos lo haréis por mí,</span></div>
+      <div class="line-row"><span class="it">padron mio bello,</span><span class="es">mi bello patrón,</span></div>
+      <div class="line-row"><span class="it">e ve ne cheterete.</span><span class="es">y así lo tomareis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Vespone, ora che ho preso</span><span class="es">Vespone, ahora que he tomado</span></div>
+      <div class="line-row"><span class="it">il cioccolate già</span><span class="es">ya el chocolate,</span></div>
+      <div class="line-row"><span class="it">dimmi: buon pro vi</span><span class="es">deséame buen provecho</span></div>
+      <div class="line-row"><span class="it">faccia e sanità.</span><span class="es">y que me sea saludable.</span></div>
+      <div class="stage-direction">
+        <span>(Vespone ride)</span>
+        <span class="es">(Vespone se ríe)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Di chi ride quell'asino?</span><span class="es">¿De qué se ríe ese asno?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Di me,</span><span class="es">De mí,</span></div>
+      <div class="line-row"><span class="it">che ho più flemma d'una bestia.</span><span class="es">que tengo más flema que un animal.</span></div>
+      <div class="line-row"><span class="it">Ma bestia non sarò,</span><span class="es">Pero más animal no seré,</span></div>
+      <div class="line-row"><span class="it">più flemma non avrò,</span><span class="es">más paciencia no tendré,</span></div>
+      <div class="line-row"><span class="it">il giogo scuoterò,</span><span class="es">el juego sacudiré,</span></div>
+      <div class="line-row"><span class="it">e quel che non ho fatto alfin</span><span class="es">¡y lo que hasta ahora no he hecho,</span></div>
+      <div class="line-row"><span class="it">farò!</span><span class="es">haré!</span></div>
+      <div class="musical-number">
+        <span>Aria</span>
+        <span>Aria</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Serpina)</span>
+        <span class="es">(a Serpina)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="line-row"><span class="it">Sempre in contrasti Con te si sta.</span><span class="es">Siempre discutiendo contigo estoy.</span></div>
+      <div class="line-row"><span class="it">E qua e là, e su e giù</span><span class="es">Aquí y allí, arriba y abajo,</span></div>
+      <div class="line-row"><span class="it">e sì e no.</span><span class="es">que sí, que no.</span></div>
+      <div class="line-row"><span class="it">Or questo basti,</span><span class="es">Pero ya es bastante,</span></div>
+      <div class="line-row"><span class="it">finir si può.</span><span class="es">se debe acabar.</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Ma che ti pare?</span><span class="es">¡Qué te parece?</span></div>
+      <div class="line-row"><span class="it">Ho io a crepare?</span><span class="es">¿He de enfadarme?</span></div>
+      <div class="line-row"><span class="it">Signor mio, no.</span><span class="es">Señor mío, no.</span></div>
+      <div class="stage-direction">
+        <span>(a Serpina)</span>
+        <span class="es">(a Serpina)</span>
+      </div>
+      <div class="line-row"><span class="it">Però dovrai per sempre piangere</span><span class="es">Pues deberás llorar</span></div>
+      <div class="line-row"><span class="it">la tua disgrazia,</span><span class="es">para siempre tu desgracia,</span></div>
+      <div class="line-row"><span class="it">e allor dirai che ben ti sta.</span><span class="es">y entonces dirás que te está bien.</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Che dici tu?</span><span class="es">¿Qué dices tú?</span></div>
+      <div class="line-row"><span class="it">Non è così?</span><span class="es">¿No es así?</span></div>
+      <div class="line-row"><span class="it">Ah! ... che! ... no! ... sì,</span><span class="es">¡Ah!...¿qué?... ¿no?... ¡sí!,</span></div>
+      <div class="line-row"><span class="it">Ma così va!</span><span class="es">Así me va!</span></div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">In somma delle somme,</span><span class="es">Resumiendo lo resumido,</span></div>
+      <div class="line-row"><span class="it">per attendere al vostro bene</span><span class="es">para serviros bien</span></div>
+      <div class="line-row"><span class="it">io mal ne ho da ricevere?</span><span class="es">¿yo he de recibir el mal?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Poveretta! la senti?</span><span class="es">¡Pobrecilla! ¿la escuchas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Per aver di voi cura,</span><span class="es">Para cuidaros bien,</span></div>
+      <div class="line-row"><span class="it">io, sventurata,</span><span class="es">yo, desgraciada,</span></div>
+      <div class="line-row"><span class="it">debbo esser maltrattata?</span><span class="es">¿tengo que ser maltratada?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ma questo non va bene.</span><span class="es">Esto no va bien.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Burlate, sì!</span><span class="es">¡Sí, burlaos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ma questo non conviene.</span><span class="es">Esto no conviene.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E pur qualche rimorso aver</span><span class="es">Después tendréis remordimientos</span></div>
+      <div class="line-row"><span class="it">dovreste di farmi e dirmi</span><span class="es">por hacerme y decirme</span></div>
+      <div class="line-row"><span class="it">ciò che dite e fate.</span><span class="es">lo que decís y hacéis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Cosi è, da dottoressa voi parlate.</span><span class="es">Así es, hablas como una doctora.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Voi mi state sui scherzi,</span><span class="es">Vos os burláis de mí,</span></div>
+      <div class="line-row"><span class="it">ed io m'arrabbio.</span><span class="es">y yo me enfado.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Non v'arrabbiate, capperi,</span><span class="es">No te enfades, caramba,</span></div>
+      <div class="line-row"><span class="it">ha ragione.</span><span class="es">atiende a razones.</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu non sai che ti dir?</span><span class="es">Tú ¿no dices nada?</span></div>
+      <div class="line-row"><span class="it">Va dentro, prendimi il cappello,</span><span class="es">Vete dentro, cógeme el sombrero,</span></div>
+      <div class="line-row"><span class="it">la spada ed il bastone,</span><span class="es">la espada y el bastón,</span></div>
+      <div class="line-row"><span class="it">ché voglio uscir.</span><span class="es">que quiero salir.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Mirate.</span><span class="es">Mirad.</span></div>
+      <div class="line-row"><span class="it">Non ne fate una buona,</span><span class="es">No hacéis ni una bien,</span></div>
+      <div class="line-row"><span class="it">e poi Serpina</span><span class="es">y después es Serpina</span></div>
+      <div class="line-row"><span class="it">e' di poco giudizio.</span><span class="es">quien tiene poco juicio.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ma lei che diavolo</span><span class="es">¿Pero tú qué diablos</span></div>
+      <div class="line-row"><span class="it">vuol mai dai fatti miei?</span><span class="es">quieres saber de mis actos?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Non vo' che usciate adesso,</span><span class="es">No quiero que salgáis ahora,</span></div>
+      <div class="line-row"><span class="it">Gli è mezzodì.</span><span class="es">es mediodía.</span></div>
+      <div class="line-row"><span class="it">Dove volete andare?</span><span class="es">¿A dónde queréis ir?</span></div>
+      <div class="line-row"><span class="it">Andatevi a spogliare.</span><span class="es">Vamos, quitaos esa ropa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">E il gran malanno</span><span class="es">Y el gran disgusto</span></div>
+      <div class="line-row"><span class="it">che mi faresti...</span><span class="es">que me has dado...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Oibò, non occorre altro.</span><span class="es">Pues bien, no fue para tanto.</span></div>
+      <div class="line-row"><span class="it">Io vo' così, non uscirete,</span><span class="es">Lo quiero así, no saldréis,</span></div>
+      <div class="line-row"><span class="it">io l'uscio a chiave chiuderò.</span><span class="es">la puerta cerraré con llave.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ma parmi questa</span><span class="es">Pues me parece que esta</span></div>
+      <div class="line-row"><span class="it">massima impertinenza.</span><span class="es">es tu máxima impertinencia.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Eh sì, suonate.</span><span class="es">Sí, sí, lo que queráis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Serpina,</span><span class="es">Serpina,</span></div>
+      <div class="line-row"><span class="it">il sai, che rotta m'hai la testa?</span><span class="es">¿sabes que me traes de cabeza?</span></div>
+      <div class="musical-number">
+        <span>Aria</span>
+        <span>Aria</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Stizzoso, mio stizzoso</span><span class="es">Rabioso, rabioso mío,</span></div>
+      <div class="line-row"><span class="it">voi fate il borioso,</span><span class="es">vos sois un jactancioso,</span></div>
+      <div class="line-row"><span class="it">ma non vi può giovare.</span><span class="es">pero de nada os servirá.</span></div>
+      <div class="line-row"><span class="it">Bisogna al mio divieto</span><span class="es">Es mejor a mi prohibición</span></div>
+      <div class="line-row"><span class="it">star chetò, e non parlare.</span><span class="es">obedecer, y no decir nada.</span></div>
+      <div class="line-row"><span class="it">Z... Serpina vuol così.</span><span class="es">¡Ssshhh!... Serpina así lo quiere.</span></div>
+      <div class="line-row"><span class="it">Cred'io che m'intendete,</span><span class="es">Yo creo que me entendéis,</span></div>
+      <div class="line-row"><span class="it">dacché mi conoscete</span><span class="es">ya que me conocéis</span></div>
+      <div class="line-row"><span class="it">son molti e molti dì.</span><span class="es">desde hace mucho tiempo.</span></div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Benissimo.</span><span class="es">Muy bien.</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Hai tu inteso?</span><span class="es">¿Lo has entendido?</span></div>
+      <div class="line-row"><span class="it">Ora al suo loco</span><span class="es">Ahora en su sitio</span></div>
+      <div class="line-row"><span class="it">ogni cosa porrà vossignoria,</span><span class="es">cada cosa pondrá su señoría,</span></div>
+      <div class="line-row"><span class="it">ché la padrona mia vuol</span><span class="es">que mi patrona quiere</span></div>
+      <div class="line-row"><span class="it">ch'io non esca.</span><span class="es">que yo no salga.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Così va bene.</span><span class="es">Así está bien.</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Andate, e non v'incresca</span><span class="es">Vete, y sin lamentarte.</span></div>
+      <div class="stage-direction">
+        <span>(Vespone vuol partire</span>
+        <span class="es">(Vespone va a salir</span>
+        <span>e poi si ferma)</span>
+        <span class="es">y después se detiene)</span>
+      </div>
+      <div class="line-row"><span class="it">Tu ti fermi? Tu guardi?</span><span class="es">¿Te detienes? ¿miras?</span></div>
+      <div class="line-row"><span class="it">Ti meravigli, e che vuol dir?</span><span class="es">¿te maravillas? ¿qué vas a decir?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì, fermati,</span><span class="es">Sí, detente,</span></div>
+      <div class="line-row"><span class="it">guardami, meravigliati,</span><span class="es">mírame, asómbrate,</span></div>
+      <div class="line-row"><span class="it">fammi de'scherni,</span><span class="es">búrlate de mí,</span></div>
+      <div class="line-row"><span class="it">chiamami asinone,</span><span class="es">llámame asnote,</span></div>
+      <div class="line-row"><span class="it">dammi anche un mascellone,</span><span class="es">dame antes un puñetazo,</span></div>
+      <div class="line-row"><span class="it">ch'io chetò mi starò,</span><span class="es">que yo me estaré quieto,</span></div>
+      <div class="line-row"><span class="it">anzi la man allor ti bacierò</span><span class="es">y después la mano te besaré.</span></div>
+      <div class="stage-direction">
+        <span>(Uberto bacia la mano a Vespone)</span>
+        <span class="es">(Uberto besa la mano a Vespone)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Che fa... che fate?</span><span class="es">¿Qué ha... qué hacéis?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Scostati, malvagia.</span><span class="es">Acércate, malvada.</span></div>
+      <div class="line-row"><span class="it">Vattene, insolentaccia.</span><span class="es">Vete, insolentona.</span></div>
+      <div class="line-row"><span class="it">In ogni conto vo' finirla.</span><span class="es">De alguna forma esto debe terminar.</span></div>
+      <div class="line-row"><span class="it">Vespone, in questo punto</span><span class="es">Vespone, ahora mismo</span></div>
+      <div class="line-row"><span class="it">trovami una moglie,</span><span class="es">encuéntrame una esposa,</span></div>
+      <div class="line-row"><span class="it">E sia anche un'arpia,</span><span class="es">y aunque sea una arpía,</span></div>
+      <div class="line-row"><span class="it">a suo dispetto</span><span class="es">por despecho</span></div>
+      <div class="line-row"><span class="it">io mi voglio accasare.</span><span class="es">me quiero casar.</span></div>
+      <div class="line-row"><span class="it">Così non dovrò stare</span><span class="es">Así no tendré que estar</span></div>
+      <div class="line-row"><span class="it">a questa manigolda più soggetto.</span><span class="es">sujeto a esta pícara.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! qui vi cade l'asino!</span><span class="es">¡Oh, os cae bien lo de asno!</span></div>
+      <div class="line-row"><span class="it">Casatevi, che fate ben;</span><span class="es">Casaos, que hacéis, bien;</span></div>
+      <div class="line-row"><span class="it">l'approvo.</span><span class="es">lo apruebo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">L'approvate?</span><span class="es">¿Lo aprobáis?</span></div>
+      <div class="line-row"><span class="it">Manco mal, l'approvò.</span><span class="es">Menos mal, lo aprobó.</span></div>
+      <div class="line-row"><span class="it">Dunque io mi casserò.</span><span class="es">Así pues me casaré.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E prenderete me?</span><span class="es">¿Me tomaréis a mí?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Te?</span><span class="es">¿A ti?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Certo.</span><span class="es">Claro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Affè!</span><span class="es">¡Nada menos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Affè.</span><span class="es">Nada menos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Io non so chi mi tien...</span><span class="es">Yo no sé qué me detiene...</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Dammi il bastone...</span><span class="es">¡Dame el bastón!</span></div>
+      <div class="line-row"><span class="it">Tanto ardir!</span><span class="es">...¡ante tanto atrevimiento!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Oh!</span><span class="es">¡Oh! vos podéis decir y hacer</span></div>
+      <div class="line-row"><span class="it">Voi far e dir potrete</span><span class="es">lo que queráis,</span></div>
+      <div class="line-row"><span class="it">che null'altra che me</span><span class="es">que nada más que conmigo</span></div>
+      <div class="line-row"><span class="it">sposar dovrete.</span><span class="es">casaros debéis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Vattene figlia mia.</span><span class="es">Vete, hija mía.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Voleste dir mia sposa.</span><span class="es">Quisisteis decir "esposa mía".</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">O stelle! o sorte!</span><span class="es">¡Oh, estrellas! ¡oh, suerte!</span></div>
+      <div class="line-row"><span class="it">Oh! Questa è per me morte.</span><span class="es">¡Oh! ¡Esto es mi muerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">O morte o vita,</span><span class="es">O muerte o vida,</span></div>
+      <div class="line-row"><span class="it">Così esser dee:</span><span class="es">así debe ser:</span></div>
+      <div class="line-row"><span class="it">l'ho fisso già in pensiero.</span><span class="es">ya lo tengo decidido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Questo è un altro diavolo più nero.</span><span class="es">Es un diablo aún más negro.</span></div>
+      <div class="musical-number">
+        <span>Duetto</span>
+        <span>Dúo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Lo conosco a quegli occhietti</span><span class="es">Lo veo en esos ojillos,</span></div>
+      <div class="line-row"><span class="it">furbi, ladri, malignetti,</span><span class="es">pillos, ladinos, maliciosos,</span></div>
+      <div class="line-row"><span class="it">che, s'ebben voi dite no,</span><span class="es">que, aunque decís que no,</span></div>
+      <div class="line-row"><span class="it">pur m'accennano di sì.</span><span class="es">me guiñan que sí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Signorina, v'ingannate.</span><span class="es">Señorita, os engañáis,</span></div>
+      <div class="line-row"><span class="it">Troppo in alto voi volate,</span><span class="es">demasiado alto voláis,</span></div>
+      <div class="line-row"><span class="it">gli occhi ed io dicon no,</span><span class="es">los ojos y yo decimos no,</span></div>
+      <div class="line-row"><span class="it">ed è un sogno questo, sì.</span><span class="es">es un sueño ese sí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ma perché?</span><span class="es">¿Y por qué?</span></div>
+      <div class="line-row"><span class="it">Non son io bella,</span><span class="es">¿No soy bella,</span></div>
+      <div class="line-row"><span class="it">graziosa e spiritosa?</span><span class="es">graciosa y aguda?</span></div>
+      <div class="line-row"><span class="it">Su, mirate, leggiadria,</span><span class="es">Vamos, mirad qué alegre,</span></div>
+      <div class="line-row"><span class="it">ve' che brio, che maestà.</span><span class="es">mirad qué brío, qué majestad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">(fra se)</span><span class="es">(para sí)</span></div>
+      <div class="line-row"><span class="it">Ah! costei mi va tentando.</span><span class="es">¡Ah, ésta me está probando!</span></div>
+      <div class="line-row"><span class="it">Quanto va che me la fa.</span><span class="es">¿Cuanto va a que me la hace?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ei mi par che va calando.</span><span class="es">Me parece que va calando.</span></div>
+      <div class="stage-direction">
+        <span>(a Uberto)</span>
+        <span class="es">(a Uberto)</span>
+      </div>
+      <div class="line-row"><span class="it">Via, signore.</span><span class="es">Venga, señor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Eh! vanne via.</span><span class="es">¡Eh! ¡vete fuera!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Risolvete.</span><span class="es">Decidíos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Eh! Matta sei.</span><span class="es">¡Eh! ¡estás loca!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Son per voi gli affetti miei</span><span class="es">Son para vos mis quereres</span></div>
+      <div class="line-row"><span class="it">e dovrete sposar me.</span><span class="es">y debéis desposarme.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh che imbroglio egli è per me!</span><span class="es">¡Oh, qué lío ella es para mí!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Intermezzo Secondo</span>
+      <span>Intermedio Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="stage-direction">
+        <span>(Camera. Serpina e Vespone in</span>
+        <span class="es">(Dormitorio. Serpina y Vespone</span>
+        <span>abito da soldato, poi Uberto</span>
+        <span class="es">vestido de soldado, después</span>
+        <span>vestito per uscire)</span>
+        <span class="es">Uberto vestido para salir)</span>
+      </div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Or che fatto ti sei</span><span class="es">Ahora que te has puesto</span></div>
+      <div class="line-row"><span class="it">dalla mia parte,</span><span class="es">de mi parte, utiliza, Vespone,</span></div>
+      <div class="line-row"><span class="it">usa, Vespone, ogn'arte:</span><span class="es">todo tu arte:</span></div>
+      <div class="line-row"><span class="it">se l'inganno ha il suo effetto,</span><span class="es">si el engaño hace su efecto,</span></div>
+      <div class="line-row"><span class="it">se del padrone io giungo</span><span class="es">si del patrón yo llego</span></div>
+      <div class="line-row"><span class="it">ad esser sposa,</span><span class="es">a ser la esposa,</span></div>
+      <div class="line-row"><span class="it">tu da me chiedi, e avrai,</span><span class="es">tú pídeme, y tendrás,</span></div>
+      <div class="line-row"><span class="it">di casa tu sarai</span><span class="es">de la casa tú serás</span></div>
+      <div class="line-row"><span class="it">il secondo padrone,</span><span class="es">el segundo patrón,</span></div>
+      <div class="line-row"><span class="it">io tel prometto.</span><span class="es">te lo prometo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Io crederei,</span><span class="es">Yo creo,</span></div>
+      <div class="line-row"><span class="it">che la mia serva adesso,</span><span class="es">que mi criada ahora,</span></div>
+      <div class="line-row"><span class="it">anzi, per meglio dir,</span><span class="es">es más, mejor dicho:</span></div>
+      <div class="line-row"><span class="it">la mia padrona,</span><span class="es">mi patrona,</span></div>
+      <div class="line-row"><span class="it">d'uscir di casa</span><span class="es">para salir de casa</span></div>
+      <div class="line-row"><span class="it">mi darà il permesso.</span><span class="es">me dará permiso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ecco, guardate:</span><span class="es">Aquí, fijaos:</span></div>
+      <div class="line-row"><span class="it">senza la mia licenza</span><span class="es">sin mi permiso</span></div>
+      <div class="line-row"><span class="it">pur si volle vestir.</span><span class="es">se ha vestido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Or sì. che al sommo</span><span class="es">Ahora sí que al máximo</span></div>
+      <div class="line-row"><span class="it">giunta è sua impertinenza.</span><span class="es">ha llegado su impertinencia.</span></div>
+      <div class="line-row"><span class="it">Temeraria!</span><span class="es">¡Imprudente!</span></div>
+      <div class="line-row"><span class="it">E di nozze richiedermi ebbe ardir.</span><span class="es">Y aún se atreve a pedirme bodas.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">T'asconderai per ora</span><span class="es">Te esconderás de momento</span></div>
+      <div class="line-row"><span class="it">in quella stanza</span><span class="es">en ese cuarto</span></div>
+      <div class="line-row"><span class="it">e a suo tempo uscirai.</span><span class="es">y en su momento saldrás.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">O qui sta ella.</span><span class="es">Aquí está ella.</span></div>
+      <div class="line-row"><span class="it">Facciam nostro dover.</span><span class="es">Cumplamos con el deber.</span></div>
+      <div class="line-row"><span class="it">Posso o non posso?</span><span class="es">¿Puedo o no puedo?</span></div>
+      <div class="line-row"><span class="it">Vuole o non vuol</span><span class="es">¿Quiere o no quiere</span></div>
+      <div class="line-row"><span class="it">la mia padrona bella?...</span><span class="es">mi bella patrona...?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Eh, signor,</span><span class="es">Eh,señor,</span></div>
+      <div class="line-row"><span class="it">già per me è finito il gioco,</span><span class="es">ya he terminado el juego.</span></div>
+      <div class="line-row"><span class="it">e più tedio fra poco</span><span class="es">Y más fastidio desde ahora</span></div>
+      <div class="line-row"><span class="it">per me non sentirà.</span><span class="es">por mi culpa no tendrá.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Cred'io che no.</span><span class="es">Me parece que no.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Prenderà moglie già.</span><span class="es">Ya tomará esposa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Cred'io che sì, ma non prenderò te.</span><span class="es">Me parece que sí, pero no a ti.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Cred'io che no.</span><span class="es">Me parece que no.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! affatto cosi è.</span><span class="es">¡Oh! ¡claro que sí!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Cred'io che sì:</span><span class="es">Me parece que sí:</span></div>
+      <div class="line-row"><span class="it">Fa d'uopo ancor ch'io pensi a'</span><span class="es">y después todavía pensar</span></div>
+      <div class="line-row"><span class="it">casi miei.</span><span class="es">en mi boda.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Pensaci, far lo dei.</span><span class="es">Piénsalo, debes hacerlo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Io ci ho pensato.</span><span class="es">Ya lo he pensado.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">E ben?</span><span class="es">¿Y bien?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Per me un marito io m'ho trovato.</span><span class="es">Para mí ya he encontrado marido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Buon pro vi faccia.</span><span class="es">Que te haga provecho.</span></div>
+      <div class="line-row"><span class="it">E lo trovaste a un tratto</span><span class="es">¿Y lo encontraste en un momento:</span></div>
+      <div class="line-row"><span class="it">così già detto e fatto?</span><span class="es">así como dicho y hecho?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Più in un'ora</span><span class="es">En una hora puede llegar</span></div>
+      <div class="line-row"><span class="it">venir suol che in cent'anni.</span><span class="es">lo que en cien años llegaría.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Alla buon'ora!</span><span class="es">¡En buena hora!</span></div>
+      <div class="line-row"><span class="it">Posso saper chi egli è?</span><span class="es">¿Y puedo saber quién es?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">L'è un militare.</span><span class="es">Es un militar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ottimo affè. Come si chiamare?</span><span class="es">¿Y cómo se llama?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Il capitan Tempesta.</span><span class="es">El capitán Tormenta.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! brutto nome.</span><span class="es">¡Oh! ¡qué nombre más feo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E al nome</span><span class="es">Y al nombre</span></div>
+      <div class="line-row"><span class="it">sono i fatti corrispondenti.</span><span class="es">sus hechos corresponden.</span></div>
+      <div class="line-row"><span class="it">Egli è poco flemmatico.</span><span class="es">Él es poco flemático.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Male.</span><span class="es">Malo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Anzi è lunatico.</span><span class="es">Aun más, es lunático.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Peggio.</span><span class="es">Peor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Va presto in collera.</span><span class="es">Se enfada rápidamente.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Pessimo.</span><span class="es">Pésimo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E quando poi è incollerito,</span><span class="es">Y después, cuando está encolerizado,</span></div>
+      <div class="line-row"><span class="it">fa ruina, scompigli,</span><span class="es">hace ruinas, barullos,</span></div>
+      <div class="line-row"><span class="it">fracassi, un via, via.</span><span class="es">estrépitos, es un torbellino.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ci anderà mal la vostra signoria.</span><span class="es">Lo pasará mal vuestra señoría.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Perché?</span><span class="es">¿Por qué?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">S'è lei così</span><span class="es">Si tú eres así,</span></div>
+      <div class="line-row"><span class="it">schiribizzosa meco,</span><span class="es">sinvergonzona conmigo</span></div>
+      <div class="line-row"><span class="it">ed è serva: ora pensa</span><span class="es">siendo criada, piensa ahora</span></div>
+      <div class="line-row"><span class="it">con lui essendo sposa.</span><span class="es">con él siendo su esposa.</span></div>
+      <div class="line-row"><span class="it">Senza dubbio</span><span class="es">Sin duda</span></div>
+      <div class="line-row"><span class="it">il capitan Tempesta</span><span class="es">el capitán Tormenta</span></div>
+      <div class="line-row"><span class="it">in collera anderà</span><span class="es">se pondrá colérico</span></div>
+      <div class="line-row"><span class="it">e lei di bastonate</span><span class="es">y de él obtendrás</span></div>
+      <div class="line-row"><span class="it">una tempesta avrà.</span><span class="es">una tormenta de bastonazos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">A questo poi Serpina penserà.</span><span class="es">Después pensará Serpina en esto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Me ne dispiacerebbe;</span><span class="es">No me desprecies;</span></div>
+      <div class="line-row"><span class="it">alfin del bene io ti volli,</span><span class="es">al fin y al cabo yo te quiero,</span></div>
+      <div class="line-row"><span class="it">e tu 'l sai.</span><span class="es">y tú lo sabes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Tanto obbligata.</span><span class="es">Muy agradecida,</span></div>
+      <div class="line-row"><span class="it">Intanto attenda a conservarsi,</span><span class="es">mientras tanto consérvese,</span></div>
+      <div class="line-row"><span class="it">goda colla sua sposa amata,</span><span class="es">goce con su esposa amada,</span></div>
+      <div class="line-row"><span class="it">e di Serpina non si scordi affatto.</span><span class="es">y de Serpina no recuerde nada.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">A te perdoni il ciel:</span><span class="es">Que el cielo te perdone:</span></div>
+      <div class="line-row"><span class="it">l'esser tu troppo boriosa</span><span class="es">el ser demasiado vanidosa</span></div>
+      <div class="line-row"><span class="it">venir mi fe' a tal atto.</span><span class="es">te conduce a ese acto.</span></div>
+      <div class="musical-number">
+        <span>Aria</span>
+        <span>Aria</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">A Serpina penserete qualche volta,</span><span class="es">A Serpina recordaréis alguna vez,</span></div>
+      <div class="line-row"><span class="it">e qualche dì e direte:</span><span class="es">y algún día diréis:</span></div>
+      <div class="line-row"><span class="it">Ah! poverina,</span><span class="es">¡Ah, pobrecita,</span></div>
+      <div class="line-row"><span class="it">cara un tempo ella mi fu.</span><span class="es">a ella yo quise hace tiempo!</span></div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ei mi par che già pian piano</span><span class="es">Y me parece que ya poco a poco</span></div>
+      <div class="line-row"><span class="it">S'incomincia a intenerir.</span><span class="es">se comienza a enternecer.</span></div>
+      <div class="stage-direction">
+        <span>(a Uberto)</span>
+        <span class="es">(a Uberto)</span>
+      </div>
+      <div class="line-row"><span class="it">S'io poi fui impertinente,</span><span class="es">Si yo fui impertinente,</span></div>
+      <div class="line-row"><span class="it">mi perdoni: malamente</span><span class="es">perdonadme: malamente</span></div>
+      <div class="line-row"><span class="it">mi guidai: lo vedo, sì.</span><span class="es">me comporté: lo veo, sí.</span></div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ei mi stringe per la mano,</span><span class="es">él me coge por la mano,</span></div>
+      <div class="line-row"><span class="it">Meglio il fatto non può gir.</span><span class="es">mejor la obra no puede ir.</span></div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! quanto mi sa male</span><span class="es">¡Ah! ¡Qué mal me sabe</span></div>
+      <div class="line-row"><span class="it">di tal risoluzione,</span><span class="es">esta resolución,</span></div>
+      <div class="line-row"><span class="it">ma n'ho colpa io.</span><span class="es">pero no tengo la culpa yo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Di' pur fra te che vuoi che ha da</span><span class="es">Haz de momento lo que quieras,</span></div>
+      <div class="line-row"><span class="it">riuscir la cosa a modo mio.</span><span class="es">que la cosa saldrá como yo quiero.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Orsù, non dubitare,</span><span class="es">Pues bien,</span></div>
+      <div class="line-row"><span class="it">che di te mai</span><span class="es">no dudes,</span></div>
+      <div class="line-row"><span class="it">non mi saprò scordare.</span><span class="es">que no sabré olvidarme de ti.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Vuol vedere il mio sposo?</span><span class="es">¿Queréis conocer a mi esposo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì, l'avrei caro.</span><span class="es">Sí, le tomaré cariño.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Io manderò per lui.</span><span class="es">Mandaré a por él.</span></div>
+      <div class="line-row"><span class="it">Giù in strada ei si trattien.</span><span class="es">En la calle está esperando.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Va'.</span><span class="es">Anda.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Con licenza.</span><span class="es">Con permiso.</span></div>
+      <div class="stage-direction">
+        <span>(Serpina parte)</span>
+        <span class="es">(Serpina sale)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Or indovina chi sarà costui!</span><span class="es">¡A saber quién será ése!</span></div>
+      <div class="line-row"><span class="it">Forse la penitenza</span><span class="es">Ella hará penitencia</span></div>
+      <div class="line-row"><span class="it">farà così di quanto</span><span class="es">por todo lo que</span></div>
+      <div class="line-row"><span class="it">ella ha fatto al padrone.</span><span class="es">le ha hecho a su patrón.</span></div>
+      <div class="line-row"><span class="it">S'è ver,</span><span class="es">Si es verdad</span></div>
+      <div class="line-row"><span class="it">come mi dice, un tal marito,</span><span class="es">lo que ella dice,</span></div>
+      <div class="line-row"><span class="it">la terrà fra</span><span class="es">su marido la llevará</span></div>
+      <div class="line-row"><span class="it">la terra ed il bastone.</span><span class="es">entre el suelo y el bastón.</span></div>
+      <div class="line-row"><span class="it">Ah! Poveretta lei!</span><span class="es">¡Ah! ¡Pobrecilla!</span></div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+      <div class="line-row"><span class="it">Per altro io penserei...</span><span class="es">De otra forma yo pensaría...</span></div>
+      <div class="line-row"><span class="it">Ma... Ella è serva...</span><span class="es">Pero... Ella es criada...</span></div>
+      <div class="line-row"><span class="it">Ma... il primo non saresti...</span><span class="es">Pero... no seáis el primo...</span></div>
+      <div class="line-row"><span class="it">Dunque, la sposeresti?...</span><span class="es">Así que ¿la desposarías?</span></div>
+      <div class="line-row"><span class="it">Basta... Eh no, no, non sia.</span><span class="es">¡Basta!... ¡Eh! no, no, no sea.</span></div>
+      <div class="line-row"><span class="it">Su, pensieri ribaldi</span><span class="es">Vamos, pensamientos pillastres,</span></div>
+      <div class="line-row"><span class="it">andate via.</span><span class="es">fuera de aquí.</span></div>
+      <div class="line-row"><span class="it">Piano, io me l'ho allevata:</span><span class="es">Reflexiona... yo la he criado...</span></div>
+      <div class="line-row"><span class="it">So poi com'ella è nata...</span><span class="es">desde que nació...</span></div>
+      <div class="line-row"><span class="it">Eh! che sei matto!</span><span class="es">¡Eh! ¡estás loco!</span></div>
+      <div class="line-row"><span class="it">Piano di grazia...</span><span class="es">Reflexiona...</span></div>
+      <div class="line-row"><span class="it">Eh... non pensarci affatto...</span><span class="es">¡Eh!... no pienses más en ello...</span></div>
+      <div class="line-row"><span class="it">Ma... Io ci ho passione,</span><span class="es">Pero... Yo siento pasión,</span></div>
+      <div class="line-row"><span class="it">E pur... Quella meschina...</span><span class="es">y además... Esta pobrecilla...</span></div>
+      <div class="line-row"><span class="it">Eh torna... Oh Dio!...</span><span class="es">¡Eh, regresa!... ¡Oh, Dios!...</span></div>
+      <div class="line-row"><span class="it">Eh, siam da capo...</span><span class="es">¡Eh, pensemos fríamente!</span></div>
+      <div class="line-row"><span class="it">Oh! che confusione.</span><span class="es">¡Oh, qué confusión!</span></div>
+      <div class="musical-number">
+        <span>Aria</span>
+        <span>Aria</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="it">Son imbrogliato io già;</span><span class="es">Ya estoy enredado,</span></div>
+      <div class="line-row"><span class="it">ho un certo che nel core</span><span class="es">siento algo en el corazón</span></div>
+      <div class="line-row"><span class="it">che dir per me non so</span><span class="es">que para mí no sé</span></div>
+      <div class="line-row"><span class="it">s'è amore, o s'è pietà.</span><span class="es">si es amor o si es piedad.</span></div>
+      <div class="line-row"><span class="it">Sento un che, poi mi dice:</span><span class="es">Siento a uno que me dice:</span></div>
+      <div class="line-row"><span class="it">Uberto, pensa a te.</span><span class="es">Uberto, piensa en ti.</span></div>
+      <div class="line-row"><span class="it">Io sto fra il sì e il no</span><span class="es">Yo estoy entre el sí y el no,</span></div>
+      <div class="line-row"><span class="it">fra il voglio</span><span class="es">entre el quiero</span></div>
+      <div class="line-row"><span class="it">e fra il non voglio,</span><span class="es">y entre el no quiero,</span></div>
+      <div class="line-row"><span class="it">e sempre più m'imbroglio.</span><span class="es">y cada vez más me enredo.</span></div>
+      <div class="line-row"><span class="it">Ah! misero, infelice,</span><span class="es">¡Ah! ¡Miserable, infeliz,</span></div>
+      <div class="line-row"><span class="it">che mai sarà di me!</span><span class="es">qué será de mí!</span></div>
+      <div class="stage-direction">
+        <span>(Entra Serpina con Vespone</span>
+        <span class="es">(Entra Serpina con Vespone</span>
+        <span>in abito come sopra)</span>
+        <span class="es">disfrazado de miliar)</span>
+      </div>
+      <div class="musical-number">
+        <span>Recitativo</span>
+        <span>Recitativo</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Favorisca, signor... passi.</span><span class="es">Haga el favor, señor... pase.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Padrona.</span><span class="es">Patrona.</span></div>
+      <div class="line-row"><span class="it">È questi?</span><span class="es">¿Es éste?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Questi è desso.</span><span class="es">El mismo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(para si)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh brutta cera!</span><span class="es">¡Oh, qué cara más fea!</span></div>
+      <div class="line-row"><span class="it">Veramente ha</span><span class="es">En verdad tiene</span></div>
+      <div class="line-row"><span class="it">una faccia tempestosa.</span><span class="es">un aspecto tormentoso.</span></div>
+      <div class="stage-direction">
+        <span>(a Serpina)</span>
+        <span class="es">(a Serpina)</span>
+      </div>
+      <div class="line-row"><span class="it">E così,</span><span class="es">¿Y entonces,</span></div>
+      <div class="line-row"><span class="it">caro il capitan Tempesta,</span><span class="es">querido capitán Tormenta,</span></div>
+      <div class="line-row"><span class="it">si sposerà già questa mia ragazza?</span><span class="es">os casaréis con esta pupila mía?</span></div>
+      <div class="line-row"><span class="it">O ben n'è già contento...</span><span class="es">Oh, bien, ya estoy contento...</span></div>
+      <div class="stage-direction">
+        <span>(Vespone accenna di sì)</span>
+        <span class="es">(Vespone se señala a sí mismo)</span>
+      </div>
+      <div class="line-row"><span class="it">O ben,</span><span class="es">Oh, bien,</span></div>
+      <div class="line-row"><span class="it">non vi ha difficoltà?</span><span class="es">¿no tendréis dificultad?</span></div>
+      <div class="stage-direction">
+        <span>(Vespone come sopra)</span>
+        <span class="es">(Vespone como antes)</span>
+      </div>
+      <div class="line-row"><span class="it">O ben... Egli mi pare</span><span class="es">Oh, bien... Me parece que éste</span></div>
+      <div class="line-row"><span class="it">Che abbia poche parole.</span><span class="es">es de pocas palabras.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Anzi pochissime.</span><span class="es">Más bien de poquísimas.</span></div>
+      <div class="stage-direction">
+        <span>(a Vespone)</span>
+        <span class="es">(a Vespone)</span>
+      </div>
+      <div class="line-row"><span class="it">Vuole me?</span><span class="es">¿Me queréis?</span></div>
+      <div class="stage-direction">
+        <span>(ad Uberto)</span>
+        <span class="es">(a Uberto)</span>
+      </div>
+      <div class="line-row"><span class="it">Con permissione.</span><span class="es">Con vuestro permiso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">E in braccio a quel brutto</span><span class="es">¿Y en brazos</span></div>
+      <div class="line-row"><span class="it">nibbiaccio deve andar</span><span class="es">de ese feo milanucho</span></div>
+      <div class="line-row"><span class="it">quella bella colombina?</span><span class="es">debe estar esta bella palomita?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Sapete cosa ha detto?</span><span class="es">¿Sabéis qué ha dicho?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Di' Serpina.</span><span class="es">Dime, Serpina.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Che vuole che mi diate la dote mia.</span><span class="es">Que quiere que me deis mi dote.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">La dote tua? Che dote!</span><span class="es">¿Tu dote? ¿Qué dote?</span></div>
+      <div class="line-row"><span class="it">Sei matta?</span><span class="es">¿Estás loca?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Non gridate,</span><span class="es">No gritéis,</span></div>
+      <div class="line-row"><span class="it">ch'egli in furia darà.</span><span class="es">que se pondrá furioso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Può dar in furia</span><span class="es">Puede estar en furia</span></div>
+      <div class="line-row"><span class="it">più d'Orlando Furioso.</span><span class="es">más que Orlando Furioso,</span></div>
+      <div class="line-row"><span class="it">che a me punto non preme.</span><span class="es">pero de mí no tendrá nada.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Dio!</span><span class="es">¡Oh, Dios!</span></div>
+      <div class="stage-direction">
+        <span>(Vespone finge di andare</span>
+        <span class="es">(Vespone finge estar</span>
+        <span>in collera)</span>
+        <span class="es">encolerizado)</span>
+      </div>
+      <div class="line-row"><span class="it">Vedete pur ch'egli già freme.</span><span class="es">Mirad pues que él ya tiembla.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(a Serpina)</span>
+        <span class="es">(a Serpina)</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! che guai! Va là tu,</span><span class="es">¡Oh! ¡qué asunto! Acércate tú,</span></div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Statti a vedere</span><span class="es">Vete a saber</span></div>
+      <div class="line-row"><span class="it">che costui mi farà...</span><span class="es">lo que éste me hará...</span></div>
+      <div class="stage-direction">
+        <span>(a Serpina)</span>
+        <span class="es">(a Serpina)</span>
+      </div>
+      <div class="line-row"><span class="it">Ben, cosa dice?</span><span class="es">Bien, ¿qué dice?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Che vuole almeno</span><span class="es">Que quiere al menos</span></div>
+      <div class="line-row"><span class="it">quattromila scudi.</span><span class="es">cuatro mil escudos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Canchero! Oh!</span><span class="es">¡Caramba! ¡Oh!</span></div>
+      <div class="line-row"><span class="it">questa è bella!</span><span class="es">¡esto sí que es bueno!</span></div>
+      <div class="line-row"><span class="it">Vuole una bagattella!</span><span class="es">¡Quiere una bagatela!</span></div>
+      <div class="line-row"><span class="it">Ah! padron mio...</span><span class="es">¡Ah! patrón mío...</span></div>
+      <div class="stage-direction">
+        <span>(Vespone vuol mettere mano</span>
+        <span class="es">(Vespone intenta sacar</span>
+        <span>allo spada)</span>
+        <span class="es">la espada)</span>
+      </div>
+      <div class="line-row"><span class="it">Non signore... Serpina...</span><span class="es">No señor... Serpina...</span></div>
+      <div class="line-row"><span class="it">Che mal abbia. Vespone</span><span class="es">Males sobre él. ¡Vespone!</span></div>
+      <div class="line-row"><span class="it">Dove sei?</span><span class="es">¿Dónde estás?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ma, padrone</span><span class="es">Pero, patrón,</span></div>
+      <div class="line-row"><span class="it">il vostro male andate voi cercando.</span><span class="es">estáis buscando vuestra perdición.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Senti un po'.</span><span class="es">Escucha un momento.</span></div>
+      <div class="line-row"><span class="it">Con costui hai tu concluso?</span><span class="es">¿Con él ya te has prometido?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Io ho concluso</span><span class="es">Me he prometido</span></div>
+      <div class="line-row"><span class="it">e non concluso.</span><span class="es">y no me he prometido.</span></div>
+      <div class="line-row"><span class="it">Adesso...</span><span class="es">Ahora...</span></div>
+      <div class="stage-direction">
+        <span>(finge di parlare con Vespone)</span>
+        <span class="es">(finge que habla con Vespone)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Statti a veder,</span><span class="es">Ya veréis</span></div>
+      <div class="line-row"><span class="it">che questo maledetto</span><span class="es">como este maldito capitán</span></div>
+      <div class="line-row"><span class="it">capitano farà precipitarmi.</span><span class="es">me hará precipitarme.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Egli ha detto...</span><span class="es">El ha dicho...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Che cosa ha detto?</span><span class="es">¿Qué cosa ha dicho?</span></div>
+      <div class="stage-direction">
+        <span>(fra se)</span>
+        <span class="es">(para sí)</span>
+      </div>
+      <div class="line-row"><span class="it">Ei parla per interprete.</span><span class="es">Él habla con intérpretes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Che, o mi date la dote</span><span class="es">Que, o me entregáis la dote</span></div>
+      <div class="line-row"><span class="it">di quattromila scudi,</span><span class="es">de cuatro mil escudos,</span></div>
+      <div class="line-row"><span class="it">o non mi sposerà.</span><span class="es">o que no me desposa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ha detto?</span><span class="es">¿Eso ha dicho?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ha detto.</span><span class="es">Eso ha dicho.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">E se egli non ti sposa</span><span class="es">Y si él no te desposa,</span></div>
+      <div class="line-row"><span class="it">a me ch'importa?</span><span class="es">¿a mí qué me importa?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ma che mi avrete a sposar voi.</span><span class="es">Pues que me deberéis desposar vos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ha detto?</span><span class="es">¿Eso ha dicho?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ha detto,</span><span class="es">Eso ha dicho,</span></div>
+      <div class="line-row"><span class="it">o che altrimenti,</span><span class="es">y si hacéis otra cosa,</span></div>
+      <div class="line-row"><span class="it">in pezzi vi farà.</span><span class="es">en pedacitos os hará.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Oh! Questo non l'ha detto!</span><span class="es">¡Oh! ¡Eso no lo ha dicho!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E lo vedrà.</span><span class="es">Ya lo veréis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">L'ha detto... Si, signora.</span><span class="es">Lo ha dicho... Sí señora.</span></div>
+      <div class="stage-direction">
+        <span>(Vespone fa cenno di</span>
+        <span class="es">(Vespone hace gestos de amenazar</span>
+        <span>minacciare Uberto)</span>
+        <span class="es">a Uberto)</span>
+      </div>
+      <div class="line-row"><span class="it">Eh! non s'incomodi,</span><span class="es">¡Eh! no se indisponga,</span></div>
+      <div class="line-row"><span class="it">che giacché per me vuol</span><span class="es">que ya que así</span></div>
+      <div class="line-row"><span class="it">così il destino...</span><span class="es">que lo quiere el destino...</span></div>
+      <div class="line-row"><span class="it">or io la sposerò.</span><span class="es">ahora yo la desposaré.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Mi dia la destra in sua presenza.</span><span class="es">Dame la mano en su presencia.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sì.</span><span class="es">Sí.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Viva il padrone.</span><span class="es">Viva el patrón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Va ben così?</span><span class="es">¿Está bien así?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E viva ancor Vespone.</span><span class="es">Y viva también Vespone.</span></div>
+      <div class="stage-direction">
+        <span>(Vespone si leva i mustacchi)</span>
+        <span class="es">(Vespone se quita el mostacho)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! ribaldo! tu sei?</span><span class="es">¡Ah! ¡desvergonzado! ¿eras tú?</span></div>
+      <div class="line-row"><span class="it">E tal inganno...</span><span class="es">Y este engaño...</span></div>
+      <div class="line-row"><span class="it">Lasciami...</span><span class="es">Déjame...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E non occorre più strepitar.</span><span class="es">No hace falta escandalizar más.</span></div>
+      <div class="line-row"><span class="it">Ti son già sposa, il sai.</span><span class="es">Ya soy tu esposa, lo sabes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">È ver, fatta me l'hai:</span><span class="es">Es cierto, me la habéis hecho:</span></div>
+      <div class="line-row"><span class="it">ti venne buona.</span><span class="es">la tendrás buena.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">E di serva divenni io già padrona.</span><span class="es">Y de criada he pasado a patrona.</span></div>
+      <div class="musical-number">
+        <span>Duetto</span>
+        <span>Dueto</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Contento tu sarai,</span><span class="es">Contento estarás,</span></div>
+      <div class="line-row"><span class="it">avrai amor per me?</span><span class="es">¿también me amarás?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">So che contento è il core</span><span class="es">El corazón tengo contento</span></div>
+      <div class="line-row"><span class="it">e amore avrò per te.</span><span class="es">y también te amaré.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Di pur la verità.</span><span class="es">Di entonces la verdad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Quest'è la verità.</span><span class="es">Ésta es la verdad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Oh Dio! mi par che no.</span><span class="es">¡Oh, Dios! me parece que no.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Non dubitar, oibò!</span><span class="es">¡No lo dudes, caramba!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Oh sposo grazioso!</span><span class="es">¡Ay, esposo gracioso!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Diletta mia sposetta!...</span><span class="es">¡Querida esposita mía!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Così mi fai goder.</span><span class="es">Así me haces gozar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sol tu mi fai goder.</span><span class="es">Sólo tú me haces gozar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Per te ho io nel core</span><span class="es">Por ti siento en el corazón</span></div>
+      <div class="line-row"><span class="it">il martellin d'amore</span><span class="es">el martillito del amor</span></div>
+      <div class="line-row"><span class="it">che mi percuote ognor.</span><span class="es">que me golpea sin cesar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Mi sta per te nel core</span><span class="es">Siento por ti en el corazón</span></div>
+      <div class="line-row"><span class="it">con un tamburo amore,</span><span class="es">como un tambor de amor,</span></div>
+      <div class="line-row"><span class="it">e batte forte ognor.</span><span class="es">que bate fuerte sin remisión.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Deh! senti il tippitì.</span><span class="es">¡Ay! ¡escucha el ti-pi-tí!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Lo sento, è vero, sì.</span><span class="es">Lo escucho, es verdad, sí.</span></div>
+      <div class="line-row"><span class="it">Tu senti il tappatà.</span><span class="es">¡Escucha tú el ta-pa-tá!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">È vero il sento già.</span><span class="es">Es verdad, lo escucho ya.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ma questo ch'esser può?</span><span class="es">¿Y esto qué puede ser?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Io nol so.</span><span class="es">No lo sé.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Nol so io.</span><span class="es">Yo no lo sé.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span>, <span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Serpina, Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Caro. Gioia. Oh Dio!</span><span class="es">Querido. Alegría. ¡Oh, Dios!</span></div>
+      <div class="line-row"><span class="it">Ben te lo puoi pensar.</span><span class="es">Te lo puedes imaginar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">lo per me non so dirlo.</span><span class="es">Yo no sé decírmelo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Per me non so capirlo.</span><span class="es">Yo no sé comprenderlo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Sarà, ma non è questo.</span><span class="es">Será, pero no es esto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Sarà. né meno è questo.</span><span class="es">Será, todo menos esto.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="serpina">Serpina</span></span>
+        <span class="character-name">Serpina</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! furbo, sì t'intendo.</span><span class="es">¡Ah! ¡pillastre! ¡te entiendo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="uberto">Uberto</span></span>
+        <span class="character-name">Uberto</span>
+      </div>
+      <div class="line-row"><span class="it">Ah! ladra, ti comprendo,</span><span class="es">¡Ah! ¡ladrona! ¡te entiendo!</span></div>
+      <div class="line-row"><span class="it">Mi vuoi tu corbellar.</span><span class="es">De mí te quieres burlar.</span></div>
+      <div class="stage-direction">
+        <span>(FINE)</span>
+        <span class="es">(FIN)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  fasano_scotto: {
+    label: "La Serva Padrona \u00b7 Fasano / Scotto",
+    short: "Fasano / Scotto",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Aspettare E Non Venire", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 2, title: "Questa E' Per Me Disgrazia", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 3, title: "Sempre In Contrasti", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 4, title: "In Somma Delle Somme", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 5, title: "Stizzoso, Mio Stizzoso", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 6, title: "Benissimo!", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 7, title: "Lo Conosco", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 8, title: "Or Che Fatto", act: "Act II", has_block: true },
+      { id: "t9", cd: 1, track: 9, title: "A Serpina Penserete", act: "Act II", has_block: true },
+      { id: "t10", cd: 1, track: 10, title: "Ah, Quanto Mi Fa Male", act: "Act II", has_block: true },
+      { id: "t11", cd: 1, track: 11, title: "Sono Imbrogliato", act: "Act II", has_block: true },
+      { id: "t12", cd: 1, track: 12, title: "Favorisca, Signor!", act: "Act II", has_block: true },
+      { id: "t13", cd: 1, track: 13, title: "Contento Tu Sarai", act: "Act II", has_block: true }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Intermezzo I",
+    "Act II": "Intermezzo II"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t8"
+  };
+
+  const CHARACTERS = [
+    { id: "uberto", name: "Uberto", voice: "Bass", description: "Rico comerciante" },
+    { id: "serpina", name: "Serpina", voice: "Soprano", description: "Su criada" },
+    { id: "vespone", name: "Vespone", voice: "Silent", description: "Otro criado (personaje mudo)" }
+  ];
+
+  const CAST = {
+    fasano_scotto: { "serpina": "Renata Scotto", "uberto": "Sesto Bruscantini" }
+  };
+
+  let activeRecording = "fasano_scotto";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { it: true, es: true };
+</script>
+<script src="../libretto_spotify.js"></script>
+<script src="../libretto.js"></script>
