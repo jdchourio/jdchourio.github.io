@@ -1,0 +1,1635 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Orphée et Eurydice · Gardiner / von Otter</title>
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T2</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Ah! Dans Ce Bois Tranquille</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Orphée et Eurydice · Gardiner / von Otter</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnFR" onclick="toggleLang('fr')">FR</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Acte Première</span>
+      <span>Acto Primero</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="scene-heading">
+        <span>Scène Première</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Un bois de lauriers et de cyprès, un séjour</span>
+        <span class="es">(Agradable, pero solitario bosquecillo de</span>
+        <span>agréable mais solitaire qui est entrecoupé</span>
+        <span class="es">laureles y cipreses, con un claro, en el que</span>
+        <span>pour former une petite plaine contenant</span>
+        <span class="es">se observa en un pequeño llano, la tumba</span>
+        <span>le tombeau d'Eurydice. Au lever du rideau</span>
+        <span class="es">de Eurídice . Al levantar el telón, se ve</span>
+        <span>et pendant la ritournelle du chur d'entrée,</span>
+        <span class="es">la escena ocupada por una multitud de</span>
+        <span>on voit une troupe de bergers et de nymphes</span>
+        <span class="es">pastores, ninfas y seguidores de Orfeo</span>
+        <span>dans la suite d'Orphée et tous portent des</span>
+        <span class="es">llevando coronas de flores y guirnaldas</span>
+        <span>couronnes de fleurs et de myrtes;</span>
+        <span class="es">de mirto; y mientras una parte</span>
+        <span>quelques-uns versent de l'encens dans le feu</span>
+        <span class="es">del coro quema incienso perfumado</span>
+        <span>sacré, enguirlandent le marbre et couvrent</span>
+        <span class="es">y colocan flores en la tumba y las esparcen</span>
+        <span>son tombeau de fleurs, Pendant que les autres</span>
+        <span class="es">alrededor de la misma; la otra parte cantan,</span>
+        <span>chantent le chur suivant qui est interrompu par</span>
+        <span class="es">interrumpidos los lamentos de Orfeo, el cual,</span>
+        <span>les plaintes d'Orphée adossé sur le devant contre</span>
+        <span class="es">tendido delante encima de una piedra</span>
+        <span>une pierre et répétant le nom d'Eurydice</span>
+        <span class="es">va de vez en cuando repitiendo con pasión</span>
+        <span>d'une voix gémissante.)</span>
+        <span class="es">el nombre de Eurídice.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Pasteurs Et Nymphes</span></span>
+        <span class="character-name">Pastores Y Ninfas</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! dans ce bois tranquille et sombre,</span><span class="es">¡Ah! Si junto a esta urna funesta,</span></div>
+      <div class="line-row"><span class="fr">Eurydice, si ton ombre Nous entend...</span><span class="es">Eurídice, permanece aún tu bella sombra...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Eurydice!</span><span class="es">¡Eurídice!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Pasteurs Et Nymphes</span></span>
+        <span class="character-name">Pastores Y Ninfas</span>
+      </div>
+      <div class="line-row"><span class="fr">... Sois sensible à nos alarmes, Vois nos peines,</span><span class="es">... escucha el llanto, los lamentos, los suspiros</span></div>
+      <div class="line-row"><span class="fr">vois nos larmes Que pour toi l'on répand.</span><span class="es">que con dolor se derraman por ti.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Eurydice!</span><span class="es">¡Eurídice!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Pasteurs Et Nymphes</span></span>
+        <span class="character-name">Pastores Y Ninfas</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! prends pitié du malheureux Orphée,</span><span class="es">Oye a tu desgraciado esposo</span></div>
+      <div class="line-row"><span class="fr">Il soupire, il gémit, Il plaint sa destinée.</span><span class="es">que llorando te llama...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Eurydice!</span><span class="es">¡Eurídice!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Pasteurs Et Nymphes</span></span>
+        <span class="character-name">Pastores Y Ninfas</span>
+      </div>
+      <div class="line-row"><span class="fr">L'amoureuse tourterelle,</span><span class="es">... te llama y se lamenta;</span></div>
+      <div class="line-row"><span class="fr">Toujours tendre, toujours fidèle,</span><span class="es">como cuando la dulce tórtola</span></div>
+      <div class="line-row"><span class="fr">Ainsi soupire et meurt de douleur.</span><span class="es">pierde a su amoroso compañero.</span></div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Vos plaintes, vos regrets</span><span class="es">¡Amigos, vuestros lamentos</span></div>
+      <div class="line-row"><span class="fr">augmentent mon supplice!</span><span class="es">empeoran mi dolor!</span></div>
+      <div class="line-row"><span class="fr">Aux mânes sacrés d'Eurydice</span><span class="es">¡A la piadosa sombra de Eurídice</span></div>
+      <div class="line-row"><span class="fr">Rendez les suprêmes honneurs,</span><span class="es">rendid ahora los últimos honores</span></div>
+      <div class="line-row"><span class="fr">Et couvrez son tombeau de fleurs.</span><span class="es">y llenad de coronas el mármol!</span></div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="character-row">
+        <span><span class="character-name">Pasteurs Et Nymphes</span></span>
+        <span class="character-name">Pastores Y Ninfas</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! dans ce bois lugubre et sombre,</span><span class="es">¡Ah! Si junto a esta arma funesta,</span></div>
+      <div class="line-row"><span class="fr">Eurydice, si ton ombre nous entend,</span><span class="es">Eurídice, permanece aún tu bella sombra</span></div>
+      <div class="line-row"><span class="fr">Sois sensible à nos alarmes, vois nos peines,</span><span class="es">escucha el llanto, los lamentos, los suspiros</span></div>
+      <div class="line-row"><span class="fr">vois les larmes que pour toi l'on répand.</span><span class="es">que con dolor se derraman por ti.</span></div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Éloignez-vous; ce lieu convient à ma douleur,</span><span class="es">Alejaos; este lugar es conveniente para mi dolor,</span></div>
+      <div class="line-row"><span class="fr">Et je veux sans témoins y répandre des pleurs.</span><span class="es">y quiero llorar sin testigos.</span></div>
+      <div class="stage-direction">
+        <span>(Les bergers et les nymphes se</span>
+        <span class="es">(Pastores y ninfas dan fin a sus ritos</span>
+        <span>dispersent dans le bois.)</span>
+        <span class="es">funerarios y abandonan el escenario.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="line-row"><span class="fr">Objet de mon amour,</span><span class="es">Así invoco a mi amada</span></div>
+      <div class="line-row"><span class="fr">Je te demande au jour</span><span class="es">durante el día,</span></div>
+      <div class="line-row"><span class="fr">Avant l'aurore;</span><span class="es">al amanecer</span></div>
+      <div class="line-row"><span class="fr">Et quand le jour s'en fuit,</span><span class="es">y en el crepúsculo.</span></div>
+      <div class="line-row"><span class="fr">Ma voix pendant la nuit</span><span class="es">Mi voz todavía continúa</span></div>
+      <div class="line-row"><span class="fr">T'appelle encore.</span><span class="es">llamándote durante la noche.</span></div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="fr">Eurydice, Eurydice, ombre chère,</span><span class="es">¡Eurídice! ¡Eurídice! Sombra amada,</span></div>
+      <div class="line-row"><span class="fr">ah! dans quels lieux es-tu?</span><span class="es">¡ay!, ¿dónde te escondes?</span></div>
+      <div class="line-row"><span class="fr">Ton époux gémissant, interdit, éperdu,</span><span class="es">Tu fiel esposo afligido, enloquecido</span></div>
+      <div class="line-row"><span class="fr">Te demande sans cesse,</span><span class="es">no cesa de preguntar, en vano,</span></div>
+      <div class="line-row"><span class="fr">à la nature entière</span><span class="es">a la naturaleza entera,</span></div>
+      <div class="line-row"><span class="fr">Les vents, hélas!</span><span class="es">los vientos, ¡ay de mí!</span></div>
+      <div class="line-row"><span class="fr">emportent sa prière.</span><span class="es">Llevan su plegaria.</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="fr">Accablé de regrets,</span><span class="es">Abrumado por los lamentos,</span></div>
+      <div class="line-row"><span class="fr">Je parcours des forêts</span><span class="es">yo recorro los bosques y</span></div>
+      <div class="line-row"><span class="fr">La vaste enceinte.</span><span class="es">la vasta llanura.</span></div>
+      <div class="line-row"><span class="fr">Touché de mon destin,</span><span class="es">Pero a mis quejas</span></div>
+      <div class="line-row"><span class="fr">Écho répète en vain</span><span class="es">sólo replica el eco</span></div>
+      <div class="line-row"><span class="fr">Ma triste plainte.</span><span class="es">que mi amor conocía.</span></div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="line-row"><span class="fr">Eurydice, Eurydice! De ce doux nom</span><span class="es">¡Eurídice! ¡Eurídice! ¡Ay! ¡Las riberas ya conocen</span></div>
+      <div class="line-row"><span class="fr">Tout retentit, ces bois, ces rochers, ce vallon.</span><span class="es">este nombre, y los bosques lo han aprendido de mí!</span></div>
+      <div class="line-row"><span class="fr">Sur les troncs dépouillés, sur l'écorce naissante,</span><span class="es">Resuena por todos los valles: en cada tronco lo ha</span></div>
+      <div class="line-row"><span class="fr">On lit ce mot gravé par une main tremblante.</span><span class="es">escrito el desgraciado Orfeo con temblorosa mano:</span></div>
+      <div class="line-row"><span class="fr">Eurydice n'est plus, et je respire encore!</span><span class="es">¡Eurídice ya no está y yo sigo vivo!</span></div>
+      <div class="line-row"><span class="fr">Dieux, rendez-lui la vie, ou donnez-moi la mort!</span><span class="es">¡Dioses, dadle nueva vida o matadme!</span></div>
+      <div class="line-row"><span class="fr">Plein de trouble et d'effroi,</span><span class="es">Lleno de confusión y de espanto,</span></div>
+      <div class="line-row"><span class="fr">Que de maux loin de toi,</span><span class="es">cuántos males lejos de ti,</span></div>
+      <div class="line-row"><span class="fr">Mon cur endure;</span><span class="es">mi corazón sufre;</span></div>
+      <div class="line-row"><span class="fr">Témoin de mes malheurs,</span><span class="es">testigo de mis pesares,</span></div>
+      <div class="line-row"><span class="fr">Sensible à mes douleurs,</span><span class="es">sensible a mis dolores,</span></div>
+      <div class="line-row"><span class="fr">L'onde murmure.</span><span class="es">murmura el río.</span></div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="line-row"><span class="fr">Divinités de l'Achéron,</span><span class="es">¡Dioses! Bárbaros dioses, de Aqueronte</span></div>
+      <div class="line-row"><span class="fr">Ministres redoutés de l'empire des ombres,</span><span class="es">Ministros temidos del imperio de las sombras</span></div>
+      <div class="line-row"><span class="fr">Vous qui dans les demeures sombres</span><span class="es">que en las moradas sombrías</span></div>
+      <div class="line-row"><span class="fr">Faites exécuter les arrêts de Pluton,</span><span class="es">ejecutáis las sentencias de Plutón,</span></div>
+      <div class="line-row"><span class="fr">Vous que n'attendrit point la beauté, la jeunesse,</span><span class="es">insensibles a la belleza o juventud</span></div>
+      <div class="line-row"><span class="fr">Vous m'avez enlevé l'objet de ma tendresse,</span><span class="es">me habéis arrebatado el objeto de mi ternura,</span></div>
+      <div class="line-row"><span class="fr">Oh, cruel souvenir!</span><span class="es">¡Oh crueles recuerdos!...</span></div>
+      <div class="line-row"><span class="fr">Eh quoi! les grâces de son âge</span><span class="es">¡Ah!, ¿los encantos de su juventud</span></div>
+      <div class="line-row"><span class="fr">Du sort le plus affreux n'ont pu la garantir?</span><span class="es">no han podido preservarla de los horrores?</span></div>
+      <div class="line-row"><span class="fr">Implacables tyrans, je veux vous la ravir!</span><span class="es">¡Os la reclamo, dioses tiranos!</span></div>
+      <div class="line-row"><span class="fr">Je saurai pénétrer jusqu'au sombre rivage,</span><span class="es">¡Yo también tengo valor para seguir los pasos</span></div>
+      <div class="line-row"><span class="fr">Mes accents douloureux fléchiront vos rigueurs;</span><span class="es">de los intrépidos héroes,</span></div>
+      <div class="line-row"><span class="fr">Je me sens assez de courage</span><span class="es">y buscar a mi esposa, mi bien,</span></div>
+      <div class="line-row"><span class="fr">Pour braver toutes vos fureurs!</span><span class="es">en vuestro terrible reino!</span></div>
+      <div class="scene-heading">
+        <span>Scène Deuxième</span>
+        <span>Escena Segunda</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(paraissant)</span>
+        <span class="es">(apareciendo de repente)</span>
+      </div>
+      <div class="line-row"><span class="fr">L'amour vient au secours de l'amant le plus tendre.</span><span class="es">El dios del Amor ayudará al desconsolado esposo.</span></div>
+      <div class="line-row"><span class="fr">Rassure-toi, les dieux sont touchés de ton sort.</span><span class="es">Los dioses te conceden la gracia</span></div>
+      <div class="line-row"><span class="fr">Dans les enfers tu peux te rendre;</span><span class="es">de traspasar las perezosas olas del Leteo.</span></div>
+      <div class="line-row"><span class="fr">Va trouver Eurydice au séjour de la mort.</span><span class="es">¡Ve! ¡Ve a buscar a Eurídice en el sombrío reino!</span></div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="fr">Si les doux accents de ta lyre,</span><span class="es">Si los dulces sonidos de tu lira</span></div>
+      <div class="line-row"><span class="fr">Si tes accents mélodieux</span><span class="es">si tus dulces melodías,</span></div>
+      <div class="line-row"><span class="fr">Apaisent la fureur des tyrans de ces lieux,</span><span class="es">apaciguan la ira de los dioses,</span></div>
+      <div class="line-row"><span class="fr">Tu la ramèneras du ténébreux empire.</span><span class="es">tu la sacarás del imperio tenebroso.</span></div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Dieux! je la reverrais!</span><span class="es">¡Cielos! ¡La veré de nuevo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Si les doux accents de ta lyre, etc</span><span class="es">¡Ah! ¡Si el dulce sonido de tu lira, etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Dieux! je la reverrais!</span><span class="es">¡Cielos! ¡La veré de nuevo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui; mais pour l'obtenir</span><span class="es">Sí, pero para lograrlo</span></div>
+      <div class="line-row"><span class="fr">Il faut te résoudre à remplir</span><span class="es">es necesario cumplir</span></div>
+      <div class="line-row"><span class="fr">L'ordre que je vais te prescrire.</span><span class="es">la condición que yo te indicaré</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! qui pourrait me retenir?</span><span class="es">Ninguna condición suya me hace temblar;</span></div>
+      <div class="line-row"><span class="fr">À tout mon âme est préparée.</span><span class="es">por ella afrontaré cualquier prueba.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Apprends la volonté des dieux:</span><span class="es">¡Escucha, escucha pues, Orfeo!</span></div>
+      <div class="line-row"><span class="fr">Sur cette amante adorée</span><span class="es">¡Hasta que hayas salido de ese antro,</span></div>
+      <div class="line-row"><span class="fr">Garde-toi de porter un regard curieux,</span><span class="es">se te prohibe mirar a tu esposa,</span></div>
+      <div class="line-row"><span class="fr">Ou de toi pour jamais tu la vois séparée.</span><span class="es">a menos que desees perderla para siempre!</span></div>
+      <div class="line-row"><span class="fr">Tels sont de Jupiter les suprêmes décrets.</span><span class="es">¡Así se ha expresado la voluntad suprema!</span></div>
+      <div class="line-row"><span class="fr">Rends-toi digne de ses bienfaits!</span><span class="es">¡Sé digno del divino favor!</span></div>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="line-row"><span class="fr">Soumis au silence,</span><span class="es">En obediente silencio</span></div>
+      <div class="line-row"><span class="fr">Contrains ton désir,</span><span class="es">Conten tu deseo,</span></div>
+      <div class="line-row"><span class="fr">Fais-toi violence,</span><span class="es">impóntelo,</span></div>
+      <div class="line-row"><span class="fr">Bientôt à ce prix</span><span class="es">muy pronto con este precio</span></div>
+      <div class="line-row"><span class="fr">tes tourments vont finir.</span><span class="es">tus sufrimientos terminarán.</span></div>
+      <div class="line-row"><span class="fr">Tu sais qu'un amant</span><span class="es">Tú sabes que un amante</span></div>
+      <div class="line-row"><span class="fr">Discret et fidèle,</span><span class="es">discreto y fiel,</span></div>
+      <div class="line-row"><span class="fr">Muet et tremblant</span><span class="es">enmudece y tiembla</span></div>
+      <div class="line-row"><span class="fr">Auprès de sa belle,</span><span class="es">cerca de su amada,</span></div>
+      <div class="line-row"><span class="fr">En est plus touchant.</span><span class="es">está más tierno,</span></div>
+      <div class="line-row"><span class="fr">Auprès de sa belle,</span><span class="es">Cerca de su amada</span></div>
+      <div class="line-row"><span class="fr">un amant tremblant</span><span class="es">un amante tiembla</span></div>
+      <div class="line-row"><span class="fr">En est plus touchant.</span><span class="es">está más tierno.</span></div>
+      <div class="line-row"><span class="fr">Soumis au silence,</span><span class="es">En obediente silencio,</span></div>
+      <div class="line-row"><span class="fr">Fais-toi violence,</span><span class="es">impóntelo,</span></div>
+      <div class="line-row"><span class="fr">Bientôt à ce prix</span><span class="es">muy pronto con este precio</span></div>
+      <div class="line-row"><span class="fr">tes tourments vont finir.</span><span class="es">tus sufrimientos terminarán.</span></div>
+      <div class="stage-direction">
+        <span>(L'Amour s'éloigne.)</span>
+        <span class="es">(Cupido se aleja)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'entends-je? qu'a-t-il dit?</span><span class="es">¡Qué ha dicho! ¡Qué he oído!</span></div>
+      <div class="line-row"><span class="fr">Eurydice vivra! mon Eurydice!</span><span class="es">¡Eurídice vivirá! ¡Mi Eurídice!</span></div>
+      <div class="line-row"><span class="fr">Un dieu clément, un dieu propice</span><span class="es">Un dios clemente, un dios propicio</span></div>
+      <div class="line-row"><span class="fr">Me la rendra!</span><span class="es">¡Me la devolverá!</span></div>
+      <div class="line-row"><span class="fr">Mais quoi! je ne pourrai,</span><span class="es">¿Qué? ¿No podré,</span></div>
+      <div class="line-row"><span class="fr">Revenant à la vie,</span><span class="es">volviendo a la vida,</span></div>
+      <div class="line-row"><span class="fr">La presser sur mon sein?</span><span class="es">estrecharla contra mi pecho?</span></div>
+      <div class="line-row"><span class="fr">O mon amie, quelle faveur,</span><span class="es">¡Oh, amiga mía, qué favor,</span></div>
+      <div class="line-row"><span class="fr">Et quel ordre inhumain!</span><span class="es">y qué orden tan inhumana!</span></div>
+      <div class="line-row"><span class="fr">Je prévois ses soupçons,</span><span class="es">Preveo sus sospechas,</span></div>
+      <div class="line-row"><span class="fr">Je prévois ma terreur,</span><span class="es">preveo mi terror,</span></div>
+      <div class="line-row"><span class="fr">Et la seule pensée</span><span class="es">y el único pensamiento</span></div>
+      <div class="line-row"><span class="fr">D'une épreuve insensée</span><span class="es">de una prueba insensata</span></div>
+      <div class="line-row"><span class="fr">D'effroi glace mon cur.</span><span class="es">de espanto hiela mi corazón.</span></div>
+      <div class="line-row"><span class="fr">Oui, je le pourrai!</span><span class="es">Pero... ¡Podré hacerlo... lo haré!</span></div>
+      <div class="line-row"><span class="fr">Je le veux, je le jure!</span><span class="es">Estoy decidido. El mayor,</span></div>
+      <div class="line-row"><span class="fr">Amour, amour, j'espère en toi</span><span class="es">el más insufrible de los males</span></div>
+      <div class="line-row"><span class="fr">Dans les maux que j'endure.</span><span class="es">es verse privado</span></div>
+      <div class="line-row"><span class="fr">Douter de ton bienfait</span><span class="es">del único objeto</span></div>
+      <div class="line-row"><span class="fr">Serait te faire injure.</span><span class="es">querido del alma.</span></div>
+      <div class="line-row"><span class="fr">C'en est fait, dieux puissants,</span><span class="es">Ayudadme, oh dioses,</span></div>
+      <div class="line-row"><span class="fr">J'accepte votre loi.</span><span class="es">acepto las condiciones.</span></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">18</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="line-row"><span class="fr">Amour, viens rendre à mon âme</span><span class="es">Amor mío, devuelve a mi alma,</span></div>
+      <div class="line-row"><span class="fr">Ta plus ardente flamme;</span><span class="es">tu más ardiente pasión;</span></div>
+      <div class="line-row"><span class="fr">Pour celle qui m'enflamme,</span><span class="es">para que ella la inflame,</span></div>
+      <div class="line-row"><span class="fr">Je vais braver le trépas.</span><span class="es">y pueda desafiar la muerte!</span></div>
+      <div class="line-row"><span class="fr">L'enfer en vain nous sépare,</span><span class="es">En vano nos separa el infierno,</span></div>
+      <div class="line-row"><span class="fr">Les monstres du tartare</span><span class="es">las Furias del hórrido Tártaro</span></div>
+      <div class="line-row"><span class="fr">Ne m'épouvantent pas.</span><span class="es">no me horrorizan.</span></div>
+      <div class="line-row"><span class="fr">Je sens croître ma flamme,</span><span class="es">Siento crecer mi pasión,</span></div>
+      <div class="line-row"><span class="fr">Je vais braver le trépas.</span><span class="es">y desafiaré la muerte.</span></div>
+      <div class="line-row"><span class="fr">L'amour vient rendre à mon âme</span><span class="es">El amor devuelve a mi alma</span></div>
+      <div class="line-row"><span class="fr">Sa plus ardente flamme;</span><span class="es">su más ardiente pasión;</span></div>
+      <div class="line-row"><span class="fr">L'amour accroît ma flamme;</span><span class="es">el amor acrecienta mi pasión</span></div>
+      <div class="line-row"><span class="fr">Je vais braver le trépas.</span><span class="es">para poder desafiar la muerte.</span></div>
+      <div class="line-row"><span class="fr">L'enfer en vain nous sépare, etc</span><span class="es">En vano nos separa el infierno, etc.</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Acte Deuxième</span>
+      <span>Acto Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">20</span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="scene-heading">
+        <span>Scène Première</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Une contée épouvantable, hérissée de rochers,</span>
+        <span class="es">(Una horrible caverna más allá de la laguna</span>
+        <span>au delà du Cocyte; au loin s'élève une fumée</span>
+        <span class="es">Estigia, en sus tenebrosas profundidades</span>
+        <span>épaisse, sombre, les flammes y jaillissent de</span>
+        <span class="es">surgen humo y llamas que llenan toda la horrible</span>
+        <span>temps en temps. Les spectres et les esprits</span>
+        <span class="es">caverna. Se inicia la escena, y al sonido de la</span>
+        <span>commencent une danse qu'Orphée interrompt</span>
+        <span class="es">sinfonía comienza el baile de las Furias y de los</span>
+        <span>par l'harmonie de sa lyre; à la vue d'Orphée</span>
+        <span class="es">Espectros, que interrumpen el sonido de la lira de</span>
+        <span>toute la troupe entonne le premier chur)</span>
+        <span class="es">Orfeo, a cuya vista el coro canta)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="line-row"><span class="fr">Quel est l'audacieux</span><span class="es">¿Quién puede ser el audaz</span></div>
+      <div class="line-row"><span class="fr">Qui dans ces sombres lieux</span><span class="es">que en estos lugares sombríos</span></div>
+      <div class="line-row"><span class="fr">Ose porter ses pas,</span><span class="es">osa entrar,</span></div>
+      <div class="line-row"><span class="fr">Et devant le trépas</span><span class="es">y no se detiene</span></div>
+      <div class="line-row"><span class="fr">Ne frémit pas?</span><span class="es">ante la muerte?</span></div>
+      <div class="stage-direction">
+        <span>(Les esprits dansent autour</span>
+        <span class="es">(Los espectros bailan, girando</span>
+        <span>d'Orphée pour l'effrayer.)</span>
+        <span class="es">alrededor de Orfeo para asustarlo)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">22</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="line-row"><span class="fr">Quel est l'audacieux, etc</span><span class="es">¿Quién puede ser, etc...</span></div>
+      <div class="line-row"><span class="fr">Que la peur la terreur</span><span class="es">¡Que el miedo y el horror</span></div>
+      <div class="line-row"><span class="fr">S'emparent de son cur</span><span class="es">llenen su corazón</span></div>
+      <div class="line-row"><span class="fr">À l'affreux hurlement</span><span class="es">con el horroroso aullido</span></div>
+      <div class="line-row"><span class="fr">Du Cerbère écumant</span><span class="es">del Cerbero baboso</span></div>
+      <div class="line-row"><span class="fr">Et rugissant!</span><span class="es">y rugiente!</span></div>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">23</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Laissez-vous toucher par mes pleurs,</span><span class="es">¡Oh! Conmoveos con mis sollozos,</span></div>
+      <div class="line-row"><span class="fr">Spectres...</span><span class="es">Furias...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">... larves...</span><span class="es">... espectros...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">... ombres terribles!</span><span class="es">.... sombras terribles...</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="line-row"><span class="fr">Non!</span><span class="es">¡No!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Soyez, soyez sensibles</span><span class="es">¡Sed, sed sensibles</span></div>
+      <div class="line-row"><span class="fr">À l'excès de mes malheurs!</span><span class="es">a la crueldad de mi sufrimiento!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="line-row"><span class="fr">Non! Non! Non!</span><span class="es">¡No! ¡No! ¡No!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Laissez-vous toucher par mes pleurs, etc</span><span class="es">¡Oh! Conmoveos con mis sollozos, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Le chur apaisé répond à Orphée</span>
+        <span class="es">(Las furias responden a Orfeo, suavizándose</span>
+        <span>avec un peu plus de pitié dans l'expression.)</span>
+        <span class="es">y expresando alguna compasión)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="line-row"><span class="fr">Qui t'amène en ces lieux,</span><span class="es">¿Qué te trae a estos lugares,</span></div>
+      <div class="line-row"><span class="fr">Mortel présomptueux?</span><span class="es">mortal presuntuoso?</span></div>
+      <div class="line-row"><span class="fr">C'est le séjour affreux</span><span class="es">Es la morada horrorosa</span></div>
+      <div class="line-row"><span class="fr">Des remords dévorants</span><span class="es">donde devoran los remordimientos</span></div>
+      <div class="line-row"><span class="fr">Et des gémissements</span><span class="es">y los gemidos</span></div>
+      <div class="line-row"><span class="fr">Et des tourments.</span><span class="es">y los tormentos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! la flamme qui me dévore,</span><span class="es">¡Ah! La pasión que me devora,</span></div>
+      <div class="line-row"><span class="fr">Est cent fois plus cruelle encore;</span><span class="es">es cien veces más cruel;</span></div>
+      <div class="line-row"><span class="fr">L'enfer n'a point de tourments</span><span class="es">El infierno no tiene tormentos</span></div>
+      <div class="line-row"><span class="fr">Pareils à ceux que je ressens.</span><span class="es">parecidos a los que yo sufro.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="stage-direction">
+        <span>(encore plus apaisé)</span>
+        <span class="es">(con una mayor dulzura)</span>
+      </div>
+      <div class="line-row"><span class="fr">Par quels puissants accords,</span><span class="es">¿Mediante qué poderosos acordes</span></div>
+      <div class="line-row"><span class="fr">Dans le séjour des morts,</span><span class="es">en la morada de los muertos,</span></div>
+      <div class="line-row"><span class="fr">Malgré nos vains efforts</span><span class="es">a pesar de nuestros esfuerzos,</span></div>
+      <div class="line-row"><span class="fr">Il calme la fureur de nos transports?</span><span class="es">él calma nuestra furia implacable?</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">24</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">La tendresse</span><span class="es">La ternura</span></div>
+      <div class="line-row"><span class="fr">Qui me presse,</span><span class="es">que me colma,</span></div>
+      <div class="line-row"><span class="fr">Calmera votre fureur,</span><span class="es">calmará vuestro furor,</span></div>
+      <div class="line-row"><span class="fr">Oui, mes larmes,</span><span class="es">sí, mis lágrimas,</span></div>
+      <div class="line-row"><span class="fr">Mes alarmes</span><span class="es">mis quejas</span></div>
+      <div class="line-row"><span class="fr">Fléchiront votre rigueur.</span><span class="es">doblegarán vuestro rigor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Furies</span></span>
+        <span class="character-name">Furias</span>
+      </div>
+      <div class="stage-direction">
+        <span>(encore plus doux)</span>
+        <span class="es">(cada vez con mayor suavidad)</span>
+      </div>
+      <div class="line-row"><span class="fr">Quels chants doux et touchants</span><span class="es">¡Qué dulces y tiernos cantos,</span></div>
+      <div class="line-row"><span class="fr">Quels accords ravissants!</span><span class="es">qué encantadores acuerdos!</span></div>
+      <div class="line-row"><span class="fr">De si tendres accents</span><span class="es">Sonidos tan tiernos</span></div>
+      <div class="line-row"><span class="fr">Ont su nous désarmer</span><span class="es">nos han desarmado</span></div>
+      <div class="line-row"><span class="fr">Et nous charmer.</span><span class="es">y encantado.</span></div>
+      <div class="line-row"><span class="fr">Qu'il descende aux enfers!</span><span class="es">¡Que él descienda a los infiernos!</span></div>
+      <div class="line-row"><span class="fr">Les chemins sont ouverts.</span><span class="es">Los caminos han sido abiertos</span></div>
+      <div class="line-row"><span class="fr">Tout cède à la douceur</span><span class="es">Todo cede a la dulzura</span></div>
+      <div class="line-row"><span class="fr">De son art enchanteur,</span><span class="es">de su arte encantador</span></div>
+      <div class="line-row"><span class="fr">Il est vainqueur.</span><span class="es">él es el vencedor;</span></div>
+      <div class="musical-number">
+        <span>Danse des Furies</span>
+        <span>Danza de las Furias</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Après le commencement de cette danse,</span>
+        <span class="es">(Después del comienzo de esta danza,</span>
+        <span>Orphée entre dans les enfers; vers la fin</span>
+        <span class="es">Orfeo entra en los infiernos; al acabar</span>
+        <span>de la danse les spectres et les esprits</span>
+        <span class="es">la danza los espectros y los espíritus</span>
+        <span>disparaissent peu à peu.)</span>
+        <span class="es">desaparecen poco a poco)</span>
+      </div>
+      <div class="scene-heading">
+        <span>Scène Deuxième</span>
+        <span>Escena Segunda</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Une contrée enchanteresse des champs</span>
+        <span class="es">(Los Campos Elíseos: delicioso paisaje</span>
+        <span>Elysées pleine de superbe buissons, de</span>
+        <span class="es">lleno de soberbios matorrales, de flores,</span>
+        <span>fleurs, de ruisseaux. Eurydice suivie des</span>
+        <span class="es">bañado por ríos y arroyos. Eurídice, seguida</span>
+        <span>ombres célestes des Héros et des Héroïnes)</span>
+        <span class="es">por una corte celestial de héroes y heroínas)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Cet asile aimable et tranquille</span><span class="es">Este agradable y placentero refugio,</span></div>
+      <div class="line-row"><span class="fr">Par le bonheur est habité,</span><span class="es">habitado por la bondad,</span></div>
+      <div class="line-row"><span class="fr">C'est le riant séjour de la félicité.</span><span class="es">es la alegre morada de la felicidad.</span></div>
+      <div class="line-row"><span class="fr">Nul objet ici n'enflamme l'âme,</span><span class="es">nada estorba al alma,</span></div>
+      <div class="line-row"><span class="fr">Une douce ivresse laisse</span><span class="es">una dulce embriaguez deja</span></div>
+      <div class="line-row"><span class="fr">Un calme heureux dans tous les sens;</span><span class="es">una deliciosa calma en todos los sentidos</span></div>
+      <div class="line-row"><span class="fr">Et la sombre tristesse</span><span class="es">y la oscura tristeza</span></div>
+      <div class="line-row"><span class="fr">Cesse</span><span class="es">cesa</span></div>
+      <div class="line-row"><span class="fr">Dans ces lieux innocents.</span><span class="es">en estos lugares inocentes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span>, <span class="character-name">Héros Et Héroïnes</span></span>
+        <span class="character-name">Eurídice, Héroes Y Heroínas</span>
+      </div>
+      <div class="line-row"><span class="fr">Cet asile aimable et tranquille, etc</span><span class="es">Este agradable y placentero refugio, etc.</span></div>
+      <div class="stage-direction">
+        <span>(Pendant le postule du chur</span>
+        <span class="es">(Al acabar la celebración Eurídice y los</span>
+        <span>disparaissent Eurydice et les esprits</span>
+        <span class="es">espíritus bienaventurados desaparecen.</span>
+        <span>bienheureux. Orphée est perdu dans</span>
+        <span class="es">Orfeo se halla aturdido por tanta</span>
+        <span>l'admiration.)</span>
+        <span class="es">admiración)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Quel nouveau ciel pare ces lieux!</span><span class="es">¡Qué nuevo cielo cubre estos lugares!</span></div>
+      <div class="line-row"><span class="fr">Un jour plus doux s'offre à mes yeux.</span><span class="es">Un día muy dulce se ofrece a mis ojos</span></div>
+      <div class="line-row"><span class="fr">Quels sons harmonieux!</span><span class="es">¡Qué sonidos tan armoniosos!</span></div>
+      <div class="line-row"><span class="fr">J'entends retentir ce bocage</span><span class="es">Oigo resonar en esta región</span></div>
+      <div class="line-row"><span class="fr">Du ramage des oiseaux,</span><span class="es">el gorjeo de los pájaros,</span></div>
+      <div class="line-row"><span class="fr">Du murmure des ruisseaux</span><span class="es">el murmullo de los arroyos,</span></div>
+      <div class="line-row"><span class="fr">Et des soupirs de Zéphire.</span><span class="es">y los suspiros de Céfiro.</span></div>
+      <div class="line-row"><span class="fr">On goûte en ce séjour un éternel repos.</span><span class="es">¡Se aprecia en esta morada eterno reposo!</span></div>
+      <div class="line-row"><span class="fr">Mais le calme qu'on y respire</span><span class="es">¡Pero la paz que aquí se respira</span></div>
+      <div class="line-row"><span class="fr">Ne saurait adoucir mes maux.</span><span class="es">no podrá endulzar mis males.</span></div>
+      <div class="line-row"><span class="fr">O toi, doux objet de ma flamme,</span><span class="es">¡Sólo tú, dulce objeto de mi pasión,</span></div>
+      <div class="line-row"><span class="fr">Toi seule y peux calmer le trouble de mon âme!</span><span class="es">sólo tú puedes calmar las penas de mi alma!</span></div>
+      <div class="line-row"><span class="fr">Tes accents tendres et touchants,</span><span class="es">Tus suaves y tiernas palabras,</span></div>
+      <div class="line-row"><span class="fr">Ton doux sourire tes regards séduisants,</span><span class="es">tu dulce sonrisa, tus seductoras miradas,</span></div>
+      <div class="line-row"><span class="fr">Sont les seuls biens que je désire.</span><span class="es">Son los únicos bienes que yo deseo.</span></div>
+      <div class="stage-direction">
+        <span>(Attirés par le chant d'Orphée, les esprits</span>
+        <span class="es">(Atraídos por el canto de Orfeo, los espíritus</span>
+        <span>bienheureux se sont rapprochés. Orphée</span>
+        <span class="es">bienaventurados se aproximan. Orfeo mira</span>
+        <span>regarde autour de lui, le chur s'en approche.)</span>
+        <span class="es">alrededor y se vuelve hacia el coro)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="character-row">
+        <span><span class="character-name">Héros Et Héroïnes</span></span>
+        <span class="character-name">Héroes Y Heroínas</span>
+      </div>
+      <div class="line-row"><span class="fr">Viens dans ce séjour paisible,</span><span class="es">Ven a la morada de la paz,</span></div>
+      <div class="line-row"><span class="fr">Époux tendre, amant sensible,</span><span class="es">tierno esposo, amante sensible,</span></div>
+      <div class="line-row"><span class="fr">Viens bannir tes justes regrets.</span><span class="es">ven a desterrar tus lamentos.</span></div>
+      <div class="line-row"><span class="fr">Eurydice va paraître,</span><span class="es">Eurídice va a aparecer,</span></div>
+      <div class="line-row"><span class="fr">Eurydice va renaître</span><span class="es">Eurídice va a renacer</span></div>
+      <div class="line-row"><span class="fr">Avec de nouveaux attraits.</span><span class="es">con nuevos atractivos.</span></div>
+      <div class="stage-direction">
+        <span>(Continue la danse des héros)</span>
+        <span class="es">(Prosigue el baile de los héroes)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ô vous, ombres que j'implore,</span><span class="es">¡A vosotros espíritus, yo os imploro,</span></div>
+      <div class="line-row"><span class="fr">Hâtez-vous de la rendre à mes embrassements.</span><span class="es">Daos prisa en devolverla a mis abrazos.</span></div>
+      <div class="line-row"><span class="fr">Ah! si vous ressentiez le feu qui me dévore,</span><span class="es">¡Ah! Si vosotros sintierais el fuego que me devora,</span></div>
+      <div class="line-row"><span class="fr">Si vous étiez aussi de fidèles amants,</span><span class="es">Si fuerais también amantes fieles,</span></div>
+      <div class="line-row"><span class="fr">J'aurais déjà revu la beauté que j'adore!</span><span class="es">¡Ya habríais resucitado a la belleza que adoro!</span></div>
+      <div class="line-row"><span class="fr">Hâtez-vous de me rendre heureux!</span><span class="es">Daos prisa devolverme la felicidad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Héros Et Héroïnes</span></span>
+        <span class="character-name">Héroes Y Heroínas</span>
+      </div>
+      <div class="line-row"><span class="fr">Le destin répond à tes vux.</span><span class="es">El destino responde a tus deseos.</span></div>
+      <div class="stage-direction">
+        <span>(Eurydice est introduite par</span>
+        <span class="es">(Eurídice es introducida por una</span>
+        <span>une partie du chur.)</span>
+        <span class="es">parte del coro de héroes y heroínas)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="line-row"><span class="fr">Près du tendre objet qu'on aime</span><span class="es">Cerca del tierno objeto amado,</span></div>
+      <div class="line-row"><span class="fr">On jouit du bien suprême,</span><span class="es">se goza del bien supremo,</span></div>
+      <div class="line-row"><span class="fr">Goûtez le sort plus doux.</span><span class="es">saboread la suerte más dulce.</span></div>
+      <div class="line-row"><span class="fr">Va renaître pour Orphée,</span><span class="es">Va a renacer para Orfeo,</span></div>
+      <div class="line-row"><span class="fr">On retrouve l'Elysée</span><span class="es">Se vuelve a encontrar el Elíseo</span></div>
+      <div class="line-row"><span class="fr">Auprès d'un si tendre époux.</span><span class="es">junto a tan tierno esposo.</span></div>
+      <div class="stage-direction">
+        <span>(Eurydice est ramenée à Orphée</span>
+        <span class="es">(Un grupo de heroínas conducen a Eurídice</span>
+        <span>par le chur; sans la regarder, il</span>
+        <span class="es">junto a Orfeo quien sin mirarla y con mucha</span>
+        <span>saisit sa main et l'emmène. Le rideau</span>
+        <span class="es">prisa la toma de la mano y la arrastra hacia</span>
+        <span>se baisse lentement.)</span>
+        <span class="es">afuera. El telón baja lentamente)</span>
+      </div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Acte Troisième</span>
+      <span>Acto Tercero</span>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="scene-heading">
+        <span>Scène Première</span>
+        <span>Escena Primera</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Une caverne sombre avec un labyrinthe</span>
+        <span class="es">(Una montañosa y oscura garganta repleta</span>
+        <span>plein de couloirs obscurs et entournée</span>
+        <span class="es">de pedruscos que se han ido desprendiendo</span>
+        <span>de rochers mousseux, tombants.</span>
+        <span class="es">de las rocas que se hallan cubiertas de</span>
+        <span>Orphée mène encore Eurydice</span>
+        <span class="es">maleza y vegetación salvaje. Orfeo conduce</span>
+        <span>par la main sans le regarder.)</span>
+        <span class="es">de la mano a Eurídice, siempre sin mirarla)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(A Eurydice)</span>
+        <span class="es">(A Eurídice)</span>
+      </div>
+      <div class="line-row"><span class="fr">Viens, viens, Eurydice, suis-moi,</span><span class="es">Ven, Ven, Eurídice, sígueme,</span></div>
+      <div class="line-row"><span class="fr">Unique et doux objet de l'amour plus tendre.</span><span class="es">único y tierno objeto del amor más delicado.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="stage-direction">
+        <span>(surprise)</span>
+        <span class="es">(sorprendida)</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est toi? je te vois?</span><span class="es">¿Eres tú? ¿Te estoy viendo?</span></div>
+      <div class="line-row"><span class="fr">Ciel! devais-je m'attendre?</span><span class="es">¡Cielos! ¿Qué puedo esperar?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(avec précipitation)</span>
+        <span class="es">(con prisas)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, tu vois ton époux. J'ai voulu vivre encore,</span><span class="es">Sí, ves a tu esposo. ¡Sigo vivo,</span></div>
+      <div class="line-row"><span class="fr">Et je viens t'arracher au séjour de la mort!</span><span class="es">y vengo a arrancarte de la morada de la muerte!</span></div>
+      <div class="line-row"><span class="fr">Touché de mon ardeur fidèle,</span><span class="es">Conmovido por mi fiel ardor,</span></div>
+      <div class="line-row"><span class="fr">Jupiter au jour te rappelle.</span><span class="es">Júpiter te llama a la luz.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Quoi! je vis, et pour toi?</span><span class="es">¡Cómo! ¿Vivo, y gracias a ti?</span></div>
+      <div class="line-row"><span class="fr">Ah, grands dieux, quel bonheur!</span><span class="es">¡Ah, magnos dioses, qué felicidad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Eurydice, suis-moi,</span><span class="es">Eurídice, sígueme,</span></div>
+      <div class="line-row"><span class="fr">Profitons sans retard de la faveur céleste;</span><span class="es">aprovechemos sin tardanza el favor celestial;</span></div>
+      <div class="line-row"><span class="fr">Sortons, fuyons ce lieu funeste.</span><span class="es">Salgamos, huyamos de este funesto lugar.</span></div>
+      <div class="line-row"><span class="fr">Non, tu n'es plus une ombre,</span><span class="es">No, ya no eres una sombra,</span></div>
+      <div class="line-row"><span class="fr">Et le dieu des amours</span><span class="es">y el dios del amor</span></div>
+      <div class="line-row"><span class="fr">Va nous réunir pour toujours.</span><span class="es">va a unirnos para siempre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'entends-je? ah! se peut-il?</span><span class="es">¿Qué oigo? ¿Será verdad?</span></div>
+      <div class="line-row"><span class="fr">Heureuse destinée!</span><span class="es">¡Afortunado destino!</span></div>
+      <div class="line-row"><span class="fr">Eh quoi, nous pourrons resserrer</span><span class="es">Entonces, ¿podremos estrechar</span></div>
+      <div class="line-row"><span class="fr">Les noeuds d'amour et d'hyménée?</span><span class="es">los lazos del amor y del matrimonio?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, suis mes pas sans différer.</span><span class="es">Sí, sigue mis pasos sin tardanza</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais, par ta main ma main n'est plus pressée!</span><span class="es">Pero, ¡tu mano no aprieta la mía!</span></div>
+      <div class="line-row"><span class="fr">Quoi! tu fuis ces regards que tu chérissais tant!</span><span class="es">¡Qué! ¡Evitas las miradas que tanto amabas!</span></div>
+      <div class="line-row"><span class="fr">Ton cur pour Eurydice est-il indifférent?</span><span class="es">¿Tu corazón es indiferente a Eurídice?</span></div>
+      <div class="line-row"><span class="fr">La fraîcheur de mes traits serait-elle effacée?</span><span class="es">¿La frescura de mis rasgos se ha eclipsado?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(Aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh dieux! quelle contrainte!</span><span class="es">¡Oh, Dioses! ¡Qué desgracia!</span></div>
+      <div class="stage-direction">
+        <span>(haut)</span>
+        <span class="es">(En voz alta)</span>
+      </div>
+      <div class="line-row"><span class="fr">Eurydice, suis-moi,</span><span class="es">Eurídice, sígueme,</span></div>
+      <div class="line-row"><span class="fr">Fuyons de ces lieux, le temps presse;</span><span class="es">huyamos de estos lugares, el tiempo apremia;</span></div>
+      <div class="line-row"><span class="fr">Je voudrais t'exprimer l'excès de ma tendresse;</span><span class="es">Quisiera expresarte mi gran ternura;</span></div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(Aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais je ne puis, oh! trop funeste loi!</span><span class="es">Pero no puedo, oh, cruel mandato!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Un seul de tes regards...</span><span class="es">Una sola de tus miradas...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Tu me glaces d'effroi!</span><span class="es">¡Tu me paralizas de terror!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! barbare!</span><span class="es">¡Ah! ¡Bárbaro!</span></div>
+      <div class="line-row"><span class="fr">Sont-ce là les douceurs que ton cur me prépare?</span><span class="es">¿Son estas las dulzuras que tu corazón me prepara?</span></div>
+      <div class="line-row"><span class="fr">Est-ce donc là le prix de mon amour?</span><span class="es">¿Es esto el precio de mi amor?</span></div>
+      <div class="line-row"><span class="fr">Oh fortune jalouse!</span><span class="es">¡Oh, fortuna envidiosa!</span></div>
+      <div class="line-row"><span class="fr">Orphée, hélas! se refuse en ce jour</span><span class="es">Orfeo, ¡ay de mí!, se niega hoy</span></div>
+      <div class="line-row"><span class="fr">Aux transports innocents de sa fidèle épouse.</span><span class="es">a las peticiones inocentes de su fiel esposa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sent qu'elle est près de lui,</span>
+        <span class="es">(siente que ella está cerca de él,</span>
+        <span>il saisit sa main voulant l'emmener)</span>
+        <span class="es">agarra su mano queriendo llevársela)</span>
+      </div>
+      <div class="line-row"><span class="fr">Par tes soupçons, cesse de m'outrager.</span><span class="es">Deja de ultrajarme con tus recelos,</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="stage-direction">
+        <span>(indignée retire sa main)</span>
+        <span class="es">(indignada retira su mano)</span>
+      </div>
+      <div class="line-row"><span class="fr">Tu me rends à la vie, et c'est pour m'affliger!</span><span class="es">¡Tú me devuelves a la vida, sólo para afligirme!</span></div>
+      <div class="line-row"><span class="fr">Dieux, reprenez un bienfait que j'abhorre!</span><span class="es">¡Dioses, retirad un bien que aborrezco!</span></div>
+      <div class="line-row"><span class="fr">Ah! cruel époux, laisse-moi!</span><span class="es">¡Ah! Cruel esposo, ¡déjame!</span></div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Viens! Suis un époux qui t'adore.</span><span class="es">¡Ven! Soy un esposo que te adora.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Non, ingrat, je préfère encore</span><span class="es">No, ingrato, prefiero la</span></div>
+      <div class="line-row"><span class="fr">La mort qui m'éloigne de toi.</span><span class="es">muerte que me aleja de ti.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Vois ma peine!</span><span class="es">¡Ves mi aflicción!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Laisse Eurydice!</span><span class="es">¡Deja a Eurídice!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! cruelle! Quelle injusticie!</span><span class="es">¡Ah!, ¡ cruel! ¡Qué injusticia!</span></div>
+      <div class="line-row"><span class="fr">Ah viens! je t'implore, suis mes pas!</span><span class="es">¡Ah, ven! ¡Te lo suplico, sigue mis pasos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Parle, réponds, je t'en supplie!</span><span class="es">¡Habla, responde, te lo suplico!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Dut-il m'en coûter la vie,</span><span class="es">Dudarlo me costará la vida,</span></div>
+      <div class="line-row"><span class="fr">Non, je ne parlerai pas.</span><span class="es">no, no hablaré</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span>, <span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice Y Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Dieux, soyez-moi favorables!</span><span class="es">¡Oh, dioses, sedme favorables!</span></div>
+      <div class="line-row"><span class="fr">Voyez mes pleurs,</span><span class="es">Ved mis lágrimas,</span></div>
+      <div class="line-row"><span class="fr">Dieux secourables!</span><span class="es">¡Dioses misericordiosos!</span></div>
+      <div class="line-row"><span class="fr">Quels tourments insupportables!</span><span class="es">¡Qué insoportables tormentos!</span></div>
+      <div class="line-row"><span class="fr">Quelles rigueurs</span><span class="es">¡Qué sacrificios</span></div>
+      <div class="line-row"><span class="fr">Mêlez-vous à vos faveurs!</span><span class="es">implican vuestros favores!</span></div>
+      <div class="stage-direction">
+        <span>(Chacun d'eux se dirige vers un autre</span>
+        <span class="es">(Al acabar el duelo de ambos, cada cual</span>
+        <span>côté de la scène où ils restent adossés</span>
+        <span class="es">se dirige a su parte, donde ellos se apoyan</span>
+        <span>à un arbre ou à un rocher.)</span>
+        <span class="es">en un árbol o en una roca)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais d'où vient qu'il persiste à garder le silence?</span><span class="es">Pero, ¿por qué persiste en guardar silencio?</span></div>
+      <div class="line-row"><span class="fr">Quels secrets veut-il me cacher?</span><span class="es">¿Qué secretos quiere ocultarme?</span></div>
+      <div class="line-row"><span class="fr">Au séjour de la mort devait-il m'arracher</span><span class="es">¿De la morada de la muerte debía arrancarme</span></div>
+      <div class="line-row"><span class="fr">Pour m'accabler de son indifférence?</span><span class="es">pero me agobia con su indiferencia?</span></div>
+      <div class="line-row"><span class="fr">Oh destin rigoureux!</span><span class="es">¡Oh, destino cruel!</span></div>
+      <div class="line-row"><span class="fr">Ma force m'abandonne,</span><span class="es">Mi fuerza me abandona</span></div>
+      <div class="line-row"><span class="fr">Le voile de la mort retombe sur mes yeux!</span><span class="es">¡El velo de la muerte vuelve a mis ojos!</span></div>
+      <div class="line-row"><span class="fr">Je frémis, je languis,</span><span class="es">Tiemblo, me consumo,</span></div>
+      <div class="line-row"><span class="fr">Je frissonne, je tremble, je pâlis,</span><span class="es">me estremezco, tiemblo, palidezco,</span></div>
+      <div class="line-row"><span class="fr">Mon cur palpite,</span><span class="es">mi corazón palpita,</span></div>
+      <div class="line-row"><span class="fr">Un trouble secret m'agite,</span><span class="es">Una turbación desconocida me agita,</span></div>
+      <div class="line-row"><span class="fr">Tous mes sens sont saisis d'horreur</span><span class="es">todos mis sentidos se sobrecogen de terror</span></div>
+      <div class="line-row"><span class="fr">Et je succombe à ma douleur.</span><span class="es">y sucumbo a mi dolor.</span></div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="line-row"><span class="fr">Fortune ennemie,</span><span class="es">¡Destino cruel!</span></div>
+      <div class="line-row"><span class="fr">Quelle barbarie!</span><span class="es">¡Qué barbarie!</span></div>
+      <div class="line-row"><span class="fr">Ne me rends-tu la vie</span><span class="es">¿Me devuelves la vida</span></div>
+      <div class="line-row"><span class="fr">Que pour les tourments?</span><span class="es">sólo para atormentarme?</span></div>
+      <div class="line-row"><span class="fr">Je goûtais les charmes</span><span class="es">Probar los encantos</span></div>
+      <div class="line-row"><span class="fr">D'un repos sans alarmes,</span><span class="es">de un descanso sin sobresaltos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ses injustes soupçons</span><span class="es">¡Sus injustas sospechas</span></div>
+      <div class="line-row"><span class="fr">Redoublent mes tourments!</span><span class="es">aumentan mis sufrimientos!</span></div>
+      <div class="line-row"><span class="fr">Que dire? que faire?</span><span class="es">¿Qué decir? ¿Qué hacer?</span></div>
+      <div class="line-row"><span class="fr">Elle me désespère,</span><span class="es">Ella me desanima</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Le trouble, les larmes</span><span class="es">La turbación, las lágrimas</span></div>
+      <div class="line-row"><span class="fr">Remplissent aujourd'hui</span><span class="es">llenan hoy</span></div>
+      <div class="line-row"><span class="fr">Mes malheureux moments.</span><span class="es">mi desgraciada vida.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ne pourrai-je calmer</span><span class="es">¿No podré calmar</span></div>
+      <div class="line-row"><span class="fr">Le trouble de mes sens?</span><span class="es">la turbación de mis sentidos?</span></div>
+      <div class="line-row"><span class="fr">Que mon sort est à plaindre!</span><span class="es">¡Cuán digno de compasión soy!</span></div>
+      <div class="line-row"><span class="fr">Je ne puis me contraindre!</span><span class="es">¡No puedo contenerme!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Je frissonne, je tremble.</span><span class="es">Me estremezco, tiemblo.</span></div>
+      <div class="line-row"><span class="fr">Fortune ennemie, etc</span><span class="es">Cruel destino, etc.</span></div>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">13</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(Aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Quelle épreuve cruelle!</span><span class="es">¡Qué prueba tan cruel!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Tu m'abandonnes, cher Orphée!</span><span class="es">¡Tú me abandonas, querido Orfeo!</span></div>
+      <div class="line-row"><span class="fr">En ce moment ton épouse désolée</span><span class="es">En este momento tu esposa desolada</span></div>
+      <div class="line-row"><span class="fr">Implore en vain tes secours;</span><span class="es">implora en vano tu ayuda;</span></div>
+      <div class="line-row"><span class="fr">O dieux! à vous seuls j'ai recours.</span><span class="es">¡Oh, Dioses! A vosotros os imploro.</span></div>
+      <div class="line-row"><span class="fr">Dois-je finir mes jours</span><span class="es">¿Debo morir</span></div>
+      <div class="line-row"><span class="fr">Sans un regard de ce que j'aime?</span><span class="es">sin una mirada de quien amo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(Aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Je sens mon courage expirer,</span><span class="es">No puedo contenerme más,</span></div>
+      <div class="line-row"><span class="fr">Et ma raison se perd</span><span class="es">poco a poco la razón me abandona,</span></div>
+      <div class="line-row"><span class="fr">Dans mon amour extrême;</span><span class="es">por mi inmenso amor;</span></div>
+      <div class="line-row"><span class="fr">J'oublie et la défense, Eurydice et moi même.</span><span class="es">¡olvido lo pactado, a Eurídice y a mí mismo!</span></div>
+      <div class="stage-direction">
+        <span>(Il fait un mouvement pour se</span>
+        <span class="es">(Va a volverse y pero después</span>
+        <span>retourner et tout à fait se retient.)</span>
+        <span class="es">se arrepiente)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ciel!</span><span class="es">¡Cielos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Cher époux, je puis à peine respirer.</span><span class="es">Querido esposo, apenas puedo respirar</span></div>
+      <div class="stage-direction">
+        <span>(Elle tombe sur un rocher.)</span>
+        <span class="es">(Se deja caer para sentarse en una roca)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(fort)</span>
+        <span class="es">(en voz alta)</span>
+      </div>
+      <div class="line-row"><span class="fr">Rassure-toi, je vais tout dire...</span><span class="es">Tranquilízate, te lo voy a decir...</span></div>
+      <div class="line-row"><span class="fr">Apprends....</span><span class="es">Escucha...</span></div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(Aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Que fais-je!... Justes dieux,</span><span class="es">¡¿Qué hago!... Dioses misericordiosos,</span></div>
+      <div class="line-row"><span class="fr">Quand finirez-vous mon martyre?</span><span class="es">¡Cuando acabará este martirio?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Reçois donc mes derniers adieux,</span><span class="es">Recibe mi último adiós,</span></div>
+      <div class="line-row"><span class="fr">Et souviens-toi d'Eurydice...</span><span class="es">y acuérdate de Eurídice....</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="stage-direction">
+        <span>(à part)</span>
+        <span class="es">(Aparte)</span>
+      </div>
+      <div class="line-row"><span class="fr">Où suis-je? Je ne puis résister à ses pleurs.</span><span class="es">¡Dónde estoy? No puedo resistir a sus lloros.</span></div>
+      <div class="stage-direction">
+        <span>(fort)</span>
+        <span class="es">(En voz alta)</span>
+      </div>
+      <div class="line-row"><span class="fr">Non, le ciel ne veut pas un plus grand sacrifice.</span><span class="es">No, el cielo no quiere un sacrificio tan grande</span></div>
+      <div class="stage-direction">
+        <span>(Il se retourne avec impétuosité</span>
+        <span class="es">(volviéndose con ímpetu hacia ella</span>
+        <span>et regarde Eurydice.)</span>
+        <span class="es">y mira a Eurídice)</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh ma chère Eurydice..</span><span class="es">¡Oh, mi querida Eurídice...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Fait un effort de se lever,)</span>
+        <span class="es">(Hace un esfuerzo para levantarse)</span>
+      </div>
+      <div class="line-row"><span class="fr">Orphée! o ciel! je meurs...</span><span class="es">¡Orfeo! ¡Oh, cielos! Me muero...</span></div>
+      <div class="stage-direction">
+        <span>(Elle meurt.)</span>
+        <span class="es">(Muere)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Malheureux, qu'ai-je fait?</span><span class="es">Desgraciado, ¿qué he hecho?</span></div>
+      <div class="line-row"><span class="fr">Et dans quel précipice</span><span class="es">¿A dónde me conduce</span></div>
+      <div class="line-row"><span class="fr">M'a plongé mon funeste amour?</span><span class="es">mi delirio de amor?</span></div>
+      <div class="stage-direction">
+        <span>(S'approche de Eurydice avec précipitation)</span>
+        <span class="es">(Se le acerca a Eurídice precipitadamente)</span>
+      </div>
+      <div class="line-row"><span class="fr">Chère épouse! Eurydice!</span><span class="es">¡Querida esposa! ¡Eurídice!</span></div>
+      <div class="line-row"><span class="fr">Eurydice! Chère épouse!</span><span class="es">¡Eurídice! Querida esposa!</span></div>
+      <div class="stage-direction">
+        <span>(Le secoue)</span>
+        <span class="es">(La sacude)</span>
+      </div>
+      <div class="line-row"><span class="fr">Elle ne m'entend plus, je la perds à jamais!</span><span class="es">¡Ya no me oye, la he perdido para siempre!</span></div>
+      <div class="line-row"><span class="fr">C'est moi qui lui ravis le jour!</span><span class="es">¡Soy yo quien le ha quitado la vida!</span></div>
+      <div class="line-row"><span class="fr">Loi fatale!</span><span class="es">¡Fatal designio!</span></div>
+      <div class="line-row"><span class="fr">Cruel remords!</span><span class="es">¡Cruel remordimiento!</span></div>
+      <div class="line-row"><span class="fr">Ma peine est sans égale.</span><span class="es">¡Mi dolor no puede expresarse!</span></div>
+      <div class="line-row"><span class="fr">Dans ce moment funeste</span><span class="es">En este horrible momento</span></div>
+      <div class="line-row"><span class="fr">Le désespoir, la mort</span><span class="es">la desesperación y la muerte</span></div>
+      <div class="line-row"><span class="fr">Est tout ce qui me reste.</span><span class="es">es todo lo que me queda.</span></div>
+    </div>
+
+    <div class="track-col" id="tc30">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t30">
+      <div class="line-row"><span class="fr">J'ai perdu mon Eurydice,</span><span class="es">He perdido a mi Eurídice,</span></div>
+      <div class="line-row"><span class="fr">Rien n'égale mon malheur;</span><span class="es">nada iguala mi desgracia;</span></div>
+      <div class="line-row"><span class="fr">Sort cruel! quelle rigueur!</span><span class="es">¡Cruel destino! ¡Qué fatal severidad!</span></div>
+      <div class="line-row"><span class="fr">Rien n'égale mon malheur!</span><span class="es">Nada iguala mi desgracia;</span></div>
+      <div class="line-row"><span class="fr">Je succombe à ma douleur!</span><span class="es">¡No puedo soportar mi dolor!</span></div>
+      <div class="line-row"><span class="fr">Eurydice, Eurydice,</span><span class="es">Eurídice, Eurídice</span></div>
+      <div class="line-row"><span class="fr">Réponds, quel supplice!</span><span class="es">responde, ¡qué suplicio!</span></div>
+      <div class="line-row"><span class="fr">Réponds-moi!</span><span class="es">¡Respóndeme!</span></div>
+      <div class="line-row"><span class="fr">C'est ton époux fidèle;</span><span class="es">Soy tu fiel esposo;</span></div>
+      <div class="line-row"><span class="fr">Entends ma voix qui t'appelle.</span><span class="es">escuchas mi voz que te llama.</span></div>
+      <div class="line-row"><span class="fr">J'ai perdu mon Eurydice, etc</span><span class="es">He perdido a mi Eurídice, etc.</span></div>
+      <div class="line-row"><span class="fr">Eurydice, Eurydice!</span><span class="es">¡Eurídice! ¡Eurídice!</span></div>
+      <div class="line-row"><span class="fr">Mortel silence! Vaine espérance!</span><span class="es">¡Silencio mortal! ¡Vana esperanza!</span></div>
+      <div class="line-row"><span class="fr">Quelle souffrance!</span><span class="es">¡Qué sufrimiento!</span></div>
+      <div class="line-row"><span class="fr">Quel tourment déchire mon cur!</span><span class="es">¡Qué tormento desgarra mi corazón!</span></div>
+      <div class="line-row"><span class="fr">J'ai perdu mon Eurydice, etc</span><span class="es">He perdido a mi Eurídice, etc.</span></div>
+    </div>
+
+    <div class="track-col" id="tc31">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t31">
+      <div class="line-row"><span class="fr">Ah! puisse ma douleur finir avec ma vie!</span><span class="es">¡Ah! ¡Que el dolor ponga fin a la vida!</span></div>
+      <div class="line-row"><span class="fr">Je ne survivrai pas à ce dernier revers.</span><span class="es">No sobreviviré a esta última desgracia.</span></div>
+      <div class="line-row"><span class="fr">Je touche encore aux portes des enfers,</span><span class="es">Llamaré a las puertas del infierno,</span></div>
+      <div class="line-row"><span class="fr">J'aurai bientôt rejoint mon épouse chérie.</span><span class="es">pronto me reuniré con mi querida esposa.</span></div>
+      <div class="line-row"><span class="fr">Oui, je te suis, tendre objet de ma foi,</span><span class="es">Sí, yo te sigo, tierno objeto de mi vida,</span></div>
+      <div class="line-row"><span class="fr">Je te suis, attends-moi!</span><span class="es">te sigo, ¡espérame!</span></div>
+      <div class="line-row"><span class="fr">Tu ne me seras plus ravie,</span><span class="es">Ya no me serás arrebatada,</span></div>
+      <div class="line-row"><span class="fr">Et la mort pour jamais va m'unir avec toi.</span><span class="es">la muerte me unirá a ti para siempre.</span></div>
+      <div class="stage-direction">
+        <span>(Lorsqu'il est sur le point de</span>
+        <span class="es">(Cuando está a punto de matarse,</span>
+        <span>se tuer, l'Amour apparaît.)</span>
+        <span class="es">aparece Cupido)</span>
+      </div>
+      <div class="line-row"><span class="fr">Scène deuxième</span><span class="es">Escena segunda</span></div>
+    </div>
+
+    <div class="track-col" id="tc32">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t32">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(lui arrache le poignard)</span>
+        <span class="es">(le arranca el puñal)</span>
+      </div>
+      <div class="line-row"><span class="fr">Arrête, Orphée!</span><span class="es">¡Detente, Orfeo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">O ciel! Qui pourrait en ce jour</span><span class="es">¡Oh, cielos! ¿Quién podría en este día</span></div>
+      <div class="line-row"><span class="fr">Retenir le transport de mon âme égarée?</span><span class="es">impedir el arrebato de mi alma extraviada?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Calme ta fureur insensée;</span><span class="es">¡Calma tu ira insensata,</span></div>
+      <div class="line-row"><span class="fr">Arrête, et reconnais l'Amour</span><span class="es">detente y reconoce a Cupido!</span></div>
+      <div class="line-row"><span class="fr">Qui veille sur ta destinée.</span><span class="es">Que vela sobre tu destino</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'exigez-vous de moi?</span><span class="es">¿Qué quieres de mí?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Tu viens de me prouver ta constance et ta foi;</span><span class="es">Acabas de demostrarme tu constancia y tu fe;</span></div>
+      <div class="line-row"><span class="fr">Je vais faire cesser ton martyre.</span><span class="es">voy a finalizar tu martirio.</span></div>
+      <div class="stage-direction">
+        <span>(Il touche Eurydice et la ranime.)</span>
+        <span class="es">(Toca a Eurídice y la reanima)</span>
+      </div>
+      <div class="line-row"><span class="fr">Eurydice! respire!</span><span class="es">¡Eurídice! ¡Respira!</span></div>
+      <div class="line-row"><span class="fr">Du plus fidèle époux</span><span class="es">Vuelves como resultado de la devoción</span></div>
+      <div class="line-row"><span class="fr">viens couronner les feux.</span><span class="es">del más fiel esposo</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon Eurydice!</span><span class="es">¡Mi Eurídice!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Orphée!</span><span class="es">¡Orfeo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! justes dieux!</span><span class="es">¡Ah! ¡Dioses misericordiosos!</span></div>
+      <div class="line-row"><span class="fr">Quelle est notre reconnaissance!</span><span class="es">¡Grande será nuestra gratitud!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Ne doutez plus de ma puissance!</span><span class="es">¡No dudéis de mi poder!</span></div>
+      <div class="line-row"><span class="fr">Je viens vous retirer de cet affreux séjour,</span><span class="es">Vengo a sacaros de esta horrorosa morada,</span></div>
+      <div class="line-row"><span class="fr">Jouissez désormais des plaisirs de l'amour!</span><span class="es">¡Gozad desde ahora de los placeres del amor!</span></div>
+    </div>
+
+    <div class="track-col" id="tc33">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t33">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Tendre amour, que tes chaînes</span><span class="es">Tierno amor, ¡qué encantos</span></div>
+      <div class="line-row"><span class="fr">Ont de charmes pour nos curs!</span><span class="es">tienen tus cadenas para nuestros corazones!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Tendre amour, à tes peines</span><span class="es">Tierno amor, ¡a tus penas</span></div>
+      <div class="line-row"><span class="fr">Que tu mêles de douceurs!</span><span class="es">le añades dulzura!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Je dédommage tous les curs</span><span class="es">Recompenso todos los corazones</span></div>
+      <div class="line-row"><span class="fr">Par un instant de mes faveurs.</span><span class="es">con un instante de mis favores.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Tendre amour, que tes chaînes, etc</span><span class="es">Tierno amor, ¡qué encantos, etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">Tendre amour, à tes peines, etc</span><span class="es">Tierno amor, ¡a tus penas, etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Que l'ardeur qui vous enflamme,</span><span class="es">Que el ardor que os inflama,</span></div>
+      <div class="line-row"><span class="fr">Toujours règne dans votre âme,</span><span class="es">siempre reine en vuestra alma,</span></div>
+      <div class="line-row"><span class="fr">Ne craignez plus mes rigueurs;</span><span class="es">No temáis más mi severidad;</span></div>
+      <div class="line-row"><span class="fr">Je dédommage tous les curs!</span><span class="es">¡Yo recompenso todos los corazones!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span>, <span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Orfeo Y Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Quels transports et quel délire,</span><span class="es">Qué arrebato y qué delirio,</span></div>
+      <div class="line-row"><span class="fr">O tendre amour, ta faveur nous inspire,</span><span class="es">Oh, tierno amor, tus favores nos inspira</span></div>
+      <div class="line-row"><span class="fr">Célébrons pour jamais.</span><span class="es">celebrémoslo para siempre,</span></div>
+      <div class="line-row"><span class="fr">Célébrons tes bienfaits.</span><span class="es">celebremos tus favores.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Célébrez pour jamais mes bienfaits.</span><span class="es">Celebrad para siempre mis favores.</span></div>
+      <div class="scene-heading">
+        <span>Scène Final</span>
+        <span>Escena Última</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Un magnifique temple consacré à l'amour -</span>
+        <span class="es">(Grandioso templo dedicado al dios del Amor.</span>
+        <span>L'Amour, Orphée et Eurydice. Devant eux</span>
+        <span class="es">Cupido, Orfeo y Eurídice, precedidos de un</span>
+        <span>marche une nombreuse troupe de bergers</span>
+        <span class="es">numeroso grupo de pastores y pastoras que vienen</span>
+        <span>et de bergères fêtant le retour d'Eurydice par</span>
+        <span class="es">a festejar el regreso de Eurídice mediante cantos</span>
+        <span>leur chant et leurs joyeuses danses.)</span>
+        <span class="es">y sus alegres bailes)</span>
+      </div>
+      <div class="line-row"><span class="fr">Ballet</span><span class="es">Ballet</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="orphee">Orphée</span></span>
+        <span class="character-name">Orfeo</span>
+      </div>
+      <div class="line-row"><span class="fr">L'amour triomphe et tout ce qui respire</span><span class="es">Que triunfe el amor y que el mundo entero</span></div>
+      <div class="line-row"><span class="fr">Sert l'empire de la beauté;</span><span class="es">sirva al imperio de la belleza.</span></div>
+      <div class="line-row"><span class="fr">Sa chaîne agréable</span><span class="es">Nunca fue preferida la libertad</span></div>
+      <div class="line-row"><span class="fr">Est préférable à la liberté.</span><span class="es">a su cadena a veces amarga.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Bergers Et Bergères</span></span>
+        <span class="character-name">Pastores Y Pastoras</span>
+      </div>
+      <div class="line-row"><span class="fr">L'amour triomphe et tout ce qui respire</span><span class="es">Que triunfe el amor y que el mundo entero</span></div>
+      <div class="line-row"><span class="fr">Sert l'empire de la beauté;</span><span class="es">sirva al imperio de la belleza,</span></div>
+      <div class="line-row"><span class="fr">Sa chaîne agréable</span><span class="es">Nunca fue preferida la libertad</span></div>
+      <div class="line-row"><span class="fr">Est préférable à la liberté.</span><span class="es">a su cadena a veces amarga.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="l-amour">L'Amour</span></span>
+        <span class="character-name">Cupido</span>
+      </div>
+      <div class="line-row"><span class="fr">Dans les peines, dans les alarmes</span><span class="es">En las penas, en las desgracias</span></div>
+      <div class="line-row"><span class="fr">Je fais souvent languir les curs;</span><span class="es">A menudo hago consumirse a los corazones,</span></div>
+      <div class="line-row"><span class="fr">Mais dans un instant mes charmes</span><span class="es">pero en un instante mis favores</span></div>
+      <div class="line-row"><span class="fr">Font pour jamais oublier mes rigueurs.</span><span class="es">hacen olvidar para siempre mi severidad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Bergers Et Bergères</span></span>
+        <span class="character-name">Pastores Y Pastoras</span>
+      </div>
+      <div class="line-row"><span class="fr">L'amour triomphe, etc</span><span class="es">Que triunfe el amor, etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="eurydice">Eurydice</span></span>
+        <span class="character-name">Eurídice</span>
+      </div>
+      <div class="line-row"><span class="fr">Si la cruelle jalousie</span><span class="es">Si la cruel sospecha</span></div>
+      <div class="line-row"><span class="fr">A troublé mes tendres désirs,</span><span class="es">a turbado mi corazón,</span></div>
+      <div class="line-row"><span class="fr">Les douceurs dont elle est suivie,</span><span class="es">la dulzura posterior</span></div>
+      <div class="line-row"><span class="fr">Sont des chaînes de plaisirs.</span><span class="es">es una cadena de placeres.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Bergers Et Bergères</span></span>
+        <span class="character-name">Pastores Y Pastoras</span>
+      </div>
+      <div class="line-row"><span class="fr">L'amour triomphe, etc</span><span class="es">Que triunfe el amor, etc.</span></div>
+      <div class="stage-direction">
+        <span>(La danse retourne)</span>
+        <span class="es">(El baile vuelve a comenzar)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name">Fin De L'Opéra</span></span>
+        <span class="character-name">Fin De La Ópera</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  gardiner_vonotter: {
+    label: "Orph\u00e9e et Eurydice \u00b7 Gardiner / von Otter",
+    short: "Gardiner / von Otter",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Overture", act: "Act I", has_block: false },
+      { id: "t1", cd: 1, track: 2, title: "Ah! Dans Ce Bois Tranquille", act: "Act I", has_block: true },
+      { id: "t2", cd: 1, track: 3, title: "Vos Plaintes, Vos Regrets", act: "Act I", has_block: true },
+      { id: "t3", cd: 1, track: 4, title: "Pantomime", act: "Act I", has_block: false },
+      { id: "t3", cd: 1, track: 5, title: "Ah! Dans Ce Bois Lugubre Et Sombre", act: "Act I", has_block: true },
+      { id: "t4", cd: 1, track: 6, title: "\u00c9loignez-Vous", act: "Act I", has_block: true },
+      { id: "t5", cd: 1, track: 7, title: "Ritournelle", act: "Act I", has_block: false },
+      { id: "t5", cd: 1, track: 8, title: "Objet De Mon Amour", act: "Act I", has_block: true },
+      { id: "t6", cd: 1, track: 9, title: "Eurydice, Ombre Ch\u00e8re", act: "Act I", has_block: true },
+      { id: "t7", cd: 1, track: 10, title: "Accabl\u00e9 De Regrets", act: "Act I", has_block: true },
+      { id: "t8", cd: 1, track: 11, title: "Eurydice, De Ce Doux Nom", act: "Act I", has_block: true },
+      { id: "t9", cd: 1, track: 12, title: "Divinit\u00e9s De L'Ach\u00e9ron", act: "Act I", has_block: true },
+      { id: "t10", cd: 1, track: 13, title: "L'Amour Vient Au Secours", act: "Act I", has_block: true },
+      { id: "t11", cd: 1, track: 14, title: "Si Les Doux Accords De Ma Lyre", act: "Act I", has_block: true },
+      { id: "t12", cd: 1, track: 15, title: "Dieux! Je La Reverrais!", act: "Act I", has_block: true },
+      { id: "t13", cd: 1, track: 16, title: "Soumis Au Silence", act: "Act I", has_block: true },
+      { id: "t14", cd: 1, track: 17, title: "Qu'Entends-Je? Qu'A T-Il Dit?", act: "Act I", has_block: true },
+      { id: "t15", cd: 1, track: 18, title: "Amour, Viens Rendre \u00c0 Mon \u00c2me", act: "Act I", has_block: true },
+      { id: "t16", cd: 1, track: 19, title: "Danse Des Furies", act: "Act II", has_block: false },
+      { id: "t16", cd: 1, track: 20, title: "Quel Est L'Audacieux?", act: "Act II", has_block: true },
+      { id: "t17", cd: 1, track: 21, title: "Danse Des Furies", act: "Act II", has_block: false },
+      { id: "t17", cd: 1, track: 22, title: "Quel Est L'Audacieux", act: "Act II", has_block: true },
+      { id: "t18", cd: 1, track: 23, title: "Laissez-Vous Toucher Par Mes Pleurs", act: "Act II", has_block: true },
+      { id: "t19", cd: 1, track: 24, title: "La Tendresse Qui Me Presse", act: "Act II", has_block: true },
+      { id: "t20", cd: 1, track: 25, title: "Danse Des Furies 2", act: "Act II", has_block: false },
+      { id: "t20", cd: 2, track: 1, title: "Ballet Des Ombres Heureuses", act: "Act II", has_block: false },
+      { id: "t20", cd: 2, track: 2, title: "Ballet", act: "Act II", has_block: false },
+      { id: "t20", cd: 2, track: 3, title: "Cet Asile Aimable Et Tranquille", act: "Act II", has_block: true },
+      { id: "t21", cd: 2, track: 4, title: "Quel Nouveau Ciel Pare Ces Lieux!", act: "Act II", has_block: true },
+      { id: "t22", cd: 2, track: 5, title: "Viens Dans Ce S\u00e9jour Paisable", act: "Act II", has_block: true },
+      { id: "t23", cd: 2, track: 6, title: "Ballet", act: "Act II", has_block: false },
+      { id: "t23", cd: 2, track: 7, title: "\u00d4 Vous, Ombres Que J'Implore", act: "Act II", has_block: true },
+      { id: "t24", cd: 2, track: 8, title: "Pr\u00e8s Du Tendre Objet", act: "Act II", has_block: true },
+      { id: "t25", cd: 2, track: 9, title: "Viens, Suis-Moi", act: "Act III", has_block: true },
+      { id: "t26", cd: 2, track: 10, title: "Viens, Suis Un \u00c9poux Qui T'Adore", act: "Act III", has_block: true },
+      { id: "t27", cd: 2, track: 11, title: "Mais D'O\u00f9 Vient Qu'Il Persiste \u00c0 Garder Le Silence?", act: "Act III", has_block: true },
+      { id: "t28", cd: 2, track: 12, title: "Fortune Ennemie, Quelle Barbarie", act: "Act III", has_block: true },
+      { id: "t29", cd: 2, track: 13, title: "Quelle \u00c9preuve Cruelle!", act: "Act III", has_block: true },
+      { id: "t30", cd: 2, track: 14, title: "J'Ai Perdu Mon Eurydice", act: "Act III", has_block: true },
+      { id: "t31", cd: 2, track: 15, title: "Ah! Puisse Ma Douleur", act: "Act III", has_block: true },
+      { id: "t32", cd: 2, track: 16, title: "Arr\u00eate, Orph\u00e9e", act: "Act III", has_block: true },
+      { id: "t33", cd: 2, track: 17, title: "Tendre Amour, Que Tes Chaines", act: "Act III", has_block: true },
+      { id: "t1", cd: 2, track: 18, title: "Le Dieu De Paphos", act: "Act III", has_block: false }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Acte I",
+    "Act II": "Acte II",
+    "Act III": "Acte III"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t16",
+    "Act III": "t25"
+  };
+
+  const CHARACTERS = [
+    { id: "orphee", name: "Orph\u00e9e", voice: "Tenor", description: "Esposo de Eur\u00eddice" },
+    { id: "eurydice", name: "Eurydice", voice: "Soprano", description: "Esposa de Orfeo" },
+    { id: "l-amour", name: "L'Amour", voice: "Soprano", description: "Dios del amor" }
+  ];
+
+  const CAST = {
+    gardiner_vonotter: { "orphee": "Anne Sofie von Otter", "eurydice": "Barbara Hendricks", "l-amour": "Brigitte Fournier" }
+  };
+
+  let activeRecording = "gardiner_vonotter";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { fr: true, es: true };
+</script>
+<script src="../libretto_spotify.js"></script>
+<script src="../libretto.js"></script>
