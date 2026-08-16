@@ -1,0 +1,2401 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Don Quichotte · Plasson / Van Dam</title>
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Acte I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Introduction - "Alza ! Alza ! Alza !"</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Don Quichotte · Plasson / Van Dam</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnFR" onclick="toggleLang('fr')">FR</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Acte Premier</span>
+      <span>Acto Primero</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="line-row"><span class="fr"><b>Le jour de la Feria</b></span><span class="es"><b>El día de la Feria</b></span></div>
+      <div class="character-row">
+        <span><span class="character-name">Cris De Foule</span></span>
+        <span class="character-name">Gritos De La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Alza, alza, olé</span><span class="es">¡Arriba, arriba, olé!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Belle, dont le charme est l'empire,</span><span class="es">Bella, cuyo imperio es el encanto,</span></div>
+      <div class="line-row"><span class="fr">faites l'aumône d'un sourire,</span><span class="es">haznos la merced de una sonrisa</span></div>
+      <div class="line-row"><span class="fr">et d'un regard de vos grands yeux</span><span class="es">y de una mirada de tus grandes ojos</span></div>
+      <div class="line-row"><span class="fr">à nos pauvres coeurs amoureux!</span><span class="es">a nuestros corazones enamorados.</span></div>
+      <div class="line-row"><span class="fr">Dulcinée, enchanteresse,</span><span class="es">Dulcinea, hechicera,</span></div>
+      <div class="line-row"><span class="fr">pour un instant</span><span class="es">por un instante</span></div>
+      <div class="line-row"><span class="fr">délaisse le nouvel amant</span><span class="es">abandona al nuevo amante</span></div>
+      <div class="line-row"><span class="fr">que t'a choisi ta fantaisie;</span><span class="es">que ha elegido tu frenesí,</span></div>
+      <div class="line-row"><span class="fr">et parais</span><span class="es">y aparece</span></div>
+      <div class="line-row"><span class="fr">devant tes sujets,</span><span class="es">delante de tus súbditos,</span></div>
+      <div class="line-row"><span class="fr">ô Dulcinée! Ô souveraine!</span><span class="es">¡oh, Dulcinea! ¡Oh, soberana!</span></div>
+      <div class="line-row"><span class="fr">Dulcinée! Reine! Gentille Reine!</span><span class="es">¡Dulcinea, reina, gentil reina!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Parais!</span><span class="es">¡Aparece!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Anda!Alza!Anda!</span><span class="es">¡Arriba, arriba, arriba!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée!</span><span class="es">¡Dulcinea!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée!</span><span class="es">¡Dulcinea!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Alza!Alza!</span><span class="es">¡Arriba, arriba!</span></div>
+      <div class="line-row"><span class="fr">Quand la femme a vingt ans,</span><span class="es">Cuando la mujer tiene veinte años</span></div>
+      <div class="line-row"><span class="fr">la majesté surpême</span><span class="es">es la majestad suprema,</span></div>
+      <div class="line-row"><span class="fr">ne doit pas avoir grands attraits!</span><span class="es">no necesita grandes atractivos.</span></div>
+      <div class="line-row"><span class="fr">L'on possède un beau diadème,</span><span class="es">Se posee una hermosa diadema,</span></div>
+      <div class="line-row"><span class="fr">mais après, mes amis: après? après?</span><span class="es">pero después, amigos míos, ¿después?</span></div>
+      <div class="line-row"><span class="fr">On vit dans une apothéose,</span><span class="es">Se vive en una apoteosis,</span></div>
+      <div class="line-row"><span class="fr">vos jours, sont de gloire entourés,</span><span class="es">vuestros días están rodeados de gloria,</span></div>
+      <div class="line-row"><span class="fr">mais il doit manquer quelque chose</span><span class="es">pero falta alguna cosa</span></div>
+      <div class="line-row"><span class="fr">ou quelqu'un, ou quelqu'un...</span><span class="es">o alguien, o alguien...</span></div>
+      <div class="line-row"><span class="fr">Ah! Comme vous voudrez.</span><span class="es">¡Ah! Como queráis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Belle dont le charme est l'empire;</span><span class="es">Bella, cuyo imperio es el encanto,</span></div>
+      <div class="line-row"><span class="fr">Dulcinée! Reine!Sois notre Reine!</span><span class="es">¡Dulcinea! ¡Reina! ¡Sé nuestra reina!</span></div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Alza!</span><span class="es">¡Arriba!</span></div>
+      <div class="line-row"><span class="fr">Quand la femme a vingt ans,</span><span class="es">Cuando la mujer tiene veinte años</span></div>
+      <div class="line-row"><span class="fr">d'hommages l'on vous environne</span><span class="es">le rinden homenajes durante el día, sí,</span></div>
+      <div class="line-row"><span class="fr">durant le jour; oui, mais la nuit...</span><span class="es">pero por la noche,</span></div>
+      <div class="line-row"><span class="fr">parce qu'on porte une couronne...</span><span class="es">porque se lleva una corona,</span></div>
+      <div class="line-row"><span class="fr">le temps d'amour s'enfuit.</span><span class="es">el tiempo de amor huye.</span></div>
+      <div class="line-row"><span class="fr">Hélas! Hélas!</span><span class="es">¡Ay, ay!</span></div>
+      <div class="line-row"><span class="fr">Et pour calmer le coeur morose</span><span class="es">Y para colmar el corazón triste</span></div>
+      <div class="line-row"><span class="fr">et les ennuis exaspérés,</span><span class="es">y el aburrimiento exasperado,</span></div>
+      <div class="line-row"><span class="fr">il doit bien manquer quelque chose</span><span class="es">debe faltar alguna cosa</span></div>
+      <div class="line-row"><span class="fr">ou quelqu'un, ou quelqu'un...</span><span class="es">o alguien, o alguien...</span></div>
+      <div class="line-row"><span class="fr">Ah! Comme vous voudrez.</span><span class="es">¡Ah! Como queráis.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée! Reine! Sois notre Reine!</span><span class="es">¡Dulcinea! ¡Reina! ¡Sé nuestra reina!</span></div>
+      <div class="line-row"><span class="fr">Alza!</span><span class="es">¡Arriba!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Alza!Alza!</span><span class="es">¡Arriba, arriba!</span></div>
+      <div class="line-row"><span class="fr">Amis, à tous, ici, merci!</span><span class="es">¡Amigos, a todos os doy las gracias!</span></div>
+      <div class="line-row"><span class="fr">Amis, merci, merci!</span><span class="es">¡Amigos, gracias, gracias!</span></div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée est certes jolie,</span><span class="es">Dulcinea ciertamente es muy hermosa,</span></div>
+      <div class="line-row"><span class="fr">mais on doit l'aimer seulement</span><span class="es">pero hay que amarla como</span></div>
+      <div class="line-row"><span class="fr">comme on cueille une fleur, un matin</span><span class="es">se recoge una flor en una mañana</span></div>
+      <div class="line-row"><span class="fr">de printemps,</span><span class="es">de primavera,</span></div>
+      <div class="line-row"><span class="fr">autrement c'est folie!</span><span class="es">hacer otra cosa sería una locura.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Je l'adore pourtant,</span><span class="es">Sin embargo, yo adoro</span></div>
+      <div class="line-row"><span class="fr">cette perverse enchanteresse.</span><span class="es">a esta perversa hechicera.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Si tu l'aimes d'amour fervent...</span><span class="es">Si tú la amas con amor ferviente,</span></div>
+      <div class="line-row"><span class="fr">que de tristesse tu te réserves,</span><span class="es">¡cuántas tristezas te están reservadas,</span></div>
+      <div class="line-row"><span class="fr">mon pauvre ami!</span><span class="es">pobre amigo!</span></div>
+      <div class="line-row"><span class="fr">Pour te désennuyer,</span><span class="es">Para distraerte,</span></div>
+      <div class="line-row"><span class="fr">regarde Don Quichotte et son gros écuyer.</span><span class="es">mira a Don Quijote y su gordo escudero.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Ce fantoche grotesque,</span><span class="es">¿Ese grotesco fantoche,</span></div>
+      <div class="line-row"><span class="fr">ce vieux fou pédantesque,</span><span class="es">ese viejo loco pedante,</span></div>
+      <div class="line-row"><span class="fr">qui déclare que Dulcinée</span><span class="es">que declara que Dulcinea</span></div>
+      <div class="line-row"><span class="fr">est la "Dame De ses pensées!"</span><span class="es">es la "dama de sus pensamientos"</span></div>
+      <div class="line-row"><span class="fr">tandis que celle-ci se rit de lui!</span><span class="es">mientras que ella se ríe de él?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Tant pis! Car il est brave</span><span class="es">Tanto peor, porque él es valiente</span></div>
+      <div class="line-row"><span class="fr">et franc comme une lame...</span><span class="es">y muy sincero.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Et beau!</span><span class="es">¡Y bien parecido!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">De la beauté merveilleuse de l'âme.</span><span class="es">Con la belleza maravillosa del alma.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Certes, il est extravagant,</span><span class="es">Cierto, es extravagante,</span></div>
+      <div class="line-row"><span class="fr">toqué, cocasse, inélégant.</span><span class="es">loco, cómico y grotesco.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais il secourt la veuve et les enfants</span><span class="es">Pero socorre a las viudas</span></div>
+      <div class="line-row"><span class="fr">sans mère.</span><span class="es">y a los niños sin madre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Apôtre halluciné?</span><span class="es">¡Apóstol alucinado!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Porté par la Chimère,</span><span class="es">Guiado por la ilusión,</span></div>
+      <div class="line-row"><span class="fr">il parcourt plaines et vallons,</span><span class="es">recorre llanuras y valles,</span></div>
+      <div class="line-row"><span class="fr">escalade les pics,</span><span class="es">escala picos,</span></div>
+      <div class="line-row"><span class="fr">poursuit les chemins longs.</span><span class="es">transita por lejanos caminos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! c'est un être exquis!</span><span class="es">¡Ah, es un ser exquisito!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">De très haute envergure</span><span class="es">Gran envergadura tiene</span></div>
+      <div class="line-row"><span class="fr">que le bon Chevalier de la Longue Figure!</span><span class="es">este Caballero de la Triste Figura.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">...de la Longue Figure!</span><span class="es">... de la Triste Figura!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Allégresse!</span><span class="es">¡Alegría!</span></div>
+      <div class="line-row"><span class="fr">Vive Don Quichotte de la Manche!</span><span class="es">¡Viva Don Quijote de la Mancha!</span></div>
+      <div class="line-row"><span class="fr">Vive le fidèle et bon Sanche!</span><span class="es">¡Viva el fiel y buen Sancho!</span></div>
+      <div class="line-row"><span class="fr">Vivat pour Rossinante et l'âne et l'écuyer!</span><span class="es">¡Viva Rocinante y el asno del escudero!</span></div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="fr">Allégresse! Allégresse!</span><span class="es">¡Alegría, alegría!</span></div>
+      <div class="line-row"><span class="fr">Vive Don Quichotte de la Manche!</span><span class="es">¡Viva Don Quijote de la Mancha!</span></div>
+      <div class="line-row"><span class="fr">Vive, vive le bon Sanche!</span><span class="es">¡Viva el buen Sancho!</span></div>
+      <div class="line-row"><span class="fr">Allégresse! Allégresse!</span><span class="es">¡Alegría, alegría!</span></div>
+      <div class="line-row"><span class="fr">Vive Don Quichotte de la Manche!</span><span class="es">¡Viva Don Quijote de la Mancha!</span></div>
+      <div class="line-row"><span class="fr">Vive, vive le bon Sanche!</span><span class="es">¡Viva, viva el buen Sancho!</span></div>
+      <div class="line-row"><span class="fr">Vive le Chevalier Don Quichotte de la Manche!</span><span class="es">¡Viva el caballero Don Quijote de la Mancha!</span></div>
+      <div class="line-row"><span class="fr">Vive Sanche!Vive Rossinante et l'âne!</span><span class="es">¡Viva Sancho! ¡Viva Rocinante y el asno!</span></div>
+      <div class="line-row"><span class="fr">Allégresse!</span><span class="es">¡Alegría!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est merveille de voir comme l'on me connaît!</span><span class="es">Es maravilloso ver como se me reconoce.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Même-moi, gros benêt,</span><span class="es">Hasta yo, gordo bonachón,</span></div>
+      <div class="line-row"><span class="fr">je prends ma large part des vivats qu'on adresse.</span><span class="es">recibo parte de los vivas que se nos dirigen.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Sancho, vide ta poche, et réjouis ces gueux</span><span class="es">Sancho, vacía tus bolsillos y alegra a estos</span></div>
+      <div class="line-row"><span class="fr">car il faut qu'aujourd'hui nous soyons tous heureux!</span><span class="es">pordioseros, porque hoy debemos ser todos felices.</span></div>
+      <div class="line-row"><span class="fr">Vivent les Séraphins, les Archanges, les Trônes!</span><span class="es">¡Vivan los serafines, arcángeles y tronos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Notre pauvre souper qui se fond en aumônes.</span><span class="es">Nuestra pobre cena se diluye en limosnas...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Donne! donne! donne!</span><span class="es">¡Da, da, da!</span></div>
+      <div class="line-row"><span class="fr">Sois généreux mon fils!</span><span class="es">Sé generoso, hijo mío.</span></div>
+      <div class="line-row"><span class="fr">Et tâche comme moi d'être jeune... amoureux.</span><span class="es">E intenta ser como yo, joven enamorado.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Vive Don Quichotte! etc.</span><span class="es">¡Viva Don Quijote! etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! c'est beau la jeunesse,</span><span class="es">¡Ah, es bella la juventud,</span></div>
+      <div class="line-row"><span class="fr">et bon quoi qu'on en dise!</span><span class="es">y buena, digan lo que digan!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! c'est beau la jeunesse,</span><span class="es">¡Ah, es bella la juventud,</span></div>
+      <div class="line-row"><span class="fr">et bon quoiqu'on en dise!</span><span class="es">y buena, digan lo que digan!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Cette gaité m'emparadise!</span><span class="es">Esta alegría me hace feliz.</span></div>
+      <div class="line-row"><span class="fr">Je voudrais que la joie embaumât les chemins,</span><span class="es">Quisiera que la felicidad llenara los caminos,</span></div>
+      <div class="line-row"><span class="fr">la bonté la coeur des humains,</span><span class="es">y la bondad, el corazón de los hombres;</span></div>
+      <div class="line-row"><span class="fr">qu'un éternel soleil il luminât les plaines,</span><span class="es">que un eterno sol iluminara las llanuras,</span></div>
+      <div class="line-row"><span class="fr">que les bois éventés par de fraîches haleines</span><span class="es">que los bosques aireados por frescas brisas</span></div>
+      <div class="line-row"><span class="fr">n'eussent que des parfums et des fruits savoureux,</span><span class="es">no tuvieran más que perfumes y frutos sabrosos;</span></div>
+      <div class="line-row"><span class="fr">des ruisseaux chantant clair,</span><span class="es">y que los riachuelos cristalinos cantaran</span></div>
+      <div class="line-row"><span class="fr">et que tout fût heureux!</span><span class="es">y que todo fuera felicidad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Allégresse! Vivat! Don Quichotte!</span><span class="es">¡Alegría, viva Don Quijote!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span>, <span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Don Quijote, Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Merci! Merci!</span><span class="es">¡Gracias, gracias!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">La Gente</span>
+      </div>
+      <div class="line-row"><span class="fr">Vive Don Quichotte! etc.</span><span class="es">¡Viva Don Quijote! etc.</span></div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">O Dulcinée!</span><span class="es">¡Oh, Dulcinea!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! Vous allez ameuter alcade, régidor,</span><span class="es">¡Ah, atraeréis al alcalde, al regidor,</span></div>
+      <div class="line-row"><span class="fr">peut-être réveiller le Cid Campéador!</span><span class="es">y quizás despertéis al Cid Campeador!</span></div>
+      <div class="line-row"><span class="fr">Maître, je serais fier de voir la noble dame,</span><span class="es">Señor, yo sería feliz si viera a la noble dama,</span></div>
+      <div class="line-row"><span class="fr">mais c'est plus fort que moi,</span><span class="es">pero es más fuerte que yo,</span></div>
+      <div class="line-row"><span class="fr">mon gosier me réclame...</span><span class="es">mi gaznate me reclama.</span></div>
+      <div class="line-row"><span class="fr">Cette rouge lueur, qui me clignote au loin,</span><span class="es">Esa luz roja, que me guiña el ojo desde lejos,</span></div>
+      <div class="line-row"><span class="fr">c'est l'auberge où j'aurai grand soin</span><span class="es">es la fonda donde tendré gran cuidado</span></div>
+      <div class="line-row"><span class="fr">de me saoûler, non d'allégresse,</span><span class="es">en emborracharme, no de alegría,</span></div>
+      <div class="line-row"><span class="fr">mais de la vraie et bonne ivresse!</span><span class="es">sino de la verdadera y buena embriaguez.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Laisse-moi!</span><span class="es">¡Déjame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Seigneur, sous ce balcon, goûtez votre bonheur.</span><span class="es">Señor, bajo este balcón gozad de vuestra felicidad.</span></div>
+      <div class="line-row"><span class="fr">Je suis votre assoiffé, mais humble serviteur.</span><span class="es">Yo soy vuestro sediento pero humilde servidor.</span></div>
+      <div class="line-row"><span class="fr">Ah! Comme on vous héberge</span><span class="es">¡Ah, cómo nos atienden</span></div>
+      <div class="line-row"><span class="fr">dans cette auberge!</span><span class="es">en este albergue!</span></div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Quand apparaissent les étoiles</span><span class="es">Cuando aparecen las estrellas</span></div>
+      <div class="line-row"><span class="fr">et quand la nuit du fond des cieux</span><span class="es">y cuando la noche desde los cielos</span></div>
+      <div class="line-row"><span class="fr">couvre la terre de ses voiles...</span><span class="es">cubre la tierra con su velo,</span></div>
+      <div class="line-row"><span class="fr">je fais ma prière à tes yeux!</span><span class="es">yo elevo mi plegaria a tus ojos.</span></div>
+      <div class="line-row"><span class="fr">A tes yeus je fais ma prière!</span><span class="es">¡A tus ojos elevo mi oración!</span></div>
+      <div class="line-row"><span class="fr">Et c'est dans la fleur...</span><span class="es">Y es en la flor...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'est cela, le beau mandoliniste?</span><span class="es">¿Qué es eso, gentil mandolinista?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Une chanson d'amour.</span><span class="es">Una canción de amor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Est-elle gaie ou triste?</span><span class="es">¿Es alegre o triste?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Elle peut être l'une ou l'autre, également.</span><span class="es">Puede ser lo uno y lo otro igualmente,</span></div>
+      <div class="line-row"><span class="fr">car c'est une chanson d'amant</span><span class="es">porque es la canción de un amante</span></div>
+      <div class="line-row"><span class="fr">pour ma Dame d'Amour: la Belle Dulcinée!</span><span class="es">para la dama de mi amor: la bella Dulcinea.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Vieux fou, je vous défends...</span><span class="es">Viejo loco, os prohíbo...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Avez-vous une épée?</span><span class="es">¿Tenéis una espada?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">A me servir, monsieur, elle est trop occupée</span><span class="es">En servirme, señor, está demasiado ocupada</span></div>
+      <div class="line-row"><span class="fr">pour me quitter jamais.</span><span class="es">para abandonarme alguna vez.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Que la chanson du fer</span><span class="es">Que la canción del hierro</span></div>
+      <div class="line-row"><span class="fr">remplace le refrain qui montait pur et clair</span><span class="es">reemplace a la que subía pura y clara</span></div>
+      <div class="line-row"><span class="fr">vers vous, étoiles innocentes!</span><span class="es">hacia vosotras, estrellas inocentes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Don Quijote, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Que la chanson du fer remplace le refrain!</span><span class="es">¡Que la canción del hierro sustituya a la vuestra!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Pardon, cher monsieur, des rimes sont absentes</span><span class="es">Permitidme, querido señor, pero faltan unas rimas</span></div>
+      <div class="line-row"><span class="fr">au cantique d'amour que j'allais réciter.</span><span class="es">al himno de amor que iba a recitar.</span></div>
+      <div class="line-row"><span class="fr">Avant de vous tuer je tiens à les chanter.</span><span class="es">Antes de mataros tengo que cantarlas.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Avant de vous tuer!</span><span class="es">¿Antes de matarme?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Avant de vous tuer!</span><span class="es">Antes de mataros.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Don Quijote, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous!</span><span class="es">¿Vos?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Vieux fou!</span><span class="es">¡Viejo loco!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Et c'est dans la fleur...</span><span class="es">Y es en la flor...</span></div>
+      <div class="line-row"><span class="fr">dans la fleur de tes lèvres</span><span class="es">en la flor de tus labios</span></div>
+      <div class="line-row"><span class="fr">qui ne sauraient jamais, jamais mentir,...</span><span class="es">que no sabría nunca, nunca mentir...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">... dans la fleur de tes lèvres...</span><span class="es">... en la flor de tus labios...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'amour tout palpitant...</span><span class="es">Que el amor palpitante,</span></div>
+      <div class="line-row"><span class="fr">amour... s'est fait un nid pour s'y blottir...</span><span class="es">amor que ha hecho un nido para esconderse...</span></div>
+      <div class="line-row"><span class="fr">tout palpitant... palpitant de fièvres...</span><span class="es">palpitante, palpitante de fiebre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'amour tout palpitant...</span><span class="es">Que el amor palpitante,</span></div>
+      <div class="line-row"><span class="fr">Amour s'est fait un nid... pour s'y blottir...</span><span class="es">amor que ha hecho un nido para esconderse...</span></div>
+      <div class="line-row"><span class="fr">Tout palpitant... de fièvres...</span><span class="es">palpitante, palpitante de fiebre.</span></div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="line-row"><span class="fr">Ah! Ah! C'est vous qui lanciez</span><span class="es">¡Ah! ¿Erais vos quien lanzabais</span></div>
+      <div class="line-row"><span class="fr">des vers à ma fenêtre?</span><span class="es">versos a mi ventana?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est moi.</span><span class="es">Yo era.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Les strophes sont d'un maître.</span><span class="es">Las estrofas son dignas de un maestro</span></div>
+      <div class="line-row"><span class="fr">Et vous jouez, mon cher, de ce noble instrument</span><span class="es">y tocáis, querido, este noble instrumento</span></div>
+      <div class="line-row"><span class="fr">comme de votre épée avec un art charmant.</span><span class="es">igual que manejáis la espada, con arte encantador.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Madame!</span><span class="es">¡Señora!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Riez donc, grand jaloux que vous êtes!</span><span class="es">¡Reíd, pues, celosísimo que sois!</span></div>
+      <div class="line-row"><span class="fr">J'aime paladins et poêtes,</span><span class="es">Amo a los paladines y a los poetas,</span></div>
+      <div class="line-row"><span class="fr">l'amour est avec eux d'une distinction parfaite,</span><span class="es">el amor con ellos es de una distinción perfecta,</span></div>
+      <div class="line-row"><span class="fr">et qui contraste avec la passion</span><span class="es">y contrasta con la pasión</span></div>
+      <div class="line-row"><span class="fr">dont un autre amant nous opprime...</span><span class="es">con que otro amante me oprime,</span></div>
+      <div class="line-row"><span class="fr">délicieusement d'ailleurs...</span><span class="es">deliciosamente, por cierto,</span></div>
+      <div class="line-row"><span class="fr">...et c'est un crime que je pardonne.</span><span class="es">y es un crimen que yo perdono.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah!</span><span class="es">¡Ah!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais allez me chercher ma mantille...</span><span class="es">Ahora, id a buscar mi mantilla.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais...</span><span class="es">Pero...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinée</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais... laissez-moi m'amuser!</span><span class="es">Pero... ¡dejadme divertirme!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Comment! Vous m'empêchez</span><span class="es">¡Cómo! ¿Me impedís</span></div>
+      <div class="line-row"><span class="fr">de couper la gorge à mon adversaire?</span><span class="es">cortar el cuello a mi adversario?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Que dites-vous? Qu'alliez-vous faire?</span><span class="es">¿Qué decís? ¿Qué queréis hacer?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais l'occire à l'instant.</span><span class="es">Matarlo al instante.</span></div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous êtes, mon seigneur,</span><span class="es">Sois, señor mío,</span></div>
+      <div class="line-row"><span class="fr">plus que compromettant...</span><span class="es">demasiado sanguíneo.</span></div>
+      <div class="line-row"><span class="fr">Pour un peu de musique...</span><span class="es">Por un poco de música,</span></div>
+      <div class="line-row"><span class="fr">un brin de poésie...</span><span class="es">por una brizna de poesía</span></div>
+      <div class="line-row"><span class="fr">vous auriez donc la fantaisie</span><span class="es">¿tendríais el capricho</span></div>
+      <div class="line-row"><span class="fr">de répandre du sang!</span><span class="es">de derramar sangre?</span></div>
+      <div class="line-row"><span class="fr">Que non! que non! que non!</span><span class="es">¡Que no, que no, que no!</span></div>
+      <div class="line-row"><span class="fr">Je veux modérer votre ardeur.</span><span class="es">Quiero moderar vuestro ardor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Le nom de cet homme! Son nom!</span><span class="es">¡El nombre de ese hombre, su nombre!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Qu'importe! Il est de mon cortège...</span><span class="es">¿Qué importa? ¡Es de mi séquito!</span></div>
+      <div class="line-row"><span class="fr">Pitié, mon Chevalier!</span><span class="es">¡Piedad, caballero!</span></div>
+      <div class="line-row"><span class="fr">Il est de mes amis attachés à mes pas...</span><span class="es">Es uno de mis amigos y me acompaña.</span></div>
+      <div class="line-row"><span class="fr">Vous êtes, monseigneur, plus que compromettant...</span><span class="es">Sois, monseñor, demasiado sanguíneo.</span></div>
+      <div class="line-row"><span class="fr">Pour un peu de musique, etc.</span><span class="es">Por un poco de música, etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous n'avez aujourd'hui qu'ajourné son trépas!</span><span class="es">Sólo habéis aplazado su muerte.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous me faites pleurer...</span><span class="es">Me hacéis llorar.</span></div>
+      <div class="line-row"><span class="fr">Puis-je nous croire encore?</span><span class="es">¿Puedo creeros?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Moi... mais... je vous adore!</span><span class="es">Yo... pero... ¡os adoro!</span></div>
+      <div class="line-row"><span class="fr">Pour vous choyer et vous servir</span><span class="es">Para cuidaros y serviros,</span></div>
+      <div class="line-row"><span class="fr">je vous offre un château sur le Guadalquivir.</span><span class="es">os ofrezco un castillo sobre el Guadalquivir.</span></div>
+      <div class="line-row"><span class="fr">Les jours y passeront duvetés de tendresses,</span><span class="es">Allí los días pasarán acolchados en la ternura,</span></div>
+      <div class="line-row"><span class="fr">parfumés d'idéal et fleuris de caresses!</span><span class="es">¡perfumados de ideal y florecidos de caricias!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Alors... vous devriez,</span><span class="es">Entonces deberíais,</span></div>
+      <div class="line-row"><span class="fr">ô mon héros superbe, à l'âme valeureuse,</span><span class="es">mi soberbio héroe, de alma valerosa,</span></div>
+      <div class="line-row"><span class="fr">pour me voir très heureuse...</span><span class="es">para hacerme dichosa,</span></div>
+      <div class="line-row"><span class="fr">tenter de ravoir le collier...</span><span class="es">intentar recuperar el collar</span></div>
+      <div class="line-row"><span class="fr">qu'hier... sur ma poudreuse</span><span class="es">que ayer, de mi tocador,</span></div>
+      <div class="line-row"><span class="fr">le bandit Ténébrun osa me dérober...</span><span class="es">el bandido Tenebrún osó robarme...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Devrais-je succomber...</span><span class="es">¡Aunque deba yo sucumbir,</span></div>
+      <div class="line-row"><span class="fr">demain je partirai... je partirai!</span><span class="es">mañana partiré, partiré!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous partirez demain...</span><span class="es">Partiréis mañana...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Demain je partirai...</span><span class="es">Mañana partiré...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Heureux de me donner...</span><span class="es">Me hacéis feliz...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Cette preuve d'amour...</span><span class="es">La prueba de amor...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Et si vous revenez vainqueur,</span><span class="es">Si volvéis vencedor,</span></div>
+      <div class="line-row"><span class="fr">vous verrez au retour...</span><span class="es">la veréis a vuestra vuelta...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Au retour...</span><span class="es">A la vuelta...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Vous verrez au retour...</span><span class="es">La veréis a la vuelta...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Belle dont le charme est l'empire...</span><span class="es">Bella, cuyo imperio es el encanto...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais voici mes amis!</span><span class="es">¡Estos son mis amigos!</span></div>
+      <div class="line-row"><span class="fr">Souvenez-vous... Messire!</span><span class="es">¡Acordaos, mi señor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Partir... avec... celui...</span><span class="es">Partir... con... aquél...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">... que vous deviez occire!</span><span class="es">... ¡que vos debíais matar!</span></div>
+      <div class="line-row"><span class="fr">Vous aviez pardonné.</span><span class="es">Habéis perdonado.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui...</span><span class="es">Sí...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Au retour, grand ami!</span><span class="es">¡Hasta la vuelta, gran amigo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Son amour vous amuse?</span><span class="es">¿Su amor os divierte?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Il est drôle! Et je suis sa déesse!</span><span class="es">Es gracioso, y yo soy su diosa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Sa muse!</span><span class="es">¡Su musa!</span></div>
+    </div>
+
+    <div class="track-col" id="tc9">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t9">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Elle m'aime et va me revenir</span><span class="es">Ella me ama y volverá a mí</span></div>
+      <div class="line-row"><span class="fr">avec des yeux mouillés de repentir...</span><span class="es">con los ojos húmedos de arrepentimiento.</span></div>
+      <div class="line-row"><span class="fr">Ah! son rire d'enfant, sa démarche onduleuse...</span><span class="es">¡Ah! Su risa infantil, sus andares sinuosos,</span></div>
+      <div class="line-row"><span class="fr">son oeil câlin, et sa voix enjoleuse!</span><span class="es">su ojo mimoso y su voz acariciadora.</span></div>
+      <div class="line-row"><span class="fr">Quoi qu'il puisse davenir:</span><span class="es">Cualquier cosa puede pasar:</span></div>
+      <div class="line-row"><span class="fr">ma parole est sacrée, et je veux la tenir.</span><span class="es">Mi palabra es sagrada y la cumpliré.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">La Voix De Dulcinée</span></span>
+        <span class="character-name">La Voz De Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Quand la femme a vingt ans!</span><span class="es">Cuando la mujer tiene veinte años, etc.</span></div>
+    </div>
+
+    <div class="act-heading" data-act="II">
+      <span>Acte Deuxième</span>
+      <span>Acto Segundo</span>
+    </div>
+
+    <div class="track-col" id="tc10">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t10">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est vers ton amour... ton amour...</span><span class="es">Es hacia tu amor... tu amor...</span></div>
+      <div class="line-row"><span class="fr">...mour... jour!... nuit et jour...</span><span class="es">... mor, día!... noche y día...</span></div>
+      <div class="line-row"><span class="fr">Que je soupire nuit et jour!</span><span class="es">¡Que yo suspiro noche y día!</span></div>
+      <div class="line-row"><span class="fr">Dulcinée!... ma pensée?</span><span class="es">¡Dulcinea!... ¿mi pensamiento?</span></div>
+      <div class="line-row"><span class="fr">Dame de ma pensée!</span><span class="es">¡Dama de mis pensamientos!</span></div>
+      <div class="line-row"><span class="fr">La, la, la!</span><span class="es">¡La, la, la!</span></div>
+      <div class="line-row"><span class="fr">De toi mon âme est oppressée... oppressée?</span><span class="es">Por ti mi alma está opresa... opresa?</span></div>
+      <div class="line-row"><span class="fr">Dulcinée!</span><span class="es">¡Dulcinea!</span></div>
+      <div class="line-row"><span class="fr">Mais j'ai vu ton émoi... ...ton émoi?</span><span class="es">Pero he visto tu emoción... ¿tu emoción?</span></div>
+      <div class="line-row"><span class="fr">penses à moi?</span><span class="es">¿Piensas en mí?</span></div>
+      <div class="line-row"><span class="fr">Je sais que tu penses à moi!</span><span class="es">¡Sé que piensas en mí!</span></div>
+      <div class="line-row"><span class="fr">...son émoi? à moi? à toi?</span><span class="es">¿Su emoción? ¿Mía? ¿Tuya?</span></div>
+      <div class="line-row"><span class="fr">Je crois en toi!</span><span class="es">¡Yo creo en ti!</span></div>
+      <div class="line-row"><span class="fr">Ah! ah! ton émoi!</span><span class="es">Ah! ah! ¡Tu emoción!</span></div>
+      <div class="line-row"><span class="fr">penses à moi! je crois en toi!</span><span class="es">¡Piensas en mí! ¡Yo creo en ti!</span></div>
+      <div class="line-row"><span class="fr">Je crois en toi!</span><span class="es">¡Yo creo en ti!</span></div>
+      <div class="line-row"><span class="fr">Ma Dulcinée! Je crois en toi!</span><span class="es">¡Mi Dulcinea, yo creo en ti!</span></div>
+      <div class="line-row"><span class="fr">La, la, la!</span><span class="es">¡La, la, la!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Croyez-moi, Chevalier, nous nous sommes</span><span class="es">Creedme, caballero,</span></div>
+      <div class="line-row"><span class="fr">trompées:</span><span class="es">nos hemos equivocado:</span></div>
+      <div class="line-row"><span class="fr">les ennemis qu'hier vous avez dissipés</span><span class="es">los enemigos que ayer dispersásteis</span></div>
+      <div class="line-row"><span class="fr">en chargeant à grands cris de:</span><span class="es">cargando a grito de:</span></div>
+      <div class="line-row"><span class="fr">Vive Dulcinée!</span><span class="es">¡Viva Dulcinea!</span></div>
+      <div class="line-row"><span class="fr">Et: mort aux mécréants!</span><span class="es">Y ¡Muerte a los infieles!</span></div>
+      <div class="line-row"><span class="fr">C'était tout simplement la troupe combinée</span><span class="es">Eran sencillamente la tropa combinada</span></div>
+      <div class="line-row"><span class="fr">de petits cochons noirs et de gros moutons</span><span class="es">de cerditos negros</span></div>
+      <div class="line-row"><span class="fr">blancs!</span><span class="es">y grandes carneros blancos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Tes paroles me font sourire...</span><span class="es">Tus palabras me hacen sonreír.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Enfin il est heureux... respectons son délire.</span><span class="es">Vaya, es feliz, respetemos su delirio.</span></div>
+      <div class="line-row"><span class="fr">Aïe!</span><span class="es">¡Ay!</span></div>
+      <div class="line-row"><span class="fr">Pour peu qu'on marche encor, à la fin de l'été</span><span class="es">Si seguimos caminando,</span></div>
+      <div class="line-row"><span class="fr">je lui rendrai des points pour la gracilité.</span><span class="es">al final de verano yo le ganaré en delgadez.</span></div>
+      <div class="line-row"><span class="fr">Tout se volatilise en moi, si cela dure,</span><span class="es">Todo se diluye en mí,</span></div>
+      <div class="line-row"><span class="fr">j'ai déjà resserré trois crans à ma ceinture!</span><span class="es">¡ya he estrechado tres agujeros mi cinturón!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">La, la, la!</span><span class="es">¡La, la, la!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Tra la la!</span><span class="es">¡Tra la la!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Deviens-tu fou, Sancho?</span><span class="es">¿Te vuelves loco, Sancho?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui!! Tout de mêmes être ici!</span><span class="es">¡Sí! ¡Todo sigue igual!</span></div>
+      <div class="line-row"><span class="fr">Parce que Doña Dulcinée</span><span class="es">Porque doña Dulcinea,</span></div>
+      <div class="line-row"><span class="fr">usant de son pouvoir...</span><span class="es">usando de su poder...</span></div>
+      <div class="line-row"><span class="fr">la coquine damnée!</span><span class="es">¡la pícara condenada!</span></div>
+      <div class="line-row"><span class="fr">vus a dit un beau soir:</span><span class="es">os dijo una buena noche</span></div>
+      <div class="line-row"><span class="fr">Qu'il existait dans la Sierra voisine</span><span class="es">que existía en la sierra cercana</span></div>
+      <div class="line-row"><span class="fr">un bandit qui pille, assassine...</span><span class="es">un bandido que roba y mata,</span></div>
+      <div class="line-row"><span class="fr">mais... qui lui déroba tel bijou de valeur:</span><span class="es">y que le robó cierta joya de valor:</span></div>
+      <div class="line-row"><span class="fr">voilà que nous courons sus au hardi voleur!</span><span class="es">¡Y he aquí que vamos tras el audaz ladrón!</span></div>
+      <div class="line-row"><span class="fr">Au voleur! au voleur!</span><span class="es">¡Al ladrón, al ladrón!</span></div>
+      <div class="line-row"><span class="fr">Cette dame se rit de nous de nous deux,</span><span class="es">Esta dama se ríe de nosotros, de los dos,</span></div>
+      <div class="line-row"><span class="fr">de nous deux, mon bon maître.</span><span class="es">de nosotros dos, mi buen señor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Pour en parler ainsi, c'est ne pas la connaître.</span><span class="es">Hablar así es no conocerla.</span></div>
+      <div class="line-row"><span class="fr">C'est ignorer son coeur.</span><span class="es">Es ignorar su corazón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Au contraire, seigneur!</span><span class="es">¡Al contrario, señor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon, Sancho, tu m'amuses.</span><span class="es">Sancho mío... me haces reír.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Les femmes, Chevalier, c'est tout mensonge</span><span class="es">Las mujeres, caballero,</span></div>
+      <div class="line-row"><span class="fr">et ruses!</span><span class="es">son todo mentira y ardides.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Quoi?</span><span class="es">¿Qué?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui.</span><span class="es">Sí.</span></div>
+      <div class="line-row"><span class="fr">Ce qui m'enchante en notre beau métier,</span><span class="es">¡Lo que me gusta de nuestro bonito oficio</span></div>
+      <div class="line-row"><span class="fr">c'est que j'ai pu laisser au logis... ma moitié!</span><span class="es">es que he podido dejar en casa a mi mitad!</span></div>
+      <div class="line-row"><span class="fr">Ça me console, je le jure,</span><span class="es">Esto me consuela, lo juro,</span></div>
+      <div class="line-row"><span class="fr">quand je sens les nodosités</span><span class="es">cuando siento los huesos</span></div>
+      <div class="line-row"><span class="fr">de mon asines que monture</span><span class="es">de mi asnal montura</span></div>
+      <div class="line-row"><span class="fr">m'entrer dans les... rotondités</span><span class="es">entrar en las redondeces</span></div>
+      <div class="line-row"><span class="fr">dont m'adoté Dame Nature.</span><span class="es">que me dio la madre naturaleza.</span></div>
+    </div>
+
+    <div class="track-col" id="tc11">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">11</span>
+      </div>
+    </div>
+    <div class="text-col" id="t11">
+      <div class="line-row"><span class="fr">Comment peut-on penser du bien</span><span class="es">Cómo se puede pensar algo bueno</span></div>
+      <div class="line-row"><span class="fr">de ces coquines, ces pendardes,</span><span class="es">de esas pícaras, de esas granujas,</span></div>
+      <div class="line-row"><span class="fr">de ces menteuses, ces bavardes,</span><span class="es">de esas mentirosas, de esas charlatanas,</span></div>
+      <div class="line-row"><span class="fr">dont la meilleure ne vaut rien.</span><span class="es">la mejor de las cuales no vale nada.</span></div>
+      <div class="line-row"><span class="fr">Regardez donc cette dévote</span><span class="es">Mirad, pues, a esa devota</span></div>
+      <div class="line-row"><span class="fr">qui passe en baissant les yeux,</span><span class="es">que pasa bajando los ojos,</span></div>
+      <div class="line-row"><span class="fr">et par les rues trotte, trotte, trotte,</span><span class="es">y por las calles trota, trota y trota,</span></div>
+      <div class="line-row"><span class="fr">edifiant jeunes et vieux.</span><span class="es">requebrando a jóvenes y viejos.</span></div>
+      <div class="line-row"><span class="fr">Régardez! Regardez!</span><span class="es">¡Mirad, mirad!</span></div>
+      <div class="line-row"><span class="fr">Tout à coup sous sa mantille...</span><span class="es">De repente, debajo de su mantilla,</span></div>
+      <div class="line-row"><span class="fr">pourqoui ce regard qui brille?</span><span class="es">¿por qué esa mirada brillante?</span></div>
+      <div class="line-row"><span class="fr">Pourquoi? pourqoui?</span><span class="es">¿Por qué, por qué?</span></div>
+      <div class="line-row"><span class="fr">C'est qu'elle a vu s'entrouvrir</span><span class="es">Es que ha visto abrirse</span></div>
+      <div class="line-row"><span class="fr">une porte dérobée</span><span class="es">una puerta escondida</span></div>
+      <div class="line-row"><span class="fr">par où va s'évanouir</span><span class="es">por donde desaparece</span></div>
+      <div class="line-row"><span class="fr">cette coquine embéguinée!</span><span class="es">la muy pícara beata.</span></div>
+      <div class="line-row"><span class="fr">Ah! ah! ah!</span><span class="es">¡Ja, ja, ja!</span></div>
+      <div class="line-row"><span class="fr">Et le mari se morfond,</span><span class="es">Y el marido se aburre,</span></div>
+      <div class="line-row"><span class="fr">trouvant bien longue la messe,</span><span class="es">encontrando muy larga la misa,</span></div>
+      <div class="line-row"><span class="fr">tout en se grattant le front</span><span class="es">rascándose la frente</span></div>
+      <div class="line-row"><span class="fr">qui le picote sans cesse...</span><span class="es">que le pica sin cesar...</span></div>
+      <div class="line-row"><span class="fr">Et le mari, le mari se morfond</span><span class="es">Y el marido, el marido se aburre</span></div>
+      <div class="line-row"><span class="fr">en se grattant le front</span><span class="es">rascándose la frente,</span></div>
+      <div class="line-row"><span class="fr">et le mari se morfond.</span><span class="es">y el marido se aburre.</span></div>
+      <div class="line-row"><span class="fr">La femme est un démon vicieux et malin,</span><span class="es">La mujer es un demonio vicioso y maligno,</span></div>
+      <div class="line-row"><span class="fr">créé pour le malheur du sexe masculin.</span><span class="es">creado para desgracia del sexo masculino.</span></div>
+      <div class="line-row"><span class="fr">Qu'elles viennent d'Afrique,</span><span class="es">Que vengan de África,</span></div>
+      <div class="line-row"><span class="fr">d'Asie ou d'Amérique,</span><span class="es">de Asia o América;</span></div>
+      <div class="line-row"><span class="fr">qu'elles aient le nez fin, camus, aquilin,</span><span class="es">que tengan la nariz fina, chata o aguileña;</span></div>
+      <div class="line-row"><span class="fr">qu'elles soient brunes, rousses, blondes,</span><span class="es">que sean morenas, pelirrojas, rubias,</span></div>
+      <div class="line-row"><span class="fr">plates, dodues, minces, rondes,</span><span class="es">planas, rollizas, delgadas o redondas,</span></div>
+      <div class="line-row"><span class="fr">nous sommes les souris, les souris,</span><span class="es">nosotros somos las ratitas, las ratitas</span></div>
+      <div class="line-row"><span class="fr">de ces êtes félins.</span><span class="es">de esos seres felinos.</span></div>
+      <div class="line-row"><span class="fr">L'homme est une victime, et les maris: des saints!</span><span class="es">El hombre es una víctima y los maridos santos.</span></div>
+    </div>
+
+    <div class="track-col" id="tc12">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t12">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Regarde!</span><span class="es">¡Mira!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quoi? quoi?</span><span class="es">¡Qué, qué!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Homme de peu! regarde!</span><span class="es">¡Infeliz, mira!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quoi? Mais quoi?</span><span class="es">¿Qué, pero qué?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Sancho! En garde! En garde!</span><span class="es">¡Sancho, en guardia, en guardia!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">En garde?</span><span class="es">¿En guardia?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Vois là-bas se dresser</span><span class="es">¡Mira allí abajo!</span></div>
+      <div class="line-row"><span class="fr">dans le fond opalin</span><span class="es">¡Sobre el fondo opalino</span></div>
+      <div class="line-row"><span class="fr">ce terrible géant!</span><span class="es">aquel terrible gigante!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Maître, c'est un moulin! un moulin!</span><span class="es">¡Señor, es un molino, un molino!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Rustre, c'est les géants</span><span class="es">Patán, son gigantes</span></div>
+      <div class="line-row"><span class="fr">qui dans leur arrogance</span><span class="es">que en su arrogancia</span></div>
+      <div class="line-row"><span class="fr">tentent de m'arrêter.</span><span class="es">intentan detenerme.</span></div>
+      <div class="line-row"><span class="fr">Folle est leur insolence,</span><span class="es">¡Loca es su insolencia,</span></div>
+      <div class="line-row"><span class="fr">je vais les châtier!</span><span class="es">voy a castigarlos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">O fatale démence!</span><span class="es">¡Oh, qué fatal demencia!</span></div>
+      <div class="line-row"><span class="fr">Le pauvre recommence!</span><span class="es">¡El pobre vuelve a empezar!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Géant, Géant, monstrueux cavalier,</span><span class="es">¡Gigante, gigante, monstruoso caballero,</span></div>
+      <div class="line-row"><span class="fr">si votre coeur n'est pas cuirassé de vaillance,</span><span class="es">si tu corazón no está acorazado de valor,</span></div>
+      <div class="line-row"><span class="fr">faîtes-nous place, ou bien à la dague, à la lance,</span><span class="es">déjame paso; si no, con la espada y la lanza,</span></div>
+      <div class="line-row"><span class="fr">je vous porte un défi, moi le Haut Chevalier!</span><span class="es">yo te desafío, yo, el alto caballero!</span></div>
+      <div class="line-row"><span class="fr">Vos grands gestes ne font qu'exalter mon courage.</span><span class="es">Vuestros grandes gestos sólo exaltan mi valor.</span></div>
+      <div class="line-row"><span class="fr">Arrière! arrière! ou bien, à l'instant,</span><span class="es">¡Atrás, atrás, si no al instante,</span></div>
+      <div class="line-row"><span class="fr">dans votre chair et votre sang,</span><span class="es">en vuestra carne y vuestra sangre,</span></div>
+      <div class="line-row"><span class="fr">je m'ouvre un large passage!</span><span class="es">yo me abriré paso!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon Dieu!</span><span class="es">¡Dios mío!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Ecuyer, avec moi, dis que je les défie!</span><span class="es">¡Escudero, conmigo, diles que los desafío!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quelle folie!</span><span class="es">¡Qué locura!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Géant, Géant, monstrueux cavalier,</span><span class="es">¡Gigante, gigante, monstruoso caballero,</span></div>
+      <div class="line-row"><span class="fr">si votre coeur n'est pas cuirassé de vaillance,</span><span class="es">si tu corazón no está acorazado de valor,</span></div>
+      <div class="line-row"><span class="fr">faîtes-moi place, ou bien à la dague, à la lance,</span><span class="es">déjame paso; si no, con la espada y la lanza,</span></div>
+      <div class="line-row"><span class="fr">je vous porte un défi, moi le Haut Chevalier!</span><span class="es">yo te desafío, yo, el alto caballero!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Géant, Géant, monstrueux cavalier,</span><span class="es">¡Gigante, gigante, monstruoso caballero,</span></div>
+      <div class="line-row"><span class="fr">si votre coeur n'est pas cuirassé de vaillance,</span><span class="es">si tu corazón no está acorazado de valor,</span></div>
+      <div class="line-row"><span class="fr">faîtes-lui place, ou bien à la dague, à la lance,</span><span class="es">déjale paso; si no, con la espada y la lanza,</span></div>
+      <div class="line-row"><span class="fr">il vous porte un défi, lui le Haut Chevalier!</span><span class="es">él te desafía, él, el alto caballero!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée! Dulcinée! Dame de mes pensées! etc.</span><span class="es">¡Dulcinea, Dulcinea, dama de mis pensamientos! etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quel malheur! au secours! mon bon maître!</span><span class="es">¡Qué desgracia! ¡Socorro! ¡Mi buen señor!</span></div>
+      <div class="line-row"><span class="fr">Hélas! Hélas! Jésus, Marie!</span><span class="es">¡Ay de mí! ¡Ay de mí! ¡Jesús, María!</span></div>
+      <div class="line-row"><span class="fr">Venez le délivrer!</span><span class="es">¡Venid a liberarle!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="III">
+      <span>Acte Troisième</span>
+      <span>Acto Tercero</span>
+    </div>
+
+    <div class="track-col" id="tc13">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">14</span>
+      </div>
+    </div>
+    <div class="text-col" id="t13">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">C'est ici le chemin que prennent les bandits</span><span class="es">Este es el camino que toman los bandidos</span></div>
+      <div class="line-row"><span class="fr">quand ils rentrent dans leur taudis...</span><span class="es">cuando vuelven a su escondite...</span></div>
+      <div class="line-row"><span class="fr">C'est ici!</span><span class="es">¡Aquí está!</span></div>
+      <div class="line-row"><span class="fr">Détèle le grison, desselle Rossinante,</span><span class="es">Desengancha el asno y desensilla a Rocinante,</span></div>
+      <div class="line-row"><span class="fr">peut-être fatigués par notre course ardente!</span><span class="es">estarán cansados de nuestra rápida carrera.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Ce lieu dégage une épouvante</span><span class="es">Este lugar infunde un espanto</span></div>
+      <div class="line-row"><span class="fr">qui hérisse mon poil et celui du Grison.</span><span class="es">que eriza mi pelo y el del asno.</span></div>
+      <div class="line-row"><span class="fr">Allez, mes chers agneaux, brouter l'épais gazon!</span><span class="es">¡Iros, corderos, a pastar en la espesa hierba!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Ne vois-tu rien qui bouge au fond de la clairière?</span><span class="es">¿Ves algo que se mueve al fondo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Seigneur, je voudrais, bien revenir en arrière!</span><span class="es">Señor, yo quisiera volver atrás.</span></div>
+      <div class="line-row"><span class="fr">Maître, j'ai peur de l'ombre et des bruits angoissants</span><span class="es">Señor, temo la sombra y a los ruidos angustiosos</span></div>
+      <div class="line-row"><span class="fr">dont s'emplissent la brande et les bois frémissants?</span><span class="es">que llenan el brezal y el bosque tembloroso.</span></div>
+      <div class="line-row"><span class="fr">Que va-t-il se passer?</span><span class="es">¿Qué pasará?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Quelque chose d'immense!</span><span class="es">¡Algo inmenso!</span></div>
+      <div class="line-row"><span class="fr">Sancho, notre gloire commence!</span><span class="es">Sancho, nuestra gloria empieza.</span></div>
+      <div class="line-row"><span class="fr">Les preux, les paladins et les héros passés</span><span class="es">Los valientes, los paladines, los héroes del pasado</span></div>
+      <div class="line-row"><span class="fr">vont être en un clin d'oeil oubliés, éclipsés.</span><span class="es">serán rápidamente olvidados, eclipsados.</span></div>
+      <div class="line-row"><span class="fr">Je bous d'impatience héroïque et de fièvre.</span><span class="es">Hiervo de impaciencia heroica y de fiebre.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Et moi, je tremble comme un lièvre...</span><span class="es">Y yo, yo tiemblo como una liebre...</span></div>
+      <div class="line-row"><span class="fr">Mais... si l'on s'asseyait un brin?</span><span class="es">Pero, ¿si nos sentáramos un poco?</span></div>
+      <div class="line-row"><span class="fr">Je suis fourbu...</span><span class="es">Estoy rendido...</span></div>
+      <div class="line-row"><span class="fr">Non d'avoir trop mangé, trop bu!</span><span class="es">Y no por haber comido demasiado, o bebido.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">S'asseoir!</span><span class="es">¿Sentarse?</span></div>
+      <div class="line-row"><span class="fr">Un chevalier qui tente l'aventure</span><span class="es">Un caballero que busca la aventura</span></div>
+      <div class="line-row"><span class="fr">doit toujours paraître en posture</span><span class="es">debe estar siempre en posición</span></div>
+      <div class="line-row"><span class="fr">de déjouer la ruse et de parer le coup.</span><span class="es">de descubrir la emboscada y de parar el golpe.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Je vous laisse le soin de veiller sur mon cou:</span><span class="es">Os dejo al cuidado de velar mi cuello:</span></div>
+      <div class="line-row"><span class="fr">qu'on ne le tranche point, seigneur, à l'imporviste!</span><span class="es">que no lo corten, señor, por sorpresa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Sois tranquille.</span><span class="es">Estate tranquilo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Je dors, vous... restez sur la piste.</span><span class="es">Yo duermo, quedad alerta.</span></div>
+    </div>
+
+    <div class="track-col" id="tc14">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">15</span>
+      </div>
+    </div>
+    <div class="text-col" id="t14">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Quand apparaissent les étoiles...</span><span class="es">Cuando aparecen las estrellas...</span></div>
+      <div class="line-row"><span class="fr">O mes rêves divins...</span><span class="es">¡Oh, mis divinos sueños...</span></div>
+      <div class="line-row"><span class="fr">Cette fois, ce sont eux!</span><span class="es">Pero... ¡Por ahí llegan!</span></div>
+      <div class="line-row"><span class="fr">Ils sont plus de deux cents, fils!</span><span class="es">¡Son más de doscientos, hijo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Et nous sommes deux!</span><span class="es">¡Y nosotros somos dos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous les vaincrons, s'il plaît à la cause servie.</span><span class="es">Los venceremos, pues es justa nuestra causa.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Maître, j'ai les bas courts et je tiens à la vie!</span><span class="es">Señor, tengo los brazos cortos y amo la vida.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Va te cacher, au plus noir des forêts!</span><span class="es">Ve a esconderte en lo profundo del bosque.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! si j'avais moins peur quel héros je ferais!</span><span class="es">¡Ah, si tuviera menos miedo qué héroe sería!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Halte-là! rendez-vous, gens de peu, valetaille!</span><span class="es">¡Alto, rendíos, miserables lacayos!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Le Chef</span></span>
+        <span class="character-name">El Jefe De Los Bandidos</span>
+      </div>
+      <div class="line-row"><span class="fr">Voilà, certes, un gaillard d'une audace superbe!</span><span class="es">¡He aquí un audaz valiente!</span></div>
+      <div class="line-row"><span class="fr">Si nous avions été brins d'herbe,</span><span class="es">Si hubiéramos sido briznas de hierba</span></div>
+      <div class="line-row"><span class="fr">il nous eût fauchés du coupant de son fer!</span><span class="es">nos hubiera segado con el corte de su espada.</span></div>
+      <div class="line-row"><span class="fr">Mais d'où vient-il?</span><span class="es">Pero, ¿de dónde viene,</span></div>
+      <div class="line-row"><span class="fr">Du purgatoire ou de l'enfer.</span><span class="es">del purgatorio o del infierno?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-1">1Er Bandit</span></span>
+        <span class="character-name">Primer Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">A quelle sauce allons-nous mettre sa chair rance?</span><span class="es">¿En qué salsa pondremos su carne rancia?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-2">2D Bandit</span></span>
+        <span class="character-name">Segundo Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">Remarque son indifférence.</span><span class="es">Parece que no nos oye...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-1">1Er Bandit</span></span>
+        <span class="character-name">Primer Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">Indique-nous ton choix.</span><span class="es">Indícanos tus preferencias.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-3">3E Bandit</span></span>
+        <span class="character-name">Tercer Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous feras-tu l'honneur</span><span class="es">¿Nos harás el honor</span></div>
+      <div class="line-row"><span class="fr">de répondre aux larrons que nous sommes, Seigneur?</span><span class="es">de contestar a estos ladrones, señor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-1">1Er Bandit</span></span>
+        <span class="character-name">Primer Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">Voilà pour ta morgue imbécile.</span><span class="es">¡Toma, por tu altivez, imbécil!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-4">4E Bandit</span></span>
+        <span class="character-name">Cuarto Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">Voilà qui te rendra la langue plus facile.</span><span class="es">Eso te hará la lengua más ligera.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Le Chef</span></span>
+        <span class="character-name">El Jefe</span>
+      </div>
+      <div class="line-row"><span class="fr">Il faut en finir! Saignez-le, brûlez-le,</span><span class="es">¡Acabemos!</span></div>
+      <div class="line-row"><span class="fr">pendez-le: qu'on m'évite</span><span class="es">Degolladle, quemadle, ahorcadle,</span></div>
+      <div class="line-row"><span class="fr">le trouble où son regard me plonge...</span><span class="es">no soporto su mirada.</span></div>
+      <div class="line-row"><span class="fr">Faites vite!</span><span class="es">¡Rápido!</span></div>
+    </div>
+
+    <div class="track-col" id="tc15">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">16</span>
+      </div>
+    </div>
+    <div class="text-col" id="t15">
+      <div class="character-row">
+        <span><span class="character-name">Les Bandits</span></span>
+        <span class="character-name">Los Bandidos</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! voir un corps long comme un jour sans pain,</span><span class="es">Ver un cuerpo tan largo como un día sin pan</span></div>
+      <div class="line-row"><span class="fr">prendre à la branche d'un pin, d'un pin ,d'un pin,</span><span class="es">pender de la rama de un pino</span></div>
+      <div class="line-row"><span class="fr">est un spectacle cocasse!</span><span class="es">¡será un espectáculo divertido!</span></div>
+      <div class="line-row"><span class="fr">...ah! ah! ah!</span><span class="es">¡Ja, ja, ja!</span></div>
+      <div class="line-row"><span class="fr">Le repas fait avec sa carcasse,</span><span class="es">La comida hecha con su osamenta</span></div>
+      <div class="line-row"><span class="fr">sera pour les corbeaux un plus maigre régal</span><span class="es">será para los cuervos un festín más flaco</span></div>
+      <div class="line-row"><span class="fr">qu'un corps d'hidalgo colossal.</span><span class="es">que el cuerpo de este hidalgo colosal.</span></div>
+      <div class="line-row"><span class="fr">Ha!!Ha!!Ha!!</span><span class="es">¡Ja, ja, ja!</span></div>
+    </div>
+
+    <div class="track-col" id="tc16">
+      <div class="track-tag" style="visibility:hidden">
+        <span class="track-tag-cd"></span>
+        <span class="track-tag-num"></span>
+      </div>
+    </div>
+    <div class="text-col" id="t16">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Seigneur, reçois mon âme, elle n'est pas méchante,</span><span class="es">Señor, recibe mi alma, que no es malvada,</span></div>
+      <div class="line-row"><span class="fr">et mon coeur est le coeur d'un fidèle chrétien.</span><span class="es">y mi corazón es el corazón de un fiel cristiano.</span></div>
+      <div class="line-row"><span class="fr">Que ton oeil me soit doux et ta face indulgente!</span><span class="es">¡Que tu ojo me sea benigno y tu faz indulgente!</span></div>
+      <div class="line-row"><span class="fr">Etant le chevalier du droit, je suis le tien.</span><span class="es">Yo soy tu caballero.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Le Chef</span></span>
+        <span class="character-name">El Jefe</span>
+      </div>
+      <div class="line-row"><span class="fr">Vraiment je crois rêver, voyant ta face pâle,</span><span class="es">Me parece soñar, mirando tu cara pálida,</span></div>
+      <div class="line-row"><span class="fr">tes grands traits émouvants d'où le divin s'exhale</span><span class="es">tus rasgos de los que la divinidad se desprende,</span></div>
+      <div class="line-row"><span class="fr">et tes yeux fulgurants de sublimes clartés!</span><span class="es">y tus ojos fulgurantes de sublime claridad.</span></div>
+      <div class="line-row"><span class="fr">Où vas-tu? Que veux-tu?</span><span class="es">¿Adónde vas, qué quieres?</span></div>
+    </div>
+
+    <div class="track-col" id="tc17">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">17</span>
+      </div>
+    </div>
+    <div class="text-col" id="t17">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Je suis le chevalier errant... et qui redresse</span><span class="es">El caballero andante que deshace los entuertos;</span></div>
+      <div class="line-row"><span class="fr">les torts; un vagabond inondé de tendresse</span><span class="es">un vagabundo lleno de ternura para</span></div>
+      <div class="line-row"><span class="fr">pour les mères en deuil, les gueux, les opprimés,</span><span class="es">las madres agraviadas, los pobres, los oprimidos,</span></div>
+      <div class="line-row"><span class="fr">pour tous ceux qui du sort ne furent pas aimés.</span><span class="es">para los que no fueron favorecidos por la suerte.</span></div>
+      <div class="line-row"><span class="fr">Je suis fou de soleil ardent, d'air pur, d'espace!</span><span class="es">Estoy loco por el sol ardiente, el aire y el espacio.</span></div>
+      <div class="line-row"><span class="fr">J'adore les enfants qui rient lorsque je passe,</span><span class="es">Adoro a los niños que ríen cuando paso;</span></div>
+      <div class="line-row"><span class="fr">et ne déteste point les bandits, quand ils ont</span><span class="es">y no odio a los bandidos, cuando tienen</span></div>
+      <div class="line-row"><span class="fr">de la force au garret et de l'orgueil au front.</span><span class="es">fuerza en el cuerpo y orgullo en la frente.</span></div>
+      <div class="line-row"><span class="fr">Et me voici debout, jouant un nouveau rôle.</span><span class="es">Y heme aquí de pie, recitando un nuevo papel,</span></div>
+      <div class="line-row"><span class="fr">libre dans mon effort comme dans ma parole.</span><span class="es">libre en mi acción como en mi palabra.</span></div>
+      <div class="line-row"><span class="fr">Et je vous dis ceci, moi, le haut chevalier:</span><span class="es">Y yo os digo, yo, el alto caballero:</span></div>
+      <div class="line-row"><span class="fr">c'est qu'il faut a l'instant me rendre le collier</span><span class="es">debéis al instante devolverme el collar</span></div>
+      <div class="line-row"><span class="fr">pris au cou délicat d'un femme adorée.</span><span class="es">robado del cuello delicado de una dama adorada.</span></div>
+      <div class="line-row"><span class="fr">Le joyau, lui, n'est rien, mais la cause est sacrée.</span><span class="es">La joya no es nada, pero la causa es sagrada.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bandit-1">1Er Bandit</span></span>
+        <span class="character-name">Primer Bandido</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! je me sens trembler!</span><span class="es">¡Ah, siento que tiemblo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Le Chef</span></span>
+        <span class="character-name">El Jefe</span>
+      </div>
+      <div class="line-row"><span class="fr">Voici! Le joyau dérobé, Monseigneur!</span><span class="es">He aquí la joya robada, mi señor.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Bien, merci.</span><span class="es">Bien, gracias.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Bandits</span></span>
+        <span class="character-name">Los Bandidos</span>
+      </div>
+      <div class="line-row"><span class="fr">Et maintenant sur nous, placez votre main pure,</span><span class="es">¡Y ahora extended sobre nosotros la mano pura,</span></div>
+      <div class="line-row"><span class="fr">O noble chevalier de la Longue Figure!</span><span class="es">noble Caballero de la Triste Figura!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Viens, Sancho, rustre, au coeur timoré,</span><span class="es">Ven Sancho, patán de tímido corazón,</span></div>
+      <div class="line-row"><span class="fr">viens voir le miracle opéré! Viens!</span><span class="es">ven a ver el milagro que se ha producido. ¡Ven!</span></div>
+      <div class="line-row"><span class="fr">Les manants, les pillards, fils du vol et du crime,</span><span class="es">Los villanos; los ladrones hijos del robo y el crimen;</span></div>
+      <div class="line-row"><span class="fr">ceux que la peur redoute, et que la force opprime,</span><span class="es">los que el miedo y la fuerza oprime;</span></div>
+      <div class="line-row"><span class="fr">les sans logis, les gueux aux rires menaçants,</span><span class="es">los sin hogar; los mendigos de risa amenazadora;</span></div>
+      <div class="line-row"><span class="fr">ont deviné mon but,</span><span class="es">han adivinado mis propósitos,</span></div>
+      <div class="line-row"><span class="fr">en ont saisi le sens!</span><span class="es">han entendido su intención.</span></div>
+      <div class="line-row"><span class="fr">Courbés sous l'âpre vent qui vient des cimes hautes,</span><span class="es">Doblados bajo el viento que viene de las cumbres,</span></div>
+      <div class="line-row"><span class="fr">tremblants d'un grand frisson, regarde-les mes hôtes,</span><span class="es">temblando por un estremecimiento, mis huéspedes,</span></div>
+      <div class="line-row"><span class="fr">les élus de mon coeur, mes fils prédestinés,</span><span class="es">los elegidos de mi corazón, mis hijos predestinados,</span></div>
+      <div class="line-row"><span class="fr">vois-les, mes fils,</span><span class="es">míralos, mis hijos,</span></div>
+      <div class="line-row"><span class="fr">comme ils sont beaux, dociles, fascinés!</span><span class="es">qué hermosos son, dóciles, fascinados.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Les Bandits</span></span>
+        <span class="character-name">Los Bandidos</span>
+      </div>
+      <div class="line-row"><span class="fr">Sur nous placez votre main pure,</span><span class="es">¡Sobre nosotros extended vuestra mano pura,</span></div>
+      <div class="line-row"><span class="fr">ô notre chevalier!</span><span class="es">nuestro caballero!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="IV">
+      <span>Acte Quatrième</span>
+      <span>Acto Cuarto</span>
+    </div>
+
+    <div class="track-col" id="tc18">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t18">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Alors... traîtresse... je n'ai plus rien à espérer?</span><span class="es">Entonces, traidora, ¿no tengo nada que esperar?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Plus rien... mais Pepita saura te consoler.</span><span class="es">Ya nada, pero Pepita sabrá consolarte.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">De ma grande détresse</span><span class="es">De mi gran tristeza,</span></div>
+      <div class="line-row"><span class="fr">quand aurez-vous pitié?</span><span class="es">¿cuándo sentiréis piedad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="garcias">Garcias</span></span>
+        <span class="character-name">García</span>
+      </div>
+      <div class="line-row"><span class="fr">Et resterez-vous la maîtresse...</span><span class="es">¿Y seréis siempre la dueña...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span></span>
+        <span class="character-name">Pedro</span>
+      </div>
+      <div class="line-row"><span class="fr">...de celui qui souffre à vos pieds?</span><span class="es">... del que sufre a vuestros pies?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Pauvres amis? vous m'ennuyez!</span><span class="es">¡Pobres amigos, me aburrís!</span></div>
+      <div class="line-row"><span class="fr">J'ai bien assez de mes tristesses...</span><span class="es">Tengo bastante con mis tristezas.</span></div>
+    </div>
+
+    <div class="track-col" id="tc19">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t19">
+      <div class="line-row"><span class="fr">Lorsque le temps d'amour a fui,</span><span class="es">Cuando el tiempo del amor ha huido,</span></div>
+      <div class="line-row"><span class="fr">que reste-t'il de nos bonheurs?</span><span class="es">¿qué queda de nuestra felicidad</span></div>
+      <div class="line-row"><span class="fr">et des étés, lorsque la nuit</span><span class="es">y de los veranos, cuando la noche</span></div>
+      <div class="line-row"><span class="fr">dans ses voiles ansevelit l'éclat des fleurs?</span><span class="es">en sus velos esconde el esplendor de las flores?</span></div>
+      <div class="line-row"><span class="fr">Lorsque le temps d'amour a fui,</span><span class="es">Cuando el tiempo del amor ha huido,</span></div>
+      <div class="line-row"><span class="fr">qui peut croire aux bonheurs?</span><span class="es">¿quién puede creer en la felicidad?</span></div>
+      <div class="line-row"><span class="fr">Lorsque le temps d'amour a fui,</span><span class="es">Cuando el tiempo del amor ha huido,</span></div>
+      <div class="line-row"><span class="fr">le temps d'amour?</span><span class="es">¿el tiempo del amor?</span></div>
+    </div>
+
+    <div class="track-col" id="tc20">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t20">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Par fortune! Par fortune!</span><span class="es">¡Por casualidad, por casualidad!</span></div>
+      <div class="line-row"><span class="fr">serait-ce son tour?</span><span class="es">¿Llegaría quizás su turno...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Pauvres amis! Pauvres amis!</span><span class="es">¡Pobres amigos, pobres amigos!</span></div>
+      <div class="line-row"><span class="fr">Ah! vous m'ennuyez!</span><span class="es">¡Ah, me aburrís!</span></div>
+      <div class="line-row"><span class="fr">Mes amis! Vous n'aurez pas de chance</span><span class="es">Amigos míos, no tendréis suerte</span></div>
+      <div class="line-row"><span class="fr">en me parlant, en me parlant d'amour!</span><span class="es">hablándome, hablándome del amor!</span></div>
+      <div class="line-row"><span class="fr">Ah! ah! ah!</span><span class="es">¡Ja, ja, ja!</span></div>
+      <div class="line-row"><span class="fr">Ah! mes pauvres amis! etc.</span><span class="es">¡Ah, mis pobres amigos! etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">... en lui parlant d'amour?</span><span class="es">... hablándole del amor?</span></div>
+      <div class="line-row"><span class="fr">Par fortune! Par fortune!</span><span class="es">¡Por casualidad, por casualidad!</span></div>
+      <div class="line-row"><span class="fr">serait-ce son tour?</span><span class="es">¿Llegaría su turno?</span></div>
+      <div class="line-row"><span class="fr">Aura-t'il plus de chance</span><span class="es">¿Tendría él más suerte</span></div>
+      <div class="line-row"><span class="fr">en lui parlant d'amour?</span><span class="es">hablándole del amor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! J'ai en ce moment le désir d'autre chose.</span><span class="es">¡Ah! Tengo ahora el deseo de otra cosa.</span></div>
+      <div class="line-row"><span class="fr">Je rêve et je pleure sans cause.</span><span class="es">Sueño y lloro sin motivo.</span></div>
+      <div class="line-row"><span class="fr">Je suis très à plaindre</span><span class="es">Debo ser compadecida</span></div>
+      <div class="line-row"><span class="fr">et c'est pitié vraiment</span><span class="es">y es lástima verdaderamente</span></div>
+      <div class="line-row"><span class="fr">de n'être pas ravie ayant de tels amants.</span><span class="es">no estar encantada teniendo tales amantes.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Juan, Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Que dit-elle?</span><span class="es">¿Qué dices?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span></span>
+        <span class="character-name">Pedro, Garcías</span>
+      </div>
+      <div class="line-row"><span class="fr">Hein?</span><span class="es">¿Eh?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Je voudrais être aimée</span><span class="es">Yo quisiera ser amada</span></div>
+      <div class="line-row"><span class="fr">autrement que par vous</span><span class="es">por otros distintos a vosotros</span></div>
+      <div class="line-row"><span class="fr">et qu'à l'accoutumée,</span><span class="es">y diferente a lo habitual.</span></div>
+      <div class="line-row"><span class="fr">ah! soyez imprévus,</span><span class="es">¡Ah! Si fuerais imprevisibles,</span></div>
+      <div class="line-row"><span class="fr">superbes, éclatants,</span><span class="es">altivos, brillantes...</span></div>
+      <div class="line-row"><span class="fr">car c'est de l'inédit</span><span class="es">¿Es tan raro</span></div>
+      <div class="line-row"><span class="fr">que mon rêve demande,</span><span class="es">lo que mi sueño pide?</span></div>
+      <div class="line-row"><span class="fr">et d'inconnus frissons</span><span class="es">Desconocidos estremecimientos</span></div>
+      <div class="line-row"><span class="fr">mordant ma chair gourmade!</span><span class="es">muerden mi ávido cuerpo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Vivat pour Dulcinée!</span><span class="es">¡Viva Dulcinea!</span></div>
+      <div class="line-row"><span class="fr">Indomptable! Indomptée!</span><span class="es">¡Indomable, indómita!</span></div>
+      <div class="line-row"><span class="fr">Vivat! vivat!</span><span class="es">¡Viva, viva!</span></div>
+    </div>
+
+    <div class="track-col" id="tc21">
+      <div class="track-tag" style="visibility:hidden">
+        <span class="track-tag-cd"></span>
+        <span class="track-tag-num"></span>
+      </div>
+    </div>
+    <div class="text-col" id="t21">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Alza! alza!</span><span class="es">¡Arriba, arriba!</span></div>
+    </div>
+
+    <div class="track-col" id="tc22">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t22">
+      <div class="line-row"><span class="fr">Ne pensons qu'au plaisir d'aimer,</span><span class="es">Pensemos sólo en el placer de amar,</span></div>
+      <div class="line-row"><span class="fr">a la fièvre des heures brèves</span><span class="es">en la fiebre de las horas breves</span></div>
+      <div class="line-row"><span class="fr">où l'on sent le coeur se pâmer</span><span class="es">cuando se siente el corazón desfallecer</span></div>
+      <div class="line-row"><span class="fr">sous les baisers cueillis aux lèvres!</span><span class="es">bajo los besos robados a los labios.</span></div>
+      <div class="line-row"><span class="fr">Olé!</span><span class="es">¡Olé!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Olé!</span><span class="es">¡Olé!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Anda!</span><span class="es">¡Anda!</span></div>
+      <div class="line-row"><span class="fr">Que les yeux plongent dans les yeux,</span><span class="es">Que los ojos se pierdan en los ojos,</span></div>
+      <div class="line-row"><span class="fr">désirs courez la pretentaine;</span><span class="es">¡Deseos, corred!</span></div>
+      <div class="line-row"><span class="fr">et jeunes gens, qu'il vous souvienne,</span><span class="es">Muchachos, recordad</span></div>
+      <div class="line-row"><span class="fr">que l'amour sourit aux audacieux.</span><span class="es">que el amor sonríe a los audaces.</span></div>
+      <div class="line-row"><span class="fr">Anda!</span><span class="es">¡Anda!</span></div>
+      <div class="line-row"><span class="fr">Ne pensons qu'aux minutes brèves</span><span class="es">Pensemos sólo en los minutos breves</span></div>
+      <div class="line-row"><span class="fr">où les âmes vont se pâmer</span><span class="es">en que las almas desfallecen</span></div>
+      <div class="line-row"><span class="fr">dans l'ivresse de s'adorer</span><span class="es">con el arrebato del ardor</span></div>
+      <div class="line-row"><span class="fr">sur les baisers pris sur les lèvres!</span><span class="es">sobre los besos robados a los labios.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Olé! Anda!</span><span class="es">¡Olé! ¡Anda!</span></div>
+    </div>
+
+    <div class="track-col" id="tc23">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t23">
+      <div class="line-row"><span class="fr">L'aube bientôt blanchira l'horizon!</span><span class="es">El alba pronto blanqueará el horizonte.</span></div>
+      <div class="line-row"><span class="fr">Nous saluerons l'aurore en soupant verre en main!</span><span class="es">Saludaremos a la aurora cenando copa en mano.</span></div>
+      <div class="line-row"><span class="fr">Tandis que les vieux vins encore emporteront</span><span class="es">Mientras, los viejos vinos se llevarán</span></div>
+      <div class="line-row"><span class="fr">ce qui nous reste de raison!</span><span class="es">lo que nos queda de juicio.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">L'aube bientôt blanchira l'horizon!</span><span class="es">El alba pronto blanqueará el horizonte.</span></div>
+      <div class="line-row"><span class="fr">Nous saluerons l'aurore en soupant verre en main!</span><span class="es">Saludaremos la aurora cenando copa en mano.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Soupons, soupons le verre en main!</span><span class="es">¡Cenemos, cenemos con la copa en la mano!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">L'aube bientôt blanchira l'horizon!</span><span class="es">El alba pronto, etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Soupons, soupons le verre en main!</span><span class="es">¡Cenemos...! etc.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Le verre en main!</span><span class="es">¡La copa en la mano!</span></div>
+    </div>
+
+    <div class="track-col" id="tc24">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t24">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Annonce le grand Don Quichotte de la Manche,</span><span class="es">Anuncia al gran Don Quijote de la Mancha,</span></div>
+      <div class="line-row"><span class="fr">baron, chevalier de la Longue Figure,</span><span class="es">baron, Caballero de la Triste Figura,</span></div>
+      <div class="line-row"><span class="fr">arrivant en Estramadure</span><span class="es">que llega de extremadura</span></div>
+      <div class="line-row"><span class="fr">avec son écuyer le valeureux Don Sanche!</span><span class="es">con su escudero, el valiente Don Sancho.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="laquais-1">Le 1Er Laquais</span></span>
+        <span class="character-name">Primer Lacayo</span>
+      </div>
+      <div class="line-row"><span class="fr">El señor... El señor... Quichotte... Estramadure...</span><span class="es">El señor... El señor... Quijote... Extramadura...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Idiot!</span><span class="es">¡Idiota!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="laquais-2">Le 2D Laquais</span></span>
+        <span class="character-name">Segundo Lacayo</span>
+      </div>
+      <div class="line-row"><span class="fr">El señor... chevalier de la Longue Figure...</span><span class="es">El señor... caballero de la triste figura...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Mieux!</span><span class="es">¡Mejor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="laquais-1">Le 1Er Laquais</span></span>
+        <span class="character-name">Primer Lacayo</span>
+      </div>
+      <div class="line-row"><span class="fr">Sont-ils drôles!</span><span class="es">¡Son cómicos!</span></div>
+      <div class="line-row"><span class="fr">J'augure que cet homme n'a rien mangé</span><span class="es">Apuesto a que este hombre no ha comido</span></div>
+      <div class="line-row"><span class="fr">depuis deux ans!</span><span class="es">desde hace dos años.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="laquais-2">Le 2D Laquais</span></span>
+        <span class="character-name">Segundo Lacayo</span>
+      </div>
+      <div class="line-row"><span class="fr">Encore s'il nous faisait quelque riche présent!</span><span class="es">¡Aún si nos hiciera algún rico presente!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Que le grand chevalier rêve, chante ou soupire,</span><span class="es">Cuando el gran caballero sueña, canta o suspira</span></div>
+      <div class="line-row"><span class="fr">moi seul, entendez-vous, ai le droit de sourire!</span><span class="es">sólo yo, entended, tengo derecho a sonreír.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">J'entre enfin dans la joie!</span><span class="es">¡Por fin entro en la felicidad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quand donc dans l'abondance et dans l'oisiveté?</span><span class="es">¿Y cuándo en la abundancia y la ociosidad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">J'entre dans l'immortalité!</span><span class="es">¡Yo entro en la inmortalidad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quand pourrai-je palper le plus mince pécule?</span><span class="es">¿Y cuándo podré tocar un poco de dinero?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">J'entre enfin dans la joie, et l'immortalité!</span><span class="es">¡Por fin entro en la inmortalidad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Quand donc dans l'opulence</span><span class="es">¿Y cuándo en la opulencia y la ociosidad?</span></div>
+      <div class="line-row"><span class="fr">et dans l'oisiveté? Quand donc?</span><span class="es">¿Cuándo, pues?</span></div>
+      <div class="line-row"><span class="fr">Quand donc dans l'abondance? Et dans l'oisiveté?</span><span class="es">¿Cuándo en la abundancia? ¿Y en la ociosidad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Tout vont t'échoir,</span><span class="es">Todos estos bienes te tocarán en suerte,</span></div>
+      <div class="line-row"><span class="fr">j'en jure par Hercule.</span><span class="es">lo juro por Hércules.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Tous ces biens vont m'échoir!</span><span class="es">¡Todos estos bienes me tocarán en suerte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Pour ton dévouement, ta vertu,</span><span class="es">Por tu devoción y virtud,</span></div>
+      <div class="line-row"><span class="fr">je songe à t'enrichir.</span><span class="es">yo pienso enriquecerte.</span></div>
+      <div class="line-row"><span class="fr">Que dirais-tu d'une île?</span><span class="es">¿Qué te parecería una isla?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Une île?</span><span class="es">¿Una isla?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Ou d'un château festonné de tourelles?</span><span class="es">¿O un castillo festoneado de torrecillas,</span></div>
+      <div class="line-row"><span class="fr">Ceint d'un parc, où le soir glissent des tourterelles?</span><span class="es">rodeado de un parque donde se refugien las palomas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Enfin!</span><span class="es">¡Por fin!</span></div>
+      <div class="line-row"><span class="fr">Une île? Un château?</span><span class="es">¿Una isla, un castillo?</span></div>
+      <div class="line-row"><span class="fr">Ce rêve me sourit.</span><span class="es">¡Ese sueño me gusta!.</span></div>
+      <div class="line-row"><span class="fr">Mais dans combien de temps?</span><span class="es">Pero ¿cuándo?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Ce soir... demain... peut-être...</span><span class="es">Esta noche, mañana quizás...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">O bien heureux moment,</span><span class="es">¡Oh, feliz momento!</span></div>
+      <div class="line-row"><span class="fr">où, vêtu d'or, de brocatelles,</span><span class="es">Apareceré vestido de oro, de brocado,</span></div>
+      <div class="line-row"><span class="fr">le jabot fleuri de dentelles,</span><span class="es">con el jubón ornado de encajes,</span></div>
+      <div class="line-row"><span class="fr">devant mes gens je paraîtrai,</span><span class="es">ante mis súbditos;</span></div>
+      <div class="line-row"><span class="fr">moi leur seigneur et maître,</span><span class="es">yo, su dueño y señor,</span></div>
+      <div class="line-row"><span class="fr">en habit chamaré!</span><span class="es">en hábito de gala.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Radieuse pour nous s'ouvre la Destinée!</span><span class="es">¡Radiante para nosotros es el destino!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Oh! oh! oh! oh!</span><span class="es">¡Oh, oh!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">D'abord, ce soir, j'épouse Dulcinée,</span><span class="es">Primero, esta noche desposaré a Dulcinea</span></div>
+      <div class="line-row"><span class="fr">et l'emmène au pays charmant</span><span class="es">y la llevaré al país encantado</span></div>
+      <div class="line-row"><span class="fr">où tout est rêve, enchantement,</span><span class="es">donde todo es sueño, maravilla,</span></div>
+      <div class="line-row"><span class="fr">l'heure y coule exquise,</span><span class="es">el tiempo pasa exquisitamente</span></div>
+      <div class="line-row"><span class="fr">et se savoure toute.</span><span class="es">y cada instante se saborea.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Où perche cet Eden?</span><span class="es">¿Dónde cae ese Edén?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Moi seul en sais la route.</span><span class="es">Sólo yo conozco el camino.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Lui seul?</span><span class="es">¿Vos solamente?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Moi seul!</span><span class="es">¡Yo solo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">En sait la route!</span><span class="es">¡Conoce la ruta!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">J'entre enfin dans la joie et l'immortalité!</span><span class="es">¡Entro por fin en la felicidad e inmortalidad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Il connaît l'abondance et la félicité!</span><span class="es">¡Él conoce la abundancia y la felicidad!</span></div>
+    </div>
+
+    <div class="track-col" id="tc25">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t25">
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">L'aube bientôt blanchira l'horizon!</span><span class="es">¡El alba pronto blanqueará el horizonte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais voici Dulcinée...</span><span class="es">He aquí a Dulcinea...</span></div>
+      <div class="line-row"><span class="fr">Ah! que je suis heureux!</span><span class="es">¡Ah, qué feliz soy!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Nous saluerons l'aurore en soupant verre en main!</span><span class="es">¡Saludaremos la aurora cenando copa en mano!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon Sancho, tu vas voir,</span><span class="es">Sancho mío, tú verás,</span></div>
+      <div class="line-row"><span class="fr">tu vas voir cet accueil chaleureux!</span><span class="es">verás el saludo caluroso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Tiens, c'est vous chevalier?</span><span class="es">¡Vaya, sois vos, caballero!</span></div>
+      <div class="line-row"><span class="fr">Mais pas une blessure? pas une égratignure?</span><span class="es">¿Pero sin una herida? ¿Ni un rasguño?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Intact!</span><span class="es">¡Intacto!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Intact? Vivat!</span><span class="es">¿Intacto? ¡Viva!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">On ne s'explique pas qu'à deux,</span><span class="es">No se puede explicar que, siendo dos,</span></div>
+      <div class="line-row"><span class="fr">vous ayez pu vous tirer de ce pas.</span><span class="es">hayan podido salir del paso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span></span>
+        <span class="character-name">Pedro, García</span>
+      </div>
+      <div class="line-row"><span class="fr">On ne s'explique pas qu'à deux, qu'à deux</span><span class="es">No se puede explicar que, siendo dos,</span></div>
+      <div class="line-row"><span class="fr">vous ayez pu vous tirer de ce pas.</span><span class="es">hayan podido salir del paso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="pedro">Pedro</span>, <span class="character-name has-tooltip" data-character-id="garcias">Garcias</span>, <span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span>, <span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Pedro, García, Rodríguez, Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Donnez de vos exploits, la preuve?</span><span class="es">¡Dadnos la prueba de vuestra empresa!</span></div>
+      <div class="line-row"><span class="fr">la preuve? malepeste!</span><span class="es">¡La prueba, caramba!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Ne la voyez-vous pas,</span><span class="es">¿No la veis,</span></div>
+      <div class="line-row"><span class="fr">chers seigneurs, à son geste?</span><span class="es">queridos señores, en su expresión?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">Tous</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">On ne s'explique pas qu'à deux...</span><span class="es">No se puede explicar que, siendo dos...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Cher seigneurs!</span><span class="es">¡Queridos señores!</span></div>
+      <div class="line-row"><span class="fr">Voyez? voyez son geste!</span><span class="es">¡Mirad su expresión!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Auriez-vous donc les trente perles fines?</span><span class="es">¿Tenéis, pues, las treinta perlas finas?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Elle a douté!</span><span class="es">¡Ella ha dudado!</span></div>
+      <div class="line-row"><span class="fr">Voici, madame, le collier.</span><span class="es">He aquí, señora, el collar.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon collier?</span><span class="es">¿Mi collar?</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah!!</span><span class="es">¡Ah!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon chevalier! Il faut que je t'embrasse!</span><span class="es">¡Mi caballero, debo besarte!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Voyez de quels transports s'illumine sa face!</span><span class="es">Mirad con qué felicidad se ilumina su cara.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Les plus illustres faits des héros de jadis</span><span class="es">Las más ilustres gestas de los antiguos héroes</span></div>
+      <div class="line-row"><span class="fr">sont ici dépassés, même ceux d'Amadis!</span><span class="es">se ven ahora superadas... ¡Hasta las de Amadís!</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Vivat!</span><span class="es">¡Viva!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Marchez dans mon chemin</span><span class="es">Caminad por mi senda</span></div>
+      <div class="line-row"><span class="fr">et prêtez-moi</span><span class="es">y dadme</span></div>
+      <div class="line-row"><span class="fr">l'appui léger de votre main!</span><span class="es">el apoyo ligero de vuestra mano.</span></div>
+      <div class="line-row"><span class="fr">A deux nous aimerons davantage le monde,</span><span class="es">Juntos amaremos aún más al mundo,</span></div>
+      <div class="line-row"><span class="fr">le temps sera plus court,</span><span class="es">el tiempo será más breve,</span></div>
+      <div class="line-row"><span class="fr">la moisson plus féconde...</span><span class="es">la cosecha más fecunda...</span></div>
+      <div class="line-row"><span class="fr">Les maux dont geint l'humanité</span><span class="es">Los males en que gime la humanidad</span></div>
+      <div class="line-row"><span class="fr">ont besoin de la femme et de sa charité!</span><span class="es">necesitan a la mujer y su caridad.</span></div>
+      <div class="line-row"><span class="fr">Allons vers l'Idéal,</span><span class="es">Vamos hacia el ideal,</span></div>
+      <div class="line-row"><span class="fr">montons à grands coups d'aile!</span><span class="es">subamos a grandes golpes de ala.</span></div>
+      <div class="line-row"><span class="fr">Allons vers l'Idéal!</span><span class="es">¡Vamos hacia el ideal!</span></div>
+      <div class="line-row"><span class="fr">Soyez mon épouse fidèle!</span><span class="es">¡Sed mi esposa fiel!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Me marier, moi!</span><span class="es">¿Casarme yo?</span></div>
+      <div class="line-row"><span class="fr">Me marier! ah! ah!</span><span class="es">¡Casarme! ¡Ja, ja!</span></div>
+      <div class="line-row"><span class="fr">Que j'abandonne ma maison?</span><span class="es">¿Que abandone mi casa?</span></div>
+      <div class="line-row"><span class="fr">Eh! mais... vous perdez la raison!</span><span class="es">¡Oh, perdéis el juicio!</span></div>
+      <div class="line-row"><span class="fr">J'aime trop la folie et le rire</span><span class="es">Amo demasiado la locura y la risa</span></div>
+      <div class="line-row"><span class="fr">et l'amour, mon charmant empire.</span><span class="es">y es el amor, mi encantador imperio.</span></div>
+      <div class="line-row"><span class="fr">Je vous estime fort!</span><span class="es">Yo os quiero mucho,</span></div>
+      <div class="line-row"><span class="fr">vous êtes un galant</span><span class="es">sois galante,</span></div>
+      <div class="line-row"><span class="fr">fantasque, glorieux, étrange infiniiment...</span><span class="es">extravagante, glorioso, infinitamente extraño,</span></div>
+      <div class="line-row"><span class="fr">Mais laissez moi, oui, très libre,</span><span class="es">pero dejadme, sí, muy libre,</span></div>
+      <div class="line-row"><span class="fr">en ma ville natale.</span><span class="es">en mi villa natal.</span></div>
+      <div class="line-row"><span class="fr">ah! ah! me marier!</span><span class="es">¡Ja, ja, casarme!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijotte</span>
+      </div>
+      <div class="line-row"><span class="fr">O réponse fatale!</span><span class="es">¡Oh, fatal respuesta!</span></div>
+      <div class="line-row"><span class="fr">Peu de mots ont suffi pour me désespérer.</span><span class="es">Pocas palabras han bastado para desesperarme,</span></div>
+    </div>
+
+    <div class="track-col" id="tc26">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t26">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, je souffre votre tristesse...</span><span class="es">Sí, yo sufro vuestra tristeza,</span></div>
+      <div class="line-row"><span class="fr">et j'ai vraiment chagrin à vous désemparer.</span><span class="es">y tengo verdadero pesar en rechazaros.</span></div>
+      <div class="line-row"><span class="fr">Mais je dois vous désabuser,</span><span class="es">Pero debo abriros los ojos,</span></div>
+      <div class="line-row"><span class="fr">je le dois... je le dois!</span><span class="es">lo debo hacer, lo debo hacer.</span></div>
+      <div class="line-row"><span class="fr">Et en n'acceptant pas ce que vous proposez,</span><span class="es">Y no aceptando lo que me proponéis,</span></div>
+      <div class="line-row"><span class="fr">vrai... je vous prouve ainsi ma sincère tendresse.</span><span class="es">verdaderamente os pruebo mi sincera ternura.</span></div>
+      <div class="line-row"><span class="fr">Vous, ami, ami,</span><span class="es">Vos, amigo, amigo,</span></div>
+      <div class="line-row"><span class="fr">ah! j'aurais de la peine en vous trompant.</span><span class="es">¡Ah, me sabría mal engañaros!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée! Dulcinée!</span><span class="es">¡Dulcinea, Dulcinea!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Car c'est ma destinée</span><span class="es">Porque mi destino</span></div>
+      <div class="line-row"><span class="fr">de donner de l'amour</span><span class="es">es dar amor</span></div>
+      <div class="line-row"><span class="fr">à ceux dont le désir</span><span class="es">a los que su deseo</span></div>
+      <div class="line-row"><span class="fr">est d'avoir ou mon âme</span><span class="es">es poseer mi alma</span></div>
+      <div class="line-row"><span class="fr">ou ma bouche à saisir.</span><span class="es">o tomar mi boca.</span></div>
+      <div class="line-row"><span class="fr">Ah! Puisque vous souffrez</span><span class="es">¡Ah! Veo que estáis sufriendo,</span></div>
+      <div class="line-row"><span class="fr">et que je suis impure, indigne,</span><span class="es">pues soy impura e indigna.</span></div>
+      <div class="line-row"><span class="fr">lancez sur moi l'injure,</span><span class="es">¡Lanzad sobre mí la injuria,</span></div>
+      <div class="line-row"><span class="fr">vengez-vous!</span><span class="es">vengaos!</span></div>
+      <div class="line-row"><span class="fr">Mais restez avec nous,</span><span class="es">Pero quedaos con nosotros.</span></div>
+      <div class="line-row"><span class="fr">Ah! restez avec nous!</span><span class="es">¡Sí, quedaos con nosotros!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">O toi dont les bras nus</span><span class="es">Tú, cuyos brazos desnudos</span></div>
+      <div class="line-row"><span class="fr">sont plus frais que la mousse,</span><span class="es">son más frescos que el musgo,</span></div>
+      <div class="line-row"><span class="fr">laisse-moi te parler</span><span class="es">déjame hablarte</span></div>
+      <div class="line-row"><span class="fr">de ma voix la plus douce...</span><span class="es">con mi voz más dulce</span></div>
+      <div class="line-row"><span class="fr">avant de te quitter.</span><span class="es">antes de dejarte.</span></div>
+      <div class="line-row"><span class="fr">Comme réponse à ma prière,</span><span class="es">Como respuesta a mi ruego,</span></div>
+      <div class="line-row"><span class="fr">pour m'avoir dit des vérités,</span><span class="es">por haberme dicho la verdad,</span></div>
+      <div class="line-row"><span class="fr">femme, je te bénis.</span><span class="es">mujer, yo te bendigo.</span></div>
+      <div class="line-row"><span class="fr">Reste toujours sincère.</span><span class="es">Permanece siempre sincera.</span></div>
+      <div class="line-row"><span class="fr">Tu m'as brisé le cour</span><span class="es">Tú me has destrozado el corazón</span></div>
+      <div class="line-row"><span class="fr">et je suis à tes pieds!</span><span class="es">y estoy a tus pies.</span></div>
+      <div class="line-row"><span class="fr">Femme, je te bénis!</span><span class="es">Mujer, yo te bendigo.</span></div>
+      <div class="line-row"><span class="fr">C'est moi qui te bénis! c'est moi!</span><span class="es">¡Soy yo quien te bendice, soy yo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Je t'ai livré mon coeur</span><span class="es">Yo te he abierto mi corazón</span></div>
+      <div class="line-row"><span class="fr">et te vois à mes pieds!</span><span class="es">y te veo a mis pies.</span></div>
+      <div class="line-row"><span class="fr">Je t'ai livré mon coeur!</span><span class="es">Te he abierto mi corazón</span></div>
+      <div class="line-row"><span class="fr">Par toi je suis bénie par toi!</span><span class="es">¡Por ti soy bendecida, por ti!</span></div>
+    </div>
+
+    <div class="track-col" id="tc27">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">9</span>
+      </div>
+    </div>
+    <div class="text-col" id="t27">
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Enfin, te revoilà!</span><span class="es">¡Por fin regresas!</span></div>
+      <div class="line-row"><span class="fr">Rends-nous ton clair sourire!</span><span class="es">¡Devuélvenos tu clara sonrisa!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="rodriguez">Rodriguez</span></span>
+        <span class="character-name">Rodríguez</span>
+      </div>
+      <div class="line-row"><span class="fr">Non, ce n'est pas pour en médire...</span><span class="es">No, no es para criticar...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais tu prends trop souci de cette être falot.</span><span class="es">Pero te preocupas demasiado por ese ser insulso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Si vous aviez son coeur,</span><span class="es">Si tú tuvieras su corazón,</span></div>
+      <div class="line-row"><span class="fr">alors vous seriez beau!</span><span class="es">serías muy hermoso.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="juan">Juan</span></span>
+        <span class="character-name">Juan</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! ah! ah!</span><span class="es">¡Ja, ja!</span></div>
+      <div class="line-row"><span class="fr">C'est un fou simplement qui pose à la victime.</span><span class="es">Es sólo un loco que se hace la víctima.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">Dulcinée</span></span>
+        <span class="character-name">Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui, peut-être est-il fou,</span><span class="es">Sí, puede que esté loco,</span></div>
+      <div class="line-row"><span class="fr">mais... c'est un fou sublime!</span><span class="es">pero es un loco sublime.</span></div>
+      <div class="character-row">
+        <span><span class="character-name">La Foule</span></span>
+        <span class="character-name">Todos</span>
+      </div>
+      <div class="line-row"><span class="fr">Quelle histoire!</span><span class="es">¡Qué historia!</span></div>
+      <div class="line-row"><span class="fr">Tout ça pour ce vieux déplumé!</span><span class="es">¡Todo esto por un viejo desplumado!</span></div>
+      <div class="line-row"><span class="fr">Pour ce corps de héron!</span><span class="es">¡Por ese cuerpo de garza!</span></div>
+      <div class="line-row"><span class="fr">Pour ce masque plissé!</span><span class="es">¡Por esta máscara arrugada!</span></div>
+      <div class="line-row"><span class="fr">Tout ça pour ce débris vermoulu du passé!</span><span class="es">¡Todo por este vestigio carcomido del pasado!</span></div>
+      <div class="line-row"><span class="fr">Quelle histoire!</span><span class="es">¡Qué historia!</span></div>
+      <div class="line-row"><span class="fr">Quelle histoire pour ça!</span><span class="es">¡Qué historia!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Ça, vous commettez tous un acte épouvantable,</span><span class="es">Todos vosotros, bellas damas y señores,</span></div>
+      <div class="line-row"><span class="fr">belle dames, seigneurs, en outrageant ici</span><span class="es">cometéis un acto espantoso</span></div>
+      <div class="line-row"><span class="fr">le héros admirable et hardi que voici.</span><span class="es">ofendiendo a este héroe admirables y audaz.</span></div>
+    </div>
+
+    <div class="track-col" id="tc28">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">10</span>
+      </div>
+    </div>
+    <div class="text-col" id="t28">
+      <div class="line-row"><span class="fr">Riez, allez, riez du pauvre idéologue</span><span class="es">Reíd, vamos, reíros del pobre idealista</span></div>
+      <div class="line-row"><span class="fr">qui passe dans son rêve et vous parle d'églogue,</span><span class="es">que pasa soñando y os habla de poesía,</span></div>
+      <div class="line-row"><span class="fr">d'amour et de bonté comme autrefois Jésus!</span><span class="es">de amor y bondad, como en otro tiempo Jesús.</span></div>
+      <div class="line-row"><span class="fr">Moquez-vous sans pitié de ses bas décousus,</span><span class="es">Burlaos sin piedad de sus medias descosidas,</span></div>
+      <div class="line-row"><span class="fr">de son pourpoint usé, de ses chausses boueuses,</span><span class="es">de su jubón gastado, de sus botas enlodadas,</span></div>
+      <div class="line-row"><span class="fr">vous, bas fripons, courtisans, gueuses,</span><span class="es">vosotros bribones, cortesanos, busconas,</span></div>
+      <div class="line-row"><span class="fr">qui devriez tomber aux pieds</span><span class="es">que debiérais caer a los pies</span></div>
+      <div class="line-row"><span class="fr">de l'être saint dont vous riez.</span><span class="es">del santo del que os reís.</span></div>
+      <div class="line-row"><span class="fr">Viens, mon grand!</span><span class="es">¡Venid, mi héroe,</span></div>
+      <div class="line-row"><span class="fr">recommençons les belles chevauchées!</span><span class="es">volvamos a las bellas cabalgadas!</span></div>
+      <div class="line-row"><span class="fr">Viens, mon grand, viens!</span><span class="es">¡Venid, mi héroe, venid!</span></div>
+      <div class="line-row"><span class="fr">Fonçons sur toute lâcheté</span><span class="es">¡Arremetamos contra cualquier cobardía</span></div>
+      <div class="line-row"><span class="fr">et donnons au malheur le pain de la bonté!</span><span class="es">y demos a la desgracia el pan de la bondad!</span></div>
+      <div class="line-row"><span class="fr">Viens, mon grand! Viens!</span><span class="es">¡Venid, mi héroe, venid!</span></div>
+    </div>
+
+    <div class="act-heading" data-act="V">
+      <span>Acte Cinquième</span>
+      <span>Acto Quinto</span>
+    </div>
+
+    <div class="track-col" id="tc29">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD2</span>
+        <span class="track-tag-num">12</span>
+      </div>
+    </div>
+    <div class="text-col" id="t29">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">O mon maître, ô mon Grand!</span><span class="es">¡Oh, mi señor, mi héroe!</span></div>
+      <div class="line-row"><span class="fr">dans des splendeurs de songe</span><span class="es">En resplandores de ensueño</span></div>
+      <div class="line-row"><span class="fr">que ton âme s'élève</span><span class="es">que vuestra alma se eleve al cielo,</span></div>
+      <div class="line-row"><span class="fr">aux cieux loin du mensonge,</span><span class="es">lejos de la mentira,</span></div>
+      <div class="line-row"><span class="fr">et que ton coeur si doux</span><span class="es">y que vuestro dulce corazón</span></div>
+      <div class="line-row"><span class="fr">plane dans les clartés,</span><span class="es">planee en la claridad</span></div>
+      <div class="line-row"><span class="fr">où tout ce qu'il rêva</span><span class="es">donde todo lo que se sueña</span></div>
+      <div class="line-row"><span class="fr">devient réalité!</span><span class="es">se hace realidad.</span></div>
+      <div class="line-row"><span class="fr">O mon maître! ô mon grand!</span><span class="es">¡Oh, mi señor, mi héroe!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Écoute... mon ami,</span><span class="es">Escucha, amigo mío,</span></div>
+      <div class="line-row"><span class="fr">je me sens bien malade!</span><span class="es">me siento muy enfermo.</span></div>
+      <div class="line-row"><span class="fr">Mets ton bras sous mon cou,</span><span class="es">Pon tu brazo debajo de mi cuello,</span></div>
+      <div class="line-row"><span class="fr">sois l'ultime soutien</span><span class="es">sé el último sostén</span></div>
+      <div class="line-row"><span class="fr">de celui qui pansa l'humanité souffrante</span><span class="es">del que alivió a la humanidad doliente</span></div>
+      <div class="line-row"><span class="fr">et survécut à la Chevalerie Errante.</span><span class="es">y sobrevivió a la caballería andante.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon maître!</span><span class="es">¡Mi señor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Sancho, mon bon Sancho,</span><span class="es">Sancho, mi buen Sancho,</span></div>
+      <div class="line-row"><span class="fr">nous allons nous quitter...</span><span class="es">nos vamos a separar...</span></div>
+      <div class="line-row"><span class="fr">Ingrat, vas-tu me regretter?</span><span class="es">Ingrato, ¿vas a echarme de menos?</span></div>
+      <div class="line-row"><span class="fr">Déjà... tes yeux... revoient le village...</span><span class="es">Ya tus ojos vuelven a ver el pueblo</span></div>
+      <div class="line-row"><span class="fr">où tu fus enfant...</span><span class="es">donde fuiste niño,</span></div>
+      <div class="line-row"><span class="fr">et te voici rêvant</span><span class="es">y hete aquí soñando</span></div>
+      <div class="line-row"><span class="fr">aux bois mystérieux de la terre natale!</span><span class="es">en los bosques misteriosos de tu tierra natal.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Non! non!</span><span class="es">¡No, no!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Mais, mon pauvret, c'est la chose fatale!</span><span class="es">¡Sí, pobrecito mío, es natural!</span></div>
+      <div class="line-row"><span class="fr">Tu n'es qu'un homme enfin,</span><span class="es">Tú eres sólo un hombre, al fin,</span></div>
+      <div class="line-row"><span class="fr">tu veux vivre... et je meurs...</span><span class="es">tú quieres vivir y yo muero.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon maître! mon maître!</span><span class="es">¡Mi señor, mi señor!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Oui! je fus le chef des bons semeurs!</span><span class="es">Sí, yo fui el jefe de los buenos sembradores.</span></div>
+      <div class="line-row"><span class="fr">J'ai lutté pour le bien,</span><span class="es">Yo he luchado por el bien,</span></div>
+      <div class="line-row"><span class="fr">j'ai fait la bonne guerre!</span><span class="es">he hecho la buena guerra.</span></div>
+      <div class="line-row"><span class="fr">Ah! Sancho, je t'ai promis naguère</span><span class="es">¡Ah! Sancho, yo te prometí hace poco</span></div>
+      <div class="line-row"><span class="fr">des coteaux, des châteaux,</span><span class="es">unos viñedos, unos castillos,</span></div>
+      <div class="line-row"><span class="fr">même une île fertile...</span><span class="es">hasta una fértil isla...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">C'était un simple îlot que je voulais avoir!</span><span class="es">Era un sencillo islote lo que yo quería tener.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Prends cette île</span><span class="es">Toma esta isla</span></div>
+      <div class="line-row"><span class="fr">qu'il est toujours en mon pouvoir</span><span class="es">que está en mi poder</span></div>
+      <div class="line-row"><span class="fr">de te donner!</span><span class="es">donarte.</span></div>
+      <div class="line-row"><span class="fr">Un flot azuré bat ses grèves,</span><span class="es">Una ola azul baña sus playas,</span></div>
+      <div class="line-row"><span class="fr">elle est belle, plaisante,</span><span class="es">es hermosa, agradable,</span></div>
+      <div class="line-row"><span class="fr">et c'est l'île des rêves!</span><span class="es">es la isla de los sueños.</span></div>
+      <div class="line-row"><span class="fr">Ne pleure pas Sancho,</span><span class="es">No llores Sancho,</span></div>
+      <div class="line-row"><span class="fr">mon bon, mon gros Sancho!</span><span class="es">mi buen, mi gordo Sancho.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Laissez-vous délacer;</span><span class="es">Dejadme desabrocharos;</span></div>
+      <div class="line-row"><span class="fr">comme dans un cachot,</span><span class="es">como en un calabozo</span></div>
+      <div class="line-row"><span class="fr">vous étouffez, mon grand,</span><span class="es">os sofocáis, mi héroe</span></div>
+      <div class="line-row"><span class="fr">dans cet habit d'apôtre!</span><span class="es">en este traje de apóstol.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Je meurs...</span><span class="es">Yo muero...</span></div>
+      <div class="line-row"><span class="fr">Fais ta prière et dis la patenôtre...</span><span class="es">Reza por mí y recita el padrenuestro...</span></div>
+      <div class="line-row"><span class="fr">L'Étoile!</span><span class="es">¡La estrella!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="dulcinee">La Voix De Dulcinée</span></span>
+        <span class="character-name">La Voz De Dulcinea</span>
+      </div>
+      <div class="line-row"><span class="fr">Ah! le temps d'amour a fui...</span><span class="es">¡Ah! El tiempo del amor ha huido.</span></div>
+      <div class="line-row"><span class="fr">Où vont nos bonheurs?</span><span class="es">¿Dónde van nuestras felicidades?</span></div>
+      <div class="line-row"><span class="fr">Adieu! bonheurs! adieu!</span><span class="es">¡Adiós felicidad, adiós!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="don-quichotte">Don Quichotte</span></span>
+        <span class="character-name">Don Quijote</span>
+      </div>
+      <div class="line-row"><span class="fr">Dulcinée! avec l'astre éclatant</span><span class="es">¡Dulcinea! Se ha fundido</span></div>
+      <div class="line-row"><span class="fr">elle s'est confondue...</span><span class="es">con la más brillante de las estrellas.</span></div>
+      <div class="line-row"><span class="fr">C'est bien elle!</span><span class="es">¡Es ella!</span></div>
+      <div class="line-row"><span class="fr">La lumière, l'amour, la jeunesse... Elle...</span><span class="es">La luz, el amor, la juventud... Ella...</span></div>
+      <div class="line-row"><span class="fr">... vers qui je vais,</span><span class="es">... hacia quien voy,</span></div>
+      <div class="line-row"><span class="fr">qui me fait signe...</span><span class="es">que me hace una señal,</span></div>
+      <div class="line-row"><span class="fr">qui m'attend!</span><span class="es">que me espera...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="sancho-panza">Sancho</span></span>
+        <span class="character-name">Sancho</span>
+      </div>
+      <div class="line-row"><span class="fr">Mon Maître adoré!</span><span class="es">¡Mi amo adorado!</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  plasson_vandam: {
+    label: "Don Quichotte \u00b7 Plasson / Van Dam",
+    short: "Plasson / Van Dam",
+    spotify_album_id: "5mL0jasr1etZx4DDUDC0m3",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Introduction - \"Alza ! Alza ! Alza !\"", act: "Act I", has_block: true, spotify_track_id: "07en7VVPxbkviJuR2U5mYD" },
+      { id: "t2", cd: 1, track: 2, title: "\"Alza ! Quand la femme a vingt ans\"", act: "Act I", has_block: true, spotify_track_id: "3fYCuE8AJH86VuacePhOxE" },
+      { id: "t3", cd: 1, track: 3, title: "\"Dulcin\u00e9e est certes jolie\"", act: "Act I", has_block: true, spotify_track_id: "0IpIctLV3Rngaw04sM4O6u" },
+      { id: "t4", cd: 1, track: 4, title: "\"All\u00e9gresse ! All\u00e9gresse !\"", act: "Act I", has_block: true, spotify_track_id: "2GWGa6SywSPZHjfSkN56vJ" },
+      { id: "t5", cd: 1, track: 5, title: "\"O Dulcin\u00e9e ! Ah ! Vous allez ameuter\"", act: "Act I", has_block: true, spotify_track_id: "10y1sMI7PhXN9et4EyoX5s" },
+      { id: "t6", cd: 1, track: 6, title: "S\u00e9r\u00e9nade. \"Quand apparaissent les \u00e9toiles\"", act: "Act I", has_block: true, spotify_track_id: "4na5ieJnDNa7FlaIEPihLP" },
+      { id: "t7", cd: 1, track: 7, title: "\"Ah ! C'est vous qui lanciez\"", act: "Act I", has_block: true, spotify_track_id: "694lOk2yQmqtCw1Slkh3Nl" },
+      { id: "t8", cd: 1, track: 8, title: "\"Vous \u00eates, mon seigneur\"", act: "Act I", has_block: true, spotify_track_id: "4o2g1MuAqejLHEJvwPTsqd" },
+      { id: "t9", cd: 1, track: 9, title: "\"Elle m'aime et va me revenir\"", act: "Act I", has_block: true, spotify_track_id: "2CMhlhy5Bw9J0b05iSPZp8" },
+      { id: "t10", cd: 1, track: 10, title: "Chanson. \"C'est vers ton amour\"", act: "Act II", has_block: true, spotify_track_id: "0X0nINj7jIK8LrBVtwxzms" },
+      { id: "t11", cd: 1, track: 11, title: "\"Comment peut-on penser du bien\"", act: "Act II", has_block: true, spotify_track_id: "5XoBjqxvu59usaMRE64QyB" },
+      { id: "t12", cd: 1, track: 12, title: "\"Regarde ! Quoi ?\"", act: "Act II", has_block: true, spotify_track_id: "6i4FV2mDq0hsKQU6SwDK8V" },
+      { id: "t13", cd: 1, track: 13, title: "Interlude", act: "Act II", has_block: false, spotify_track_id: "25IZ8oEbw2fXVNw4rGsesB" },
+      { id: "t13", cd: 1, track: 14, title: "\"C'est ici le chemin que prennent les bandits\"", act: "Act III", has_block: true, spotify_track_id: "6fWlrlFxHQIrFDtxvbjdNg" },
+      { id: "t14", cd: 1, track: 15, title: "\"Quand apparaissent les \u00e9toiles\"", act: "Act III", has_block: true, spotify_track_id: "4cwv0vv39mDrSZRI3nThpp" },
+      { id: "t15", cd: 1, track: 16, title: "\"Ah ! Voir un corps long comme un jour sans pain\"", act: "Act III", has_block: true, spotify_track_id: "0A7VpghSOPQjMUFysF7gHW" },
+      { id: "t17", cd: 1, track: 17, title: "\"Je suis le chevalier errant\"", act: "Act III", has_block: true, spotify_track_id: "3ySA2TOlX7NJSN980xp7mv" },
+      { id: "t18", cd: 2, track: 1, title: "\"Alors, traitresse, je n'ai plus rien \u00e0 esp\u00e9rer\"", act: "Act IV", has_block: true, spotify_track_id: "1bKsmG1HLa3OSl68SG3E6d" },
+      { id: "t19", cd: 2, track: 2, title: "\"Lorsque le temps d'amour a fui\"", act: "Act IV", has_block: true, spotify_track_id: "6G0TR3RouBpmkz8dvx03ir" },
+      { id: "t20", cd: 2, track: 3, title: "\"Par fortune ! Par fortune !\"", act: "Act IV", has_block: true, spotify_track_id: "0Rku75Via0C6oH96viz8Qz" },
+      { id: "t22", cd: 2, track: 4, title: "\"Alza ! Ne pensons qu'au plaisir d'aimer\"", act: "Act IV", has_block: true, spotify_track_id: "2i5bNvg42mlhWve7Yg1TuW" },
+      { id: "t23", cd: 2, track: 5, title: "\"L'aube bient\u00f4t blanchira l'horizon\"", act: "Act IV", has_block: true, spotify_track_id: "6FytSiuIOIwtLNyFmSzrWo" },
+      { id: "t24", cd: 2, track: 6, title: "\"Annonce le grand Don Quichotte\"", act: "Act IV", has_block: true, spotify_track_id: "3ucL6GKPmEIL5Csax31Pqt" },
+      { id: "t25", cd: 2, track: 7, title: "\"L'aube bient\u00f4t blanchira l'horizon\"", act: "Act IV", has_block: true, spotify_track_id: "7AR7JXEnTV5W1M6LbN3YEW" },
+      { id: "t26", cd: 2, track: 8, title: "\"Oui, je souffre votre tristesse\"", act: "Act IV", has_block: true, spotify_track_id: "2mTp3wIa5oaz4X8aiK2um8" },
+      { id: "t27", cd: 2, track: 9, title: "\"Enfin, te revoil\u00e0 !\"", act: "Act IV", has_block: true, spotify_track_id: "3GF62F0mcXofY1wl4uZJnv" },
+      { id: "t28", cd: 2, track: 10, title: "\"Riez, allez, riez du pauvre id\u00e9ologue\"", act: "Act IV", has_block: true, spotify_track_id: "6nAOPa1oeQrZapfkGMV0r2" },
+      { id: "t29", cd: 2, track: 11, title: "Interlude", act: "Act IV", has_block: false, spotify_track_id: "6ZYFx6C7tj7TnyzBAYKUci" },
+      { id: "t29", cd: 2, track: 12, title: "Mort de Don Quichotte. \"\u00d4 mon ma\u00eetre, \u00f4 mon grand !\"", act: "Act V", has_block: true, spotify_track_id: "55Gotr5dbDUN8ds9FyeMrg" }
+    ]
+  },
+  kord_ghiaurov: {
+    label: "Don Quichotte \u00b7 Kord / Ghiaurov",
+    short: "Kord / Ghiaurov",
+    spotify_album_id: "46p5wXqfZV4f2nESewLRXf",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Alza! Alza! Ol\u00e9!", act: "Act I", has_block: true, spotify_track_id: "2XNT5gpF6dKmrCuoUSsJrh" },
+      { id: "t2", cd: 1, track: 2, title: "Alza ... Quand la femme a vingt ans", act: "Act I", has_block: true, spotify_track_id: "4HGVjvbzzVyzyz9neSd8WP" },
+      { id: "t3", cd: 1, track: 3, title: "Dulcin\u00e9e est certes jolie", act: "Act I", has_block: true, spotify_track_id: "2DYypI3QgG4sZZd3YipMm1" },
+      { id: "t4", cd: 1, track: 4, title: "All\u00e9gresse! All\u00e9gresse!", act: "Act I", has_block: true, spotify_track_id: "6Zqo2kZvg1VGMCQ6k8EPXX" },
+      { id: "t5", cd: 1, track: 5, title: "O Dulcin\u00e9e! ... Ah! vous allez ameuter alcade, r\u00e9gidor", act: "Act I", has_block: true, spotify_track_id: "74j2Ox0N9cKw4E3WhGa9Vq" },
+      { id: "t6", cd: 1, track: 6, title: "Quand apparaissent les \u00e9toiles", act: "Act I", has_block: true, spotify_track_id: "72A6xsWYQ5xF1x1tkIJn9l" },
+      { id: "t7", cd: 1, track: 7, title: "Ah! Ah! C'est vous qui lanciez", act: "Act I", has_block: true, spotify_track_id: "1r3F1PWwTaJji0qBqSbOLs" },
+      { id: "t8", cd: 1, track: 8, title: "Vous \u00eates, mon seigneur", act: "Act I", has_block: true, spotify_track_id: "7fQjzDKN9j004Kc9s2FsrG" },
+      { id: "t9", cd: 1, track: 9, title: "Elle m'aime et va me revenir", act: "Act I", has_block: true, spotify_track_id: "4QlkI2A4Sg7l1DM09ofN1l" },
+      { id: "t10", cd: 1, track: 10, title: "C'est vers ton amour", act: "Act II", has_block: true, spotify_track_id: "6NFDnVXyb3pPD6nGsQcM5J" },
+      { id: "t11", cd: 1, track: 11, title: "Comment peut-on penser du bien", act: "Act II", has_block: true, spotify_track_id: "0LnXl0omvxCqLScHP3NlQL" },
+      { id: "t12", cd: 1, track: 12, title: "Regarde! Quoi! Quoi!", act: "Act II", has_block: true, spotify_track_id: "3SNGTJUYCJbIxp1xCYSKTJ" },
+      { id: "t13", cd: 1, track: 13, title: "Entr'acte", act: "Act II", has_block: false, spotify_track_id: "4CWXAgN3oVt99ZPFyWfve1" },
+      { id: "t13", cd: 1, track: 14, title: "C'est ici le chemin", act: "Act III", has_block: true, spotify_track_id: "452ZV5sYa0EeHyuMFWHC6f" },
+      { id: "t14", cd: 1, track: 15, title: "Quand apparaissent les \u00e9toiles ... o mes r\u00eaves divins!", act: "Act III", has_block: true, spotify_track_id: "78rQdDuf4dJJuNwKwQy05U" },
+      { id: "t15", cd: 1, track: 16, title: "Ah! voir un corps long", act: "Act III", has_block: true, spotify_track_id: "4nDgCfg8XpW8zos1Htr8jN" },
+      { id: "t16", cd: 1, track: 17, title: "Seigneur, re\u00e7ois mon \u00e2me", act: "Act III", has_block: true, spotify_track_id: "2HNN5H20rNLwKCItiLrfD0" },
+      { id: "t18", cd: 2, track: 1, title: "Alors, tra\u00eetresse, je n'ai plus rien \u00e0 esp\u00e9rer", act: "Act IV", has_block: true, spotify_track_id: "3CjO6jKTVdGk8psmwaOsMx" },
+      { id: "t19", cd: 2, track: 2, title: "Lorsque le temps d'amour a fui", act: "Act IV", has_block: true, spotify_track_id: "45dAmBPZZV1T5cBOxHzkfL" },
+      { id: "t20", cd: 2, track: 3, title: "Par fortune! Par fortune!", act: "Act IV", has_block: true, spotify_track_id: "6zY4AS92x5RE4PI44ujCW3" },
+      { id: "t21", cd: 2, track: 4, title: "Alza! Alza! Ne pensons qu'au plaisir d'aimer", act: "Act IV", has_block: true, spotify_track_id: "2jm3Qa4rqM59aaAOLflm3z" },
+      { id: "t23", cd: 2, track: 5, title: "L'aube bient\u00f4t blanchira l'horizon", act: "Act IV", has_block: true, spotify_track_id: "64BMoMIzU3rrHkqAYGJ3GJ" },
+      { id: "t24", cd: 2, track: 6, title: "Annonce le grand Don Quichotte", act: "Act IV", has_block: true, spotify_track_id: "5IhtjGPvyMfS0Fc9mjrtsD" },
+      { id: "t25", cd: 2, track: 7, title: "L'aube bient\u00f4t blanchira ... Mais voil\u00e0 Dulcin\u00e9e", act: "Act IV", has_block: true, spotify_track_id: "1CLVUOnZlFPFVGJHgpakCU" },
+      { id: "t26", cd: 2, track: 8, title: "Oui, je souffre votre tristesse", act: "Act IV", has_block: true, spotify_track_id: "7zgcgqw5zFR2iE82pe0EdG" },
+      { id: "t27", cd: 2, track: 9, title: "Enfin, te revoil\u00e0!", act: "Act IV", has_block: true, spotify_track_id: "5PTOFoT73f6qeOyvMCVrTm" },
+      { id: "t28", cd: 2, track: 10, title: "Riez, allez riez du pauvre id\u00e9ologue", act: "Act IV", has_block: true, spotify_track_id: "1CmqRmWySBem15qGZ8JnXv" },
+      { id: "t29", cd: 2, track: 11, title: "Entr'acte", act: "Act IV", has_block: false, spotify_track_id: "0eywK9vEeV9pcYMdzFmgZN" },
+      { id: "t29", cd: 2, track: 12, title: "O mon ma\u00eetre, o mon grand!", act: "Act V", has_block: true, spotify_track_id: "2AVvNdmnwKotZuywvvrzRp" }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Acte I",
+    "Act II": "Acte II",
+    "Act III": "Acte III",
+    "Act IV": "Acte IV",
+    "Act V": "Acte V"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1",
+    "Act II": "t10",
+    "Act III": "t13",
+    "Act IV": "t18",
+    "Act V": "t29"
+  };
+
+  const CHARACTERS = [
+    { id: "don-quichotte", name: "Don Quichotte", voice: "Bass", description: "Caballero andante" },
+    { id: "dulcinee", name: "Dulcin\u00e9e", voice: "Mezzo-soprano", description: "Muchacha descarada" },
+    { id: "sancho-panza", name: "Sancho Panza", voice: "Baritone", description: "Escudero de Don Quijote" },
+    { id: "pedro", name: "Pedro", voice: "Soprano", description: "Aldeano" },
+    { id: "garcias", name: "Garcias", voice: "Soprano", description: "Aldeano" },
+    { id: "rodriguez", name: "Rodriguez", voice: "Tenor", description: "Aldeano" },
+    { id: "juan", name: "Juan", voice: "Tenor", description: "Aldeano" },
+    { id: "bandit-1", name: "Primer Bandido", voice: "Bass", description: "Bandido" },
+    { id: "bandit-2", name: "Segundo Bandido", voice: "Bass", description: "Bandido" },
+    { id: "bandit-3", name: "Tercer Bandido", voice: "Bass", description: "Bandido" },
+    { id: "bandit-4", name: "Cuarto Bandido", voice: "Bass", description: "Bandido" },
+    { id: "laquais-1", name: "Primer Lacayo", voice: "Tenor", description: "Lacayo" },
+    { id: "laquais-2", name: "Segundo Lacayo", voice: "Tenor", description: "Lacayo" }
+  ];
+
+  const CAST = {
+    plasson_vandam: { "don-quichotte": "Jos\u00e9 van Dam", "sancho-panza": "Alain Fondary", "dulcinee": "Teresa Berganza", "pedro": "Isabelle Vernet", "garcias": "Marie-Ange Todorovitch", "rodriguez": "Christian Papis", "juan": "Nicolas Rivenq" },
+    kord_ghiaurov: { "don-quichotte": "Nicolai Ghiaurov", "sancho-panza": "Gabriel Bacquier", "dulcinee": "R\u00e9gine Crespin", "pedro": "Mich\u00e8le Command", "garcias": "Annick Dutertre", "rodriguez": "Peyo Garazzi", "juan": "Jean-Marie Fr\u00e9meau" }
+  };
+
+  let activeRecording = "plasson_vandam";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { fr: true, es: true };
+</script>
+<script src="../libretto_spotify.js"></script>
+<script src="../libretto.js"></script>
