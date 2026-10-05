@@ -1,0 +1,1425 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Eine florentinische Tragödie · Chailly / Kruse</title>
+<link rel="stylesheet" href="../libretto.css">
+
+<div class="app">
+
+  <div class="context-bar" id="contextBar">
+    <div class="context-left" onclick="openIndex()" title="Open index">
+      <span class="context-track" id="trackLabel">CD 1 · T1</span>
+      <span class="context-sep">&middot;</span>
+      <span id="actLabel" style="font-family:var(--sans);font-size:12px;">Einziger I</span>
+      <span class="context-sep">&middot;</span>
+      <span class="context-track-title" id="trackTitle">Overture</span>
+      <span class="context-chevron">&#9662;</span>
+    </div>
+    <div class="context-right">
+      <div class="recording-switcher-wrap" id="recSwitcher">
+        <button class="recording-switcher" id="recBtn" onclick="toggleSwitcher(event)">
+          <span id="recordingLabel">Eine florentinische Tragödie · Chailly / Kruse</span>
+          <span class="switcher-chevron">&#9662;</span>
+        </button>
+        <div class="recording-dropdown" id="recDropdown"></div>
+      </div>
+      <button class="cast-btn" onclick="openCast()">Cast</button>
+    </div>
+    <button class="lang-filter-btn" id="mobileBtnDE" onclick="toggleLang('de')">DE</button>
+    <button class="lang-filter-btn" id="mobileBtnES" onclick="toggleLang('es')">ES</button>
+    <button class="mobile-cast-btn" onclick="openCastSheet()">Cast</button>
+  </div>
+
+  <div class="libretto-body">
+
+    <div class="act-heading" data-act="I">
+      <span>Einziger Akt</span>
+      <span>Acto Único</span>
+    </div>
+
+    <div class="track-col" id="tc1">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">1</span>
+      </div>
+    </div>
+    <div class="text-col" id="t1">
+      <div class="stage-direction">
+        <span>(Die Bühne stellt das Zimmer eines wohlhabenden</span>
+        <span class="es">(Salón de un rico comerciante florentino.</span>
+        <span>Kaufmannes in Florenz dar. Guido Bardi kniet vor</span>
+        <span class="es">Blanca está sentada y a sus pies, arrodillado,</span>
+        <span>Bianca. Sie haben ihre Hände ineinander verschlungen.</span>
+        <span class="es">está Guido Bardi; ambos tienen entrelazadas las</span>
+        <span>Er sieht lächelnd zu ihr auf, als sie plötzlich</span>
+        <span class="es">manos. Blanca, de improviso, se sobresalta</span>
+        <span>zusammenschrickt, aufsteht und sich von ihm loslöst.</span>
+        <span class="es">y se levanta alejándose de él. El motivo ha</span>
+        <span>Im selben Moment tritt Simone bei der Mitteltüre ein.</span>
+        <span class="es">sido la llegada de Simón que viste ropa de</span>
+        <span>Er ist im Reiseanzug. In der Hand trägt er ein Schwert,</span>
+        <span class="es">viaje; en una mano sostiene una espada y</span>
+        <span>mit der andern zieht er einen großen, schweren Pack</span>
+        <span class="es">con la otra arrastra un pesado fardo.</span>
+        <span>nach sich. Er sieht einen Moment lang im Zimmer</span>
+        <span class="es">Durante un instante mira a su alrededor por</span>
+        <span>herum, dann blickt er erwartungsvoll auf Bianca.</span>
+        <span class="es">la habitación, luego se detiene ante Blanca.</span>
+        <span>Bianca geht ihm nun langsam, gesenkten Blickes</span>
+        <span class="es">Ella se acerca despacio hacia él, con la mirada</span>
+        <span>Entgegen)</span>
+        <span class="es">cabizbaja)</span>
+      </div>
+      <div class="musical-number">
+        <span>Ouvertüre</span>
+        <span>Obertura</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc2">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">2</span>
+      </div>
+    </div>
+    <div class="text-col" id="t2">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">So langsam, Weib?</span><span class="es">¿Por qué tan despacio, querida?</span></div>
+      <div class="line-row"><span class="de">Fliegst du nicht deinem Herrn entgegen?</span><span class="es">¿Por qué no vuelas al encuentro de tu esposo?</span></div>
+      <div class="stage-direction">
+        <span>(Bianca reicht ihm die Hand.)</span>
+        <span class="es">(Blanca le ofrece su mano.)</span>
+      </div>
+      <div class="line-row"><span class="de">Da, nimm meinen Mantel.</span><span class="es">Toma... mi abrigo.</span></div>
+      <div class="line-row"><span class="de">Erst den Pack! Schwer ist er.</span><span class="es">¡Dejaré el paquete, pesa mucho!</span></div>
+      <div class="stage-direction">
+        <span>(Sie schleppt das Bündel zum Alkoven, dann nimmt sie</span>
+        <span class="es">(Arrastra el fardo a la alcoba, luego se quita el</span>
+        <span>ihm Hut und Mantel ab, legt alles hinein und schließt</span>
+        <span class="es">abrigo y el sombrero, los coloca dentro y cierra</span>
+        <span>die Vorhänge.)</span>
+        <span class="es">las cortinas.)</span>
+      </div>
+      <div class="line-row"><span class="de">Nichts hab' ich verkauft.</span><span class="es">No he vendido nada.</span></div>
+      <div class="stage-direction">
+        <span>(als erblicke er jetzt erst Guido)</span>
+        <span class="es">(se percata de la presencia de Guido.)</span>
+      </div>
+      <div class="line-row"><span class="de">Doch wer ist dies? Ein Freund bei dir?</span><span class="es">Y éste ¿quién es?... ¿Un amigo?</span></div>
+      <div class="line-row"><span class="de">Fraglos ein Verwandter, der kurz vom Ausland</span><span class="es">Seguro que es un pariente que acaba de llegar</span></div>
+      <div class="line-row"><span class="de">erst zurück mein Haus befällt,</span><span class="es">del extranjero y ha venido a mi casa</span></div>
+      <div class="line-row"><span class="de">indes der Herr des Hauses fern.</span><span class="es">mientras yo estaba ausente.</span></div>
+      <div class="line-row"><span class="de">Verzeiht es, Anverwandter:</span><span class="es">¿Me disculpa, señor pariente?</span></div>
+      <div class="line-row"><span class="de">Denn ein Haus ist ohne seinen Herrn ein leeres</span><span class="es">Porque una casa sin su dueño</span></div>
+      <div class="line-row"><span class="de">Ding und bar der Ehr', ein Becher ohne Wein,</span><span class="es">es una cosa vacía y sin honor,</span></div>
+      <div class="line-row"><span class="de">ein blumenloser Garten, sonnverwaist.</span><span class="es">como una copa vacía, como un jardín sin flores.</span></div>
+      <div class="stage-direction">
+        <span>(wieder devot und freundlich)</span>
+        <span class="es">(amable)</span>
+      </div>
+      <div class="line-row"><span class="de">Nochmals, Vergebung, lieber Vetter!</span><span class="es">¡Te ruego que me perdones, querido primo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(dunkel)</span>
+        <span class="es">(con seriedad)</span>
+      </div>
+      <div class="line-row"><span class="de">Dies ist kein Vetter und auch kein Verwandter.</span><span class="es">No es ningún primo ni ningún pariente...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Kein Vetter, kein Verwandter?</span><span class="es">¿No es un primo?... ¿No es un pariente?</span></div>
+      <div class="line-row"><span class="de">Wer ist es denn, der mit so art'ger Huld geruht,</span><span class="es">¿Quién es pues este señor que viene,</span></div>
+      <div class="line-row"><span class="de">bei uns zu Gaste sich zu laden?</span><span class="es">sin ser invitado, a nuestra casa?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Ich heiße Guido Bardi.</span><span class="es">Me llamo Guido Bardi.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Wie, der Sohn des Herzogs von Florenz, dess blasse</span><span class="es">¡Cómo! ¿El hijo del Duque de Florencia,</span></div>
+      <div class="line-row"><span class="de">Türme im Silberglast des flüchtigen Monds allnächtlich</span><span class="es">cuyas plateadas torres veo todas las noches,</span></div>
+      <div class="line-row"><span class="de">wie Schatten ich vor meinem Fenster sehe?</span><span class="es">a la luz de la luna, desde mi ventana?</span></div>
+      <div class="line-row"><span class="de">Herr Guido Bardi, seid willkommen,</span><span class="es">¡Señor Guido Bardi, sed bienvenido!</span></div>
+      <div class="line-row"><span class="de">zweimal willkommen!</span><span class="es">¡Dos veces bienvenido!</span></div>
+      <div class="line-row"><span class="de">Denn ich hoff', mein ehrbar Weib fiel Euch</span><span class="es">Confío en que mi querida esposa</span></div>
+      <div class="line-row"><span class="de">mit seichtern Wortschwall nicht zur Last.</span><span class="es">no os haya incomodado con su charlatanería.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Der Herrin Gnade</span><span class="es">Vuestra encantadora esposa,</span></div>
+      <div class="line-row"><span class="de">- die Leuchte ihrer Schönheit bleicht die Sterne -</span><span class="es">de belleza más luminosa que las estrellas,</span></div>
+      <div class="line-row"><span class="de">hat mich so hold beglückt, daß ich,</span><span class="es">me ha atendido tan amablemente que,</span></div>
+      <div class="line-row"><span class="de">wenn's ihr genehm und wenn Euch selbst,</span><span class="es">si a vos y a ella no les incomoda, quisiera volver</span></div>
+      <div class="line-row"><span class="de">dies schlichte Haus noch oft besuchen will.</span><span class="es">a visitar más a menudo esta honorable casa.</span></div>
+      <div class="line-row"><span class="de">Führt das Geschäft Euch übers Land,</span><span class="es">Cuando vos, por motivos de trabajo, os debáis de</span></div>
+      <div class="line-row"><span class="de">so will ich bei ihr sitzen, die Verlass'ne trösten,</span><span class="es">ausentar de la ciudad, me gustaría venir aquí</span></div>
+      <div class="line-row"><span class="de">damit sie nicht zu sehr sich um Euch sorge.</span><span class="es">para alegrar a la desconsolada dama.</span></div>
+      <div class="line-row"><span class="de">Wie dünkt Euch das, Simone?</span><span class="es">¿Qué opináis, Simón?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Ich dank' Euch, Herr, aus Herzensgrunde!</span><span class="es">¡Muy agradecido, señor, de todo corazón!</span></div>
+      <div class="line-row"><span class="de">Derlei schweißt einen Staat zusammen, wenn ein</span><span class="es">Estas maneras son las que mantienen unida</span></div>
+      <div class="line-row"><span class="de">Prinz so edler Herkunft und so feiner Art eines biedern</span><span class="es">a un a nación alrededor de su señor.</span></div>
+      <div class="line-row"><span class="de">Bürgers biedres Haus als biedrer Freund besucht.</span><span class="es">¡Un noble príncipe visitando</span></div>
+      <div class="line-row"><span class="de">Und doch, mein Fürst, bin ich vielleicht zu kühn.</span><span class="es">la humilde casa de un honrado ciudadano!</span></div>
+      <div class="line-row"><span class="de">Ein andermal kommt Ihr als Freund hierher.</span><span class="es">Pero, príncipe, quizás vayáis demasiado lejos...</span></div>
+      <div class="line-row"><span class="de">Heut Nacht kommt Ihr mir Waren abzukaufen.</span><span class="es">Podéis venid, cuando queráis, como amigo.</span></div>
+      <div class="line-row"><span class="de">Ist's nicht so?</span><span class="es">Pero esta noche habéis venido</span></div>
+      <div class="line-row"><span class="de">Samt und Seide, was Ihr wallt, ich zweifle nicht,</span><span class="es">a ver mis mercancías ¿no es cierto?</span></div>
+      <div class="line-row"><span class="de">ich habe zarte Stoffe von hoher Werbekraft.</span><span class="es">Os mostraré delicadas sedas y terciopelos...</span></div>
+      <div class="stage-direction">
+        <span>(zu Bianca, rauh)</span>
+        <span class="es">(a Blanca, con rudeza)</span>
+      </div>
+      <div class="line-row"><span class="de">Wo ist mein Bündel? Hörst du nicht? Wo ist's?</span><span class="es">¿Dónde está mi fardo? ¿No me oyes? ¿Dónde?</span></div>
+      <div class="stage-direction">
+        <span>(Bianca holt das Bündel aus dem Alkoven hervor.)</span>
+        <span class="es">(Blanca trae el fardo de la alcoba.)</span>
+      </div>
+      <div class="line-row"><span class="de">Mach's auf, mien gutes Weib!</span><span class="es">¡Ábrelo, querida!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca versucht, das Bündel zu öffnen.)</span>
+        <span class="es">(Blanca forcejea con el fardo.)</span>
+      </div>
+      <div class="line-row"><span class="de">Knie nieder auf den Boden!</span><span class="es">¡Arrodíllate!</span></div>
+      <div class="stage-direction">
+        <span>(Sie tut es, öffnet das Bündel und sucht unter</span>
+        <span class="es">(Ella se arrodilla, abre el fardo y busca</span>
+        <span>den Gewändern und Stoffen.)</span>
+        <span class="es">dentro de él)</span>
+      </div>
+      <div class="line-row"><span class="de">So ist's besser. Nicht doch, nicht dies,</span><span class="es">Muy bien, así está mejor...</span></div>
+      <div class="line-row"><span class="de">das andre! Flink, nur flink!</span><span class="es">¡Ése no, el otro! ¡Vamos, vamos, deprisa!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca entnimmt dem Bündel ein schweres prächtiges</span>
+        <span class="es">(Blanca saca del fardo un espléndido vestido de</span>
+        <span>Gewand aus Damast.)</span>
+        <span class="es">damasco.)</span>
+        <span>(entzückt)</span>
+        <span class="es">(alegre)</span>
+      </div>
+      <div class="line-row"><span class="de">Ja, das ist's! Gib her, behutsam. Denn es ist kostbar.</span><span class="es">¡Sí, ése es!... Dámelo... Con cuidado...</span></div>
+      <div class="stage-direction">
+        <span>(Er nimmt ihr das Gewand aus der Hand, faßt es mit</span>
+        <span class="es">(Toma el vestido con sumo cuidado</span>
+        <span>liebevoller Behutsamkeit an, und breitet es vor Guido</span>
+        <span class="es">y delicadeza extendiéndolo delante de</span>
+        <span>aus.)</span>
+        <span class="es">Guido)</span>
+      </div>
+      <div class="line-row"><span class="de">Und nun mein Prinz, hier hab' ich mit Verlaub</span><span class="es">¡Mirad, Príncipe!</span></div>
+      <div class="line-row"><span class="de">Luccaner Damast, wie Silber das Gewebe und</span><span class="es">Es un vestido de damasco de Lucca.</span></div>
+      <div class="line-row"><span class="de">die Rosen so fein gewirkt, es braucht nur Wohlgeruch,</span><span class="es">Las rosas plateadas parecen auténticas,</span></div>
+      <div class="line-row"><span class="de">den gieren Sinn zu narrn.</span><span class="es">tan sólo les falta la fragancia</span></div>
+      <div class="line-row"><span class="de">Berührt es, Prinz! Ist es nicht welsch wie Wasser,</span><span class="es">para engañar a los sentidos.</span></div>
+      <div class="line-row"><span class="de">fest wie Stahl? Die Rosen erst? Seht!</span><span class="es">¡Tocadlo, Príncipe!</span></div>
+      <div class="line-row"><span class="de">Sind sie nicht schön gewoben?</span><span class="es">¿No es ligero como agua y firme como acero?</span></div>
+      <div class="line-row"><span class="de">Der Rose, liebster Freund, die Hügelhänge</span><span class="es">¡Mirad las rosas! ¡Miradlas!</span></div>
+      <div class="line-row"><span class="de">in Bellosguardo und in Fiesole</span><span class="es">¡Su bordado es insuperable!</span></div>
+      <div class="line-row"><span class="de">streun solche Blüten nicht dem Schoß des Frühlings.</span><span class="es">En los campos de Bellosguardo y Fiesole</span></div>
+      <div class="line-row"><span class="de">Seht, in Damast hier herrschet Sommer stets,</span><span class="es">no crecen, en primavera, unas flores semejantes.</span></div>
+      <div class="line-row"><span class="de">und keines Winters Zahn zernagt je diese Blüten.</span><span class="es">En esta tela de damasco siempre es verano</span></div>
+      <div class="line-row"><span class="de">Jede Elle hat Gold gekostet, rotes echtes Gold,</span><span class="es">pues no hay invierno que marchite las flores.</span></div>
+      <div class="line-row"><span class="de">sorgsamen Sparens Frucht.</span><span class="es">Cada pulgada ha costado mucho oro...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(lächelnd)</span>
+        <span class="es">(riendo)</span>
+      </div>
+      <div class="line-row"><span class="de">Wackrer Simone, genug, ich bitte Euch.</span><span class="es">Está bien, Simón... de acuerdo.</span></div>
+      <div class="line-row"><span class="de">Ich bin einverstanden. Ich will Euch morgen einen</span><span class="es">Mañana mandaré un criado</span></div>
+      <div class="line-row"><span class="de">Diener schicken, der wird Euch doppelt bezahlen.</span><span class="es">que os dará el doble de lo que pedís.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Edler Prinz, die Hände küss' ich Euch.</span><span class="es">¡Magnánimo Príncipe, beso vuestras manos!</span></div>
+      <div class="stage-direction">
+        <span>(Er will Guido die Hand küssen. Guido wendet sich</span>
+        <span class="es">(Va a besar la mano a Guido pero éste, riéndose,</span>
+        <span>lächelnd von ihm ab, Bianca zu. Simone sieht ihm</span>
+        <span class="es">se vuelve hacia Bianca. Simón pone cara seria,</span>
+        <span>ernst zu, plötzlich wieder devot und freundlich)</span>
+        <span class="es">pero inmediatamente recupera el tono servicial)</span>
+      </div>
+      <div class="line-row"><span class="de">Jetzt fällt mir ein, daß noch</span><span class="es">Pero ahora que recuerdo, también tengo por aquí</span></div>
+      <div class="line-row"><span class="de">ein Schatz im Haus hier verborgen.</span><span class="es">un vestido de gala, un auténtico tesoro,</span></div>
+      <div class="line-row"><span class="de">Ihr müßt ihn sehn. Es ist ein Staatsgewand.</span><span class="es">un vestido veneciano... ¿Os gustaría verlo?</span></div>
+      <div class="line-row"><span class="de">Venedigs Werk. Der Stoff geschorener Samt:</span><span class="es">Es terciopelo acuchillado, con granadas bordadas.</span></div>
+      <div class="line-row"><span class="de">Granatäpfel das Muster; jeder Kern ist eine Perl'.</span><span class="es">Cada grano es un perla...</span></div>
+      <div class="line-row"><span class="de">Aus Perlen ganz der Kragen, wie Mücken dicht</span><span class="es">Las perlas del cuello son tan enormes</span></div>
+      <div class="line-row"><span class="de">zur Nacht in Sommerstraßen und weißer als der Mond,</span><span class="es">como los mosquitos en las noches estivales</span></div>
+      <div class="line-row"><span class="de">den Tolle früh durch Kerkerstäbe sehen.</span><span class="es">y más blancas que la luna que ven los presos</span></div>
+      <div class="line-row"><span class="de">Ein männlicher Rubin durchglüht wie Kohlenbrand</span><span class="es">a través de las rejas de sus calabozos.</span></div>
+      <div class="line-row"><span class="de">die Spange. Der Heil'ge Vater hat nicht solchen Stein</span><span class="es">Un bello rubí, cual ascua, brilla en el broche.</span></div>
+      <div class="line-row"><span class="de">und Indien kann ihm keine Brüder weisen.</span><span class="es">Su santidad el Papa no posee una piedra igual</span></div>
+      <div class="line-row"><span class="de">Die Schließe selbst ist von so hoher Kunst -</span><span class="es">y en toda la India no se encuentra otra semejante.</span></div>
+      <div class="line-row"><span class="de">Cellini schuf zur Augenlust des großen Lorenzo</span><span class="es">El pasador es tan perfecto como</span></div>
+      <div class="line-row"><span class="de">Schön'res nie. Ihr müßt sie tragen, sie wird Euch</span><span class="es">los que Cellini engarzara para el gran Lorenzo.</span></div>
+      <div class="line-row"><span class="de">trefflich stehn. Auf einer Seite hüpft ein gehörnter,</span><span class="es">¡Tomad! ¡Probároslo!... Parece hecho para vos.</span></div>
+      <div class="line-row"><span class="de">schlanker Faun aus Golde nach einem Silbernixlein.</span><span class="es">Como podéis ver es un fauno cornudo en oro</span></div>
+      <div class="line-row"><span class="de">Auf der andern die Stille; ein Kristall in ihrer Hand,</span><span class="es">persiguiendo a una ninfa en plata y en el reverso,</span></div>
+      <div class="line-row"><span class="de">nicht dicker als die kleinste Ähre, man denkt, sie atmet.</span><span class="es">una alegoría del Silencio, de cristal tan fino</span></div>
+      <div class="line-row"><span class="de">Bianca, sag, stünde nicht dies kostbar edle Kleid</span><span class="es">que parece que tiene vida propia.</span></div>
+      <div class="line-row"><span class="de">dem Prinzen Guido gut?</span><span class="es">Blanca, ¿acaso no le sentaría bien al Príncipe?</span></div>
+      <div class="line-row"><span class="de">Red ihm doch zu, dir wird es nichts verweigern,</span><span class="es">Dile que lo compre, a ti no te negará nada,</span></div>
+      <div class="line-row"><span class="de">mag der Preis ein fürstlich Lösegeld auch sein.</span><span class="es">aunque, eso sí, cuesta otra fortuna.</span></div>
+      <div class="line-row"><span class="de">Ich teil' mit dir dann den Verdienst.</span><span class="es">Te daré parte de la ganancia...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="line-row"><span class="de">Bin ich dein Lehrbub'?</span><span class="es">¿Acaso soy tu aprendiz?</span></div>
+      <div class="line-row"><span class="de">Soll ich um deinen Sammetmantel schachern?</span><span class="es">¿Por qué debo ser yo quien venda tu vestido?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Ich will den Mantel kaufen nebst allem,</span><span class="es">Compraré el vestido y todas las mercancías</span></div>
+      <div class="line-row"><span class="de">was der biedre Händler hat.</span><span class="es">del honrado comerciante.</span></div>
+      <div class="stage-direction">
+        <span>(lächelnd)</span>
+        <span class="es">(riéndose)</span>
+      </div>
+      <div class="line-row"><span class="de">Vom Prinzen darf man Lösegeld erwarten</span><span class="es">Todos pretenden que derroche mi dinero...</span></div>
+      <div class="line-row"><span class="de">und glücklich sind die,</span><span class="es">Aunque hoy me siento dichoso por caer</span></div>
+      <div class="line-row"><span class="de">die in so schöner Feinde weiße Hände fallen.</span><span class="es">en las blancas manos de tan bello enemigo.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Ich bin beschämt!</span><span class="es">No quiero presionaros pero,</span></div>
+      <div class="line-row"><span class="de">Ihr wallt doch meine Waren erstehn? Nicht wahr?</span><span class="es">¿vais a comprarlo, verdad?</span></div>
+      <div class="line-row"><span class="de">An fünfzigtausend Kronen verdien' ich kaum.</span><span class="es">Su costo son más de cincuenta mil coronas,</span></div>
+      <div class="line-row"><span class="de">Doch Ihr, Prinz, sollt sie haben für vierzigtausend.</span><span class="es">pero para vos, Príncipe, os lo dejo en cuarenta mil.</span></div>
+      <div class="line-row"><span class="de">Ist der Preis zu hoch? Nennt Euren eignen Preis!</span><span class="es">¿Es mucho?... Esta bien, ¡poned vos el precio!</span></div>
+      <div class="line-row"><span class="de">Ich hab' die Grille, in diesem Wunderwerk</span><span class="es">Sería un honor para mí veros en la corte</span></div>
+      <div class="line-row"><span class="de">des Webstuhls Euch bei Hof zu sehn im Kreise</span><span class="es">con este magnífico vestido</span></div>
+      <div class="line-row"><span class="de">schöner Damen, als Blume zwischen Blumen.</span><span class="es">rodeado de bellas damas,</span></div>
+      <div class="line-row"><span class="de">Man sagt, die hohen Damen schwärmen so von Euch!</span><span class="es">¡como una flor entre flores!</span></div>
+      <div class="line-row"><span class="de">Von Männern hört' ich,</span><span class="es">Dicen que cortejáis a muchas damas...</span></div>
+      <div class="line-row"><span class="de">die Hörner tragen und sie tapfer tragen.</span><span class="es">Me lo han dicho muchos honorables cornudos...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(erregt, gebieterisch)</span>
+        <span class="es">(muy molesto)</span>
+      </div>
+      <div class="line-row"><span class="de">Simone, legt Eurer kecken Zunge Zügel an.</span><span class="es">¡Simón, cuidad vuestro lenguaje!</span></div>
+      <div class="line-row"><span class="de">Auch achtet Ihr der edlen Frau hier nicht!</span><span class="es">¡Estáis ofendiendo a esta dama!</span></div>
+      <div class="stage-direction">
+        <span>(Er wendet sich wieder Bianca zu.)</span>
+        <span class="es">(Se gira nuevamente hacia Bianca.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simone</span>
+      </div>
+      <div class="stage-direction">
+        <span>(wieder devot)</span>
+        <span class="es">(en tono servicial)</span>
+      </div>
+      <div class="line-row"><span class="de">Ja, ich vergaß, und will nicht wieder Anstoß geben.</span><span class="es">Sí, lo siento, no volverá a suceder.</span></div>
+      <div class="line-row"><span class="de">Liebster Prinz, Ihr Kauft das</span><span class="es">Querido Príncipe, ¿compraréis el vestido?</span></div>
+      <div class="line-row"><span class="de">Staatsgewand. Nicht wahr, Ihr kauft's?</span><span class="es">¿Lo compraréis, verdad?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Erledigt morgen das mit meinem Kämmerer.</span><span class="es">Mi secretario hablará con vos mañana...</span></div>
+      <div class="line-row"><span class="de">Ihr sollt hunderttausend Kronen haben.</span><span class="es">Os dará cien mil coronas.</span></div>
+      <div class="stage-direction">
+        <span>(Simone scheint außer sich vor Freude.)</span>
+        <span class="es">(Simón exulta de alegría.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(lebhaft)</span>
+        <span class="es">(alegre)</span>
+      </div>
+      <div class="line-row"><span class="de">Hunderttausend, hunderttausend!</span><span class="es">¡Cien mil coronas!</span></div>
+      <div class="line-row"><span class="de">Von heute an gehört mein Haus mit allem,</span><span class="es">Desde hoy mi casa y todo su contenido</span></div>
+      <div class="line-row"><span class="de">was es birgt, Euch zu, Euch allein.</span><span class="es">os pertenece sólo a vos.</span></div>
+      <div class="line-row"><span class="de">Hunderttausend, mir flirrt der Kopf!</span><span class="es">¡Cien mil!... ¡La cabeza me da vueltas!</span></div>
+      <div class="line-row"><span class="de">Die Nacht soll meiner Liebe Herold werden.</span><span class="es">¡Esta noche nunca la olvidaré!</span></div>
+      <div class="line-row"><span class="de">Sie ist so groß daß, was Ihr auch begehrt,</span><span class="es">Mi gozo es tal que,</span></div>
+      <div class="line-row"><span class="de">ich's nicht verweigre.</span><span class="es">cualquier cosa que pidáis os la daré.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sich, blitzartig von einem Gedanken erfaßt,</span>
+        <span class="es">(a Simón, con expresión de haber tenido</span>
+        <span>zu Simone wendend)</span>
+        <span class="es">una idea luminosa)</span>
+      </div>
+      <div class="line-row"><span class="de">Wie, wenn ich die weiße Bianca forderte?</span><span class="es">¿Y si os pidiera a Blanca?</span></div>
+      <div class="stage-direction">
+        <span>(Simone fährt zusammen, faßt sich jedoch sogleich</span>
+        <span class="es">(Simón se sorprende pero luego se ríe como si</span>
+        <span>und lächelt wie über einen Witz.)</span>
+        <span class="es">creyera que es una broma.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Ihr scherzt, mein Herr.</span><span class="es">¡Bromeáis, señor!</span></div>
+      <div class="line-row"><span class="de">Sie ist nicht wert des hohen Prinzen,</span><span class="es">Ella no es digna de un gran príncipe.</span></div>
+      <div class="line-row"><span class="de">ist zum Haushalt nur geschaffen,</span><span class="es">Sólo sabe barrer, coser y cocinar...</span></div>
+      <div class="line-row"><span class="de">und zum Spinnen, ist's nicht so, liebes Weib?</span><span class="es">¿No es verdad, querida?</span></div>
+      <div class="stage-direction">
+        <span>(immer ernster)</span>
+        <span class="es">(poco a poco su expresión se vuelve más seria)</span>
+      </div>
+      <div class="line-row"><span class="de">Sich, der Rocken wartet dein, setz dich und spinn!</span><span class="es">¡Mira, ahí tienes el costurero!... ¡Siéntate y cose!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(finster)</span>
+        <span class="es">(enojada)</span>
+      </div>
+      <div class="line-row"><span class="de">Was soll ich spinnen?</span><span class="es">¿Y qué quieres que cosa?</span></div>
+    </div>
+
+    <div class="track-col" id="tc3">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">3</span>
+      </div>
+    </div>
+    <div class="text-col" id="t3">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Spinn ein Kleid, getaucht in Purpur,</span><span class="es">Un vestido púrpura para que lo lleve</span></div>
+      <div class="line-row"><span class="de">für den Gram zu seinem Trost.</span><span class="es">un condenado a muerte...</span></div>
+      <div class="line-row"><span class="de">Ein feines Laken mit süßen Kräutern zart durchtränkt,</span><span class="es">O una sábana con delicados bordados</span></div>
+      <div class="line-row"><span class="de">als Hülle für einen toten Mann.</span><span class="es">para que le sirva a un difunto como mortaja...</span></div>
+      <div class="line-row"><span class="de">Spinn, was du willst, mir gleich, mir gleich!</span><span class="es">¡Cose lo que te dé la gana!... ¡A mí me da igual!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ernst)</span>
+        <span class="es">(seria)</span>
+      </div>
+      <div class="line-row"><span class="de">Der dünne Faden riß, das stumpfe Rad ist müd'</span><span class="es">No tengo hilo... la aguja está roma...</span></div>
+      <div class="line-row"><span class="de">der ewigen Runde, die stumpfe Spindel ihrer</span><span class="es">el dedal roto y además...</span></div>
+      <div class="line-row"><span class="de">Last verdrossen. Ich will heut Nacht nicht spinnen.</span><span class="es">¡Esta noche no me apetece coser!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(herrisch, doch ruhig)</span>
+        <span class="es">(imperativo, pero calmado)</span>
+      </div>
+      <div class="line-row"><span class="de">Dann sollst du morgen spinnen,</span><span class="es">Entonces lo harás mañana...</span></div>
+      <div class="line-row"><span class="de">jeder Tag soll dich am Rocken sehn!</span><span class="es">¡Todos los días te quiero ver coser!</span></div>
+      <div class="stage-direction">
+        <span>(Ergeht, sichtbar erregt, bis zum Fenster und</span>
+        <span class="es">(Se va hacia la ventana muy enojado</span>
+        <span>bleibt dort eine Weile in Gedanken versunken stehn.</span>
+        <span class="es">y permanece allí pensativo. Guido</span>
+        <span>Guido hat sich Bianca zugewendet und beruhigt sie.</span>
+        <span class="es">se aproxima a Blanca y la consuela.</span>
+        <span>Simone wendet sich wieder um, sieht Bianca mit einen</span>
+        <span class="es">Simón, se gira, mira a Blanca con</span>
+        <span>traurigen Blick an, dann kommt er nach vorne, setzt</span>
+        <span class="es">mirada triste y se sienta al lado de</span>
+        <span>sich zu Guido und beginnt wieder harmlos</span>
+        <span class="es">Guido comenzando a hablar como</span>
+        <span>geschwätzig.)</span>
+        <span class="es">si tal cosa)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc4">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">4</span>
+      </div>
+    </div>
+    <div class="text-col" id="t4">
+      <div class="line-row"><span class="de">Was gibt es Neues, mein Prinz?</span><span class="es">¿Sabéis los últimos rumores, Príncipe?</span></div>
+      <div class="line-row"><span class="de">In Pisa hat man heute erzählt, aus England ein'ge</span><span class="es">En Pisa se comenta que los comerciantes ingleses</span></div>
+      <div class="line-row"><span class="de">Händler möchten zu billigerm Preis die Wolle geben,</span><span class="es">establecidos allí, intentan vender su lana</span></div>
+      <div class="line-row"><span class="de">als es erlaubt,</span><span class="es">a un precio mucho más bajo que el permitido.</span></div>
+      <div class="stage-direction">
+        <span>(immer erregter werdend)</span>
+        <span class="es">(cada vez más nervioso)</span>
+      </div>
+      <div class="line-row"><span class="de">und haben um Gehör die Signoria gebeten.</span><span class="es">Y ahora pretenden hacer lo mismo en la Señoría.</span></div>
+      <div class="line-row"><span class="de">Schickt sich das?</span><span class="es">¿Qué opináis vos?...</span></div>
+      <div class="line-row"><span class="de">Darf der Fremde, der im Lande lebt,</span><span class="es">¿Permitiremos que unos extranjeros</span></div>
+      <div class="line-row"><span class="de">uns listig den Verdienst zu rauben suchen?</span><span class="es">pretendan embaucarnos con sus malas artes?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(gelangweilt lächelnd)</span>
+        <span class="es">(sonriendo con hastío)</span>
+      </div>
+      <div class="line-row"><span class="de">Was hab' ich damit zu tun?</span><span class="es">Ése no es asunto mío...</span></div>
+      <div class="line-row"><span class="de">Mit Wolle handeln, das ist Eures Amts.</span><span class="es">La compra-venta de lana es cosa vuestra.</span></div>
+      <div class="stage-direction">
+        <span>(mit feinem Lächeln)</span>
+        <span class="es">(sonriendo con picardía)</span>
+      </div>
+      <div class="line-row"><span class="de">Mein Witz spürt anderm Wild nach.</span><span class="es">Mis intereses marchan por otros caminos...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="line-row"><span class="de">Hoher Herr, verzeiht; ich bitt' Euch,</span><span class="es">Noble señor, disculpad a mi esposo, os lo ruego.</span></div>
+      <div class="line-row"><span class="de">meinem guten Mann.</span><span class="es">Su pensamiento siempre está en la lonja del mercado</span></div>
+      <div class="line-row"><span class="de">Sein Geist steht immer auf dem Marktplatz,</span><span class="es">y su corazón únicamente late</span></div>
+      <div class="line-row"><span class="de">und sein Herz schlägt immer für den Preis der Wolle.</span><span class="es">cuando sube el precio de la lana.</span></div>
+      <div class="line-row"><span class="de">Doch ist auf seine Alltagsart er redlich.</span><span class="es">Pero, a su manera, no es un hombre malo.</span></div>
+      <div class="stage-direction">
+        <span>(zu Simone)</span>
+        <span class="es">(a Simón)</span>
+      </div>
+      <div class="line-row"><span class="de">Und du, du schämst dich nicht? Ein gnäd'ger Prinz</span><span class="es">¿Es que no te da vergüenza?</span></div>
+      <div class="line-row"><span class="de">erscheint in unserm Haus und du</span><span class="es">¡Un gran príncipe llega a nuestra casa y tú</span></div>
+      <div class="line-row"><span class="de">belästigst ihn durch üblen Vorwitz!</span><span class="es">lo molestas con charlatanerías de mercader!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(zerknirscht)</span>
+        <span class="es">(triste)</span>
+      </div>
+      <div class="line-row"><span class="de">In Demut bitt' ich.</span><span class="es">Por favor te lo pido...</span></div>
+      <div class="line-row"><span class="de">Laßt von andern Dingen und reden heut' Nacht.</span><span class="es">Hablemos de otra cosa.</span></div>
+      <div class="stage-direction">
+        <span>(wieder lebhaft)</span>
+        <span class="es">(de nuevo alegre)</span>
+      </div>
+      <div class="line-row"><span class="de">Es heißt, der Papst hat brieflich sich nach</span><span class="es">Me han dicho que el Papa</span></div>
+      <div class="line-row"><span class="de">Frankreich an den Körnig gewandt, daß er die Alpen</span><span class="es">ha pedido ayuda al rey de Francia para que</span></div>
+      <div class="line-row"><span class="de">überschreite und Frieden in Italien vermittle;</span><span class="es">traspase los Alpes y lo auxilie con su ejército.</span></div>
+      <div class="line-row"><span class="de">Schlimmer wär's wie Bürgerkrieg.</span><span class="es">Eso significaría una guerra civil.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Was kümmert mich dergleichen?</span><span class="es">¿Y qué nos importa eso a nosotros?</span></div>
+      <div class="line-row"><span class="de">Andre Dinge sind näher und mehr von Belang, Simone.</span><span class="es">Aquí hay otras cosas más importantes, Simón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ernst und nachdenklich)</span>
+        <span class="es">(pensativo)</span>
+      </div>
+      <div class="line-row"><span class="de">Ist denn so? Ist die ganze mächtige</span><span class="es">Así pues, ¿todo queda reducido</span></div>
+      <div class="line-row"><span class="de">Welt in dieses Zimmers Umfang eingeengt</span><span class="es">a las cuatro paredes de esta habitación?</span></div>
+      <div class="stage-direction">
+        <span>(leise, sich immer mehr in Gedanken verlierend)</span>
+        <span class="es">(cada vez más ensimismado)</span>
+      </div>
+      <div class="line-row"><span class="de">und hat drei Seelen als Bewohner nur?</span><span class="es">¿Y sólo nosotros tres somos los protagonistas?</span></div>
+      <div class="stage-direction">
+        <span>(ernst, halb für sich)</span>
+        <span class="es">(con voz débil)</span>
+      </div>
+      <div class="line-row"><span class="de">So sei der dürft'ge Raum jetzt eine Weltenbühne,</span><span class="es">El gran teatro del mundo ha quedado reducido</span></div>
+      <div class="line-row"><span class="de">wo Herrscher fall'n und unser tatlos</span><span class="es">a esta habitación, donde nosotros, actores,</span></div>
+      <div class="line-row"><span class="de">Leben der Einsatz wird, um den Gott spielt.</span><span class="es">somos las marionetas con las que juega Dios.</span></div>
+      <div class="stage-direction">
+        <span>(Er erhebt sich schwer und müde von seinem Stuhl.)</span>
+        <span class="es">(Se levanta lentamente de la silla.)</span>
+      </div>
+      <div class="line-row"><span class="de">Ich weiß nicht, was sprech' ich so?</span><span class="es">No sé por qué me vienen estos pensamientos...</span></div>
+      <div class="line-row"><span class="de">Mein Ritt hat mich erhitzt und dreimal strauchelte</span><span class="es">Quizás el viaje a caballo me ha sentado mal.</span></div>
+      <div class="line-row"><span class="de">mein Pferd. Ein Omen, das keinem Gutes kündet.</span><span class="es">Tropezó tres veces... y eso es de mal agüero.</span></div>
+      <div class="stage-direction">
+        <span>(Er geht nach rückwärts, nimmt sein Bündel</span>
+        <span class="es">(Va al fondo de la habitación, toma el fardo</span>
+        <span>zusammen und trägt es ins Nebengemach)</span>
+        <span class="es">y lo traslada a la habitación de al lado)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc5">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">5</span>
+      </div>
+    </div>
+    <div class="text-col" id="t5">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(hastig und leise zu Guido)</span>
+        <span class="es">(en voz baja, a Guido)</span>
+      </div>
+      <div class="line-row"><span class="de">Wie er gleich einem schalen Krämer spricht!</span><span class="es">¡Habla como un despreciable mercader!</span></div>
+      <div class="line-row"><span class="de">Ich hass' ihn, Seel und Leib. Ihr bleiches</span><span class="es">Lo odio en cuerpo y alma.</span></div>
+      <div class="line-row"><span class="de">Siegel hat seiner Stirn die Feigheit aufgeprägt.</span><span class="es">Su pálida frente;</span></div>
+      <div class="line-row"><span class="de">Vom Schlag gerührt, bebt seine Hand,</span><span class="es">sus manos, más blancas y temblorosas que</span></div>
+      <div class="line-row"><span class="de">die weißer als Pappelblätter in des Lenzes Stürmen,</span><span class="es">las hojas de un sauce bajo una tormenta;</span></div>
+      <div class="line-row"><span class="de">und schäumend sprudelt Wortgestammel ihm,</span><span class="es">su verborrea inacabable...</span></div>
+      <div class="line-row"><span class="de">wie Röhrenwasser, aus dem Mund.</span><span class="es">son signos inequívocos de su artera cobardía.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(leise)</span>
+        <span class="es">(en voz baja)</span>
+      </div>
+      <div class="line-row"><span class="de">Bianca, er ist nicht deiner Sorge wert, noch meiner.</span><span class="es">Blanca, querida, no hay de qué preocuparse...</span></div>
+      <div class="line-row"><span class="de">Der Mann ist bloß ein sehr ehrbarer Wicht,</span><span class="es">No es más que un pobre hombre</span></div>
+      <div class="line-row"><span class="de">der teuer losschlägt, was gering er schätzt!</span><span class="es">que vende caro lo que compra barato.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(leise, verbittert)</span>
+        <span class="es">(en voz baja, con tristeza)</span>
+      </div>
+      <div class="line-row"><span class="de">O daß der Tod ihn träfe, wo er steht!</span><span class="es">¡Ojalá se muriera ahora mismo!</span></div>
+      <div class="stage-direction">
+        <span>(Bei den letzten Worten Biancas ist Simone</span>
+        <span class="es">(Simón entra de nuevo coincidiendo con</span>
+        <span>wieder hereingetreten.)</span>
+        <span class="es">las últimas palabras de Blanca.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(stark)</span>
+        <span class="es">(enojado)</span>
+      </div>
+      <div class="line-row"><span class="de">Wer spricht vom Tod?</span><span class="es">¿Quién habla de muerte?</span></div>
+      <div class="line-row"><span class="de">Vom Tod soll keiner sprechen!</span><span class="es">¡No quiero que nadie hable de muerte!</span></div>
+      <div class="stage-direction">
+        <span>(wieder ruhig und lächelnd)</span>
+        <span class="es">(nuevamente sosegado y sonriendo)</span>
+      </div>
+      <div class="line-row"><span class="de">Was sucht der Tod in so vergnügtem Haus,</span><span class="es">¿Cómo iba a venir la muerte a una casa donde</span></div>
+      <div class="line-row"><span class="de">wo nur ein Weib, ein Gatte, ein Freund ihn grüßen?</span><span class="es">sólo la recibirían unos esposos y un amigo?</span></div>
+      <div class="line-row"><span class="de">Laß den Tod dort Einkehr halten,</span><span class="es">Que visite las casas donde castas mujeres,</span></div>
+      <div class="line-row"><span class="de">wo man die Ehe bricht, wo keusche Frauen,</span><span class="es">aburridas de sus esposos, cometen adulterio</span></div>
+      <div class="line-row"><span class="de">die ihrer edlen Männer überdrüssig,</span><span class="es">abriendo las colchas de sus lechos y,</span></div>
+      <div class="line-row"><span class="de">den Vorhang ihres Ehebettes lüften und in besudelten,</span><span class="es">entre sábanas pecaminosas,</span></div>
+      <div class="line-row"><span class="de">entehrten Kissen der unerlaubten Wollust fröhnen!</span><span class="es">dan rienda suelta a su lujuria.</span></div>
+      <div class="stage-direction">
+        <span>(ruhig und freundlich)</span>
+        <span class="es">(más calmado)</span>
+      </div>
+      <div class="line-row"><span class="de">Ja, 's ist seltsam und doch so!</span><span class="es">¡Tal vez te parezca duro, pero así es!</span></div>
+      <div class="line-row"><span class="de">Du kennst die Welt nicht.</span><span class="es">Tú no conoces el mundo. Eres buena y honrada.</span></div>
+      <div class="line-row"><span class="de">Du bist zu unverdorben, zu ehrbar. Ich kenne sie.</span><span class="es">Yo lo conozco bien y desearía que fuese distinto.</span></div>
+      <div class="line-row"><span class="de">Und wollt', es war nicht so.</span><span class="es">El conocimiento es fruto de la experiencia</span></div>
+      <div class="line-row"><span class="de">Doch Weisheit kommt mit Wintern, grau werd' ich,</span><span class="es">y yo tengo el cabello blanco.</span></div>
+      <div class="line-row"><span class="de">und längst floh Jugend meinen Leib.</span><span class="es">Hace mucho que la juventud me abandonó.</span></div>
+      <div class="stage-direction">
+        <span>(Seine gedrückte Stimmung schlägt mit einem</span>
+        <span class="es">(cambia su tono pausado por otro</span>
+        <span>Mal in exaltierte Lebhaftigkeit um.)</span>
+        <span class="es">impetuoso y exaltado)</span>
+      </div>
+      <div class="line-row"><span class="de">Genug! Zur Freude reif ist diese Nacht.</span><span class="es">¡Ya basta de lamentaciones!</span></div>
+      <div class="line-row"><span class="de">Fürwahr, ich möchte heiter sein, wie's Pflicht des Wirts,</span><span class="es">La noche es acogedora y debo de estar alegre,</span></div>
+      <div class="line-row"><span class="de">der unerwartet einen gnäd'gen Gast,</span><span class="es">como corresponde al dueño de una casa que</span></div>
+      <div class="line-row"><span class="de">des Grußes harrend, findet.</span><span class="es">recibe la inesperada visita de un ilustre huésped.</span></div>
+      <div class="stage-direction">
+        <span>(Er bemerkt die Laute.)</span>
+        <span class="es">(ve el laúd.)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc6">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">6</span>
+      </div>
+    </div>
+    <div class="text-col" id="t6">
+      <div class="line-row"><span class="de">Was ist das?</span><span class="es">¿Qué es eso?</span></div>
+      <div class="stage-direction">
+        <span>(nimmt sie)</span>
+        <span class="es">(lo toma)</span>
+      </div>
+      <div class="line-row"><span class="de">Ihr brachtet eine Laute mit zum Spielen.</span><span class="es">¡Príncipe, habéis traído un laúd!</span></div>
+      <div class="line-row"><span class="de">O spielt, mein Prinz!</span><span class="es">¡Oh, tocad, Príncipe!</span></div>
+      <div class="line-row"><span class="de">Und bin ich allzu kühn, verzeiht, doch spielt!</span><span class="es">Perdonad mi audacia, pero ¡tocad!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Ich will heut nacht nicht spielen.</span><span class="es">Hoy no me apetece tocar...</span></div>
+      <div class="line-row"><span class="de">Ein andermal, Simone.</span><span class="es">Otra noche, Simón.</span></div>
+      <div class="stage-direction">
+        <span>(leise zu Bianca)</span>
+        <span class="es">(en voz baja, a Blanca)</span>
+      </div>
+      <div class="line-row"><span class="de">Ihr und ich vereint mit keinem Lauscher,</span><span class="es">Otra noche donde los únicos testigos sean</span></div>
+      <div class="line-row"><span class="de">als den Sternen und dem noch eifersüscht'gen Mond.</span><span class="es">las estrellas y la luna.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(scheinbar ganz im Anblick der Laute versunken)</span>
+        <span class="es">(aparentemente absorto, mirando el laúd)</span>
+      </div>
+      <div class="line-row"><span class="de">Nicht doch, mein Prinz.</span><span class="es">¡Adelante, Príncipe!</span></div>
+      <div class="stage-direction">
+        <span>(Guido die Laute reichend)</span>
+        <span class="es">(le acerca el laúd a Guido)</span>
+      </div>
+      <div class="line-row"><span class="de">Ich bitt' Euch drum! Ich hab' schon gehört,</span><span class="es">¡Tocad, os lo ruego!</span></div>
+      <div class="line-row"><span class="de">durch bloßes Greifen einer Saite, durch zarten</span><span class="es">Cuentan que quien domina el arte de la música,</span></div>
+      <div class="line-row"><span class="de">Hauch an einem hohlen Rohr,</span><span class="es">sólo con rozar una cuerda, con un suave aliento</span></div>
+      <div class="line-row"><span class="de">durch Blasen in des Horns kristallenen Mund,</span><span class="es">en el tubo de una trompa, es capaz de redimir</span></div>
+      <div class="line-row"><span class="de">daß, wer ein Meister ist in dieser Kunst,</span><span class="es">a las almas de los condenados.</span></div>
+      <div class="line-row"><span class="de">aus Kerkern arme Seelen locken kann.</span><span class="es">La magia de unas cuerdas puede hacer que</span></div>
+      <div class="line-row"><span class="de">So seltner Zauber lauert in der Leier,</span><span class="es">una ventana se abra de par en par</span></div>
+      <div class="line-row"><span class="de">daß Fenster weit auf ihr Geheiß sich öffnen,</span><span class="es">o que la inocencia anide en cualquier parte,</span></div>
+      <div class="line-row"><span class="de">die Unschuld Weinlaub in das Haar sich flicht</span><span class="es">incluso en los cabellos de una ménade.</span></div>
+      <div class="line-row"><span class="de">und rast gleich der Mänade.</span><span class="es">¡Tocad, os lo ruego!</span></div>
+      <div class="line-row"><span class="de">Sei dem so! Eu'r Spiel, ich weiß, ist keusch.</span><span class="es">Sé que vuestra manera de tocar es casta.</span></div>
+      <div class="line-row"><span class="de">Und darum spielt,</span><span class="es">Haced surgir dulces melodías</span></div>
+      <div class="line-row"><span class="de">entzückt mein Ohr mit süßer Melodie!</span><span class="es">que tranquilicen mis sentidos.</span></div>
+      <div class="line-row"><span class="de">In einem Kerker schmachtet meine Seele,</span><span class="es">Mi alma vive en una oscura prisión,</span></div>
+      <div class="line-row"><span class="de">Musik heilt ihren Wahnwitz.</span><span class="es">vuestra música la liberará.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(freundlich, mitleidig lächelnd)</span>
+        <span class="es">(sonriendo compasivo)</span>
+      </div>
+      <div class="line-row"><span class="de">Ein andermal, Simone. Ich hab' heut Nacht</span><span class="es">Otra noche, Simón.</span></div>
+      <div class="line-row"><span class="de">genug am Wohllaut von Biancas Stimme.</span><span class="es">Hoy me basta con oír la dulce armonía</span></div>
+      <div class="line-row"><span class="de">Sie stillt den Liebesdurst der Luft</span><span class="es">de la voz de Blanca,</span></div>
+      <div class="line-row"><span class="de">und hemmt der Erde Taumel,</span><span class="es">capaz de calentar la fresca brisa nocturna,</span></div>
+      <div class="line-row"><span class="de">oder heißt sie kreisen um ihre Schönheit,</span><span class="es">o hacer que la tierra se detenga,</span></div>
+      <div class="line-row"><span class="de">wenn sie spricht.</span><span class="es">o que gire alrededor de su belleza.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Ihr schmeichelt! Sie hat ihr Gutes,</span><span class="es">¡No exageréis! Como casi todas las mujeres</span></div>
+      <div class="line-row"><span class="de">wie die meisten Frauen, doch ist Schönheit ihr versagt.</span><span class="es">ella tiene muchas virtudes,</span></div>
+      <div class="line-row"><span class="de">'s ist besser so. Nun, teurer Prinz,</span><span class="es">pero no precisamente destaca por su belleza...</span></div>
+      <div class="line-row"><span class="de">wollt Ihr der Laute nicht Musik entlocken,</span><span class="es">Y ahora, querido Príncipe, puesto que no deseáis</span></div>
+      <div class="line-row"><span class="de">mein banges überschweres Herz zu laben,</span><span class="es">tocar el laúd para redimir mi atribulado corazón,</span></div>
+      <div class="line-row"><span class="de">so trinkt mit mir!</span><span class="es">¡brindad conmigo!</span></div>
+      <div class="stage-direction">
+        <span>(auf den gedeckten Tisch zeigend)</span>
+        <span class="es">(le señala la mesa con la cena puesta)</span>
+      </div>
+      <div class="line-row"><span class="de">Es ist für Euch gedeckt.</span><span class="es">Hacednos el honor...</span></div>
+      <div class="line-row"><span class="de">Hol' einen Stuhl mir, Bianca! Schließ die Läden!</span><span class="es">¡Blanca trae otra silla!...</span></div>
+      <div class="line-row"><span class="de">Den Eisenriegel lege vor.</span><span class="es">¡Cierra las ventanas y la puerta!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca stellt sinen dritten Stuhl zum Tisch, schließt die</span>
+        <span class="es">(Blanca coloca una tercera silla, cierra</span>
+        <span>beiden Fenster und zieht den Vorhang der Türe zu.)</span>
+        <span class="es">las ventanas y echa el cerrojo a la puerta)</span>
+      </div>
+      <div class="line-row"><span class="de">Ich will nicht, daß scheelen Späherblicks</span><span class="es">No quiero que los envidiosos</span></div>
+      <div class="line-row"><span class="de">die neid'sche Welt auf unsre Freude starre.</span><span class="es">con sus rapaces ojos,</span></div>
+      <div class="line-row"><span class="de">Nun, mein Prinz,</span><span class="es">escudriñen nuestra dicha.</span></div>
+      <div class="line-row"><span class="de">stoßt an mit vollem schäumenden Pokal!</span><span class="es">Príncipe, ¡llenemos nuestras copas!</span></div>
+      <div class="stage-direction">
+        <span>(Er fährt entsetzt zurück.)</span>
+        <span class="es">(Retrocede horrorizado.)</span>
+      </div>
+      <div class="line-row"><span class="de">Was meint der Fleck hier auf dem Tuch?</span><span class="es">¿Qué es esa mancha del mantel?</span></div>
+      <div class="line-row"><span class="de">Er sieht so purpurn, wie die Seitenwunde Christi.</span><span class="es">Es tan roja como la sangre del costado de Cristo.</span></div>
+      <div class="line-row"><span class="de">Wein ist es bloß? Ich habe sagen hören,</span><span class="es">Es de vino ¿verdad?</span></div>
+      <div class="line-row"><span class="de">wenn Wein vergossen wird, wird Blut vergossen.</span><span class="es">Dicen que cuando se derrama vino,</span></div>
+      <div class="line-row"><span class="de">Doch das ist Ammenklatsch.</span><span class="es">detrás viene la sangre... ¡Puras supersticiones!</span></div>
+      <div class="stage-direction">
+        <span>(Er ermannt sich, bedeutet Bianca und Guido</span>
+        <span class="es">(Indica a Blanca y Guido que se sienten y llena</span>
+        <span>sich zu setzen und schenkt die Gläser voll.)</span>
+        <span class="es">sus copas)</span>
+      </div>
+      <div class="line-row"><span class="de">Ich hoffe, mein Tropfen mundet Euch?</span><span class="es">Espero que el vino os guste...</span></div>
+      <div class="line-row"><span class="de">Neapels Wein ist feurig wie sein Berg!</span><span class="es">¡Tiene cuerpo, es napolitano!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(den Becher ergreifend)</span>
+        <span class="es">(tomando la copa)</span>
+      </div>
+      <div class="line-row"><span class="de">Wackrer Freund, er schmeckt mir;</span><span class="es">¡Buena idea, querido amigo!...</span></div>
+      <div class="line-row"><span class="de">und so gütig Ihr erlaubet, trink' ich auf Biancas Wohl,</span><span class="es">Si me lo permitís, quisiera brindar por Blanca.</span></div>
+      <div class="stage-direction">
+        <span>(schwärmerisch)</span>
+        <span class="es">(efusivamente)</span>
+      </div>
+      <div class="line-row"><span class="de">wenn ihre Lippen, wie Rosenblätter auf dem</span><span class="es">Pero antes, que sus labios cual pétalos de rosa</span></div>
+      <div class="line-row"><span class="de">Becher treibend, mir seinen Schluck versüßt.</span><span class="es">se posen en mi copa y endulcen su contenido.</span></div>
+      <div class="stage-direction">
+        <span>(Er reicht ihr das Glas.)</span>
+        <span class="es">(Le acerca la copa a Blanca)</span>
+      </div>
+      <div class="line-row"><span class="de">Bianca, koste!</span><span class="es">¡Bebe, Blanca!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca nippt am Glas, indem sie Guido anblickt. Dann</span>
+        <span class="es">(Blanca bebe sin dejar de mirar a Guido.</span>
+        <span>nimmt ihr Guido das Glas aus der Hand und tut einen</span>
+        <span class="es">Luego, Guido recupera su copa y a su vez</span>
+        <span>langen Zug.)</span>
+        <span class="es">bebe un largo trago)</span>
+        <span>(hingerissen)</span>
+        <span class="es">(como en sueños)</span>
+      </div>
+      <div class="line-row"><span class="de">Ach, aller Honig der hybläischen Bienen</span><span class="es">¡Ah, la miel de las abejas es hiel</span></div>
+      <div class="line-row"><span class="de">ist bitter neben diesem Trank!</span><span class="es">comparado con esta ambrosía!</span></div>
+      <div class="stage-direction">
+        <span>(Er trinkt noch einmal.)</span>
+        <span class="es">(Vuelve a beber)</span>
+        <span>(Simone, der immer erregter zugesehen,</span>
+        <span class="es">(Simón, cada vez más nervioso, se aparta de la</span>
+        <span>springt auf und geht vom Tisch weg.)</span>
+        <span class="es">mesa dando un salto atrás.)</span>
+        <span>(befremdet)</span>
+        <span class="es">(extrañado)</span>
+      </div>
+      <div class="line-row"><span class="de">Ihr bleibt vom Feste fern, Simone?</span><span class="es">¿Qué os sucede, Simón?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(finster)</span>
+        <span class="es">(muy serio)</span>
+      </div>
+      <div class="line-row"><span class="de">'s ist seltsam, Herr,</span><span class="es">Es extraño, señor, pero esta noche estoy inquieto.</span></div>
+      <div class="line-row"><span class="de">ich kann mit Euch nicht tafeln heute Nacht.</span><span class="es">Quizás una preocupación, o unas décimas de fiebre,</span></div>
+      <div class="line-row"><span class="de">Verstimmung, oder Fieber meines Bluts, oder ein</span><span class="es">o un presentimiento que,</span></div>
+      <div class="line-row"><span class="de">Gedanke, der wie die Natter kriecht von Punkt zu Punkt,</span><span class="es">como si se tratase de una víbora,</span></div>
+      <div class="line-row"><span class="de">dem Irren gleich von Zell' zu Zelle schleicht,</span><span class="es">va de un lado a otro emponzoñando mi sangre,</span></div>
+      <div class="line-row"><span class="de">vergiftet meinen Gaumen,</span><span class="es">agriando mi paladar y transformando</span></div>
+      <div class="line-row"><span class="de">macht den Hunger zur Last mir, nicht zur Lust.</span><span class="es">la diversión en tristeza.</span></div>
+      <div class="stage-direction">
+        <span>(Er öffnet die Türe zum Garten, wie um besser atmen zu</span>
+        <span class="es">(Abre las puertas que dan al jardín, que puede</span>
+        <span>können, dann geht er in den Garten hinaus, den man in</span>
+        <span class="es">verse iluminado por la luna llena, y sale. Blanca</span>
+        <span>vollem Mondglanz sieht. Bianca und Guido verharren</span>
+        <span class="es">y Guido permanecen en la habitación en un</span>
+        <span>einige Zeit in gedrücktem Schweigen.)</span>
+        <span class="es">silencio expectante)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc7">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">7</span>
+      </div>
+    </div>
+    <div class="text-col" id="t7">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(sich erhebend)</span>
+        <span class="es">(levantándose)</span>
+      </div>
+      <div class="line-row"><span class="de">Holdsel'ge Bianca, der schale Krämer langweilt mich.</span><span class="es">Querida, este pobre hombre me ha aburrido.</span></div>
+      <div class="line-row"><span class="de">Ich will jetzt gehn. Ich werde morgen</span><span class="es">Me marcho...</span></div>
+      <div class="line-row"><span class="de">kommen. Nenn mir die Zeit!</span><span class="es">¿A qué hora nos veremos mañana?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(ebenfalls aufstehend)</span>
+        <span class="es">(también levantándose)</span>
+      </div>
+      <div class="line-row"><span class="de">Komm mit dem jüngsten Frührot.</span><span class="es">¡Ven lo antes que puedas!...</span></div>
+      <div class="line-row"><span class="de">Bis dahin ist mein ganzes Leben eitel.</span><span class="es">Sin ti, mi vida está vacía.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Ach, löse deines Haares Mitternacht</span><span class="es">¡Ah, deshaz la medianoche de tu pelo!</span></div>
+      <div class="line-row"><span class="de">und laß mich in den Sternen, deinen Augen,</span><span class="es">¡Permite que mi imagen se refleje,</span></div>
+      <div class="line-row"><span class="de">mein Bildnis wie im Spiegel sehn,</span><span class="es">como en un espejo,</span></div>
+      <div class="line-row"><span class="de">Geliebte! Ist's auch ein Schatten nur,</span><span class="es">en las estrellas de tus ojos!</span></div>
+      <div class="line-row"><span class="de">bewahr mich, dort, schau nichts an,</span><span class="es">Piensa a todas horas en mí, que ni siquiera</span></div>
+      <div class="line-row"><span class="de">das dir von meinem Selbst nicht ein Symbol gibt.</span><span class="es">una sombra distraiga tus pensamientos.</span></div>
+      <div class="line-row"><span class="de">Ich bin eifersüchtig auf das, woran dein Blick sich letzt.</span><span class="es">Tengo celos de todo lo que ven tus ojos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(äußerst zart und innig)</span>
+        <span class="es">(con ternura)</span>
+      </div>
+      <div class="line-row"><span class="de">Dein Bild wird immer um mich sein.</span><span class="es">Tu rostro siempre me acompaña.</span></div>
+      <div class="line-row"><span class="de">Du Teurer, die Liebe kann das Allerhäßlichste</span><span class="es">Querido, el amor transforma los sucesos</span></div>
+      <div class="line-row"><span class="de">zum süßen Zeichen der Erinn'rung wandeln.</span><span class="es">más amargos en dulces sentimientos.</span></div>
+      <div class="line-row"><span class="de">O komm, bevor der Lerche schrilles Lied die Welt</span><span class="es">¡Ah, ven antes que llegue la alondra</span></div>
+      <div class="line-row"><span class="de">der Träumer weckt.</span><span class="es">y despierte a los que sueñan!</span></div>
+      <div class="stage-direction">
+        <span>(leise, innig)</span>
+        <span class="es">(con picardía)</span>
+      </div>
+      <div class="line-row"><span class="de">Auf dem Altan dort will ich stehn.</span><span class="es">Te esperaré en el balcón.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(geflüstert)</span>
+        <span class="es">(casi en un susurro)</span>
+      </div>
+      <div class="line-row"><span class="de">Und auf einer Leiter aus Seide scharlachrot,</span><span class="es">Y bajarás hasta mí por una escalera</span></div>
+      <div class="line-row"><span class="de">bestickt mit Perlen, komm mir entgegen weißer Fuß</span><span class="es">de seda escarlata bordada de perlas...</span></div>
+      <div class="line-row"><span class="de">nach Fuß, wie Schnee auf dunklen Rosensträuchern.</span><span class="es">Tus pasos serán como la nieve sobre rosas.</span></div>
+      <div class="stage-direction">
+        <span>(Er küßt sie lange auf den Mund.)</span>
+        <span class="es">(La besa en la boca.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(Sie löst sich aus seiner Umarmung.)</span>
+        <span class="es">(Desasiéndose del abrazo.)</span>
+      </div>
+      <div class="line-row"><span class="de">Du weißt, in Liebe und Tod gehör' ich dir.</span><span class="es">Siempre seré tuya... en el amor y en la muerte.</span></div>
+      <div class="stage-direction">
+        <span>(Sie reicht ihm die Hände und sieht ihn lange zärtlich an.</span>
+        <span class="es">(Se toman de las manos dulcemente y permanecen</span>
+        <span>Simone kommt aus dem Garten, bleibt einen Moment auf</span>
+        <span class="es">en silencio mirándose a los ojos. Simón llega del</span>
+        <span>der Schwelle der Türe stehn und sieht die beiden ernst</span>
+        <span class="es">jardín y se queda en el umbral de la puerta</span>
+        <span>und traurig an.)</span>
+        <span class="es">mirando pensativamente a la pareja)</span>
+      </div>
+    </div>
+
+    <div class="track-col" id="tc8">
+      <div class="track-tag">
+        <span class="track-tag-cd">CD1</span>
+        <span class="track-tag-num">8</span>
+      </div>
+    </div>
+    <div class="text-col" id="t8">
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Simone, jetzt muß ich nach Hause gehn.</span><span class="es">Simón, me marcho.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">So rasch? Weshalb? Vom großen Dom die Glocke</span><span class="es">¿Tan pronto?... ¿Y eso? Las campanas de la catedral</span></div>
+      <div class="line-row"><span class="de">schlug noch nicht Mitternacht.</span><span class="es">aún no han dado la medianoche.</span></div>
+      <div class="line-row"><span class="de">Ein Weilchen bleibt noch, ich furcht',</span><span class="es">Quedaos un rato más pues quizás sea ésta</span></div>
+      <div class="line-row"><span class="de">wir sehn uns nicht mehr hier.</span><span class="es">la última vez que nos veamos.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(mit einem Lächeln an Bianca)</span>
+        <span class="es">(sonriendo a Blanca)</span>
+      </div>
+      <div class="line-row"><span class="de">Seid unbesorgt.</span><span class="es">No temáis,</span></div>
+      <div class="line-row"><span class="de">Meine Freundschaft hält unvermindert stand.</span><span class="es">siempre tendréis mi amistad.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Nun so sei's, gut Nacht, Herr!</span><span class="es">¡Está bien, buenas noches, señor!</span></div>
+      <div class="line-row"><span class="de">Hol' eine Fackel, Frau!</span><span class="es">¡Mujer, trae una luz!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca geht in den Garten, um die Fackel zu holen.)</span>
+        <span class="es">(Blanca va al jardín y toma una antorcha.)</span>
+      </div>
+      <div class="line-row"><span class="de">Die alte Treppe ist voller Löcher und der karge Mond</span><span class="es">Esa vieja escalera está llena de agujeros</span></div>
+      <div class="line-row"><span class="de">geizt wie ein Filz mit seinem Licht</span><span class="es">y además la mísera luna se esconde</span></div>
+      <div class="line-row"><span class="de">und birgt sein Antlitz hinter</span><span class="es">tras una cortina de gasa,</span></div>
+      <div class="line-row"><span class="de">einer Mask' aus Mull, wie Dirnen,</span><span class="es">como las rameras cuando salen a la caza</span></div>
+      <div class="line-row"><span class="de">die auf Sündenfang ausgehn nach armen Seelen.</span><span class="es">de almas pecadoras y desdichadas.</span></div>
+      <div class="line-row"><span class="de">Jetzt will ich Euch Schwert und Mantel bringen.</span><span class="es">Le traeré la espada y el capote...</span></div>
+      <div class="line-row"><span class="de">Je, lieber Herr, es ist nur schicklich,</span><span class="es">Es un placer serviros, pues esta noche os habéis</span></div>
+      <div class="line-row"><span class="de">daß ich Euch bediene,</span><span class="es">dignado venir a la casa de un humilde burgués.</span></div>
+      <div class="line-row"><span class="de">der so mein kläglich Bürgerhaus beehrt,</span><span class="es">Nos habéis honrado</span></div>
+      <div class="line-row"><span class="de">der Wein und Brot mit uns geteilt...</span><span class="es">al compartir el pan y el vino con nosotros...</span></div>
+      <div class="stage-direction">
+        <span>(Hier kommt Bianca mit einer brennenden Fackel</span>
+        <span class="es">(Blanca regresa con una antorcha encendida,</span>
+        <span>zurück, die sie an einem Ring an der Tür befestigt.)</span>
+        <span class="es">que coloca en la pared, junto a la puerta.)</span>
+        <span>... und uns ein trauter Hausfreund ward.</span>
+        <span class="es">... espero que regreséis por nuestra casa.</span>
+      </div>
+      <div class="line-row"><span class="de">Oft wird mein Weib mit mir von dieser schönen</span><span class="es">Mi esposa y yo recordaremos a menudo</span></div>
+      <div class="line-row"><span class="de">Nacht noch sprechen und ihrer großen Tat!</span><span class="es">esta agradable noche y todo lo que ha sucedido.</span></div>
+      <div class="stage-direction">
+        <span>(Simone geht zum Alkoven um das Schwert Guidos</span>
+        <span class="es">(Simón va a buscar la espada de Guido.</span>
+        <span>zu holen. Er nimmt das Schwert vom</span>
+        <span class="es">La toma de la silla y la observa</span>
+        <span>Stuhl und betrachtet es mit großem Interesse.)</span>
+        <span class="es">con gran interés.)</span>
+      </div>
+      <div class="line-row"><span class="de">Ei, welch ein Schwert!</span><span class="es">¡Caramba, qué magnífica espada!</span></div>
+      <div class="line-row"><span class="de">Ferraras Stahl,</span><span class="es">Acero de Ferrara,</span></div>
+      <div class="line-row"><span class="de">geschmeidig wie die Schlange und tödlicher gewiß.</span><span class="es">flexible como una serpiente y tan letal como ella.</span></div>
+      <div class="line-row"><span class="de">So zarte Klinge hab' ich nie berührt.</span><span class="es">Nunca he visto una hoja tan perfecta.</span></div>
+      <div class="line-row"><span class="de">Auch ich besitz' ein Schwert, schon angerostet.</span><span class="es">Yo también tengo una espada, aunque oxidada.</span></div>
+      <div class="line-row"><span class="de">Uns Bürgersleuten schärft man Demut ein. Doch einst,</span><span class="es">Los burgueses somos pacíficos, pero una vez,</span></div>
+      <div class="line-row"><span class="de">als mir ein Räuber auf dem Weg nach Padua</span><span class="es">yendo a Padua, me salió al paso un ladrón</span></div>
+      <div class="line-row"><span class="de">mein Packpferd nehmen wollte,</span><span class="es">que pretendía robarme el caballo...</span></div>
+      <div class="line-row"><span class="de">schlitzt' ich ihm den Hals und ritt davon.</span><span class="es">¡De un tajo le corté la garganta!</span></div>
+      <div class="stage-direction">
+        <span>(mit immer drohenderem Ausdruck)</span>
+        <span class="es">(cada vez más amenazador)</span>
+      </div>
+      <div class="line-row"><span class="de">ich kann ertragen Verachtung, Schande von mancher</span><span class="es">Puedo soportar la deshonra,</span></div>
+      <div class="line-row"><span class="de">Art, den schrillen Hohn und offnen Schimpf.</span><span class="es">la vergüenza, el desprecio</span></div>
+      <div class="line-row"><span class="de">Doch wer mir irgendetwas stiehlt, das mir gehört,</span><span class="es">o incluso el insulto.</span></div>
+      <div class="line-row"><span class="de">und wär's auch nur der schlechteste Teller,</span><span class="es">Pero quien roba algo que es mío,</span></div>
+      <div class="line-row"><span class="de">davon ich meinen Hunger füttre, setzt Seel und Leib</span><span class="es">aunque sea una desportillada escudilla,</span></div>
+      <div class="line-row"><span class="de">aufs Spiel bei seinem Frevel und stirbt!</span><span class="es">se juega la vida, el alma... ¡y muere!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(plötzlich ganz ernst)</span>
+        <span class="es">(serio)</span>
+      </div>
+      <div class="line-row"><span class="de">Wie deut' ich das?</span><span class="es">¿Qué queréis decir?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Wer weiß, Herr Guido, ob mein Schwert nicht besser</span><span class="es">¡Que el temple de mi acero no es inferior al suyo!</span></div>
+      <div class="line-row"><span class="de">ist geglüht, als das Eure! Sollen wir's versuchen?</span><span class="es">¿Quiere comprobarlo, señor Guido?</span></div>
+      <div class="line-row"><span class="de">Oder ist mein Stand zu niedrig,</span><span class="es">¿O acaso soy demasiado humilde</span></div>
+      <div class="line-row"><span class="de">daß Euren Schläger Ihr mit meinem kreuzet,</span><span class="es">para que vuestra espada se cruce con la mía,</span></div>
+      <div class="line-row"><span class="de">sei's Scherz, sei's Ernst?</span><span class="es">ya sea en broma o en serio?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Nichts kam' mir mehr zupaß,</span><span class="es">Nada me gustaría más que batirme con vos,</span></div>
+      <div class="line-row"><span class="de">als Euch mit blanker Klinge zu begegnen, sei's Scherz,</span><span class="es">ya sea en broma, o en serio.</span></div>
+      <div class="line-row"><span class="de">sei's Ernst. Gebt mir mein Schwert!</span><span class="es">¡Dadme mi espada!</span></div>
+      <div class="stage-direction">
+        <span>(Simone, der ihn unverwandt, wie erstarrt,</span>
+        <span class="es">(Simón, que ha estado mirándolo como absorto,</span>
+        <span>angesehn, reicht ihm nun das Schwert.)</span>
+        <span class="es">le da la espada.)</span>
+      </div>
+      <div class="line-row"><span class="de">Holt Eures!</span><span class="es">¡Está bien! Esta noche veremos</span></div>
+      <div class="line-row"><span class="de">Die große Tat wird spruchreif heute Nacht noch,</span><span class="es">cómo está templado el acero de un comerciante.</span></div>
+      <div class="line-row"><span class="de">ob des Prinzen, ob des Kaufmanns Stahl besser geglüht.</span><span class="es">¿No fueron esas vuestras palabras?</span></div>
+      <div class="line-row"><span class="de">War das nicht Euer Wort? Holt Euer eignes Schwert!</span><span class="es">¡Tomad vuestra espada!</span></div>
+      <div class="line-row"><span class="de">Was säumt Ihr, Mann?</span><span class="es">¿Por qué os retrasáis, señor?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(wie aus einer Starrheit erwachend)</span>
+        <span class="es">(como despertándose de un sueño)</span>
+      </div>
+      <div class="line-row"><span class="de">Bianca, hol mein Schwert!</span><span class="es">¡Blanca, dame mi espada!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca holt schnell Simones Schwert.</span>
+        <span class="es">(Blanca corre a coger la espada de Simón,</span>
+        <span>Er schafft selbst Tisch und Stühle aus dem Weg.)</span>
+        <span class="es">mientras éste aparta mesa y sillas.)</span>
+      </div>
+      <div class="line-row"><span class="de">Fort da mit Stuhl und Tisch!</span><span class="es">¡Fuera sillas y mesa!</span></div>
+      <div class="stage-direction">
+        <span>(wieder freundlich lächelnd)</span>
+        <span class="es">(sonriendo amablemente)</span>
+      </div>
+      <div class="line-row"><span class="de">Die liebe Bianca soll die Fackel halten,</span><span class="es">Mi querida Blanca nos iluminará con la antorcha</span></div>
+      <div class="line-row"><span class="de">damit, was nur ein Scherz ist, Ernst nicht werde!</span><span class="es">para que lo es un juego no se vuelva algo serio.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(leise hastig zu Guido)</span>
+        <span class="es">(en voz baja, a Guido)</span>
+      </div>
+      <div class="line-row"><span class="de">Ach tot ihn! tot ihn!</span><span class="es">¡Ah! ¡Mátalo!... ¡Mátalo!...</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(jetzt ganz ernst)</span>
+        <span class="es">(muy serio)</span>
+      </div>
+      <div class="line-row"><span class="de">Halt die Fackel, Bianca!</span><span class="es">¡Sujeta la antorcha, Blanca!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca nimmt die Fackel und stellt sich hinter Guido.</span>
+        <span class="es">(Blanca se coloca detrás de Guido. Ambos</span>
+        <span>Simone und Guido stellen sich zum Zweikampf. Die</span>
+        <span class="es">contendientes se preparan para batirse. La</span>
+        <span>Szene wird jetzt bloß durch die blutigrot schimmernde</span>
+        <span class="es">escena sólo está iluminada por la antorcha</span>
+        <span>Fackel und die nahezu ganz heruntergebrannten</span>
+        <span class="es">y las velas, casi consumidas. Guido ataca</span>
+        <span>Kerzen beleuchtet. Guido greift heftig und feurig</span>
+        <span class="es">precipitadamente y Simón lo esquiva con gran</span>
+        <span>an. Simone pariert mit Ruhe und großer Kraft.)</span>
+        <span class="es">habilidad)</span>
+        <span>(fast gesprochen)</span>
+        <span class="es">(casi hablando)</span>
+      </div>
+      <div class="line-row"><span class="de">Pariert! Ah! Ihr möchtet wohl?</span><span class="es">¡Esquivado!... ¡Ah! ¿Lo volvéis a intentar?</span></div>
+      <div class="stage-direction">
+        <span>(Guido fällt wieder aus und verwundet Simone.)</span>
+        <span class="es">(Guido ataca de nuevo hiriendo a Simón)</span>
+      </div>
+      <div class="line-row"><span class="de">Ein Ritz, nichts mehr.</span><span class="es">No es nada... sólo un rasguño.</span></div>
+      <div class="line-row"><span class="de">Mich blendete die Flamme.</span><span class="es">Me deslumbró la llama.</span></div>
+      <div class="stage-direction">
+        <span>(Er streift den Ärmel etwas auf und betrachtet</span>
+        <span class="es">(Se levanta un poco la manga y examina la</span>
+        <span>die Wunde.)</span>
+        <span class="es">herida.)</span>
+      </div>
+      <div class="line-row"><span class="de">Nicht traurig sein, Bianca! 's ist nichts.</span><span class="es">¡No estés triste, Blanca!...</span></div>
+      <div class="line-row"><span class="de">Dein Gatte blutet. Nichts ist's.</span><span class="es">Tu esposo sangra... pero es poca cosa.</span></div>
+      <div class="line-row"><span class="de">Nimm ein Tuch, verbinde mir den Arm!</span><span class="es">¡Átame el brazo!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca verbindet mit ihrem Taschentuch die Wunde.</span>
+        <span class="es">(Blanca le venda la herida con su pañuelo. Simón</span>
+        <span>Er zuckt vom Schmerz auf.)</span>
+        <span class="es">hace gestos de dolor)</span>
+      </div>
+      <div class="line-row"><span class="de">Nicht so fest.</span><span class="es">¡No tan fuerte!</span></div>
+      <div class="line-row"><span class="de">Und sei nicht traurig, ich bitte dich, sei nicht traurig!</span><span class="es">No estés triste, te lo ruego, no sufras.</span></div>
+      <div class="line-row"><span class="de">Nein, nimm's ab! Was liegt dran, wenn ich blute!</span><span class="es">Mejor... ¡Quítamelo! ¡Prefiero sangrar!</span></div>
+      <div class="stage-direction">
+        <span>(Er reißt den Verband ab.)</span>
+        <span class="es">(Le quita la venda)</span>
+      </div>
+      <div class="line-row"><span class="de">Auf! Noch einmal!</span><span class="es">¡Adelante!... ¡Comencemos de nuevo!</span></div>
+      <div class="stage-direction">
+        <span>(Sie beginnen, wieder zu fechten. Simone schleudert</span>
+        <span class="es">(La lucha comienza de nuevo. Simón golpea</span>
+        <span>Guido das Schwert aus der Hand. Simone entwaffnet</span>
+        <span class="es">la espada de Guido que cae al suelo. Guido</span>
+        <span>Guido.)</span>
+        <span class="es">permanece desarmado)</span>
+      </div>
+      <div class="line-row"><span class="de">Mein hoher Herr, Ihr seht, ich hatt' Recht.</span><span class="es">Mi estimado señor, ¿veis como yo tenía razón?</span></div>
+      <div class="line-row"><span class="de">Mein Schwert ist bessrer Stahl, härter geglüht!</span><span class="es">Mi acero está mejor templado que el vuestro.</span></div>
+      <div class="stage-direction">
+        <span>(sein eigenes Schwert fortwerfend)</span>
+        <span class="es">(arroja su espada al suelo)</span>
+      </div>
+      <div class="line-row"><span class="de">Doch proben wir die Dolche!</span><span class="es">Y ahora, ¡los puñales!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(leidenschaftlich zu Guido)</span>
+        <span class="es">(apasionadamente, a Guido)</span>
+      </div>
+      <div class="line-row"><span class="de">Tot ihn! Tot ihn!</span><span class="es">¡Mátalo! ¡Mátalo!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Lösch aus die Fackel, Bianca!</span><span class="es">¡Apaga la antorcha, Blanca!</span></div>
+      <div class="stage-direction">
+        <span>(Bianca löscht am Boden die Fackel aus.</span>
+        <span class="es">(Blanca arroja la antorcha al suelo. La escena</span>
+        <span>Es ist ganz finster.)</span>
+        <span class="es">queda completamente a oscuras.)</span>
+      </div>
+      <div class="line-row"><span class="de">Nun mein Herrchen, nun bis zum Tod</span><span class="es">Y ahora, noble señor, hasta que caiga</span></div>
+      <div class="line-row"><span class="de">des einen oder beider, vielleicht gar aller dreie!</span><span class="es">uno de los dos. ¡O quién sabe si los tres!</span></div>
+      <div class="stage-direction">
+        <span>(Sie stürmen mit gezückten Dolchen aufeinander los.)</span>
+        <span class="es">(Se atacan a puñaladas.)</span>
+      </div>
+      <div class="line-row"><span class="de">Da und da! Ha! Teufel!</span><span class="es">¡Ah!... ¡Demonios!...</span></div>
+      <div class="line-row"><span class="de">Halt' ich dich mit meinem Griff!</span><span class="es">¡Te voy a dar!</span></div>
+      <div class="stage-direction">
+        <span>(Simone überwältigt Guido, wirft ihn zu Boden,</span>
+        <span class="es">(Simón arroja a Guido al suelo poniéndole la</span>
+        <span>und seine Knie auf Guidos Brust setzend,</span>
+        <span class="es">rodilla sobre el pecho; a la vez que le sujeta el</span>
+        <span>umklammert er seinen Hals mit beiden Händen.)</span>
+        <span class="es">cuello con ambas manos.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Narr, nimm mir vom Hals deine Würgefinger!</span><span class="es">¡Idiota, quita tus manos de mi cuello!</span></div>
+      <div class="line-row"><span class="de">Ich bin des Vaters einz'ger Sohn!</span><span class="es">¡Me ahogas!... ¡Soy hijo único!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Schweig', dein Vater wird,</span><span class="es">Seguro que tu padre se alegrará</span></div>
+      <div class="line-row"><span class="de">wenn er kinderlos, beglückter sein.</span><span class="es">cuando te pierda.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="stage-direction">
+        <span>(immer entsetzter, mit gewürgter Stimme)</span>
+        <span class="es">(con voz ahogada)</span>
+      </div>
+      <div class="line-row"><span class="de">Fort die Hand! Nimm die verfluchte Hand fort!</span><span class="es">¡Quítame las manos! ¡Afloja tus sucias manos!</span></div>
+      <div class="line-row"><span class="de">Laß mich los!</span><span class="es">¡Suéltame!</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">So sinnreich hält der Schraubstock dich umspannt,</span><span class="es">Son como un tornillo que nada puede aflojar...</span></div>
+      <div class="line-row"><span class="de">daß nichts dir mehr kann helfen und dein Leben,</span><span class="es">Tu vergonzosa vida,</span></div>
+      <div class="line-row"><span class="de">auf seiner Schande Gipfel angelangt,</span><span class="es">que ha llegado a la cima de su vergüenza,</span></div>
+      <div class="line-row"><span class="de">mit dieser Schande endet, schändlich endet.</span><span class="es">acaba vergonzosamente.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Ach, hilf mir, Bianca!</span><span class="es">¡Ah, ayuda, Blanca!</span></div>
+      <div class="line-row"><span class="de">Du weißt, es lastet keine Schuld auf mir.</span><span class="es">Sabes que soy inocente.</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Wie, Leben ist noch auf deinen Lügenlippen?</span><span class="es">¿Cómo? ¿Todavía salen mentiras de tus labios?</span></div>
+      <div class="line-row"><span class="de">Stirb, gleich dem Hund mit schlapper Zunge!</span><span class="es">¡Saca la lengua como un perro moribundo!</span></div>
+      <div class="line-row"><span class="de">Stirb! Stirb!</span><span class="es">¡Muere! ¡Muere!</span></div>
+      <div class="stage-direction">
+        <span>(mächtig)</span>
+        <span class="es">(con vehemencia)</span>
+      </div>
+      <div class="line-row"><span class="de">Der stumme Fluß soll deinen Leib empfahn und sang-</span><span class="es">El gélido río arropará tu cuerpo</span></div>
+      <div class="line-row"><span class="de">und klanglos spülen in das Meer.</span><span class="es">y lo lavará de sangre en el mar.</span></div>
+      <div class="stage-direction">
+        <span>(Er läßt ihn los. Guido sinkt zurück.)</span>
+        <span class="es">(Lo suelta. Guido cae hacia atrás.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="guido">Guido</span></span>
+        <span class="character-name">Guido</span>
+      </div>
+      <div class="line-row"><span class="de">Nimm, Heiland, meinen armen Geist zu dir!</span><span class="es">¡Altísimo, acoge en tu seno mi alma!</span></div>
+      <div class="stage-direction">
+        <span>(Erstirbt)</span>
+        <span class="es">(Muere.)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="line-row"><span class="de">Amen. Und jetzt zu dir!</span><span class="es">¡Amén!... ¡Y ahora te toca a ti!</span></div>
+      <div class="stage-direction">
+        <span>(Er erhebt sich langsam, ohne umzublicken. Bianca,</span>
+        <span class="es">(Se levanta lentamente, con la mirada</span>
+        <span>die noch am Amfange des Dolchkampfes in furchtbarer</span>
+        <span class="es">perdida. Blanca, al ver durante la pelea</span>
+        <span>Erregung dabei gestanden und Guido erwartungsvoll</span>
+        <span class="es">que Guido estaba siendo derrotado,</span>
+        <span>zugesehn hat, ist während des Verlaufes unwillkürlich</span>
+        <span class="es">había comenzado a retroceder temerosa</span>
+        <span>bis zur Türe zurückgewichen. Sie hat Vorhang und</span>
+        <span class="es">y agitada hasta la puerta del jardín,</span>
+        <span>Türe geöffnet, so daß der volle Strahl des Mondes die</span>
+        <span class="es">abre las cortinas y deja entrar el</span>
+        <span>Szene bescheint. Auf der Schwelle ist sie, in wachsender</span>
+        <span class="es">resplandor de la luna que ilumina</span>
+        <span>Begeisterung, Simone anblickend, stehen geblieben.</span>
+        <span class="es">la escena. Permanece en pié, como</span>
+        <span>Jetzt kommt sie auf ihn zu, wie geblendet von einem</span>
+        <span class="es">hechizada. Luego avanza hacia Simón</span>
+        <span>Wunder.)</span>
+        <span class="es">lentamente)</span>
+      </div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="bianca">Bianca</span></span>
+        <span class="character-name">Blanca</span>
+      </div>
+      <div class="stage-direction">
+        <span>(in zarter Begeisterung)</span>
+        <span class="es">(exaltada)</span>
+      </div>
+      <div class="line-row"><span class="de">Warum hast du mir nicht gesagt, daß du so stark?</span><span class="es">¿Por qué no me habías dicho que eras tan fuerte?</span></div>
+      <div class="character-row">
+        <span><span class="character-name has-tooltip" data-character-id="simone">Simone</span></span>
+        <span class="character-name">Simón</span>
+      </div>
+      <div class="stage-direction">
+        <span>(indem sein grenzenloses Erstaunen in Bewunderung</span>
+        <span class="es">(con asombro, completamente admirado</span>
+        <span>ihrer Schönheit übergeht)</span>
+        <span class="es">por la belleza de Blanca)</span>
+      </div>
+      <div class="line-row"><span class="de">Warum hast du mir nicht gesagt, daß du so schön!</span><span class="es">¿Por qué no me habías dicho que eras tan bella?</span></div>
+      <div class="stage-direction">
+        <span>(Er breitet seine Arme gegen sie aus. Bianca sinkt</span>
+        <span class="es">(Él extiende sus brazos hacia ella. Blanca cae de</span>
+        <span>auf die Knie vor ihm. Er küßt sie auf den Mund)</span>
+        <span class="es">rodillas ante él. Se besan apasionadamente)</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="bottom-sheet-overlay" id="bottomSheetOverlay" onclick="closeBottomSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="sheetSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeBottomSheet()">&#215;</button>
+    </div>
+    <div class="sheet-recording-row">
+      <span class="sheet-recording-label">Recording</span>
+      <div class="sheet-recording-picker" id="sheetRecPicker"></div>
+    </div>
+    <div class="drawer-body" id="bottomSheetBody"></div>
+  </div>
+</div>
+<div class="bottom-sheet-overlay" id="castSheetOverlay" onclick="closeCastSheet()">
+  <div class="bottom-sheet" onclick="event.stopPropagation()">
+    <div class="bottom-sheet-handle"></div>
+    <div class="drawer-header">
+      <span class="drawer-header-title">Cast</span>
+      <button class="drawer-close" onclick="closeCastSheet()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="castSheetBody"></div>
+  </div>
+</div>
+<div class="drawer-overlay" id="overlay" onclick="closeDrawer()">
+  <div class="drawer" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <span class="drawer-header-title">Index</span>
+      <div id="drawerSpotifyPill"></div>
+      <button class="drawer-close" onclick="closeDrawer()">&#215;</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </div>
+</div>
+
+<div class="cast-overlay" id="castOverlay" onclick="closeCast()">
+  <div class="cast-drawer" onclick="event.stopPropagation()">
+    <div class="cast-drawer-header">
+      <span class="cast-drawer-title">Cast</span>
+      <button class="drawer-close" onclick="closeCast()">&#215;</button>
+    </div>
+    <div class="cast-drawer-body">
+      <table class="cast-table">
+        <thead>
+          <tr>
+            <th>Character</th>
+            <th>Singer</th>
+          </tr>
+        </thead>
+        <tbody id="castTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  const RECORDINGS = {
+  chailly_kruse: {
+    label: "Eine florentinische Trag\u00f6die \u00b7 Chailly / Kruse",
+    short: "Chailly / Kruse",
+    spotify_album_id: "6yPq9Vt7p3asii4cSGBfTs",
+    tracks: [
+      { id: "t1", cd: 1, track: 1, title: "Overture", act: "Act I", has_block: true, spotify_track_id: "6Bpu2BFcrA6cn9HmC5zmgt" },
+      { id: "t2", cd: 1, track: 2, title: "So langsam, Weib?", act: "Act I", has_block: true, spotify_track_id: "01A988ZgSEqd5I4oyxpYih" },
+      { id: "t3", cd: 1, track: 3, title: "Spinn ein Kleid, getaucht in Purpur", act: "Act I", has_block: true, spotify_track_id: "2xKX4ZqoknMZgnkzdOBNuu" },
+      { id: "t4", cd: 1, track: 4, title: "Was gibt es Neues, mein Prinz?", act: "Act I", has_block: true, spotify_track_id: "1ui38EBkwz83JgmtykbBt6" },
+      { id: "t5", cd: 1, track: 5, title: "Wie er gleich schalen Kr\u00e4mer spricht!", act: "Act I", has_block: true, spotify_track_id: "6uDmKBTkIMLiSe8LTO0y1f" },
+      { id: "t6", cd: 1, track: 6, title: "Was ist das?", act: "Act I", has_block: true, spotify_track_id: "5OvAp5IJHaA5Yw6N1ZfdlV" },
+      { id: "t7", cd: 1, track: 7, title: "Holdsel'ge Bianca", act: "Act I", has_block: true, spotify_track_id: "5XVhIVsmNVh9IeAp3xDmhl" },
+      { id: "t8", cd: 1, track: 8, title: "Simone, jetzt muss ich nach Hause gehen", act: "Act I", has_block: true, spotify_track_id: "7sj4no4aIG3321PMhXcci6" }
+    ]
+  }
+};
+
+  const ACT_DISPLAY = {
+    "Act I": "Einziger I"
+  };
+
+  const ACT_STARTS = {
+    "Act I": "t1"
+  };
+
+  const CHARACTERS = [
+    { id: "simone", name: "Simone", voice: "Baritone", description: "Rico comerciante florentino" },
+    { id: "bianca", name: "Bianca", voice: "Mezzo-soprano", description: "Esposa de Simone" },
+    { id: "guido", name: "Guido", voice: "Tenor", description: "Pr\u00edncipe florentino" }
+  ];
+
+  const CAST = {
+    chailly_kruse: { "simone": "Albert Dohmen", "bianca": "Iris Vermillion", "guido": "Heinz Kruse" }
+  };
+
+  let activeRecording = "chailly_kruse";
+  let currentActiveId = "t1";
+  let observer = null;
+  const mobileLangState = { de: true, es: true };
+</script>
+<script src="../libretto_spotify.js"></script>
+<script src="../libretto.js"></script>
